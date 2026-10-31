@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Time Signatures 拍子記号</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si cur"><a href="/writing/time-signatures" class="sl current" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Time Signatures</span> <span class="title-ja">拍子記号</span> </h1> <p>A time signature writes down the cycle of a piece (see <a href="/writing/pulse-and-cycles">Pulse and Cycles</a>). It is two numbers at the start of a score, one above the other. The top number is how many beats make up a bar, the cycle; the bottom number is the note value that counts as one beat, 4 for a quarter note and 8 for an eighth note. 4/4 is four quarter-note beats per bar, and 3/4 is three. The first beat of a bar, the downbeat, is usually the strongest.</p>
+<p>拍子記号は、曲の周期を書き表すものです（<a href="/writing/pulse-and-cycles">拍と周期</a>を参照）。楽譜の最初に上下に並べて書かれる2つの数で、上の数は1小節、つまり1つの周期をなす拍の数、下の数は1拍に数える音符の長さ（4は4分音符、8は8分音符）です。4/4は1小節に4分音符の拍が4つ、3/4は3つです。小節の最初の拍（強拍、ダウンビート）が、ふつうは最も強く感じられます。</p>
+<h1 id="simple-and-compound-meters">Simple and Compound Meters</h1>
+<h1 id="単純拍子と複合拍子">単純拍子と複合拍子</h1>
+<p>In 2/4, 3/4, and 4/4, each beat divides into two. These are simple meters. In 6/8, 9/8, and 12/8, each beat divides into three: 6/8 is two beats of three eighth notes each, not six beats. These are compound meters. 3/4 and 6/8 both fill a bar with six eighth notes, but they group them differently, three groups of two against two groups of three, and they feel quite different.</p>
+<p>2/4、3/4、4/4では、1拍が2つに分かれます。これを単純拍子といいます。6/8、9/8、12/8では、1拍が3つに分かれます。6/8は6拍ではなく、8分音符3つずつからなる2拍です。これを複合拍子といいます。3/4と6/8はどちらも1小節を6つの8分音符で満たしますが、2つずつの3組と、3つずつの2組という違うまとめ方をするため、感じ方はかなり異なります。</p>
+<p>Meters with beats of unequal length, such as 5/4 and 7/8, are often called odd or irregular meters. A bar of 7/8 is usually felt as 2 + 2 + 3 eighth notes, or another split into twos and threes. They are common in the folk music of the Balkans, and 5/4 is the meter of “Take Five” by the Dave Brubeck Quartet.</p>
+<p>5/4や7/8のように、長さの異なる拍を含む拍子は、変拍子と呼ばれることがよくあります。7/8の1小節は、ふつう2 + 2 + 3の8分音符、あるいはほかの2と3の組み合わせとして感じられます。バルカン半島の民族音楽によく見られ、デイヴ・ブルーベック・カルテットの「テイク・ファイヴ」は5/4拍子です。</p>
+<h1 id="drum-patterns">Drum Patterns</h1>
+<h1 id="ドラムのパターン">ドラムのパターン</h1>
+<p>Choose a <strong>Pattern</strong> and press <strong>Play</strong> to hear a simple drum beat in that time signature. <strong>Tempo</strong> sets the beats per minute; it counts quarter notes, except in 6/8, where it counts the beat of three eighth notes.</p>
+<p><strong>Pattern</strong>を選んで<strong>Play</strong>を押すと、その拍子の簡単なドラムのビートが聞こえます。<strong>Tempo</strong>は1分あたりの拍の数で、4分音符を数えます。ただし6/8では、8分音符3つ分の拍を数えます。</p>
+<p>The grid below shows one bar: a row per drum (hi-hat, rim click, snare, and kick) and a column per eighth note, with wider gaps between beats. A tall yellow cell is a full hit and a short one a soft hit; the column that is sounding lights up. Click a cell to change it, from rest to full to soft and back to rest. The ring shows the same bar as a cycle, with the hi-hat outermost and the kick innermost. Choosing a pattern again starts it fresh.</p>
+<p>下のグリッドは1小節を表します。行はドラム（ハイハット、リムクリック、スネア、キック）、列は8分音符で、拍の区切りには広めの隙間があります。高い黄色のセルは強い打音、低いセルは弱い打音で、鳴っている列が明るくなります。セルをクリックすると、休み、強、弱、休みの順に変わります。リングは同じ小節を周期として表し、いちばん外側がハイハット、いちばん内側がキックです。パターンを選び直すと、最初の状態に戻ります。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=meters" title="Drum patterns in time signatures" allow="autoplay" loading="lazy" style="height: 416px"></iframe></div>
+<ul>
+<li>
+<p><strong>4/4:</strong> the most common meter in popular music, with the kick on beats 1 and 3 and the snare on 2 and 4.</p>
+</li>
+<li>
+<p><strong>3/4:</strong> the waltz, a strong first beat followed by two light ones.</p>
+</li>
+<li>
+<p><strong>6/8:</strong> two beats of three, with the kick on the first and the snare on the second.</p>
+</li>
+<li>
+<p><strong>5/4:</strong> five beats, felt here as 3 + 2, with the kick on beats 1 and 4.</p>
+</li>
+<li>
+<p><strong>7/8:</strong> seven eighth notes, grouped 2 + 2 + 3.</p>
+</li>
+<li>
+<p><strong>4/4：</strong> ポピュラー音楽で最もよく使われる拍子で、キックが1拍目と3拍目、スネアが2拍目と4拍目に入ります。</p>
+</li>
+<li>
+<p><strong>3/4：</strong> ワルツの拍子で、強い1拍目のあとに軽い2拍が続きます。</p>
+</li>
+<li>
+<p><strong>6/8：</strong> 3つずつの2拍で、1拍目にキック、2拍目にスネアが入ります。</p>
+</li>
+<li>
+<p><strong>5/4：</strong> 5拍で、ここでは3 + 2として感じられるよう、1拍目と4拍目にキックが入ります。</p>
+</li>
+<li>
+<p><strong>7/8：</strong> 7つの8分音符を、2 + 2 + 3にまとめます。</p>
+</li>
+</ul>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

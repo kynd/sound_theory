@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sound Theory 音の理論</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl current">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose">   <h1 class="page-title"> <span class="title-en">Sound Theory</span> <span class="title-ja">音の理論</span> </h1> <p>Playing music (or even just making noise; there is no essential difference between the two) is a joy. It is fun and a profound exercise for both mind and body. I am not a great musician, but that does not matter. I play simply because it is something I can enjoy for the rest of my life, whatever happens, regardless of how the industry changes.</p>
+<p>音楽を演奏すること、あるいはただ音を出すこと（この二つに本質的な違いはありません）は、喜びです。心から楽しく、心と体の両方を使う奥深い営みでもあります。自分は優れた音楽家ではありませんが、それは問題ではありません。何があっても、産業としての音楽がどう変わろうともずっと楽しみ続けられる。それが、音を出す理由です。</p>
+<p>Music is also an intellectual pleasure. Beyond the joy of playing, there is the pleasure of wondering how it all works: why certain sounds seem to fit together, how a rhythm creates a sense of movement, or how the same notes can feel different in a new context. There is always more to notice, and more than one way to understand what we hear. For me, thinking about these things is not separate from making music; it is another way of enjoying it. Theory can help us explore these questions, giving us ways to recognize patterns, make connections, and discover new possibilities.</p>
+<p>音楽には、知的な楽しさもあります。演奏する喜びに加えて、なぜある音と音がよく合うように感じられるのか、リズムはどのように動きを生み出すのか、同じ音の並びでも文脈によって印象が変わるのはなぜか、と考える楽しみもあります。耳を傾ければ新たな発見があり、聴こえるものの捉え方も一つではありません。こうしたことを考えるのは音楽を奏でることと別の営みではなく、音楽を楽しむもう一つの方法です。理論は、パターンに気づき、つながりを見いだし、新たな可能性を探るための手がかりになります。</p>
+<p>People respond to theory in different ways. Some see it as a constraint on their freedom. I see it the other way around: theories are tools for thinking, and we can use them whenever they are useful. They fascinate me because they capture the many ways people have tried to make sense of sound. That is what theories are: attempts to make sense of it. The same sequence of notes can be understood in different ways, and each interpretation can lead to different choices in improvisation, harmonization, and so on. Theories can also inspire us to break their rules and try something different. The history of music, like that of any art form, is full of such departures.</p>
+<p>理論への反応は人それぞれです。理論を自由を縛るものと捉える人もいますが、むしろ逆だと思います。理論は考えるための道具であり、役に立つときに使えばよいのです。理論が興味深いのは、人々が音を理解しようと試みてきたさまざまな方法を映し出しているからです。理論とは、まさに音に意味を見いだそうとする試みです。同じ音の並びでも解釈はさまざまで、それぞれの解釈によって、即興や和声づけなどの選択も変わってきます。また、理論はときに、その枠を破って新しいことを試すきっかけにもなります。音楽の歴史は、ほかの芸術と同じように、そうした逸脱に満ちています。</p>
+<p>This is not a textbook. It is a collection of things I know about sound and music and find interesting, as well as an attempt to get them out of my head so I can understand and organize them better. Most of it is music theory—pitch, intervals, scales, chords, rhythm, and harmony—but it also explores the physics of sound, how we perceive it, and how sound is synthesized and processed. Each idea comes with an interactive demo, so you can hear an interval or a scale and see the waves behind it. I hope it will be interesting to others, too.</p>
+<p>これは教科書ではありません。音と音楽について、知っていることや面白いと思うことを集め、頭の中にあるものを外に出して、より深く理解し整理しようとする試みです。内容の大半は音楽理論（音高、音程、音階、和音、リズム、和声）ですが、音の物理や知覚、合成・加工についても扱います。それぞれのテーマには実際に操作できるデモを添えているので、音程や音階を耳で確かめ、その背後にある波形を見ることができます。結果として、ほかの人にとっても興味深いものになればと思います。</p>
+<h1 id="pages">Pages</h1>
+<h1 id="ページ">ページ</h1>
+<ol>
+<li>
+<p><a href="/writing/sound-sources">Sound Sources</a>: the instruments and effects used throughout the series.</p>
+</li>
+<li>
+<p><a href="/writing/sound-waves">Sound Waves</a>: sine waves, adding sine waves, and the frequency components of sound.</p>
+</li>
+<li>
+<p><a href="/writing/tuning-systems">Tuning Systems</a>: how frequencies are chosen for notes, from simple ratios and Pythagorean tuning to equal temperament and other systems.</p>
+</li>
+<li>
+<p><a href="/writing/scales">Scales</a>: what a scale is, and scales built from the twelve notes, from major and minor to Japanese, Okinawan, and Arabic scales.</p>
+</li>
+<li>
+<p><a href="/writing/church-modes">Church Modes</a>: the seven modes, from C and from the white keys, and how to hear them over a held root.</p>
+</li>
+<li>
+<p><a href="/writing/minor-scales">Minor Scales</a>: the natural, harmonic, and melodic minor scales.</p>
+</li>
+<li>
+<p><a href="/writing/other-scales">Other Scales</a>: pentatonic, blues, whole tone, diminished, and altered scales, as used in jazz and pop music.</p>
+</li>
+<li>
+<p><a href="/writing/pulse-and-cycles">Pulse and Cycles</a>: repetition, an even pulse, and accents that group it into cycles.</p>
+</li>
+<li>
+<p><a href="/writing/time-signatures">Time Signatures</a>: bars and beats, simple, compound, and odd meters, with editable drum patterns.</p>
+</li>
+<li>
+<p><a href="/writing/rhythm-and-feel">Rhythm and Feel</a>: subdivisions and styles (funk, shuffle, swing, bossa nova), and how timing and loudness change the feel.</p>
+</li>
+<li>
+<p><a href="/writing/diatonic-chords">Diatonic Chords</a>: the seven chords of a major key, Roman numerals, and their functions.</p>
+</li>
+<li>
+<p><a href="/writing/chord-types">Other Chords</a>: diminished, augmented, and suspended chords, and how they connect others.</p>
+</li>
+<li>
+<p><a href="/writing/seventh-chords">Sevenths and Tensions</a>: seventh chords, the 9th, 11th, and 13th, and altered tensions.</p>
+</li>
+<li>
+<p><a href="/writing/functional-harmony">Functional Harmony</a>: tonic, subdominant, and dominant, and progressions as movement between them.</p>
+</li>
+<li>
+<p><a href="/writing/tension-and-resolution">Tension and Resolution</a>: dominant motion, secondary dominants, and other ways to resolve.</p>
+</li>
+<li>
+<p><a href="/writing/subdominant-minor">Subdominant Minor</a>: chords borrowed from the parallel minor, with practical examples.</p>
+</li>
+<li>
+<p><a href="/writing/non-functional-harmony">Beyond Functional Harmony</a>: modes, quartal chords, planing, pedals, harmony from the melody, and twelve tones.</p>
+</li>
+<li>
+<p><a href="/writing/reharmonization">Reharmonization</a>: new chords under a familiar melody.</p>
+</li>
+<li>
+<p><a href="/writing/breaking-conventions">Breaking Conventions</a>: how composers and players have broken the conventions, from noise and chance to minimalism and phasing.</p>
+</li>
+<li>
+<p><a href="/writing/sound-as-material">Sound as Material</a>: onkyō, sound design, and granular synthesis.</p>
+</li>
+<li>
+<p><a href="/writing/sound-sources">音源</a>：このシリーズ全体で使う楽器とエフェクト。</p>
+</li>
+<li>
+<p><a href="/writing/sound-waves">音の波</a>：サイン波、サイン波の足し合わせ、音の周波数成分。</p>
+</li>
+<li>
+<p><a href="/writing/tuning-systems">音律</a>：音符の周波数の選び方。単純な比やピタゴラス音律から、平均律、ほかの音律まで。</p>
+</li>
+<li>
+<p><a href="/writing/scales">音階</a>：音階とは何か、そして12の音からつくる音階。長音階、短音階から、日本、沖縄、アラブの音階まで。</p>
+</li>
+<li>
+<p><a href="/writing/church-modes">教会旋法</a>：7つの旋法を、Cから、そして白鍵から。主音を鳴らしながら旋法を聞く方法。</p>
+</li>
+<li>
+<p><a href="/writing/minor-scales">短音階</a>：自然短音階、和声的短音階、旋律的短音階。</p>
+</li>
+<li>
+<p><a href="/writing/other-scales">その他の音階</a>：ジャズやポップ音楽で使われる、ペンタトニック、ブルース、全音音階、ディミニッシュ、オルタードの各音階。</p>
+</li>
+<li>
+<p><a href="/writing/pulse-and-cycles">拍と周期</a>：繰り返し、等しい拍、そして拍を周期にまとめるアクセント。</p>
+</li>
+<li>
+<p><a href="/writing/time-signatures">拍子記号</a>：小節と拍、単純拍子、複合拍子、変拍子を、編集できるドラムのパターンで。</p>
+</li>
+<li>
+<p><a href="/writing/rhythm-and-feel">リズムとフィール</a>：細分とスタイル（ファンク、シャッフル、スウィング、ボサノヴァ）、そしてタイミングと音量によるフィールの変化。</p>
+</li>
+<li>
+<p><a href="/writing/diatonic-chords">ダイアトニック・コード</a>：長調の7つの和音、ローマ数字、そしてその機能。</p>
+</li>
+<li>
+<p><a href="/writing/chord-types">その他の和音</a>：減三和音、増三和音、サスペンデッド・コードと、それらによる和音のつなぎ方。</p>
+</li>
+<li>
+<p><a href="/writing/seventh-chords">7の和音とテンション</a>：7の和音、9度、11度、13度、変化させたテンション。</p>
+</li>
+<li>
+<p><a href="/writing/functional-harmony">機能和声</a>：トニック、サブドミナント、ドミナントと、そのあいだの動きとしての進行。</p>
+</li>
+<li>
+<p><a href="/writing/tension-and-resolution">緊張と解決</a>：ドミナント・モーション、セカンダリー・ドミナント、ほかの解決のしかた。</p>
+</li>
+<li>
+<p><a href="/writing/subdominant-minor">サブドミナント・マイナー</a>：同主短調から借りた和音と、その実例。</p>
+</li>
+<li>
+<p><a href="/writing/non-functional-harmony">機能和声の外へ</a>：旋法、4度堆積和音、平行和音、保続音、旋律からの和声、十二音。</p>
+</li>
+<li>
+<p><a href="/writing/reharmonization">リハーモナイズ</a>：よく知られた旋律の下に新しい和音を。</p>
+</li>
+<li>
+<p><a href="/writing/breaking-conventions">慣習を破る</a>：ノイズや偶然性からミニマリズムやフェイズまで、作曲家や演奏家が慣習を破ってきた方法。</p>
+</li>
+<li>
+<p><a href="/writing/sound-as-material">素材としての音</a>：音響系、サウンドデザイン、グラニュラー合成。</p>
+</li>
+</ol>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tuning Systems 音律</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si cur"><a href="/writing/tuning-systems" class="sl current" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Tuning Systems</span> <span class="title-ja">音律</span> </h1> <p>Music can draw on pitches from a continuous range, as well as on sounds without a clear pitch, such as many drum sounds. In much music, though, melodies and harmonies are organized around a set of distinct pitches, or notes. A tuning system defines the frequency relationships among those notes, while a reference pitch assigns them specific frequencies.</p>
+<p>音楽では、連続した範囲の音高だけでなく、多くの太鼓の音のように明確な音高を持たない音も使えます。ただし、多くの音楽では、旋律や和声は、区別された音高、つまり音の集まりをもとに組み立てられています。音律はそれらの音の周波数比を定め、基準音は各音に具体的な周波数を与えます。</p>
+<h1 id="simple-ratios">Simple Ratios</h1>
+<h1 id="単純な比">単純な比</h1>
+<p>A string fixed at both ends vibrates along its whole length, and also in halves, thirds, quarters, and so on (see <a href="/writing/sound-waves">Sound Waves</a>). Its sound therefore contains the frequencies <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">2f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">3f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">4f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">4</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>, …, the harmonic series. The same numbers appear when you change the length of the string: halving it doubles the frequency, and shortening it to two-thirds raises the frequency by a ratio of 3:2.</p>
+<p>両端を固定した弦は、全体で振動すると同時に、2分の1、3分の1、4分の1……の長さでも振動します（<a href="/writing/sound-waves">音の波</a>を参照）。そのため弦の音には、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">2f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">3f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">4f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">4</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span>……の周波数、つまり倍音列が含まれます。弦の長さを変えたときにも同じ数が現れます。長さを半分にすると周波数は2倍に、3分の2にすると周波数は3:2の比で高くなります。</p>
+<p>Two notes whose frequencies form a simple ratio share many harmonics. At 3:2, every third harmonic of the lower note lands exactly on every second harmonic of the upper one. The combined wave repeats after a short time, and the two notes blend. When the ratio is slightly off, harmonics that should coincide are close but not equal, and they beat (the loudness wavers at the difference of their frequencies), which sounds rough.</p>
+<p>周波数が単純な比をなす2つの音は、多くの倍音を共有します。3:2では、低い音の3番目ごとの倍音が、高い音の2番目ごとの倍音にぴったり重なります。合わさった波は短い時間で繰り返し、2つの音はよく溶け合います。比が少しずれると、重なるはずの倍音が近いのに一致せず、うなり（2つの周波数の差の速さで音量が揺れる現象）が生じて、ざらついて聞こえます。</p>
+<p>The simplest ratios have names.</p>
+<ul>
+<li>
+<p><strong>2:1:</strong> the octave. The upper note sounds so much like the lower one that both get the same note name.</p>
+</li>
+<li>
+<p><strong>3:2:</strong> the perfect fifth.</p>
+</li>
+<li>
+<p><strong>4:3:</strong> the perfect fourth.</p>
+</li>
+<li>
+<p><strong>5:4:</strong> the major third.</p>
+</li>
+<li>
+<p><strong>6:5:</strong> the minor third.</p>
+</li>
+</ul>
+<p>最も単純な比には名前があります。</p>
+<ul>
+<li>
+<p><strong>2:1：</strong> オクターブ。上の音が下の音とよく似て聞こえるため、どちらにも同じ音名をつけます。</p>
+</li>
+<li>
+<p><strong>3:2：</strong> 完全5度。</p>
+</li>
+<li>
+<p><strong>4:3：</strong> 完全4度。</p>
+</li>
+<li>
+<p><strong>5:4：</strong> 長3度。</p>
+</li>
+<li>
+<p><strong>6:5：</strong> 短3度。</p>
+</li>
+</ul>
+<p>A bar free at both ends, like one on a xylophone or glockenspiel, does not vibrate in segments that are simple fractions of its length. Its overtones therefore are not whole-number multiples of the fundamental: in a uniform bar, they occur at about 2.76, 5.40, and 8.93 times the fundamental frequency. Bells and gongs are similarly inharmonic. Makers carve away material from the underside of a marimba bar to tune its first overtone to 4 times the fundamental (two octaves); for a xylophone bar, they tune it to 3 times the fundamental (an octave and a fifth). This brings the overtones closer to the harmonic series. Which ratios sound smooth depends on an instrument’s overtones. This may help explain why music built around metallophones, such as Indonesian gamelan, uses different tunings.</p>
+<p>木琴や鉄琴の音板のように両端が自由な棒は、長さを単純な分数に分けた部分ごとには振動しません。そのため、倍音は基音の整数倍にならず、均一な棒では基音周波数の約2.76倍、5.40倍、8.93倍に現れます。鐘やゴングも同様に、倍音が基音の整数倍になりません。マリンバの音板は裏側を削って、最初の倍音が基音の4倍（2オクターブ）になるように調整します。木琴の音板では、最初の倍音が基音の3倍（1オクターブと5度）になるように調整します。こうして、倍音を倍音列に近づけます。どの比がなめらかに聞こえるかは、楽器の倍音によって異なります。これが、インドネシアのガムランのように金属製の旋律打楽器を中心とする音楽で、異なる音律が使われる理由のひとつかもしれません。</p>
+<h1 id="pythagorean-tuning">Pythagorean Tuning</h1>
+<h1 id="ピタゴラス音律">ピタゴラス音律</h1>
+<p>According to Greek tradition, Pythagoras (6th century BCE) studied these ratios using a monochord—a single string with a movable bridge. Pythagorean tuning derives every note from two simple ratios: repeatedly raise the pitch by a fifth (×3/2), then lower it by an octave (÷2) whenever it exceeds the octave. Starting from C, successive fifths produce G, D, A, E, B, F♯, and so on. Folded into a single octave, these notes fill out a scale.</p>
+<p>ギリシャの伝承によれば、ピタゴラス（紀元前6世紀）は、可動式の駒を備えた1本の弦、モノコードを使ってこれらの比を調べました。ピタゴラス音律では、2つの単純な比を使ってすべての音を導きます。5度上げる（×3/2）操作を繰り返し、音が1オクターブを超えたら1オクターブ下げます（÷2）。Cから始めると、5度上げるたびにG、D、A、E、B、F♯……が得られます。これらを1オクターブ内に収めると、音階ができます。</p>
+<p>Stacking pure fifths does not form an exactly closed circle: twelve pure fifths span slightly more than seven octaves. The gap, a ratio of about 1.0136 (about a quarter of a semitone), is called the Pythagorean comma.</p>
+<p>純正な5度を重ねても、環はぴったりとは閉じません。純正な5度を12回重ねた音程は、7オクターブよりわずかに広くなります。この差、約1.0136の比（半音の約4分の1）はピタゴラスコンマと呼ばれています。</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mrow><mo fence="true">(</mo><mstyle scriptlevel="0" displaystyle="true"><mfrac><mn>3</mn><mn>2</mn></mfrac></mstyle><mo fence="true">)</mo></mrow><mn>12</mn></msup><mo>≈</mo><mn>129.75</mn><mspace width="2em"></mspace><msup><mn>2</mn><mn>7</mn></msup><mo>=</mo><mn>128</mn></mrow><annotation encoding="application/x-tex">\left(\dfrac{3}{2}\right)^{12} \approx 129.75 \qquad 2^{7} = 128</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.604em;vertical-align:-0.95em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.654em;"><span style="top:-3.9029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">129.75</span><span class="mspace" style="margin-right:2em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">128</span></span></span></span></span>
+<p>Raise <strong>Fifths</strong> one step at a time to stack fifths from C. Press <strong>Play</strong> to hear the starting C alongside the latest note. The ring represents one octave, starting at the top and moving clockwise; each note marks where its fifth falls when folded back into the octave. After twelve fifths, B♯ (red) lands just beyond C. That gap is the comma, and you can hear the two notes beat about three and a half times per second.</p>
+<p><strong>Fifths</strong>を1段ずつ上げて、Cから5度を重ねていきます。<strong>Play</strong>を押すと、最初のCと最新の音を同時に聞けます。リングは1オクターブを表し、上から時計回りに進みます。各音は、5度を1オクターブ内に折り返した位置にあります。5度を12回重ねると、B♯（赤）はCをわずかに越えた位置に着地します。この差がコンマです。2つの音が1秒に約3.5回うなるのが聞こえます。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/stacking-fifths/index.html" title="Stacking fifths" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
+<p>Tunings that directly use simple ratios—such as 5:4 for thirds—are called just intonation. They sound pure in their home key, but go out of tune when the music moves to another key.</p>
+<p>3度に5:4などの単純な比を直接用いる音律を純正律と呼びます。基準となる調では純粋に響きますが、別の調に移ると音程が合わなくなります。</p>
+<h1 id="twelve-tone-equal-temperament">Twelve-Tone Equal Temperament</h1>
+<h1 id="十二平均律">十二平均律</h1>
+<p>Instruments with fixed pitches, such as pianos and fretted guitars, need a single set of notes that works in every key. Today, this is achieved by dividing the octave into 12 equal steps. The steps have equal frequency ratios, not equal frequency differences: each step multiplies the frequency by the same factor, and twelve steps double it exactly.</p>
+<p>ピアノやフレットのあるギターのように音高が固定された楽器には、どの調でも使える一組の音が必要です。現在一般的な方法では、1オクターブを12の等しい段階に分けます。ここで等しいのは周波数の差ではなく比です。各段階で周波数に同じ倍率を掛けるため、12段階でちょうど2倍になります。</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mn>2</mn><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>12</mn></mrow></msup><mo>≈</mo><mn>1.0595</mn></mrow><annotation encoding="application/x-tex">2^{1/12} \approx 1.0595</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.938em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1/12</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.0595</span></span></span></span></span>
+<p>Intervals are often measured in cents, a unit built on this division: one equal-tempered semitone is 100 cents, so an octave is 1200 cents. Because cents measure ratios, any interval can be expressed in them, pure or tempered. A ratio <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span> spans <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1200</mn><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">1200 \log_2 r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mord">1200</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span> cents, so a pure fifth (3:2) is about 701.96 cents and the Pythagorean comma about 23.5 cents. This makes it easy to compare pure intervals with equal-tempered ones.</p>
+<p>音程は、この分割をもとにした単位であるセントで測ることがよくあります。平均律の半音1つが100セントで、1オクターブは1200セントです。セントは比を測るので、純正な音程でも平均律の音程でも、どんな音程もセントで表せます。比<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>は<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1200</mn><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">1200 \log_2 r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mord">1200</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>セントにあたり、純正な5度（3:2）は約701.96セント、ピタゴラスコンマは約23.5セントです。これで、純正な音程と平均律の音程を比べやすくなります。</p>
+<p>In equal temperament, the circle of fifths closes exactly. After twelve fifths, B♯ lands on C, so the two sound as one. The Pythagorean comma is spread evenly across all twelve fifths.</p>
+<p>平均律では、5度を重ねた環がぴったり閉じます。5度を12回重ねると、B♯はCに重なり、2つの音はひとつに聞こえます。ピタゴラスコンマは、12の5度すべてに均等に分散されます。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/stacking-fifths/index.html?tuning=equal" title="Stacking equal-tempered fifths" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
+<p>Dividing the octave into twelve steps is no arbitrary choice. It is the smallest equal division that comes close to a pure fifth: seven steps span 700 cents, just 2 cents less than the pure 3:2 ratio. The trade-off is that thirds and sixths fall 14 to 16 cents from their simple ratios, producing noticeable beats when sustained.</p>
+<p>1オクターブを12段階に分けるのは、恣意的な選択ではありません。12等分は、純正な5度に近い音程を得られる最小の等分法です。7段階で700セントとなり、純正な3:2の比よりわずか2セント狭くなります。その代わり、3度と6度は単純な比から14〜16セントずれ、音を伸ばすとうなりがはっきり聞こえます。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Interval 音程</th><th>Ratio 比</th><th>Pure (cents) 純正（セント）</th><th>Equal (cents) 平均律（セント）</th><th>Difference 差</th></tr></thead><tbody><tr><td>Octave オクターブ</td><td>2:1</td><td>1200.00</td><td>1200</td><td>0</td></tr><tr><td>Perfect fifth 完全5度</td><td>3:2</td><td>701.96</td><td>700</td><td>−1.96</td></tr><tr><td>Perfect fourth 完全4度</td><td>4:3</td><td>498.04</td><td>500</td><td>+1.96</td></tr><tr><td>Major third 長3度</td><td>5:4</td><td>386.31</td><td>400</td><td>+13.69</td></tr><tr><td>Minor third 短3度</td><td>6:5</td><td>315.64</td><td>300</td><td>−15.64</td></tr><tr><td>Major sixth 長6度</td><td>5:3</td><td>884.36</td><td>900</td><td>+15.64</td></tr><tr><td>Minor sixth 短6度</td><td>8:5</td><td>813.69</td><td>800</td><td>−13.69</td></tr></tbody></table>
+<p>Choose an <strong>Interval</strong> and press <strong>Play</strong> to hear two tones, 220 Hz and the note above it, each with eight harmonics. Switch between <strong>Pure</strong> (the simple ratio) and <strong>Equal</strong> (the equal-tempered step). The plot shows half a second of the two harmonics that meet in the pure interval (for a major third, the 5th harmonic of the lower note and the 4th of the upper one, both near 1100 Hz) as yellow lines, and their sum as a red line. When the harmonics coincide, the sum keeps a steady size; when they don’t, it swells and shrinks at the beat rate. The waves are drawn at a lower pitch than they sound, so each cycle is visible, but the swells keep their real rate: in equal temperament the major third beats almost nine times a second, while the fifth beats less than once. Equal temperament is a compromise: every key is equally usable, and every key is equally, slightly, out of tune.</p>
+<p><strong>Interval</strong>を選んで<strong>Play</strong>を押すと、220 Hzとその上の音、それぞれ8つの倍音を持つ2つの音が聞こえます。<strong>Pure</strong>（単純な比）と<strong>Equal</strong>（平均律の段階）を切り替えてみてください。グラフは、純正な音程で重なる2つの倍音（長3度では、低い音の5番目と高い音の4番目の倍音で、どちらも約1100 Hz）を黄色の線で、その和を赤い線で、0.5秒分示しています。倍音が一致していれば和の大きさは一定で、一致しなければ、うなりの速さで膨らんだり縮んだりします。各周期が見えるよう、波は実際より低い音高で描いていますが、膨らみの速さは実際のままです。平均律では、長3度は1秒に約9回うなり、5度は1回未満しかうなりません。平均律は妥協の産物です。どの調も等しく使え、どの調もわずかに等しく狂っています。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/intervals/index.html" title="Intervals" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
+<h1 id="other-systems">Other Systems</h1>
+<h1 id="ほかの音律">ほかの音律</h1>
+<p>Pitch is continuous, so there is no requirement for twelve notes, equal steps, or even an octave. Many musical cultures and composers divide pitch in other ways. Here are a few examples to explore.</p>
+<ul>
+<li>
+<p><strong>Arabic maqam:</strong> uses intervals between a semitone and a whole tone, such as the neutral second, which is about three-quarters of a tone. The exact size varies by maqam and region.</p>
+</li>
+<li>
+<p><strong>Indian classical music:</strong> theory describes 22 śruti, small divisions of the octave from which each rāga draws its notes. Performers tune against a drone, which draws the intervals toward pure ratios.</p>
+</li>
+<li>
+<p><strong>Indonesian gamelan:</strong> slendro has five roughly equal steps per octave, while pelog has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.</p>
+</li>
+<li>
+<p><strong>Other equal divisions:</strong> dividing the octave into 19 or 31 equal steps gives purer thirds than dividing it into 12. The major third in 31-tone equal temperament is within 1 cent of 5:4.</p>
+</li>
+<li>
+<p><strong>Bohlen–Pierce scale:</strong> divides the ratio 3:1, rather than the octave, into 13 steps; it has no octave.</p>
+</li>
+</ul>
+<p>音高は連続しているため、12音に分けることも、等間隔にすることも、オクターブを基準にすることも必須ではありません。多くの音楽文化や作曲家が、異なる方法で音高を分けています。たとえば、次のような例があります。</p>
+<ul>
+<li>
+<p><strong>アラブ音楽のマカーム：</strong> 半音と全音のあいだの音程を使います。約4分の3音にあたる中立2度などがその例です。音程の正確な大きさは、マカームや地域によって異なります。</p>
+</li>
+<li>
+<p><strong>インド古典音楽：</strong> 理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、各ラーガはそこから音を選びます。演奏者はドローンを基準に音を合わせるため、音程は純正な比に近づきます。</p>
+</li>
+<li>
+<p><strong>インドネシアのガムラン：</strong> スレンドロは1オクターブをほぼ等しい5段階に、ペロッグは不均等な7段階に分けます。ガムランは1組ごとに調律されるため、どの2組もまったく同じ響きにはなりません。</p>
+</li>
+<li>
+<p><strong>ほかの等分：</strong> 1オクターブを19または31段階に等分すると、12等分より純正な3度が得られます。31等分の平均律における長3度は、5:4との差が1セント以内です。</p>
+</li>
+<li>
+<p><strong>ボーレン＝ピアス音階：</strong> オクターブではなく3:1の比を13段階に分け、オクターブを持ちません。</p>
+</li>
+</ul>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

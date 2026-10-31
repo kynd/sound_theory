@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sound Waves 音の波</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si cur"><a href="/writing/sound-waves" class="sl current" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Sound Waves</span> <span class="title-ja">音の波</span> </h1> <p>To begin, what is sound? Sound is a vibration that travels through a medium such as air. A vibrating object—a string, drumhead, or speaker cone—pushes and pulls on the surrounding air, creating alternating regions of higher and lower pressure (compression and rarefaction) that spread outward at about 343 meters per second. When these waves reach your ear, your eardrum moves with them, and you hear sound.</p>
+<p>音とは何でしょうか。音は、空気などの媒質を伝わる振動です。弦や太鼓の皮、スピーカーのコーンなどの振動体が周囲の空気を押したり引いたりすると、気圧の高い部分と低い部分（圧縮と膨張）が交互に生まれ、秒速約343メートルで広がっていきます。こうした波が耳に届くと、鼓膜もそれに合わせて動き、私たちは音を聞きます。</p>
+<p>But these vibrations tell only part of the story. Like other sensory experiences, the sound we hear arises within the being that perceives it; it is not simply a property of the world independent of a listener. Hearing likely evolved because it helped organisms make sense of their surroundings and survive—for example, by detecting nearby animals or locating running water. Yet for humans, listening is more than a means of survival: we have also found ways to enjoy and appreciate sound for its own sake.</p>
+<p>しかし、こうした振動だけでは音のすべてを説明できません。ほかの感覚体験と同じように、私たちが聞く音は、それを知覚する存在の中で生まれるものであり、聴き手とは無関係に世界に備わっている性質そのものではありません。聴覚は、近くにいる動物の気配を察したり、水の流れる場所を探したりして周囲の状況を把握し、生き延びる助けとなったために進化したと考えられます。しかし、人間にとって聴くことは生存の手段にとどまりません。私たちは、音そのものを楽しみ、味わう方法も見いだしてきました。</p>
+<h1 id="sine-wave">Sine Wave</h1>
+<h1 id="サイン波">サイン波</h1>
+<p>A sine wave is a smooth, repeating oscillation at a single frequency. A perfectly pure, steady sine wave is a mathematical ideal, but a tuning fork produces a sound that comes close. Once its initial vibrations settle, the sound is dominated by a single frequency, though it gradually fades. In this demo, frequency—the number of cycles per second, measured in hertz (Hz)—determines pitch. Amplitude—the size of the pressure variation—affects loudness: at a fixed frequency, a larger amplitude generally sounds louder. Press <strong>Play</strong> and move the sliders.</p>
+<p>サイン波は、単一の周波数でなめらかに繰り返す振動です。完全に純粋で振幅が一定のサイン波は数学上の理想ですが、音叉はそれに近い音を出します。最初の振動が落ち着くと、音は単一の周波数が中心になりますが、次第に弱まっていきます。このデモでは、周波数（1秒あたりの振動回数。単位はヘルツ、Hz）が音の高さを決めます。振幅（気圧の変化の大きさ）は音の大きさに影響します。周波数が同じなら、振幅が大きいほど一般に大きな音に聞こえます。<strong>Play</strong>を押して、スライダーを動かしてみてください。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/sine-wave/index.html" title="Sine wave" allow="autoplay" loading="lazy" style="height: 176px"></iframe></div>
+<p>The display always shows the same brief interval (about 20 milliseconds), so a higher frequency packs more cycles into it. The time required for one cycle is the period, the reciprocal of the frequency (a 440 Hz wave repeats about every 2.27 ms).</p>
+<p>画面には常に同じ短い時間（約20ミリ秒）が表示されるため、周波数が高いほど、その間に多くの周期が収まります。1周期にかかる時間を周期といい、周波数の逆数です（440 Hzの波は約2.27ミリ秒ごとに繰り返します）。</p>
+<p>People can hear frequencies from about 20 Hz to 20 kHz, though the upper limit decreases with age. Doubling the frequency raises the pitch by an octave, so pitch depends on the ratio between frequencies, not the difference between them.</p>
+<p>人が聞き取れる周波数の範囲は約20 Hzから20 kHzですが、上限は年齢とともに下がります。周波数が2倍になると音は1オクターブ上がるため、音の高さは周波数の差ではなく、周波数同士の比で決まります。</p>
+<h1 id="adding-sine-waves">Adding Sine Waves</h1>
+<h1 id="サイン波を足す">サイン波を足す</h1>
+<p>A sine wave sounds plain, and few instruments produce one on its own. A plucked string vibrates not only along its full length but also in halves, thirds, quarters, and so on. These vibrations produce a series of sine waves whose frequencies are whole-number multiples of the lowest frequency. The lowest is the fundamental; the others are harmonics (or overtones).</p>
+<p>サイン波は単調な音で、それだけを出す楽器はほとんどありません。弦をはじくと、弦全体だけでなく、半分、3分の1、4分の1……の長さでも振動します。その結果、最も低い周波数の整数倍の周波数を持つサイン波が重なり合います。最も低い成分が基音で、ほかの成分が倍音です。</p>
+<p>Adding harmonics changes the waveform and the sound’s character (timbre) without changing the pitch, because their sum still repeats at the fundamental’s period. The demo starts with a 220 Hz fundamental. Press <strong>Play</strong> and raise the sliders one at a time. Each slider sets the amplitude of the sine wave at the frequency shown beside it—a whole-number multiple of 220 Hz.</p>
+<p>倍音を加えると、波形と音色は変わりますが、音高は変わりません。合成した波も基音の周期で繰り返すためです。デモは220 Hzの基音から始まります。<strong>Play</strong>を押し、スライダーをひとつずつ上げてみてください。各スライダーで、横に示された周波数（220 Hzの整数倍）のサイン波の振幅を調整できます。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/adding-sines/index.html" title="Adding sine waves" allow="autoplay" loading="lazy" style="height: 368px"></iframe></div>
+<p>The yellow lines show the individual sine waves, and the red line shows their sum over two periods of the fundamental.</p>
+<p>黄色の線は個々のサイン波、赤い線はそれらを足し合わせた波を示しています（基音の2周期分）。</p>
+<p>All the sine waves here start in phase. Changing their relative phases changes the shape of the combined wave, but usually has little effect on the sound of a steady tone like this. Phase still matters in audio processing: when peaks from multiple components align, their combined peak can exceed a system’s limits and cause clipping. In some synthesis and signal-processing applications, phases are deliberately adjusted to reduce these peaks.</p>
+<p>ここでは、すべてのサイン波が同じ位相で始まります。各成分の相対的な位相を変えると合成波の形は変わりますが、このような持続音では、聞こえ方への影響は大抵ほとんどありません。位相は音声処理でも重要です。複数の成分のピークが重なると、合成波のピークが信号や機器の扱える上限を超え、クリッピングによる歪みが生じることがあります。そのため、音の合成や信号処理では、ピークを抑えるために位相を意図的に調整する場合があります。</p>
+<h1 id="frequency-components">Frequency Components</h1>
+<h1 id="周波数成分">周波数成分</h1>
+<p>This works in the other direction too. In theory, any sound can be broken down into sine waves of different frequencies, amplitudes, and phases (Fourier analysis). Each of those sine waves is a frequency component, and the set of them is the sound’s spectrum.</p>
+<p>この関係は、逆向きにも成り立ちます。理論上、どんな音も、周波数、振幅、位相の異なるサイン波に分解できます（フーリエ解析）。そのひとつひとつのサイン波を周波数成分と呼び、その集まりを音のスペクトルと呼びます。</p>
+<p>A sound with a clear pitch is periodic, so its components sit at the harmonics of the fundamental and its spectrum is a row of separate peaks. A sound without a clear pitch, such as noise or a cymbal, has components spread over a continuous range of frequencies.</p>
+<p>はっきりした音高を持つ音は周期的なので、成分は基音の倍音の位置に並び、スペクトルは離れたピークの列になります。ノイズやシンバルのように、はっきりした音高を持たない音では、成分が連続した周波数の範囲に広がります。</p>
+<h1 id="waveform-and-spectrum">Waveform and Spectrum</h1>
+<h1 id="波形とスペクトル">波形とスペクトル</h1>
+<p>Real sounds change over time, so a spectrum is measured over a short window of the signal with the FFT (fast Fourier transform). This demo shows the waveform (above) and the spectrum (below) of the same sound at once. Choose a <strong>Preset</strong> (a recorded instrument, the drum kit, or noise) and play a few notes with the mouse, or with the keys from A to ; on your computer keyboard (Z and X shift the octave).</p>
+<p>実際の音は時間とともに変化するため、スペクトルは、信号の短い区間に対してFFT（高速フーリエ変換）を使って求めます。このデモでは、同じ音の波形（上）とスペクトル（下）を同時に表示します。<strong>Preset</strong>（録音した楽器、ドラムキット、ノイズ）を選んで、マウスか、コンピューターのキーボードのAから;までのキーでいくつか音を弾いてみてください（ZとXでオクターブを切り替えられます）。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/waveform-spectrum/index.html" title="Waveform and spectrum" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<p>Because the spectrum’s frequency axis is logarithmic, each octave occupies the same width. As a result, evenly spaced harmonics appear increasingly close together toward the right.</p>
+<ul>
+<li>
+<p><strong>Piano and guitar:</strong> The harmonics fade at different rates, usually with the higher ones fading faster. As the note decays, both the spectrum and waveform change.</p>
+</li>
+<li>
+<p><strong>Violin, cello, and trumpet:</strong> These instruments have many strong harmonics, giving them a bright, rich tone.</p>
+</li>
+<li>
+<p><strong>Flute:</strong> Its strong fundamental and few, weak harmonics give it a waveform close to a sine wave.</p>
+</li>
+<li>
+<p><strong>Clarinet:</strong> In its low register, the odd harmonics are much stronger than the even ones, producing a sound like a square wave.</p>
+</li>
+<li>
+<p><strong>Drum kit:</strong> Its waveforms do not repeat. The kick’s energy is concentrated at low frequencies, while the hats and crash spread across the high frequencies.</p>
+</li>
+<li>
+<p><strong>Noise:</strong> White noise has the same energy at every frequency, so its spectrum is roughly flat. Pink noise has the same energy in every octave, so its spectrum slopes downward at higher frequencies.</p>
+</li>
+</ul>
+<p>スペクトルの周波数軸は対数目盛りなので、どのオクターブも同じ幅になります。そのため、等間隔に並ぶ倍音は、右に行くほど間隔が狭く見えます。</p>
+<ul>
+<li>
+<p><strong>Piano、Acoustic guitar：</strong> 倍音によって減衰の速さが異なり、通常は高い倍音ほど速く減衰します。そのため、音が減衰するにつれてスペクトルも波形も変化します。</p>
+</li>
+<li>
+<p><strong>Violin、Cello、Trumpet：</strong> 強い倍音を多く含むため、明るく豊かな音色になります。</p>
+</li>
+<li>
+<p><strong>Flute：</strong> 基音が強く、倍音は少なく弱いため、波形はサイン波に近くなります。</p>
+</li>
+<li>
+<p><strong>Clarinet：</strong> 低音域では、奇数次の倍音が偶数次の倍音よりずっと強く、矩形波に似た音になります。</p>
+</li>
+<li>
+<p><strong>Drum kit：</strong> 波形は繰り返しません。キックのエネルギーは低い周波数に集中し、ハイハットやクラッシュは高い周波数帯に広がります。</p>
+</li>
+<li>
+<p><strong>Noise：</strong> ホワイトノイズはすべての周波数で同じエネルギーを持つため、スペクトルはほぼ平らです。ピンクノイズはどのオクターブでも同じエネルギーを持つため、スペクトルは高い周波数ほど低くなります。</p>
+</li>
+</ul>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

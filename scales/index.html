@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Scales 音階</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si cur"><a href="/writing/scales" class="sl current" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Scales</span> <span class="title-ja">音階</span> </h1> <p>A scale is a set of notes, listed in order of pitch, that a piece of music draws its melodies and harmonies from. It is usually written from one note, the root (or tonic), up to the octave above, and the same notes repeat in every octave.</p>
+<p>音階とは、音楽が旋律や和音に使う音の集まりを、音高の順に並べたものです。ふつうはひとつの音、主音から1オクターブ上までを書き表し、同じ音がどのオクターブでも繰り返されます。</p>
+<h1 id="choosing-notes-from-twelve">Choosing Notes from Twelve</h1>
+<h1 id="12音から選ぶ">12音から選ぶ</h1>
+<p>Twelve-tone equal temperament gives twelve notes in each octave (see <a href="/writing/tuning-systems">Tuning Systems</a>), and a scale picks some of them. Counting only scales that start on C, each of the other eleven notes can be in or out, which makes 2,048 possible scales. Most are rarely used, but many are: the major and minor scales of Western music, pentatonic scales heard from East Asia to West Africa and Scotland, and the scales that give the music of Japan, Okinawa, or the Middle East its character.</p>
+<p>十二平均律は、1オクターブに12の音を与えます（<a href="/writing/tuning-systems">音律</a>を参照）。音階は、そのうちのいくつかを選んだものです。Cから始まる音階だけを数えても、残りの11音のそれぞれを入れるか入れないかで、2,048通りの音階がつくれます。ほとんどはめったに使われませんが、よく使われるものも数多くあります。西洋音楽の長音階と短音階、東アジアから西アフリカ、スコットランドまで広く聞かれる五音音階、そして日本、沖縄、中東の音楽にそれぞれの性格を与える音階などです。</p>
+<p>What makes scales sound different is the pattern of steps between neighboring notes. The major scale goes whole, whole, half, whole, whole, whole, half (a half step is one semitone and a whole step two). The same pattern started on another note gives the same scale in another key.</p>
+<p>音階ごとの響きの違いは、隣り合う音のあいだの歩幅の並びから生まれます。長音階は、全音、全音、半音、全音、全音、全音、半音の順に進みます（半音は1半音、全音は2半音）。同じ並びをほかの音から始めると、同じ音階の別の調になります。</p>
+<p>Other tuning systems allow many more. A scale can use intervals that twelve-tone equal temperament does not have, such as the neutral second of Arabic maqam or the steps of Indonesian slendro and pelog. The twelve notes can only approximate such scales.</p>
+<p>ほかの音律を考えると、音階はさらに増えます。アラブ音楽のマカームの中立2度や、インドネシアのスレンドロ、ペロッグの歩幅のように、十二平均律にない音程を使う音階もあります。12の音では、そうした音階を近似することしかできません。</p>
+<h1 id="scales-from-c">Scales from C</h1>
+<h1 id="cから始まる音階">Cから始まる音階</h1>
+<p>Choose a <strong>Scale</strong> and press <strong>Play</strong> to hear it go up from C to the C an octave above and back down. The row of squares shows the thirteen notes from C to the C above, with the scale’s notes in yellow, and the staff writes the same notes going up. Click a square to play its note.</p>
+<p><strong>Scale</strong>を選んで<strong>Play</strong>を押すと、Cから1オクターブ上のCまで上がって戻る音階が聞こえます。四角の列はCから1オクターブ上のCまでの13音で、音階の音が黄色になります。五線譜は、同じ音を上行で書き表しています。四角をクリックすると、その音を鳴らせます。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/scales/index.html" title="Scales from C" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
+<ul>
+<li>
+<p><strong>Major and Minor:</strong> the basic scales of Western music. Minor here is the natural minor, which lowers the 3rd, 6th, and 7th notes of the major scale.</p>
+</li>
+<li>
+<p><strong>In:</strong> a Japanese pentatonic scale with half steps (C to D♭, G to A♭), heard in koto music and in songs such as “Sakura”.</p>
+</li>
+<li>
+<p><strong>Ryukyu:</strong> the scale of Okinawan folk music, a pentatonic scale without D and A.</p>
+</li>
+<li>
+<p><strong>Hijaz:</strong> an approximation of the Arabic maqam Hijaz, with its wide step from D♭ to E. In practice the maqam’s intervals differ slightly from these equal-tempered notes.</p>
+</li>
+<li>
+<p><strong>Hungarian minor:</strong> a minor scale with a raised 4th and 7th, giving two wide steps (E♭ to F♯, A♭ to B), associated with Hungarian and Romani music.</p>
+</li>
+<li>
+<p><strong>Major、Minor：</strong> 西洋音楽の基本の音階です。ここでのMinorは自然短音階で、長音階の3番目、6番目、7番目の音を半音下げたものです。</p>
+</li>
+<li>
+<p><strong>In：</strong> 半音の歩幅（CからD♭、GからA♭）を持つ日本の五音音階（都節音階）で、箏の音楽や「さくら」などの歌で聞かれます。</p>
+</li>
+<li>
+<p><strong>Ryukyu：</strong> 沖縄民謡の音階（琉球音階）で、DとAを持たない五音音階です。</p>
+</li>
+<li>
+<p><strong>Hijaz：</strong> アラブ音楽のマカーム・ヒジャーズの近似で、D♭からEへの広い歩幅が特徴です。実際のマカームの音程は、この平均律の音とはわずかに異なります。</p>
+</li>
+<li>
+<p><strong>Hungarian minor：</strong> 4番目と7番目の音を半音上げた短音階で、2つの広い歩幅（E♭からF♯、A♭からB）を持ち、ハンガリーやロマの音楽と結びつけられています。</p>
+</li>
+</ul>
+<p>The church modes have <a href="/writing/church-modes">a page of their own</a>, the harmonic and melodic minor scales are on <a href="/writing/minor-scales">Minor Scales</a>, and the pentatonic, blues, whole tone, diminished, and altered scales are on <a href="/writing/other-scales">Other Scales</a>.</p>
+<p>教会旋法は<a href="/writing/church-modes">別のページ</a>で、和声的短音階と旋律的短音階は<a href="/writing/minor-scales">短音階</a>で、ペンタトニック、ブルース、全音音階、ディミニッシュ、オルタードの各音階は<a href="/writing/other-scales">その他の音階</a>で扱います。</p>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

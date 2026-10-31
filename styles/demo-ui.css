@@ -1,0 +1,258 @@
+/*
+ * sound theory — shared demo UI components.
+ *
+ * Every demo page links this file and builds its controls from these classes. Anything
+ * that applies to more than one demo belongs here, not in a per-demo <style> block.
+ *
+ * Layout is always: stage on the left, a control panel on the right.
+ *
+ * Style rules (also in CLAUDE.md):
+ *   - One font (monospace), one size, one weight for all text. Text is black, except
+ *     on red, green, and other dark fills, where it is white.
+ *   - A 16px grid. Every height, gap, and padding is a multiple of `--grid`: single-line
+ *     items (rows, buttons, selects, section headers, stats lines) are `--row` tall, and
+ *     groups are separated by one `--grid`. Text lines fall on the grid and spread evenly.
+ *   - No titles or explanations that the page's body text already gives. The panel
+ *     holds controls and live values only.
+ *   - The panel and the stage share one background; nothing divides left from right.
+ *   - Green marks the main controls; red draws the main wave on a plot. White is for
+ *     wells on the paper (slider tracks, idle buttons, selects, white keys).
+ *   - Fill shapes rather than outlining them. Waveforms are the exception: a wave is
+ *     drawn as a line.
+ *   - No borders or rules. Separate areas with space and a change of fill.
+ *   - No nested boxes: nothing gets its own card or panel inside the panel or the stage.
+ *   - `--accent` can be set on any element (a row, a section) to recolor the controls
+ *     inside it.
+ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* The palette, sampled from a flower illustration. Mirrors public/lib/demo/colors.js;
+   change both together. */
+:root {
+  --demo-bg:        #fbf8f5;  /* paper */
+  --demo-white:     #ffffff;  /* wells: tracks, idle buttons, selects, white keys */
+  --demo-fg:        #111111;  /* ink: text on light fills */
+  --accent-red:        #f05829;  /* the main wave */
+  --accent-pink:       #e75c9f;
+  --accent-yellow:     #febf28;
+  --accent-butter:     #fdd77e;
+  --accent-green:      #3a9548;
+  --accent-dark-green: #17592d;
+  --accent:         var(--accent-green);  /* main controls */
+
+  --grid:         16px;       /* the base grid */
+  --row:          32px;       /* two grid units: one single-line item */
+  --font-size:    13px;       /* the only text size */
+  --font-weight:  400;        /* the only text weight */
+  --panel-width:  288px;
+  --radius:       6px;
+  --font:         'Google Sans Code', ui-monospace, monospace;  /* the only font */
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--demo-bg);
+  color: var(--demo-fg);
+  font-family: var(--font);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--grid);
+}
+/* Form controls do not inherit type by default. */
+button, select, input { font: inherit; color: inherit; }
+
+/* ── Layout ──────────────────────────────────────────────────────────────── */
+
+/*
+ * Full size the layout fills the window (or the iframe it is embedded in).
+ * `Viewport` adds `.embedded` when the URL has `?embedded`, pinning it to 960×620.
+ */
+.demo-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+  width: 100vw; height: 100vh;
+}
+.demo-layout.embedded { width: 960px; height: 620px; }
+
+.canvas-wrap {
+  flex: 1 1 auto;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+.canvas-wrap > canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+
+/* A stage split into a canvas above and a fixed strip (a keyboard) below. */
+.stage-col {
+  flex: 1 1 auto; min-width: 0;
+  display: flex; flex-direction: column;
+}
+.stage-col > .canvas-wrap { flex: 1 1 auto; min-height: 0; }
+
+/* A layout with the canvas and panel side by side on top and a full-width strip (a
+   keyboard) below, for demos whose panel is short. */
+.demo-layout.stacked { flex-direction: column; }
+/* A full-width canvas strip below (a step grid) that sets its own height. */
+.canvas-wrap.dp-strip {
+  flex: none;
+  margin: 0 calc(2 * var(--grid)) calc(2 * var(--grid));
+  touch-action: none;
+}
+.stage-row {
+  flex: 1 1 auto; min-height: 0;
+  display: flex; flex-direction: row;
+}
+
+/* ── Panel ───────────────────────────────────────────────────────────────── */
+
+/* The panel starts where the canvas's 32px inset ends, so plots and controls share
+   the same top line and are two grid units apart. */
+.dp-panel {
+  width: var(--panel-width);
+  flex: none;
+  padding: calc(2 * var(--grid)) calc(2 * var(--grid)) calc(2 * var(--grid)) 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* A status message (such as "Loading samples…"), shown only while it has text. */
+.dp-note { margin-bottom: var(--grid); }
+.dp-note:empty { display: none; }
+/* Separates groups with one grid unit of space. */
+.dp-divider { border: none; height: 0; margin-top: var(--grid); }
+
+.dp-row {
+  display: flex; align-items: center; gap: var(--grid);
+  height: var(--row);
+}
+.dp-label { width: calc(5 * var(--grid)); flex-shrink: 0; }
+
+/* Range slider: a filled track whose value portion takes the accent color.
+   `--fill` (0–100%) is set from script, see controls.js. */
+.dp-range {
+  --fill: 50%;
+  flex: 1; min-width: 0; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  height: 8px; border-radius: 4px; outline: none;
+  background: linear-gradient(to right, var(--accent) var(--fill), var(--demo-white) var(--fill));
+}
+.dp-range::-webkit-slider-runnable-track { height: 8px; border-radius: 4px; background: transparent; }
+.dp-range::-webkit-slider-thumb {
+  -webkit-appearance: none; margin-top: -4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--accent); cursor: pointer;
+}
+.dp-range::-moz-range-track { height: 8px; border-radius: 4px; background: transparent; }
+.dp-range::-moz-range-thumb {
+  width: 16px; height: 16px; border: none; border-radius: 50%;
+  background: var(--accent); cursor: pointer;
+}
+
+/* Read-only numeric value beside a slider */
+.dp-val {
+  width: calc(3 * var(--grid)); text-align: right; flex-shrink: 0;
+}
+
+/* Select: a white well, one row tall */
+.dp-select {
+  border: none; border-radius: var(--radius);
+  background: var(--demo-white);
+  height: var(--row); padding: 0 8px; width: 100%; cursor: pointer;
+}
+.dp-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Buttons: one row tall, filled, no borders. A lone button is full width; buttons
+   that sit side by side go in a .dp-btn-row. Each is followed by one grid unit. */
+.dp-btn, .dp-toggle {
+  display: block; width: 100%; height: var(--row);
+  border: none; border-radius: var(--radius);
+  padding: 0 var(--grid); cursor: pointer;
+}
+/* Main controls are green with white text; a toggle is a white well until it is on. */
+.dp-btn { background: var(--accent-green); color: var(--demo-white); }
+.dp-btn:hover { filter: brightness(1.06); }
+.dp-toggle { background: var(--demo-white); }
+.dp-toggle.active { background: var(--accent-green); color: var(--demo-white); }
+.dp-btn:disabled, .dp-toggle:disabled { opacity: 0.4; pointer-events: none; }
+.dp-btn:focus-visible, .dp-toggle:focus-visible { outline: 2px solid var(--demo-fg); outline-offset: 2px; }
+.dp-btn, .dp-toggle, .dp-btn-row { margin-bottom: var(--grid); }
+.dp-btn-row { display: flex; gap: 8px; }
+.dp-btn-row > * { flex: 1; margin-bottom: 0; }
+/* A button already ends with one grid unit, so a divider after it adds none. */
+.dp-btn + .dp-divider, .dp-toggle + .dp-divider, .dp-btn-row + .dp-divider { margin-top: 0; }
+
+/* Collapsible section: a header row and its rows, separated from the next by one
+   grid unit. */
+.dp-section + .dp-section { margin-top: var(--grid); }
+.dp-section-hd {
+  display: flex; align-items: center; gap: 8px;
+  height: var(--row);
+  cursor: pointer; user-select: none;
+}
+/* The section's accent as a triangle that turns to show open or closed. */
+.dp-chevron {
+  width: 0; height: 0;
+  border-left: 7px solid var(--accent);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  transform: rotate(90deg);
+  transition: transform 0.15s;
+}
+.dp-section.collapsed .dp-chevron { transform: rotate(0deg); }
+.dp-section-body {
+  overflow: hidden;
+  max-height: 1200px;
+  transition: max-height 0.2s ease;
+}
+.dp-section.collapsed .dp-section-body { max-height: 0; }
+
+/* ── Keyboard ────────────────────────────────────────────────────────────── */
+
+/* On-screen piano keyboard, built by Keyboard.js. Keys are separate filled shapes;
+   the gaps between them are the background showing through, not drawn lines. It sits
+   inside the same 32px inset as the plots. Only white keys carry text. For sounds
+   without pitch, Keyboard.js swaps the keys for pads (`.pads`). */
+.dp-keyboard {
+  position: relative; flex: none; height: calc(10 * var(--grid));
+  margin: 0 calc(2 * var(--grid)) calc(2 * var(--grid));
+  user-select: none; -webkit-user-select: none; touch-action: none;
+}
+.dp-key {
+  position: absolute; top: 0;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: var(--grid); cursor: pointer; overflow: hidden; white-space: nowrap;
+  background-clip: padding-box;
+  transition: background-color 0.06s;
+}
+.dp-key.white {
+  height: 100%; z-index: 0;
+  background-color: var(--demo-white);
+  border-left: 2px solid transparent; border-right: 2px solid transparent;
+  border-radius: 0 0 8px 8px;
+}
+.dp-key.black {
+  height: 60%; z-index: 1;
+  background-color: var(--demo-fg);
+  border-radius: 0 0 6px 6px;
+}
+/* Pads, for sounds without pitch: equal white shapes in a row, one grid unit apart,
+   labeled at the bottom like the keys. */
+.dp-keyboard.pads { display: flex; gap: var(--grid); }
+.dp-key.pad {
+  position: relative; flex: 1; height: 100%;
+  background-color: var(--demo-white);
+  border-radius: 8px;
+}
+/* The root of the current scale, marked so the home note stays visible. */
+.dp-key.white.root { background-color: var(--accent-butter); }
+/* Played keys and pads light up yellow. */
+.dp-key.active, .dp-key.white.root.active,
+.dp-key.lit, .dp-key.white.root.lit { background-color: var(--accent-yellow); }

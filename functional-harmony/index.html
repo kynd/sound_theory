@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Functional Harmony 機能和声</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si cur"><a href="/writing/functional-harmony" class="sl current" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Functional Harmony</span> <span class="title-ja">機能和声</span> </h1> <p>Functional harmony describes chords by what they do in relation to the tonic, the home chord, rather than by the notes they contain. Every chord in a key belongs to one of three functions (see <a href="/writing/diatonic-chords">Diatonic Chords</a>): tonic (T) is rest, subdominant (SD) moves away, and dominant (D) is tension that wants to return to the tonic. A progression is then a movement between these states, and the most basic one is a complete round trip: T, SD, D, T.</p>
+<p>機能和声は、和音を、含む音によってではなく、主和音（トニック、家となる和音）との関係で何をするかによって説明します。調の中のどの和音も、3つの機能のどれかに属します（<a href="/writing/diatonic-chords">ダイアトニック・コード</a>を参照）。トニック（T）は休息、サブドミナント（SD）は離れていく動き、ドミナント（D）はトニックへ戻りたがる緊張です。進行は、これらの状態のあいだの動きとして捉えられ、最も基本的なものは一巡りの往復、T、SD、D、Tです。</p>
+<p>The functions follow some tendencies. A tonic can go to anything. A subdominant usually goes on to a dominant, or back to the tonic. A dominant goes to the tonic. Going from a dominant back to a subdominant is possible but sounds like a step backward.</p>
+<p>機能にはいくつかの傾向があります。トニックはどこへでも進めます。サブドミナントはふつうドミナントへ進むか、トニックに戻ります。ドミナントはトニックへ進みます。ドミナントからサブドミナントへ戻ることもできますが、後戻りのように聞こえます。</p>
+<p>Chords that share notes share a function. Am shares two notes with C, so it can stand in for the tonic; Dm shares two with F, a subdominant; and Bdim shares the tritone B–F with G7, the core of the dominant. Roots that move down by a fifth (or up by a fourth), as in D to G to C, make the strongest progressions.</p>
+<p>音を共有する和音は、機能も共有します。AmはCと2音を共有するのでトニックの代わりになり、DmはFと2音を共有してサブドミナントに、BdimはG7とドミナントの核である三全音B–Fを共有します。DからG、Cのように、根音が5度下（または4度上）へ動く進行が最も強い進行になります。</p>
+<p>Functional harmony grew out of European classical music and was generalized by jazz theory. It is one way of hearing chords, not a law. Plenty of music works otherwise, as <a href="/writing/non-functional-harmony">Beyond Functional Harmony</a> shows.</p>
+<p>機能和声はヨーロッパのクラシック音楽から生まれ、ジャズ理論によって一般化されました。和音の聞き方のひとつであって、法則ではありません。<a href="/writing/non-functional-harmony">機能和声の外へ</a>で見るように、ほかの仕組みで成り立つ音楽もたくさんあります。</p>
+<h1 id="examples">Examples</h1>
+<h1 id="例">例</h1>
+<p>The demo works as on <a href="/writing/diatonic-chords">Diatonic Chords</a>: choose an <strong>Example</strong> and press <strong>Play</strong>, or click a chord to hold it. The line at the bottom shows each chord’s function.</p>
+<p>デモの使い方は<a href="/writing/diatonic-chords">ダイアトニック・コード</a>と同じです。<strong>Example</strong>を選んで<strong>Play</strong>を押すか、和音をクリックして鳴らしてください。いちばん下の行に、それぞれの和音の機能が表示されます。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=functional" title="Functional harmony" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<ul>
+<li>
+<p><strong>T–SD–D–T:</strong> Cmaj7, Fmaj7, G7, Cmaj7, the full cycle.</p>
+</li>
+<li>
+<p><strong>ii–V–I:</strong> Dm7, G7, Cmaj7, the most common cadence in jazz. ii replaces IV as the subdominant, and the roots fall by fifths.</p>
+</li>
+<li>
+<p><strong>I–vi–ii–V:</strong> a turnaround, which ends on the dominant so that it leads back to its own start. It loops until stopped.</p>
+</li>
+<li>
+<p><strong>iii–vi–ii–V–I:</strong> roots falling by fifths all the way home, each chord pulling to the next.</p>
+</li>
+<li>
+<p><strong>Substitutes:</strong> the same round trip with other chords of the same functions: Cmaj7, Em7 (T), Dm7 (SD), Bm7♭5 (D), and Am7. It ends on a tonic, but on vi rather than I, which sounds less final.</p>
+</li>
+<li>
+<p><strong>I–V–vi–IV:</strong> a pop loop that does not follow the classical order: the dominant goes to vi, a tonic, and then to the subdominant.</p>
+</li>
+<li>
+<p><strong>T–SD–D–T：</strong> Cmaj7、Fmaj7、G7、Cmaj7と、一巡りします。</p>
+</li>
+<li>
+<p><strong>ii–V–I：</strong> Dm7、G7、Cmaj7。ジャズで最もよく使われる終止形です。iiがIVの代わりにサブドミナントを担い、根音は5度ずつ下がります。</p>
+</li>
+<li>
+<p><strong>I–vi–ii–V：</strong> ターンアラウンド。ドミナントで終わるので、自分の始まりへと戻っていきます。止めるまで繰り返します。</p>
+</li>
+<li>
+<p><strong>iii–vi–ii–V–I：</strong> 根音が5度ずつ下がって家まで帰り、それぞれの和音が次の和音を引き寄せます。</p>
+</li>
+<li>
+<p><strong>Substitutes：</strong> 同じ往復を、同じ機能のほかの和音で。Cmaj7、Em7（T）、Dm7（SD）、Bm7♭5（D）、そしてAm7。トニックで終わりますが、IではなくviなのでIほどの終止感はありません。</p>
+</li>
+<li>
+<p><strong>I–V–vi–IV：</strong> クラシックの順序に従わないポップスの繰り返しです。ドミナントがトニックのviへ進み、それからサブドミナントへ進みます。</p>
+</li>
+</ul>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

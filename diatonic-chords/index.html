@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Diatonic Chords ダイアトニック・コード</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si cur"><a href="/writing/diatonic-chords" class="sl current" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Diatonic Chords</span> <span class="title-ja">ダイアトニック・コード</span> </h1> <p>A chord is three or more notes sounding together. The most common chords are built by stacking thirds: take a note, the root, then skip a note of the scale to add the third, and skip another to add the fifth. These three-note chords are triads. Built this way on each of the seven notes of the C major scale, using only the notes of the scale, they give the seven diatonic chords of C major.</p>
+<p>和音（コード）とは、3つ以上の音が同時に鳴るものです。最もよく使われる和音は、3度を積み重ねてつくります。ひとつの音（根音）を選び、音階の音をひとつ飛ばして3度の音を、さらにひとつ飛ばして5度の音を加えます。この3音の和音を三和音といいます。Cの長音階の7つの音それぞれの上に、音階の音だけを使ってこうして積むと、Cメジャーの7つのダイアトニック・コードができます。</p>
+<ul>
+<li>
+<p><strong>Major</strong> on the 1st, 4th, and 5th notes: C, F, and G.</p>
+</li>
+<li>
+<p><strong>Minor</strong> on the 2nd, 3rd, and 6th: Dm, Em, and Am.</p>
+</li>
+<li>
+<p><strong>Diminished</strong> on the 7th: Bdim, with a smaller fifth (B to F).</p>
+</li>
+<li>
+<p><strong>長三和音（メジャー）</strong> が1番目、4番目、5番目の音の上に：C、F、G。</p>
+</li>
+<li>
+<p><strong>短三和音（マイナー）</strong> が2番目、3番目、6番目の上に：Dm、Em、Am。</p>
+</li>
+<li>
+<p><strong>減三和音（ディミニッシュ）</strong> が7番目の上に：Bdim。5度が狭くなります（BからF）。</p>
+</li>
+</ul>
+<p>Chords are often named by Roman numerals for their place in the key: I, ii, iii, IV, V, vi, vii°, with upper case for major, lower case for minor, and ° for diminished. A numeral describes a chord’s role in any key: V is G in C major and D in G major.</p>
+<p>和音は、調の中での位置を表すローマ数字で呼ばれることがよくあります。I、ii、iii、IV、V、vi、vii°で、大文字が長三和音、小文字が短三和音、°が減三和音です。ローマ数字は、どの調でも和音の役割を表します。VはCメジャーではG、GメジャーではDです。</p>
+<h1 id="functions">Functions</h1>
+<h1 id="機能">機能</h1>
+<p>The diatonic chords fall into three roles, called functions, which <a href="/writing/functional-harmony">Functional Harmony</a> looks at more closely:</p>
+<ul>
+<li>
+<p><strong>Tonic (T):</strong> home, stable and at rest. I, and also vi and iii, which share two notes with it.</p>
+</li>
+<li>
+<p><strong>Subdominant (SD):</strong> a step away from home, moving on. IV and ii.</p>
+</li>
+<li>
+<p><strong>Dominant (D):</strong> tension that wants to return home. V and vii°.</p>
+</li>
+</ul>
+<p>ダイアトニック・コードは、機能と呼ばれる3つの役割に分かれます。詳しくは<a href="/writing/functional-harmony">機能和声</a>で見ていきます。</p>
+<ul>
+<li>
+<p><strong>トニック（T）：</strong> 帰る場所で、安定して落ち着いています。Iと、Iと2音を共有するvi、iii。</p>
+</li>
+<li>
+<p><strong>サブドミナント（SD）：</strong> 家から一歩離れ、先へ進もうとします。IVとii。</p>
+</li>
+<li>
+<p><strong>ドミナント（D）：</strong> 家に戻りたがる緊張です。Vとvii°。</p>
+</li>
+</ul>
+<h1 id="hearing-the-chords">Hearing the Chords</h1>
+<h1 id="和音を聞く">和音を聞く</h1>
+<p>Choose an <strong>Example</strong> and press <strong>Play</strong>. The plot is a piano roll: time runs to the right and pitch goes up, and each yellow bar is a note of a chord, the lowest being the bass. The chord’s name is above it, and its Roman numeral and function below. The notes that sound turn red. Click a chord to hear it alone, as long as you hold it. The keyboard below lights the notes that sound, and you can play it too, with the mouse or the keys from A to ; on your computer keyboard (Z and X shift the octave).</p>
+<p><strong>Example</strong>を選んで<strong>Play</strong>を押してください。図はピアノロールで、時間は右へ、音高は上へ進み、黄色い横棒のひとつひとつが和音の音です（いちばん低いものがベース）。和音の名前が上に、ローマ数字と機能が下に表示され、鳴っている音は赤くなります。和音をクリックすると、押しているあいだその和音だけが鳴ります。下の鍵盤は鳴っている音を示し、マウスやコンピューターのキーボードのAから;までのキーで弾くこともできます（ZとXでオクターブが変わります）。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=diatonic" title="Diatonic chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<ul>
+<li>
+<p><strong>Diatonic triads:</strong> the seven chords in order, from C back to C.</p>
+</li>
+<li>
+<p><strong>I–IV–V–I:</strong> the simplest complete progression: home, away, tension, home.</p>
+</li>
+<li>
+<p><strong>I–vi–IV–V:</strong> a loop heard in countless pop songs since the 1950s.</p>
+</li>
+<li>
+<p><strong>Diatonic triads：</strong> 7つの和音を順に、CからCまで。</p>
+</li>
+<li>
+<p><strong>I–IV–V–I：</strong> 最も簡単な完結した進行です。家、離れる、緊張、家。</p>
+</li>
+<li>
+<p><strong>I–vi–IV–V：</strong> 1950年代から数えきれないポップスで聞かれる繰り返しの進行です。</p>
+</li>
+</ul>
+<p>The demo voices the chords the way a pianist might: the root in the bass and the other notes close together above it, each chord in the position that moves least from the one before. A minor key has its own diatonic chords. From the natural minor of C they are Cm, Ddim, E♭, Fm, Gm, A♭, and B♭ (i, ii°, ♭III, iv, v, ♭VI, ♭VII), and the raised 7th of the <a href="/writing/minor-scales">harmonic minor</a> turns Gm into G, a major dominant.</p>
+<p>デモは、ピアニストが弾くように和音を配置しています。根音をベースに、ほかの音をその上に近づけて置き、それぞれの和音を前の和音からいちばん少なく動く形にしています。短調には短調のダイアトニック・コードがあります。Cの自然短音階からはCm、Ddim、E♭、Fm、Gm、A♭、B♭（i、ii°、♭III、iv、v、♭VI、♭VII）ができ、<a href="/writing/minor-scales">和声的短音階</a>の上げた7番目の音は、GmをGという長三和音のドミナントに変えます。</p>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

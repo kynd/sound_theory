@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Breaking Conventions 慣習を破る</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open"><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:50px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:50px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:50px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:50px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:50px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:50px">Other Scales その他の音階</a></li><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:50px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:50px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:50px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:50px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:50px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:50px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:50px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:50px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:50px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:50px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:50px">Reharmonization リハーモナイズ</a></li><li class="si cur"><a href="/writing/breaking-conventions" class="sl current" style="padding-left:50px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:50px">Sound as Material 素材としての音</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Breaking Conventions</span> <span class="title-ja">慣習を破る</span> </h1> <p>Almost every convention on the earlier pages has been questioned at some point: a tonal center, a regular meter, twelve equal notes, the idea that music is made of notes from instruments at all. Especially since the early twentieth century, composers and players have broken these on purpose, to find sounds and forms that the conventions left out. Breaking a convention is also a way to understand it, and many of these experiments became conventions in turn.</p>
+<p>これまでのページで見てきたほとんどすべての慣習は、どこかで問い直されてきました。中心となる調、規則的な拍子、12の等しい音、そもそも音楽は楽器が奏でる音符でできているという考え方さえも。特に20世紀初めから、作曲家や演奏家は、慣習からこぼれ落ちた音や形式を求めて、意図的にそれを破ってきました。慣習を破ることは、それを理解するひとつの方法でもあり、こうした実験の多くは、やがてそれ自体が慣習になりました。</p>
+<h1 id="pitch-and-harmony">Pitch and Harmony</h1>
+<h1 id="音高と和声">音高と和声</h1>
+<ul>
+<li>
+<p><strong>Atonality and twelve tones:</strong> music without a tonic, and Arnold Schoenberg’s method of building a piece from a row of all twelve notes (see <a href="/writing/non-functional-harmony">Beyond Functional Harmony</a>).</p>
+</li>
+<li>
+<p><strong>Microtonality:</strong> pitches between the twelve. Harry Partch built his own instruments for a scale of 43 notes to the octave, and many composers have used quarter tones and just intonation (see <a href="/writing/tuning-systems">Tuning Systems</a>).</p>
+</li>
+<li>
+<p><strong>Spectralism:</strong> in the 1970s, Gérard Grisey and Tristan Murail derived harmony from the spectrum of a sound, the frequency components that make up its timbre (see <a href="/writing/sound-waves">Sound Waves</a>). Grisey’s <em>Partiels</em> (1975) begins from the spectrum of a low trombone note, played out by an ensemble.</p>
+</li>
+<li>
+<p><strong>無調と十二音：</strong> トニックを持たない音楽と、12の音すべてを並べた音列から曲を組み立てる、アルノルト・シェーンベルクの方法です（<a href="/writing/non-functional-harmony">機能和声の外へ</a>を参照）。</p>
+</li>
+<li>
+<p><strong>微分音：</strong> 12の音のあいだにある音高です。ハリー・パーチは、1オクターブを43の音に分ける音階のために自分で楽器をつくり、多くの作曲家が4分音や純正律を使ってきました（<a href="/writing/tuning-systems">音律</a>を参照）。</p>
+</li>
+<li>
+<p><strong>スペクトル楽派：</strong> 1970年代、ジェラール・グリゼーとトリスタン・ミュライユは、音のスペクトル、つまり音色をつくる周波数成分から和声を導きました（<a href="/writing/sound-waves">音の波</a>を参照）。グリゼーの《パルシエル》（1975年）は、トロンボーンの低い音のスペクトルから始まり、それをアンサンブルが奏でます。</p>
+</li>
+</ul>
+<h1 id="noise-and-recorded-sound">Noise and Recorded Sound</h1>
+<h1 id="ノイズと録音された音">ノイズと録音された音</h1>
+<p>In 1913 the Futurist Luigi Russolo wrote <em>The Art of Noises</em>, arguing that the sounds of machines and cities belonged in music, and built noise-making instruments to play them. Edgard Varèse called music “organized sound”. In 1948 Pierre Schaeffer began composing with recordings of trains and everyday sounds, cut and looped on disc and later on tape: musique concrète. In Cologne, Karlheinz Stockhausen and others built music from electronic tones. Later, noise music, from Merzbow in Japan and elsewhere, made pure noise its whole material.</p>
+<p>1913年、未来派のルイージ・ルッソロは『騒音芸術』を書き、機械や都市の音は音楽に属すると主張して、それを奏でるための騒音楽器をつくりました。エドガー・ヴァレーズは音楽を「組織された音」と呼びました。1948年、ピエール・シェフェールは、列車や日常の音の録音をディスク、のちにはテープの上で切り、ループさせて作曲を始めました。ミュジーク・コンクレートです。ケルンでは、カールハインツ・シュトックハウゼンらが電子的な音から音楽をつくりました。のちに、日本のメルツバウなどのノイズ・ミュージックは、純粋なノイズをその素材のすべてにしました。</p>
+<h1 id="chance-and-silence">Chance and Silence</h1>
+<h1 id="偶然と沈黙">偶然と沈黙</h1>
+<p>John Cage put screws, bolts, and rubber between the strings of a piano (the prepared piano), turning it into a percussion orchestra. He composed with chance operations, tossing coins to consult the <em>I Ching</em>, to keep his own taste out of the choices. In <em>4′33″</em> (1952) the performer plays nothing for three movements; the music is whatever sounds the room and the audience make. The shift was from making sounds to listening to them.</p>
+<p>ジョン・ケージは、ピアノの弦のあいだにねじやボルト、ゴムを挟み（プリペアド・ピアノ）、ピアノを打楽器のオーケストラに変えました。自分の好みを選択から外すために、硬貨を投げて『易経』を引くという偶然性の手法で作曲しました。《4分33秒》（1952年）では、演奏者は3つの楽章のあいだ何も弾きません。音楽は、その場の部屋や聴衆が立てる音そのものです。音を出すことから、音を聞くことへの転換でした。</p>
+<h1 id="repetition-and-process">Repetition and Process</h1>
+<h1 id="反復とプロセス">反復とプロセス</h1>
+<p>Minimalism in the 1960s went the other way from complexity. La Monte Young held drones for hours. Terry Riley’s <em>In C</em> (1964) gives a group of players 53 short phrases, each repeated as many times as a player likes. Steve Reich discovered phasing with two tape loops of the same recording that drifted apart (<em>It’s Gonna Rain</em>, 1965), and then asked live players to do the same: two pianists play the same pattern, and one slowly speeds up until it is one note ahead, then the next. The music is a process that, once set going, unfolds by itself.</p>
+<p>1960年代のミニマリズムは、複雑さとは逆の方向へ進みました。ラ・モンテ・ヤングは、何時間もドローンを保ち続けました。テリー・ライリーの《In C》（1964年）は、奏者たちに53の短いフレーズを与え、各奏者が好きなだけ繰り返します。スティーヴ・ライヒは、同じ録音の2つのテープ・ループがずれていくことからフェイズ（位相のずれ）を発見し（《イッツ・ゴナ・レイン》、1965年）、それを生身の奏者にも求めました。2人のピアニストが同じパターンを弾き、一方がゆっくり速くなって1音先に進み、さらに次の音へと進みます。音楽は、いったん動き出せば自ら展開していくプロセスなのです。</p>
+<p>Press <strong>Play</strong> to hear phasing: two pianos, one on each side, play the same twelve-note loop. <strong>Drift</strong> sets how much faster the second piano is, in percent; at 0 they play in unison. As the second pulls ahead, the two lines interlock into new patterns, blur, and line up again one note apart. The rings show the loop for each piano, the first outside and the second inside, with the note each is playing in red.</p>
+<p><strong>Play</strong>を押して、フェイズを聞いてみてください。左右に1台ずつの2台のピアノが、同じ12音のループを弾きます。<strong>Drift</strong>は、2台目のピアノがどれだけ速いかをパーセントで決めます。0では2台はユニゾンで弾きます。2台目が先へ進むにつれて、2つの線は組み合わさって新しいパターンをつくり、ぼやけ、また1音ずれて揃います。リングはそれぞれのピアノのループを表し（外側が1台目、内側が2台目）、それぞれが弾いている音が赤くなります。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/phasing/index.html" title="Phasing" allow="autoplay" loading="lazy" style="height: 288px"></iframe></div>
+<h1 id="freedom-and-technology">Freedom and Technology</h1>
+<h1 id="自由とテクノロジー">自由とテクノロジー</h1>
+<ul>
+<li>
+<p><strong>Free jazz and free improvisation:</strong> Ornette Coleman’s <em>Free Jazz</em> (1960) dropped fixed chord changes; in Britain, Derek Bailey and the group AMM improvised without any shared idiom at all.</p>
+</li>
+<li>
+<p><strong>Sampling and turntables:</strong> hip hop turned records into instruments, looping breaks and scratching, and sampling made any recording a source.</p>
+</li>
+<li>
+<p><strong>Glitch:</strong> in the 1990s, Oval and others built music from the clicks and skips of damaged CDs and software errors, the sounds technology was supposed to hide.</p>
+</li>
+<li>
+<p><strong>フリー・ジャズと即興演奏：</strong> オーネット・コールマンの『フリー・ジャズ』（1960年）は、決まったコード進行を捨てました。イギリスでは、デレク・ベイリーやグループAMMが、共有するイディオムをまったく持たずに即興しました。</p>
+</li>
+<li>
+<p><strong>サンプリングとターンテーブル：</strong> ヒップホップはレコードを楽器に変え、ブレイクをループさせ、スクラッチしました。サンプリングは、どんな録音でも音源にしました。</p>
+</li>
+<li>
+<p><strong>グリッチ：</strong> 1990年代、オヴァルなどは、傷ついたCDのクリックや音飛び、ソフトウェアのエラーといった、テクノロジーが隠すはずの音から音楽をつくりました。</p>
+</li>
+</ul>
+<p>None of these replaced what came before. Tonal harmony, regular meters, and the twelve notes are as alive as ever, and the experiments added more tools and more ways to listen. The next page, <a href="/writing/sound-as-material">Sound as Material</a>, follows one of these threads: attention to sound itself.</p>
+<p>これらのどれも、それ以前のものに取って代わったわけではありません。調性和声も、規則的な拍子も、12の音も今まで通り生きていて、実験はさらに多くの道具と、聞き方を加えました。次のページ<a href="/writing/sound-as-material">素材としての音</a>では、その流れのひとつ、音そのものへの注意をたどります。</p>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>
