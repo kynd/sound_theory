@@ -2,9 +2,9 @@
 title: "Tuning Systems 音律"
 slug: tuning-systems
 ---
-Sound can have any frequency, but music uses only a small set of them: the notes. A tuning system is the rule that picks those frequencies. This page starts from the most basic rule, multiplying a starting frequency by simple ratios, follows how it leads to the twelve equal steps of the modern piano, and ends with other ways of dividing pitch.
+Music can draw on pitches from a continuous range, as well as on sounds without a clear pitch, such as many drum sounds. In much music, though, melodies and harmonies are organized around a set of distinct pitches, or notes. A tuning system defines the frequency relationships among those notes, while a reference pitch assigns them specific frequencies.
 
-音はどんな周波数も取りえますが、音楽が使うのはそのうちのごく一部、つまり音符の音だけです。どの周波数を使うかを決める規則が音律です。このページでは、最も基本的な規則である、基準の周波数に単純な比を掛ける方法から始め、それが現代のピアノの12の等しい段階にどうつながるかをたどり、最後に音高のほかの分け方に触れます。
+音楽では、連続した範囲の音高だけでなく、多くの太鼓の音のように明確な音高を持たない音も使えます。ただし、多くの音楽では、旋律や和声は、区別された音高、つまり音の集まりをもとに組み立てられています。音律はそれらの音の周波数比を定め、基準音は各音に具体的な周波数を与えます。
 
 # Simple Ratios
 # 単純な比
@@ -17,7 +17,7 @@ Two notes whose frequencies form a simple ratio share many harmonics. At 3:2, ev
 
 周波数が単純な比をなす2つの音は、多くの倍音を共有します。3:2では、低い音の3番目ごとの倍音が、高い音の2番目ごとの倍音にぴったり重なります。合わさった波は短い時間で繰り返し、2つの音はよく溶け合います。比が少しずれると、重なるはずの倍音が近いのに一致せず、うなり（2つの周波数の差の速さで音量が揺れる現象）が生じて、ざらついて聞こえます。
 
-The simplest ratios have names. An interval is measured in cents: an octave is 1200 cents, and a ratio $r$ spans $1200 \log_2 r$ cents.
+The simplest ratios have names.
 
 -   **2:1:** the octave. The upper note sounds so much like the lower one that both get the same note name.
 
@@ -29,7 +29,7 @@ The simplest ratios have names. An interval is measured in cents: an octave is 1
 
 -   **6:5:** the minor third.
 
-最も単純な比には名前があります。音程はセントで測ります。1オクターブは1200セントで、比$r$は$1200 \log_2 r$セントにあたります。
+最も単純な比には名前があります。
 
 -   **2:1：** オクターブ。上の音が下の音とよく似て聞こえるため、どちらにも同じ音名をつけます。
 
@@ -41,65 +41,59 @@ The simplest ratios have names. An interval is measured in cents: an octave is 1
 
 -   **6:5：** 短3度。
 
-Metal bars behave differently. A bar that is free at both ends (a xylophone or glockenspiel bar) does not vibrate in simple fractions of its length, so its overtones are not whole-number multiples: in a uniform bar they fall near 2.76, 5.40, and 8.93 times the fundamental. Bells and gongs are inharmonic in the same way. Makers carve away the underside of a marimba bar so that its first overtone lands at 4 times the fundamental (two octaves), and a xylophone bar at 3 times (an octave and a fifth), pulling the sound back toward the harmonic series. Which ratios sound smooth depends on the overtones of the instrument, which is one explanation offered for why music built on metallophones, such as Indonesian gamelan, uses different tunings.
+A bar free at both ends, like one on a xylophone or glockenspiel, does not vibrate in segments that are simple fractions of its length. Its overtones therefore are not whole-number multiples of the fundamental: in a uniform bar, they occur at about 2.76, 5.40, and 8.93 times the fundamental frequency. Bells and gongs are similarly inharmonic. Makers carve away material from the underside of a marimba bar to tune its first overtone to 4 times the fundamental (two octaves); for a xylophone bar, they tune it to 3 times the fundamental (an octave and a fifth). This brings the overtones closer to the harmonic series. Which ratios sound smooth depends on an instrument's overtones. This may help explain why music built around metallophones, such as Indonesian gamelan, uses different tunings.
 
-金属の棒は、ふるまいが異なります。両端が自由な棒（木琴や鉄琴の音板）は、長さの単純な分数では振動しないため、倍音が整数倍になりません。均一な棒では、基音の約2.76倍、5.40倍、8.93倍に現れます。鐘やゴングも同じように非整数倍の倍音を持ちます。マリンバの音板は裏側を削って最初の倍音を基音の4倍（2オクターブ）に、木琴の音板は3倍（1オクターブと5度）に合わせ、音を倍音列に近づけています。どの比がなめらかに聞こえるかは楽器の倍音によって変わります。これは、インドネシアのガムランのように金属打楽器を中心とする音楽が異なる音律を使う理由のひとつとして挙げられています。
+木琴や鉄琴の音板のように両端が自由な棒は、長さを単純な分数に分けた部分ごとには振動しません。そのため、倍音は基音の整数倍にならず、均一な棒では基音周波数の約2.76倍、5.40倍、8.93倍に現れます。鐘やゴングも同様に、倍音が基音の整数倍になりません。マリンバの音板は裏側を削って、最初の倍音が基音の4倍（2オクターブ）になるように調整します。木琴の音板では、最初の倍音が基音の3倍（1オクターブと5度）になるように調整します。こうして、倍音を倍音列に近づけます。どの比がなめらかに聞こえるかは、楽器の倍音によって異なります。これが、インドネシアのガムランのように金属製の旋律打楽器を中心とする音楽で、異なる音律が使われる理由のひとつかもしれません。
 
 # Pythagorean Tuning
 # ピタゴラス音律
 
-According to Greek tradition, Pythagoras (6th century BCE) studied these ratios on a monochord, a single string with a movable bridge. Pythagorean tuning builds every note from the two simplest ratios: go up a fifth (×3/2) again and again, and come down an octave (÷2) whenever a note goes past the octave. Starting from C, the fifths give G, D, A, E, B, F♯, and so on, and folded into one octave they fill in a scale.
+According to Greek tradition, Pythagoras (6th century BCE) studied these ratios using a monochord—a single string with a movable bridge. Pythagorean tuning derives every note from two simple ratios: repeatedly raise the pitch by a fifth (×3/2), then lower it by an octave (÷2) whenever it exceeds the octave. Starting from C, successive fifths produce G, D, A, E, B, F♯, and so on. Folded into a single octave, these notes fill out a scale.
 
-ギリシャの伝承によれば、ピタゴラス（紀元前6世紀）は、可動式の駒を持つ1本の弦、モノコードでこれらの比を調べました。ピタゴラス音律は、最も単純な2つの比からすべての音をつくります。5度上げる（×3/2）ことを繰り返し、音が1オクターブを超えたら1オクターブ下げます（÷2）。Cから始めると、5度ごとにG、D、A、E、B、F♯……が得られ、1オクターブの中に折りたたむと音階が埋まっていきます。
+ギリシャの伝承によれば、ピタゴラス（紀元前6世紀）は、可動式の駒を備えた1本の弦、モノコードを使ってこれらの比を調べました。ピタゴラス音律では、2つの単純な比を使ってすべての音を導きます。5度上げる（×3/2）操作を繰り返し、音が1オクターブを超えたら1オクターブ下げます（÷2）。Cから始めると、5度上げるたびにG、D、A、E、B、F♯……が得られます。これらを1オクターブ内に収めると、音階ができます。
 
-The method has a flaw. Twelve fifths should land back on C, seven octaves up, but they overshoot:
+Stacking pure fifths does not form an exactly closed circle: twelve pure fifths span slightly more than seven octaves. The gap, a ratio of about 1.0136 (about a quarter of a semitone), is called the Pythagorean comma.
+
+純正な5度を重ねても、環はぴったりとは閉じません。純正な5度を12回重ねた音程は、7オクターブよりわずかに広くなります。この差、約1.0136の比（半音の約4分の1）はピタゴラスコンマと呼ばれています。
 
 $$
 \left(\dfrac{3}{2}\right)^{12} \approx 129.75 \qquad 2^{7} = 128
 $$
 
-この方法には欠点があります。5度を12回重ねると、7オクターブ上のCに戻るはずですが、行き過ぎてしまいます。
+Raise **Fifths** one step at a time to stack fifths from C. Press **Play** to hear the starting C alongside the latest note. The ring represents one octave, starting at the top and moving clockwise; each note marks where its fifth falls when folded back into the octave. After twelve fifths, B♯ (red) lands just beyond C. That gap is the comma, and you can hear the two notes beat about three and a half times per second.
 
-The gap, a ratio of about 1.0136 (23.5 cents, about a quarter of a semitone), is the Pythagorean comma. A circle of pure fifths never closes, so one fifth in a Pythagorean scale is left noticeably out of tune (the wolf fifth). The thirds are also rough: four fifths make a major third of 81:64 instead of the simpler 5:4, about 22 cents wide.
-
-この差、約1.0136の比（23.5セント、半音の約4分の1）がピタゴラスコンマです。純正な5度の環は閉じないため、ピタゴラス音律の音階では、5度のひとつが目立って狂ったまま残ります（ウルフの5度）。3度もざらつきます。5度を4回重ねた長3度は、より単純な5:4ではなく81:64になり、約22セント広くなります。
-
-Raise **Fifths** one step at a time to stack fifths up from C, and press **Play** to hear the starting C together with the latest note. The ring is one octave, starting at the top and running clockwise, and each note sits where its fifth folds back into the octave. At twelve fifths, B♯ (red) lands just past C. That gap is the comma, and you can hear the two notes beat about three and a half times a second.
-
-**Fifths**を1段ずつ上げてCから5度を重ね、**Play**を押すと、最初のCと最新の音を同時に聞けます。リングは1オクターブで、上から時計回りに進み、各音は5度を1オクターブに折りたたんだ位置に置かれます。5度を12回重ねると、B♯（赤）はCのわずかに先に着地します。この隙間がコンマで、2つの音が1秒に約3.5回うなるのが聞こえます。
+**Fifths**を1段ずつ上げて、Cから5度を重ねていきます。**Play**を押すと、最初のCと最新の音を同時に聞けます。リングは1オクターブを表し、上から時計回りに進みます。各音は、5度を1オクターブ内に折り返した位置にあります。5度を12回重ねると、B♯（赤）はCをわずかに越えた位置に着地します。この差がコンマです。2つの音が1秒に約3.5回うなるのが聞こえます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/stacking-fifths/index.html" title="Stacking fifths" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 
-Tunings that use 5:4 for thirds, and other ratios of small numbers, directly are called just intonation. They sound pure in the key they are built on but go out of tune when the music moves to another key.
+Tunings that directly use simple ratios—such as 5:4 for thirds—are called just intonation. They sound pure in their home key, but go out of tune when the music moves to another key.
 
-3度に5:4を使うなど、小さな数の比を直接使う音律を純正律と呼びます。基準にした調では純粋に響きますが、音楽がほかの調に移ると音が狂います。
+3度に5:4などの単純な比を直接用いる音律を純正律と呼びます。基準となる調では純粋に響きますが、別の調に移ると音程が合わなくなります。
 
 # Twelve-Tone Equal Temperament
 # 十二平均律
 
-Instruments with fixed pitches, such as the piano and the fretted guitar, need one set of notes that works in every key. The solution used today divides the octave into 12 equal steps. Equal means equal ratios, not equal differences in frequency: each step multiplies the frequency by the same number,
+Instruments with fixed pitches, such as pianos and fretted guitars, need a single set of notes that works in every key. Today, this is achieved by dividing the octave into 12 equal steps. The steps have equal frequency ratios, not equal frequency differences: each step multiplies the frequency by the same factor, and twelve steps double it exactly.
+
+ピアノやフレットのあるギターのように音高が固定された楽器には、どの調でも使える一組の音が必要です。現在一般的な方法では、1オクターブを12の等しい段階に分けます。ここで等しいのは周波数の差ではなく比です。各段階で周波数に同じ倍率を掛けるため、12段階でちょうど2倍になります。
 
 $$
 2^{1/12} \approx 1.0595
 $$
 
-so that twelve steps multiply it by exactly 2.
+Intervals are often measured in cents, a unit built on this division: one equal-tempered semitone is 100 cents, so an octave is 1200 cents. Because cents measure ratios, any interval can be expressed in them, pure or tempered. A ratio $r$ spans $1200 \log_2 r$ cents, so a pure fifth (3:2) is about 701.96 cents and the Pythagorean comma about 23.5 cents. This makes it easy to compare pure intervals with equal-tempered ones.
 
-ピアノやフレットのあるギターのように音高が固定された楽器には、どの調でも使える1組の音が必要です。現在使われている解決法は、1オクターブを12の等しい段階に分けることです。等しいとは、周波数の差ではなく比が等しいという意味です。各段階で周波数に同じ数を掛け、12段階でちょうど2倍になるようにします。
+音程は、この分割をもとにした単位であるセントで測ることがよくあります。平均律の半音1つが100セントで、1オクターブは1200セントです。セントは比を測るので、純正な音程でも平均律の音程でも、どんな音程もセントで表せます。比$r$は$1200 \log_2 r$セントにあたり、純正な5度（3:2）は約701.96セント、ピタゴラスコンマは約23.5セントです。これで、純正な音程と平均律の音程を比べやすくなります。
 
-Stacking fifths now works out exactly. In equal temperament a fifth is seven steps (700 cents), 2 cents narrower than 3:2. Raise **Fifths** as before: the notes land on twelve evenly spaced positions, and after twelve fifths B♯ falls exactly on C, so the circle closes and the two notes sound as one. The Pythagorean comma has been spread evenly over all twelve fifths.
+In equal temperament, the circle of fifths closes exactly. After twelve fifths, B♯ lands on C, so the two sound as one. The Pythagorean comma is spread evenly across all twelve fifths.
 
-これで、5度を重ねるとぴったり閉じるようになります。平均律の5度は7段階（700セント）で、3:2より2セント狭くなります。先ほどと同じように**Fifths**を上げてみてください。音は等間隔の12の位置に並び、5度を12回重ねると、B♯はちょうどCに重なります。環が閉じ、2つの音はひとつに聞こえます。ピタゴラスコンマが、12の5度すべてに均等に分けられたのです。
+平均律では、5度を重ねた環がぴったり閉じます。5度を12回重ねると、B♯はCに重なり、2つの音はひとつに聞こえます。ピタゴラスコンマは、12の5度すべてに均等に分散されます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/stacking-fifths/index.html?tuning=equal" title="Stacking equal-tempered fifths" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 
-From A4 at 440 Hz, the next note, A♯4, is 466.16 Hz, 26.16 Hz higher. An octave up, A5 at 880 Hz is followed by A♯5 at 932.33 Hz, 52.33 Hz higher. The difference in hertz doubles every octave, while the ratio stays the same, and the ratio is what we hear: the same interval sounds the same anywhere on the keyboard.
+Dividing the octave into twelve steps is no arbitrary choice. It is the smallest equal division that comes close to a pure fifth: seven steps span 700 cents, just 2 cents less than the pure 3:2 ratio. The trade-off is that thirds and sixths fall 14 to 16 cents from their simple ratios, producing noticeable beats when sustained.
 
-440 HzのA4の次の音、A♯4は466.16 Hzで、26.16 Hz高くなります。1オクターブ上では、880 HzのA5の次のA♯5は932.33 Hzで、52.33 Hz高くなります。ヘルツでの差はオクターブごとに2倍になりますが、比は変わりません。そして耳が聞いているのは比です。同じ音程は、鍵盤のどこで弾いても同じに聞こえます。
-
-Twelve is not arbitrary. It is the smallest number of equal steps that comes very close to a pure fifth: seven steps make 700 cents, only 2 cents below 3:2. The cost is in the thirds and sixths, which land 14 to 16 cents away from their simple ratios and beat noticeably when held.
-
-12という数は恣意的ではありません。純正な5度にごく近づく、最も少ない等分の数です。7段階で700セントとなり、3:2よりわずか2セント低いだけです。その代わりに3度と6度は単純な比から14〜16セントずれ、伸ばすとはっきりうなります。
+1オクターブを12段階に分けるのは、恣意的な選択ではありません。12等分は、純正な5度に近い音程を得られる最小の等分法です。7段階で700セントとなり、純正な3:2の比よりわずか2セント狭くなります。その代わり、3度と6度は単純な比から14〜16セントずれ、音を伸ばすとうなりがはっきり聞こえます。
 
 | Interval 音程 | Ratio 比 | Pure (cents) 純正（セント） | Equal (cents) 平均律（セント） | Difference 差 |
 |---|---|---|---|---|
@@ -111,39 +105,35 @@ Twelve is not arbitrary. It is the smallest number of equal steps that comes ver
 | Major sixth 長6度 | 5:3 | 884.36 | 900 | +15.64 |
 | Minor sixth 短6度 | 8:5 | 813.69 | 800 | −13.69 |
 
-Choose an **Interval** and press **Play** to hear two tones, 220 Hz and the note above it, each with eight harmonics. Switch between **Pure** (the simple ratio) and **Equal** (the equal-tempered step). The plot shows half a second of the two harmonics that meet in the pure interval (for a major third, the 5th harmonic of the lower note and the 4th of the upper one, both near 1100 Hz) as yellow lines, and their sum as a red line. When the harmonics coincide, the sum keeps a steady size; when they don't, it swells and shrinks at the beat rate. The waves are drawn at a lower pitch than they sound, so each cycle is visible, but the swells keep their real rate: in equal temperament the major third beats almost nine times a second, while the fifth beats less than once.
+Choose an **Interval** and press **Play** to hear two tones, 220 Hz and the note above it, each with eight harmonics. Switch between **Pure** (the simple ratio) and **Equal** (the equal-tempered step). The plot shows half a second of the two harmonics that meet in the pure interval (for a major third, the 5th harmonic of the lower note and the 4th of the upper one, both near 1100 Hz) as yellow lines, and their sum as a red line. When the harmonics coincide, the sum keeps a steady size; when they don't, it swells and shrinks at the beat rate. The waves are drawn at a lower pitch than they sound, so each cycle is visible, but the swells keep their real rate: in equal temperament the major third beats almost nine times a second, while the fifth beats less than once. Equal temperament is a compromise: every key is equally usable, and every key is equally, slightly, out of tune.
 
-**Interval**を選んで**Play**を押すと、220 Hzとその上の音、それぞれ8つの倍音を持つ2つの音が聞こえます。**Pure**（単純な比）と**Equal**（平均律の段階）を切り替えてみてください。グラフは、純正な音程で重なる2つの倍音（長3度では、低い音の5番目と高い音の4番目の倍音で、どちらも約1100 Hz）を黄色の線で、その和を赤い線で、0.5秒分示しています。倍音が一致していれば和の大きさは一定で、一致しなければ、うなりの速さで膨らんだり縮んだりします。各周期が見えるよう、波は実際より低い音高で描いていますが、膨らみの速さは実際のままです。平均律では、長3度は1秒に約9回うなり、5度は1回未満しかうなりません。
+**Interval**を選んで**Play**を押すと、220 Hzとその上の音、それぞれ8つの倍音を持つ2つの音が聞こえます。**Pure**（単純な比）と**Equal**（平均律の段階）を切り替えてみてください。グラフは、純正な音程で重なる2つの倍音（長3度では、低い音の5番目と高い音の4番目の倍音で、どちらも約1100 Hz）を黄色の線で、その和を赤い線で、0.5秒分示しています。倍音が一致していれば和の大きさは一定で、一致しなければ、うなりの速さで膨らんだり縮んだりします。各周期が見えるよう、波は実際より低い音高で描いていますが、膨らみの速さは実際のままです。平均律では、長3度は1秒に約9回うなり、5度は1回未満しかうなりません。平均律は妥協の産物です。どの調も等しく使え、どの調もわずかに等しく狂っています。
 
 <div class="demo-wrap"><iframe src="/writing/demos/intervals/index.html" title="Intervals" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
-
-Equal temperament is a compromise: every key is equally usable, and every key is equally, slightly, out of tune. Before it became standard in the 19th century, European keyboards used meantone and well temperaments, which kept some keys purer than others.
-
-平均律は妥協の産物です。どの調も等しく使え、どの調もわずかに等しく狂っています。19世紀に平均律が標準になる前、ヨーロッパの鍵盤楽器は中全音律やウェル・テンペラメントを使い、一部の調をほかより純粋に保っていました。
 
 # Other Systems
 # ほかの音律
 
-Pitch is continuous, so nothing requires twelve notes, equal steps, or even the octave. Many musical cultures, and many composers, divide it in other ways.
+Pitch is continuous, so there is no requirement for twelve notes, equal steps, or even an octave. Many musical cultures and composers divide pitch in other ways. Here are a few examples to explore.
 
--   **Arabic maqam:** uses intervals between a semitone and a whole tone (such as the neutral second, about three quarters of a tone), whose exact size varies by maqam and by region.
+-   **Arabic maqam:** uses intervals between a semitone and a whole tone, such as the neutral second, which is about three-quarters of a tone. The exact size varies by maqam and region.
 
--   **Indian classical music:** theory names 22 śruti, small divisions of the octave from which each rāga draws its notes. Performers tune against a drone, which pulls the intervals toward pure ratios.
+-   **Indian classical music:** theory describes 22 śruti, small divisions of the octave from which each rāga draws its notes. Performers tune against a drone, which draws the intervals toward pure ratios.
 
--   **Indonesian gamelan:** slendro has five roughly equal steps per octave, and pelog seven unequal ones. Each gamelan set is tuned as a whole, so no two sound exactly alike.
+-   **Indonesian gamelan:** slendro has five roughly equal steps per octave, while pelog has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.
 
--   **Other equal divisions:** 19 or 31 equal steps per octave give purer thirds than 12. The major third of 31 steps is within 1 cent of 5:4.
+-   **Other equal divisions:** dividing the octave into 19 or 31 equal steps gives purer thirds than dividing it into 12. The major third in 31-tone equal temperament is within 1 cent of 5:4.
 
--   **Bohlen–Pierce scale:** divides the ratio 3:1, instead of the octave, into 13 steps, and has no octave at all.
+-   **Bohlen–Pierce scale:** divides the ratio 3:1, rather than the octave, into 13 steps; it has no octave.
 
-音高は連続しているため、12の音も、等しい段階も、オクターブさえも必須ではありません。多くの音楽文化や作曲家が、ほかの方法で音高を分けています。
+音高は連続しているため、12音に分けることも、等間隔にすることも、オクターブを基準にすることも必須ではありません。多くの音楽文化や作曲家が、異なる方法で音高を分けています。たとえば、次のような例があります。
 
--   **アラブ音楽のマカーム：** 半音と全音のあいだの音程（約4分の3音の中立2度など）を使い、その正確な大きさはマカームや地域によって異なります。
+-   **アラブ音楽のマカーム：** 半音と全音のあいだの音程を使います。約4分の3音にあたる中立2度などがその例です。音程の正確な大きさは、マカームや地域によって異なります。
 
--   **インド古典音楽：** 理論では1オクターブを22のシュルティに細かく分け、各ラーガはそこから音を選びます。演奏者はドローンに合わせて調律するため、音程は純正な比に引き寄せられます。
+-   **インド古典音楽：** 理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、各ラーガはそこから音を選びます。演奏者はドローンを基準に音を合わせるため、音程は純正な比に近づきます。
 
--   **インドネシアのガムラン：** スレンドロは1オクターブをほぼ等しい5段階に、ペロッグは不均等な7段階に分けます。ガムランは1組ごとにまとめて調律されるため、まったく同じ響きの組はありません。
+-   **インドネシアのガムラン：** スレンドロは1オクターブをほぼ等しい5段階に、ペロッグは不均等な7段階に分けます。ガムランは1組ごとに調律されるため、どの2組もまったく同じ響きにはなりません。
 
--   **ほかの等分：** 1オクターブを19や31に等分すると、12等分より純粋な3度が得られます。31等分の長3度は、5:4との差が1セント以内です。
+-   **ほかの等分：** 1オクターブを19または31段階に等分すると、12等分より純正な3度が得られます。31等分の平均律における長3度は、5:4との差が1セント以内です。
 
--   **ボーレン＝ピアス音階：** オクターブではなく3:1の比を13段階に分け、オクターブをまったく持ちません。
+-   **ボーレン＝ピアス音階：** オクターブではなく3:1の比を13段階に分け、オクターブを持ちません。
