@@ -9,10 +9,19 @@
 
 const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 const LETTER_SEMITONES = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const ACCIDENTALS = { '': 0, '♯': 1, '♭': -1 };
+const ACCIDENTALS = { '': 0, '♯': 1, '♭': -1, '𝄪': 2, '𝄫': -2 };
+const ACCIDENTAL_NAMES = { 0: '', 1: '♯', [-1]: '♭', 2: '𝄪', [-2]: '𝄫' };
 
 /** The default name of each of the 12 pitch classes, used for notes outside a scale. */
 export const PITCH_CLASS_NAMES = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
+
+/** The same with flats, for notes outside a scale in a flat key (F, B♭, E♭ …). */
+export const FLAT_PITCH_CLASS_NAMES = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G', 'A♭', 'A', 'B♭', 'B'];
+
+/** Names for the 12 pitch classes that suit a root: flats for F and the flat roots, sharps otherwise. */
+export function pitchClassNames(root = 'C') {
+    return root === 'F' || root.includes('♭') ? FLAT_PITCH_CLASS_NAMES : PITCH_CLASS_NAMES;
+}
 
 /** Splits a note name into its letter, its accidental, and its semitones above C. */
 export function parseNote(name) {
@@ -105,6 +114,32 @@ export function findScale(id) {
         const scale = set.find(s => s.id === id);
         if (scale) return scale;
     }
+}
+
+/** Roots a scale can be moved to, in the spellings of the usual keys. */
+export const ROOTS = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'A♭', 'A', 'B♭', 'B'];
+
+/**
+ * The same scale on another root: every note moved by the same interval and spelled
+ * by letter, so the pattern of steps is kept and each letter still appears in order
+ * (In on E is E, F, A, B, C; on A♭ it is A♭, B𝄫, D♭, E♭, F♭).
+ */
+export function transposeScale(scale, root) {
+    const from = parseNote(scale.root ?? 'C'), to = parseNote(root);
+    const steps = to.step - from.step;
+    const semitones = to.semitones - from.semitones;
+    const move = name => {
+        const note = parseNote(name);
+        const letter = LETTERS[((note.step + steps) % 7 + 7) % 7];
+        const target = note.semitones + semitones;
+        const offset = (((target - LETTER_SEMITONES[letter]) % 12) + 18) % 12 - 6;
+        return letter + ACCIDENTAL_NAMES[offset];
+    };
+    return {
+        ...scale, root,
+        notes: scale.notes.map(move),
+        ...(scale.descending ? { descending: scale.descending.map(move) } : {}),
+    };
 }
 
 /** MIDI number of a scale's root in a given octave (C4 = 60). */

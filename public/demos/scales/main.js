@@ -1,14 +1,16 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
-import { SCALE_SETS, findScale, scaleRun } from '../../lib/audio/scales.js';
+import { SCALE_SETS, ROOTS, findScale, scaleRun, transposeScale } from '../../lib/audio/scales.js';
 import { Sequence } from '../../lib/audio/sequence.js';
 import { ScaleView } from '../../lib/demo/ScaleView.js';
 import { addSelect, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
 
 // Which scales to offer: ?set= names a set in SCALE_SETS (default `scales`), offered in
-// a select; ?scale= names one scale, shown with no select.
+// a select; ?scale= names one scale, shown with no select. ?roots adds a Root select
+// that moves the scale to another starting note.
 const params = new URLSearchParams(location.search);
+const movable = params.has('roots');
 const single = findScale(params.get('scale'));
 const SCALES = single ? [single] : SCALE_SETS[params.get('set')] ?? SCALE_SETS.scales;
 
@@ -33,9 +35,13 @@ const sequence = new Sequence(instrument, {
     onEnd: () => syncPlay?.(),
 });
 
-function useScale(id) {
+let scaleId = SCALES[0].id, root = 'C';
+
+function useScale() {
     sequence.stop();
-    const scale = SCALES.find(s => s.id === id);
+    const base = SCALES.find(s => s.id === scaleId);
+    // Scales keep their own root unless the Root select moves them.
+    const scale = movable && root !== (base.root ?? 'C') ? transposeScale(base, root) : base;
     sequence.notes = scaleRun(scale).map(n => n.midi);
     view.update(scale);
 }
@@ -45,11 +51,19 @@ if (SCALES.length > 1) {
     addSelect(scaleControls, {
         label: 'Scale',
         options: SCALES.map(({ id, label }) => ({ value: id, label })),
-        value: SCALES[0].id,
-        onChange: useScale,
+        value: scaleId,
+        onChange: id => { scaleId = id; useScale(); },
+    });
+}
+if (movable) {
+    addSelect(scaleControls, {
+        label: 'Root',
+        options: ROOTS.map(name => ({ value: name, label: name })),
+        value: root,
+        onChange: name => { root = name; useScale(); },
     });
 }
 unwrap(scaleControls);
 
-useScale(SCALES[0].id);
+useScale();
 const syncPlay = wirePlayButton(document.getElementById('play'), sequence, startAudio);

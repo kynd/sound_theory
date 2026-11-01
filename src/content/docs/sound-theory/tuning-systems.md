@@ -17,29 +17,9 @@ Two notes whose frequencies form a simple ratio share many harmonics. At 3:2, ev
 
 周波数が単純な比をなす2つの音は、多くの倍音を共有します。3:2では、低い音の3番目ごとの倍音が、高い音の2番目ごとの倍音にぴったり重なります。合わさった波は短い時間で繰り返し、2つの音はよく溶け合います。比が少しずれると、重なるはずの倍音が近いのに一致せず、うなり（2つの周波数の差の速さで音量が揺れる現象）が生じて、ざらついて聞こえます。
 
-The simplest ratios have names.
+The simplest ratios have names: 2:1 is the octave, 3:2 the perfect fifth, 4:3 the perfect fourth, 5:4 the major third, and 6:5 the minor third. In an octave, the upper note sounds so much like the lower one that both get the same note name.
 
--   **2:1:** the octave. The upper note sounds so much like the lower one that both get the same note name.
-
--   **3:2:** the perfect fifth.
-
--   **4:3:** the perfect fourth.
-
--   **5:4:** the major third.
-
--   **6:5:** the minor third.
-
-最も単純な比には名前があります。
-
--   **2:1：** オクターブ。上の音が下の音とよく似て聞こえるため、どちらにも同じ音名をつけます。
-
--   **3:2：** 完全5度。
-
--   **4:3：** 完全4度。
-
--   **5:4：** 長3度。
-
--   **6:5：** 短3度。
+最も単純な比には名前があります。2:1はオクターブ、3:2は完全5度、4:3は完全4度、5:4は長3度、6:5は短3度です。オクターブでは、上の音が下の音とよく似て聞こえるため、どちらにも同じ音名をつけます。
 
 A bar free at both ends, like one on a xylophone or glockenspiel, does not vibrate in segments that are simple fractions of its length. Its overtones therefore are not whole-number multiples of the fundamental: in a uniform bar, they occur at about 2.76, 5.40, and 8.93 times the fundamental frequency. Bells and gongs are similarly inharmonic. Makers carve away material from the underside of a marimba bar to tune its first overtone to 4 times the fundamental (two octaves); for a xylophone bar, they tune it to 3 times the fundamental (an octave and a fifth). This brings the overtones closer to the harmonic series. Which ratios sound smooth depends on an instrument's overtones. This may help explain why music built around metallophones, such as Indonesian gamelan, uses different tunings.
 
@@ -114,26 +94,18 @@ Choose an **Interval** and press **Play** to hear two tones, 220 Hz and the note
 # Other Systems
 # ほかの音律
 
-Pitch is continuous, so there is no requirement for twelve notes, equal steps, or even an octave. Many musical cultures and composers divide pitch in other ways. Here are a few examples to explore.
+Pitch is continuous, so there is no requirement for twelve notes, equal steps, or even an octave. Many musical cultures and composers divide pitch in other ways. The few below are only starting points, each touched on briefly. Every one of them is a world of its own, so look them up, find recordings, and listen for yourself.
 
--   **Arabic maqam:** uses intervals between a semitone and a whole tone, such as the neutral second, which is about three-quarters of a tone. The exact size varies by maqam and region.
+音高は連続しているため、12音に分けることも、等間隔にすることも、オクターブを基準にすることも必須ではありません。多くの音楽文化や作曲家が、異なる方法で音高を分けています。以下はほんの入り口として、それぞれを簡単に紹介したものにすぎません。どれもそれだけでひとつの世界なので、ぜひ自分で調べ、録音を探して、耳で確かめてみてください。
 
--   **Indian classical music:** theory describes 22 śruti, small divisions of the octave from which each rāga draws its notes. Performers tune against a drone, which draws the intervals toward pure ratios.
+Arabic maqam uses intervals between a semitone and a whole tone, such as the neutral second, about three-quarters of a tone, whose exact size varies by maqam and region. In Indian classical music, theory describes 22 śruti, small divisions of the octave from which each rāga draws its notes, and performers tune against a drone, which draws the intervals toward pure ratios.
 
--   **Indonesian gamelan:** slendro has five roughly equal steps per octave, while pelog has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.
+アラブ音楽のマカームは、約4分の3音にあたる中立2度など、半音と全音のあいだの音程を使い、その正確な大きさはマカームや地域によって異なります。インド古典音楽の理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、各ラーガはそこから音を選びます。演奏者はドローンを基準に音を合わせるため、音程は純正な比に近づきます。
 
--   **Other equal divisions:** dividing the octave into 19 or 31 equal steps gives purer thirds than dividing it into 12. The major third in 31-tone equal temperament is within 1 cent of 5:4.
+In Indonesian gamelan, slendro has five roughly equal steps per octave, while pelog has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.
 
--   **Bohlen–Pierce scale:** divides the ratio 3:1, rather than the octave, into 13 steps; it has no octave.
+インドネシアのガムランでは、スレンドロが1オクターブをほぼ等しい5段階に、ペロッグが不均等な7段階に分けます。ガムランは1組ごとに調律されるため、どの2組もまったく同じ響きにはなりません。
 
-音高は連続しているため、12音に分けることも、等間隔にすることも、オクターブを基準にすることも必須ではありません。多くの音楽文化や作曲家が、異なる方法で音高を分けています。たとえば、次のような例があります。
+Equal divisions other than twelve are possible too. Dividing the octave into 19 or 31 equal steps gives purer thirds than dividing it into 12; the major third in 31-tone equal temperament is within 1 cent of 5:4. The Bohlen–Pierce scale goes further: it divides the ratio 3:1, rather than the octave, into 13 steps, and has no octave at all.
 
--   **アラブ音楽のマカーム：** 半音と全音のあいだの音程を使います。約4分の3音にあたる中立2度などがその例です。音程の正確な大きさは、マカームや地域によって異なります。
-
--   **インド古典音楽：** 理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、各ラーガはそこから音を選びます。演奏者はドローンを基準に音を合わせるため、音程は純正な比に近づきます。
-
--   **インドネシアのガムラン：** スレンドロは1オクターブをほぼ等しい5段階に、ペロッグは不均等な7段階に分けます。ガムランは1組ごとに調律されるため、どの2組もまったく同じ響きにはなりません。
-
--   **ほかの等分：** 1オクターブを19または31段階に等分すると、12等分より純正な3度が得られます。31等分の平均律における長3度は、5:4との差が1セント以内です。
-
--   **ボーレン＝ピアス音階：** オクターブではなく3:1の比を13段階に分け、オクターブを持ちません。
+12以外の等分も可能です。1オクターブを19または31段階に等分すると、12等分より純正な3度が得られ、31等分の平均律における長3度は、5:4との差が1セント以内です。ボーレン＝ピアス音階はさらに進んで、オクターブではなく3:1の比を13段階に分け、オクターブをまったく持ちません。

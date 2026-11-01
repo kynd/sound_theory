@@ -1,6 +1,6 @@
 import { Viewport } from './viewport.js';
 import { COLORS } from './colors.js';
-import { PITCH_CLASS_NAMES, scaleNotes, scaleRun, rootMidi } from '../audio/scales.js';
+import { pitchClassNames, scaleNotes, scaleRun, rootMidi } from '../audio/scales.js';
 
 const GRID = 16;           // the demos' base grid
 const INSET = 2 * GRID;    // space around the drawing
@@ -44,7 +44,7 @@ export class ScaleView {
         this._wirePointer();
         this._resize();
         // The clef and accidentals come from a web font; draw again once it is ready.
-        document.fonts?.load(`48px ${MUSIC_FONT}`, '𝄞♯♭').then(() => this.draw());
+        document.fonts?.load(`48px ${MUSIC_FONT}`, '𝄞♯♭𝄪𝄫').then(() => this.draw());
     }
 
     /** Shows a scale from `scales.js` (any root). */
@@ -142,7 +142,7 @@ export class ScaleView {
             ctx.roundRect(x, y, size, size, 6);
             ctx.fill();
             ctx.fillStyle = sounding ? COLORS.white : COLORS.ink;
-            ctx.fillText(inScale.get(i) ?? PITCH_CLASS_NAMES[(this.root + i) % 12], x + size / 2, y + size / 2);
+            ctx.fillText(inScale.get(i) ?? pitchClassNames(this.scale.root)[(this.root + i) % 12], x + size / 2, y + size / 2);
             this._squares.push({ x, y, size, midi: this.root + i });
         }
     }

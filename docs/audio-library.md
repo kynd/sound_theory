@@ -161,6 +161,8 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 
 - **`SCALES`, `MODES`, `WHITE_KEY_MODES`, `MINOR_SCALES`, `OTHER_SCALES`, `SCALE_SETS`:** scales from C; the seven church modes on C; the same modes on the white keys (C major from each of its notes, with `root`); the three minor scales; other scales common in jazz and pop music; and named sets of these (`scales`, `modes`, `white-key-modes`, `minor`, `other`, `pentatonic`, `diminished`), for a demo that takes the set as a URL parameter. Each scale is `{ id, label, notes, root?, descending? }`; `descending` lists the notes for the way down where they differ (the melodic minor). Scale ids are unique across sets. Add new scales here, never in a demo.
 - **`findScale(id)`:** the scale with that id in any set.
+- **`pitchClassNames(root)`:** names for the twelve pitch classes, with flats for F and the flat roots and sharps otherwise, for notes outside a scale.
+- **`ROOTS`, `transposeScale(scale, root)`:** the roots a scale can move to (C, D♭, D, E♭ …), and the scale moved there with its notes respelled by letter, so the pattern of steps is kept (double sharps and flats, 𝄪 and 𝄫, where needed).
 - **`scaleNotes(scale, octave, { descending })`:** the scale from its root in `octave` (default 4) up to the root above, as `{ name, letter, accidental, midi, position }`, from the `descending` notes when asked and the scale has them. `position` counts staff steps from C4 (C4 = 0, E4 = 2, C5 = 7).
 - **`scaleRun(scale, octave)`:** the scale up to the octave and back down, as `scaleNotes` entries; the way down uses `descending`.
 - **`rootMidi(scale, octave)`:** the MIDI number of the scale's root in that octave.
@@ -169,6 +171,8 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 
 - **`SCALES`、`MODES`、`WHITE_KEY_MODES`、`MINOR_SCALES`、`OTHER_SCALES`、`SCALE_SETS`：**Cから始まる音階、Cを主音とする7つの教会旋法、白鍵上の同じ旋法（Cの長音階を各音から始めたもので、`root`を持つ）、3つの短音階、ジャズやポップ音楽でよく使うその他の音階、そしてそれらを名前で引けるようにしたセット（`scales`、`modes`、`white-key-modes`、`minor`、`other`、`pentatonic`、`diminished`）です。セットは、URLのパラメータで受け取るデモに使います。各音階は`{ id, label, notes, root?, descending? }`の形で、`descending`は下行で音が異なる場合（旋律的短音階）の下行の音です。音階のidはセットをまたいで一意です。新しい音階はデモではなく、ここに追加します。
 - **`findScale(id)`：**どのセットからでも、そのidの音階を返します。
+- **`pitchClassNames(root)`：**音階外の音に使う12のピッチクラスの名前です。Fとフラットの主音ではフラット、それ以外ではシャープを使います。
+- **`ROOTS`、`transposeScale(scale, root)`：**音階を移せる主音（C、D♭、D、E♭…）と、そこへ移した音階です。音名は文字ごとに綴り直すので、歩幅の並びが保たれます（必要ならダブルシャープ𝄪とダブルフラット𝄫を使います）。
 - **`scaleNotes(scale, octave, { descending })`：**`octave`（省略時は4）の主音から1オクターブ上の主音までの音階を、`{ name, letter, accidental, midi, position }`で返します。指定され、音階が持っていれば`descending`の音を使います。`position`はC4からの五線上の段数です（C4 = 0、E4 = 2、C5 = 7）。
 - **`scaleRun(scale, octave)`：**オクターブまで上がって戻る音階を、`scaleNotes`の要素で返します。下行には`descending`を使います。
 - **`rootMidi(scale, octave)`：**その音域での主音のMIDI番号です。
