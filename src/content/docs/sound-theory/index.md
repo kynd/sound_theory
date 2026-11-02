@@ -37,9 +37,9 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 8.  [Pulse and Cycles](/pulse-and-cycles): repetition, an even pulse, and accents that group it into cycles.
 
-9.  [Time Signatures](/time-signatures): bars and beats, simple, compound, and odd meters, with editable drum patterns.
+9.  [Time Signatures](/time-signatures): bars and beats, how a beat is divided, and odd meters, with editable drum patterns.
 
-10. [Rhythm and Feel](/rhythm-and-feel): subdivisions and styles (funk, shuffle, swing, bossa nova), and how timing and loudness change the feel.
+10. [Rhythm and Feel](/rhythm-and-feel): subdivisions and styles (funk, shuffle, bossa nova), implied subdivisions, how timing and loudness change the feel, and tempo that is free to move.
 
 11. [Diatonic Chords](/diatonic-chords): the seven chords of a major key, Roman numerals, and their functions.
 
@@ -81,9 +81,9 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 8.  [拍と周期](/pulse-and-cycles)：繰り返し、等しい拍、そして拍を周期にまとめるアクセント。
 
-9.  [拍子記号](/time-signatures)：小節と拍、単純拍子、複合拍子、変拍子を、編集できるドラムのパターンで。
+9.  [拍子記号](/time-signatures)：小節と拍、拍の分け方、変拍子を、編集できるドラムのパターンで。
 
-10. [リズムとフィール](/rhythm-and-feel)：細分とスタイル（ファンク、シャッフル、スウィング、ボサノヴァ）、そしてタイミングと音量によるフィールの変化。
+10. [リズムとフィール](/rhythm-and-feel)：細分とスタイル（ファンク、シャッフル、ボサノヴァ）、演奏しなくても感じられる細分、タイミングと音量によるフィールの変化、そして揺れるテンポ。
 
 11. [ダイアトニック・コード](/diatonic-chords)：長調の7つの和音、ローマ数字、そしてその機能。
 

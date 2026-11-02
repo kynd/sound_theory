@@ -1,7 +1,6 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
 import { StepSequencer, BACKBEAT, clonePattern } from '../../lib/audio/rhythm.js';
-import { CycleView } from '../../lib/demo/CycleView.js';
 import { StepGrid } from '../../lib/demo/StepGrid.js';
 import { addRange, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
@@ -11,16 +10,13 @@ const drums = createInstrument('drums').connect(master.input);
 const pattern = clonePattern(BACKBEAT);
 const snare = pattern.tracks.find(t => t.id === 'snare');
 
-const ring = new CycleView(document.getElementById('canvas'));
-const grid = new StepGrid(document.getElementById('grid'), { onEdit: () => ring.draw() });
+// The grid, with the beats counted above it.
+const grid = new StepGrid(document.getElementById('grid'), { count: true });
 const sequencer = new StepSequencer(drums, {
     pattern, tempo: pattern.tempo,
-    onStep: i => { ring.setStep(i); grid.setStep(i); },
+    onStep: i => grid.setStep(i),
 });
-const redraw = () => {
-    ring.update(pattern, sequencer.stepDuration);
-    grid.update(pattern, sequencer.stepDuration);
-};
+const redraw = () => grid.update(pattern, sequencer.stepDuration);
 
 // The snare on beats 2 and 4: earlier or later than the grid, and louder or softer.
 const controls = document.getElementById('controls');

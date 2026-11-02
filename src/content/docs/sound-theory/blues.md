@@ -67,8 +67,8 @@ Charlie Parker ("Bird") went further in "Blues for Alice" (1951), whose changes 
 
 チャーリー・パーカー（「バード」）は「ブルース・フォー・アリス」（1951年）でさらに先へ進み、そのコード進行はバード・ブルースとして知られています。メジャー・セブンスの和音で始まり、ii–Vの連鎖で下っていきます。Bm7♭5–E7からAm7、D7へ、そしてGm7–C7から5小節目のF7へ。6小節目からは別の連鎖がFm7–B♭7、Em7–A7、E♭m7–A♭7と半音ずつ下り、9〜10小節目のii–Vにたどり着きます。ただのI、IV、Vの小節はほとんど残っていませんが、それでもブルースです。目印は時間どおりに現れ、その上の旋律は今もブルー・ノートへと揺れます。
 
-Choose an **Example** and press **Play**: the basic twelve-bar blues, the jazz blues, and the Bird blues, all in C at 132 BPM over a swing beat. The Roman numerals follow [Tension and Resolution](/tension-and-resolution): V7/ii is the dominant of ii, and ii7/IV the ii of a ii–V that leads to IV. As above, press a chord in the chart to hear it.
+Choose an **Example** and press **Play**: the basic twelve-bar blues, the jazz blues, and the Bird blues, all in C at 132 BPM. The Roman numerals follow [Tension and Resolution](/tension-and-resolution): V7/ii is the dominant of ii, and ii7/IV the ii of a ii–V that leads to IV. As above, press a chord in the chart to hear it.
 
-**Example**を選んで**Play**を押すと、基本の12小節のブルース、ジャズ・ブルース、バード・ブルースが、どれもC、132 BPMで、スウィングのビートに乗って鳴ります。ローマ数字は[緊張と解決](/tension-and-resolution)の書き方にならっています。V7/iiはiiのドミナント、ii7/IVはIVへ向かうii–Vのiiです。上と同じように、表の和音を押すと、その和音を鳴らせます。
+**Example**を選んで**Play**を押すと、基本の12小節のブルース、ジャズ・ブルース、バード・ブルースが、どれもC、132 BPMで鳴ります。ローマ数字は[緊張と解決](/tension-and-resolution)の書き方にならっています。V7/iiはiiのドミナント、ii7/IVはIVへ向かうii–Vのiiです。上と同じように、表の和音を押すと、その和音を鳴らせます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-blues&view=chart" title="Jazz blues" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

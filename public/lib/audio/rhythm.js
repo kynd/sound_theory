@@ -81,12 +81,18 @@ export function pulsePattern(count, accent = null) {
 
 const quarters = (beats, perBeat) => Array(beats).fill(perBeat);
 
-/** Patterns in common time signatures, in eighth-note steps. */
+/** Patterns in common time signatures, in eighth-note steps (thirds of a beat in the shuffle). */
 export const METER_PATTERNS = [
     makePattern({ id: '4-4', label: '4/4', stepsPerBeat: 2, groups: quarters(4, 2), tempo: 100, tracks: {
         hat:   'X x X x X x X x',
         snare: '- - X - - - X -',
         kick:  'X - - - X - - -',
+    } }),
+    // The same beat as a shuffle: three steps a beat, played on the first and third.
+    makePattern({ id: '4-4-shuffle', label: '4/4 shuffle', stepsPerBeat: 3, groups: quarters(4, 3), tempo: 100, tracks: {
+        hat:   'X - x X - x X - x X - x',
+        snare: '- - - X - - - - - X - -',
+        kick:  'X - - - - - X - - - - -',
     } }),
     makePattern({ id: '3-4', label: '3/4', stepsPerBeat: 2, groups: quarters(3, 2), tempo: 120, tracks: {
         hat:   'X x X x X x',
@@ -112,7 +118,7 @@ export const METER_PATTERNS = [
 
 /**
  * Patterns with different subdivisions and feels. The straight ones are in sixteenth
- * notes; the shuffle and swing in eighth-note triplets (three steps a beat); the bossa
+ * notes; the shuffle in eighth-note triplets (three steps a beat); the bossa
  * nova in eighth notes over two bars.
  */
 export const FEEL_PATTERNS = [
@@ -141,15 +147,39 @@ export const FEEL_PATTERNS = [
         snare: '- - - X - - - - - X - -',
         kick:  'X - - - - - X - x - - -',
     } }),
-    makePattern({ id: 'swing', label: 'Swing', stepsPerBeat: 3, groups: quarters(4, 3), tempo: 140, tracks: {
-        hat:   'X - - X - x X - - X - x',
-        rim:   '- - - X - - - - - X - -',
-        kick:  'x - - x - - x - - x - -',
-    } }),
     makePattern({ id: 'bossa-nova', label: 'Bossa nova', stepsPerBeat: 2, groups: quarters(8, 2), beatsPerBar: 4, tempo: 130, tracks: {
         hat:   'X x X x X x X x X x X x X x X x',
         rim:   'X - - X - - X - - - X - - X - -',
         kick:  'X - - x X - - x X - - x X - - x',
+    } }),
+];
+
+/**
+ * Subdivisions played and implied, in pairs: a sixteenth-note beat and a shuffle, each
+ * first with the hi-hat filling every subdivision, then with the hi-hat on the beats
+ * only and the same few kicks and ghost notes, which fall on the subdivision and keep
+ * it felt. The two implied patterns differ only in where those few notes fall.
+ */
+export const IMPLIED_PATTERNS = [
+    makePattern({ id: 'sixteenths', label: 'Sixteenths', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 92, tracks: {
+        hat:   'X x x x X x x x X x x x X x x x',
+        snare: '- - - - X - - - - - - - X - - x',
+        kick:  'X - - - - - - x - - X - - - - -',
+    } }),
+    makePattern({ id: 'sixteenths-implied', label: 'Sixteenths, implied', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 92, tracks: {
+        hat:   'X - - - X - - - X - - - X - - -',
+        snare: '- - - - X - - - - - - - X - - x',
+        kick:  'X - - - - - - x - - X - - - - -',
+    } }),
+    makePattern({ id: 'shuffle', label: 'Shuffle', stepsPerBeat: 3, groups: quarters(4, 3), tempo: 92, tracks: {
+        hat:   'X - x X - x X - x X - x',
+        snare: '- - - X - - - - - X - x',
+        kick:  'X - - - - x X - - - - -',
+    } }),
+    makePattern({ id: 'shuffle-implied', label: 'Shuffle, implied', stepsPerBeat: 3, groups: quarters(4, 3), tempo: 92, tracks: {
+        hat:   'X - - X - - X - - X - -',
+        snare: '- - - X - - - - - X - x',
+        kick:  'X - - - - x X - - - - -',
     } }),
 ];
 
@@ -164,21 +194,21 @@ export const HAMMER = makePattern({
 });
 
 /**
- * The simple rock beat used to hear timing and loudness: snare on beats 2 and 4. The
- * snare is written soft so a demo can raise its gain up to a full hit.
+ * The simplest rock beat, used to hear timing and loudness: kick on beats 1 and 3,
+ * snare on 2 and 4, one step a beat. The snare is written soft so a demo can raise its
+ * gain up to a full hit.
  */
 export const BACKBEAT = makePattern({
-    id: 'backbeat', label: 'Backbeat', stepsPerBeat: 2, groups: quarters(4, 2), tempo: 92,
-    trackIds: ['hat', 'snare', 'kick'],
+    id: 'backbeat', label: 'Backbeat', stepsPerBeat: 1, groups: quarters(4, 1), tempo: 92,
+    trackIds: ['snare', 'kick'],
     tracks: {
-        hat:   'x x x x x x x x',
-        snare: '- - x - - - x -',
-        kick:  'X - - - X - - -',
+        snare: '- x - x',
+        kick:  'X - X -',
     },
 });
 
 /** Named sets of patterns, for a demo that takes the set as a URL parameter. */
-export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS };
+export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS, implied: IMPLIED_PATTERNS };
 
 // How far ahead notes are scheduled, and how often the scheduler wakes. The lead also
 // covers the earliest a track can be moved ahead of the grid (see MAX_EARLY).

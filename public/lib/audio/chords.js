@@ -410,7 +410,6 @@ const TWELVE_BAR = [
     ['G7', 'V7'], ['F7', 'IV7'], ['C7', 'I7'], ['G7', 'V7'],
 ];
 const SHUFFLE = FEEL_PATTERNS.find(p => p.id === 'shuffle');
-const SWING = FEEL_PATTERNS.find(p => p.id === 'swing');
 const third = 1 / 3;
 
 export const BLUES_PROGRESSIONS = [
@@ -422,14 +421,14 @@ export const BLUES_PROGRESSIONS = [
 ];
 
 export const JAZZ_BLUES_PROGRESSIONS = [
-    { id: 'basic-blues', label: 'Basic blues', tempo: 132, loop: true, drums: SWING, chords: chords(4, TWELVE_BAR) },
-    { id: 'jazz-blues', label: 'Jazz blues', tempo: 132, loop: true, drums: SWING, chords: [
+    { id: 'basic-blues', label: 'Basic blues', tempo: 132, loop: true, chords: chords(4, TWELVE_BAR) },
+    { id: 'jazz-blues', label: 'Jazz blues', tempo: 132, loop: true, chords: [
         ...chords(4, [['C7', 'I7'], ['F7', 'IV7'], ['C7', 'I7']]),
         ...chords(2, [['Gm7', 'ii7/IV'], ['C7', 'V7/IV']]),
         ...chords(4, [['F7', 'IV7'], ['F♯dim7', '♯iv°7'], ['C7', 'I7'], ['A7', 'V7/ii'], ['Dm7', 'ii7'], ['G7', 'V7']]),
         ...chords(2, [['C7', 'I7'], ['A7', 'V7/ii'], ['Dm7', 'ii7'], ['G7', 'V7']]),
     ] },
-    { id: 'bird-blues', label: 'Bird blues', tempo: 132, loop: true, drums: SWING, chords: [
+    { id: 'bird-blues', label: 'Bird blues', tempo: 132, loop: true, chords: [
         ...chords(4, [['Cmaj7', 'Imaj7']]),
         ...chords(2, [
             ['Bm7♭5', 'iiø/vi'], ['E7', 'V7/vi'], ['Am7', 'vi7'], ['D7', 'V7/V'], ['Gm7', 'ii7/IV'], ['C7', 'V7/IV'],
