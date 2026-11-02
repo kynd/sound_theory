@@ -197,7 +197,7 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 
 - **`DRUM_TRACKS`:** the tracks a pattern can use, high to low: hat, rim, snare, kick.
 - **`makePattern(def)`:** builds a pattern from one string per track, one character per step: `X` full (`FULL`), `x` soft (`SOFT`, half), `-` rest; spaces are ignored. `trackIds` picks the tracks.
-- **`clonePattern(pattern)`:** a copy to edit. **`pulsePattern(count, accent)`:** a rim-click pulse, with every `accent`-th beat full and the others soft, or all the same.
+- **`clonePattern(pattern)`:** a copy to edit. **`pulsePattern(count, accent)`:** an even pulse of rim clicks, all at one velocity; with `accent`, every `accent`-th beat (from the first) is a kick instead, so the cycles are marked by sound, not loudness.
 - **`METER_PATTERNS`, `FEEL_PATTERNS`, `BACKBEAT`, `HAMMER`, `PATTERN_SETS`:** beats in common time signatures (eighth-note steps); subdivisions and styles (quarter, eighth, sixteenth notes, funk, shuffle, swing, bossa nova); the simple beat for timing and loudness; a work song's hammer on every downbeat; and the sets by name (`meters`, `feels`). Add patterns here, never in a demo.
 - **`StepSequencer(instrument, { pattern, tempo, onStep, onSchedule })`:** loops a pattern until stopped, with the `start()`, `stop()`, and `playing` of a continuous source. Notes are scheduled about 0.2 s ahead on the audio clock, so they land exactly on (or exactly `offset` off) the grid; `onStep(i)` runs as step `i` sounds, and with -1 when stopped. `onSchedule(i, time)` runs as step `i` is scheduled, with the audio-clock time it will sound at. `pattern` and `tempo` can change while playing. `stepDuration` is the seconds per step. `MAX_EARLY` (0.1 s) is the most a track can be moved early.
 <div class="jp">
@@ -206,7 +206,7 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 
 - **`DRUM_TRACKS`：**パターンが使えるトラックで、高い音から順にハイハット、リム、スネア、キックです。
 - **`makePattern(def)`：**トラックごとの文字列からパターンをつくります。1文字が1ステップで、`X`が強（`FULL`）、`x`が弱（`SOFT`、半分）、`-`が休みです。空白は無視します。`trackIds`でトラックを選びます。
-- **`clonePattern(pattern)`：**編集用のコピーです。**`pulsePattern(count, accent)`：**リムクリックの拍で、`accent`拍ごとに強く、ほかは弱く、または全部同じに鳴らします。
+- **`clonePattern(pattern)`：**編集用のコピーです。**`pulsePattern(count, accent)`：**すべて同じベロシティのリムクリックの拍です。`accent`を渡すと、最初の拍から`accent`拍ごとにキックに替わり、周期を音量ではなく音の違いで示します。
 - **`METER_PATTERNS`、`FEEL_PATTERNS`、`BACKBEAT`、`HAMMER`、`PATTERN_SETS`：**よく使う拍子のビート（8分音符のステップ）、細分とスタイル（4分、8分、16分音符、ファンク、シャッフル、スウィング、ボサノヴァ）、タイミングと音量を聞くための簡単なビート、毎小節の1拍目に振り下ろす労働歌のハンマー、そしてそれらを名前で引くセット（`meters`、`feels`）です。パターンはデモではなく、ここに追加します。
 - **`StepSequencer(instrument, { pattern, tempo, onStep, onSchedule })`：**止めるまでパターンを繰り返し、持続する音源と同じ`start()`、`stop()`、`playing`を持ちます。音はオーディオクロック上で約0.2秒先に予約するので、ぴったりグリッド上に（または`offset`だけ正確にずれて）鳴ります。`onStep(i)`はステップ`i`が鳴るときに、停止時は-1で呼ばれます。`onSchedule(i, time)`はステップ`i`を予約するときに、それが鳴るオーディオクロック上の時刻とともに呼ばれます。演奏中に`pattern`と`tempo`を変えられます。`stepDuration`は1ステップの秒数、`MAX_EARLY`（0.1秒）はトラックを前にずらせる最大量です。
 
@@ -273,13 +273,13 @@ Both draw a progression and share `update(progression, voicings)`, `setChord(i)`
 
 Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step duration converts track offsets into steps) and `setStep(i)` (the sounding step, -1 for none; `CycleView` also takes an array, one step per track). Hits are yellow with their size or height following velocity times gain, the sounding step's hits are red, and a track with an `offset` is drawn moved by that share of a step.
 
-- **`CycleView`** (`CycleView.js`): the pattern as a cycle, steps running clockwise from the top, one white ring per track with the first track outermost. A lone track gets larger dots.
+- **`CycleView`** (`CycleView.js`): the pattern as a cycle, steps running clockwise from the top, one white ring per track with the first track outermost. A lone track gets larger dots. With `{ oneRing: true }` all tracks share one ring and are told apart by color, the first track yellow and the others `accent(0)`, `accent(1)`, … (the pulse whose first beat is another sound).
 - **`StepGrid`** (`StepGrid.js`): an editable grid, a labeled row per track and a cell per step, wider gaps between beat groups; the sounding column's wells are butter. Clicking a cell cycles it rest → full → soft and calls `onEdit(track, step, velocity)`. It lives in a `.canvas-wrap.dp-strip` below the stage (the stacked layout) and sets the strip's height to its rows.
 <div class="jp">
 
 どちらもリズムのパターンを描き、`update(pattern, stepDuration)`（ステップの長さはトラックのずれをステップ数に換算するため）と`setStep(i)`（鳴っているステップ、なしは-1）を共有します。打音は黄色で、大きさや高さはベロシティとゲインの積に従います。鳴っているステップの打音は赤く、`offset`を持つトラックは、そのぶんステップの割合だけずらして描きます。
 
-- **`CycleView`**（`CycleView.js`）：パターンを周期として、上から時計回りにステップを並べ、トラックごとに白いリングを描きます（最初のトラックがいちばん外側）。トラックがひとつのときは点を大きくします。
+- **`CycleView`**（`CycleView.js`）：パターンを周期として、上から時計回りにステップを並べ、トラックごとに白いリングを描きます（最初のトラックがいちばん外側）。トラックがひとつのときは点を大きくします。`{ oneRing: true }`では、すべてのトラックがひとつのリングを共有し、色で区別されます。最初のトラックが黄色、ほかは`accent(0)`、`accent(1)`…です（最初の拍だけ音が違う拍のため）。
 - **`StepGrid`**（`StepGrid.js`）：編集できるグリッドで、トラックごとにラベルつきの行、ステップごとにセルを並べ、拍のまとまりのあいだを広く空けます。鳴っている列のくぼみはバター色です。セルをクリックすると休み → 強 → 弱と変わり、`onEdit(track, step, velocity)`を呼びます。ステージの下の`.canvas-wrap.dp-strip`（スタック型のレイアウト）に置き、帯の高さを行数に合わせます。
 
 </div>

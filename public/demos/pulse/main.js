@@ -17,7 +17,8 @@ const sequencer = new StepSequencer(drums, { tempo: 120 });
 
 let view;
 if (accented) {
-    view = new CycleView(canvas);
+    // The first beat of each cycle is another sound, drawn in another color.
+    view = new CycleView(canvas, { oneRing: true });
     sequencer.onStep = i => view.setStep(i);
 } else {
     view = new PulseView(canvas, { now: audioNow });

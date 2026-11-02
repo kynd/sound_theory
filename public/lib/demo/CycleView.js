@@ -1,5 +1,5 @@
 import { Viewport } from './viewport.js';
-import { COLORS } from './colors.js';
+import { COLORS, accent } from './colors.js';
 
 const GRID = 16;           // the demos' base grid
 const INSET = 2 * GRID;    // space around the drawing
@@ -12,11 +12,16 @@ const DOT = 7;             // radius of a full hit
  * white ring, the first track outermost. A hit is a yellow dot whose size follows its
  * velocity; the hits of the step that is sounding are red. A track moved off the grid
  * (`offset`) is drawn moved by the same share of a step.
+ *
+ * With `oneRing`, all tracks share a single ring and are told apart by color instead:
+ * the first track's hits are yellow, the others' take `accent(0)`, `accent(1)`, … (for
+ * a pulse whose first beat is a different sound).
  */
 export class CycleView {
     /** @param {HTMLCanvasElement} canvas  inside a `.canvas-wrap`. */
-    constructor(canvas) {
+    constructor(canvas, { oneRing = false } = {}) {
         this.canvas = canvas;
+        this.oneRing = oneRing;
         this.ctx = canvas.getContext('2d');
         this.viewport = new Viewport(canvas);
         this.pattern = null;
@@ -59,19 +64,25 @@ export class CycleView {
         const cx = w / 2, cy = h / 2;
         const outer = Math.min(w, h) / 2 - INSET;
         const tracks = pattern.tracks;
+        const rings = this.oneRing ? 1 : tracks.length;
         // Rings share the radius evenly, leaving the middle as wide as one ring's share.
-        const share = outer / (tracks.length + 1);
+        const share = outer / (rings + 1);
         const thickness = Math.min(RING, share * 0.75);
         // A lone ring has room for larger dots, so accents stand out.
-        const dot = tracks.length === 1 ? 2 * DOT : Math.min(DOT, thickness / 2 + 1);
+        const dot = rings === 1 ? 2 * DOT : Math.min(DOT, thickness / 2 + 1);
 
-        tracks.forEach((track, t) => {
-            const r = outer - Math.max(thickness / 2, dot) - t * share;
+        for (let ring = 0; ring < rings; ring++) {
+            const r = outer - Math.max(thickness / 2, dot) - ring * share;
             ctx.fillStyle = COLORS.white;
             ctx.beginPath();
             ctx.arc(cx, cy, r + thickness / 2, 0, 2 * Math.PI);
             ctx.arc(cx, cy, r - thickness / 2, 0, 2 * Math.PI, true);
             ctx.fill();
+        }
+
+        tracks.forEach((track, t) => {
+            const r = outer - Math.max(thickness / 2, dot) - (this.oneRing ? 0 : t) * share;
+            const color = this.oneRing && t > 0 ? accent(t - 1) : COLORS.yellow;
 
             const n = track.steps.length;
             const shift = (track.offset ?? 0) / this.stepDuration;
@@ -80,7 +91,7 @@ export class CycleView {
                 const a = ((i + shift) / n) * 2 * Math.PI - Math.PI / 2;
                 const v = Math.min(1, velocity * (track.gain ?? 1));
                 const step = Array.isArray(this.step) ? this.step[t] : this.step;
-                ctx.fillStyle = i === step ? COLORS.red : COLORS.yellow;
+                ctx.fillStyle = i === step ? COLORS.red : color;
                 ctx.beginPath();
                 ctx.arc(cx + Math.cos(a) * r, cy + Math.sin(a) * r, dot * (0.4 + 0.6 * v), 0, 2 * Math.PI);
                 ctx.fill();

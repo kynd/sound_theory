@@ -61,17 +61,20 @@ export function clonePattern(pattern) {
 }
 
 /**
- * A steady pulse on the rim click: `count` steps of one beat each. With `accent`, every
- * `accent`-th beat (starting with the first) is a full hit and the others are soft, so
- * the pulse falls into cycles of that length; without it every beat is the same.
+ * A steady pulse: `count` steps of one beat each, all at the same velocity. Without
+ * `accent` every beat is a rim click. With it, every `accent`-th beat (starting with the
+ * first) is a kick instead, so the pulse falls into cycles of that length marked by a
+ * change of sound rather than of loudness.
  */
 export function pulsePattern(count, accent = null) {
-    const steps = Array.from({ length: count }, (_, i) => !accent ? 0.7 : i % accent === 0 ? FULL : 0.4);
+    const VELOCITY = 0.7;
+    const first = i => accent && i % accent === 0;
     const groups = accent ? Array(count / accent).fill(accent) : [count];
-    return {
-        id: 'pulse', label: 'Pulse', stepsPerBeat: 1, groups, tempo: 120,
-        tracks: [{ ...DRUM_TRACKS.find(t => t.id === 'rim'), steps }],
-    };
+    const tracks = [{ ...DRUM_TRACKS.find(t => t.id === 'rim'), steps: Array.from({ length: count }, (_, i) => first(i) ? 0 : VELOCITY) }];
+    if (accent) {
+        tracks.push({ ...DRUM_TRACKS.find(t => t.id === 'kick'), steps: Array.from({ length: count }, (_, i) => first(i) ? VELOCITY : 0) });
+    }
+    return { id: 'pulse', label: 'Pulse', stepsPerBeat: 1, groups, tempo: 120, tracks };
 }
 
 const quarters = (beats, perBeat) => Array(beats).fill(perBeat);
