@@ -159,20 +159,24 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 `scales.js` holds scales as spelled note names (`E♭`, not `D♯`), listed from the scale's `root` (default C), so a spelling fixes both the pitch and the note's place on a staff.
 <div class="jp">`scales.js`には、音階を、その`root`（省略時はC）からの綴りつきの音名（`D♯`ではなく`E♭`）で置きます。綴りが音高と五線上の位置の両方を決めます。</div>
 
-- **`SCALES`, `MODES`, `WHITE_KEY_MODES`, `MINOR_SCALES`, `OTHER_SCALES`, `SCALE_SETS`:** scales from C; the seven church modes on C; the same modes on the white keys (C major from each of its notes, with `root`); the three minor scales; other scales common in jazz and pop music; and named sets of these (`scales`, `modes`, `white-key-modes`, `minor`, `other`, `pentatonic`, `diminished`), for a demo that takes the set as a URL parameter. Each scale is `{ id, label, notes, root?, descending? }`; `descending` lists the notes for the way down where they differ (the melodic minor). Scale ids are unique across sets. Add new scales here, never in a demo.
+- **`SCALES`, `MODES`, `WHITE_KEY_MODES`, `MINOR_SCALES`, `OTHER_SCALES`, `SCALE_SETS`:** scales from C; the seven church modes on C; the same modes on the white keys (C major from each of its notes, with `root`); the three minor scales; other scales common in jazz and pop music; and named sets of these (`scales`, `modes`, `white-key-modes`, `minor`, `other`, `pentatonic`, `diminished`, and `altered-lydian`, the altered scale on C with the Lydian 7th on G♭, the same pitches), for a demo that takes the set as a URL parameter. Each scale is `{ id, label, notes, root?, descending? }`; `descending` lists the notes for the way down where they differ (the melodic minor). Scale ids are unique across sets. Add new scales here, never in a demo.
 - **`findScale(id)`:** the scale with that id in any set.
-- **`pitchClassNames(root)`:** names for the twelve pitch classes, with flats for F and the flat roots and sharps otherwise, for notes outside a scale.
+- **`pitchClassNames(scale)`:** names for the twelve pitch classes, for notes outside a scale: flats when the scale spells more notes with flats than with sharps, sharps otherwise.
+- **`MINOR_ROOTS`:** roots in the spellings of minor keys (C♯, G♯ rather than D♭, A♭), for a minor scale's Key select.
 - **`ROOTS`, `transposeScale(scale, root)`:** the roots a scale can move to (C, D♭, D, E♭ …), and the scale moved there with its notes respelled by letter, so the pattern of steps is kept (double sharps and flats, 𝄪 and 𝄫, where needed).
+- **`transposeNote(name, from, to)`, `transposeBy(scale, from, to)`, `majorKeyModes(key)`:** a note or scale moved by the interval between two notes, spelled by letter; and the seven modes of a major key, labeled with their roots ("A Dorian" in G), ids `degree-1` to `degree-7` in every key.
 - **`scaleNotes(scale, octave, { descending })`:** the scale from its root in `octave` (default 4) up to the root above, as `{ name, letter, accidental, midi, position }`, from the `descending` notes when asked and the scale has them. `position` counts staff steps from C4 (C4 = 0, E4 = 2, C5 = 7).
 - **`scaleRun(scale, octave)`:** the scale up to the octave and back down, as `scaleNotes` entries; the way down uses `descending`.
 - **`rootMidi(scale, octave)`:** the MIDI number of the scale's root in that octave.
 - **`parseNote(name)`, `PITCH_CLASS_NAMES`:** a note name's letter, accidental, and semitones above C; and the plain name of each of the 12 pitch classes.
 <div class="jp">
 
-- **`SCALES`、`MODES`、`WHITE_KEY_MODES`、`MINOR_SCALES`、`OTHER_SCALES`、`SCALE_SETS`：**Cから始まる音階、Cを主音とする7つの教会旋法、白鍵上の同じ旋法（Cの長音階を各音から始めたもので、`root`を持つ）、3つの短音階、ジャズやポップ音楽でよく使うその他の音階、そしてそれらを名前で引けるようにしたセット（`scales`、`modes`、`white-key-modes`、`minor`、`other`、`pentatonic`、`diminished`）です。セットは、URLのパラメータで受け取るデモに使います。各音階は`{ id, label, notes, root?, descending? }`の形で、`descending`は下行で音が異なる場合（旋律的短音階）の下行の音です。音階のidはセットをまたいで一意です。新しい音階はデモではなく、ここに追加します。
+- **`SCALES`、`MODES`、`WHITE_KEY_MODES`、`MINOR_SCALES`、`OTHER_SCALES`、`SCALE_SETS`：**Cから始まる音階、Cを主音とする7つの教会旋法、白鍵上の同じ旋法（Cの長音階を各音から始めたもので、`root`を持つ）、3つの短音階、ジャズやポップ音楽でよく使うその他の音階、そしてそれらを名前で引けるようにしたセット（`scales`、`modes`、`white-key-modes`、`minor`、`other`、`pentatonic`、`diminished`、そして同じ音高を持つCのオルタードとG♭のリディアン・セブンスの組`altered-lydian`）です。セットは、URLのパラメータで受け取るデモに使います。各音階は`{ id, label, notes, root?, descending? }`の形で、`descending`は下行で音が異なる場合（旋律的短音階）の下行の音です。音階のidはセットをまたいで一意です。新しい音階はデモではなく、ここに追加します。
 - **`findScale(id)`：**どのセットからでも、そのidの音階を返します。
-- **`pitchClassNames(root)`：**音階外の音に使う12のピッチクラスの名前です。Fとフラットの主音ではフラット、それ以外ではシャープを使います。
+- **`pitchClassNames(scale)`：**音階外の音に使う12のピッチクラスの名前です。音階がシャープよりフラットで綴る音を多く持つときはフラット、それ以外はシャープを使います。
+- **`MINOR_ROOTS`：**短調の綴り（D♭、A♭ではなくC♯、G♯）による主音で、短音階のKeyの選択に使います。
 - **`ROOTS`、`transposeScale(scale, root)`：**音階を移せる主音（C、D♭、D、E♭…）と、そこへ移した音階です。音名は文字ごとに綴り直すので、歩幅の並びが保たれます（必要ならダブルシャープ𝄪とダブルフラット𝄫を使います）。
+- **`transposeNote(name, from, to)`、`transposeBy(scale, from, to)`、`majorKeyModes(key)`：**2つの音のあいだの音程だけ動かした音や音階（文字ごとに綴る）と、長調の7つの旋法です。旋法には主音をつけた名前（Gでは「A Dorian」）がつき、idはどの調でも`degree-1`〜`degree-7`です。
 - **`scaleNotes(scale, octave, { descending })`：**`octave`（省略時は4）の主音から1オクターブ上の主音までの音階を、`{ name, letter, accidental, midi, position }`で返します。指定され、音階が持っていれば`descending`の音を使います。`position`はC4からの五線上の段数です（C4 = 0、E4 = 2、C5 = 7）。
 - **`scaleRun(scale, octave)`：**オクターブまで上がって戻る音階を、`scaleNotes`の要素で返します。下行には`descending`を使います。
 - **`rootMidi(scale, octave)`：**その音域での主音のMIDI番号です。
@@ -269,7 +273,7 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 
 ## ScaleView
 
-`ScaleView` (`public/lib/demo/ScaleView.js`) shows a scale two ways: a row of 13 squares from the root to the root an octave above (white wells for notes outside the scale, yellow for notes in it, labeled with the scale's spelling), and the scale written ascending on a treble staff with ledger lines and accidentals (up and back down for a scale with `descending`). The sounding note is red in both. Pressing a square plays its note through `onNoteOn` / `onNoteOff`. Call `update(scale)` and `setSounding(midi, step)`; `step` is the note's index in `scaleRun` while a run plays (or null), so the squares follow the direction and the staff marks that one note. The clef and accidentals use the Noto Music web font, which the demo page loads.
+`ScaleView` (`public/lib/demo/ScaleView.js`) shows a scale two ways: a row of 13 squares from the root to the root an octave above (white wells for notes outside the scale, yellow for notes in it, labeled with the scale's spelling), and the scale written ascending on a treble staff with ledger lines and accidentals (up and back down for a scale with `descending`; a plain note after a sharp or flat on the same line takes a natural). The sounding note is red in both. Pressing a square plays its note through `onNoteOn` / `onNoteOff`. Call `update(scale)` and `setSounding(midi, step)`; `step` is the note's index in `scaleRun` while a run plays (or null), so the squares follow the direction and the staff marks that one note. The clef and accidentals use the Noto Music web font, which the demo page loads.
 <div class="jp">`ScaleView`（`public/lib/demo/ScaleView.js`）は、音階を2通りに表示します。基準音から1オクターブ上の基準音までの13の四角の列（音階外の音は白いくぼみ、音階の音は黄色で、音階の綴りでラベルをつける）と、加線や変化記号をつけて五線譜に上行で書いた音階（`descending`を持つ音階は上行と下行）です。鳴っている音は両方で赤くなります。四角を押すと、`onNoteOn` / `onNoteOff`でその音を鳴らします。`update(scale)`と`setSounding(midi, step)`を呼びます。`step`は、上下行の演奏中に`scaleRun`の中でのその音の位置（それ以外はnull）で、四角は進む方向に合わせて変わり、五線譜はその1音だけを示します。音部記号と変化記号には、デモのページが読み込むNoto Musicのウェブフォントを使います。</div>
 
 ## BeatView
@@ -284,8 +288,8 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 
 ## Keyboard
 
-`Keyboard` (`public/lib/demo/Keyboard.js`) builds the on-screen input inside a `.dp-keyboard` element, shaped to the sound: a piano keyboard, or pads for sounds without pitch. It reports notes as MIDI numbers through `onNoteOn` and `onNoteOff` and makes no sound itself. `setLit(midis)` lights keys for notes played from elsewhere (a chord from a progression) in the same yellow.
-<div class="jp">`Keyboard`（`public/lib/demo/Keyboard.js`）は、`.dp-keyboard`要素の中に、音に合わせた画面上の入力をつくります。鍵盤か、音高を持たない音ではパッドです。音符をMIDI番号として`onNoteOn`と`onNoteOff`で通知するだけで、自身は音を鳴らしません。`setLit(midis)`は、ほかから鳴らした音（進行の和音など）の鍵盤を同じ黄色で光らせます。</div>
+`Keyboard` (`public/lib/demo/Keyboard.js`) builds the on-screen input inside a `.dp-keyboard` element, shaped to the sound: a piano keyboard, or pads for sounds without pitch. It reports notes as MIDI numbers through `onNoteOn` and `onNoteOff` and makes no sound itself. `setLit(midis)` lights keys for notes played from elsewhere (a chord from a progression) in the same yellow. `setScale(pcs, names)` shows only a scale's notes (such as a major key) as a row of equal keys labeled with `names`, played from the home row like the white keys (`whiteOnly` is this for the white keys); null returns to the full keyboard.
+<div class="jp">`Keyboard`（`public/lib/demo/Keyboard.js`）は、`.dp-keyboard`要素の中に、音に合わせた画面上の入力をつくります。鍵盤か、音高を持たない音ではパッドです。音符をMIDI番号として`onNoteOn`と`onNoteOff`で通知するだけで、自身は音を鳴らしません。`setLit(midis)`は、ほかから鳴らした音（進行の和音など）の鍵盤を同じ黄色で光らせます。`setScale(pcs, names)`は、音階の音（長調など）だけを`names`のラベルつきの等しい鍵盤の列として表示し、白鍵と同じようにホーム列で弾けるようにします（`whiteOnly`は白鍵でこれを行うもの）。nullで通常の鍵盤に戻ります。</div>
 
 - **Range:** `low` (a C) and `octaves`, with a top C added. `shiftOctave(±1)` moves it.
 - **Pointer:** dragging glides across keys.

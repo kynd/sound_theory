@@ -1,6 +1,6 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
-import { SCALE_SETS, ROOTS, findScale, scaleRun, transposeScale } from '../../lib/audio/scales.js';
+import { SCALE_SETS, ROOTS, MINOR_ROOTS, findScale, majorKeyModes, scaleRun, transposeBy } from '../../lib/audio/scales.js';
 import { Sequence } from '../../lib/audio/sequence.js';
 import { ScaleView } from '../../lib/demo/ScaleView.js';
 import { addSelect, unwrap } from '../../lib/demo/controls.js';
@@ -8,11 +8,15 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 
 // Which scales to offer: ?set= names a set in SCALE_SETS (default `scales`), offered in
 // a select; ?scale= names one scale, shown with no select. ?roots adds a Root select
-// that moves the scale to another starting note.
+// that moves the scale to another starting note; ?roots=minor makes it a Key select
+// with the spellings of minor keys, for minor scales. ?keys offers the seven modes of a
+// major key, with a Key select that picks the key.
 const params = new URLSearchParams(location.search);
 const movable = params.has('roots');
+const minorRoots = params.get('roots') === 'minor';
+const keyed = params.has('keys');
 const single = findScale(params.get('scale'));
-const SCALES = single ? [single] : SCALE_SETS[params.get('set')] ?? SCALE_SETS.scales;
+let SCALES = keyed ? majorKeyModes('C') : single ? [single] : SCALE_SETS[params.get('set')] ?? SCALE_SETS.scales;
 
 const master = new MasterBus();
 const instrument = createInstrument('piano').connect(master.input);
@@ -40,15 +44,18 @@ let scaleId = SCALES[0].id, root = 'C';
 function useScale() {
     sequence.stop();
     const base = SCALES.find(s => s.id === scaleId);
-    // Scales keep their own root unless the Root select moves them.
-    const scale = movable && root !== (base.root ?? 'C') ? transposeScale(base, root) : base;
+    // The Root select moves every scale of the set by the interval from C to the chosen
+    // root, so a scale written on another root (the Lydian 7th a tritone above the
+    // altered scale) keeps its distance. Without it, scales keep their own roots.
+    const scale = movable && root !== 'C' ? transposeBy(base, 'C', root) : base;
     sequence.notes = scaleRun(scale).map(n => n.midi);
     view.update(scale);
 }
 
 const scaleControls = document.getElementById('scale-controls');
+let scaleSelect = null;
 if (SCALES.length > 1) {
-    addSelect(scaleControls, {
+    scaleSelect = addSelect(scaleControls, {
         label: 'Scale',
         options: SCALES.map(({ id, label }) => ({ value: id, label })),
         value: scaleId,
@@ -57,10 +64,23 @@ if (SCALES.length > 1) {
 }
 if (movable) {
     addSelect(scaleControls, {
-        label: 'Root',
-        options: ROOTS.map(name => ({ value: name, label: name })),
+        label: minorRoots ? 'Key' : 'Root',
+        options: (minorRoots ? MINOR_ROOTS : ROOTS).map(name => ({ value: name, label: name })),
         value: root,
         onChange: name => { root = name; useScale(); },
+    });
+}
+if (keyed) {
+    addSelect(scaleControls, {
+        label: 'Key',
+        options: ROOTS.map(name => ({ value: name, label: name })),
+        value: 'C',
+        onChange: key => {
+            // The same degrees in the new key, with their names ("A Dorian" in G).
+            SCALES = majorKeyModes(key);
+            [...scaleSelect.options].forEach((option, i) => { option.textContent = SCALES[i].label; });
+            useScale();
+        },
     });
 }
 unwrap(scaleControls);

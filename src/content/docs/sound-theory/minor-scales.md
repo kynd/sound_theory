@@ -2,45 +2,45 @@
 title: "Minor Scales 短音階"
 slug: minor-scales
 ---
-The minor scale comes in three forms: natural, harmonic, and melodic. They share their lower half (C, D, E♭, F, G on C) and differ in the 6th and 7th notes. The natural minor is the basic form. The other two raise one or both of those notes, for reasons that come from harmony and melody.
+In Western classical theory, the minor scale has three standard forms: natural, harmonic, and melodic. Starting on the same root, they share their first five notes and differ in the sixth and seventh degrees. Natural minor is the basic form; harmonic and melodic minor raise one or both of those degrees for harmonic or melodic reasons.
 
-短音階には、自然短音階、和声的短音階、旋律的短音階の3つの形があります。下半分（Cの場合はC、D、E♭、F、G）は共通で、6番目と7番目の音が異なります。自然短音階が基本の形で、ほかの2つは、和声と旋律の理由から、そのどちらか、または両方を半音上げたものです。
+西洋音楽理論では、短音階には自然短音階、和声的短音階、旋律的短音階の3つの基本形があります。同じ主音から始めると、最初の5音は共通し、第6音と第7音が異なります。自然短音階が基本形で、和声的短音階と旋律的短音階では、和声や旋律上の理由から、第6音、第7音、またはその両方を半音上げます。
 
-In each demo below, press **Play** to hear the scale go up from C to the C an octave above and back down, or click a square to play its note. The squares show the thirteen notes from C to C with the scale's notes in yellow, and the staff writes the scale.
+In each demo below, press **Play** to hear the scale ascend from the root to the octave above, then descend. Or click a square to play its note. The squares show the 13 chromatic pitches in that octave, with the scale notes highlighted in yellow; the staff shows the scale in notation. **Key** moves the scale to another root; the demos start in C minor.
 
-以下のどのデモでも、**Play**を押すと、Cから1オクターブ上のCまで上がって戻る音階が聞こえます。四角をクリックすると、その音を鳴らせます。四角はCからCまでの13音で、音階の音が黄色になり、五線譜はその音階を書き表しています。
+以下の各デモでは、**Play**を押すと、主音から1オクターブ上まで上行してから下行する音階を聴けます。四角をクリックすると、その音を鳴らせます。四角には、その1オクターブ内の13の半音が並び、音階に含まれる音は黄色で示されています。五線譜には音階が記譜されています。**Key**を変えると、音階がほかの主音から始まります。デモはハ短調（Cマイナー）から始まります。
 
 # Natural Minor
 # 自然短音階
 
-The natural minor lowers the 3rd, 6th, and 7th notes of the major scale: C, D, E♭, F, G, A♭, B♭. Its steps are whole, half, whole, whole, half, whole, whole. It is the Aeolian mode (see [Church Modes](/church-modes)), and it has the same notes as the major scale a minor third above: C minor and E♭ major share every note, as A minor and C major share the white keys.
+The natural minor scale lowers the 3rd, 6th, and 7th degrees of the major scale with the same root by a half step. Its interval pattern is whole, half, whole, whole, half, whole, whole. It is the Aeolian mode (see [Church Modes](/church-modes)) and shares its notes with the relative major, whose tonic is a minor third above the minor tonic. This relationship holds in every key.
 
-自然短音階は、長音階の3番目、6番目、7番目の音を半音下げたものです。C、D、E♭、F、G、A♭、B♭。歩幅は、全音、半音、全音、全音、半音、全音、全音です。これはエオリアン旋法で（[教会旋法](/church-modes)を参照）、短3度上の長音階と同じ音を持ちます。Aの短音階とCの長音階が白鍵を共有するように、Cの短音階とE♭の長音階はすべての音が共通です。
+自然短音階は、同じ主音の長音階から第3音、第6音、第7音をそれぞれ半音下げた音階です。音程の並びは、全音、半音、全音、全音、半音、全音、全音です。自然短音階はエオリア旋法であり（[教会旋法](/church-modes)を参照）、短音階の主音から短3度上を主音とする平行長調と同じ音を使います。この関係は、すべての調で成り立ちます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=natural-minor" title="Natural minor" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=natural-minor&roots=minor" title="Natural minor" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
 # Harmonic Minor
 # 和声的短音階
 
-The harmonic minor raises the 7th note from B♭ to B. In the major scale, the 7th is a half step below the root and leans strongly toward it (it is called the leading tone); in the natural minor, B♭ is a whole step below and leans much less. Raising it brings the pull back, and it makes the chord on the 5th note, G, B, D, a major chord, which leads to C minor as firmly as G major leads to C major. That is the harmony in the name.
+The harmonic minor scale raises the 7th degree of the natural minor scale by a half step. In a major scale, the 7th degree sits a half step below the tonic and pulls strongly toward it; this note is called the leading tone. In natural minor, the 7th degree sits a whole step below the tonic, so its pull is weaker. Raising it creates a leading tone and changes the triad built on the 5th degree from minor to major. This major dominant chord creates a strong pull back to the minor tonic, much as it does in a major key. That harmonic effect is what gives the scale its name.
 
-和声的短音階は、7番目の音をB♭からBに上げます。長音階では、7番目の音は主音の半音下にあって、主音へ強く引き寄せられます（導音と呼ばれます）。自然短音階のB♭は全音下にあり、その引力はずっと弱くなります。7番目の音を上げると、この引力が戻り、5番目の音の上の和音G、B、Dが長三和音になります。この和音は、GからCの長調に進むときと同じくらい確かに、Cの短調へと導きます。名前にある「和声」はこのことです。
+和声的短音階は、自然短音階の第7音を半音上げた音階です。長音階では、第7音は主音の半音下にあり、主音へ強く引き寄せられます。この音を導音と呼びます。一方、自然短音階では、第7音は主音の全音下にあるため、主音へ向かう力は弱くなります。第7音を半音上げると導音が生まれ、第5音上の三和音は短三和音から長三和音に変わります。この長三和音（属和音）は、長調の場合と同じように、短調の主和音へ強く進みます。「和声的」という名前は、この和声上の働きに由来します。
 
-The raised 7th leaves a wide step of three semitones between A♭ and B, which gives the scale its distinctive, somewhat exotic sound.
+Raising the 7th leaves a wide step of three semitones—an augmented second—between the 6th and 7th degrees, giving the scale its distinctive sound.
 
-7番目の音を上げると、A♭とBのあいだに3半音の広い歩幅が残ります。これが、この音階に独特の、どこか異国的な響きを与えています。
+7番目の音を上げると、第6音と第7音のあいだに、半音3つ分の広い音程（増2度）が生まれます。これが、この音階に独特の響きを与えています。
 
-<div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=harmonic-minor" title="Harmonic minor" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=harmonic-minor&roots=minor" title="Harmonic minor" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
 # Melodic Minor
 # 旋律的短音階
 
-The melodic minor also raises the 6th, from A♭ to A, to smooth the wide step for a melody. In classical theory it is different going up and going down. Going up, it uses A and B, which lead up to the root. Coming down, there is nothing to lead up to, so it returns to the natural minor, B♭ and A♭. The demo plays and writes both directions, and the squares change on the way down.
+The melodic minor also raises the 6th degree by a half step, narrowing the gap between the 6th and 7th and making the melody smoother. In its standard classical form, the scale differs on the way up and the way down. Ascending, it uses the raised 6th and 7th to lead to the root. Descending, it returns to the natural minor's 7th and 6th, since there is no need for the same upward pull toward the root. The demo plays and notates both directions, and the squares change on the way down.
 
-旋律的短音階は、旋律のために広い歩幅をなめらかにしようと、6番目の音もA♭からAに上げます。クラシックの理論では、上がるときと下がるときで形が異なります。上がるときは、主音へと上っていくAとBを使います。下がるときは、上っていく先がないので、自然短音階のB♭とA♭に戻ります。デモは両方向を演奏して書き表し、下がるときには四角の色も変わります。
+旋律的短音階では、第6音も半音上げ、第6音と第7音のあいだの広い音程を狭めて、旋律の流れをなめらかにします。クラシックの標準的な形では、上行形と下行形で音が異なります。上行形では、半音上げた第6音と第7音を使って主音へ向かいます。下行形では、主音へ向かう同じ引力が必要ないため、第7音と第6音を自然短音階の音に戻します。デモでは上行形と下行形の両方を演奏し、五線譜に示します。下行形では四角の色も変わります。
 
-<div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=melodic-minor" title="Melodic minor" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=melodic-minor&roots=minor" title="Melodic minor" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
-Many jazz players ignore the difference and use the ascending form both ways, often calling it the jazz minor. It is the usual scale for a minor chord with a major 7th, and its modes give other scales used in jazz, such as the altered scale (see [Other Scales](/other-scales)). Neither use is wrong. Scales are not rules a piece has to obey; they are names for patterns musicians found useful, and tools to help us hear, write, and improvise.
+Many jazz players use the ascending form in both directions, often calling it the jazz minor. It is commonly used over a minor chord with a major seventh, and its modes include other scales used in jazz, such as the altered scale (see [Other Scales](/other-scales)). Neither approach is wrong. Scales are not rules a piece must follow; they are names for useful patterns musicians have identified and tools that help us hear, write, and improvise.
 
-多くのジャズ奏者はこの違いを気にせず、上行形を上りにも下りにも使い、ジャズ・マイナーと呼ぶこともあります。これは長7度を持つ短和音に使う一般的な音階で、その旋法からは、オルタード・スケールなど、ジャズで使われるほかの音階も生まれます（[その他の音階](/other-scales)を参照）。どちらの使い方も間違いではありません。音階は曲が従わなければならない規則ではなく、音楽家が役に立つと見いだしたパターンの名前であり、聞くこと、書くこと、即興することを助ける道具です。
+多くのジャズ奏者は、上行形を上行・下行の両方で使い、これを「ジャズ・マイナー」と呼ぶことがあります。長7度を含む短和音によく使われ、その旋法には、オルタード・スケールなど、ジャズで使われるほかの音階もあります（[その他の音階](/other-scales)を参照）。どちらの使い方も間違いではありません。音階は曲が従うべき規則ではありません。音楽家が有用だと見いだしたパターンにつけた名前であり、聴いたり、書いたり、即興で演奏したりするための道具です。

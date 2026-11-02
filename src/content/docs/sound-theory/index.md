@@ -29,11 +29,11 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 4.  [Scales](/scales): what a scale is, and scales built from the twelve notes, from major and minor to Japanese, Okinawan, and Arabic scales.
 
-5.  [Church Modes](/church-modes): the seven modes, from C and from the white keys, and how to hear them over a held root.
+5.  [Church Modes](/church-modes): the seven modes, on one root and from the white keys, and how to hear them over a held root.
 
 6.  [Minor Scales](/minor-scales): the natural, harmonic, and melodic minor scales.
 
-7.  [Other Scales](/other-scales): pentatonic, blues, whole tone, diminished, and altered scales, as used in jazz and pop music.
+7.  [Other Scales](/other-scales): pentatonic, blues, whole tone, diminished, altered, and Lydian 7th scales, as used in jazz and pop music.
 
 8.  [Pulse and Cycles](/pulse-and-cycles): repetition, an even pulse, and accents that group it into cycles.
 
@@ -69,11 +69,11 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 4.  [音階](/scales)：音階とは何か、そして12の音からつくる音階。長音階、短音階から、日本、沖縄、アラブの音階まで。
 
-5.  [教会旋法](/church-modes)：7つの旋法を、Cから、そして白鍵から。主音を鳴らしながら旋法を聞く方法。
+5.  [教会旋法](/church-modes)：7つの旋法を、ひとつの主音から、そして白鍵から。主音を鳴らしながら旋法を聞く方法。
 
 6.  [短音階](/minor-scales)：自然短音階、和声的短音階、旋律的短音階。
 
-7.  [その他の音階](/other-scales)：ジャズやポップ音楽で使われる、ペンタトニック、ブルース、全音音階、ディミニッシュ、オルタードの各音階。
+7.  [その他の音階](/other-scales)：ジャズやポップ音楽で使われる、ペンタトニック、ブルース、全音音階、ディミニッシュ、オルタード、リディアン・セブンスの各音階。
 
 8.  [拍と周期](/pulse-and-cycles)：繰り返し、等しい拍、そして拍を周期にまとめるアクセント。
 

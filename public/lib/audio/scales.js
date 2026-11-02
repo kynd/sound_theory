@@ -18,9 +18,14 @@ export const PITCH_CLASS_NAMES = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G
 /** The same with flats, for notes outside a scale in a flat key (F, B♭, E♭ …). */
 export const FLAT_PITCH_CLASS_NAMES = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G', 'A♭', 'A', 'B♭', 'B'];
 
-/** Names for the 12 pitch classes that suit a root: flats for F and the flat roots, sharps otherwise. */
-export function pitchClassNames(root = 'C') {
-    return root === 'F' || root.includes('♭') ? FLAT_PITCH_CLASS_NAMES : PITCH_CLASS_NAMES;
+/**
+ * Names for the 12 pitch classes that suit a scale, for notes outside it: flats when
+ * the scale spells more notes with flats than with sharps (C minor, F major), sharps
+ * otherwise.
+ */
+export function pitchClassNames(scale) {
+    const count = sign => scale.notes.filter(n => n.includes(sign)).length;
+    return count('♭') > count('♯') ? FLAT_PITCH_CLASS_NAMES : PITCH_CLASS_NAMES;
 }
 
 /** Splits a note name into its letter, its accidental, and its semitones above C. */
@@ -93,7 +98,17 @@ export const OTHER_SCALES = [
     { id: 'diminished-half-whole', label: 'Half-whole',       notes: ['C', 'D♭', 'D♯', 'E', 'F♯', 'G', 'A', 'B♭'] },
     { id: 'diminished-whole-half', label: 'Whole-half',       notes: ['C', 'D', 'E♭', 'F', 'F♯', 'G♯', 'A', 'B'] },
     { id: 'altered',               label: 'Altered',          notes: ['C', 'D♭', 'D♯', 'E', 'F♯', 'G♯', 'B♭'] },
+    { id: 'lydian-7th',            label: 'Lydian 7th',       notes: ['C', 'D', 'E', 'F♯', 'G', 'A', 'B♭'] },
 ];
+
+/**
+ * The altered scale on C and the Lydian 7th on G♭, a tritone away: the same seven
+ * pitches (both modes of D♭ melodic minor), spelled from different roots.
+ */
+const LYDIAN_7TH_ON_G_FLAT = {
+    id: 'lydian-7th-tritone', label: 'Lydian 7th', root: 'G♭',
+    notes: ['G♭', 'A♭', 'B♭', 'C', 'D♭', 'E♭', 'F♭'],
+};
 
 const other = (...ids) => ids.map(id => OTHER_SCALES.find(s => s.id === id));
 
@@ -106,6 +121,7 @@ export const SCALE_SETS = {
     other: OTHER_SCALES,
     pentatonic: other('major-pentatonic', 'minor-pentatonic'),
     diminished: other('diminished-half-whole', 'diminished-whole-half'),
+    'altered-lydian': [...other('altered'), LYDIAN_7TH_ON_G_FLAT],
 };
 
 /** Finds a scale by its id in any set, or undefined. */
@@ -116,8 +132,23 @@ export function findScale(id) {
     }
 }
 
-/** Roots a scale can be moved to, in the spellings of the usual keys. */
+/** Roots a scale can be moved to, in the spellings of the usual major keys. */
 export const ROOTS = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'A♭', 'A', 'B♭', 'B'];
+
+/** Roots for minor scales, in the spellings of the usual minor keys (C♯ minor, not D♭). */
+export const MINOR_ROOTS = ['C', 'C♯', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'B♭', 'B'];
+
+/**
+ * Moves a note name by the interval from one root to another, spelled by letter
+ * (E moved from C to A♭ is C, not B♯).
+ */
+export function transposeNote(name, from, to) {
+    const a = parseNote(from), b = parseNote(to), note = parseNote(name);
+    const letter = LETTERS[((note.step + b.step - a.step) % 7 + 7) % 7];
+    const target = note.semitones + b.semitones - a.semitones;
+    const offset = (((target - LETTER_SEMITONES[letter]) % 12) + 18) % 12 - 6;
+    return letter + ACCIDENTAL_NAMES[offset];
+}
 
 /**
  * The same scale on another root: every note moved by the same interval and spelled
@@ -125,21 +156,30 @@ export const ROOTS = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'A♭', '
  * (In on E is E, F, A, B, C; on A♭ it is A♭, B𝄫, D♭, E♭, F♭).
  */
 export function transposeScale(scale, root) {
-    const from = parseNote(scale.root ?? 'C'), to = parseNote(root);
-    const steps = to.step - from.step;
-    const semitones = to.semitones - from.semitones;
-    const move = name => {
-        const note = parseNote(name);
-        const letter = LETTERS[((note.step + steps) % 7 + 7) % 7];
-        const target = note.semitones + semitones;
-        const offset = (((target - LETTER_SEMITONES[letter]) % 12) + 18) % 12 - 6;
-        return letter + ACCIDENTAL_NAMES[offset];
-    };
+    return transposeBy(scale, scale.root ?? 'C', root);
+}
+
+/** A scale moved by the interval from one note to another (its root moves too). */
+export function transposeBy(scale, from, to) {
+    const move = name => transposeNote(name, from, to);
     return {
-        ...scale, root,
+        ...scale,
+        root: move(scale.root ?? 'C'),
         notes: scale.notes.map(move),
         ...(scale.descending ? { descending: scale.descending.map(move) } : {}),
     };
+}
+
+/**
+ * The seven modes of a major key: its scale started from each of its notes, labeled
+ * with their roots ("A Dorian" in G major). Ids are by degree, `degree-1` to
+ * `degree-7`, the same in every key. In C these are the white-key modes.
+ */
+export function majorKeyModes(key = 'C') {
+    return WHITE_KEY_MODES.map((mode, i) => {
+        const moved = transposeBy(mode, 'C', key);
+        return { ...moved, id: `degree-${i + 1}`, label: `${moved.root} ${MODES[i].label}` };
+    });
 }
 
 /** MIDI number of a scale's root in a given octave (C4 = 60). */

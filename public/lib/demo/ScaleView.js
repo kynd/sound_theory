@@ -44,7 +44,7 @@ export class ScaleView {
         this._wirePointer();
         this._resize();
         // The clef and accidentals come from a web font; draw again once it is ready.
-        document.fonts?.load(`48px ${MUSIC_FONT}`, '𝄞♯♭𝄪𝄫').then(() => this.draw());
+        document.fonts?.load(`48px ${MUSIC_FONT}`, '𝄞♯♭♮𝄪𝄫').then(() => this.draw());
     }
 
     /** Shows a scale from `scales.js` (any root). */
@@ -142,7 +142,7 @@ export class ScaleView {
             ctx.roundRect(x, y, size, size, 6);
             ctx.fill();
             ctx.fillStyle = sounding ? COLORS.white : COLORS.ink;
-            ctx.fillText(inScale.get(i) ?? pitchClassNames(this.scale.root)[(this.root + i) % 12], x + size / 2, y + size / 2);
+            ctx.fillText(inScale.get(i) ?? pitchClassNames(this.scale)[(this.root + i) % 12], x + size / 2, y + size / 2);
             this._squares.push({ x, y, size, midi: this.root + i });
         }
     }
@@ -180,6 +180,9 @@ export class ScaleView {
         ctx.font = `${2 * SPACE}px ${MUSIC_FONT}`;
         ctx.textAlign = 'right';
         ctx.textBaseline = 'middle';
+        // The last accidental written on each line or space: a plain note after a sharp
+        // or flat on the same position takes a natural sign, as in a bar of music.
+        const written = new Map();
         notes.forEach((note, i) => {
             const x = left + i * stepX;
             const position = note.position;
@@ -188,7 +191,9 @@ export class ScaleView {
             ctx.fillStyle = COLORS.ink;
             for (let p = 0; p >= position; p -= 2) ctx.fillRect(x - 11, Math.round(yOf(p)), 22, 1);
             for (let p = 12; p <= position; p += 2) ctx.fillRect(x - 11, Math.round(yOf(p)), 22, 1);
-            if (note.accidental) ctx.fillText(note.accidental, x - 11, y);
+            const sign = note.accidental || (written.get(position) ? '♮' : '');
+            if (sign) ctx.fillText(sign, x - 11, y);
+            written.set(position, note.accidental);
             const sounding = run && this.step !== null ? i === this.step : note.midi === this.sounding;
             ctx.fillStyle = sounding ? COLORS.red : COLORS.ink;
             ctx.beginPath();

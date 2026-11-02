@@ -34,7 +34,10 @@ export class Keyboard {
         this.el = container;
         this.low = low;
         this.octaves = octaves;
-        this.whiteOnly = whiteOnly;
+        // The pitch classes shown as a row of equal keys (the white keys, or the notes of
+        // a key), with their names, or null for a full keyboard.
+        this.only = whiteOnly ? WHITE_PCS : null;
+        this.names = null;
         this.rootPc = null;
         this.onNoteOn = onNoteOn;
         this.onNoteOff = onNoteOff;
@@ -56,6 +59,18 @@ export class Keyboard {
     setPads(pads) {
         this.releaseAll();
         this.pads = pads && pads.length ? pads : null;
+        this._build();
+    }
+
+    /**
+     * Shows only the notes of a scale, such as a major key, as a row of equal keys
+     * labeled with `names` (pitch class → name, e.g. 'F♯'), played from the home row
+     * like the white keys. Pass null to go back to the full keyboard.
+     */
+    setScale(pcs, names = null) {
+        this.releaseAll();
+        this.only = pcs ? new Set(pcs) : null;
+        this.names = names;
         this._build();
     }
 
@@ -107,7 +122,9 @@ export class Keyboard {
             return;
         }
         let whites = 0;
-        for (let m = this.low; m <= this.high; m++) if (isWhite(m)) whites++;
+        const pcOf = m => ((m % 12) + 12) % 12;
+        const shown = m => (this.only ? this.only.has(pcOf(m)) : isWhite(m));
+        for (let m = this.low; m <= this.high; m++) if (shown(m)) whites++;
         const ww = 100 / whites;
         this._whiteMidis = [];
 
@@ -116,8 +133,8 @@ export class Keyboard {
             const key = document.createElement('div');
             const pc = ((m % 12) + 12) % 12;
             key.dataset.midi = m;
-            if (!isWhite(m) && this.whiteOnly) continue;
-            if (isWhite(m)) {
+            if (this.only && !this.only.has(pc)) continue;
+            if (shown(m)) {
                 this._whiteMidis.push(m);
                 key.className = 'dp-key white';
                 key.style.left = `${whiteIndex * ww}%`;
@@ -129,9 +146,9 @@ export class Keyboard {
                 key.style.width = `${ww * 0.6}%`;
             }
             // Octave names on the Cs, which are white keys, so the text stays black.
-            // With white keys only, every key gets its letter.
+            // In a row of a scale's notes (the white keys or a key), every key gets its name.
             if (pc === 0) key.textContent = midiToNote(m);
-            else if (this.whiteOnly) key.textContent = midiToNote(m).replace(/\d+$/, '');
+            else if (this.only) key.textContent = this.names?.[pc] ?? midiToNote(m).replace(/\d+$/, '');
             if (this.rootPc !== null && pc === this.rootPc) key.classList.add('root');
             if (this._counts.get(m)) key.classList.add('active');
             if (this._lit?.has(m)) key.classList.add('lit');
@@ -205,7 +222,7 @@ export class Keyboard {
                 }
                 return;
             }
-            if (this.whiteOnly) {
+            if (this.only) {
                 const i = PAD_KEYS.indexOf(k);
                 if (i >= 0 && i < this._whiteMidis.length) this._press(`key:${k}`, this._whiteMidis[i]);
                 return;
