@@ -24,11 +24,11 @@ Choose a **Pattern** and press **Play** to hear a simple drum beat in that time 
 
 **Pattern**を選んで**Play**を押すと、その拍子の簡単なドラムのビートが聞こえます。**Tempo**は1分あたりの拍の数で、4分音符を数えます。ただし6/8では、8分音符3つ分の拍を数えます。
 
-The grid below shows one bar: a row per drum (hi-hat, rim click, snare, and kick) and a column per eighth note, with wider gaps between beats. A tall yellow cell is a full hit and a short one a soft hit; the column that is sounding lights up. Click a cell to change it, from rest to full to soft and back to rest. The ring shows the same bar as a cycle, with the hi-hat outermost and the kick innermost. Choosing a pattern again starts it fresh.
+The grid shows one bar: a row per drum (hi-hat, rim click, snare, and kick) and a column per eighth note, with wider gaps between beats. A tall yellow cell is a full hit and a short one a soft hit; the column that is sounding lights up. Click a cell to change it, from rest to full to soft and back to rest. The numbers above count the beats of the bar, 1 to 4 in 4/4, and the beat that is sounding turns red. In 6/8 there are two, and in 7/8 three beats of unequal length, 2 + 2 + 3. Choosing a pattern again starts it fresh.
 
-下のグリッドは1小節を表します。行はドラム（ハイハット、リムクリック、スネア、キック）、列は8分音符で、拍の区切りには広めの隙間があります。高い黄色のセルは強い打音、低いセルは弱い打音で、鳴っている列が明るくなります。セルをクリックすると、休み、強、弱、休みの順に変わります。リングは同じ小節を周期として表し、いちばん外側がハイハット、いちばん内側がキックです。パターンを選び直すと、最初の状態に戻ります。
+グリッドは1小節を表します。行はドラム（ハイハット、リムクリック、スネア、キック）、列は8分音符で、拍の区切りには広めの隙間があります。高い黄色のセルは強い打音、低いセルは弱い打音で、鳴っている列が明るくなります。セルをクリックすると、休み、強、弱、休みの順に変わります。上の数字は小節の拍を数え、4/4なら1から4まで、鳴っている拍が赤くなります。6/8では2拍、7/8では長さの異なる3拍（2 + 2 + 3）です。パターンを選び直すと、最初の状態に戻ります。
 
-<div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=meters" title="Drum patterns in time signatures" allow="autoplay" loading="lazy" style="height: 416px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=meters" title="Drum patterns in time signatures" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
 
 -   **4/4:** the most common meter in popular music, with the kick on beats 1 and 3 and the snare on 2 and 4.
 

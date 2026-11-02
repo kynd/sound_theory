@@ -11,6 +11,7 @@ import { DRUM_NOTES } from './instruments.js';
  *     stepsPerBeat,   // steps in one beat; the tempo counts beats per minute
  *     groups,         // steps per beat group, in order, summing to the step count
  *                     // ([4, 4, 4, 4] for 4/4 in sixteenths, [2, 2, 3] for 7/8)
+ *     beatsPerBar?,   // for a pattern longer than a bar: beat groups in one bar
  *     tempo,          // a suitable tempo in beats per minute
  *     tracks: [{ id, label, midi, steps, offset?, gain? }],
  *   }
@@ -44,10 +45,11 @@ export function parseSteps(text) {
  * Builds a pattern from strings per track. `trackIds` picks the tracks (in
  * DRUM_TRACKS order); a track without a string is all rests.
  */
-export function makePattern({ id, label, stepsPerBeat, groups, tempo, tracks, trackIds = DRUM_TRACKS.map(t => t.id) }) {
+export function makePattern({ id, label, stepsPerBeat, groups, beatsPerBar, tempo, tracks, trackIds = DRUM_TRACKS.map(t => t.id) }) {
     const steps = groups.reduce((a, b) => a + b, 0);
     return {
         id, label, stepsPerBeat, groups, tempo,
+        ...(beatsPerBar ? { beatsPerBar } : {}),
         tracks: DRUM_TRACKS.filter(t => trackIds.includes(t.id)).map(t => {
             const parsed = tracks[t.id] ? parseSteps(tracks[t.id]) : [];
             return { ...t, steps: Array.from({ length: steps }, (_, i) => parsed[i] ?? 0) };
@@ -144,7 +146,7 @@ export const FEEL_PATTERNS = [
         rim:   '- - - X - - - - - X - -',
         kick:  'x - - x - - x - - x - -',
     } }),
-    makePattern({ id: 'bossa-nova', label: 'Bossa nova', stepsPerBeat: 2, groups: quarters(8, 2), tempo: 130, tracks: {
+    makePattern({ id: 'bossa-nova', label: 'Bossa nova', stepsPerBeat: 2, groups: quarters(8, 2), beatsPerBar: 4, tempo: 130, tracks: {
         hat:   'X x X x X x X x X x X x X x X x',
         rim:   'X - - X - - X - - - X - - X - -',
         kick:  'X - - x X - - x X - - x X - - x',

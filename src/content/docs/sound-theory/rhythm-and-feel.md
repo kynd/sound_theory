@@ -13,7 +13,7 @@ Choose a **Pattern** and press **Play**, as in the [time signature demo](/time-s
 
 [拍子記号のデモ](/time-signatures)と同じく、**Pattern**を選んで**Play**を押してください。**Tempo**は1分あたりの拍の数で、セルをクリックすると、休み、強、弱の順に変わります。パターンはすべて4/4です。最初の3つは、キックとスネアを同じにしたまま、ハイハットだけを変えています。グリッドの列は、イーブンのパターンでは16分音符、シャッフルとスウィングでは8分音符の3連符（1拍に3つ）、ボサノヴァでは2小節分の8分音符です。
 
-<div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=feels" title="Drum patterns with different feels" allow="autoplay" loading="lazy" style="height: 416px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=feels" title="Drum patterns with different feels" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
 
 -   **Quarter notes, Eighth notes, Sixteenth notes:** the hi-hat plays on every beat, then twice, then four times per beat. At the same tempo, a finer subdivision makes the beat feel busier and faster.
 

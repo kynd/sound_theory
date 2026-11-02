@@ -20,6 +20,11 @@ const NEXT = new Map([[0, FULL], [FULL, SOFT], [SOFT, 0]]);
  * a cell cycles it through rest, full, and soft, and reports it to `onEdit`. A track
  * moved off the grid (`offset`) has its hits drawn moved by the same share of a step.
  *
+ * With `count`, a row above the tracks counts the beats: one well per beat group,
+ * as wide as the group, numbered from 1 and starting again each bar
+ * (`pattern.beatsPerBar`, or every group being one bar's beats). The sounding beat is
+ * red with white text.
+ *
  * The canvas sits in a `.canvas-wrap.dp-strip`; the grid sets the strip's height to
  * fit its rows.
  */
@@ -28,9 +33,11 @@ export class StepGrid {
      * @param {HTMLCanvasElement} canvas
      * @param {object}   [opts]
      * @param {Function} [opts.onEdit]  called with (trackIndex, step, velocity).
+     * @param {boolean}  [opts.count]   show the beat count above the tracks.
      */
-    constructor(canvas, { onEdit = () => {} } = {}) {
+    constructor(canvas, { onEdit = () => {}, count = false } = {}) {
         this.canvas = canvas;
+        this.count = count;
         this.ctx = canvas.getContext('2d');
         this.viewport = new Viewport(canvas);
         this.onEdit = onEdit;
@@ -47,8 +54,13 @@ export class StepGrid {
     update(pattern, stepDuration = this.stepDuration) {
         this.pattern = pattern;
         this.stepDuration = stepDuration;
-        this.viewport.wrap.style.height = `${pattern.tracks.length * ROW}px`;
+        this.viewport.wrap.style.height = `${this._top() + pattern.tracks.length * ROW}px`;
         this.draw();
+    }
+
+    /** Height of the count row and the space below it, or 0 without a count. */
+    _top() {
+        return this.count ? ROW + GRID : 0;
     }
 
     /** Marks step `i` as sounding, or none with -1. */
@@ -101,8 +113,26 @@ export class StepGrid {
 
         ctx.font = FONT;
         ctx.textBaseline = 'middle';
+        const top = this._top();
+        if (this.count) {
+            // One well per beat; the beat that holds the sounding step is red.
+            const perBar = pattern.beatsPerBar ?? pattern.groups.length;
+            let first = 0;
+            pattern.groups.forEach((size, b) => {
+                const x1 = xs[first], x2 = xs[first + size - 1] + cellW;
+                const sounding = this.step >= first && this.step < first + size;
+                ctx.fillStyle = sounding ? COLORS.red : COLORS.white;
+                ctx.beginPath();
+                ctx.roundRect(x1, 0, x2 - x1, ROW - GAP, 4);
+                ctx.fill();
+                ctx.fillStyle = sounding ? COLORS.white : COLORS.ink;
+                ctx.textAlign = 'center';
+                ctx.fillText(String(b % perBar + 1), (x1 + x2) / 2, (ROW - GAP) / 2);
+                first += size;
+            });
+        }
         pattern.tracks.forEach((track, t) => {
-            const y = t * ROW, cellH = ROW - GAP;
+            const y = top + t * ROW, cellH = ROW - GAP;
             ctx.fillStyle = COLORS.ink;
             ctx.textAlign = 'left';
             ctx.fillText(track.label, 0, y + cellH / 2);

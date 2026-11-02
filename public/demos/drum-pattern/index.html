@@ -11,16 +11,15 @@
   <link rel="stylesheet" href="../../styles/demo-ui.css" />
 </head>
 <body>
-  <div class="demo-layout stacked">
-    <div class="stage-row">
-      <div class="canvas-wrap"><canvas id="canvas"></canvas></div>
-
-      <div class="dp-panel">
-        <button id="play" class="dp-btn">Play</button>
-        <div id="controls"></div>
-      </div>
+  <div class="demo-layout">
+    <div class="stage-col">
+      <div class="canvas-wrap dp-strip"><canvas id="grid"></canvas></div>
     </div>
-    <div class="canvas-wrap dp-strip"><canvas id="grid"></canvas></div>
+
+    <div class="dp-panel">
+      <button id="play" class="dp-btn">Play</button>
+      <div id="controls"></div>
+    </div>
   </div>
 
   <script type="module" src="./main.js"></script>

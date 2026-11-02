@@ -106,6 +106,8 @@ button, select, input { font: inherit; color: inherit; }
   margin: 0 calc(2 * var(--grid)) calc(2 * var(--grid));
   touch-action: none;
 }
+/* A strip that is the whole stage starts on the panel's top line. */
+.stage-col > .canvas-wrap.dp-strip:first-child { margin-top: calc(2 * var(--grid)); }
 .stage-row {
   flex: 1 1 auto; min-height: 0;
   display: flex; flex-direction: row;
