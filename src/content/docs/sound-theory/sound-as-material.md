@@ -11,7 +11,7 @@ Most of music theory is about notes: which pitches, when, and in what combinatio
 
 Onkyō (音響, "sound" or "acoustics") is a name for improvised music that grew in Tokyo from the late 1990s, centered around 2000 on the small venue Off Site. Musicians such as Otomo Yoshihide, Sachiko M, Toshimaru Nakamura, Taku Sugimoto, and Ami Yoshida played very quietly and sparsely, with long silences. Sachiko M played the sine-wave test tones of a sampler with no samples loaded. Nakamura played a no-input mixing board, a mixer whose output is fed back into its own input, shaping the feedback. Sugimoto played a few guitar notes far apart.
 
-音響系は、1990年代後半の東京で生まれ、2000年前後に小さな会場Off Siteを中心に展開した即興音楽の呼び名です。大友良英、Sachiko M、中村としまる、杉本拓、吉田アミといった音楽家たちは、長い沈黙を挟みながら、ごく小さな音で、まばらに演奏しました。Sachiko Mは、サンプルを入れていないサンプラーの、サイン波のテスト・トーンを演奏しました。中村としまるは、ミキサーの出力を自分の入力に戻すノー・インプット・ミキシング・ボードを演奏し、そのフィードバックを形づくりました。杉本拓は、ギターのわずかな音を遠く離して弾きました。
+音響系は、1990年代後半の東京で生まれ、2000年前後に小さな会場Off Siteを中心に展開した即興音楽の呼び名です。大友良英、Sachiko M、中村としまる、杉本拓、吉田アミといったミュージシャンたちは、長い沈黙を挟みながら、ごく小さな音で、まばらに演奏しました。Sachiko Mは、サンプルを入れていないサンプラーの、サイン波のテスト・トーンを演奏しました。中村としまるは、ミキサーの出力を自分の入力に戻すノー・インプット・ミキシング・ボードを演奏し、そのフィードバックを形づくりました。杉本拓は、ギターのわずかな音を遠く離して弾きました。
 
 The music asks for a different kind of listening: to a single sine tone and how it fills the room, to a hum or a click, to the silence between sounds and the sounds of the space. It shared ideas with similar scenes elsewhere, such as the reductionism of Berlin, and goes back to Cage's turn toward listening. A lone sine wave, the simplest sound there is, can be heard on [Sound Waves](/sound-waves); played quietly and high, it is close to the material Sachiko M worked with.
 

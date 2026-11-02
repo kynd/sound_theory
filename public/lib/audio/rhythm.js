@@ -149,6 +149,16 @@ export const FEEL_PATTERNS = [
 ];
 
 /**
+ * A hammer falling on every downbeat, as in a work song: a low thud with a ring of
+ * metal, then three beats of space for the singing.
+ */
+export const HAMMER = makePattern({
+    id: 'hammer', label: 'Hammer', stepsPerBeat: 1, groups: [4], tempo: 76,
+    trackIds: ['rim', 'kick'],
+    tracks: { rim: 'X - - -', kick: 'X - - -' },
+});
+
+/**
  * The simple rock beat used to hear timing and loudness: snare on beats 2 and 4. The
  * snare is written soft so a demo can raise its gain up to a full hit.
  */
@@ -187,12 +197,15 @@ export class StepSequencer {
      * @param {object}   [opts.pattern]
      * @param {number}   [opts.tempo]   beats per minute.
      * @param {Function} [opts.onStep]
+     * @param {Function} [opts.onSchedule]  (i, time): step `i` will sound at `time`
+     *                                      on the audio clock; called ahead of it.
      */
-    constructor(instrument, { pattern = null, tempo = 100, onStep = () => {} } = {}) {
+    constructor(instrument, { pattern = null, tempo = 100, onStep = () => {}, onSchedule = () => {} } = {}) {
         this.instrument = instrument;
         this.pattern = pattern;
         this.tempo = tempo;
         this.onStep = onStep;
+        this.onSchedule = onSchedule;
         this._timer = null;
         this._draws = new Set();
     }
@@ -230,6 +243,7 @@ export class StepSequencer {
                 const velocity = track.steps[i] * (track.gain ?? 1);
                 if (velocity > 0) this.instrument.noteOn(track.midi, velocity, this._next + (track.offset ?? 0));
             }
+            this.onSchedule(i, this._next);
             const draw = setTimeout(() => { this._draws.delete(draw); this.onStep(i); },
                 Math.max(0, (this._next - now) * 1000));
             this._draws.add(draw);

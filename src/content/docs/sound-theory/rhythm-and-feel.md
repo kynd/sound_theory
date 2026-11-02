@@ -4,7 +4,7 @@ slug: rhythm-and-feel
 ---
 Two beats in the same time signature and at the same tempo can feel completely different. Much of the difference lies in how the beat is subdivided, which notes are accented, and how exactly the notes are placed and played. Musicians call the result the feel, or the groove.
 
-同じ拍子、同じテンポのビートでも、まったく違って感じられることがあります。その違いの多くは、拍をどう細分するか、どの音にアクセントを置くか、そして音をどれだけ正確に置き、どう鳴らすかにあります。音楽家はその結果を、フィールやグルーヴと呼びます。
+同じ拍子、同じテンポのビートでも、まったく違って感じられることがあります。その違いの多くは、拍をどう細分するか、どの音にアクセントを置くか、そして音をどれだけ正確に置き、どう鳴らすかにあります。ミュージシャンはその結果を、フィールやグルーヴと呼びます。
 
 # Subdivisions and Styles
 # 細分とスタイル
@@ -31,7 +31,7 @@ Choose a **Pattern** and press **Play**, as in the [time signature demo](/time-s
 
 -   **Shuffle：** 1拍を3つに分け、ハイハットがその1つ目と3つ目を叩きます。ブルースや初期のロックンロールで聞かれる、長短のパターンです。
 
--   **Swing：** ハイハットでジャズのライドのパターン（「チーン、チキ、チーン、チキ」）を、キックで毎拍を弱く叩き、足で踏むハイハットの代わりにリムクリックを2拍目と4拍目に入れます。実際のスウィングは、正確な3連符ではありません。奏者はテンポやスタイルに合わせて、より強く、あるいはよりイーブンに近くスウィングします。
+-   **Swing：** ハイハットでジャズのライドのパターン（「チーン、チキ、チーン、チキ」）を、キックで毎拍を弱く叩き、足で踏むハイハットの代わりにリムクリックを2拍目と4拍目に入れます。実際のスウィングは、正確な3連符ではありません。ミュージシャンはテンポやスタイルに合わせて、より強く、あるいはよりイーブンに近くスウィングします。
 
 -   **Bossa nova：** ブラジルの2小節のパターンです。キックはサンバのスルドに由来する「1、（ト）、3、（ト）」の一定の形を、リムクリックは2小節にわたるボサノヴァのクラーベを叩きます。
 
@@ -40,7 +40,7 @@ Choose a **Pattern** and press **Play**, as in the [time signature demo](/time-s
 
 The grid is only a reference. Players rarely hit exactly on it: a drummer can play slightly ahead of the beat, pushing it, or slightly behind, laying back. Differences of a few tens of milliseconds are not heard as mistakes but felt as character. How loud each note is, and how it sounds (a drum hit harder is brighter, not only louder), matter just as much.
 
-グリッドは目安にすぎません。奏者がグリッドぴったりに叩くことはめったにありません。ドラマーは拍よりわずかに前で叩いてビートを押し進めることも、わずかに後ろで叩いてゆったりさせることもできます。数十ミリ秒の差は、間違いとしてではなく、個性として感じられます。それぞれの音の大きさや音色（強く叩いた太鼓は、大きくなるだけでなく明るくもなります）も、同じくらい重要です。
+グリッドは目安にすぎません。ミュージシャンがグリッドぴったりに叩くことはめったにありません。ドラマーは拍よりわずかに前で叩いてビートを押し進めることも、わずかに後ろで叩いてゆったりさせることもできます。数十ミリ秒の差は、間違いとしてではなく、個性として感じられます。それぞれの音の大きさや音色（強く叩いた太鼓は、大きくなるだけでなく明るくもなります）も、同じくらい重要です。
 
 To hear this, the demo below plays a very simple beat at a fixed 92 BPM: the hi-hat on every eighth note, the kick on beats 1 and 3, and the snare on 2 and 4. Press **Play**, then move the snare. **Timing** moves it ahead of the beat (negative, in milliseconds) or behind it (positive), up to 40 ms either way; **Volume** makes it louder or softer, in decibels. The grid and the ring show the snare moved off the grid and its loudness as the height or size of its hits.
 

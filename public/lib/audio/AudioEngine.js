@@ -19,6 +19,11 @@ export async function startAudio() {
     if (Tone.getContext().state !== 'running') await Tone.start();
 }
 
+/** The audio clock, in seconds: the time notes are scheduled against. */
+export function audioNow() {
+    return Tone.immediate();
+}
+
 /** Converts a MIDI note number to Tone's scientific pitch name (60 → "C4"). */
 export function midiToNote(midi) {
     return Tone.Frequency(midi, 'midi').toNote();

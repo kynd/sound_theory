@@ -100,7 +100,7 @@ Pitch is continuous, so there is no requirement for twelve notes, equal steps, o
 
 Arabic maqam uses intervals between a semitone and a whole tone, such as the neutral second, about three-quarters of a tone, whose exact size varies by maqam and region. In Indian classical music, theory describes 22 śruti, small divisions of the octave from which each rāga draws its notes, and performers tune against a drone, which draws the intervals toward pure ratios.
 
-アラブ音楽のマカームは、約4分の3音にあたる中立2度など、半音と全音のあいだの音程を使い、その正確な大きさはマカームや地域によって異なります。インド古典音楽の理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、各ラーガはそこから音を選びます。演奏者はドローンを基準に音を合わせるため、音程は純正な比に近づきます。
+アラブ音楽のマカームは、約4分の3音にあたる中立2度など、半音と全音のあいだの音程を使い、その正確な大きさはマカームや地域によって異なります。インド古典音楽の理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、各ラーガはそこから音を選びます。ミュージシャンはドローンを基準に音を合わせるため、音程は純正な比に近づきます。
 
 In Indonesian gamelan, slendro has five roughly equal steps per octave, while pelog has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.
 

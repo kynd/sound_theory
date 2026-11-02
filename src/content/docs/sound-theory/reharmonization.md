@@ -2,9 +2,9 @@
 title: "Reharmonization リハーモナイズ"
 slug: reharmonization
 ---
-Reharmonization keeps a melody and changes the chords under it. Jazz musicians reharmonize standards to make them fresh, arrangers do it to give a familiar tune a new mood, and a singer's cover version often starts there. The melody stays the same, but its meaning changes: G over C is the stable fifth of the chord, over A7 it is the seventh that wants to fall, and over E♭7 it is the third.
+Reharmonization keeps a melody and changes the chords under it. Musicians reharmonize familiar songs to make them sound fresh, arrangers do it to give a tune a new mood, and a singer's cover version often starts there. The melody stays the same, but its meaning changes: G over C is the stable fifth of the chord, over A7 it is the seventh that wants to fall, and over E♭7 it is the third.
 
-リハーモナイズとは、旋律をそのままにして、その下の和音を変えることです。ジャズ奏者はスタンダード曲を新鮮にするためにリハーモナイズし、編曲家はよく知られた曲に新しい雰囲気を与えるためにリハーモナイズします。歌手のカバーも、そこから始まることがよくあります。旋律は同じでも、その意味は変わります。Cの上のGは和音の安定した5度ですが、A7の上では下がりたがる7度、E♭7の上では3度になります。
+リハーモナイズとは、旋律をそのままにして、その下の和音を変えることです。ミュージシャンはよく知られた曲を新鮮に聞かせるためにリハーモナイズし、編曲家は曲に新しい雰囲気を与えるためにリハーモナイズします。歌手のカバーも、そこから始まることがよくあります。旋律は同じでも、その意味は変わります。Cの上のGは和音の安定した5度ですが、A7の上では下がりたがる7度、E♭7の上では3度になります。
 
 The one constraint is the melody: each melody note has to fit the new chord, as a chord tone or a tension that works (see [Sevenths and Tensions](/seventh-chords)). Within that, the techniques from the previous pages are the tools:
 

@@ -13,11 +13,11 @@ The simplest rhythm is a pulse: sounds at equal intervals, like a clock or a met
 
 最も単純なリズムは拍（パルス）です。時計やメトロノームのように、等しい間隔で鳴る音です。その速さ、つまりテンポは、1分あたりの拍の数（BPM）で数えます。60 BPMでは1拍が1秒、120 BPMでは0.5秒です。
 
-Press **Play** to start a pulse, and move **Tempo** to change its beats per minute. The ring shows the beats going around clockwise from the top, and the beat that sounds turns red. Every beat is the same, yet many listeners start to hear them in pairs, "tick, tock", after a while. We tend to group even a perfectly regular pulse.
+Press **Play** to start a pulse, and move **Tempo** to change its beats per minute. The beats come in from the right, turn red and sound as they reach the middle, and move on to the left; the faster the tempo, the faster they move. Every beat is the same, yet after a while many listeners start to hear them in groups. Twos ("tick, tock") and fours ("one, two, three, four") are the most common, but any grouping is possible. We tend to group even a perfectly regular pulse.
 
-**Play**を押すと拍が鳴り始め、**Tempo**で1分あたりの拍の数を変えられます。リングは、上から時計回りに進む拍を表し、鳴っている拍が赤くなります。どの拍もまったく同じですが、しばらく聞いていると、「チク、タク」と2つずつまとまって聞こえ始める人が多いはずです。私たちは、完全に規則的な拍でさえ、まとめて聞こうとするのです。
+**Play**を押すと拍が鳴り始め、**Tempo**で1分あたりの拍の数を変えられます。拍は右から流れてきて、真ん中に来たところで赤くなって鳴り、左へ去っていきます。テンポが速いほど、速く流れます。どの拍もまったく同じですが、しばらく聞いていると、まとまって聞こえ始める人が多いはずです。「チク、タク」と2つずつ、あるいは「1、2、3、4」と4つずつまとめるのがもっとも多いでしょうが、どんなまとまりもありえます。私たちは、完全に規則的な拍でさえ、まとめて聞こうとするのです。
 
-<div class="demo-wrap"><iframe src="/writing/demos/pulse/index.html?accent=off" title="An even pulse" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/pulse/index.html?accent=off" title="An even pulse" allow="autoplay" loading="lazy" style="height: 144px"></iframe></div>
 
 # Accents and Cycles
 # アクセントと周期

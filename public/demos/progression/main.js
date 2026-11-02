@@ -3,33 +3,46 @@ import { createInstrument } from '../../lib/audio/instruments.js';
 import { PROGRESSION_SETS, ProgressionPlayer } from '../../lib/audio/chords.js';
 import { Keyboard } from '../../lib/demo/Keyboard.js';
 import { ProgressionView } from '../../lib/demo/ProgressionView.js';
+import { ChordChart } from '../../lib/demo/ChordChart.js';
 import { addSelect, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
 
-// Which progressions to offer: ?set= names a set in PROGRESSION_SETS.
-const PROGRESSIONS = PROGRESSION_SETS[new URLSearchParams(location.search).get('set')] ?? PROGRESSION_SETS.diatonic;
+// Which progressions to offer: ?set= names a set in PROGRESSION_SETS. ?view=chart shows
+// them as a chord chart instead of a piano roll.
+const params = new URLSearchParams(location.search);
+const PROGRESSIONS = PROGRESSION_SETS[params.get('set')] ?? PROGRESSION_SETS.diatonic;
+const View = params.get('view') === 'chart' ? ChordChart : ProgressionView;
 
 const master = new MasterBus();
-const piano = createInstrument('piano').connect(master.input);
+
+// Instruments by id, created when a progression first asks for them (`sounds`).
+const instruments = new Map();
+const instrument = id => {
+    if (!instruments.has(id)) instruments.set(id, createInstrument(id).connect(master.input));
+    return instruments.get(id);
+};
+const sounds = PROGRESSIONS.flatMap(p => [p.sounds?.chords ?? 'piano', p.sounds?.melody ?? p.sounds?.chords ?? 'piano']);
+if (PROGRESSIONS.some(p => p.drums)) sounds.push('drums');
 
 // Empty unless something is loading or failed.
 const status = document.getElementById('status');
 status.textContent = 'Loading samples…';
-piano.ready.then(
+Promise.all([...new Set(sounds)].map(id => instrument(id).ready)).then(
     () => { status.textContent = ''; },
     () => { status.textContent = 'The samples could not be loaded.'; });
 
 // Set once the Play button is wired; returns its label to Play when playback ends.
 let syncPlay = null;
 
-// What the keyboard shows: the sounding chord and melody note.
-let chordNotes = [], melodyNote = null;
-const light = () => keyboard.setLit(melodyNote === null ? chordNotes : [...chordNotes, melodyNote]);
+// What the keyboard shows: the sounding chord, melody note, and riff note.
+let chordNotes = [], melodyNote = null, bassNote = null;
+const light = () => keyboard.setLit([...chordNotes, melodyNote, bassNote].filter(n => n !== null));
 
-const player = new ProgressionPlayer(piano, {
+const player = new ProgressionPlayer(instrument('piano'), {
+    drums: PROGRESSIONS.some(p => p.drums) ? instrument('drums') : null,
     onChord: i => {
         view.setChord(i);
-        chordNotes = i < 0 ? [] : player.voicings[i].notes;
+        chordNotes = i < 0 ? [] : player.chordNotes(i);
         light();
     },
     onMelody: i => {
@@ -37,20 +50,24 @@ const player = new ProgressionPlayer(piano, {
         melodyNote = i < 0 ? null : player.progression.melody[i].midi;
         light();
     },
+    onBass: midi => {
+        bassNote = midi < 0 ? null : midi;
+        light();
+    },
     onEnd: () => syncPlay?.(),
 });
 
-// Pressing a chord in the roll plays it while held.
-const view = new ProgressionView(document.getElementById('canvas'), {
+// Pressing a chord in the view plays it while held.
+const view = new View(document.getElementById('canvas'), {
     onPress: i => {
         startAudio();
         chordNotes = player.voicings[i].notes;
-        chordNotes.forEach(midi => piano.noteOn(midi, 0.5));
+        chordNotes.forEach(midi => player.instrument.noteOn(midi, 0.5));
         view.setChord(i);
         light();
     },
     onRelease: i => {
-        player.voicings[i].notes.forEach(midi => piano.noteOff(midi));
+        player.voicings[i].notes.forEach(midi => player.instrument.noteOff(midi));
         chordNotes = [];
         view.setChord(-1);
         light();
@@ -59,14 +76,17 @@ const view = new ProgressionView(document.getElementById('canvas'), {
 
 const keyboard = new Keyboard(document.getElementById('keyboard'), {
     low: 36, octaves: 4,
-    onNoteOn: midi => { startAudio(); piano.noteOn(midi); },
-    onNoteOff: midi => piano.noteOff(midi),
+    onNoteOn: midi => { startAudio(); player.instrument.noteOn(midi); },
+    onNoteOff: midi => player.instrument.noteOff(midi),
 });
 
 function useProgression(id) {
-    player.setProgression(PROGRESSIONS.find(p => p.id === id));
+    const progression = PROGRESSIONS.find(p => p.id === id);
+    player.instrument = instrument(progression.sounds?.chords ?? 'piano');
+    player.melodyInstrument = instrument(progression.sounds?.melody ?? progression.sounds?.chords ?? 'piano');
+    player.setProgression(progression);
     view.update(player.progression, player.voicings);
-    chordNotes = []; melodyNote = null;
+    chordNotes = []; melodyNote = null; bassNote = null;
     light();
     syncPlay?.();
 }

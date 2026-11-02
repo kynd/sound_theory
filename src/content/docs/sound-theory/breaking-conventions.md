@@ -4,7 +4,7 @@ slug: breaking-conventions
 ---
 Almost every convention on the earlier pages has been questioned at some point: a tonal center, a regular meter, twelve equal notes, the idea that music is made of notes from instruments at all. Especially since the early twentieth century, composers and players have broken these on purpose, to find sounds and forms that the conventions left out. Breaking a convention is also a way to understand it, and many of these experiments became conventions in turn.
 
-これまでのページで見てきたほとんどすべての慣習は、どこかで問い直されてきました。中心となる調、規則的な拍子、12の等しい音、そもそも音楽は楽器が奏でる音符でできているという考え方さえも。特に20世紀初めから、作曲家や演奏家は、慣習からこぼれ落ちた音や形式を求めて、意図的にそれを破ってきました。慣習を破ることは、それを理解するひとつの方法でもあり、こうした実験の多くは、やがてそれ自体が慣習になりました。
+これまでのページで見てきたほとんどすべての慣習は、どこかで問い直されてきました。中心となる調、規則的な拍子、12の等しい音、そもそも音楽は楽器が奏でる音符でできているという考え方さえも。特に20世紀初めから、作曲家やミュージシャンは、慣習からこぼれ落ちた音や形式を求めて、意図的にそれを破ってきました。慣習を破ることは、それを理解するひとつの方法でもあり、こうした実験の多くは、やがてそれ自体が慣習になりました。
 
 # Pitch and Harmony
 # 音高と和声
@@ -40,7 +40,7 @@ John Cage put screws, bolts, and rubber between the strings of a piano (the prep
 
 Minimalism in the 1960s went the other way from complexity. La Monte Young held drones for hours. Terry Riley's *In C* (1964) gives a group of players 53 short phrases, each repeated as many times as a player likes. Steve Reich discovered phasing with two tape loops of the same recording that drifted apart (*It's Gonna Rain*, 1965), and then asked live players to do the same: two pianists play the same pattern, and one slowly speeds up until it is one note ahead, then the next. The music is a process that, once set going, unfolds by itself.
 
-1960年代のミニマリズムは、複雑さとは逆の方向へ進みました。ラ・モンテ・ヤングは、何時間もドローンを保ち続けました。テリー・ライリーの《In C》（1964年）は、奏者たちに53の短いフレーズを与え、各奏者が好きなだけ繰り返します。スティーヴ・ライヒは、同じ録音の2つのテープ・ループがずれていくことからフェイズ（位相のずれ）を発見し（《イッツ・ゴナ・レイン》、1965年）、それを生身の奏者にも求めました。2人のピアニストが同じパターンを弾き、一方がゆっくり速くなって1音先に進み、さらに次の音へと進みます。音楽は、いったん動き出せば自ら展開していくプロセスなのです。
+1960年代のミニマリズムは、複雑さとは逆の方向へ進みました。ラ・モンテ・ヤングは、何時間もドローンを保ち続けました。テリー・ライリーの《In C》（1964年）は、ミュージシャンたちに53の短いフレーズを与え、それぞれが好きなだけ繰り返します。スティーヴ・ライヒは、同じ録音の2つのテープ・ループがずれていくことからフェイズ（位相のずれ）を発見し（《イッツ・ゴナ・レイン》、1965年）、それを生身のミュージシャンにも求めました。2人のピアニストが同じパターンを弾き、一方がゆっくり速くなって1音先に進み、さらに次の音へと進みます。音楽は、いったん動き出せば自ら展開していくプロセスなのです。
 
 Press **Play** to hear phasing: two pianos, one on each side, play the same twelve-note loop. **Drift** sets how much faster the second piano is, in percent; at 0 they play in unison. As the second pulls ahead, the two lines interlock into new patterns, blur, and line up again one note apart. The rings show the loop for each piano, the first outside and the second inside, with the note each is playing in red.
 

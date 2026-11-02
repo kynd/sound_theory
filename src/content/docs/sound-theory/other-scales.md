@@ -78,6 +78,6 @@ The altered scale and the Lydian 7th are the same scale started from different n
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?set=altered-lydian&roots" title="Altered and Lydian 7th" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
-The diminished and altered scales are written here with D♭ and D♯ rather than D♭ and E♭, following the names of the tensions (♭9 and ♯9) that jazz uses.
+The diminished and altered scales are written here with D♭ and D♯ rather than D♭ and E♭, following the names of the tensions (♭9 and ♯9) in chord symbols.
 
-ここでは、ディミニッシュ・スケールとオルタード・スケールを、ジャズで使うテンションの名前（♭9と♯9）にならって、D♭とE♭ではなくD♭とD♯で書いています。
+ここでは、ディミニッシュ・スケールとオルタード・スケールを、コード・シンボルのテンションの名前（♭9と♯9）にならって、D♭とE♭ではなくD♭とD♯で書いています。

@@ -16,12 +16,14 @@ The classes that make and shape sound (`public/lib/audio/`), and the demo compon
 - **`MasterBus`:** the last stage before the speakers, a volume control (`volume`, in dB) followed by a limiter at −1 dB. Every demo routes its sound through one.
 - **`midiToNote(midi)`, `midiToFrequency(midi)`:** conversions from a MIDI number (60 = C4) to a note name and to Hz at A4 = 440 Hz.
 - **`frequencyToMidi(hz)`, `nearestNote(hz)`:** the reverse. `frequencyToMidi` returns a fractional MIDI number; `nearestNote` returns `{ midi, name, cents }`, the nearest equal-tempered note and the offset from it in cents.
+- **`audioNow()`:** the audio clock in seconds, the time notes are scheduled against, for drawing that follows scheduled notes.
 <div class="jp">
 
 - **`startAudio()`：**オーディオコンテキストを再開します。ブラウザはユーザー操作があるまでコンテキストを停止させておくため、最初の音の前に、ポインターやキーのハンドラの中で呼びます。音を鳴らす前にawaitせず、呼んだ直後に音を予約します。停止中のコンテキストの時計は進まないため、音はオーディオの再開と同時に鳴り、短いタップのnoteOffがnoteOnを追い越して音が鳴りっぱなしになることもありません。
 - **`MasterBus`：**スピーカーの手前の最終段で、音量（`volume`、dB）と−1 dBのリミッターからなります。すべてのデモは、音をひとつの`MasterBus`に通します。
 - **`midiToNote(midi)`、`midiToFrequency(midi)`：**MIDI番号（60 = C4）から音名へ、またA4 = 440 HzでのHzへ変換します。
 - **`frequencyToMidi(hz)`、`nearestNote(hz)`：**その逆の変換です。`frequencyToMidi`は小数のMIDI番号を返し、`nearestNote`は最も近い平均律の音と、そこからのずれ（セント）を`{ midi, name, cents }`で返します。
+- **`audioNow()`：**音を予約する基準となるオーディオクロック（秒）です。予約した音に合わせて描くときに使います。
 
 </div>
 
@@ -196,8 +198,8 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 - **`DRUM_TRACKS`:** the tracks a pattern can use, high to low: hat, rim, snare, kick.
 - **`makePattern(def)`:** builds a pattern from one string per track, one character per step: `X` full (`FULL`), `x` soft (`SOFT`, half), `-` rest; spaces are ignored. `trackIds` picks the tracks.
 - **`clonePattern(pattern)`:** a copy to edit. **`pulsePattern(count, accent)`:** a rim-click pulse, with every `accent`-th beat full and the others soft, or all the same.
-- **`METER_PATTERNS`, `FEEL_PATTERNS`, `BACKBEAT`, `PATTERN_SETS`:** beats in common time signatures (eighth-note steps); subdivisions and styles (quarter, eighth, sixteenth notes, funk, shuffle, swing, bossa nova); the simple beat for timing and loudness; and the sets by name (`meters`, `feels`). Add patterns here, never in a demo.
-- **`StepSequencer(instrument, { pattern, tempo, onStep })`:** loops a pattern until stopped, with the `start()`, `stop()`, and `playing` of a continuous source. Notes are scheduled about 0.2 s ahead on the audio clock, so they land exactly on (or exactly `offset` off) the grid; `onStep(i)` runs as step `i` sounds, and with -1 when stopped. `pattern` and `tempo` can change while playing. `stepDuration` is the seconds per step. `MAX_EARLY` (0.1 s) is the most a track can be moved early.
+- **`METER_PATTERNS`, `FEEL_PATTERNS`, `BACKBEAT`, `HAMMER`, `PATTERN_SETS`:** beats in common time signatures (eighth-note steps); subdivisions and styles (quarter, eighth, sixteenth notes, funk, shuffle, swing, bossa nova); the simple beat for timing and loudness; a work song's hammer on every downbeat; and the sets by name (`meters`, `feels`). Add patterns here, never in a demo.
+- **`StepSequencer(instrument, { pattern, tempo, onStep, onSchedule })`:** loops a pattern until stopped, with the `start()`, `stop()`, and `playing` of a continuous source. Notes are scheduled about 0.2 s ahead on the audio clock, so they land exactly on (or exactly `offset` off) the grid; `onStep(i)` runs as step `i` sounds, and with -1 when stopped. `onSchedule(i, time)` runs as step `i` is scheduled, with the audio-clock time it will sound at. `pattern` and `tempo` can change while playing. `stepDuration` is the seconds per step. `MAX_EARLY` (0.1 s) is the most a track can be moved early.
 <div class="jp">
 
 `rhythm.js`には、リズムのパターンと、それを`DrumKit`で鳴らすシーケンサーを置きます。パターンは等しいステップからなる1周期（ふつうは1小節）で、`{ id, label, stepsPerBeat, groups, tempo, tracks }`の形です。`groups`は拍のまとまりごとのステップ数（7/8なら`[2, 2, 3]`）、`tempo`は1分あたりの拍数です。各トラックは`{ id, label, midi, steps, offset?, gain? }`で、ステップごとのベロシティ（0は休み）を持ち、`offset`秒だけグリッドからずらし（負は前）、`gain`倍します。
@@ -205,8 +207,8 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 - **`DRUM_TRACKS`：**パターンが使えるトラックで、高い音から順にハイハット、リム、スネア、キックです。
 - **`makePattern(def)`：**トラックごとの文字列からパターンをつくります。1文字が1ステップで、`X`が強（`FULL`）、`x`が弱（`SOFT`、半分）、`-`が休みです。空白は無視します。`trackIds`でトラックを選びます。
 - **`clonePattern(pattern)`：**編集用のコピーです。**`pulsePattern(count, accent)`：**リムクリックの拍で、`accent`拍ごとに強く、ほかは弱く、または全部同じに鳴らします。
-- **`METER_PATTERNS`、`FEEL_PATTERNS`、`BACKBEAT`、`PATTERN_SETS`：**よく使う拍子のビート（8分音符のステップ）、細分とスタイル（4分、8分、16分音符、ファンク、シャッフル、スウィング、ボサノヴァ）、タイミングと音量を聞くための簡単なビート、そしてそれらを名前で引くセット（`meters`、`feels`）です。パターンはデモではなく、ここに追加します。
-- **`StepSequencer(instrument, { pattern, tempo, onStep })`：**止めるまでパターンを繰り返し、持続する音源と同じ`start()`、`stop()`、`playing`を持ちます。音はオーディオクロック上で約0.2秒先に予約するので、ぴったりグリッド上に（または`offset`だけ正確にずれて）鳴ります。`onStep(i)`はステップ`i`が鳴るときに、停止時は-1で呼ばれます。演奏中に`pattern`と`tempo`を変えられます。`stepDuration`は1ステップの秒数、`MAX_EARLY`（0.1秒）はトラックを前にずらせる最大量です。
+- **`METER_PATTERNS`、`FEEL_PATTERNS`、`BACKBEAT`、`HAMMER`、`PATTERN_SETS`：**よく使う拍子のビート（8分音符のステップ）、細分とスタイル（4分、8分、16分音符、ファンク、シャッフル、スウィング、ボサノヴァ）、タイミングと音量を聞くための簡単なビート、毎小節の1拍目に振り下ろす労働歌のハンマー、そしてそれらを名前で引くセット（`meters`、`feels`）です。パターンはデモではなく、ここに追加します。
+- **`StepSequencer(instrument, { pattern, tempo, onStep, onSchedule })`：**止めるまでパターンを繰り返し、持続する音源と同じ`start()`、`stop()`、`playing`を持ちます。音はオーディオクロック上で約0.2秒先に予約するので、ぴったりグリッド上に（または`offset`だけ正確にずれて）鳴ります。`onStep(i)`はステップ`i`が鳴るときに、停止時は-1で呼ばれます。`onSchedule(i, time)`はステップ`i`を予約するときに、それが鳴るオーディオクロック上の時刻とともに呼ばれます。演奏中に`pattern`と`tempo`を変えられます。`stepDuration`は1ステップの秒数、`MAX_EARLY`（0.1秒）はトラックを前にずらせる最大量です。
 
 </div>
 
@@ -225,16 +227,16 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 
 - **`parseChord(symbol)`:** `{ symbol, root, bass, intervals }`, pitch classes and semitones above the root.
 - **`voiceProgression(chords, melody)`:** voices chords for piano: the bass in E2–D♯3, the other tones in close position above (the root left to the bass in four-note chords, the fifth dropped in chords of five or more, or with ♯5/♭13), each chord in the inversion that moves least from the last, and below the melody when there is one. Chords with hand-written `notes` keep them. Returns `{ bass, upper, notes }` per chord.
-- **Progressions:** `{ id, label, tempo, loop?, chords: [{ symbol, beats, roman?, fn?, notes? }], melody?: [{ midi, beats }] }`. The sets, by page: `DIATONIC_`, `CHORD_TYPE_`, `SEVENTH_`, `FUNCTIONAL_`, `RESOLUTION_`, `SUBDOMINANT_MINOR_`, `NON_FUNCTIONAL_`, `REHARMONIZATION_PROGRESSIONS`, and `PROGRESSION_SETS` by name for `?set=`. Add progressions here, never in a demo.
-- **`ProgressionPlayer(instrument, { onChord, onMelody, onEnd })`:** `setProgression(p)` voices it (`voicings`); `start()`, `stop()`, `playing` as a continuous source. Chords and melody are scheduled ahead on the audio clock; `onChord(i)` / `onMelody(i)` run as each starts (-1 when stopped), `onEnd` when a non-looping progression finishes.
+- **Progressions:** `{ id, label, tempo, loop?, chords: [{ symbol, beats, roman?, fn?, notes? }], melody?: [{ midi, beats }], riff?, drums?, sounds? }`. `riff` is `[[semitones, beats], …]`, a bass figure played up from each chord's bass note in place of the held bass, restarted at each chord. `drums` is a rhythm pattern (`rhythm.js`) looped along with the chords. `sounds` is `{ chords, melody }`, instrument ids for the demo to create (piano by default). The sets, by page: `DIATONIC_`, `CHORD_TYPE_`, `SEVENTH_`, `FUNCTIONAL_`, `RESOLUTION_`, `SUBDOMINANT_MINOR_`, `NON_FUNCTIONAL_`, `REHARMONIZATION_`, `WORK_SONG_`, `BLUES_`, `JAZZ_BLUES_PROGRESSIONS`, and `PROGRESSION_SETS` by name for `?set=`. Add progressions here, never in a demo; melody note names use ASCII flats (`'Bb4'`), which Tone reads.
+- **`ProgressionPlayer(instrument, { melodyInstrument, drums, onChord, onMelody, onBass, onEnd })`:** `setProgression(p)` voices it (`voicings`); `start()`, `stop()`, `playing` as a continuous source. Chords and the riff play on `instrument`, the melody on `melodyInstrument` (default `instrument`), the drums on `drums`; all three are properties a demo may swap between progressions. Everything is scheduled ahead on the audio clock; `onChord(i)` / `onMelody(i)` run as each starts and `onBass(midi)` as each riff note starts (-1 when stopped), `onEnd` when a non-looping progression finishes. `chordNotes(i)` is what chord `i` plays (its upper notes when a riff takes the bass).
 <div class="jp">
 
 `chords.js`には、和音、進行、その再生を置きます。コード・シンボルは、根音、`QUALITIES`の種類（`m7`、`maj7`、`7`、`m7♭5`…）、括弧内の省略可能なテンション（`G7(♭9)`）、省略可能なスラッシュのベース（`D♭/F`）からなり、♭/♯でもb/#でも書けます。
 
 - **`parseChord(symbol)`：**`{ symbol, root, bass, intervals }`、ピッチクラスと根音からの半音数です。
 - **`voiceProgression(chords, melody)`：**ピアノ向けに和音を配置します。ベースをE2〜D♯3に、ほかの音をその上に密集配置で置き（4音以上の和音では根音をベースに任せ、5音以上や♯5/♭13を含む和音では5度を省く）、各和音を前の和音からいちばん少なく動く転回形にし、旋律があればその下に置きます。`notes`を手で書いた和音はそれを使います。和音ごとに`{ bass, upper, notes }`を返します。
-- **進行：**`{ id, label, tempo, loop?, chords: [{ symbol, beats, roman?, fn?, notes? }], melody?: [{ midi, beats }] }`。ページごとのセットは`DIATONIC_`、`CHORD_TYPE_`、`SEVENTH_`、`FUNCTIONAL_`、`RESOLUTION_`、`SUBDOMINANT_MINOR_`、`NON_FUNCTIONAL_`、`REHARMONIZATION_PROGRESSIONS`で、`PROGRESSION_SETS`が`?set=`用に名前で引きます。進行はデモではなく、ここに追加します。
-- **`ProgressionPlayer(instrument, { onChord, onMelody, onEnd })`：**`setProgression(p)`で配置し（`voicings`）、持続する音源と同じ`start()`、`stop()`、`playing`を持ちます。和音と旋律はオーディオクロック上で先に予約します。`onChord(i)` / `onMelody(i)`はそれぞれの開始時に（停止時は-1で）、`onEnd`は繰り返さない進行が終わったときに呼ばれます。
+- **進行：**`{ id, label, tempo, loop?, chords: [{ symbol, beats, roman?, fn?, notes? }], melody?: [{ midi, beats }], riff?, drums?, sounds? }`。`riff`は`[[半音数, 拍数], …]`で、各和音のベース音から上に弾くベースの音型です。保持するベースの代わりに鳴り、和音ごとに最初からやり直します。`drums`は和音と一緒に繰り返すリズムのパターン（`rhythm.js`）、`sounds`はデモがつくる楽器のid`{ chords, melody }`です（既定はピアノ）。ページごとのセットは`DIATONIC_`、`CHORD_TYPE_`、`SEVENTH_`、`FUNCTIONAL_`、`RESOLUTION_`、`SUBDOMINANT_MINOR_`、`NON_FUNCTIONAL_`、`REHARMONIZATION_`、`WORK_SONG_`、`BLUES_`、`JAZZ_BLUES_PROGRESSIONS`で、`PROGRESSION_SETS`が`?set=`用に名前で引きます。進行はデモではなく、ここに追加します。旋律の音名のフラットは、Toneが読めるASCIIで書きます（`'Bb4'`）。
+- **`ProgressionPlayer(instrument, { melodyInstrument, drums, onChord, onMelody, onBass, onEnd })`：**`setProgression(p)`で配置し（`voicings`）、持続する音源と同じ`start()`、`stop()`、`playing`を持ちます。和音とリフは`instrument`で、旋律は`melodyInstrument`（既定は`instrument`）で、ドラムは`drums`で鳴らします。3つともプロパティで、デモは進行ごとに差し替えられます。すべてオーディオクロック上で先に予約します。`onChord(i)` / `onMelody(i)`はそれぞれの開始時に、`onBass(midi)`はリフの各音の開始時に（停止時は-1で）、`onEnd`は繰り返さない進行が終わったときに呼ばれます。`chordNotes(i)`は和音`i`が鳴らす音です（リフがベースを担うときは上の音だけ）。
 
 </div>
 
@@ -247,7 +249,18 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 
 </div>
 
-## ProgressionView
+## ProgressionView and ChordChart
+
+Both draw a progression and share `update(progression, voicings)`, `setChord(i)`, `setNote(i)`, and pressing a chord to call `onPress(i)` / `onRelease(i)`, so the progression demo takes either (`?view=chart` for the chart). The demo pairs them with a `Keyboard` whose `setLit(midis)` lights the sounding notes.
+
+- **`ChordChart`** (`ChordChart.js`): the progression as a lead sheet's chart, four 4/4 bars to a line, each chord a white well as wide as its share of the bar with its symbol inside and its Roman numeral below; the sounding chord is red with white text. A chord longer than a bar fills each of its bars. The melody is not drawn.
+<div class="jp">
+
+どちらも進行を描き、`update(progression, voicings)`、`setChord(i)`、`setNote(i)`、そして和音を押すと`onPress(i)` / `onRelease(i)`を呼ぶことを共有するので、進行のデモはどちらでも使えます（表は`?view=chart`）。デモでは、鳴っている音を`setLit(midis)`で光らせる`Keyboard`と組み合わせます。
+
+- **`ChordChart`**（`ChordChart.js`）：進行をリード・シートの表として、1行に4/4の4小節ずつ描きます。各和音は小節の中の拍の割合ぶんの幅の白いくぼみで、中にシンボル、下にローマ数字を置きます。鳴っている和音は赤地に白い文字です。1小節より長い和音は、その各小節を埋めます。旋律は描きません。
+
+</div>
 
 `ProgressionView` (`ProgressionView.js`) draws a progression as a piano roll: time to the right (each chord as wide as its beats), pitch up, each voiced note a yellow bar across its chord, the melody in pink, sounding notes red. Chord symbols sit above; Roman numerals and functions, when present, below. Pressing a chord calls `onPress(i)` / `onRelease(i)`. `update(progression, voicings)`, `setChord(i)`, `setNote(i)`. The progression demo pairs it with a `Keyboard` whose `setLit(midis)` lights the sounding notes.
 <div class="jp">
@@ -270,6 +283,11 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 - **`StepGrid`**（`StepGrid.js`）：編集できるグリッドで、トラックごとにラベルつきの行、ステップごとにセルを並べ、拍のまとまりのあいだを広く空けます。鳴っている列のくぼみはバター色です。セルをクリックすると休み → 強 → 弱と変わり、`onEdit(track, step, velocity)`を呼びます。ステージの下の`.canvas-wrap.dp-strip`（スタック型のレイアウト）に置き、帯の高さを行数に合わせます。
 
 </div>
+
+## PulseView
+
+`PulseView` (`public/lib/demo/PulseView.js`) draws a pulse with no cycle as beats scrolling from right to left along a white track, 64 px apart. Each yellow dot (sized by velocity) sounds as it reaches the middle, is red for the first half of its beat, and leaves at the left; a faster tempo moves them faster. It follows the audio clock, not callback timing: construct it with `{ now: audioNow }`, feed it `addBeat(time, velocity)` from `StepSequencer`'s `onSchedule`, and call `update(stepDuration, velocity)` when the tempo changes (it places beats not scheduled yet) and `stop()` when the sequencer stops, which returns it to rest with the first beat waiting in the middle.
+<div class="jp">`PulseView`（`public/lib/demo/PulseView.js`）は、周期のない拍を、白いトラックの上を64 px間隔で右から左へ流れる拍として描きます。黄色い点（大きさはベロシティに従う）は真ん中に来たところで鳴り、その拍の前半のあいだ赤くなり、左へ去ります。テンポが速いほど速く動きます。コールバックのタイミングではなくオーディオクロックに従います。`{ now: audioNow }`でつくり、`StepSequencer`の`onSchedule`から`addBeat(time, velocity)`を渡します。テンポが変わったら`update(stepDuration, velocity)`を（まだ予約されていない拍の位置に使う）、シーケンサーが止まったら`stop()`を呼びます。`stop()`で最初の拍が真ん中で待つ静止状態に戻ります。</div>
 
 ## ScaleView
 

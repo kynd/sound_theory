@@ -14,9 +14,9 @@ Chords that share notes share a function. Am shares two notes with C, so it can 
 
 音を共有する和音は、機能も共有します。AmはCと2音を共有するのでトニックの代わりになり、DmはFと2音を共有してサブドミナントに、BdimはG7とドミナントの核である三全音B–Fを共有します。DからG、Cのように、根音が5度下（または4度上）へ動く進行が最も強い進行になります。
 
-Functional harmony grew out of European classical music and was generalized by jazz theory. It is one way of hearing chords, not a law. Plenty of music works otherwise, as [Beyond Functional Harmony](/non-functional-harmony) shows.
+Functional harmony grew out of European classical music and was generalized by the theory of jazz and popular music. It is one way of hearing chords, not a law. Plenty of music works otherwise, as [Beyond Functional Harmony](/non-functional-harmony) shows.
 
-機能和声はヨーロッパのクラシック音楽から生まれ、ジャズ理論によって一般化されました。和音の聞き方のひとつであって、法則ではありません。[機能和声の外へ](/non-functional-harmony)で見るように、ほかの仕組みで成り立つ音楽もたくさんあります。
+機能和声はヨーロッパのクラシック音楽から生まれ、ジャズやポピュラー音楽の理論によって一般化されました。和音の聞き方のひとつであって、法則ではありません。[機能和声の外へ](/non-functional-harmony)で見るように、ほかの仕組みで成り立つ音楽もたくさんあります。
 
 # Examples
 # 例
@@ -29,7 +29,7 @@ The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** 
 
 -   **T–SD–D–T:** Cmaj7, Fmaj7, G7, Cmaj7, the full cycle.
 
--   **ii–V–I:** Dm7, G7, Cmaj7, the most common cadence in jazz. ii replaces IV as the subdominant, and the roots fall by fifths.
+-   **ii–V–I:** Dm7, G7, Cmaj7, the most common cadence in jazz and common in pop as well. ii replaces IV as the subdominant, and the roots fall by fifths.
 
 -   **I–vi–ii–V:** a turnaround, which ends on the dominant so that it leads back to its own start. It loops until stopped.
 
@@ -41,7 +41,7 @@ The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** 
 
 -   **T–SD–D–T：** Cmaj7、Fmaj7、G7、Cmaj7と、一巡りします。
 
--   **ii–V–I：** Dm7、G7、Cmaj7。ジャズで最もよく使われる終止形です。iiがIVの代わりにサブドミナントを担い、根音は5度ずつ下がります。
+-   **ii–V–I：** Dm7、G7、Cmaj7。ジャズで最もよく使われる終止形で、ポップスでもよく使われます。iiがIVの代わりにサブドミナントを担い、根音は5度ずつ下がります。
 
 -   **I–vi–ii–V：** ターンアラウンド。ドミナントで終わるので、自分の始まりへと戻っていきます。止めるまで繰り返します。
 

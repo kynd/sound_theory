@@ -31,9 +31,9 @@ A **pedal point** holds one bass note while the chords above it change. The fric
 # Harmony from the Melody
 # 旋律からの和声
 
-Chords can also be chosen for each melody note, for the color they give it, rather than from a key. In **Following the melody**, a falling line E, D, C, B is harmonized with each note as the third of a major seventh chord, so the chords move in parallel with the melody: Cmaj7, B♭maj7, A♭maj7, Gmaj7. Freer approaches pick any chord that contains the melody note and sounds right, a common way of working in contemporary jazz and film music.
+Chords can also be chosen for each melody note, for the color they give it, rather than from a key. In **Following the melody**, a falling line E, D, C, B is harmonized with each note as the third of a major seventh chord, so the chords move in parallel with the melody: Cmaj7, B♭maj7, A♭maj7, Gmaj7. Freer approaches pick any chord that contains the melody note and sounds right, a common way of working in contemporary jazz, pop, and film music.
 
-和音は、調から選ぶのではなく、旋律のそれぞれの音に与える色で選ぶこともできます。**Following the melody**では、下がっていく線E、D、C、Bのそれぞれの音を、メジャー・セブンスの3度として和声づけています。そのため、和音は旋律と平行に動きます。Cmaj7、B♭maj7、A♭maj7、Gmaj7です。より自由な方法では、旋律の音を含み、しっくりくる和音なら何でも選びます。現代のジャズや映画音楽でよく使われる方法です。
+和音は、調から選ぶのではなく、旋律のそれぞれの音に与える色で選ぶこともできます。**Following the melody**では、下がっていく線E、D、C、Bのそれぞれの音を、メジャー・セブンスの3度として和声づけています。そのため、和音は旋律と平行に動きます。Cmaj7、B♭maj7、A♭maj7、Gmaj7です。より自由な方法では、旋律の音を含み、しっくりくる和音なら何でも選びます。現代のジャズ、ポップス、映画音楽でよく使われる方法です。
 
 # Twelve Tones
 # 十二音

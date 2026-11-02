@@ -4,7 +4,7 @@ slug: sound-theory
 ---
 Playing music (or even just making noise; there is no essential difference between the two) is a joy. It is fun and a profound exercise for both mind and body. I am not a great musician, but that does not matter. I play simply because it is something I can enjoy for the rest of my life, whatever happens, regardless of how the industry changes.
 
-音楽を演奏すること、あるいはただ音を出すこと（この二つに本質的な違いはありません）は、喜びです。心から楽しく、心と体の両方を使う奥深い営みでもあります。自分は優れた音楽家ではありませんが、それは問題ではありません。何があっても、産業としての音楽がどう変わろうともずっと楽しみ続けられる。それが、音を出す理由です。
+音楽を演奏すること、あるいはただ音を出すこと（この二つに本質的な違いはありません）は、喜びです。心から楽しく、心と体の両方を使う奥深い営みでもあります。自分は優れたミュージシャンではありませんが、それは問題ではありません。何があっても、産業としての音楽がどう変わろうともずっと楽しみ続けられる。それが、音を出す理由です。
 
 Music is also an intellectual pleasure. Beyond the joy of playing, there is the pleasure of wondering how it all works: why certain sounds seem to fit together, how a rhythm creates a sense of movement, or how the same notes can feel different in a new context. There is always more to notice, and more than one way to understand what we hear. For me, thinking about these things is not separate from making music; it is another way of enjoying it. Theory can help us explore these questions, giving us ways to recognize patterns, make connections, and discover new possibilities.
 
@@ -57,9 +57,13 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 18. [Reharmonization](/reharmonization): new chords under a familiar melody.
 
-19. [Breaking Conventions](/breaking-conventions): how composers and players have broken the conventions, from noise and chance to minimalism and phasing.
+19. [Blues](/blues): where the blues came from, work songs and call and response, the twelve-bar form with a riff, and how jazz reharmonized it.
 
-20. [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
+20. [Writing Chords](/chord-notation): from figured bass to chord symbols, and how one way of writing harmony shaped how we hear it.
+
+21. [Breaking Conventions](/breaking-conventions): how composers and players have broken the conventions, from noise and chance to minimalism and phasing.
+
+22. [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
 
 1.  [音源](/sound-sources)：このシリーズ全体で使う楽器とエフェクト。
 
@@ -97,6 +101,10 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 18. [リハーモナイズ](/reharmonization)：よく知られた旋律の下に新しい和音を。
 
-19. [慣習を破る](/breaking-conventions)：ノイズや偶然性からミニマリズムやフェイズまで、作曲家や演奏家が慣習を破ってきた方法。
+19. [ブルース](/blues)：ブルースの成り立ち、労働歌とコール・アンド・レスポンス、リフで進む12小節の形式、そしてジャズによるリハーモナイズ。
 
-20. [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。
+20. [コードの書き方](/chord-notation)：通奏低音からコード・シンボルまで、そして和声のひとつの書き方が、私たちの聞き方をどう形づくってきたか。
+
+21. [慣習を破る](/breaking-conventions)：ノイズや偶然性からミニマリズムやフェイズまで、作曲家やミュージシャンが慣習を破ってきた方法。
+
+22. [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。

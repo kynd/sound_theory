@@ -2,7 +2,7 @@
 title: "Sevenths and Tensions 7の和音とテンション"
 slug: seventh-chords
 ---
-Stacking one more third on a triad adds the seventh above the root and makes a seventh chord. Seventh chords are richer than triads, and in jazz they are the basic unit of harmony. The common ones, on C:
+Stacking one more third on a triad adds the seventh above the root and makes a seventh chord. Seventh chords are richer than triads, and in jazz, as in much soul, R&B, and pop, they are the basic unit of harmony. The common ones, on C:
 
 -   **Major seventh (Cmaj7):** a major triad and a major seventh (C, E, G, B). Soft and settled.
 
@@ -16,7 +16,7 @@ Stacking one more third on a triad adds the seventh above the root and makes a s
 
 -   **Minor major seventh (CmMaj7):** a minor triad with a major seventh (C, E♭, G, B), the chord of the [melodic minor](/minor-scales).
 
-三和音にもう1つ3度を積むと、根音の7度上の音が加わり、7の和音（セブンス・コード）になります。7の和音は三和音より豊かに響き、ジャズでは和声の基本単位です。Cの上のよく使われるものは次のとおりです。
+三和音にもう1つ3度を積むと、根音の7度上の音が加わり、7の和音（セブンス・コード）になります。7の和音は三和音より豊かに響き、ジャズでは、そしてソウルやR&B、ポップスの多くでも、和声の基本単位です。Cの上のよく使われるものは次のとおりです。
 
 -   **メジャー・セブンス（Cmaj7）：** 長三和音と長7度（C、E、G、B）。柔らかく、落ち着いています。
 

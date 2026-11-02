@@ -2,9 +2,9 @@
 title: "Church Modes 教会旋法"
 slug: church-modes
 ---
-The church modes are seven scales of seven notes each: Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, and Locrian. They took shape in medieval church theory, borrowing ancient Greek names despite having different musical structures. Today they are a basic tool in jazz, folk, and film music. Two of them are already familiar: Ionian is the major scale, and Aeolian is the natural minor scale (see [Scales](/scales)).
+The church modes are seven scales of seven notes each: Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, and Locrian. They took shape in medieval church theory, borrowing ancient Greek names despite having different musical structures. Today they are a basic tool in many kinds of music, including jazz, rock, pop, folk, and film music. Two of them are already familiar: Ionian is the major scale, and Aeolian is the natural minor scale (see [Scales](/scales)).
 
-教会旋法は、それぞれ7つの音を持つ7つの音階です。イオニアン、ドリアン、フリジアン、リディアン、ミクソリディアン、エオリアン、ロクリアン。中世の教会音楽理論の中で形づくられ、古代ギリシャの旋法とは音楽的な構造が異なるものの、その名前を借りています。現在では、ジャズ、民族音楽、映画音楽の基本的な道具になっています。2つはすでになじみのあるものです。イオニアンは長音階、エオリアンは自然短音階です（[音階](/scales)を参照）。
+教会旋法は、それぞれ7つの音を持つ7つの音階です。イオニアン、ドリアン、フリジアン、リディアン、ミクソリディアン、エオリアン、ロクリアン。中世の教会音楽理論の中で形づくられ、古代ギリシャの旋法とは音楽的な構造が異なるものの、その名前を借りています。現在では、ジャズ、ロック、ポップ、民族音楽、映画音楽など、さまざまな音楽の基本的な道具になっています。2つはすでになじみのあるものです。イオニアンは長音階、エオリアンは自然短音階です（[音階](/scales)を参照）。
 
 # Modes on One Root
 # ひとつの主音から始まる旋法

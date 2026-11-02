@@ -21,9 +21,9 @@ The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** 
 
 -   **IV–iv–I:** C, F, Fm, C. The major IV turns minor before home: A falls to A♭ and then to G. A favorite ending in pop ballads, the Beatles, and film music.
 
--   **IVmaj7–iv6:** the same idea with jazz chords, Fmaj7 to Fm6, common in ballads.
+-   **IVmaj7–iv6:** the same idea with seventh and sixth chords, Fmaj7 to Fm6, common in ballads.
 
--   **Backdoor:** Cmaj7, Fm7, B♭7, Cmaj7. B♭7 resolves to C from a whole step below, a softer arrival than G7, and Fm7–B♭7 works as a ii–V that enters through the back door. Many jazz standards use it.
+-   **Backdoor:** Cmaj7, Fm7, B♭7, Cmaj7. B♭7 resolves to C from a whole step below, a softer arrival than G7, and Fm7–B♭7 works as a ii–V that enters through the back door. Many jazz standards and pop songs use it.
 
 -   **iiø–V–I:** Dm7♭5 instead of Dm7 before G7. The borrowed A♭ darkens the approach to a major tonic.
 
@@ -35,9 +35,9 @@ The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** 
 
 -   **IV–iv–I：** C、F、Fm、C。メジャーのIVが家に戻る前にマイナーに変わり、AがA♭、そしてGへ下ります。ポップスのバラード、ビートルズ、映画音楽で好まれる終わり方です。
 
--   **IVmaj7–iv6：** 同じ考え方をジャズの和音で、Fmaj7からFm6へ。バラードでよく使われます。
+-   **IVmaj7–iv6：** 同じ考え方を7の和音と6の和音で、Fmaj7からFm6へ。バラードでよく使われます。
 
--   **Backdoor：** Cmaj7、Fm7、B♭7、Cmaj7。B♭7は全音下からCへ解決し、G7より柔らかく到着します。Fm7–B♭7は、裏口（バックドア）から入るii–Vとして働きます。多くのジャズ・スタンダードで使われています。
+-   **Backdoor：** Cmaj7、Fm7、B♭7、Cmaj7。B♭7は全音下からCへ解決し、G7より柔らかく到着します。Fm7–B♭7は、裏口（バックドア）から入るii–Vとして働きます。多くのジャズ・スタンダードやポップスで使われています。
 
 -   **iiø–V–I：** G7の前でDm7の代わりにDm7♭5を使います。借りたA♭が、長調のトニックへの近づき方に陰りを加えます。
 

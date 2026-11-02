@@ -41,6 +41,6 @@ The melodic minor also raises the 6th degree by a half step, narrowing the gap b
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=melodic-minor&roots=minor" title="Melodic minor" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
-Many jazz players use the ascending form in both directions, often calling it the jazz minor. It is commonly used over a minor chord with a major seventh, and its modes include other scales used in jazz, such as the altered scale (see [Other Scales](/other-scales)). Neither approach is wrong. Scales are not rules a piece must follow; they are names for useful patterns musicians have identified and tools that help us hear, write, and improvise.
+Many musicians, especially in jazz, use the ascending form in both directions and call it the jazz minor. It is commonly used over a minor chord with a major seventh, and its modes include other useful scales, such as the altered scale (see [Other Scales](/other-scales)). Neither approach is wrong. Scales are not rules a piece must follow; they are names for useful patterns musicians have identified and tools that help us hear, write, and improvise.
 
-多くのジャズ奏者は、上行形を上行・下行の両方で使い、これを「ジャズ・マイナー」と呼ぶことがあります。長7度を含む短和音によく使われ、その旋法には、オルタード・スケールなど、ジャズで使われるほかの音階もあります（[その他の音階](/other-scales)を参照）。どちらの使い方も間違いではありません。音階は曲が従うべき規則ではありません。音楽家が有用だと見いだしたパターンにつけた名前であり、聴いたり、書いたり、即興で演奏したりするための道具です。
+特にジャズでは、多くのミュージシャンが上行形を上行・下行の両方で使い、これを「ジャズ・マイナー」と呼ぶことがあります。長7度を含む短和音によく使われ、その旋法には、オルタード・スケールなど、ほかの役に立つ音階もあります（[その他の音階](/other-scales)を参照）。どちらの使い方も間違いではありません。音階は曲が従うべき規則ではありません。ミュージシャンが有用だと見いだしたパターンにつけた名前であり、聴いたり、書いたり、即興で演奏したりするための道具です。

@@ -68,7 +68,8 @@ Follow `documentation.md`. In short:
   No DOM.
 - `public/lib/demo/` is shared demo support: `viewport.js`, `panel.js`, `controls.js`,
   `colors.js`, `Keyboard.js`, `Scope.js`, `PartialsView.js`, `BeatView.js`,
-  `FifthsRing.js`, `ScaleView.js`, `CycleView.js`, `StepGrid.js`, `ProgressionView.js`.
+  `FifthsRing.js`, `ScaleView.js`, `CycleView.js`, `PulseView.js`, `StepGrid.js`,
+  `ProgressionView.js`, `ChordChart.js`.
 - Every structural change updates `docs/audio-library.md` in the same change. When a
   group of classes shares behavior, write it once as a "common" section.
 - Demo chrome comes from the `dp-*` classes in `public/styles/demo-ui.css`. A new
@@ -201,6 +202,8 @@ src/content/docs/
     subdominant-minor.md         borrowed chords                       slug: subdominant-minor
     non-functional-harmony.md    modes, planing, twelve tones          slug: non-functional-harmony
     reharmonization.md           Twinkle, five versions                slug: reharmonization
+    blues.md                     history, work songs, 12-bar, jazz blues   slug: blues
+    chord-notation.md            figured bass to chord symbols         slug: chord-notation
     breaking-conventions.md      20th-century experiments, phasing     slug: breaking-conventions
     sound-as-material.md         onkyō, sound design, granular         slug: sound-as-material
 src/layouts/DocLayout.astro      writing's layout + sound-theory additions
@@ -210,8 +213,8 @@ public/lib/audio/                AudioEngine.js  instruments.js  effects.js  add
                                  chords.js  granular.js
 public/lib/demo/                 viewport.js  panel.js  controls.js  colors.js
                                  Keyboard.js  Scope.js  PartialsView.js  BeatView.js
-                                 FifthsRing.js  ScaleView.js  CycleView.js  StepGrid.js
-                                 ProgressionView.js
+                                 FifthsRing.js  ScaleView.js  CycleView.js  PulseView.js
+                                 StepGrid.js  ProgressionView.js  ChordChart.js
 public/demos/<name>/             index.html + main.js per demo
 public/styles/demo-ui.css        demo chrome
 public/lib/page/demoRecorder.js  record button under each embedded demo (page-level)
