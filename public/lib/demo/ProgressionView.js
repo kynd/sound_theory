@@ -1,5 +1,6 @@
 import { Viewport } from './viewport.js';
 import { COLORS } from './colors.js';
+import { compHits } from '../audio/chords.js';
 
 const GRID = 16;           // the demos' base grid
 const INSET = 2 * GRID;    // space around the drawing
@@ -12,7 +13,8 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * (each chord as wide as its beats), pitch bottom to top, and each note of a chord's
  * voicing is a yellow bar across the chord's width, so the way voices move from chord
  * to chord shows as bars that stay level or step a little. A melody is drawn over the
- * chords in pink. Sounding notes are red.
+ * chords in pink. A chord with a `comp` is drawn as its hits (the bass alone, the
+ * notes above it) at the beats they fall on. Sounding notes are red.
  *
  * The chord symbols sit on a line above the roll; the Roman numerals and functions
  * (T, SD, D, SDm), where the progression has them, on lines below. Pressing a chord
@@ -28,8 +30,10 @@ export class ProgressionView {
         this.onRelease = onRelease;
         this.progression = null;
         this.voicings = [];
+        this.hits = [];
         this.chord = -1;
         this.note = -1;
+        this.hit = -1;
         this._columns = [];
         this.viewport.onResize(() => this._resize());
         this._wirePointer();
@@ -40,7 +44,8 @@ export class ProgressionView {
     update(progression, voicings) {
         this.progression = progression;
         this.voicings = voicings;
-        this.chord = this.note = -1;
+        this.hits = compHits(progression, voicings);
+        this.chord = this.note = this.hit = -1;
         this.draw();
     }
 
@@ -49,6 +54,9 @@ export class ProgressionView {
 
     /** Marks melody note `i` as sounding, or none with -1. */
     setNote(i) { this.note = i; this.draw(); }
+
+    /** Marks hit `k` of the sounding chord's comp as sounding, or none with -1. */
+    setHit(k) { this.hit = k; this.draw(); }
 
     _resize() {
         this.canvas.width = this.viewport.pixelWidth;
@@ -120,7 +128,12 @@ export class ProgressionView {
         chords.forEach((chord, i) => {
             const x1 = xOf(at) + GAP / 2, x2 = xOf(at + chord.beats) - GAP / 2;
             const sounding = i === this.chord;
-            for (const midi of this.voicings[i]?.notes ?? []) bar(x1, x2, midi, sounding ? COLORS.red : COLORS.yellow);
+            (this.hits[i] ?? []).forEach((hit, k) => {
+                const red = sounding && (!progression.comp || k === this.hit);
+                const h1 = hit.at ? xOf(at + hit.at) + GAP / 2 : x1;
+                const h2 = hit.at + hit.beats < chord.beats - 1e-6 ? xOf(at + hit.at + hit.beats) - GAP / 2 : x2;
+                for (const midi of hit.notes) bar(h1, h2, midi, red ? COLORS.red : COLORS.yellow);
+            });
             const cx = (x1 + x2) / 2;
             ctx.fillStyle = COLORS.ink;
             if (chord.symbol && this.voicings[i]?.notes.length) ctx.fillText(chord.symbol, cx, INSET + LINE / 2);

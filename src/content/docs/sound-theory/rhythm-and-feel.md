@@ -29,6 +29,16 @@ Choose a **Pattern** and press **Play**. **Sixteenths** fills every sixteenth no
 
 <div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=implied" title="Subdivisions played and implied" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
 
+This is not only true of drums. A waltz is in 3/4, and its accompaniment often plays all three beats, a bass note on the first and a chord on the second and third: "oom-pah-pah." But the three beats can be felt with far fewer notes. The melody of "Edelweiss" (Richard Rodgers and Oscar Hammerstein II, from *The Sound of Music*, 1959) moves mostly in a half note followed by a quarter note, or in a note held for the whole bar, so it rarely plays all three beats. Yet no one hears it as anything but a waltz: a long note on each downbeat and a short one leading to the next bar are enough.
+
+これはドラムに限りません。ワルツは3/4拍子で、伴奏はしばしば3拍すべてを鳴らします。1拍目にベース音、2拍目と3拍目に和音を置く「ズン・チャッ・チャッ」です。しかし、3拍はずっと少ない音でも感じられます。「エーデルワイス」（リチャード・ロジャースとオスカー・ハマースタイン2世、『サウンド・オブ・ミュージック』、1959年）の旋律は、ほとんどが2分音符と4分音符の組み合わせか、1小節まるごと伸ばす音で進むので、3拍すべてを鳴らすことはめったにありません。それでも、これをワルツ以外のものとして聞く人はいません。各小節の頭の長い音と、次の小節へつなぐ短い音だけで十分なのです。
+
+Press **Play** to hear the first eight bars, in C at 108 BPM. **Melody alone** plays only the melody; listen for the three beats in it. Then choose another **Example**: **Chord on 1** adds a chord on the first beat of each bar, held through the bar, and **Oom-pah-pah** plays all three beats in the accompaniment. The roll shows the melody in pink and the accompaniment in yellow, with the sounding notes in red, and the keyboard lights them as they play. The accompaniment makes the beats explicit, but they were already there in the melody.
+
+**Play**を押すと、最初の8小節が、C、108 BPMで鳴ります。**Melody alone**は旋律だけを鳴らします。その中に3拍を聞き取ってみてください。次にほかの**Example**を選びます。**Chord on 1**は各小節の1拍目に和音を加えて小節の終わりまで伸ばし、**Oom-pah-pah**は伴奏で3拍すべてを鳴らします。ロールには旋律がピンク、伴奏が黄色で示され、鳴っている音は赤くなり、鍵盤でも光ります。伴奏は拍をはっきりさせますが、拍は旋律の中にすでにありました。
+
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=waltz" title="A waltz with and without its beats" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
 # Timing and Loudness
 # タイミングと音量
 

@@ -35,12 +35,13 @@ Promise.all([...new Set(sounds)].map(id => instrument(id).ready)).then(
 let syncPlay = null;
 
 // What the keyboard shows: the sounding chord, melody note, and riff note.
-let chordNotes = [], melodyNote = null, bassNote = null;
+let chordNotes = [], melodyNote = null, bassNote = null, chord = -1;
 const light = () => keyboard.setLit([...chordNotes, melodyNote, bassNote].filter(n => n !== null));
 
 const player = new ProgressionPlayer(instrument('piano'), {
     drums: PROGRESSIONS.some(p => p.drums) ? instrument('drums') : null,
     onChord: i => {
+        chord = i;
         view.setChord(i);
         chordNotes = i < 0 ? [] : player.chordNotes(i);
         light();
@@ -48,6 +49,11 @@ const player = new ProgressionPlayer(instrument('piano'), {
     onMelody: i => {
         view.setNote(i);
         melodyNote = i < 0 ? null : player.progression.melody[i].midi;
+        light();
+    },
+    onHit: k => {
+        view.setHit(k);
+        chordNotes = k < 0 || chord < 0 ? [] : player.hits[chord][k].notes;
         light();
     },
     onBass: midi => {

@@ -19,7 +19,7 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * the symbol in the first. Pressing a chord plays it through `onPress(i)` /
  * `onRelease(i)`.
  *
- * Same interface as ProgressionView (`update`, `setChord`, `setNote`), so a demo can
+ * Same interface as ProgressionView (`update`, `setChord`, `setNote`, `setHit`), so a demo can
  * use either; the melody is not drawn.
  */
 export class ChordChart {
@@ -48,8 +48,9 @@ export class ChordChart {
     /** Marks chord `i` as sounding, or none with -1. */
     setChord(i) { this.chord = i; this.draw(); }
 
-    /** The melody is not drawn. */
+    /** The melody and a comp's hits are not drawn. */
     setNote() {}
+    setHit() {}
 
     _resize() {
         this.canvas.width = this.viewport.pixelWidth;

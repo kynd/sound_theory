@@ -10,7 +10,7 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  * may be written ♭/♯ or b/#. `parseChord` turns a symbol into pitch classes;
  * `voiceProgression` turns a list of chords into MIDI notes that move smoothly.
  *
- * A progression is `{ id, label, tempo, loop?, chords, melody?, riff?, drums?, sounds? }`:
+ * A progression is `{ id, label, tempo, loop?, chords, melody?, riff?, comp?, drums?, sounds? }`:
  *   - `chords`: `[{ symbol, beats, roman?, fn?, notes? }]`. `roman` is the Roman
  *     numeral shown under the chord, `fn` its function (T, SD, D, SDm). `notes`
  *     (MIDI numbers) voices a chord by hand instead, for chords that are not
@@ -18,6 +18,9 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  *   - `melody`: `[{ midi, beats }]` played over the chords (`midi: null` is a rest).
  *   - `riff`: `[[semitones, beats], …]`, a bass riff played up from each chord's bass
  *     note in place of the held bass, repeated through the chord.
+ *   - `comp`: `[[part, beats], …]`, a rhythm for the chords in place of holding them,
+ *     repeated through each chord: `'bass'` plays the bass note, `'upper'` the notes
+ *     above it, `'all'` both, and `null` rests (see compHits).
  *   - `drums`: a rhythm pattern (see rhythm.js), looped along with the chords.
  *   - `sounds`: `{ chords, melody }`, instrument ids from INSTRUMENTS (default piano),
  *     for the demo to create.
@@ -171,6 +174,31 @@ export function voiceProgression(chords, melody = []) {
         const upper = pool.reduce((best, v) => motion(v, previous) < motion(best, previous) ? v : best);
         previous = upper;
         return { bass, upper, notes: [bass, ...upper] };
+    });
+}
+
+/** How hard each part of a `comp` is played. */
+const COMP_VELOCITY = { bass: 0.6, upper: 0.4, all: 0.5 };
+
+/**
+ * What each chord of a progression plays, as hits: one list per chord of
+ * `{ at, beats, notes, part }`, with `at` in beats from the chord's start. Without a
+ * `comp`, a chord is one hit held for its whole length (without its bass when a riff
+ * plays the bass). With one, the comp repeats through the chord and is cut at its end.
+ */
+export function compHits(progression, voicings) {
+    const { chords, comp, riff } = progression;
+    return chords.map((chord, i) => {
+        const v = voicings[i];
+        if (!comp) return [{ at: 0, beats: chord.beats, notes: riff && v.notes.length ? v.upper : v.notes, part: 'all' }];
+        const hits = [];
+        for (let t = 0, k = 0; t < chord.beats - 1e-6; k++) {
+            const [part, beats] = comp[k % comp.length];
+            const notes = v.notes.length ? { bass: [v.bass], upper: v.upper, all: v.notes }[part] ?? [] : [];
+            if (notes.length) hits.push({ at: t, beats: Math.min(beats, chord.beats - t), notes, part });
+            t += beats;
+        }
+        return hits;
     });
 }
 
@@ -442,6 +470,25 @@ export const JAZZ_BLUES_PROGRESSIONS = [
     ] },
 ];
 
+/**
+ * The first eight bars of "Edelweiss" (Richard Rodgers, 1959), a waltz in 3/4, in C:
+ * a melody of long notes that leaves most beats unplayed.
+ */
+const EDELWEISS = melody([
+    ['E4', 2], ['G4', 1], ['D5', 3], ['C5', 2], ['G4', 1], ['F4', 3],
+    ['E4', 2], ['E4', 1], ['E4', 1], ['F4', 1], ['G4', 1], ['A4', 3], ['G4', 3],
+]);
+const EDELWEISS_CHORDS = chords(3, [['C'], ['G7'], ['C'], ['F'], ['C'], ['Am'], ['D7'], ['G7']]);
+
+export const WALTZ_PROGRESSIONS = [
+    { id: 'melody-alone', label: 'Melody alone', tempo: 108, loop: true, melody: EDELWEISS,
+        chords: EDELWEISS_CHORDS.map(() => ({ symbol: '', beats: 3, notes: [] })) },
+    { id: 'oom-pah-pah', label: 'Oom-pah-pah', tempo: 108, loop: true, melody: EDELWEISS, chords: EDELWEISS_CHORDS,
+        comp: [['bass', 1], ['upper', 1], ['upper', 1]] },
+    { id: 'chord-on-one', label: 'Chord on 1', tempo: 108, loop: true, melody: EDELWEISS, chords: EDELWEISS_CHORDS,
+        comp: [['all', 3]] },
+];
+
 /** Named sets of progressions, for a demo that takes the set as a URL parameter. */
 export const PROGRESSION_SETS = {
     diatonic: DIATONIC_PROGRESSIONS,
@@ -455,6 +502,7 @@ export const PROGRESSION_SETS = {
     'work-song': WORK_SONG_PROGRESSIONS,
     blues: BLUES_PROGRESSIONS,
     'jazz-blues': JAZZ_BLUES_PROGRESSIONS,
+    waltz: WALTZ_PROGRESSIONS,
 };
 
 // ── Player ───────────────────────────────────────────────────────────────────
@@ -463,10 +511,11 @@ const AHEAD = 0.15;   // seconds of notes scheduled ahead
 const TICK_MS = 25;
 
 /**
- * Plays a progression (chords, melody, bass riff, and drums), scheduled ahead on the
- * audio clock so the parts stay together. `onChord(i)` and `onMelody(i)` are called as
- * chord or melody note `i` starts, `onBass(midi)` as each riff note starts, and each
- * with -1 when playback stops. A progression with `loop` repeats until stopped; others
+ * Plays a progression (chords, melody, bass riff, comp, and drums), scheduled ahead on
+ * the audio clock so the parts stay together. `onChord(i)` and `onMelody(i)` are called
+ * as chord or melody note `i` starts, `onBass(midi)` as each riff note starts,
+ * `onHit(k)` as hit `k` of the current chord's comp starts (see `hits`), and each with
+ * -1 when playback stops. A progression with `loop` repeats until stopped; others
  * stop at the end. Same start/stop/playing contract as a continuous source, so it works
  * with wirePlayButton; `onEnd` is called when it stops by itself.
  *
@@ -481,16 +530,18 @@ export class ProgressionPlayer {
      * @param {object} [opts.drums]             a drum kit, for progressions with `drums`.
      */
     constructor(instrument, { melodyInstrument = instrument, drums = null,
-        onChord = () => {}, onMelody = () => {}, onBass = () => {}, onEnd = () => {} } = {}) {
+        onChord = () => {}, onMelody = () => {}, onBass = () => {}, onHit = () => {}, onEnd = () => {} } = {}) {
         this.instrument = instrument;
         this.melodyInstrument = melodyInstrument;
         this.drums = drums;
         this.onChord = onChord;
         this.onMelody = onMelody;
         this.onBass = onBass;
+        this.onHit = onHit;
         this.onEnd = onEnd;
         this.progression = null;
         this.voicings = [];
+        this.hits = [];
         this._timer = null;
         this._draws = new Set();
         this._sounding = new Set();   // { instrument, midi, off }, for stop()
@@ -501,12 +552,15 @@ export class ProgressionPlayer {
         this.stop();
         this.progression = progression;
         this.voicings = voiceProgression(progression.chords, progression.melody ?? []);
+        this.hits = compHits(progression, this.voicings);
     }
 
-    /** The notes chord `i` plays: without its bass when a riff plays the bass. */
+    /**
+     * The notes chord `i` holds: without its bass when a riff plays the bass, and none
+     * with a comp, whose hits are reported one by one instead.
+     */
     chordNotes(i) {
-        const voicing = this.voicings[i];
-        return this.progression.riff && voicing.notes.length ? voicing.upper : voicing.notes;
+        return this.progression.comp ? [] : this.hits[i][0].notes;
     }
 
     get playing() { return this._timer !== null; }
@@ -530,6 +584,7 @@ export class ProgressionPlayer {
         this.onChord(-1);
         this.onMelody(-1);
         this.onBass(-1);
+        this.onHit(-1);
     }
 
     _halt() {
@@ -547,12 +602,17 @@ export class ProgressionPlayer {
      * `{ at, beats, notes, velocity, instrument, kind, index }`.
      */
     _timeline() {
-        const { chords, melody = [], riff, drums } = this.progression;
+        const { chords, melody = [], riff, comp, drums } = this.progression;
         const events = [];
         let at = 0;
         chords.forEach((chord, i) => {
             events.push({ at, beats: chord.beats, notes: this.chordNotes(i), velocity: riff ? 0.35 : 0.5,
                 instrument: this.instrument, kind: 'chord', index: i });
+            // A comp's hits, each reported with its index within the chord.
+            if (comp) {
+                this.hits[i].forEach((hit, k) => events.push({ at: at + hit.at, beats: hit.beats, notes: hit.notes,
+                    velocity: COMP_VELOCITY[hit.part], instrument: this.instrument, kind: 'hit', index: k }));
+            }
             // The riff from the chord's bass, restarted at each chord and cut at its end.
             if (riff && this.voicings[i].notes.length) {
                 for (let t = 0, k = 0; t < chord.beats - 1e-6; k++) {
@@ -628,7 +688,7 @@ export class ProgressionPlayer {
             }
             // Forget notes that have ended, so the set stays small while looping.
             for (const entry of this._sounding) if (entry.off < now) this._sounding.delete(entry);
-            const callback = { chord: this.onChord, melody: this.onMelody, bass: this.onBass }[event.kind];
+            const callback = { chord: this.onChord, melody: this.onMelody, bass: this.onBass, hit: this.onHit }[event.kind];
             const draw = setTimeout(() => { this._draws.delete(draw); callback(event.index); },
                 Math.max(0, (time - now) * 1000));
             this._draws.add(draw);
