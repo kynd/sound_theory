@@ -198,14 +198,13 @@ export const HAMMER = makePattern({
 
 /**
  * The simplest rock beat, used to hear timing and loudness: kick on beats 1 and 3,
- * snare on 2 and 4, one step a beat. The snare is written soft so a demo can raise its
- * gain up to a full hit.
+ * snare on 2 and 4, one step a beat.
  */
 export const BACKBEAT = makePattern({
     id: 'backbeat', label: 'Backbeat', stepsPerBeat: 1, groups: quarters(4, 1), tempo: 92,
     trackIds: ['snare', 'kick'],
     tracks: {
-        snare: '- x - x',
+        snare: '- X - X',
         kick:  'X - X -',
     },
 });
@@ -213,13 +212,15 @@ export const BACKBEAT = makePattern({
 /**
  * Plays a pattern the way a person might: moves every hit by a random amount up to
  * `timing` seconds either way (into its track's `offsets`, rounded to whole
- * milliseconds) and gives it a random velocity from `minVelocity` up to a full hit.
- * Rests stay rests. Changes the pattern in place.
+ * milliseconds) and gives it a random velocity from `minVelocity` up to a full hit,
+ * mostly near the top (the distance down from a full hit is a random number squared,
+ * so fewer than one hit in five falls below half). Rests stay rests. Changes the
+ * pattern in place.
  */
 export function humanize(pattern, { timing = 0.03, minVelocity = 0.25 } = {}) {
     for (const track of pattern.tracks) {
         track.offsets = track.steps.map(v => v > 0 ? Math.round((Math.random() * 2 - 1) * timing * 1000) / 1000 : 0);
-        track.steps = track.steps.map(v => v > 0 ? minVelocity + Math.random() * (FULL - minVelocity) : 0);
+        track.steps = track.steps.map(v => v > 0 ? Math.round((FULL - (FULL - minVelocity) * Math.random() ** 2) * 100) / 100 : 0);
     }
 }
 

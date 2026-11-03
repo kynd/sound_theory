@@ -10,7 +10,7 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  * may be written ♭/♯ or b/#. `parseChord` turns a symbol into pitch classes;
  * `voiceProgression` turns a list of chords into MIDI notes that move smoothly.
  *
- * A progression is `{ id, label, tempo, loop?, chords, melody?, riff?, comp?, drums?, sounds? }`:
+ * A progression is `{ id, label, tempo, loop?, chords, melody?, riff?, comp?, bassLow?, drums?, sounds? }`:
  *   - `chords`: `[{ symbol, beats, roman?, fn?, notes? }]`. `roman` is the Roman
  *     numeral shown under the chord, `fn` its function (T, SD, D, SDm). `notes`
  *     (MIDI numbers) voices a chord by hand instead, for chords that are not
@@ -21,6 +21,8 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  *   - `comp`: `[[part, beats], …]`, a rhythm for the chords in place of holding them,
  *     repeated through each chord: `'bass'` plays the bass note, `'upper'` the notes
  *     above it, `'all'` both, and `null` rests (see compHits).
+ *   - `bassLow`: the lowest bass note (MIDI); the bass of every chord falls in the
+ *     octave from it. Defaults to E2 (40).
  *   - `drums`: a rhythm pattern (see rhythm.js), looped along with the chords.
  *   - `sounds`: `{ chords, melody }`, instrument ids from INSTRUMENTS (default piano),
  *     for the demo to create.
@@ -141,10 +143,11 @@ function motion(notes, previous) {
  * Voices a list of chords for piano: the bass note low, the other tones in close
  * position above it, each chord in the inversion that moves least from the one
  * before (smooth voice leading). With a melody, the chords stay below the melody notes
- * they sound under. Returns `{ bass, upper, notes }` per chord, in MIDI numbers.
- * Chords with hand-written `notes` keep them.
+ * they sound under. The bass falls in the octave from `bassLow`. Returns
+ * `{ bass, upper, notes }` per chord, in MIDI numbers. Chords with hand-written
+ * `notes` keep them.
  */
-export function voiceProgression(chords, melody = []) {
+export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW } = {}) {
     // The lowest melody note during each chord, to keep the chord under it.
     const ceilings = [];
     let start = 0;
@@ -166,7 +169,7 @@ export function voiceProgression(chords, melody = []) {
             return { bass: chord.notes[0], upper: chord.notes.slice(1), notes: chord.notes };
         }
         const parsed = parseChord(chord.symbol);
-        const bass = BASS_LOW + ((parsed.bass - BASS_LOW) % 12 + 12) % 12;
+        const bass = bassLow + ((parsed.bass - bassLow) % 12 + 12) % 12;
         const options = candidates(upperPitchClasses(parsed), UPPER_LOW)
             .filter(v => v[0] >= UPPER_LOW - 2 && v[0] > bass + 2);
         const fits = options.filter(v => v[v.length - 1] < ceilings[i] - 1);
@@ -214,17 +217,17 @@ function melody(list) {
     return list.map(([name, beats]) => ({ midi: name === null ? null : Tone.Frequency(name).toMidi(), beats }));
 }
 
-const C = 60;   // C4, for hand-voiced chords
+const C = 60;   // C4, for hand-voiced chords and bass ranges
 
 export const DIATONIC_PROGRESSIONS = [
-    { id: 'diatonic-triads', label: 'Diatonic triads', tempo: 100, chords: chords(2, [
+    { id: 'diatonic-triads', label: 'Diatonic triads', tempo: 100, bassLow: C - 12, chords: chords(2, [
         ['C', 'I', 'T'], ['Dm', 'ii', 'SD'], ['Em', 'iii', 'T'], ['F', 'IV', 'SD'],
         ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['Bdim', 'vii°', 'D'], ['C', 'I', 'T'],
     ]) },
-    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 90, chords: chords(4, [
+    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 90, bassLow: C - 12, chords: chords(4, [
         ['C', 'I', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'], ['C', 'I', 'T'],
     ]) },
-    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 90, loop: true, chords: chords(4, [
+    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 90, loop: true, bassLow: C - 12, chords: chords(4, [
         ['C', 'I', 'T'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'],
     ]) },
 ];
@@ -551,7 +554,7 @@ export class ProgressionPlayer {
     setProgression(progression) {
         this.stop();
         this.progression = progression;
-        this.voicings = voiceProgression(progression.chords, progression.melody ?? []);
+        this.voicings = voiceProgression(progression.chords, progression.melody ?? [], { bassLow: progression.bassLow });
         this.hits = compHits(progression, this.voicings);
     }
 

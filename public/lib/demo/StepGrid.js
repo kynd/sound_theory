@@ -1,6 +1,6 @@
 import { Viewport } from './viewport.js';
 import { COLORS } from './colors.js';
-import { FULL, SOFT } from '../audio/rhythm.js';
+import { FULL } from '../audio/rhythm.js';
 import { formatValue } from './controls.js';
 
 const GRID = 16;           // the demos' base grid
@@ -9,25 +9,27 @@ const LABEL = 5 * GRID;    // label column, like the panel's labels
 const GAP = 4;             // background showing between cells, like the keys' gaps
 const GROUP_GAP = 12;      // between beat groups
 const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
-const DRAG_RATE = 0.00025; // seconds a hit moves per pixel dragged
+const DRAG_RATE = 0.00025; // seconds a hit moves per pixel dragged sideways
+const VOLUME_RATE = 0.01;  // velocity a hit gains per pixel dragged up
+const MIN_VELOCITY = 0.05; // the softest a hit can be dragged down to
 const DRAG_START = 4;      // pixels a press moves before it becomes a drag
-
-/** A click cycles a cell through rest, full hit, soft hit. */
-const NEXT = new Map([[0, FULL], [FULL, SOFT], [SOFT, 0]]);
 
 /**
  * A rhythm pattern (see rhythm.js) as an editable grid, one row per track (labeled on
  * the left) and one cell per step, with extra space between beat groups. Cells are
  * white wells; a hit fills its cell yellow from the bottom, as high as its velocity.
  * The column that is sounding shows its wells in butter and its hits in red. Clicking
- * a cell cycles it through rest, full, and soft, and reports it to `onEdit`. A track
- * moved off the grid (`offset`) has its hits drawn moved by the same share of a step,
- * and so does a hit with its own `offsets` entry.
+ * a cell turns it on (a full hit) or off, and dragging a hit up or down makes it
+ * louder or softer (a hundredth of a full hit per pixel), with its velocity shown on
+ * its cell as a percentage while dragging; each change is reported to `onEdit`. A
+ * track moved off the grid (`offset`) has its hits drawn moved by the same share of a
+ * step, and so does a hit with its own `offsets` entry.
  *
  * With `shift` (seconds), a hit can also be dragged left or right to move it off the
  * grid, by up to `shift` either way. The hit moves far less than the pointer (a
  * quarter of a millisecond per pixel, drawn at the step's scale), and its offset is
- * shown on its cell while dragging. A press that does not move still cycles the cell.
+ * shown on its cell while dragging. A drag goes the way it starts, sideways or up and
+ * down. The grid leaves room on the right for the last hit moved as late as it can go.
  *
  * With `count`, a row above the tracks counts the beats: one well per beat group,
  * as wide as the group, numbered from 1 and starting again each bar
@@ -59,6 +61,8 @@ export class StepGrid {
         this.step = -1;
         this._cells = [];
         this.viewport.onResize(() => this._resize());
+        // Dragging on the grid edits it instead of scrolling the page.
+        canvas.style.touchAction = 'none';
         canvas.addEventListener('pointerdown', e => this._press(e));
         canvas.addEventListener('pointermove', e => this._move(e));
         canvas.addEventListener('pointerup', () => this._release());
@@ -97,27 +101,36 @@ export class StepGrid {
         const cell = this._cells.find(c => x >= c.x && x <= c.x + c.w && y >= c.y && y <= c.y + c.h);
         if (!cell) return;
         e.preventDefault();
-        if (!this.shift) { this._cycle(cell); return; }
         // Wait to see whether the press becomes a drag (only a hit can be dragged).
         const track = this.pattern.tracks[cell.track];
         this.canvas.setPointerCapture(e.pointerId);
         this._drag = {
-            cell, x: e.clientX, moving: false,
-            from: track.offsets?.[cell.step] ?? 0,
-            hit: track.steps[cell.step] > 0,
+            cell, x: e.clientX, y: e.clientY, axis: null,
+            offset: track.offsets?.[cell.step] ?? 0,
+            velocity: track.steps[cell.step],
         };
     }
 
     _move(e) {
         const drag = this._drag;
-        if (!drag || !drag.hit) return;
-        const dx = e.clientX - drag.x;
-        if (!drag.moving && Math.abs(dx) < DRAG_START) return;
-        drag.moving = true;
-        const track = this.pattern.tracks[drag.cell.track];
-        track.offsets ??= track.steps.map(() => 0);
-        const offset = Math.round((drag.from + dx * DRAG_RATE) * 1000) / 1000;
-        track.offsets[drag.cell.step] = Math.max(-this.shift, Math.min(this.shift, offset));
+        if (!drag || drag.velocity <= 0) return;
+        const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+        if (!drag.axis) {
+            if (Math.max(Math.abs(dx), Math.abs(dy)) < DRAG_START) return;
+            // Sideways only moves hits in time when the grid allows it.
+            drag.axis = Math.abs(dx) > Math.abs(dy) ? (this.shift ? 'time' : 'none') : 'volume';
+        }
+        const { track: t, step } = drag.cell;
+        const track = this.pattern.tracks[t];
+        if (drag.axis === 'time') {
+            track.offsets ??= track.steps.map(() => 0);
+            const offset = Math.round((drag.offset + dx * DRAG_RATE) * 1000) / 1000;
+            track.offsets[step] = Math.max(-this.shift, Math.min(this.shift, offset));
+        } else if (drag.axis === 'volume') {
+            const velocity = Math.round((drag.velocity - dy * VOLUME_RATE) * 100) / 100;
+            track.steps[step] = Math.max(MIN_VELOCITY, Math.min(FULL, velocity));
+            this.onEdit(t, step, track.steps[step]);
+        }
         this.draw();
     }
 
@@ -125,13 +138,14 @@ export class StepGrid {
         const drag = this._drag;
         if (!drag) return;
         this._drag = null;
-        if (drag.moving) this.draw();
-        else this._cycle(drag.cell);
+        if (drag.axis) this.draw();
+        else this._toggle(drag.cell);
     }
 
-    _cycle(cell) {
+    /** Turns a cell on as a full hit, or off. */
+    _toggle(cell) {
         const track = this.pattern.tracks[cell.track];
-        const velocity = NEXT.get(track.steps[cell.step]) ?? FULL;
+        const velocity = track.steps[cell.step] > 0 ? 0 : FULL;
         track.steps[cell.step] = velocity;
         this.onEdit(cell.track, cell.step, velocity);
         this.draw();
@@ -152,7 +166,9 @@ export class StepGrid {
         pattern.groups.reduce((at, size) => { starts.add(at); return at + size; }, 0);
         const left = LABEL + GRID;
         const gaps = (steps - 1) * GAP + (pattern.groups.length - 1) * (GROUP_GAP - GAP);
-        const cellW = (w - left - gaps) / steps;
+        // Room on the right for the last hit moved late: `late` steps at most.
+        const late = (this.shift + Math.max(0, ...pattern.tracks.map(t => t.offset ?? 0))) / this.stepDuration;
+        const cellW = (w - left - gaps - late * GAP) / (steps + late);
         const xs = [];
         for (let i = 0, x = left; i < steps; i++) {
             if (i > 0) x += cellW + (starts.has(i) ? GROUP_GAP : GAP);
@@ -202,13 +218,14 @@ export class StepGrid {
                 ctx.beginPath();
                 ctx.roundRect(x + shift, y + cellH - fillH, cellW, fillH, 4);
                 ctx.fill();
-                // The dragged hit's own offset, on its cell; white where the red fill
-                // reaches the text.
+                // The dragged hit's offset or velocity, on its cell; white where the red
+                // fill reaches the text.
                 const drag = this._drag;
-                if (drag?.moving && drag.cell.track === t && drag.cell.step === i) {
+                if ((drag?.axis === 'time' || drag?.axis === 'volume') && drag.cell.track === t && drag.cell.step === i) {
+                    const text = drag.axis === 'time' ? formatValue(track.offsets[i], 's') : `${Math.round(velocity * 100)}%`;
                     ctx.fillStyle = sounding && fillH > cellH / 2 ? COLORS.white : COLORS.ink;
                     ctx.textAlign = 'center';
-                    ctx.fillText(formatValue(track.offsets[i], 's'), x + shift + cellW / 2, y + cellH / 2);
+                    ctx.fillText(text, x + shift + cellW / 2, y + cellH / 2);
                 }
             });
         });

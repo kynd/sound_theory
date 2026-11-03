@@ -24,12 +24,12 @@ Time signatures are practical guides, not rigid rules. A score gives musicians a
 # Drum Patterns
 # ドラムのパターン
 
-Choose a **Pattern** and press **Play** to hear a simple drum beat in that time signature. These are just examples: even with four drums and a single bar, the number of possible patterns is virtually endless. Click cells in the grid below to add or remove hits and create your own pattern. **Tempo** sets the beats per minute, counted in quarter notes—except in 6/8, where each beat consists of three eighth notes.
+Choose a **Pattern** and press **Play** to hear a simple drum beat in that time signature. These are just examples: even with four drums and a single bar, the number of possible patterns is virtually endless. Click cells in the grid below to add or remove hits, drag a hit up or down to make it louder or softer, and create your own pattern. **Tempo** sets the beats per minute, counted in quarter notes—except in 6/8, where each beat consists of three eighth notes.
 
-**Pattern**を選んで**Play**を押すと、その拍子のシンプルなドラムビートを聴けます。ここで示すのはあくまで例で、4種類のドラムを使った1小節のパターンだけでも、組み合わせはほぼ無限にあります。下のグリッドのセルをクリックして打音を追加・削除し、自分のパターンを作ってみましょう。**Tempo**では1分あたりの拍数を設定します。通常は4分音符を基準に数えますが、6/8では8分音符3つを1拍として数えます。
+**Pattern**を選んで**Play**を押すと、その拍子のシンプルなドラムビートを聴けます。ここで示すのはあくまで例で、4種類のドラムを使った1小節のパターンだけでも、組み合わせはほぼ無限にあります。下のグリッドのセルをクリックして打音を追加・削除したり、打音を上下にドラッグして大きく・小さくしたりして、自分のパターンを作ってみましょう。**Tempo**では1分あたりの拍数を設定します。通常は4分音符を基準に数えますが、6/8では8分音符3つを1拍として数えます。
 
-The grid shows one bar, with a row for each drum (hi-hat, rim click, snare, and kick) and a column for each eighth note (or, in a shuffle, each third of a beat). Wider gaps mark the beats. A tall yellow cell represents a full hit; a short one represents a soft hit. The column currently playing lights up. Click a cell to cycle through rest, full hit, soft hit, and rest again. The numbers above show the beats in the bar—1 to 4 in 4/4—and the beat currently playing turns red.
+The grid shows one bar, with a row for each drum (hi-hat, rim click, snare, and kick) and a column for each eighth note (or, in a shuffle, each third of a beat). Wider gaps mark the beats. The height of a yellow hit shows its loudness: a full cell is a full hit, a short one a soft hit. The column currently playing lights up. Click a cell to turn a hit on or off, and drag a hit up or down to change its loudness; its value shows as a percentage while you drag. The numbers above show the beats in the bar—1 to 4 in 4/4—and the beat currently playing turns red.
 
-グリッドは1小節を表し、各行はドラム（ハイハット、リムクリック、スネア、キック）、各列は8分音符1つ（シャッフルでは1拍の3分の1）に対応します。拍の位置は、間隔を広くして示しています。背の高い黄色のセルは通常の打音、低いセルは弱い打音を表します。再生中の列は点灯します。セルをクリックすると、休符、通常の打音、弱い打音、休符の順に切り替わります。上の数字は小節の拍を示し、4/4なら1から4まで表示されます。再生中の拍は赤く表示されます。
+グリッドは1小節を表し、各行はドラム（ハイハット、リムクリック、スネア、キック）、各列は8分音符1つ（シャッフルでは1拍の3分の1）に対応します。拍の位置は、間隔を広くして示しています。黄色い打音の高さは音量を表し、セルいっぱいなら通常の打音、低ければ弱い打音です。再生中の列は点灯します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。ドラッグしているあいだは、その値がパーセントで表示されます。上の数字は小節の拍を示し、4/4なら1から4まで表示されます。再生中の拍は赤く表示されます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=meters" title="Drum patterns in time signatures" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
