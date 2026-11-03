@@ -46,6 +46,10 @@ Try the snare 20 ms early and then 20 ms late. Early, the beat sounds hasty and 
 
 スネアを20ミリ秒前に、次に20ミリ秒後ろにしてみてください。前にすると、ビートは急いでいるように、まるで速くなりたがっているように聞こえます。後ろにすると、テンポは変わっていないのに、重く、ゆったりと聞こえます。スネアを大きくするとどちらの印象も強まり、小さくするとビートは軽くなります。ここでのドラムは合成音で、大きさが変わるだけなので、本物の太鼓にある音色の変化はありませんが、タイミングと音量だけでも、その効果ははっきりわかります。
 
+You can also move single hits. Drag a hit left or right to play it early or late: it moves far less than your pointer, since a few milliseconds are only a small share of a beat, and its offset in milliseconds shows on it while you drag, up to 40 ms either way. A click without dragging still changes a cell, from rest to full to soft, as in the drum patterns on [Time Signatures](/time-signatures). **Randomize** gives every hit a random timing, up to 30 ms either way, and a random loudness. Press it a few times: some results sound sloppy, while others have a feel of their own. **Timing** and **Volume** still move all of the snare's hits together.
+
+1つずつの打音を動かすこともできます。打音を左右にドラッグすると、前や後ろにずらせます。数ミリ秒は1拍のごく一部なので、打音はポインターよりずっと小さくしか動きません。ドラッグしているあいだは、ずれがミリ秒で打音の上に表示されます。ずらせるのは前後それぞれ最大40ミリ秒です。ドラッグせずにクリックすると、[拍子記号](/time-signatures)のドラムのパターンと同じように、休み、強、弱の順にセルが変わります。**Randomize**は、すべての打音に、前後それぞれ最大30ミリ秒のランダムなタイミングと、ランダムな音量を与えます。何度か押してみてください。だらしなく聞こえる結果もあれば、独自のフィールを持つ結果もあります。**Timing**と**Volume**は、引き続きスネアのすべての打音をまとめて動かします。
+
 # Tempo That Breathes
 # 揺れるテンポ
 

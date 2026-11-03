@@ -13,12 +13,12 @@ import { DRUM_NOTES } from './instruments.js';
  *                     // ([4, 4, 4, 4] for 4/4 in sixteenths, [2, 2, 3] for 7/8)
  *     beatsPerBar?,   // for a pattern longer than a bar: beat groups in one bar
  *     tempo,          // a suitable tempo in beats per minute
- *     tracks: [{ id, label, midi, steps, offset?, gain? }],
+ *     tracks: [{ id, label, midi, steps, offset?, offsets?, gain? }],
  *   }
  *
  * Each track's `steps` holds one velocity per step, 0–1, where 0 is silence. A track
  * may be moved off the grid by `offset` seconds (negative is early) and scaled by
- * `gain`. Patterns are written as strings, one character per step: `X` is a full hit,
+ * `gain`; `offsets`, one per step, moves single hits on top of that. Patterns are written as strings, one character per step: `X` is a full hit,
  * `x` a soft one (half velocity), and `-` a rest.
  */
 
@@ -59,7 +59,10 @@ export function makePattern({ id, label, stepsPerBeat, groups, beatsPerBar, temp
 
 /** A copy that can be edited without changing the original. */
 export function clonePattern(pattern) {
-    return { ...pattern, groups: [...pattern.groups], tracks: pattern.tracks.map(t => ({ ...t, steps: [...t.steps] })) };
+    return {
+        ...pattern, groups: [...pattern.groups],
+        tracks: pattern.tracks.map(t => ({ ...t, steps: [...t.steps], ...(t.offsets ? { offsets: [...t.offsets] } : {}) })),
+    };
 }
 
 /**
@@ -207,6 +210,19 @@ export const BACKBEAT = makePattern({
     },
 });
 
+/**
+ * Plays a pattern the way a person might: moves every hit by a random amount up to
+ * `timing` seconds either way (into its track's `offsets`, rounded to whole
+ * milliseconds) and gives it a random velocity from `minVelocity` up to a full hit.
+ * Rests stay rests. Changes the pattern in place.
+ */
+export function humanize(pattern, { timing = 0.03, minVelocity = 0.25 } = {}) {
+    for (const track of pattern.tracks) {
+        track.offsets = track.steps.map(v => v > 0 ? Math.round((Math.random() * 2 - 1) * timing * 1000) / 1000 : 0);
+        track.steps = track.steps.map(v => v > 0 ? minVelocity + Math.random() * (FULL - minVelocity) : 0);
+    }
+}
+
 /** Named sets of patterns, for a demo that takes the set as a URL parameter. */
 export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS, implied: IMPLIED_PATTERNS };
 
@@ -214,7 +230,7 @@ export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS, impl
 // covers the earliest a track can be moved ahead of the grid (see MAX_EARLY).
 const AHEAD = 0.1;
 const TICK_MS = 25;
-/** The earliest a track's `offset` can move it, in seconds. */
+/** The earliest a track's `offset` and a hit's `offsets` together can move it, in seconds. */
 export const MAX_EARLY = 0.1;
 
 /**
@@ -276,7 +292,8 @@ export class StepSequencer {
             const i = this._step % pattern.tracks[0].steps.length;
             for (const track of pattern.tracks) {
                 const velocity = track.steps[i] * (track.gain ?? 1);
-                if (velocity > 0) this.instrument.noteOn(track.midi, velocity, this._next + (track.offset ?? 0));
+                const offset = (track.offset ?? 0) + (track.offsets?.[i] ?? 0);
+                if (velocity > 0) this.instrument.noteOn(track.midi, velocity, this._next + offset);
             }
             this.onSchedule(i, this._next);
             const draw = setTimeout(() => { this._draws.delete(draw); this.onStep(i); },
