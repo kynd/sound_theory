@@ -81,29 +81,31 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 30. [Outlining the Changes](/outlining-changes): bebop lines built from chord tones: arpeggios, guide tones, steps, and enclosures.
 
-31. [Jazz Idioms](/jazz-idioms): the vocabulary of the style: enclosures, approach notes, the lick, 3 to ♭9, the blue third, and anticipation.
+31. [Walking Bass](/walking-bass): building a bass line: roots and fifths, chord tones and approach notes, scale steps, and starting from above.
 
-32. [Barry Harris's Bebop Scale](/bebop-scale): the sixth diminished scale, harmonized as sixth and diminished chords, and the added note that keeps chord tones on the beat.
+32. [Jazz Idioms](/jazz-idioms): the vocabulary of the style: enclosures, approach notes, the lick, 3 to ♭9, the blue third, and anticipation.
 
-33. [Minor Chord Scales](/minor-chord-scales): the seventh chords and modes of melodic and harmonic minor, and how they are used over a minor ii–V–i, tritone substitutes, and borrowed chords.
+33. [Barry Harris's Bebop Scale](/bebop-scale): the sixth diminished scale, harmonized as sixth and diminished chords, and the added note that keeps chord tones on the beat.
 
-34. [Improvising on Two-Fives](/two-five-improvisation): pairs of scales over the ii–V–I and phrases over V with Mixolydian, altered, diminished, and harmonic minor.
+34. [Minor Chord Scales](/minor-chord-scales): the seventh chords and modes of melodic and harmonic minor, and how they are used over a minor ii–V–i, tritone substitutes, and borrowed chords.
 
-35. [Improvising on Jazz Chords](/jazz-chord-improvisation): Lydian dominant on dominants that do not resolve down a fifth, whole tone on 7♯5, and the diminished scales.
+35. [Improvising on Two-Fives](/two-five-improvisation): pairs of scales over the ii–V–I and phrases over V with Mixolydian, altered, diminished, and harmonic minor.
 
-36. [Modal Jazz](/modal-jazz): modes held for many bars, the form of "So What" and its voicing, fourths over a pedal, and suspended chords.
+36. [Improvising on Jazz Chords](/jazz-chord-improvisation): Lydian dominant on dominants that do not resolve down a fifth, whole tone on 7♯5, and the diminished scales.
 
-37. [Upper Structure Triads](/upper-structure-triads): major triads over a dominant shell, and the tensions each one adds.
+37. [Modal Jazz](/modal-jazz): modes held for many bars, the form of "So What" and its voicing, fourths over a pedal, and suspended chords.
 
-38. [Triads Inside Scales](/triads-in-scales): the triads hidden in Lydian, Dorian, melodic minor, altered, and diminished scales, and triad pairs in phrases.
+38. [Upper Structure Triads](/upper-structure-triads): major triads over a dominant shell, and the tensions each one adds.
 
-39. [Pentatonics in Modern Jazz](/modern-pentatonics): pentatonics on other roots over each chord, such as B minor pentatonic over Cmaj7, and side-slipping.
+39. [Triads Inside Scales](/triads-in-scales): the triads hidden in Lydian, Dorian, melodic minor, altered, and diminished scales, and triad pairs in phrases.
 
-40. [Playing Outside](/playing-outside): side-stepping a half step and superimposing a ii–V a tritone away.
+40. [Pentatonics in Modern Jazz](/modern-pentatonics): pentatonics on other roots over each chord, such as B minor pentatonic over Cmaj7, and side-slipping.
 
-41. [Fourths and Intervallic Lines](/fourths): lines of stacked fourths in a scale and moved in parallel.
+41. [Playing Outside](/playing-outside): side-stepping a half step and superimposing a ii–V a tritone away.
 
-42. [Coltrane Changes](/coltrane-changes): three keys a major third apart, the Coltrane substitution for ii–V–I, and the 1-2-3-5 pattern.
+42. [Fourths and Intervallic Lines](/fourths): lines of stacked fourths in a scale and moved in parallel.
+
+43. [Coltrane Changes](/coltrane-changes): three keys a major third apart, the Coltrane substitution for ii–V–I, and the 1-2-3-5 pattern.
 
 1.  [音の波](/sound-waves)：サイン波、サイン波の足し合わせ、音の周波数成分。
 
@@ -165,26 +167,28 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 30. [コード進行を描き出す](/outlining-changes)：和音の音からつくるビバップの旋律。アルペジオ、ガイド・トーン、順次進行、エンクロージャー。
 
-31. [ジャズのイディオム](/jazz-idioms)：このスタイルの語彙。エンクロージャー、アプローチ・ノート、ザ・リック、3から♭9へ、ブルーな3度、先取り。
+31. [ウォーキング・ベース](/walking-bass)：ベース・ラインの組み立て方。根音と5度、和音の音とアプローチ・ノート、順次進行、上から始める。
 
-32. [バリー・ハリスのビバップ・スケール](/bebop-scale)：6の和音と減七の和音で和声づけするシックス・ディミニッシュ・スケールと、和音の音を拍の上に保つ加えられた音。
+32. [ジャズのイディオム](/jazz-idioms)：このスタイルの語彙。エンクロージャー、アプローチ・ノート、ザ・リック、3から♭9へ、ブルーな3度、先取り。
 
-33. [マイナーのコード・スケール](/minor-chord-scales)：旋律的短音階と和声的短音階の7の和音と旋法、そして短調のii–V–i、裏コード、借用和音での使い方。
+33. [バリー・ハリスのビバップ・スケール](/bebop-scale)：6の和音と減七の和音で和声づけするシックス・ディミニッシュ・スケールと、和音の音を拍の上に保つ加えられた音。
 
-34. [ツー・ファイブで即興する](/two-five-improvisation)：ii–V–Iの上の音階の組み合わせと、ミクソリディアン、オルタード、ディミニッシュ、和声的短音階を使ったVの上のフレーズ。
+34. [マイナーのコード・スケール](/minor-chord-scales)：旋律的短音階と和声的短音階の7の和音と旋法、そして短調のii–V–i、裏コード、借用和音での使い方。
 
-35. [ジャズの和音で即興する](/jazz-chord-improvisation)：5度下へ解決しないドミナントのリディアン・ドミナント、7♯5のホールトーン、ディミニッシュ・スケール。
+35. [ツー・ファイブで即興する](/two-five-improvisation)：ii–V–Iの上の音階の組み合わせと、ミクソリディアン、オルタード、ディミニッシュ、和声的短音階を使ったVの上のフレーズ。
 
-36. [モード・ジャズ](/modal-jazz)：何小節も続く旋法、「ソー・ホワット」の形式とボイシング、保続音の上の4度、サスペンデッド・コード。
+36. [ジャズの和音で即興する](/jazz-chord-improvisation)：5度下へ解決しないドミナントのリディアン・ドミナント、7♯5のホールトーン、ディミニッシュ・スケール。
 
-37. [アッパー・ストラクチャー・トライアド](/upper-structure-triads)：ドミナントのシェルの上の長三和音と、それぞれが加えるテンション。
+37. [モード・ジャズ](/modal-jazz)：何小節も続く旋法、「ソー・ホワット」の形式とボイシング、保続音の上の4度、サスペンデッド・コード。
 
-38. [スケールの中の三和音](/triads-in-scales)：リディアン、ドリアン、旋律的短音階、オルタード、ディミニッシュに隠れた三和音と、フレーズの中のトライアド・ペア。
+38. [アッパー・ストラクチャー・トライアド](/upper-structure-triads)：ドミナントのシェルの上の長三和音と、それぞれが加えるテンション。
 
-39. [モダン・ジャズのペンタトニック](/modern-pentatonics)：Cmaj7の上のBマイナー・ペンタトニックのような、ほかの根音のペンタトニックと、サイド・スリップ。
+39. [スケールの中の三和音](/triads-in-scales)：リディアン、ドリアン、旋律的短音階、オルタード、ディミニッシュに隠れた三和音と、フレーズの中のトライアド・ペア。
 
-40. [アウトサイド](/playing-outside)：半音のサイド・ステップと、三全音離れたii–Vの重ね合わせ。
+40. [モダン・ジャズのペンタトニック](/modern-pentatonics)：Cmaj7の上のBマイナー・ペンタトニックのような、ほかの根音のペンタトニックと、サイド・スリップ。
 
-41. [4度と音程的な旋律](/fourths)：音階の中で積み重ね、平行に動かす4度の旋律。
+41. [アウトサイド](/playing-outside)：半音のサイド・ステップと、三全音離れたii–Vの重ね合わせ。
 
-42. [コルトレーン・チェンジ](/coltrane-changes)：長3度ずつ離れた3つの調、ii–V–Iのコルトレーンの代理、1-2-3-5のパターン。
+42. [4度と音程的な旋律](/fourths)：音階の中で積み重ね、平行に動かす4度の旋律。
+
+43. [コルトレーン・チェンジ](/coltrane-changes)：長3度ずつ離れた3つの調、ii–V–Iのコルトレーンの代理、1-2-3-5のパターン。

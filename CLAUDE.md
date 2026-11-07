@@ -214,6 +214,7 @@ src/content/docs/
     pentatonic-improvisation.md  pentatonic phrases, play-along        slug: pentatonic-improvisation
     diatonic-improvisation.md    one key, its scale over every chord   slug: diatonic-improvisation
     outlining-changes.md         chord tones, guide tones, enclosures  slug: outlining-changes
+    walking-bass.md              bass lines: roots, approaches, steps  slug: walking-bass
     jazz-idioms.md               enclosures, approach notes, the lick  slug: jazz-idioms
     bebop-scale.md               Barry Harris, sixth diminished scale  slug: bebop-scale
     minor-chord-scales.md        melodic/harmonic minor modes, use     slug: minor-chord-scales
