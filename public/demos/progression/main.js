@@ -7,10 +7,13 @@ import { ChordChart } from '../../lib/demo/ChordChart.js';
 import { addSelect, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
 
-// Which progressions to offer: ?set= names a set in PROGRESSION_SETS. ?view=chart shows
-// them as a chord chart instead of a piano roll.
+// Which progressions to offer: ?set= names a set in PROGRESSION_SETS, and ?example= picks
+// one progression from it (with no menu). ?view=chart shows them as a chord chart
+// instead of a piano roll.
 const params = new URLSearchParams(location.search);
-const PROGRESSIONS = PROGRESSION_SETS[params.get('set')] ?? PROGRESSION_SETS.diatonic;
+const SET = PROGRESSION_SETS[params.get('set')] ?? PROGRESSION_SETS.diatonic;
+const ONLY = SET.filter(p => p.id === params.get('example'));
+const PROGRESSIONS = ONLY.length ? ONLY : SET;
 const View = params.get('view') === 'chart' ? ChordChart : ProgressionView;
 
 const master = new MasterBus();

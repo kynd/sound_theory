@@ -53,17 +53,19 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 16. [Subdominant Minor](/subdominant-minor): chords borrowed from the parallel minor, with practical examples.
 
-17. [Beyond Functional Harmony](/non-functional-harmony): modes, quartal chords, planing, pedals, harmony from the melody, and twelve tones.
+17. [Chord Progressions](/chord-progressions): well-known progressions, from I–IV–V–I and the four-chord pop loop to the canon, the royal road, and ii–V–I, with songs that use them.
 
-18. [Reharmonization](/reharmonization): new chords under a familiar melody.
+18. [Beyond Functional Harmony](/non-functional-harmony): modes, quartal chords, planing, pedals, harmony from the melody, and twelve tones.
 
-19. [Blues](/blues): where the blues came from, work songs and call and response, the twelve-bar form with a riff, and how jazz reharmonized it.
+19. [Reharmonization](/reharmonization): new chords under a familiar melody.
 
-20. [Writing Chords](/chord-notation): from figured bass to chord symbols, and how one way of writing harmony shaped how we hear it.
+20. [Blues](/blues): where the blues came from, work songs and call and response, the twelve-bar form with a riff, and how jazz reharmonized it.
 
-21. [Breaking Conventions](/breaking-conventions): how composers and players have broken the conventions, from noise and chance to minimalism and phasing.
+21. [Writing Chords](/chord-notation): from figured bass to chord symbols, and how one way of writing harmony shaped how we hear it.
 
-22. [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
+22. [Breaking Conventions](/breaking-conventions): how composers and players have broken the conventions, from noise and chance to minimalism and phasing.
+
+23. [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
 
 1.  [音源](/sound-sources)：このシリーズ全体で使う楽器とエフェクト。
 
@@ -97,14 +99,16 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 16. [サブドミナント・マイナー](/subdominant-minor)：同主短調から借りた和音と、その実例。
 
-17. [機能和声の外へ](/non-functional-harmony)：旋法、4度堆積和音、平行和音、保続音、旋律からの和声、十二音。
+17. [コード進行](/chord-progressions)：I–IV–V–Iや4つの和音のポップスのループから、カノン進行、王道進行、ツー・ファイブ・ワンまで、よく知られた進行と、それを使った曲。
 
-18. [リハーモナイズ](/reharmonization)：よく知られた旋律の下に新しい和音を。
+18. [機能和声の外へ](/non-functional-harmony)：旋法、4度堆積和音、平行和音、保続音、旋律からの和声、十二音。
 
-19. [ブルース](/blues)：ブルースの成り立ち、労働歌とコール・アンド・レスポンス、リフで進む12小節の形式、そしてジャズによるリハーモナイズ。
+19. [リハーモナイズ](/reharmonization)：よく知られた旋律の下に新しい和音を。
 
-20. [コードの書き方](/chord-notation)：通奏低音からコード・シンボルまで、そして和声のひとつの書き方が、私たちの聞き方をどう形づくってきたか。
+20. [ブルース](/blues)：ブルースの成り立ち、労働歌とコール・アンド・レスポンス、リフで進む12小節の形式、そしてジャズによるリハーモナイズ。
 
-21. [慣習を破る](/breaking-conventions)：ノイズや偶然性からミニマリズムやフェイズまで、作曲家やミュージシャンが慣習を破ってきた方法。
+21. [コードの書き方](/chord-notation)：通奏低音からコード・シンボルまで、そして和声のひとつの書き方が、私たちの聞き方をどう形づくってきたか。
 
-22. [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。
+22. [慣習を破る](/breaking-conventions)：ノイズや偶然性からミニマリズムやフェイズまで、作曲家やミュージシャンが慣習を破ってきた方法。
+
+23. [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。

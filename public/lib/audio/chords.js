@@ -10,9 +10,10 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  * may be written ♭/♯ or b/#. `parseChord` turns a symbol into pitch classes;
  * `voiceProgression` turns a list of chords into MIDI notes that move smoothly.
  *
- * A progression is `{ id, label, tempo, loop?, chords, melody?, riff?, comp?, bassLow?, drums?, sounds? }`:
- *   - `chords`: `[{ symbol, beats, roman?, fn?, notes? }]`. `roman` is the Roman
- *     numeral shown under the chord, `fn` its function (T, SD, D, SDm). `notes`
+ * A progression is `{ id, label, tempo, loop?, chords, melody?, riff?, comp?, voicing?, bassLow?, drums?, sounds? }`:
+ *   - `chords`: `[{ symbol, beats, roman?, fn?, bass?, notes? }]`. `roman` is the Roman
+ *     numeral shown under the chord, `fn` its function (T, SD, D, SDm). `bass` (MIDI)
+ *     places the bass note itself, outside the usual range (see bassLow). `notes`
  *     (MIDI numbers) voices a chord by hand instead, for chords that are not
  *     stacks of thirds (quartal chords, chords from a twelve-tone row).
  *   - `melody`: `[{ midi, beats }]` played over the chords (`midi: null` is a rest).
@@ -21,6 +22,8 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  *   - `comp`: `[[part, beats], …]`, a rhythm for the chords in place of holding them,
  *     repeated through each chord: `'bass'` plays the bass note, `'upper'` the notes
  *     above it, `'all'` both, and `null` rests (see compHits).
+ *   - `voicing`: `'open'` spreads each chord's notes at their own intervals above the
+ *     root, so tensions sit above the chord tones (see voiceProgression).
  *   - `bassLow`: the lowest bass note (MIDI); the bass of every chord falls in the
  *     octave from it. Defaults to E2 (40).
  *   - `drums`: a rhythm pattern (see rhythm.js), looped along with the chords.
@@ -102,16 +105,34 @@ const UPPER_LOW = 52;
 const UPPER_CENTER = 64;
 
 /**
- * The notes above the bass, as pitch classes: every chord tone, except that the root
- * is left to the bass in chords of four or more tones (when the bass is the root), and
- * the fifth is left out of chords with five or more (it adds the least) and of chords
- * with a raised fifth or flat 13th, which would rub against it.
+ * The notes above the bass, as intervals above the root: every chord tone, except that
+ * the root is left to the bass in chords of four or more tones (when the bass is the
+ * root), and the fifth is left out of chords with five or more (it adds the least) and
+ * of chords with a raised fifth or flat 13th, which would rub against it.
  */
-function upperPitchClasses({ root, bass, intervals }) {
+function upperIntervals({ root, bass, intervals }) {
     let ivs = intervals;
     if (ivs.length >= 4 && bass === root) ivs = ivs.filter(i => i !== 0);
     if (ivs.length >= 5 || ivs.includes(8) || ivs.includes(20)) ivs = ivs.filter(i => i !== 7);
-    return [...new Set(ivs.map(i => (root + i) % 12))];
+    return ivs;
+}
+
+/** The same notes as pitch classes. */
+function upperPitchClasses(parsed) {
+    return [...new Set(upperIntervals(parsed).map(i => (parsed.root + i) % 12))];
+}
+
+/**
+ * An open voicing: the upper notes at their own intervals above the root (the 9th a
+ * ninth up, the 13th a thirteenth up) rather than packed into one octave, from the
+ * lowest octave that keeps them clear of the bass. Tensions then sit above the chord
+ * tones instead of between them.
+ */
+function openVoicing(parsed, bass) {
+    const ivs = [...new Set(upperIntervals(parsed))].sort((a, b) => a - b);
+    let root = bass - ((parsed.bass - parsed.root + 12) % 12);
+    while (root + ivs[0] < UPPER_LOW - 2 || root + ivs[0] <= bass + 2) root += 12;
+    return ivs.map(i => root + i);
 }
 
 /** Close-position voicings of pitch classes, each from a different chord tone at the bottom. */
@@ -143,11 +164,12 @@ function motion(notes, previous) {
  * Voices a list of chords for piano: the bass note low, the other tones in close
  * position above it, each chord in the inversion that moves least from the one
  * before (smooth voice leading). With a melody, the chords stay below the melody notes
- * they sound under. The bass falls in the octave from `bassLow`. Returns
+ * they sound under. The bass falls in the octave from `bassLow`. With `open`, every
+ * chord takes an open voicing instead (see openVoicing), without voice leading. Returns
  * `{ bass, upper, notes }` per chord, in MIDI numbers. Chords with hand-written
  * `notes` keep them.
  */
-export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW } = {}) {
+export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open = false } = {}) {
     // The lowest melody note during each chord, to keep the chord under it.
     const ceilings = [];
     let start = 0;
@@ -169,7 +191,11 @@ export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW } = {
             return { bass: chord.notes[0], upper: chord.notes.slice(1), notes: chord.notes };
         }
         const parsed = parseChord(chord.symbol);
-        const bass = bassLow + ((parsed.bass - bassLow) % 12 + 12) % 12;
+        const bass = chord.bass ?? bassLow + ((parsed.bass - bassLow) % 12 + 12) % 12;
+        if (open) {
+            const upper = openVoicing(parsed, bass);
+            return { bass, upper, notes: [bass, ...upper] };
+        }
         const options = candidates(upperPitchClasses(parsed), UPPER_LOW)
             .filter(v => v[0] >= UPPER_LOW - 2 && v[0] > bass + 2);
         const fits = options.filter(v => v[v.length - 1] < ceilings[i] - 1);
@@ -219,15 +245,23 @@ function melody(list) {
 
 const C = 60;   // C4, for hand-voiced chords and bass ranges
 
+/** A comp that strikes the chord on every beat, so the chords keep time. */
+const EVERY_BEAT = [['all', 1]];
+
 export const DIATONIC_PROGRESSIONS = [
-    { id: 'diatonic-triads', label: 'Diatonic triads', tempo: 100, bassLow: C - 12, chords: chords(2, [
-        ['C', 'I', 'T'], ['Dm', 'ii', 'SD'], ['Em', 'iii', 'T'], ['F', 'IV', 'SD'],
-        ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['Bdim', 'vii°', 'D'], ['C', 'I', 'T'],
-    ]) },
-    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 90, bassLow: C - 12, chords: chords(4, [
+    // The bass climbs the scale, ending on C4 an octave above where it started.
+    { id: 'diatonic-triads', label: 'Diatonic triads', tempo: 100, bassLow: C - 12, chords: [
+        ...chords(2, [
+            ['C', 'I', 'T'], ['Dm', 'ii', 'SD'], ['Em', 'iii', 'T'], ['F', 'IV', 'SD'],
+            ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['Bdim', 'vii°', 'D'],
+        ]),
+        { symbol: 'C', beats: 2, roman: 'I', fn: 'T', bass: C },
+    ] },
+    // The progressions strike each chord on every beat, four times.
+    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 90, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
         ['C', 'I', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'], ['C', 'I', 'T'],
     ]) },
-    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 90, loop: true, bassLow: C - 12, chords: chords(4, [
+    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 90, loop: true, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
         ['C', 'I', 'T'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'],
     ]) },
 ];
@@ -255,17 +289,19 @@ export const SEVENTH_PROGRESSIONS = [
         ['Cmaj7', 'Imaj7', 'T'], ['Dm7', 'ii7', 'SD'], ['Em7', 'iii7', 'T'], ['Fmaj7', 'IVmaj7', 'SD'],
         ['G7', 'V7', 'D'], ['Am7', 'vi7', 'T'], ['Bm7♭5', 'viiø7', 'D'], ['Cmaj7', 'Imaj7', 'T'],
     ]) },
-    { id: 'major-tensions', label: 'Tensions on Cmaj7', tempo: 80, chords: chords(2, [
+    // The tensions take open voicings, so the added notes sit above the chord instead
+    // of crowding into it.
+    { id: 'major-tensions', label: 'Tensions on Cmaj7', tempo: 80, voicing: 'open', chords: chords(2, [
         ['Cmaj7', '1 3 5 7'], ['Cmaj9', '+9'], ['Cmaj7(♯11)', '+♯11'], ['Cmaj13', '+9 13'], ['C6/9', '6 9'],
     ]) },
-    { id: 'dominant-tensions', label: 'Tensions on G7', tempo: 80, chords: [
+    { id: 'dominant-tensions', label: 'Tensions on G7', tempo: 80, voicing: 'open', chords: [
         ...chords(2, [
             ['G7', '1 3 5 ♭7'], ['G9', '+9'], ['G13', '+9 13'], ['G7(♭9)', '+♭9'],
             ['G7(♯9)', '+♯9'], ['G7(♭13)', '+♭13'], ['G7alt', 'alt'],
         ]),
         { symbol: 'Cmaj7', beats: 4, roman: 'Imaj7', fn: '' },
     ] },
-    { id: 'ii-v-i-tensions', label: 'ii–V–I with tensions', tempo: 80, chords: chords(4, [
+    { id: 'ii-v-i-tensions', label: 'ii–V–I with tensions', tempo: 80, voicing: 'open', comp: EVERY_BEAT, chords: chords(4, [
         ['Dm7', 'ii7', 'SD'], ['G7', 'V7', 'D'], ['Cmaj7', 'Imaj7', 'T'],
         ['Dm9', 'ii9', 'SD'], ['G13', 'V13', 'D'], ['Cmaj9', 'Imaj9', 'T'],
     ]) },
@@ -412,6 +448,44 @@ export const REHARMONIZATION_PROGRESSIONS = [
 ];
 
 /**
+ * Well-known progressions, one per section of the Chord Progressions page, in C (or A
+ * minor) so they can be compared: one chord a bar unless the progression moves faster,
+ * each struck on every beat, with the bass from C3.
+ */
+export const COMMON_PROGRESSIONS = [
+    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 112, chords: chords(4, [
+        ['C', 'I'], ['F', 'IV'], ['G', 'V'], ['C', 'I'],
+    ]) },
+    { id: 'i-v-vi-iv', label: 'I–V–vi–IV', tempo: 96, chords: chords(4, [
+        ['C', 'I'], ['G', 'V'], ['Am', 'vi'], ['F', 'IV'],
+    ]) },
+    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 88, chords: chords(4, [
+        ['C', 'I'], ['Am', 'vi'], ['F', 'IV'], ['G', 'V'],
+    ]) },
+    { id: 'vi-iv-i-v', label: 'vi–IV–I–V', tempo: 96, chords: chords(4, [
+        ['Am', 'vi'], ['F', 'IV'], ['C', 'I'], ['G', 'V'],
+    ]) },
+    { id: 'iv-v-iii-vi', label: 'IV–V–iii–vi', tempo: 100, chords: chords(4, [
+        ['F', 'IV'], ['G', 'V'], ['Em', 'iii'], ['Am', 'vi'],
+    ]) },
+    { id: 'canon', label: 'I–V–vi–iii–IV–I–IV–V', tempo: 84, chords: chords(2, [
+        ['C', 'I'], ['G', 'V'], ['Am', 'vi'], ['Em', 'iii'], ['F', 'IV'], ['C', 'I'], ['F', 'IV'], ['G', 'V'],
+    ]) },
+    { id: 'ii-v-i', label: 'ii–V–I', tempo: 120, chords: chords(4, [
+        ['Dm7', 'ii7'], ['G7', 'V7'], ['Cmaj7', 'Imaj7'], ['Cmaj7', 'Imaj7'],
+    ]) },
+    { id: 'i-vi-ii-v', label: 'I–vi–ii–V', tempo: 120, chords: chords(2, [
+        ['C', 'I'], ['Am', 'vi'], ['Dm', 'ii'], ['G', 'V'],
+    ]) },
+    { id: 'i-bvii-iv-i', label: 'I–♭VII–IV–I', tempo: 112, chords: chords(4, [
+        ['C', 'I'], ['B♭', '♭VII'], ['F', 'IV'], ['C', 'I'],
+    ]) },
+    { id: 'andalusian', label: 'i–♭VII–♭VI–V', tempo: 100, chords: chords(4, [
+        ['Am', 'i'], ['G', '♭VII'], ['F', '♭VI'], ['E', 'V'],
+    ]) },
+].map(p => ({ ...p, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));
+
+/**
  * A work song's call and response over a hammer falling on every downbeat: a leader
  * sings a two-bar phrase between the strokes, and the group answers in octaves.
  */
@@ -506,6 +580,7 @@ export const PROGRESSION_SETS = {
     blues: BLUES_PROGRESSIONS,
     'jazz-blues': JAZZ_BLUES_PROGRESSIONS,
     waltz: WALTZ_PROGRESSIONS,
+    common: COMMON_PROGRESSIONS,
 };
 
 // ── Player ───────────────────────────────────────────────────────────────────
@@ -554,7 +629,8 @@ export class ProgressionPlayer {
     setProgression(progression) {
         this.stop();
         this.progression = progression;
-        this.voicings = voiceProgression(progression.chords, progression.melody ?? [], { bassLow: progression.bassLow });
+        this.voicings = voiceProgression(progression.chords, progression.melody ?? [],
+            { bassLow: progression.bassLow, open: progression.voicing === 'open' });
         this.hits = compHits(progression, this.voicings);
     }
 

@@ -2,66 +2,38 @@
 title: "Diatonic Chords ダイアトニック・コード"
 slug: diatonic-chords
 ---
-A chord is three or more notes sounding together. The most common chords are built by stacking thirds: take a note, the root, then skip a note of the scale to add the third, and skip another to add the fifth. These three-note chords are triads. Built this way on each of the seven notes of the C major scale, using only the notes of the scale, they give the seven diatonic chords of C major.
+A chord is three or more notes played simultaneously. Many common chords are built by stacking thirds: begin with a note (the root), skip one scale note to add a third, then skip another to add a fifth. A three-note chord built this way is called a triad. Building a triad on each of the seven notes of the C major scale, using only notes from that scale, gives the seven diatonic chords in C major.
 
-和音（コード）とは、3つ以上の音が同時に鳴るものです。最もよく使われる和音は、3度を積み重ねてつくります。ひとつの音（根音）を選び、音階の音をひとつ飛ばして3度の音を、さらにひとつ飛ばして5度の音を加えます。この3音の和音を三和音といいます。Cの長音階の7つの音それぞれの上に、音階の音だけを使ってこうして積むと、Cメジャーの7つのダイアトニック・コードができます。
+和音（コード）とは、3つ以上の音を同時に鳴らしたものです。よく使われる和音の多くは、3度を積み重ねてつくります。まず根音を決め、音階の音をひとつ飛ばして3度を加え、さらにひとつ飛ばして5度を加えます。このようにつくる3音の和音を三和音といいます。Cメジャー・スケールの7音それぞれを根音にし、そのスケール内の音だけを使って三和音をつくると、Cメジャーの7つのダイアトニック・コードができます。
 
--   **Major** on the 1st, 4th, and 5th notes: C, F, and G.
+The chords built on scale degrees 1, 4, and 5—C, F, and G—are major. Those built on degrees 2, 3, and 6—Dm, Em, and Am—are minor. The chord built on degree 7, Bdim, is diminished, with a narrower fifth (B to F).
 
--   **Minor** on the 2nd, 3rd, and 6th: Dm, Em, and Am.
+1番目、4番目、5番目の音を根音とするC、F、Gは長三和音（メジャー）です。2番目、3番目、6番目の音を根音とするDm、Em、Amは短三和音（マイナー）です。7番目の音を根音とするBdimは減三和音（ディミニッシュ）で、5度（BからFまで）の幅が狭くなっています。
 
--   **Diminished** on the 7th: Bdim, with a smaller fifth (B to F).
+Chords are often identified by Roman numerals showing their position in a key: I, ii, iii, IV, V, vi, vii°. Uppercase numerals indicate major chords, lowercase numerals indicate minor chords, and ° indicates a diminished chord. Roman numerals describe a chord’s role in any key: V is G in C major and D in G major.
 
--   **長三和音（メジャー）** が1番目、4番目、5番目の音の上に：C、F、G。
-
--   **短三和音（マイナー）** が2番目、3番目、6番目の上に：Dm、Em、Am。
-
--   **減三和音（ディミニッシュ）** が7番目の上に：Bdim。5度が狭くなります（BからF）。
-
-Chords are often named by Roman numerals for their place in the key: I, ii, iii, IV, V, vi, vii°, with upper case for major, lower case for minor, and ° for diminished. A numeral describes a chord's role in any key: V is G in C major and D in G major.
-
-和音は、調の中での位置を表すローマ数字で呼ばれることがよくあります。I、ii、iii、IV、V、vi、vii°で、大文字が長三和音、小文字が短三和音、°が減三和音です。ローマ数字は、どの調でも和音の役割を表します。VはCメジャーではG、GメジャーではDです。
+和音は、調の中での位置を示すローマ数字で表すことがよくあります。I、ii、iii、IV、V、vi、vii°のように表し、大文字は長三和音、小文字は短三和音、°は減三和音を示します。ローマ数字は、どの調でも和音の役割を示します。たとえば、VはCメジャーではG、GメジャーではDです。
 
 # Functions
 # 機能
 
-The diatonic chords fall into three roles, called functions, which [Functional Harmony](/functional-harmony) looks at more closely:
+The diatonic chords have three roles, called functions, explored in more detail in [Functional Harmony](/functional-harmony). The tonic (T) feels like home: it is stable and at rest. Its chords are I, plus vi and iii, which share two notes with I. The subdominant (SD) moves away from home: its chords are IV and ii. The dominant (D) creates tension that wants to resolve back home: its chords are V and vii°.
 
--   **Tonic (T):** home, stable and at rest. I, and also vi and iii, which share two notes with it.
-
--   **Subdominant (SD):** a step away from home, moving on. IV and ii.
-
--   **Dominant (D):** tension that wants to return home. V and vii°.
-
-ダイアトニック・コードは、機能と呼ばれる3つの役割に分かれます。詳しくは[機能和声](/functional-harmony)で見ていきます。
-
--   **トニック（T）：** 帰る場所で、安定して落ち着いています。Iと、Iと2音を共有するvi、iii。
-
--   **サブドミナント（SD）：** 家から一歩離れ、先へ進もうとします。IVとii。
-
--   **ドミナント（D）：** 家に戻りたがる緊張です。Vとvii°。
+ダイアトニック・コードには、機能と呼ばれる3つの役割があります。詳しくは[機能和声](/functional-harmony)で見ていきます。トニック（T）は帰る場所のような響きで、安定して落ち着いています。Iに加え、Iと2音を共有するviとiiiがトニックに属します。サブドミナント（SD）は家から離れて先へ進む響きで、IVとiiが属します。ドミナント（D）は家に戻ろうとする緊張を生み、Vとvii°が属します。
 
 # Hearing the Chords
 # 和音を聞く
 
-Choose an **Example** and press **Play**. The plot is a piano roll: time runs to the right and pitch goes up, and each yellow bar is a note of a chord, the lowest being the bass. The chord's name is above it, and its Roman numeral and function below. The notes that sound turn red. Click a chord to hear it alone, as long as you hold it. The keyboard below lights the notes that sound, and you can play it too, with the mouse or the keys from A to ; on your computer keyboard (Z and X shift the octave).
+Choose an **Example** and press **Play**. The plot is a piano roll: time runs from left to right, and pitch rises upward. Each yellow bar represents one note in a chord; the lowest note is the bass. The chord name appears above it, with its Roman numeral and function below. Notes sound red when played. Click a chord to hear it on its own, and hold it to keep it playing. The keyboard below lights up the notes being played. You can also play it with the mouse or with the A-to-; keys on your computer keyboard (Z and X shift the octave).
 
-**Example**を選んで**Play**を押してください。図はピアノロールで、時間は右へ、音高は上へ進み、黄色い横棒のひとつひとつが和音の音です（いちばん低いものがベース）。和音の名前が上に、ローマ数字と機能が下に表示され、鳴っている音は赤くなります。和音をクリックすると、押しているあいだその和音だけが鳴ります。下の鍵盤は鳴っている音を示し、マウスやコンピューターのキーボードのAから;までのキーで弾くこともできます（ZとXでオクターブが変わります）。
+**Example**を選んで**Play**を押してください。図はピアノロールです。時間は左から右へ進み、音高は上へ行くほど高くなります。黄色い横棒は和音を構成する音を表し、いちばん低い音がベースです。和音名は上に、ローマ数字と機能は下に表示されます。再生中の音は赤くなります。和音をクリックすると単独で鳴り、押し続けると音も鳴り続けます。下の鍵盤では、鳴っている音が点灯します。マウス、またはコンピューターのキーボードのAから;までのキーで演奏することもできます（ZとXでオクターブを切り替えます）。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=diatonic" title="Diatonic chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
--   **Diatonic triads:** the seven chords in order, from C back to C.
+**Diatonic triads** plays the seven chords in order, from C up to the C an octave higher. **I–IV–V–I** is the simplest complete progression: home, away, tension, then home again. **I–vi–IV–V** is a progression heard in countless pop songs since the 1950s.
 
--   **I–IV–V–I:** the simplest complete progression: home, away, tension, home.
+**Diatonic triads**は、7つの和音を順に、Cから1オクターブ上のCまで鳴らします。**I–IV–V–I**は最もシンプルな完結した進行で、帰る、離れる、緊張する、そして再び帰る、という流れです。**I–vi–IV–V**は、1950年代以降、数えきれないほどのポップスで使われてきた進行です。
 
--   **I–vi–IV–V:** a loop heard in countless pop songs since the 1950s.
+A minor key has its own diatonic chords. In C natural minor, they are Cm, Ddim, E♭, Fm, Gm, A♭, and B♭ (i, ii°, ♭III, iv, v, ♭VI, ♭VII). Raising the 7th in [harmonic minor](/minor-scales) turns Gm into G, a major dominant chord.
 
--   **Diatonic triads：** 7つの和音を順に、CからCまで。
-
--   **I–IV–V–I：** 最も簡単な完結した進行です。家、離れる、緊張、家。
-
--   **I–vi–IV–V：** 1950年代から数えきれないポップスで聞かれる繰り返しの進行です。
-
-The demo voices the chords the way a pianist might: the root in the bass and the other notes close together above it, each chord in the position that moves least from the one before. A minor key has its own diatonic chords. From the natural minor of C they are Cm, Ddim, E♭, Fm, Gm, A♭, and B♭ (i, ii°, ♭III, iv, v, ♭VI, ♭VII), and the raised 7th of the [harmonic minor](/minor-scales) turns Gm into G, a major dominant.
-
-デモは、ピアニストが弾くように和音を配置しています。根音をベースに、ほかの音をその上に近づけて置き、それぞれの和音を前の和音からいちばん少なく動く形にしています。短調には短調のダイアトニック・コードがあります。Cの自然短音階からはCm、Ddim、E♭、Fm、Gm、A♭、B♭（i、ii°、♭III、iv、v、♭VI、♭VII）ができ、[和声的短音階](/minor-scales)の上げた7番目の音は、GmをGという長三和音のドミナントに変えます。
+短調にも、その調ならではのダイアトニック・コードがあります。Cナチュラル・マイナーでは、Cm、Ddim、E♭、Fm、Gm、A♭、B♭（i、ii°、♭III、iv、v、♭VI、♭VII）です。[和声的短音階](/minor-scales)では7番目の音を上げることで、Gmが長三和音のG、つまりメジャー・ドミナントに変わります。

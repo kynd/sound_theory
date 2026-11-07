@@ -200,6 +200,7 @@ src/content/docs/
     functional-harmony.md        T, SD, D, progressions                slug: functional-harmony
     tension-and-resolution.md    dominant motion, other resolutions    slug: tension-and-resolution
     subdominant-minor.md         borrowed chords                       slug: subdominant-minor
+    chord-progressions.md        well-known progressions, songs        slug: chord-progressions
     non-functional-harmony.md    modes, planing, twelve tones          slug: non-functional-harmony
     reharmonization.md           Twinkle, five versions                slug: reharmonization
     blues.md                     history, work songs, 12-bar, jazz blues   slug: blues
