@@ -33,11 +33,11 @@ The one constraint is the melody: each melody note has to fit the new chord, as 
 # Twinkle, Twinkle
 # きらきら星
 
-The demo reharmonizes "Twinkle, Twinkle, Little Star", a traditional melody, in five versions. Choose a version with **Example** and press **Play**. The melody is drawn in pink above the chords and lights up on the keyboard along with them. Click a chord to hold it and hear how the melody note sits in it.
+The demo reharmonizes "Twinkle, Twinkle, Little Star", a traditional melody, in five versions. Choose a version with **Example** and press **Play**. The melody is drawn in pink above the chords and lights up on the keyboard along with them. Click a chord to hold it and hear how the melody note sits in it. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-デモでは、伝承の旋律「きらきら星」を5通りにリハーモナイズします。**Example**でバージョンを選び、**Play**を押してください。旋律は和音の上にピンクで描かれ、鍵盤でも和音と一緒に明るくなります。和音をクリックして鳴らし、旋律の音がその中でどう響くかを聞いてみてください。
+デモでは、伝承の旋律「きらきら星」を5通りにリハーモナイズします。**Example**でバージョンを選び、**Play**を押してください。旋律は和音の上にピンクで描かれ、鍵盤でも和音と一緒に明るくなります。和音をクリックして鳴らし、旋律の音がその中でどう響くかを聞いてみてください。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=reharmonization" title="Reharmonizing Twinkle, Twinkle" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=reharmonization&key" title="Reharmonizing Twinkle, Twinkle" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 -   **Original:** the usual harmony, only I, IV, and V.
 

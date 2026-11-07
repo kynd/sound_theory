@@ -48,11 +48,11 @@ The harmonic minor scale itself suits a dark minor tonic, CmMaj7, especially in 
 
 和声的短音階そのものは、暗いマイナーのトニックCmMaj7に合い、特にクラシックの影響を受けたジャズや、ライン・クリシェで使われます（[短調の和音](/minor-key-chords)を参照）。ロクリアン♮6は短調のiiø7に合いますが、フラット9度のため、ロクリアン♮2より硬い響きになります。イオニアン♯5は4番目の音が和音とぶつかるので、単独で使われることはまれです。ドリアン♯4はマイナー・セブンスの和音にシャープ11度を加え、マイナー・ブルースやジプシー・ジャズで聞かれる響きになります。最も重要なのはフリジアン・ドミナントです。短調の伝統的なV7で、フラット9度とフラット13度を持ってiへ解決します。G7(♭9)からCmへ進む、スペイン風の響きです。リディアン♯2は、♭VImaj7（CマイナーではA♭maj7）の上のエキゾチックな色です。そしてウルトラ・ロクリアンは、7番目の音の上の減七の和音に合います。この和音は根音のないドミナントとして働き、Bdim7はBを最低音にしたG7(♭9)です。
 
-Choose an **Example** and press **Play** to hear each system's seven modes in order. Each seventh chord is held while its mode runs up an octave over it in eighth notes, from the chord's root: the chord is yellow and the scale pink in the piano roll, and the sounding notes turn red. Click a chord to hear it on its own; the keyboard lights the notes as they sound.
+Choose an **Example** and press **Play** to hear each system's seven modes in order. Each seventh chord is held while its mode runs up an octave over it in eighth notes, from the chord's root: the chord is yellow and the scale pink in the piano roll, and the sounding notes turn red. Click a chord to hear it on its own; the keyboard lights the notes as they sound. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Example**を選んで**Play**を押すと、それぞれの体系の7つの旋法が順に鳴ります。7の和音を鳴らしたまま、その上で旋法が和音の根音から1オクターブ、8分音符で上がっていきます。ピアノロールでは和音が黄色、音階がピンクで示され、鳴っている音は赤くなります。和音をクリックするとその和音だけを鳴らせ、鍵盤では鳴っている音が点灯します。
+**Example**を選んで**Play**を押すと、それぞれの体系の7つの旋法が順に鳴ります。7の和音を鳴らしたまま、その上で旋法が和音の根音から1オクターブ、8分音符で上がっていきます。ピアノロールでは和音が黄色、音階がピンクで示され、鳴っている音は赤くなります。和音をクリックするとその和音だけを鳴らせ、鍵盤では鳴っている音が点灯します。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-modes" title="Modes of melodic and harmonic minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-modes&key=minor" title="Modes of melodic and harmonic minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # In Practice
 # 実際の使い方
@@ -69,8 +69,8 @@ In a major key, chords borrowed from these systems bring surprise (see [Subdomin
 
 長調では、これらの体系から借りた和音が意外性をもたらします（[サブドミナント・マイナー](/subdominant-minor)を参照）。Cメジャーでは、♭VImaj7（A♭maj7）の上で、Cの和声的短音階の6番目の旋法、A♭リディアン♯2を使えます。短調のivをFm6として使うときは、Fの旋律的短音階が合い、Cmaj7へ滑らかに下りて解決します。そして♭VII7、つまりバックドア・ドミナントと呼ばれるB♭7には、Fの旋律的短音階の4番目の旋法、B♭リディアン・ドミナントが合います。
 
-The demo below plays each of these with its chord scales, in the same way as the demo above. **ii–V–i, altered** uses D Locrian ♮2, G altered, and C melodic minor. **ii–V–i, harmonic** uses D Locrian ♮6, G Phrygian dominant, and C harmonic minor. **Tritone substitute** replaces G7 with D♭7 and D♭ Lydian dominant. **Borrowed in C major** runs Cmaj7–A♭maj7–Fm6–B♭7–Cmaj7, each chord with the scale described above.
+The demo below plays each of these with its chord scales, in the same way as the demo above. **ii–V–i, altered** uses D Locrian ♮2, G altered, and C melodic minor. **ii–V–i, harmonic** uses D Locrian ♮6, G Phrygian dominant, and C harmonic minor. **Tritone substitute** replaces G7 with D♭7 and D♭ Lydian dominant. **Borrowed in C major** runs Cmaj7–A♭maj7–Fm6–B♭7–Cmaj7, each chord with the scale described above. The demo plays in C minor (C major for **Borrowed in C major**), as in the text; choose a **Key** to hear it in another key.
 
-下のデモは、これらをそれぞれのコード・スケールとともに、上のデモと同じように鳴らします。**ii–V–i, altered**は、Dロクリアン♮2、Gオルタード、Cの旋律的短音階を使います。**ii–V–i, harmonic**は、Dロクリアン♮6、Gフリジアン・ドミナント、Cの和声的短音階を使います。**Tritone substitute**はG7をD♭7に置き換え、D♭リディアン・ドミナントを使います。**Borrowed in C major**はCmaj7–A♭maj7–Fm6–B♭7–Cmaj7と進み、どの和音も上で述べた音階とともに鳴ります。
+下のデモは、これらをそれぞれのコード・スケールとともに、上のデモと同じように鳴らします。**ii–V–i, altered**は、Dロクリアン♮2、Gオルタード、Cの旋律的短音階を使います。**ii–V–i, harmonic**は、Dロクリアン♮6、Gフリジアン・ドミナント、Cの和声的短音階を使います。**Tritone substitute**はG7をD♭7に置き換え、D♭リディアン・ドミナントを使います。**Borrowed in C major**はCmaj7–A♭maj7–Fm6–B♭7–Cmaj7と進み、どの和音も上で述べた音階とともに鳴ります。デモは本文と同じくCマイナー（**Borrowed in C major**はCメジャー）で鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-chord-scales" title="Minor chord scales in practice" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-chord-scales&key=minor" title="Minor chord scales in practice" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

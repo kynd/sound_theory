@@ -24,9 +24,9 @@ Other tuning systems allow many more. A scale can use intervals that twelve-tone
 # Examples of Scales
 # 音階の例
 
-Choose a **Scale** and press **Play** to hear it go up from the root to the octave above and back down. The row of squares shows the thirteen notes from the root to the root an octave above, with the scale's notes in yellow, and the staff writes the same notes going up. Click a square to play its note. **Root** moves the scale to start on another note. Its pattern of steps stays the same, so it keeps its character and only sits higher or lower, while the note names change to suit the new key.
+Choose a **Scale** and press **Play** to hear it go up from the root to the octave above and back down. The row of squares shows the thirteen notes from the root to the root an octave above, with the scale's notes in yellow, and the staff writes the same notes going up. Click a square to play its note. The demo starts on C, as in the text; **Root** moves the scale to start on another note. Its pattern of steps stays the same, so it keeps its character and only sits higher or lower, while the note names change to suit the new key.
 
-**Scale**を選んで**Play**を押すと、主音から1オクターブ上まで上がって戻る音階が聞こえます。四角の列は主音から1オクターブ上の主音までの13音で、音階の音が黄色になります。五線譜は、同じ音を上行で書き表しています。四角をクリックすると、その音を鳴らせます。**Root**を変えると、音階がほかの音から始まります。歩幅の並びは変わらないので、音階の性格はそのままで高さだけが変わり、音名は新しい調に合わせて書き換えられます。
+**Scale**を選んで**Play**を押すと、主音から1オクターブ上まで上がって戻る音階が聞こえます。四角の列は主音から1オクターブ上の主音までの13音で、音階の音が黄色になります。五線譜は、同じ音を上行で書き表しています。四角をクリックすると、その音を鳴らせます。デモは本文と同じくCから始まりますが、**Root**を変えると、音階がほかの音から始まります。歩幅の並びは変わらないので、音階の性格はそのままで高さだけが変わり、音名は新しい調に合わせて書き換えられます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?roots" title="Scales" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 

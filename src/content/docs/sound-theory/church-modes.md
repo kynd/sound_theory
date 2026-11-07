@@ -9,9 +9,9 @@ The church modes are seven scales of seven notes each: Ionian, Dorian, Phrygian,
 # Modes on One Root
 # ひとつの主音から始まる旋法
 
-Written from the same root, the modes differ in only a few notes each. Choose a **Scale** and press **Play** to hear it go up from the root and back down, or click a square to play its note. **Root** moves all of them to start on another note.
+Written from the same root, the modes differ in only a few notes each. Choose a **Scale** and press **Play** to hear it go up from the root and back down, or click a square to play its note. The demo starts on C, as in the text; **Root** moves all of them to start on another note.
 
-同じ主音から書くと、各旋法はいくつかの音だけが異なります。**Scale**を選んで**Play**を押すと、主音から上がって戻る旋法が聞こえます。四角をクリックすると、その音を鳴らせます。**Root**を変えると、どの旋法もほかの音から始まります。
+同じ主音から書くと、各旋法はいくつかの音だけが異なります。**Scale**を選んで**Play**を押すと、主音から上がって戻る旋法が聞こえます。四角をクリックすると、その音を鳴らせます。デモは本文と同じくCから始まりますが、**Root**を変えると、どの旋法もほかの音から始まります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?set=modes&roots" title="Modes on one root" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 

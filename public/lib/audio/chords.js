@@ -1,5 +1,6 @@
 import * as Tone from 'tone';
 import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
+import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } from './scales.js';
 
 /**
  * Chords, chord progressions, and a player for them.
@@ -10,7 +11,7 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  * may be written ♭/♯ or b/#. `parseChord` turns a symbol into pitch classes;
  * `voiceProgression` turns a list of chords into MIDI notes that move smoothly.
  *
- * A progression is `{ id, label, tempo, loop?, chords, melody?, riff?, comp?, voicing?, bassLow?, drums?, sounds? }`:
+ * A progression is `{ id, label, tempo, key?, loop?, chords, melody?, riff?, comp?, voicing?, bassLow?, drums?, sounds? }`:
  *   - `chords`: `[{ symbol, beats, roman?, fn?, bass?, notes? }]`. `roman` is the Roman
  *     numeral shown under the chord, `fn` its function (T, SD, D, SDm). `bass` (MIDI)
  *     places the bass note itself, outside the usual range (see bassLow). `notes`
@@ -22,6 +23,7 @@ import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
  *   - `comp`: `[[part, beats], …]`, a rhythm for the chords in place of holding them,
  *     repeated through each chord: `'bass'` plays the bass note, `'upper'` the notes
  *     above it, `'all'` both, and `null` rests (see compHits).
+ *   - `key`: the root it is written on, for moving it to another key (default C).
  *   - `voicing`: `'open'` spreads each chord's notes at their own intervals above the
  *     root, so tensions sit above the chord tones (see voiceProgression).
  *   - `bassLow`: the lowest bass note (MIDI); the bass of every chord falls in the
@@ -232,6 +234,53 @@ export function compHits(progression, voicings) {
     });
 }
 
+/**
+ * A note name moved by the interval from `from` to `to` (both note names), spelled by
+ * letter as the new key would spell it; a double sharp or flat becomes the plain note.
+ */
+function transposeName(name, from, to) {
+    const moved = transposeNote(name.replace('#', '♯').replace(/^([A-G])b/, '$1♭'), from, to);
+    if (!/𝄪|𝄫/.test(moved)) return moved;
+    const pc = ((parseNote(moved).semitones % 12) + 12) % 12;
+    return (moved.includes('𝄪') ? PITCH_CLASS_NAMES : FLAT_PITCH_CLASS_NAMES)[pc];
+}
+
+/** A chord symbol moved from root `from` to root `to`: its root and slash bass. */
+export function transposeSymbol(symbol, from, to) {
+    if (!symbol) return symbol;
+    const slash = symbol.match(/^(.+)\/([A-G][♭♯b#]?)$/);
+    const body = slash ? slash[1] : symbol;
+    const [, root, rest] = body.match(/^([A-G][♭♯b#]?)(.*)$/);
+    return transposeName(root, from, to) + rest + (slash ? '/' + transposeName(slash[2], from, to) : '');
+}
+
+/**
+ * A progression moved from its key (`progression.key`, C by default) to another root
+ * (a note name): chord symbols respelled,
+ * and the bass range, hand-voiced notes, placed basses, and the melody moved by the
+ * interval (up to a tritone up, otherwise down), so the whole progression keeps its
+ * shape and register. Roman numerals stay as they are.
+ */
+export function transposeProgression(progression, root) {
+    const from = progression.key ?? 'C';
+    const up = ((parseNote(root).semitones - parseNote(from).semitones) % 12 + 12) % 12;
+    if (!up) return progression;
+    const semitones = up > 6 ? up - 12 : up;
+    return {
+        ...progression,
+        bassLow: (progression.bassLow ?? BASS_LOW) + semitones,
+        chords: progression.chords.map(chord => ({
+            ...chord,
+            symbol: transposeSymbol(chord.symbol, from, root),
+            ...(chord.bass !== undefined ? { bass: chord.bass + semitones } : {}),
+            ...(chord.notes ? { notes: chord.notes.map(n => n + semitones) } : {}),
+        })),
+        ...(progression.melody ? {
+            melody: progression.melody.map(n => ({ ...n, midi: n.midi === null ? null : n.midi + semitones })),
+        } : {}),
+    };
+}
+
 // ── Progressions ─────────────────────────────────────────────────────────────
 
 /** Chords of `beats` each from `[symbol, roman, fn]` triples (roman and fn optional). */
@@ -400,16 +449,16 @@ export const MINOR_CHORD_SCALE_PROGRESSIONS = [
 ].map(p => ({ ...p, tempo: 96 }));
 
 export const CHORD_TYPE_PROGRESSIONS = [
-    { id: 'triad-types', label: 'Chord types', tempo: 80, chords: chords(2, [
+    { id: 'triad-types', label: 'Chord types', tempo: 80, bassLow: C - 12, chords: chords(2, [
         ['C'], ['Cm'], ['Cdim'], ['Caug'], ['Csus2'], ['Csus4'],
     ]) },
-    { id: 'suspensions', label: 'Suspensions', tempo: 80, chords: chords(2, [
+    { id: 'suspensions', label: 'Suspensions', tempo: 80, bassLow: C - 12, chords: chords(2, [
         ['Csus4', 'Isus4'], ['C', 'I'], ['Gsus4', 'Vsus4'], ['G', 'V'], ['Csus2', 'Isus2'], ['C', 'I'],
     ]) },
-    { id: 'passing-diminished', label: 'Passing diminished', tempo: 90, chords: chords(2, [
+    { id: 'passing-diminished', label: 'Passing diminished', tempo: 90, bassLow: C - 12, chords: chords(2, [
         ['C', 'I'], ['C♯dim', '♯i°'], ['Dm', 'ii'], ['D♯dim', '♯ii°'], ['Em', 'iii'], ['F', 'IV'], ['G', 'V'], ['C', 'I'],
     ]) },
-    { id: 'augmented-line', label: 'Augmented line', tempo: 90, chords: chords(2, [
+    { id: 'augmented-line', label: 'Augmented line', tempo: 90, bassLow: C - 12, chords: chords(2, [
         ['C', 'I'], ['Caug', 'I+'], ['C6', 'I6'], ['C7', 'I7'], ['F', 'IV'], ['Fm', 'iv'], ['C', 'I'],
     ]) },
 ];
@@ -613,7 +662,7 @@ export const COMMON_PROGRESSIONS = [
     { id: 'i-bvii-iv-i', label: 'I–♭VII–IV–I', tempo: 112, chords: chords(4, [
         ['C', 'I'], ['B♭', '♭VII'], ['F', 'IV'], ['C', 'I'],
     ]) },
-    { id: 'andalusian', label: 'i–♭VII–♭VI–V', tempo: 100, chords: chords(4, [
+    { id: 'andalusian', label: 'i–♭VII–♭VI–V', tempo: 100, key: 'A', chords: chords(4, [
         ['Am', 'i'], ['G', '♭VII'], ['F', '♭VI'], ['E', 'V'],
     ]) },
 ].map(p => ({ ...p, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));

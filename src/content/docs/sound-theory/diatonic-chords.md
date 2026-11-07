@@ -24,11 +24,11 @@ The diatonic chords have three roles, called functions, explored in more detail 
 # Hearing the Chords
 # 和音を聞く
 
-Choose an **Example** and press **Play**. The plot is a piano roll: time runs from left to right, and pitch rises upward. Each yellow bar represents one note in a chord; the lowest note is the bass. The chord name appears above it, with its Roman numeral and function below. Notes sound red when played. Click a chord to hear it on its own, and hold it to keep it playing. The keyboard below lights up the notes being played. You can also play it with the mouse or with the A-to-; keys on your computer keyboard (Z and X shift the octave).
+Choose an **Example** and press **Play**. The plot is a piano roll: time runs from left to right, and pitch rises upward. Each yellow bar represents one note in a chord; the lowest note is the bass. The chord name appears above it, with its Roman numeral and function below. Notes sound red when played. Click a chord to hear it on its own, and hold it to keep it playing. The keyboard below lights up the notes being played. You can also play it with the mouse or with the A-to-; keys on your computer keyboard (Z and X shift the octave). The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。図はピアノロールです。時間は左から右へ進み、音高は上へ行くほど高くなります。黄色い横棒は和音を構成する音を表し、いちばん低い音がベースです。和音名は上に、ローマ数字と機能は下に表示されます。再生中の音は赤くなります。和音をクリックすると単独で鳴り、押し続けると音も鳴り続けます。下の鍵盤では、鳴っている音が点灯します。マウス、またはコンピューターのキーボードのAから;までのキーで演奏することもできます（ZとXでオクターブを切り替えます）。
+**Example**を選んで**Play**を押してください。図はピアノロールです。時間は左から右へ進み、音高は上へ行くほど高くなります。黄色い横棒は和音を構成する音を表し、いちばん低い音がベースです。和音名は上に、ローマ数字と機能は下に表示されます。再生中の音は赤くなります。和音をクリックすると単独で鳴り、押し続けると音も鳴り続けます。下の鍵盤では、鳴っている音が点灯します。マウス、またはコンピューターのキーボードのAから;までのキーで演奏することもできます（ZとXでオクターブを切り替えます）。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=diatonic" title="Diatonic chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=diatonic&key" title="Diatonic chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 **Diatonic triads** plays the seven chords in order, from C up to the C an octave higher. **I–IV–V–I** is the simplest complete progression: home, away, tension, then home again. **I–vi–IV–V** is a progression heard in countless pop songs since the 1950s.
 

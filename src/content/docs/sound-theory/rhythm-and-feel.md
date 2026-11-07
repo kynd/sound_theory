@@ -33,11 +33,11 @@ The same is true beyond drums. A waltz, for instance, is in 3/4, and its accompa
 
 これはドラムに限りません。たとえば、ワルツは3/4拍子で、伴奏では3拍すべてを鳴らすことがよくあります。しかし、音数がずっと少なくても、3拍子は感じられます。「エーデルワイス」の旋律は、2分音符のあとに4分音符が続く形や、1小節まるごと伸ばす音が中心なので、3拍すべてに音が鳴ることはほとんどありません。それでも、まぎれもなくワルツに聞こえます。各小節の1拍目に長い音を置き、次の小節へつなぐ短い音を続けるだけで十分です。
 
-Press **Play** to hear the first eight bars in C at 108 BPM. **Melody alone** plays only the melody; listen for the three beats in it. Then choose another **Example**: **Chord on 1** adds a chord on the first beat of each bar and sustains it through the bar, while **Oom-pah-pah** plays all three beats in the accompaniment. The accompaniment makes the beats explicit, but they were already present in the melody.
+Press **Play** to hear the first eight bars in C at 108 BPM. **Melody alone** plays only the melody; listen for the three beats in it. Then choose another **Example**: **Chord on 1** adds a chord on the first beat of each bar and sustains it through the bar, while **Oom-pah-pah** plays all three beats in the accompaniment. The accompaniment makes the beats explicit, but they were already present in the melody. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すと、C、108 BPMで最初の8小節が聞けます。**Melody alone**では旋律だけが鳴ります。その中に3拍を聞き取ってみてください。次に、別の**Example**を選びます。**Chord on 1**では各小節の1拍目に和音を加え、小節の終わりまで伸ばします。一方、**Oom-pah-pah**では伴奏が3拍すべてを鳴らします。伴奏によって拍がはっきりしますが、拍はもともと旋律の中にありました。
+**Play**を押すと、C、108 BPMで最初の8小節が聞けます。**Melody alone**では旋律だけが鳴ります。その中に3拍を聞き取ってみてください。次に、別の**Example**を選びます。**Chord on 1**では各小節の1拍目に和音を加え、小節の終わりまで伸ばします。一方、**Oom-pah-pah**では伴奏が3拍すべてを鳴らします。伴奏によって拍がはっきりしますが、拍はもともと旋律の中にありました。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=waltz" title="A waltz with and without its beats" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=waltz&key" title="A waltz with and without its beats" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # Timing and Loudness
 # タイミングと音量

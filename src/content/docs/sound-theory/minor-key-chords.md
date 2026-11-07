@@ -21,11 +21,11 @@ Melodic minor raises the 6th as well, A♭ to A. In classical music it does so o
 
 旋律的短音階では、さらに6番目の音もA♭からAに上がります。クラシックでは上行するときだけですが、ジャズのミュージシャンは上がった形を上下とも使い、ジャズ・マイナーと呼びます。和音はCm、Dm、E♭aug、F、G、Adim、Bdim（i、ii、♭III+、IV、V、vi°、vii°）です。上がった6番目の音によって、ivは長三和音のIVに、iiは減三和音ではなく短三和音になります。
 
-Choose an **Example** and press **Play** to hear the seven chords of each form in order, from C up to the C an octave higher. The demo works like the one on [Diatonic Chords](/diatonic-chords): the piano roll shows the chords, with their names above and Roman numerals below, the sounding chord turns red, and clicking a chord plays it on its own.
+Choose an **Example** and press **Play** to hear the seven chords of each form in order, from C up to the C an octave higher. The demo works like the one on [Diatonic Chords](/diatonic-chords): the piano roll shows the chords, with their names above and Roman numerals below, the sounding chord turns red, and clicking a chord plays it on its own. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Example**を選んで**Play**を押すと、それぞれの形の7つの和音が、Cから1オクターブ上のCまで順に鳴ります。使い方は[ダイアトニック・コード](/diatonic-chords)のデモと同じです。ピアノロールには和音が示され、和音名が上に、ローマ数字が下に表示され、鳴っている和音は赤くなります。和音をクリックすると、その和音だけを鳴らせます。
+**Example**を選んで**Play**を押すと、それぞれの形の7つの和音が、Cから1オクターブ上のCまで順に鳴ります。使い方は[ダイアトニック・コード](/diatonic-chords)のデモと同じです。ピアノロールには和音が示され、和音名が上に、ローマ数字が下に表示され、鳴っている和音は赤くなります。和音をクリックすると、その和音だけを鳴らせます。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=diatonic-minor" title="Diatonic chords in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=diatonic-minor&key=minor" title="Diatonic chords in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # The Dominant in Minor
 # 短調のドミナント
@@ -34,11 +34,11 @@ A piece in a minor key rarely sticks to one form of the scale. The most consiste
 
 短調の曲が、ひとつの形の音階だけを使い続けることはめったにありません。最も一貫しているのはドミナントの扱いです。Vがiに戻るとき、7番目の音はほぼ必ず上げられるので、和音はG、もっと多くの場合はG7になります。和声的短音階から借りた属七の和音です（[7の和音とテンション](/seventh-chords)を参照）。G7では、BがCへ半音上がり、FがE♭へ半音下がります。長調でG7がCへ進むのと同じ引力です。自然短音階のGmにはBがないので、その引力はずっと弱くなります。やわらかく、旋法的な響きや民謡風の響きがほしいとき、あるいは経過的に使われますが、フレーズを終えるために使われることはまれです。
 
-So a minor key mixes its forms: i, iv, ♭VI, and the iiø7 (Dm7♭5) from the natural minor, with V7 from the harmonic minor. Beethoven's "Für Elise" rocks between A minor and its dominant E (often E7), and jazz tunes in minor such as "Blue Bossa" (Kenny Dorham, 1963) run i7–iv7–iiø7–V7. Choose an **Example** and press **Play**. **i–iv–v–i** uses the natural minor's Gm, and **i–iv–V7–i** the same progression with G7: compare how the last chord arrives. **i–V7** rocks between the tonic and the dominant, and **i7–iv7–iiø7–V7** is the minor ii–V that leads back to the top. Each chord is struck on every beat.
+So a minor key mixes its forms: i, iv, ♭VI, and the iiø7 (Dm7♭5) from the natural minor, with V7 from the harmonic minor. Beethoven's "Für Elise" rocks between A minor and its dominant E (often E7), and jazz tunes in minor such as "Blue Bossa" (Kenny Dorham, 1963) run i7–iv7–iiø7–V7. Choose an **Example** and press **Play**. **i–iv–v–i** uses the natural minor's Gm, and **i–iv–V7–i** the same progression with G7: compare how the last chord arrives. **i–V7** rocks between the tonic and the dominant, and **i7–iv7–iiø7–V7** is the minor ii–V that leads back to the top. Each chord is struck on every beat. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-つまり短調では、形が混ざり合います。i、iv、♭VI、そしてiiø7（Dm7♭5）は自然短音階から、V7は和声的短音階から使います。ベートーヴェンの「エリーゼのために」はイ短調とそのドミナントE（多くはE7）のあいだを揺れ動き、「ブルー・ボッサ」（ケニー・ドーハム、1963年）のような短調のジャズ曲は、i7–iv7–iiø7–V7と進みます。**Example**を選んで**Play**を押してください。**i–iv–v–i**は自然短音階のGmを使い、**i–iv–V7–i**は同じ進行をG7で鳴らします。最後の和音への着き方を比べてみてください。**i–V7**はトニックとドミナントのあいだを行き来し、**i7–iv7–iiø7–V7**は、短調のii–Vで冒頭へ戻ります。どの和音も拍ごとに鳴らします。
+つまり短調では、形が混ざり合います。i、iv、♭VI、そしてiiø7（Dm7♭5）は自然短音階から、V7は和声的短音階から使います。ベートーヴェンの「エリーゼのために」はイ短調とそのドミナントE（多くはE7）のあいだを揺れ動き、「ブルー・ボッサ」（ケニー・ドーハム、1963年）のような短調のジャズ曲は、i7–iv7–iiø7–V7と進みます。**Example**を選んで**Play**を押してください。**i–iv–v–i**は自然短音階のGmを使い、**i–iv–V7–i**は同じ進行をG7で鳴らします。最後の和音への着き方を比べてみてください。**i–V7**はトニックとドミナントのあいだを行き来し、**i7–iv7–iiø7–V7**は、短調のii–Vで冒頭へ戻ります。どの和音も拍ごとに鳴らします。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-dominant" title="The dominant in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-dominant&key=minor" title="The dominant in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # The Other Chords in Practice
 # ほかの和音の使い方
@@ -55,8 +55,8 @@ From harmonic minor, the diminished seventh on the 7th degree, Bdim7 (vii°7), w
 
 和声的短音階からは、7番目の音の上の減七の和音Bdim7（vii°7）がドミナントとして働きます。これは根音を省いたG7(♭9)で、同じように強くiへ解決します。**i–iv–vii°7–i**はこの和音を使った進行で、短調のクラシックの曲では数えきれないほど使われています。増三和音の♭III+が単独で使われることはまれで、たとえばE♭とCmのあいだの経過的な色として聞かれます。これらの和音それぞれに合う音階については、[マイナーのコード・スケール](/minor-chord-scales)を参照してください。
 
-Choose an **Example** and press **Play** to hear each of these in C minor. Every chord is struck on every beat, and each example loops until stopped.
+Choose an **Example** and press **Play** to hear each of these. Every chord is struck on every beat, and each example loops until stopped. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Example**を選んで**Play**を押すと、それぞれをCマイナーで聞けます。どの和音も拍ごとに鳴り、どの例も止めるまで繰り返します。
+**Example**を選んで**Play**を押すと、それぞれを聞けます。どの和音も拍ごとに鳴り、どの例も止めるまで繰り返します。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-colors" title="Other chords in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-colors&key=minor" title="Other chords in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

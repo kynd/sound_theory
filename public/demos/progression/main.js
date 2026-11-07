@@ -1,6 +1,7 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
-import { PROGRESSION_SETS, ProgressionPlayer } from '../../lib/audio/chords.js';
+import { PROGRESSION_SETS, ProgressionPlayer, transposeProgression } from '../../lib/audio/chords.js';
+import { ROOTS, MINOR_ROOTS } from '../../lib/audio/scales.js';
 import { Keyboard } from '../../lib/demo/Keyboard.js';
 import { ProgressionView } from '../../lib/demo/ProgressionView.js';
 import { ChordChart } from '../../lib/demo/ChordChart.js';
@@ -9,11 +10,16 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 
 // Which progressions to offer: ?set= names a set in PROGRESSION_SETS, and ?example= picks
 // one progression from it (with no menu). ?view=chart shows them as a chord chart
-// instead of a piano roll.
+// instead of a piano roll. ?key adds a Key select that moves the progressions to
+// another key (?key=minor spells the keys as minor keys), and ?roots the same select
+// labeled Root, for chords built on a root rather than progressions in a key.
 const params = new URLSearchParams(location.search);
 const SET = PROGRESSION_SETS[params.get('set')] ?? PROGRESSION_SETS.diatonic;
 const ONLY = SET.filter(p => p.id === params.get('example'));
 const PROGRESSIONS = ONLY.length ? ONLY : SET;
+const movable = params.has('roots') || params.has('key');
+const keyNames = params.get('key') === 'minor' ? MINOR_ROOTS : ROOTS;
+let progressionId = PROGRESSIONS[0].id, root = PROGRESSIONS[0].key ?? 'C';
 const View = params.get('view') === 'chart' ? ChordChart : ProgressionView;
 
 const master = new MasterBus();
@@ -89,8 +95,8 @@ const keyboard = new Keyboard(document.getElementById('keyboard'), {
     onNoteOff: midi => player.instrument.noteOff(midi),
 });
 
-function useProgression(id) {
-    const progression = PROGRESSIONS.find(p => p.id === id);
+function useProgression() {
+    const progression = transposeProgression(PROGRESSIONS.find(p => p.id === progressionId), root);
     player.instrument = instrument(progression.sounds?.chords ?? 'piano');
     player.melodyInstrument = instrument(progression.sounds?.melody ?? progression.sounds?.chords ?? 'piano');
     player.setProgression(progression);
@@ -105,11 +111,19 @@ if (PROGRESSIONS.length > 1) {
     addSelect(controls, {
         label: 'Example',
         options: PROGRESSIONS.map(({ id, label }) => ({ value: id, label })),
-        value: PROGRESSIONS[0].id,
-        onChange: useProgression,
+        value: progressionId,
+        onChange: id => { progressionId = id; useProgression(); },
+    });
+}
+if (movable) {
+    addSelect(controls, {
+        label: params.has('key') ? 'Key' : 'Root',
+        options: keyNames.map(name => ({ value: name, label: name })),
+        value: root,
+        onChange: name => { root = name; useProgression(); },
     });
 }
 unwrap(controls);
 
-useProgression(PROGRESSIONS[0].id);
+useProgression();
 syncPlay = wirePlayButton(document.getElementById('play'), player, startAudio);

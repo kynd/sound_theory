@@ -13,11 +13,11 @@ Work songs were sung by people working together: laying railroad track, cutting 
 
 労働歌は、線路を敷いたり、木を切ったり、綿を摘んだり、刑務所の労役をしたりと、一緒に働く人々が歌った歌です。歌は仲間の動きをそろえ、働き続ける力になりました。多くはコール・アンド・レスポンスの形をとります。リーダーが1行を歌い、仲間が答えます。ハンマーや斧は拍の上に振り下ろされ、歌はそのあいだに収まります。フィールド・ハラーは、同じ伝統のひとり歌の側で、自由なリズムで音と音のあいだを滑るように叫ぶ歌です。
 
-Press **Play** to hear a short call and response written for this page. The hammer falls on the first beat of every bar. Between the strokes the leader sings a two-bar call (pink), and the group answers in octaves (yellow); the sounding notes turn red and light up on the keyboard. The tune uses only C, E♭, G, and B♭, notes of the C minor pentatonic scale (see [Other Scales](/other-scales)).
+Press **Play** to hear a short call and response written for this page. The hammer falls on the first beat of every bar. Between the strokes the leader sings a two-bar call (pink), and the group answers in octaves (yellow); the sounding notes turn red and light up on the keyboard. The tune uses only C, E♭, G, and B♭, notes of the C minor pentatonic scale (see [Other Scales](/other-scales)). The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Play**を押すと、このページのために書いた短いコール・アンド・レスポンスが聞こえます。ハンマーは毎小節の1拍目に振り下ろされます。そのあいだにリーダーが2小節のコール（ピンク）を歌い、仲間がオクターブで答えます（黄色）。鳴っている音は赤くなり、鍵盤でも光ります。旋律は、Cのマイナー・ペンタトニック（[その他の音階](/other-scales)を参照）の音であるC、E♭、G、B♭だけを使っています。
+**Play**を押すと、このページのために書いた短いコール・アンド・レスポンスが聞こえます。ハンマーは毎小節の1拍目に振り下ろされます。そのあいだにリーダーが2小節のコール（ピンク）を歌い、仲間がオクターブで答えます（黄色）。鳴っている音は赤くなり、鍵盤でも光ります。旋律は、Cのマイナー・ペンタトニック（[その他の音階](/other-scales)を参照）の音であるC、E♭、G、B♭だけを使っています。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=work-song" title="Call and response" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=work-song&key=minor" title="Call and response" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 Much of this carried into the blues. A blues verse is often a call and response within itself: a line is sung, repeated, and then answered by a third line that completes it (the AAB form). The singer leaves space after each line, and a guitar or piano answers, so the call and response continues between the voice and the instrument. And the bent, sliding pitches of the hollers became the blue notes.
 
@@ -46,11 +46,11 @@ A blues is often driven by a riff, a short figure repeated over and over and mov
 
 ブルースは、リフに引っぱられて進むことがよくあります。リフとは、何度も繰り返し、和音ごとに移して弾く短い音型です。代表的なものがブギのベースラインで、和音の根音、3度、5度、6度、短7度と上がって下りてきます。リズムは、長い8分音符と短い8分音符を交互に弾くシャッフルです（[リズムとフィール](/rhythm-and-feel)を参照）。F7の上では同じ形がFから、G7の上ではGから始まります。
 
-Press **Play** to hear the twelve bars with the boogie bass and a shuffle beat, in C at 112 BPM. The chart shows the form four bars to a line, with the Roman numerals below, and the sounding chord turns red. The keyboard lights the chord and the riff note as they sound. Press a chord in the chart to hear it on its own.
+Press **Play** to hear the twelve bars with the boogie bass and a shuffle beat, in C at 112 BPM. The chart shows the form four bars to a line, with the Roman numerals below, and the sounding chord turns red. The keyboard lights the chord and the riff note as they sound. Press a chord in the chart to hear it on its own. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すと、ブギのベースとシャッフルのビートで、12小節がC、112 BPMで鳴ります。表は1行に4小節ずつ形式を示し、下にローマ数字を記しています。鳴っている和音は赤くなります。鍵盤では、鳴っている和音とリフの音が光ります。表の和音を押すと、その和音だけを鳴らせます。
+**Play**を押すと、ブギのベースとシャッフルのビートで、12小節がC、112 BPMで鳴ります。表は1行に4小節ずつ形式を示し、下にローマ数字を記しています。鳴っている和音は赤くなります。鍵盤では、鳴っている和音とリフの音が光ります。表の和音を押すと、その和音だけを鳴らせます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=blues&view=chart" title="Twelve-bar blues" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=blues&view=chart&key" title="Twelve-bar blues" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # Reharmonizing the Blues in Jazz
 # ジャズにおけるブルースのリハーモナイズ
@@ -67,8 +67,8 @@ Charlie Parker ("Bird") went further in "Blues for Alice" (1951), whose changes 
 
 チャーリー・パーカー（「バード」）は「ブルース・フォー・アリス」（1951年）でさらに先へ進み、そのコード進行はバード・ブルースとして知られています。メジャー・セブンスの和音で始まり、ii–Vの連鎖で下っていきます。Bm7♭5–E7からAm7、D7へ、そしてGm7–C7から5小節目のF7へ。6小節目からは別の連鎖がFm7–B♭7、Em7–A7、E♭m7–A♭7と半音ずつ下り、9〜10小節目のii–Vにたどり着きます。ただのI、IV、Vの小節はほとんど残っていませんが、それでもブルースです。目印は時間どおりに現れ、その上の旋律は今もブルー・ノートへと揺れます。
 
-Choose an **Example** and press **Play**: the basic twelve-bar blues, the jazz blues, and the Bird blues, all in C at 132 BPM. The Roman numerals follow [Tension and Resolution](/tension-and-resolution): V7/ii is the dominant of ii, and ii7/IV the ii of a ii–V that leads to IV. As above, press a chord in the chart to hear it.
+Choose an **Example** and press **Play**: the basic twelve-bar blues, the jazz blues, and the Bird blues, all in C at 132 BPM. The Roman numerals follow [Tension and Resolution](/tension-and-resolution): V7/ii is the dominant of ii, and ii7/IV the ii of a ii–V that leads to IV. As above, press a chord in the chart to hear it. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すと、基本の12小節のブルース、ジャズ・ブルース、バード・ブルースが、どれもC、132 BPMで鳴ります。ローマ数字は[緊張と解決](/tension-and-resolution)の書き方にならっています。V7/iiはiiのドミナント、ii7/IVはIVへ向かうii–Vのiiです。上と同じように、表の和音を押すと、その和音を鳴らせます。
+**Example**を選んで**Play**を押すと、基本の12小節のブルース、ジャズ・ブルース、バード・ブルースが、どれもC、132 BPMで鳴ります。ローマ数字は[緊張と解決](/tension-and-resolution)の書き方にならっています。V7/iiはiiのドミナント、ii7/IVはIVへ向かうii–Vのiiです。上と同じように、表の和音を押すと、その和音を鳴らせます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-blues&view=chart" title="Jazz blues" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-blues&view=chart&key" title="Jazz blues" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

@@ -45,8 +45,8 @@ In the 1920s Arnold Schoenberg devised a method meant to avoid any tonic at all.
 # Examples
 # 例
 
-The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** and press **Play**, or click a chord to hold it. The vamps and the pedal loop until stopped. The melody is drawn in pink.
+The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** and press **Play**, or click a chord to hold it. The vamps and the pedal loop until stopped. The melody is drawn in pink. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-デモの使い方は[ダイアトニック・コード](/diatonic-chords)と同じです。**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。ヴァンプと保続音の例は、止めるまで繰り返します。旋律はピンクで描かれます。
+デモの使い方は[ダイアトニック・コード](/diatonic-chords)と同じです。**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。ヴァンプと保続音の例は、止めるまで繰り返します。旋律はピンクで描かれます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=non-functional" title="Beyond functional harmony" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=non-functional&key" title="Beyond functional harmony" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

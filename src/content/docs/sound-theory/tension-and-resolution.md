@@ -48,11 +48,11 @@ Dominant motion in this narrow sense, a dominant seventh moving down a fifth, is
 
 -   **Deceptive：** Cの代わりにG7からAm7へ。緊張は解かれますが、予想外の場所で解かれ、本当の到着は2回目のii–V–Iまで先送りされます。
 
-The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** and press **Play**, or click a chord to hold it.
+The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** and press **Play**, or click a chord to hold it. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-デモの使い方は[ダイアトニック・コード](/diatonic-chords)と同じです。**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。
+デモの使い方は[ダイアトニック・コード](/diatonic-chords)と同じです。**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=resolution" title="Tension and resolution" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=resolution&key" title="Tension and resolution" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 Watch the voices in the piano roll as each example resolves. In most of them, the notes of the last chord are reached by small steps, often by a half step. That smooth arrival is as much a part of the resolution as the chord itself.
 
