@@ -52,9 +52,9 @@ Bossa nova, from Rio de Janeiro in the late 1950s (João Gilberto, Antônio Carl
 
 1950年代後半のリオデジャネイロで生まれたボサノヴァ（ジョアン・ジルベルト、アントニオ・カルロス・ジョビン）は、静かですが絶え間ないシンコペーションの上に成り立っています。ギタリストの親指は、心臓の鼓動のように安定して1拍目と3拍目でベースを弾き、ほかの指は、アフロ・キューバン音楽のクラーベに通じる、2小節にわたるシンコペーションの型で和音をはじきます。最初の小節では1拍目、2拍目の裏、4拍目、次の小節では2拍目と3拍目の裏です。和音の多くはベースの音のあいだに落ちるので、2つの手が会話しているように聞こえます。ベース自体も、3拍目の直前に短い5度を置いて、3拍目を先取りします。
 
-Press **Play** to hear a bossa nova backing on a nylon-string guitar and bass over Dm9, G13, Cmaj9, and A7(♭9), two bars each, with a drum pattern of a rim click and brushed hi-hat. The guitar strikes the chord five times over two bars, three times in the first and twice in the second. The demo plays in C; choose a **Key** to hear it in another key.
+Press **Play** to hear a bossa nova backing on a nylon-string guitar and bass over Dm9, G13, Cmaj9, and A7(♭9), two bars each, with a drum pattern of a rim click and brushed hi-hat. The guitar strikes the chord five times over two bars, three times in the first and twice in the second. Twice, at the end of bars 2 and 4, the next chord comes half a beat early, on the "and" of 4: guitar and bass move to G13 and to Cmaj9 before the bar line, then fall back into the pattern, a typical bossa nova anticipation. In the piano roll the guitar's chords are yellow and the bass line is dark green below them. The demo plays in C; choose a **Key** to hear it in another key.
 
-**Play**を押すと、Dm9、G13、Cmaj9、A7(♭9)をそれぞれ2小節ずつ、ナイロン弦のギターとベースで弾くボサノヴァの伴奏が、リム・クリックとハイハットのドラムとともに鳴ります。ギターは2小節で5回、最初の小節で3回、次の小節で2回和音を鳴らします。デモはCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すと、Dm9、G13、Cmaj9、A7(♭9)をそれぞれ2小節ずつ、ナイロン弦のギターとベースで弾くボサノヴァの伴奏が、リム・クリックとハイハットのドラムとともに鳴ります。ギターは2小節で5回、最初の小節で3回、次の小節で2回和音を鳴らします。2小節目と4小節目の終わりの2回、次の和音が半拍早く、4拍目の裏にやってきます。ギターとベースは小節線の前にG13とCmaj9へ移り、それから型に戻ります。ボサノヴァによくある先取りです。ピアノロールでは、ギターの和音が黄色で、その下にベース・ラインが深緑で描かれます。デモはCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=bossa-nova&key" title="Bossa nova" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

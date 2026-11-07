@@ -277,10 +277,12 @@ export function compHits(progression, voicings) {
     const { chords, comp, riff } = progression;
     return chords.map((chord, i) => {
         const v = voicings[i];
-        if (!comp) return [{ at: 0, beats: chord.beats, notes: riff && v.notes.length ? v.upper : v.notes, part: 'all' }];
+        // A chord may carry its own comp (and riff), for a bar that differs from the rest.
+        const pattern = chord.comp ?? comp;
+        if (!pattern) return [{ at: 0, beats: chord.beats, notes: (chord.riff ?? riff) && v.notes.length ? v.upper : v.notes, part: 'all' }];
         const hits = [];
         for (let t = 0, k = 0; t < chord.beats - 1e-6; k++) {
-            const [part, beats] = comp[k % comp.length];
+            const [part, beats] = pattern[k % pattern.length];
             // A chord struck again takes its alternate voicing every other time, the way a
             // pianist moves between two voicings rather than repeating one.
             const w = v.alt && k % 2 ? v.alt : v;
@@ -290,6 +292,28 @@ export function compHits(progression, voicings) {
         }
         return hits;
     });
+}
+
+/**
+ * The notes of a progression's bass riff: `[{ at, beats, midi }]`, in beats from the
+ * start. Each chord's riff (its own `riff`, or the progression's) is played up from its
+ * bass note, restarted at the chord and cut at its end. Empty without a riff.
+ */
+export function riffNotes(progression, voicings) {
+    const notes = [];
+    let at = 0;
+    progression.chords.forEach((chord, i) => {
+        const riff = chord.riff ?? progression.riff;
+        if (riff && voicings[i]?.notes.length) {
+            for (let t = 0, k = 0; t < chord.beats - 1e-6; k++) {
+                const [semitones, beats] = riff[k % riff.length];
+                notes.push({ at: at + t, beats: Math.min(beats, chord.beats - t), midi: voicings[i].bass + semitones });
+                t += beats;
+            }
+        }
+        at += chord.beats;
+    });
+    return notes;
 }
 
 /**
@@ -1744,6 +1768,11 @@ const accented = list => list.map(([name, beats]) => {
  * fifth before 3) and a samba (a syncopated guitar figure in sixteenths over a bass that
  * leans on beat 2 like the surdo).
  */
+const BOSSA_RIFF = [[0, 1.5], [7, 0.5], [7, 2]];
+const BOSSA_COMP = [['upper', 1.5], ['upper', 1.5], ['upper', 2], ['upper', 1.5], ['upper', 1.5]];
+/** A chord that starts half a beat early: one short stroke, then the usual pattern from the bar line. */
+const anticipated = (chord, beats) => ({ ...chord, beats,
+    comp: [['upper', 0.5], ...BOSSA_COMP], riff: [[0, 0.5], ...BOSSA_RIFF, ...BOSSA_RIFF] });
 export const SYNCOPATION_PROGRESSIONS = [
     { id: 'on-beat', label: 'On the beat', drums: FEEL('eighths'),
         chords: chords(4, POP),
@@ -1767,11 +1796,14 @@ export const SYNCOPATION_PROGRESSIONS = [
         comp: [['all', 1.5], ['all', 2.5]], chords: chords(4, POP) },
     { id: 'comp-pushed', label: 'Pushed', drums: FEEL('eighths'),
         comp: [['all', 3.5], ['all', 0.5]], chords: chords(4, POP).map((chord, i) => ({ ...chord, beats: i === 0 ? 3.5 : i === 3 ? 4.5 : 4 })) },
+    // The changes into G13 and Cmaj9 come half a beat early, on the "and" of 4 at the
+    // end of bars 2 and 4: the chord before is cut short, and the anticipated chord
+    // starts with a short stroke (and bass note) before falling back into the pattern.
     { id: 'bossa-nova', label: 'Bossa nova', tempo: 130, drums: FEEL('bossa-nova'),
         sounds: { chords: 'guitar-nylon', bass: 'bass' },
-        riff: [[0, 1.5], [7, 0.5], [7, 2]],
-        comp: [['upper', 1.5], ['upper', 1.5], ['upper', 2], ['upper', 1.5], ['upper', 1.5]],
-        chords: chords(8, [['Dm9', 'ii9'], ['G13', 'V13'], ['Cmaj9', 'Imaj9'], ['A7(♭9)', 'VI7(♭9)']]) },
+        riff: BOSSA_RIFF, comp: BOSSA_COMP,
+        chords: chords(8, [['Dm9', 'ii9'], ['G13', 'V13'], ['Cmaj9', 'Imaj9'], ['A7(♭9)', 'VI7(♭9)']])
+            .map((chord, i) => [{ ...chord, beats: 7.5 }, anticipated(chord, 8), anticipated(chord, 8.5), chord][i]) },
     { id: 'samba', label: 'Samba', tempo: 100, drums: STYLE('samba'),
         sounds: { chords: 'guitar-nylon', bass: 'bass' },
         riff: [[0, 0.75], [0, 0.25], [-5, 1]],
@@ -2298,7 +2330,8 @@ const TICK_MS = 25;
 /**
  * Plays a progression (chords, melody, bass riff, comp, and drums), scheduled ahead on
  * the audio clock so the parts stay together. `onChord(i)` and `onMelody(i)` are called
- * as chord or melody note `i` starts, `onBass(midi)` as each riff note starts,
+ * as chord or melody note `i` starts, `onBass(i)` as riff note `i` (see riffNotes) starts, or -2
+ * for a chord's held bass on its own instrument,
  * `onHit(k)` as hit `k` of the current chord's comp starts (see `hits`), and each with
  * -1 when playback stops; each callback also gets the event's notes, which stay right
  * when a swap changes the progression under notes still sounding. A progression with
@@ -2411,7 +2444,8 @@ export class ProgressionPlayer {
         let held = null, heldBass = null;   // the last struck chord and bass note, which a tied chord extends
         // With a bass instrument, the bass note of each chord is played on it, held for
         // the chord, and the chord instrument plays only the notes above.
-        const bassApart = this.bassInstrument && !riff;
+        const riffs = riffNotes(this.progression, this.voicings);
+        const bassApart = this.bassInstrument && !riffs.length;
         const withoutBass = (notes, i) => (bassApart ? notes.filter(n => n !== this.voicings[i].bass) : notes);
         chords.forEach((chord, i) => {
             // A tied chord keeps the previous one sounding and only reports itself.
@@ -2422,13 +2456,13 @@ export class ProgressionPlayer {
                 at += chord.beats;
                 return;
             }
-            held = { at, beats: chord.beats, notes: withoutBass(this.chordNotes(i), i), velocity: riff ? 0.35 : 0.5,
+            held = { at, beats: chord.beats, notes: withoutBass(this.chordNotes(i), i), velocity: riffs.length ? 0.35 : 0.5,
                 instrument: this.instrument, kind: 'chord', index: i };
             events.push(held);
             heldBass = null;
             if (bassApart && this.voicings[i].notes.length) {
                 const bass = this.voicings[i].bass;
-                heldBass = { at, beats: chord.beats, notes: [bass], velocity: 0.75, instrument: this.bassInstrument, kind: 'bass', index: bass };
+                heldBass = { at, beats: chord.beats, notes: [bass], velocity: 0.75, instrument: this.bassInstrument, kind: 'bass', index: -2 };
                 events.push(heldBass);
             }
             // A comp's hits, each reported with its index within the chord.
@@ -2436,19 +2470,11 @@ export class ProgressionPlayer {
                 this.hits[i].forEach((hit, k) => events.push({ at: at + hit.at, beats: hit.beats, notes: withoutBass(hit.notes, i),
                     velocity: COMP_VELOCITY[hit.part], instrument: this.instrument, kind: 'hit', index: k }));
             }
-            // The riff from the chord's bass, restarted at each chord and cut at its end.
-            if (riff && this.voicings[i].notes.length) {
-                for (let t = 0, k = 0; t < chord.beats - 1e-6; k++) {
-                    const [semitones, beats] = riff[k % riff.length];
-                    const midi = this.voicings[i].bass + semitones;
-                    const length = Math.min(beats, chord.beats - t);
-                    events.push({ at: at + t, beats: length, notes: [midi], velocity: 0.7,
-                        instrument: this.bassInstrument ?? this.instrument, kind: 'bass', index: midi });
-                    t += beats;
-                }
-            }
             at += chord.beats;
         });
+        // The riff, each note reported by its index in riffNotes.
+        riffs.forEach((note, k) => events.push({ at: note.at, beats: note.beats, notes: [note.midi], velocity: 0.7,
+            instrument: this.bassInstrument ?? this.instrument, kind: 'bass', index: k }));
         const length = at;
         at = 0;
         melody.forEach((note, i) => {

@@ -6,9 +6,9 @@ Much of what makes a style recognizable is a rhythm pattern shared by the whole 
 
 スタイルを聞き分けられるものの多くは、バンド全体が共有するリズム・パターンです。ドラムがどこに重みを置くか、和音をどの拍で鳴らすか、ベースがそのあいだをどう動くか。旋律が何であれ、数小節でレゲエとファンク、サルサとロックを聞き分けられることがよくあります。このページでは、いくつかのスタイルで伴奏を鳴らします。どのパターンも、そのスタイルのよくある弾き方のひとつを単純にしたもので、実際のミュージシャンは絶えずそれを変化させます。ボサノヴァとサンバは[シンコペーションと先取り](/syncopation)にあります。
 
-In every demo, press **Play** to hear the backing: the chords are drawn as yellow bars where they are struck, the bass below them, and the keyboard lights the sounding notes. Each demo plays in C or A minor; choose a **Key** to hear it in another key.
+In every demo, press **Play** to hear the backing: the chords are drawn as yellow bars where they are struck, the bass line in dark green below them, and the keyboard lights the sounding notes. Each demo plays in C or A minor; choose a **Key** to hear it in another key.
 
-どのデモでも、**Play**を押すと伴奏が鳴ります。和音は鳴らした位置に黄色い横棒で、その下にベースが描かれ、鍵盤では鳴っている音が点灯します。どのデモもCかAマイナーで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+どのデモでも、**Play**を押すと伴奏が鳴ります。和音は鳴らした位置に黄色い横棒で、その下にベース・ラインが深緑で描かれ、鍵盤では鳴っている音が点灯します。どのデモもCかAマイナーで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 # Rock
 # ロック

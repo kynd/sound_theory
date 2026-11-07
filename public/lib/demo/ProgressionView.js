@@ -1,6 +1,6 @@
 import { Viewport } from './viewport.js';
 import { COLORS } from './colors.js';
-import { compHits } from '../audio/chords.js';
+import { compHits, riffNotes } from '../audio/chords.js';
 
 const GRID = 16;           // the demos' base grid
 const INSET = 2 * GRID;    // space around the drawing
@@ -15,7 +15,8 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * to chord shows as bars that stay level or step a little. A melody is drawn over the
  * chords in pink, each note as long as it sounds and as thick as it is loud. A chord
  * with a `comp` is drawn as its hits (the bass alone, the
- * notes above it) at the beats they fall on. Sounding notes are red.
+ * notes above it) at the beats they fall on. A bass riff is drawn as its own line in
+ * dark green, and the chords above it without their bass. Sounding notes are red.
  *
  * The chord symbols sit on a line above the roll (on two lines, alternating, when a
  * symbol is wider than its chord, and the same for the Roman numerals); the Roman
@@ -34,6 +35,8 @@ export class ProgressionView {
         this.progression = null;
         this.voicings = [];
         this.hits = [];
+        this.riff = [];
+        this.bass = -1;
         this.chord = -1;
         this.note = -1;
         this.hit = -1;
@@ -48,7 +51,8 @@ export class ProgressionView {
         this.progression = progression;
         this.voicings = voicings;
         this.hits = compHits(progression, voicings);
-        this.chord = this.note = this.hit = -1;
+        this.riff = riffNotes(progression, voicings);
+        this.chord = this.note = this.hit = this.bass = -1;
         this.draw();
     }
 
@@ -57,6 +61,9 @@ export class ProgressionView {
 
     /** Marks melody note `i` as sounding, or none with -1. */
     setNote(i) { this.note = i; this.draw(); }
+
+    /** Marks riff note `i` as sounding, or none with a negative index. */
+    setBass(i) { this.bass = i; this.draw(); }
 
     /** Marks hit `k` of the sounding chord's comp as sounding, or none with -1. */
     setHit(k) { this.hit = k; this.draw(); }
@@ -109,7 +116,8 @@ export class ProgressionView {
         const xOf = beat => x0 + (beat / beats) * rollWidth;
 
         // Pitch: every note shown, with a semitone of room above and below.
-        const all = [...this.voicings.flatMap(v => v.notes), ...melody.filter(n => n.midi !== null).map(n => n.midi)];
+        const all = [...this.voicings.flatMap(v => v.notes), ...melody.filter(n => n.midi !== null).map(n => n.midi),
+            ...this.riff.map(n => n.midi)];
         const low = Math.min(...all) - 1, high = Math.max(...all) + 1;
         // Symbols, and Roman numerals, alternate between two lines when one would run
         // into the next.
@@ -157,6 +165,11 @@ export class ProgressionView {
             if (hasFn) ctx.fillText(chord.fn ?? '', cx, y);
             this._columns.push({ x: x1, w: x2 - x1, index: i });
             at += chord.beats;
+        });
+
+        this.riff.forEach((note, i) => {
+            bar(xOf(note.at) + GAP / 2, xOf(note.at + note.beats) - GAP / 2, note.midi,
+                i === this.bass ? COLORS.red : COLORS.darkGreen);
         });
 
         at = 0;

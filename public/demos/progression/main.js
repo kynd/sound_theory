@@ -80,8 +80,10 @@ const player = new ProgressionPlayer(instrument({ id: 'piano' }), {
         chordNotes = k < 0 || chord < 0 ? [] : notes;
         light();
     },
-    onBass: midi => {
-        bassNote = midi < 0 ? null : midi;
+    // i is the riff note (drawn in the view), or -2 for a chord's held bass.
+    onBass: (i, notes) => {
+        bassNote = i === -1 ? null : notes[0];
+        view.setBass?.(i);
         light();
     },
     onEnd: () => syncPlay?.(),

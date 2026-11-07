@@ -52,7 +52,7 @@ const player = new ProgressionPlayer(parts.backing.instrument, {
     onChord: i => { view.setChord(i); chordNotes = i < 0 ? [] : player.chordNotes(i); light(); },
     onHit: k => { view.setHit(k); light(); },
     onMelody: i => { view.setNote(i); melodyNote = i < 0 ? null : player.progression.melody[i].midi; light(); },
-    onBass: midi => { bassNote = midi < 0 ? null : midi; light(); },
+    onBass: (i, notes) => { bassNote = i === -1 ? null : notes[0]; view.setBass(i); light(); },
 });
 const keyboard = new Keyboard(document.getElementById('keyboard'), {
     low: 36, octaves: 4,
