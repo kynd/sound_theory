@@ -48,9 +48,9 @@ The harmonic minor scale itself suits a dark minor tonic, CmMaj7, especially in 
 
 和声的短音階そのものは、暗いマイナーのトニックCmMaj7に合い、特にクラシックの影響を受けたジャズや、ライン・クリシェで使われます（[短調の和音](/minor-key-chords)を参照）。ロクリアン♮6は短調のiiø7に合いますが、フラット9度のため、ロクリアン♮2より硬い響きになります。イオニアン♯5は4番目の音が和音とぶつかるので、単独で使われることはまれです。ドリアン♯4はマイナー・セブンスの和音にシャープ11度を加え、マイナー・ブルースやジプシー・ジャズで聞かれる響きになります。最も重要なのはフリジアン・ドミナントです。短調の伝統的なV7で、フラット9度とフラット13度を持ってiへ解決します。G7(♭9)からCmへ進む、スペイン風の響きです。リディアン♯2は、♭VImaj7（CマイナーではA♭maj7）の上のエキゾチックな色です。そしてウルトラ・ロクリアンは、7番目の音の上の減七の和音に合います。この和音は根音のないドミナントとして働き、Bdim7はBを最低音にしたG7(♭9)です。
 
-Choose an **Example** and press **Play** to hear each system's seven modes in order. Each seventh chord is held while its mode runs up an octave over it in eighth notes, from the chord's root: the chord is yellow and the scale pink in the piano roll, and the sounding notes turn red. Click a chord to hear it on its own; the keyboard lights the notes as they sound. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
+Choose an **Example** and press **Play** to hear each system's seven modes in order. Each seventh chord is held while its mode runs up an octave over it in eighth notes, from the chord's root: the chord is yellow and the scale pink in the piano roll, and the sounding notes turn red. **Scale** names the chord scale being played, from the sounding chord's root. Click a chord to hear it on its own; the keyboard lights the notes as they sound. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Example**を選んで**Play**を押すと、それぞれの体系の7つの旋法が順に鳴ります。7の和音を鳴らしたまま、その上で旋法が和音の根音から1オクターブ、8分音符で上がっていきます。ピアノロールでは和音が黄色、音階がピンクで示され、鳴っている音は赤くなります。和音をクリックするとその和音だけを鳴らせ、鍵盤では鳴っている音が点灯します。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
+**Example**を選んで**Play**を押すと、それぞれの体系の7つの旋法が順に鳴ります。7の和音を鳴らしたまま、その上で旋法が和音の根音から1オクターブ、8分音符で上がっていきます。ピアノロールでは和音が黄色、音階がピンクで示され、鳴っている音は赤くなります。**Scale**には、鳴っている和音の根音から数えた、いま弾いているコード・スケールの名前が表示されます。和音をクリックするとその和音だけを鳴らせ、鍵盤では鳴っている音が点灯します。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-modes&key=minor" title="Modes of melodic and harmonic minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

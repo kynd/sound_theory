@@ -21,6 +21,51 @@ const MIX = {
 
 export const EFFECTS = [
     {
+        // Starts transparent: no reduction until the threshold comes down and the ratio up.
+        id: 'compressor', label: 'Compressor',
+        create: () => new Tone.Compressor({ threshold: 0, ratio: 1, attack: 0.005, release: 0.15 }),
+        params: [
+            { key: 'threshold', label: 'Threshold', min: -60, max: 0, step: 1, value: 0, unit: 'dB',
+              apply: (node, v) => { node.threshold.value = v; } },
+            { key: 'ratio', label: 'Ratio', min: 1, max: 20, step: 0.5, value: 1,
+              apply: (node, v) => { node.ratio.value = v; } },
+        ],
+    },
+    {
+        // A filter that opens as the sound gets louder, the "wah" of an envelope follower.
+        id: 'autowah', label: 'Auto-wah',
+        create: () => new Tone.AutoWah({ baseFrequency: 150, octaves: 5, sensitivity: -30, Q: 4 }),
+        params: [
+            { key: 'base', label: 'Base', min: 50, max: 1000, step: 1, value: 150, scale: 'log', unit: 'Hz',
+              apply: (node, v) => { node.baseFrequency = v; } },
+            { key: 'octaves', label: 'Octaves', min: 1, max: 8, step: 0.5, value: 5,
+              apply: (node, v) => { node.octaves = v; } },
+            MIX,
+        ],
+    },
+    {
+        id: 'chorus', label: 'Chorus',
+        create: () => new Tone.Chorus({ frequency: 1.5, delayTime: 3.5, depth: 0.7 }).start(),
+        params: [
+            { key: 'rate', label: 'Rate', min: 0.1, max: 8, step: 0.1, value: 1.5,
+              apply: (node, v) => node.frequency.rampTo(v, 0.05) },
+            { key: 'depth', label: 'Depth', min: 0, max: 1, step: 0.01, value: 0.7,
+              apply: (node, v) => { node.depth = v; } },
+            MIX,
+        ],
+    },
+    {
+        id: 'phaser', label: 'Phaser',
+        create: () => new Tone.Phaser({ frequency: 0.5, octaves: 3, baseFrequency: 350 }),
+        params: [
+            { key: 'rate', label: 'Rate', min: 0.05, max: 8, step: 0.05, value: 0.5,
+              apply: (node, v) => node.frequency.rampTo(v, 0.05) },
+            { key: 'octaves', label: 'Octaves', min: 1, max: 6, step: 0.5, value: 3,
+              apply: (node, v) => { node.octaves = v; } },
+            MIX,
+        ],
+    },
+    {
         id: 'distortion', label: 'Distortion',
         create: () => new Tone.Distortion({ oversample: '4x' }),
         params: [
@@ -62,13 +107,16 @@ export const EFFECTS = [
     },
 ];
 
+/** The chain every instrument demo uses unless it asks for others. */
+export const DEFAULT_CHAIN = ['distortion', 'filter', 'delay', 'reverb'];
+
 /**
  * A fixed series of effects between `input` and `output`, in the order given.
  * Connect an instrument to `input` and `output` onward to a MasterBus.
  */
 export class EffectChain {
-    /** @param {string[]} [ids] effect ids, in signal order. Defaults to every effect. */
-    constructor(ids = EFFECTS.map(def => def.id)) {
+    /** @param {string[]} [ids] effect ids, in signal order. Defaults to DEFAULT_CHAIN. */
+    constructor(ids = DEFAULT_CHAIN) {
         this.input = new Tone.Gain();
         this.output = new Tone.Gain();
         this.effects = ids.map(id => {

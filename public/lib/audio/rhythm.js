@@ -224,6 +224,18 @@ export function humanize(pattern, { timing = 0.03, minVelocity = 0.25 } = {}) {
     }
 }
 
+/**
+ * An empty grid of pitched notes for a step sequencer: one track per note (`{ label,
+ * midi }`, listed high to low), `steps` steps of `1 / stepsPerBeat` beat each.
+ */
+export function pitchedPattern(notes, { steps = 16, stepsPerBeat = 2, tempo = 110 } = {}) {
+    return {
+        id: 'notes', label: 'Notes', stepsPerBeat, tempo,
+        groups: Array(steps / stepsPerBeat).fill(stepsPerBeat), beatsPerBar: 4,
+        tracks: notes.map(({ label, midi }) => ({ id: label, label, midi, steps: Array(steps).fill(0) })),
+    };
+}
+
 /** Named sets of patterns, for a demo that takes the set as a URL parameter. */
 export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS, implied: IMPLIED_PATTERNS };
 

@@ -64,12 +64,12 @@ Follow `documentation.md`. In short:
   the library. The library never imports from a demo.
 - `public/lib/audio/` makes and shapes sound: `AudioEngine.js`, `instruments.js`,
   `effects.js`, `additive.js` (with `Chord`), `tuning.js`, `scales.js`, `sequence.js`, `rhythm.js`,
-  `chords.js`, `granular.js`.
+  `chords.js`, `granular.js`, `gesture.js`.
   No DOM.
 - `public/lib/demo/` is shared demo support: `viewport.js`, `panel.js`, `controls.js`,
   `colors.js`, `Keyboard.js`, `Scope.js`, `PartialsView.js`, `BeatView.js`,
   `FifthsRing.js`, `ScaleView.js`, `CycleView.js`, `PulseView.js`, `StepGrid.js`,
-  `ProgressionView.js`, `ChordChart.js`.
+  `ProgressionView.js`, `ChordChart.js`, `XYPad.js`, `DrawPad.js`.
 - Every structural change updates `docs/audio-library.md` in the same change. When a
   group of classes shares behavior, write it once as a "common" section.
 - Demo chrome comes from the `dp-*` classes in `public/styles/demo-ui.css`. A new
@@ -184,24 +184,26 @@ src/content/docs/
   index.md                       root (local only, links to the series)
   sound-theory/
     index.md                     series intro           slug: sound-theory
-    sound-sources.md             instruments, effects   slug: sound-sources
     sound-waves.md               sine, additive, FFT    slug: sound-waves
+    sound-sources.md             instruments, effects   slug: sound-sources
+    synthesis.md                 subtractive, effects, FM/AM           slug: synthesis
     tuning-systems.md            ratios, Pythagorean, 12-TET, others   slug: tuning-systems
     scales.md                    what a scale is, scales from C        slug: scales
     church-modes.md              modes from C, white keys, drone       slug: church-modes
     minor-scales.md              natural, harmonic, melodic minor      slug: minor-scales
     other-scales.md              pentatonic, blues, whole tone, …      slug: other-scales
+    sound-toys.md                XY pad, drawn melody, note grid       slug: sound-toys
     pulse-and-cycles.md          pulse, accents, cycles                slug: pulse-and-cycles
     time-signatures.md           meters, drum patterns                 slug: time-signatures
     rhythm-and-feel.md           subdivisions, styles, timing          slug: rhythm-and-feel
     diatonic-chords.md           triads, Roman numerals, functions     slug: diatonic-chords
     chord-types.md               dim, aug, sus                         slug: chord-types
     seventh-chords.md            sevenths, tensions                    slug: seventh-chords
+    chord-voicing.md             inversions, open/close, shells        slug: chord-voicing
     minor-key-chords.md          minor diatonic chords, V7, colors     slug: minor-key-chords
     functional-harmony.md        T, SD, D, progressions                slug: functional-harmony
     tension-and-resolution.md    dominant motion, other resolutions    slug: tension-and-resolution
     subdominant-minor.md         borrowed chords                       slug: subdominant-minor
-    minor-chord-scales.md        melodic/harmonic minor modes, use     slug: minor-chord-scales
     chord-progressions.md        well-known progressions, songs        slug: chord-progressions
     non-functional-harmony.md    modes, planing, twelve tones          slug: non-functional-harmony
     reharmonization.md           Twinkle, five versions                slug: reharmonization
@@ -209,15 +211,31 @@ src/content/docs/
     chord-notation.md            figured bass to chord symbols         slug: chord-notation
     breaking-conventions.md      20th-century experiments, phasing     slug: breaking-conventions
     sound-as-material.md         onkyō, sound design, granular         slug: sound-as-material
+    pentatonic-improvisation.md  pentatonic phrases, play-along        slug: pentatonic-improvisation
+    diatonic-improvisation.md    one key, its scale over every chord   slug: diatonic-improvisation
+    outlining-changes.md         chord tones, guide tones, enclosures  slug: outlining-changes
+    jazz-idioms.md               enclosures, approach notes, the lick  slug: jazz-idioms
+    bebop-scale.md               Barry Harris, sixth diminished scale  slug: bebop-scale
+    minor-chord-scales.md        melodic/harmonic minor modes, use     slug: minor-chord-scales
+    two-five-improvisation.md    scales and phrases over ii–V–I        slug: two-five-improvisation
+    jazz-chord-improvisation.md  Lydian dominant, whole tone, dim      slug: jazz-chord-improvisation
+    modal-jazz.md                So What, fourths, sus chords          slug: modal-jazz
+    upper-structure-triads.md    triads over dominant shells           slug: upper-structure-triads
+    triads-in-scales.md          triads in scales, triad pairs         slug: triads-in-scales
+    modern-pentatonics.md        pentatonics on other roots            slug: modern-pentatonics
+    playing-outside.md           side-stepping, superimposed ii–V      slug: playing-outside
+    fourths.md                   fourth shapes, parallel fourths       slug: fourths
+    coltrane-changes.md          major-third cycles, 1-2-3-5           slug: coltrane-changes
 src/layouts/DocLayout.astro      writing's layout + sound-theory additions
 src/components/                  writing's Sidebar and Breadcrumbs
 public/lib/audio/                AudioEngine.js  instruments.js  effects.js  additive.js
                                  tuning.js  scales.js  sequence.js  rhythm.js
-                                 chords.js  granular.js
+                                 chords.js  granular.js  gesture.js
 public/lib/demo/                 viewport.js  panel.js  controls.js  colors.js
                                  Keyboard.js  Scope.js  PartialsView.js  BeatView.js
                                  FifthsRing.js  ScaleView.js  CycleView.js  PulseView.js
                                  StepGrid.js  ProgressionView.js  ChordChart.js
+                                 XYPad.js  DrawPad.js
 public/demos/<name>/             index.html + main.js per demo
 public/styles/demo-ui.css        demo chrome
 public/lib/page/demoRecorder.js  record button under each embedded demo (page-level)

@@ -58,6 +58,26 @@ export class PolyInstrument extends Instrument {
 }
 
 /**
+ * A short, struck synth tone, like a mallet on a bar: every note decays by itself, so
+ * it can be played by something that only sends noteOn (a step sequencer).
+ */
+export class MalletSynth extends Instrument {
+    constructor({ volume = -8 } = {}) {
+        super();
+        this.synth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: 'triangle' },
+            envelope: { attack: 0.002, decay: 0.5, sustain: 0, release: 0.4 },
+        }).connect(this.output);
+        this.synth.maxPolyphony = 32;
+        this.synth.volume.value = volume;
+    }
+
+    noteOn(midi, velocity = 0.8, time = Tone.now()) { this.synth.triggerAttackRelease(midiToNote(midi), 0.3, time, velocity); }
+    releaseAll() { this.synth.releaseAll(); }
+    dispose() { this.synth.dispose(); super.dispose(); }
+}
+
+/**
  * An instrument played from recorded samples. Tone's Sampler repitches the nearest
  * sample, so a few notes per octave cover the whole range.
  */
@@ -264,6 +284,86 @@ const waveform = (type, volume) =>
  * Every preset a demo can offer, in menu order. `group` becomes the optgroup in an
  * instrument menu. Add a preset here, never in a demo.
  */
+/**
+ * Synthesizers with their parameters as data, like the effects in effects.js: each
+ * engine is a Tone voice with starting options and a list of parameters a demo can
+ * expose. A parameter has `key`, `label`, and `apply(synth, value)`, plus either a
+ * range (`min`, `max`, `step`, `unit`, `scale`) or `options` (a list of values, for a
+ * select), and its default `value`.
+ *
+ *   - subtractive: a bright oscillator through a resonant low-pass filter, the filter
+ *     opened by its own envelope, then shaped by the amplitude envelope (ADSR).
+ *   - fm: frequency modulation, one sine (the modulator) bending the pitch of another
+ *     (the carrier); the ratio of their frequencies sets which partials appear and
+ *     the index how strong they are.
+ *   - am: amplitude modulation, one wave changing the loudness of another, which adds
+ *     sidebands around each partial.
+ */
+const bothEnvelopes = (stage, v) => ({ envelope: { [stage]: v }, filterEnvelope: { [stage]: v } });
+const SECONDS = { min: 0.005, max: 2, step: 0.005, unit: 's' };
+export const SYNTH_ENGINES = [
+    { id: 'subtractive', label: 'Subtractive', voice: Tone.MonoSynth, volume: -14, options: {
+        oscillator: { type: 'sawtooth' },
+        filter: { type: 'lowpass', rolloff: -24 },
+        envelope: { attack: 0.01, decay: 0.3, sustain: 0.6, release: 0.5 },
+        filterEnvelope: { attack: 0.01, decay: 0.3, sustain: 0.3, release: 0.5, baseFrequency: 300, octaves: 3 },
+    }, params: [
+        { key: 'wave', label: 'Wave', options: ['sawtooth', 'square', 'triangle', 'sine'], value: 'sawtooth',
+          apply: (s, v) => s.set({ oscillator: { type: v } }) },
+        { key: 'cutoff', label: 'Cutoff', min: 40, max: 5000, step: 1, scale: 'log', unit: 'Hz', value: 300,
+          apply: (s, v) => s.set({ filterEnvelope: { baseFrequency: v } }) },
+        { key: 'resonance', label: 'Resonance', min: 0.1, max: 15, step: 0.1, value: 2,
+          apply: (s, v) => s.set({ filter: { Q: v } }) },
+        { key: 'amount', label: 'Env amt', min: 0, max: 6, step: 0.1, value: 3,
+          apply: (s, v) => s.set({ filterEnvelope: { octaves: v } }) },
+        { key: 'attack', label: 'Attack', ...SECONDS, value: 0.01, apply: (s, v) => s.set(bothEnvelopes('attack', v)) },
+        { key: 'decay', label: 'Decay', ...SECONDS, value: 0.3, apply: (s, v) => s.set(bothEnvelopes('decay', v)) },
+        { key: 'sustain', label: 'Sustain', min: 0, max: 1, step: 0.01, value: 0.6,
+          apply: (s, v) => s.set({ envelope: { sustain: v } }) },
+        { key: 'release', label: 'Release', ...SECONDS, max: 4, value: 0.5, apply: (s, v) => s.set(bothEnvelopes('release', v)) },
+    ] },
+    { id: 'fm', label: 'FM', voice: Tone.FMSynth, volume: -12, options: {
+        harmonicity: 2, modulationIndex: 10,
+        envelope: { attack: 0.01, decay: 0.3, sustain: 0.5, release: 0.8 },
+        modulationEnvelope: { attack: 0.01, decay: 0.3, sustain: 0.3, release: 0.8 },
+    }, params: [
+        { key: 'ratio', label: 'Ratio', min: 0.5, max: 8, step: 0.5, value: 2, apply: (s, v) => s.set({ harmonicity: v }) },
+        { key: 'index', label: 'Index', min: 0, max: 40, step: 0.5, value: 10, apply: (s, v) => s.set({ modulationIndex: v }) },
+        { key: 'modDecay', label: 'Mod decay', ...SECONDS, value: 0.3, apply: (s, v) => s.set({ modulationEnvelope: { decay: v } }) },
+        { key: 'attack', label: 'Attack', ...SECONDS, value: 0.01, apply: (s, v) => s.set({ envelope: { attack: v } }) },
+        { key: 'release', label: 'Release', ...SECONDS, max: 4, value: 0.8, apply: (s, v) => s.set({ envelope: { release: v } }) },
+    ] },
+    { id: 'am', label: 'AM', voice: Tone.AMSynth, volume: -10, options: {
+        harmonicity: 2,
+        envelope: { attack: 0.01, decay: 0.3, sustain: 0.6, release: 0.8 },
+    }, params: [
+        { key: 'ratio', label: 'Ratio', min: 0.25, max: 8, step: 0.25, value: 2, apply: (s, v) => s.set({ harmonicity: v }) },
+        { key: 'attack', label: 'Attack', ...SECONDS, value: 0.01, apply: (s, v) => s.set({ envelope: { attack: v } }) },
+        { key: 'release', label: 'Release', ...SECONDS, max: 4, value: 0.8, apply: (s, v) => s.set({ envelope: { release: v } }) },
+    ] },
+];
+
+/** A synth from SYNTH_ENGINES, with `set(key, value)` and `get(key)` for its parameters. */
+export class SynthEngine extends PolyInstrument {
+    constructor(id) {
+        const def = SYNTH_ENGINES.find(d => d.id === id);
+        if (!def) throw new Error(`Unknown synth engine: ${id}`);
+        super(def.voice, def.options, { volume: def.volume });
+        this.def = def;
+        this.values = {};
+        for (const param of def.params) this.set(param.key, param.value);
+    }
+
+    get(key) { return this.values[key]; }
+
+    set(key, value) {
+        const param = this.def.params.find(p => p.key === key);
+        if (!param) throw new Error(`Unknown parameter: ${this.def.id}.${key}`);
+        this.values[key] = value;
+        param.apply(this.synth, value);
+    }
+}
+
 export const INSTRUMENTS = [
     { id: 'sine',     label: 'Sine',     group: 'Waveforms', create: () => waveform('sine', 0) },
     { id: 'triangle', label: 'Triangle', group: 'Waveforms', create: () => waveform('triangle', -2) },

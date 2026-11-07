@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { FEEL_PATTERNS, HAMMER } from './rhythm.js';
+import { FEEL_PATTERNS, HAMMER, pulsePattern } from './rhythm.js';
 import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } from './scales.js';
 
 /**
@@ -11,12 +11,14 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  * may be written ♭/♯ or b/#. `parseChord` turns a symbol into pitch classes;
  * `voiceProgression` turns a list of chords into MIDI notes that move smoothly.
  *
- * A progression is `{ id, label, tempo, key?, loop?, chords, sevenths?, melody?, riff?, comp?, voicing?, bassLow?, drums?, sounds? }`:
- *   - `chords`: `[{ symbol, beats, roman?, fn?, bass?, notes? }]`. `roman` is the Roman
+ * A progression is `{ id, label, tempo, key?, loop?, chords, sevenths?, melody?, playScale?, riff?, comp?, voicing?, bassLow?, drums?, sounds? }`:
+ *   - `chords`: `[{ symbol, beats, roman?, fn?, bass?, notes?, tied? }]`. `roman` is the Roman
  *     numeral shown under the chord, `fn` its function (T, SD, D, SDm). `bass` (MIDI)
  *     places the bass note itself, outside the usual range (see bassLow). `notes`
  *     (MIDI numbers) voices a chord by hand instead, for chords that are not
- *     stacks of thirds (quartal chords, chords from a twelve-tone row).
+ *     stacks of thirds (quartal chords, chords from a twelve-tone row). A `tied`
+ *     chord holds the previous one on instead of striking again, so the label under a
+ *     sustained chord can change (the triads of a triad pair).
  *   - `melody`: `[{ midi, beats }]` played over the chords (`midi: null` is a rest).
  *   - `riff`: `[[semitones, beats], …]`, a bass riff played up from each chord's bass
  *     note in place of the held bass, repeated through the chord.
@@ -25,6 +27,8 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  *     above it, `'all'` both, and `null` rests (see compHits).
  *   - `sevenths`: the same progression with seventh chords, in the form of `chords`,
  *     for a demo that offers both (see withSevenths).
+ *   - `playScale`: note names (in `key`) a player can improvise with over it; a
+ *     play-along demo shows only these on its keyboard, the first as the root.
  *   - `key`: the root it is written on, for moving it to another key (default C).
  *   - `voicing`: `'open'` spreads each chord's notes at their own intervals above the
  *     root, so tensions sit above the chord tones (see voiceProgression).
@@ -274,12 +278,14 @@ export function transposeProgression(progression, root) {
         chords: progression.chords.map(chord => ({
             ...chord,
             symbol: transposeSymbol(chord.symbol, from, root),
+            ...(chord.scaleRoot ? { scaleRoot: transposeName(chord.scaleRoot, from, root) } : {}),
             ...(chord.bass !== undefined ? { bass: chord.bass + semitones } : {}),
             ...(chord.notes ? { notes: chord.notes.map(n => n + semitones) } : {}),
         })),
         ...(progression.melody ? {
             melody: progression.melody.map(n => ({ ...n, midi: n.midi === null ? null : n.midi + semitones })),
         } : {}),
+        ...(progression.playScale ? { playScale: progression.playScale.map(n => transposeName(n, from, root)) } : {}),
     };
 }
 
@@ -400,22 +406,41 @@ function mode(steps, k) {
     return steps.map((_, i) => (steps[(i + k) % 7] - steps[k] + 12) % 12);
 }
 
+/** The three scale systems with the names of their modes, in order from the first degree. */
+const MAJOR = { steps: MAJOR_STEPS, names: ['major'] };
+const MELODIC_MINOR = { steps: MELODIC_MINOR_STEPS, names: [
+    'melodic minor', 'Dorian ♭2', 'Lydian augmented', 'Lydian dominant', 'Mixolydian ♭6', 'Locrian ♮2', 'altered',
+] };
+const HARMONIC_MINOR = { steps: HARMONIC_MINOR_STEPS, names: [
+    'harmonic minor', 'Locrian ♮6', 'Ionian ♯5', 'Dorian ♯4', 'Phrygian dominant', 'Lydian ♯2', 'Ultralocrian',
+] };
+
+/** The major scale's modes by their church-mode names, and scales outside the three systems. */
+const MAJOR_MODES = { steps: MAJOR_STEPS, names: ['Ionian', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydian', 'Aeolian', 'Locrian'] };
+const HALF_WHOLE = { steps: [0, 1, 3, 4, 6, 7, 9, 10], name: 'half-whole diminished' };
+const WHOLE_HALF = { steps: [0, 2, 3, 5, 6, 8, 9, 11], name: 'whole-half diminished' };
+const WHOLE_TONE = { steps: [0, 2, 4, 6, 8, 10], name: 'whole tone' };
+
+/** Mode `k` of a system as a chord scale: `{ steps, name }`. */
+function chordScale(system, k = 0) {
+    return { steps: mode(system.steps, k), name: system.names[k] };
+}
+
 /**
- * Chords, each with its chord scale run up an octave over it in eighth notes as the
- * melody, from the chord's root in octave 4: `[symbol, roman, steps, beats = 4]`. With
- * `steps` null the chord is held with no run.
+ * Chords, each with its chord scale (from chordScale) run up an octave over it in
+ * eighth notes as the melody, from the chord's root in octave 4: `[symbol, roman,
+ * scale, beats = 4]`. Each chord keeps the scale's name as `scale`, for a demo to show.
  */
 function chordScaleRuns(list) {
     const melody = [];
-    const chordList = list.map(([symbol, roman, steps, beats = 4]) => {
-        if (steps) {
-            const root = C + parseChord(symbol).root;
-            [...steps, 12].forEach(s => melody.push({ midi: root + s, beats: 0.5 }));
-            if (beats > 4) melody.push({ midi: null, beats: beats - 4 });
-        } else {
-            melody.push({ midi: null, beats });
-        }
-        return { symbol, beats, roman };
+    const chordList = list.map(([symbol, roman, scale, beats = 4]) => {
+        const root = C + parseChord(symbol).root;
+        // Eight eighth notes up the scale: an octave of a seven-note scale, or as far as
+        // eight notes reach in a scale of six or eight.
+        [...scale.steps, ...scale.steps.map(s => s + 12)].slice(0, 8)
+            .forEach(s => melody.push({ midi: root + s, beats: 0.5 }));
+        if (beats > 4) melody.push({ midi: null, beats: beats - 4 });
+        return { symbol, beats, roman, scale: scale.name };
     });
     return { chords: chordList, melody };
 }
@@ -425,11 +450,11 @@ export const MINOR_MODE_PROGRESSIONS = [
     { id: 'melodic-minor-modes', label: 'Melodic minor modes', ...chordScaleRuns([
         ['CmMaj7', 'I'], ['Dm7', 'II'], ['E♭maj7♯5', 'III'], ['F7(♯11)', 'IV'],
         ['G7(♭13)', 'V'], ['Am7♭5', 'VI'], ['B7alt', 'VII'],
-    ].map(([symbol, roman], k) => [symbol, roman, mode(MELODIC_MINOR_STEPS, k)])) },
+    ].map(([symbol, roman], k) => [symbol, roman, chordScale(MELODIC_MINOR, k)])) },
     { id: 'harmonic-minor-modes', label: 'Harmonic minor modes', ...chordScaleRuns([
         ['CmMaj7', 'I'], ['Dm7♭5', 'II'], ['E♭maj7♯5', 'III'], ['Fm7(♯11)', 'IV'],
         ['G7(♭9, ♭13)', 'V'], ['A♭maj7(♯9)', 'VI'], ['Bdim7', 'VII'],
-    ].map(([symbol, roman], k) => [symbol, roman, mode(HARMONIC_MINOR_STEPS, k)])) },
+    ].map(([symbol, roman], k) => [symbol, roman, chordScale(HARMONIC_MINOR, k)])) },
 ].map(p => ({ ...p, tempo: 96 }));
 
 /**
@@ -438,26 +463,26 @@ export const MINOR_MODE_PROGRESSIONS = [
  */
 export const MINOR_CHORD_SCALE_PROGRESSIONS = [
     { id: 'ii-v-i-altered', label: 'ii–V–i, altered', ...chordScaleRuns([
-        ['Dm7♭5', 'iiø7', mode(MELODIC_MINOR_STEPS, 5)],
-        ['G7alt', 'V7alt', mode(MELODIC_MINOR_STEPS, 6)],
-        ['Cm6', 'i6', MELODIC_MINOR_STEPS, 8],
+        ['Dm7♭5', 'iiø7', chordScale(MELODIC_MINOR, 5)],
+        ['G7alt', 'V7alt', chordScale(MELODIC_MINOR, 6)],
+        ['Cm6', 'i6', chordScale(MELODIC_MINOR), 8],
     ]) },
     { id: 'ii-v-i-harmonic', label: 'ii–V–i, harmonic', ...chordScaleRuns([
-        ['Dm7♭5', 'iiø7', mode(HARMONIC_MINOR_STEPS, 1)],
-        ['G7(♭9, ♭13)', 'V7', mode(HARMONIC_MINOR_STEPS, 4)],
-        ['CmMaj7', 'i(maj7)', HARMONIC_MINOR_STEPS, 8],
+        ['Dm7♭5', 'iiø7', chordScale(HARMONIC_MINOR, 1)],
+        ['G7(♭9, ♭13)', 'V7', chordScale(HARMONIC_MINOR, 4)],
+        ['CmMaj7', 'i(maj7)', chordScale(HARMONIC_MINOR), 8],
     ]) },
     { id: 'tritone-substitute', label: 'Tritone substitute', ...chordScaleRuns([
-        ['Dm7♭5', 'iiø7', mode(MELODIC_MINOR_STEPS, 5)],
-        ['D♭7(♯11)', 'subV7', mode(MELODIC_MINOR_STEPS, 3)],
-        ['Cm6', 'i6', MELODIC_MINOR_STEPS, 8],
+        ['Dm7♭5', 'iiø7', chordScale(MELODIC_MINOR, 5)],
+        ['D♭7(♯11)', 'subV7', chordScale(MELODIC_MINOR, 3)],
+        ['Cm6', 'i6', chordScale(MELODIC_MINOR), 8],
     ]) },
     { id: 'borrowed-in-major', label: 'Borrowed in C major', ...chordScaleRuns([
-        ['Cmaj7', 'Imaj7', MAJOR_STEPS],
-        ['A♭maj7', '♭VImaj7', mode(HARMONIC_MINOR_STEPS, 5)],
-        ['Fm6', 'iv6', MELODIC_MINOR_STEPS],
-        ['B♭7(♯11)', '♭VII7', mode(MELODIC_MINOR_STEPS, 3)],
-        ['Cmaj7', 'Imaj7', MAJOR_STEPS, 8],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR)],
+        ['A♭maj7', '♭VImaj7', chordScale(HARMONIC_MINOR, 5)],
+        ['Fm6', 'iv6', chordScale(MELODIC_MINOR)],
+        ['B♭7(♯11)', '♭VII7', chordScale(MELODIC_MINOR, 3)],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR), 8],
     ]) },
 ].map(p => ({ ...p, tempo: 96 }));
 
@@ -807,6 +832,766 @@ export const WALTZ_PROGRESSIONS = [
         comp: [['all', 3]] },
 ];
 
+// ── Barry Harris's sixth diminished scale ──
+
+/** The major and minor sixth diminished scales on C: the scale with ♯5 added, in semitones. */
+const MAJOR_SIXTH_DIMINISHED = [0, 2, 4, 5, 7, 8, 9, 11];
+const MINOR_SIXTH_DIMINISHED = [0, 2, 3, 5, 7, 8, 9, 11];
+
+/**
+ * A sixth diminished scale harmonized in four-part close position, each note of the
+ * scale at the bottom of its chord, up an octave and back down, one chord a beat. The
+ * notes alternate between the sixth chord (its inversions) and the diminished seventh
+ * chord (all four of them the same notes), so each chord takes the four scale notes
+ * from its own, every other one.
+ */
+function sixthDiminishedChords(steps, sixth) {
+    const scale = [...steps, ...steps.map(s => s + 12)];
+    const names = ['C', 'D', sixth === 'm6' ? 'E♭' : 'E', 'F', 'G', 'G♯', 'A', 'B'];
+    const tonic = sixth === 'm6' ? 'i6' : 'I6';
+    const chord = i => {
+        const notes = [0, 2, 4, 6].map(k => C - 12 + scale[i + k]);
+        const bass = names[i % 8];
+        return i % 2
+            ? { symbol: `${bass}°7`, beats: 1, roman: 'vii°7', notes }
+            : { symbol: i % 8 ? `C${sixth}/${bass}` : `C${sixth}`, beats: 1, roman: tonic, notes };
+    };
+    const up = Array.from({ length: 9 }, (_, i) => chord(i));
+    const down = up.slice(0, 8).reverse();
+    return [...up, ...down.slice(0, -1), { ...down.at(-1), beats: 3 }];
+}
+
+export const SIXTH_DIMINISHED_PROGRESSIONS = [
+    { id: 'major-sixth-diminished', label: 'Major 6th diminished', tempo: 96,
+        chords: sixthDiminishedChords(MAJOR_SIXTH_DIMINISHED, '6') },
+    { id: 'minor-sixth-diminished', label: 'Minor 6th diminished', tempo: 96,
+        chords: sixthDiminishedChords(MINOR_SIXTH_DIMINISHED, 'm6') },
+];
+
+/**
+ * A two-bar line of eighth notes running down from C6 over a held C6, with a click on
+ * every beat: down the major scale, where the chord tones drift off the beats, and down
+ * the major sixth diminished scale, where they stay on them.
+ */
+function eighthNoteLine(steps) {
+    const down = [];
+    for (let octave = 2; down.length < 16; octave--) {
+        for (let i = steps.length - 1; i >= 0 && down.length < 16; i--) {
+            const midi = C + octave * 12 + steps[i];
+            if (midi <= C + 24) down.push(midi);
+        }
+    }
+    return down.map(midi => ({ midi, beats: 0.5 }));
+}
+
+export const BEBOP_LINE_PROGRESSIONS = [
+    { id: 'major-scale-line', label: 'Major scale', melody: eighthNoteLine(MAJOR_STEPS) },
+    { id: 'sixth-diminished-line', label: '6th diminished scale', melody: eighthNoteLine(MAJOR_SIXTH_DIMINISHED) },
+].map(p => ({
+    ...p, tempo: 132, loop: true, drums: pulsePattern(4),
+    chords: [{ symbol: 'C6', beats: 8, roman: 'I6', notes: [C - 12, C - 8, C - 5, C - 3] }],
+}));
+
+/**
+ * Bebop phrases over a ii–V–I in C, in the manner Barry Harris taught: eighth notes with
+ * the chord tones on the beats, the ii heard as its V (one dominant scale for both
+ * bars), and the 7th of G7 falling to the 3rd of the tonic. Each is two bars of eighth
+ * notes and a held note, over hand-voiced chords low enough to stay clear of the line,
+ * with a click on every beat.
+ */
+const PHRASE_CHORDS = {
+    'Dm7': { symbol: 'Dm7', roman: 'ii7', notes: [38, 48, 53, 57] },
+    'Dm7♭5': { symbol: 'Dm7♭5', roman: 'iiø7', notes: [38, 48, 53, 56] },
+    'G7': { symbol: 'G7', roman: 'V7', notes: [43, 47, 53] },
+    'C6': { symbol: 'C6', roman: 'I6', notes: [36, 52, 55, 57] },
+    'Cm6': { symbol: 'Cm6', roman: 'i6', notes: [36, 51, 55, 57] },
+};
+
+function iiVPhrase(id, label, [ii, v, i], bar1, bar2, landing) {
+    return {
+        id, label, tempo: 132, loop: true, drums: pulsePattern(4),
+        chords: [ii, v, i].map(name => ({ ...PHRASE_CHORDS[name], beats: 4 })),
+        melody: [...melody([...bar1, ...bar2].map(n => [n, 0.5])), ...melody([[landing, 4]])],
+    };
+}
+
+export const BEBOP_II_V_PROGRESSIONS = [
+    iiVPhrase('one-scale', 'One scale for ii–V', ['Dm7', 'G7', 'C6'],
+        ['G5', 'F#5', 'F5', 'E5', 'D5', 'C5', 'B4', 'A4'],
+        ['G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'F#5'], 'G5'),
+    iiVPhrase('down-and-up', 'Down and up', ['Dm7', 'G7', 'C6'],
+        ['C5', 'B4', 'A4', 'G4', 'F4', 'E4', 'D4', 'C4'],
+        ['B3', 'C4', 'D4', 'E4', 'F4', 'F#4', 'G4', 'Ab4'], 'G4'),
+    iiVPhrase('minor-diminished', 'Minor, diminished', ['Dm7♭5', 'G7', 'Cm6'],
+        ['D4', 'F4', 'Ab4', 'B4', 'D5', 'F5', 'Ab5', 'G5'],
+        ['F5', 'Eb5', 'D5', 'C5', 'B4', 'Ab4', 'G4', 'F4'], 'Eb4'),
+];
+
+// ── Improvisation ──
+
+/** A melody from `[name, beats]` pairs, with `third` for swung eighths (long, short). */
+const T = 1 / 3;
+
+/**
+ * Pentatonic phrases over simple progressions and the blues, each with the scale a
+ * player can use (`playScale`) for playing along.
+ */
+const SHUFFLE_BLUES = BLUES_PROGRESSIONS[0];
+export const PENTATONIC_PROGRESSIONS = [
+    { id: 'major-pentatonic', label: 'I–vi–IV–V', tempo: 100, loop: true, bassLow: C - 12,
+        playScale: ['C', 'D', 'E', 'G', 'A'],
+        chords: chords(4, [['C', 'I'], ['Am', 'vi'], ['F', 'IV'], ['G', 'V']]),
+        melody: melody([
+            ['E5', 0.5], ['G5', 0.5], ['A5', 1], ['G5', 1], ['E5', 1],
+            ['D5', 0.5], ['E5', 0.5], ['C5', 1], ['A4', 2],
+            ['C5', 0.5], ['D5', 0.5], ['E5', 1], ['G5', 0.5], ['E5', 0.5], ['D5', 1],
+            ['D5', 1], ['C5', 0.5], ['A4', 0.5], ['G4', 2],
+        ]) },
+    { id: 'minor-pentatonic', label: 'vi–IV–I–V', tempo: 100, loop: true, bassLow: C - 12, key: 'A',
+        playScale: ['A', 'C', 'D', 'E', 'G'],
+        chords: chords(4, [['Am', 'i'], ['F', '♭VI'], ['C', '♭III'], ['G', '♭VII']]),
+        melody: melody([
+            ['A4', 0.5], ['C5', 0.5], ['D5', 0.5], ['E5', 1.5], ['D5', 0.5], ['C5', 0.5],
+            ['A4', 1], ['C5', 1], ['A4', 0.5], ['G4', 0.5], ['A4', 1],
+            ['E5', 0.5], ['G5', 0.5], ['E5', 0.5], ['D5', 0.5], ['C5', 2],
+            ['D5', 1], ['C5', 0.5], ['A4', 0.5], ['G4', 1], ['A4', 1],
+        ]) },
+    { ...SHUFFLE_BLUES, id: 'blues-minor', label: 'Blues, minor pentatonic',
+        playScale: ['C', 'E♭', 'F', 'G', 'B♭'],
+        melody: melody([
+            ['G4', 2 * T], ['Bb4', T], ['C5', 1], ['Bb4', 2 * T], ['G4', T], ['Eb4', 1],
+            ['C4', 2], [null, 2],
+            ['G4', 2 * T], ['Bb4', T], ['C5', 2 * T], ['Eb5', T], ['C5', 1], ['Bb4', 1],
+            ['G4', 3], [null, 1],
+            ['G4', 2 * T], ['Bb4', T], ['C5', 1], ['Bb4', 2 * T], ['G4', T], ['Eb4', 1],
+            ['C4', 2], [null, 2],
+            ['G4', 2 * T], ['Bb4', T], ['C5', 2 * T], ['Eb5', T], ['C5', 1], ['Bb4', 1],
+            ['G4', 3], [null, 1],
+            ['F5', 2 * T], ['Eb5', T], ['C5', 1], ['Bb4', 2 * T], ['G4', T], ['F4', 1],
+            ['Eb4', 2 * T], ['F4', T], ['G4', 2], [null, 1],
+            ['Bb4', 2 * T], ['G4', T], ['C5', 3],
+            [null, 4],
+        ]) },
+    { ...SHUFFLE_BLUES, id: 'blues-major', label: 'Blues, major pentatonic',
+        playScale: ['C', 'D', 'E', 'G', 'A'],
+        melody: melody([
+            ['E4', 2 * T], ['G4', T], ['A4', 2 * T], ['C5', T], ['A4', 1], ['G4', 1],
+            ['E4', 2], [null, 2],
+            ['D5', 2 * T], ['C5', T], ['A4', 2 * T], ['G4', T], ['E4', 1], ['D4', 1],
+            ['C4', 3], [null, 1],
+            ['A4', 2 * T], ['C5', T], ['D5', 2 * T], ['C5', T], ['A4', 1], ['G4', 1],
+            ['A4', 2], [null, 2],
+            ['E4', 2 * T], ['G4', T], ['A4', 2 * T], ['C5', T], ['A4', 1], ['G4', 1],
+            ['C4', 3], [null, 1],
+            ['D5', 2 * T], ['C5', T], ['A4', 2 * T], ['G4', T], ['D5', 2],
+            ['C5', 2 * T], ['A4', T], ['G4', 2 * T], ['A4', T], ['C5', 2],
+            ['E5', 1], ['D5', 2 * T], ['C5', T], ['C5', 2],
+            [null, 4],
+        ]) },
+];
+
+/**
+ * Progressions that stay in one key, with phrases from its scale alone (the white keys
+ * in C), the chord tones on the beats.
+ */
+export const DIATONIC_IMPROV_PROGRESSIONS = [
+    { id: 'i-vi-ii-v', label: 'I–vi–ii–V', tempo: 120, chords: chords(4, [['C', 'I'], ['Am', 'vi'], ['Dm', 'ii'], ['G', 'V']]),
+        melody: melody([
+            ['E5', 0.5], ['D5', 0.5], ['C5', 0.5], ['B4', 0.5], ['C5', 1], ['G4', 1],
+            ['A4', 0.5], ['B4', 0.5], ['C5', 0.5], ['D5', 0.5], ['E5', 1], ['C5', 1],
+            ['F5', 0.5], ['E5', 0.5], ['D5', 0.5], ['C5', 0.5], ['A4', 1], ['F4', 1],
+            ['G4', 0.5], ['A4', 0.5], ['B4', 0.5], ['C5', 0.5], ['D5', 1], ['B4', 1],
+        ]) },
+    { id: 'iii-vi-ii-v-i', label: 'iii–vi–ii–V–I', tempo: 120, chords: chords(4, [
+        ['Em', 'iii'], ['Am', 'vi'], ['Dm', 'ii'], ['G', 'V'], ['C', 'I'],
+    ]), melody: melody([
+        ['B4', 0.5], ['C5', 0.5], ['B4', 0.5], ['A4', 0.5], ['G4', 1], ['E4', 1],
+        ['C5', 0.5], ['D5', 0.5], ['E5', 0.5], ['D5', 0.5], ['C5', 1], ['A4', 1],
+        ['D5', 0.5], ['E5', 0.5], ['F5', 0.5], ['E5', 0.5], ['D5', 1], ['A4', 1],
+        ['B4', 0.5], ['C5', 0.5], ['D5', 0.5], ['E5', 0.5], ['F5', 1], ['D5', 1],
+        ['E5', 2], ['C5', 2],
+    ]) },
+    { id: 'a-minor', label: 'i–♭VI–♭III–♭VII', tempo: 120, key: 'A', chords: chords(4, [
+        ['Am', 'i'], ['F', '♭VI'], ['C', '♭III'], ['G', '♭VII'],
+    ]), melody: melody([
+        ['A4', 0.5], ['B4', 0.5], ['C5', 0.5], ['D5', 0.5], ['E5', 2],
+        ['F5', 0.5], ['E5', 0.5], ['C5', 0.5], ['B4', 0.5], ['A4', 2],
+        ['G4', 0.5], ['A4', 0.5], ['C5', 0.5], ['D5', 0.5], ['E5', 2],
+        ['D5', 0.5], ['C5', 0.5], ['B4', 0.5], ['A4', 0.5], ['G4', 1], ['B4', 1],
+    ]) },
+    { id: 'dorian-vamp', label: 'Dorian vamp', tempo: 120, chords: chords(4, [['Dm7', 'ii7'], ['G7', 'V7']]),
+        melody: melody([
+            ['D5', 0.5], ['F5', 0.5], ['A5', 0.5], ['G5', 0.5], ['F5', 0.5], ['E5', 0.5], ['D5', 1],
+            ['B4', 0.5], ['D5', 0.5], ['F5', 0.5], ['E5', 0.5], ['D5', 0.5], ['B4', 0.5], ['G4', 1],
+        ]) },
+].map(p => ({ ...p, loop: true, bassLow: C - 12 }));
+
+/** A chord with the name of the scale played over it, for phrases with a Scale readout. */
+const over = (symbol, roman, scale, beats = 4, scaleRoot) => ({ symbol, roman, beats, scale, ...(scaleRoot ? { scaleRoot } : {}) });
+
+/**
+ * The ii–V–I with the usual pairs of chord scales, each run up over its chord, and
+ * phrases that keep one ii and change the scale over V: Mixolydian, altered,
+ * half-whole diminished, and harmonic minor (Phrygian dominant) in minor.
+ */
+export const TWO_FIVE_SCALE_PROGRESSIONS = [
+    { id: 'dorian-mixolydian', label: 'Dorian, Mixolydian', ...chordScaleRuns([
+        ['Dm7', 'ii7', chordScale(MAJOR_MODES, 1)], ['G7', 'V7', chordScale(MAJOR_MODES, 4)],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+    { id: 'dorian-altered', label: 'Dorian, altered', ...chordScaleRuns([
+        ['Dm7', 'ii7', chordScale(MAJOR_MODES, 1)], ['G7alt', 'V7alt', chordScale(MELODIC_MINOR, 6)],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+    { id: 'dorian-half-whole', label: 'Dorian, half-whole', ...chordScaleRuns([
+        ['Dm7', 'ii7', chordScale(MAJOR_MODES, 1)], ['G7(♭9)', 'V7(♭9)', HALF_WHOLE],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+    { id: 'dorian-lydian-dominant', label: 'Dorian, Lydian dominant', ...chordScaleRuns([
+        ['Dm7', 'ii7', chordScale(MAJOR_MODES, 1)], ['D♭7(♯11)', 'subV7', chordScale(MELODIC_MINOR, 3)],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+    { id: 'locrian-phrygian-dominant', label: 'Locrian, Phrygian dominant', ...chordScaleRuns([
+        ['Dm7♭5', 'iiø7', chordScale(MAJOR_MODES, 6)], ['G7(♭9, ♭13)', 'V7', chordScale(HARMONIC_MINOR, 4)],
+        ['Cm6', 'i6', chordScale(MELODIC_MINOR, 0), 8],
+    ]) },
+    { id: 'locrian-2-altered', label: 'Locrian ♮2, altered', ...chordScaleRuns([
+        ['Dm7♭5', 'iiø7', chordScale(MELODIC_MINOR, 5)], ['G7alt', 'V7alt', chordScale(MELODIC_MINOR, 6)],
+        ['Cm6', 'i6', chordScale(MELODIC_MINOR, 0), 8],
+    ]) },
+].map(p => ({ ...p, tempo: 120 }));
+
+const DORIAN_LINE = [['D5', 0.5], ['E5', 0.5], ['F5', 0.5], ['A5', 0.5], ['C6', 0.5], ['B5', 0.5], ['A5', 0.5], ['G5', 0.5]];
+
+export const TWO_FIVE_PHRASE_PROGRESSIONS = [
+    { id: 'mixolydian', label: 'Mixolydian',
+        chords: [over('Dm7', 'ii7', 'Dorian'), over('G7', 'V7', 'Mixolydian'), over('Cmaj7', 'Imaj7', 'Ionian')],
+        melody: melody([...DORIAN_LINE,
+            ['F5', 0.5], ['E5', 0.5], ['D5', 0.5], ['C5', 0.5], ['B4', 0.5], ['A4', 0.5], ['G4', 0.5], ['F4', 0.5],
+            ['E4', 4]]) },
+    { id: 'altered', label: 'Altered',
+        chords: [over('Dm7', 'ii7', 'Dorian'), over('G7alt', 'V7alt', 'altered'), over('Cmaj7', 'Imaj7', 'Ionian')],
+        melody: melody([...DORIAN_LINE,
+            ['Ab5', 0.5], ['G5', 0.5], ['F5', 0.5], ['Eb5', 0.5], ['Db5', 0.5], ['B4', 0.5], ['Bb4', 0.5], ['Ab4', 0.5],
+            ['G4', 4]]) },
+    { id: 'diminished', label: 'Half-whole diminished',
+        chords: [over('Dm7', 'ii7', 'Dorian'), over('G7(♭9)', 'V7(♭9)', 'half-whole diminished'), over('Cmaj7', 'Imaj7', 'Ionian')],
+        melody: melody([...DORIAN_LINE,
+            ['F5', 0.5], ['E5', 0.5], ['D5', 0.5], ['C#5', 0.5], ['B4', 0.5], ['Bb4', 0.5], ['Ab4', 0.5], ['G4', 0.5],
+            ['E4', 4]]) },
+    // The diminished seventh a half step above the root of V: A♭°7 (A♭, B, D, F) is G7♭9
+    // without its root.
+    { id: 'diminished-half-step-up', label: 'Diminished, half step up',
+        chords: [over('Dm7', 'ii7', 'Dorian'), over('G7(♭9)', 'V7(♭9)', 'diminished 7th', 4, 'A♭'), over('Cmaj7', 'Imaj7', 'Ionian')],
+        melody: melody([...DORIAN_LINE,
+            ['Ab4', 0.5], ['B4', 0.5], ['D5', 0.5], ['F5', 0.5], ['Ab5', 0.5], ['F5', 0.5], ['D5', 0.5], ['B4', 0.5],
+            ['C5', 4]]) },
+    { id: 'harmonic-minor', label: 'Harmonic minor',
+        chords: [over('Dm7♭5', 'iiø7', 'Locrian'), over('G7(♭9, ♭13)', 'V7', 'Phrygian dominant'), over('Cm6', 'i6', 'melodic minor')],
+        melody: melody([
+            ['D5', 0.5], ['Eb5', 0.5], ['F5', 0.5], ['Ab5', 0.5], ['C6', 0.5], ['Bb5', 0.5], ['Ab5', 0.5], ['G5', 0.5],
+            ['F5', 0.5], ['Eb5', 0.5], ['D5', 0.5], ['C5', 0.5], ['B4', 0.5], ['Ab4', 0.5], ['G4', 0.5], ['F4', 0.5],
+            ['Eb4', 4]]) },
+].map(p => ({ ...p, tempo: 120, loop: true }));
+
+/**
+ * Chords outside the plain ii–V and the scales that go with them: Lydian dominant on
+ * dominants that do not resolve down a fifth, whole tone on augmented dominants, and
+ * the diminished scales on a passing diminished chord and a dominant with a flat 9th.
+ */
+export const JAZZ_CHORD_SCALE_PROGRESSIONS = [
+    { id: 'ii7-lydian-dominant', label: 'II7, scale', ...chordScaleRuns([
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0)], ['D7(♯11)', 'II7', chordScale(MELODIC_MINOR, 3)],
+        ['Dm7', 'ii7', chordScale(MAJOR_MODES, 1)], ['G7', 'V7', chordScale(MAJOR_MODES, 4)],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+    { id: 'backdoor-lydian-dominant', label: '♭VII7, scale', ...chordScaleRuns([
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0)], ['Fm7', 'iv7', chordScale(MAJOR_MODES, 1)],
+        ['B♭7(♯11)', '♭VII7', chordScale(MELODIC_MINOR, 3)], ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+    { id: 'augmented-whole-tone', label: '7♯5, scale', ...chordScaleRuns([
+        ['C6', 'I6', chordScale(MAJOR_MODES, 0)], ['C7♯5', 'V7♯5/IV', WHOLE_TONE],
+        ['Fmaj7', 'IVmaj7', chordScale(MAJOR_MODES, 3)], ['G7♯5', 'V7♯5', WHOLE_TONE],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+    { id: 'diminished', label: 'Diminished, scales', ...chordScaleRuns([
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0)], ['C♯dim7', '♯i°7', WHOLE_HALF],
+        ['Dm7', 'ii7', chordScale(MAJOR_MODES, 1)], ['G7(♭9)', 'V7(♭9)', HALF_WHOLE],
+        ['Cmaj7', 'Imaj7', chordScale(MAJOR_MODES, 0), 8],
+    ]) },
+].map(p => ({ ...p, tempo: 120 }));
+
+// ── Pentatonics over jazz chords ──
+
+const PENTATONICS = { major: [0, 2, 4, 7, 9], minor: [0, 3, 5, 7, 10] };
+
+/**
+ * Chords, each with a pentatonic scale on its own root (`scaleRoot`, a note name in C)
+ * run up over it in eighth notes: `[symbol, roman, scaleRoot, 'major' | 'minor', beats = 4]`.
+ * The chord keeps the scale's name and root for the Scale readout.
+ */
+function pentatonicRuns(list) {
+    const melody = [];
+    const chordList = list.map(([symbol, roman, scaleRoot, kind, beats = 4]) => {
+        const steps = PENTATONICS[kind];
+        const root = C + ((parseNote(scaleRoot).semitones % 12) + 12) % 12;
+        [...steps, ...steps.map(s => s + 12)].slice(0, 8).forEach(s => melody.push({ midi: root + s, beats: 0.5 }));
+        if (beats > 4) melody.push({ midi: null, beats: beats - 4 });
+        return { symbol, beats, roman, scale: `${kind} pentatonic`, scaleRoot };
+    });
+    return { chords: chordList, melody };
+}
+
+/**
+ * The same, but played vertically: each beat is a triplet of every other note of the
+ * pentatonic (C, E, A, then D, G, C, … in C major pentatonic), climbing one step of the
+ * scale per beat. The root sits in the octave from F♯3, so the shapes stay in range.
+ */
+function pentatonicSkips(list) {
+    const melodyList = [];
+    const chordList = list.map(([symbol, roman, scaleRoot, kind, beats = 4]) => {
+        const steps = PENTATONICS[kind];
+        const pc = ((parseNote(scaleRoot).semitones % 12) + 12) % 12;
+        const root = C + pc - (pc >= 6 ? 12 : 0);
+        const ext = [0, 1, 2].flatMap(o => steps.map(s => s + 12 * o));
+        for (let k = 0; k < beats; k++) [ext[k], ext[k + 2], ext[k + 4]].forEach(s => melodyList.push({ midi: root + s, beats: 1 / 3 }));
+        return { symbol, beats, roman, scale: `${kind} pentatonic`, scaleRoot };
+    });
+    return { chords: chordList, melody: melodyList };
+}
+
+/**
+ * Pentatonic scales on other roots over jazz chords: three over each chord type, the
+ * modern choices over a ii–V–I, and a pentatonic slipped a half step out and back.
+ */
+export const MODERN_PENTATONIC_PROGRESSIONS = [
+    { id: 'on-maj7', label: 'On Cmaj7', ...pentatonicRuns([
+        ['Cmaj7', 'I', 'C', 'major'], ['Cmaj7', 'V', 'G', 'major'], ['Cmaj7', 'vii', 'B', 'minor'],
+    ]) },
+    { id: 'on-m7', label: 'On Dm7', ...pentatonicRuns([
+        ['Dm7', 'i', 'D', 'minor'], ['Dm7', 'v', 'A', 'minor'], ['Dm7', 'ii', 'E', 'minor'],
+    ]) },
+    { id: 'on-7', label: 'On G7', ...pentatonicRuns([
+        ['G7', 'I', 'G', 'major'], ['G7sus4', 'v', 'D', 'minor'], ['G7alt', '♭iii', 'B♭', 'minor'],
+        ['Cmaj7', 'vii', 'B', 'minor'],
+    ]) },
+    { id: 'ii-v-i', label: 'ii–V–I', ...pentatonicRuns([
+        ['Dm7', 'ii', 'E', 'minor'], ['G7alt', '♭iii', 'B♭', 'minor'], ['Cmaj7', 'vii', 'B', 'minor', 8],
+    ]) },
+    { id: 'on-maj7-skips', label: 'On Cmaj7, skipping', ...pentatonicSkips([
+        ['Cmaj7', 'I', 'C', 'major', 8],
+    ]) },
+    { id: 'ii-v-i-skips', label: 'ii–V–I, skipping', ...pentatonicSkips([
+        ['Dm7', 'ii', 'E', 'minor'], ['G7alt', '♭iii', 'B♭', 'minor'], ['Cmaj7', 'vii', 'B', 'minor', 8],
+    ]) },
+    { id: 'side-slip', label: 'Side-slipping', ...pentatonicRuns([
+        ['Cm7', 'in', 'C', 'minor'], ['Cm7', 'out', 'C♯', 'minor'], ['Cm7', 'in', 'C', 'minor'], ['Cm7', 'out', 'B', 'minor'],
+    ]) },
+].map(p => ({ ...p, tempo: 120, loop: true }));
+
+// ── Outlining the changes ──
+
+/** The turnaround Cmaj7–A7–Dm7–G7, one bar each, under the chord-tone lines. */
+const TURNAROUND = chords(4, [['Cmaj7', 'Imaj7'], ['A7', 'VI7'], ['Dm7', 'ii7'], ['G7', 'V7']]);
+const line = notes => melody(notes.map(n => (Array.isArray(n) ? n : [n, 0.5])));
+
+/**
+ * Lines that spell out a turnaround from its chord tones: arpeggios, the guide tones
+ * (3rds and 7ths), chord tones on the beats joined by steps, and chord tones on beats 1
+ * and 3 reached by enclosures (a note above and a note below the target).
+ */
+export const CHORD_TONE_PROGRESSIONS = [
+    { id: 'arpeggios', label: 'Arpeggios', melody: line([
+        ['E4', 1], ['G4', 1], ['B4', 1], ['C5', 1], ['C#5', 1], ['A4', 1], ['G4', 1], ['E4', 1],
+        ['F4', 1], ['A4', 1], ['C5', 1], ['D5', 1], ['B4', 1], ['G4', 1], ['F4', 1], ['D4', 1],
+    ]) },
+    { id: 'guide-tones', label: 'Guide tones', melody: line([
+        ['E4', 2], ['B4', 2], ['G4', 2], ['C#5', 2], ['F4', 2], ['C5', 2], ['F4', 2], ['B4', 2],
+    ]) },
+    { id: 'stepwise', label: 'Joined by steps', melody: line([
+        'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'B4', 'A4',
+        'G4', 'A4', 'C#5', 'D5', 'E5', 'F5', 'E5', 'D5',
+        'C5', 'B4', 'A4', 'G4', 'F4', 'A4', 'C5', 'E5',
+        'F5', 'E5', 'D5', 'C5', 'B4', 'A4', 'G4', 'D#4',
+    ]) },
+    { id: 'enclosures', label: 'Enclosures', melody: line([
+        'E4', 'G4', 'A4', 'F#4', 'G4', 'B4', 'D5', 'C5',
+        'C#5', 'E5', 'F5', 'D#5', 'E5', 'G5', 'Eb5', 'C#5',
+        'D5', 'F5', 'Bb4', 'G#4', 'A4', 'F4', 'C5', 'A#4',
+        'B4', 'D5', 'G5', 'E5', 'F5', 'D5', 'F4', 'D#4',
+    ]) },
+].map(p => ({ ...p, tempo: 120, loop: true, chords: TURNAROUND }));
+
+// ── Idioms ──
+
+const CMAJ7_MID = [36, 47, 52, 55];
+
+/**
+ * Common jazz idioms in short phrases: the three enclosures of C (one bar each, the
+ * label naming the notes that close in on C), chord tones approached from a half step
+ * below, "the lick" answered by the 3-to-♭9 arpeggio over V7, the blues move from the
+ * minor to the major 3rd, and anticipation (the next chord's note sounding on the "and"
+ * of 4).
+ */
+export const IDIOM_PROGRESSIONS = [
+    { id: 'enclosures', label: 'Enclosures',
+        chords: [
+            { symbol: 'Cmaj7', roman: 'Imaj7', beats: 4, notes: CMAJ7_MID },
+            { symbol: '', roman: 'D–B–C', beats: 4, notes: CMAJ7_MID, tied: true },
+            { symbol: '', roman: 'D♭–B–C', beats: 4, notes: CMAJ7_MID, tied: true },
+            { symbol: '', roman: 'D–D♭–B–C', beats: 4, notes: CMAJ7_MID, tied: true },
+        ],
+        melody: line([
+            [null, 3], 'D5', 'B4',
+            ['C5', 2], [null, 1], 'Db5', 'B4',
+            ['C5', 2], [null, 0.5], 'D5', 'Db5', 'B4',
+            ['C5', 4],
+        ]) },
+    { id: 'approach', label: 'Approach from below',
+        chords: chords(4, [['Dm7', 'ii7'], ['G7', 'V7'], ['Cmaj7', 'Imaj7']]),
+        melody: line([
+            ['F4', 1], ['A4', 1], ['C5', 1], [null, 0.5], 'A#4',
+            ['B4', 1], ['D5', 1], ['F5', 1], [null, 0.5], 'D#5',
+            ['E5', 4],
+        ]) },
+    { id: 'lick', label: 'The lick, 3 to ♭9',
+        chords: chords(4, [['Dm7', 'ii7'], ['G7(♭9)', 'V7(♭9)'], ['Cmaj7', 'Imaj7']]),
+        melody: line([
+            'D5', 'E5', 'F5', 'G5', ['E5', 1], 'C5', 'D5',
+            'B4', 'D5', 'F5', 'Ab5', 'G5', 'E5', 'D5', 'F5',
+            ['E5', 4],
+        ]) },
+    { id: 'blue-third', label: 'Minor to major 3rd',
+        chords: chords(4, [['C7', 'I7'], ['F7', 'IV7']]),
+        melody: line([
+            'Eb4', 'E4', 'G4', 'A4', ['C5', 1], ['A4', 1],
+            'A4', 'C5', 'Eb5', 'D5', ['C5', 1], ['A4', 1],
+        ]) },
+    { id: 'anticipation', label: 'Anticipation',
+        chords: chords(4, [['Dm7', 'ii7'], ['G7', 'V7'], ['Cmaj7', 'Imaj7']]),
+        melody: line([
+            ['D5', 1], ['F5', 1], ['A5', 1], [null, 0.5], ['B5', 2.5],
+            'G5', 'F5', [null, 0.5], ['E5', 4.5],
+        ]) },
+].map(p => ({ ...p, tempo: 120, loop: true }));
+
+// ── Playing outside ──
+
+const DM7_LOW = [38, 48, 53, 57];
+
+/**
+ * Going outside the harmony and back: a D Dorian line over Dm7 slipped up a half step
+ * to E♭ Dorian for a bar, and a G7 bar played as the ii–V a tritone away (A♭m7–D♭7)
+ * before resolving to C.
+ */
+// The backing strikes its chord every two beats, so the harmony stays in the ear while
+// the line goes out.
+const EVERY_TWO_BEATS = [['all', 2]];
+
+export const OUTSIDE_PROGRESSIONS = [
+    { id: 'side-step', label: 'Side-stepping', tempo: 120, loop: true, comp: EVERY_TWO_BEATS,
+        chords: [
+            { symbol: 'Dm7', roman: 'in', beats: 4, notes: DM7_LOW }, { symbol: '', roman: 'out', beats: 4, notes: DM7_LOW },
+            { symbol: '', roman: 'in', beats: 8, notes: DM7_LOW },
+        ],
+        melody: line([
+            'D5', 'E5', 'F5', 'A5', 'G5', 'F5', 'E5', 'C5',
+            'Eb5', 'F5', 'Gb5', 'Bb5', 'Ab5', 'Gb5', 'F5', 'Db5',
+            'D5', 'E5', 'F5', 'A5', 'C6', 'A5', 'G5', 'E5', ['D5', 4],
+        ]) },
+    { id: 'tritone-ii-v', label: 'ii–V a tritone away', tempo: 120, loop: true, comp: EVERY_TWO_BEATS,
+        chords: [
+            { symbol: 'Dm7', roman: 'ii7', beats: 4, notes: DM7_LOW },
+            { symbol: 'G7', roman: 'A♭m7', beats: 2, notes: [43, 53, 59] }, { symbol: '', roman: 'D♭7', beats: 2, notes: [43, 53, 59] },
+            { symbol: 'Cmaj7', roman: 'Imaj7', beats: 4, notes: [36, 47, 52, 55] },
+        ],
+        melody: line([
+            'D5', 'E5', 'F5', 'A5', 'C6', 'B5', 'A5', 'G5',
+            'Gb5', 'Eb5', 'Cb5', 'Ab4', 'F5', 'Eb5', 'Db5', 'Cb5',
+            ['C5', 4],
+        ]) },
+];
+
+// ── Fourths ──
+
+/**
+ * Lines built from stacked fourths: three-note fourth shapes walked up D Dorian over
+ * Dm7 (one of them, F–B, an augmented fourth), and one fourth shape moved in parallel
+ * by half steps, out of the key and back in.
+ */
+const FOURTH_SHAPES_DORIAN = [
+    ['D4', 'G4', 'C5'], ['E4', 'A4', 'D5'], ['F4', 'B4', 'E5'], ['G4', 'C5', 'F5'],
+    ['A4', 'D5', 'G5'], ['B4', 'E5', 'A5'], ['C5', 'F5', 'B5'], ['D5', 'G5', 'C6'],
+];
+export const FOURTHS_PROGRESSIONS = [
+    { id: 'dorian-fourths', label: 'Fourths in Dorian', tempo: 108, loop: true, comp: EVERY_TWO_BEATS,
+        chords: chords(8, [['Dm7', 'i7']]),
+        melody: melody(FOURTH_SHAPES_DORIAN.flatMap((shape, i) => (i % 2 ? [...shape].reverse() : shape).map(n => [n, 1 / 3]))) },
+    { id: 'parallel-fourths', label: 'Parallel fourths', tempo: 108, loop: true, comp: EVERY_TWO_BEATS,
+        chords: chords(8, [['Dm7', 'i7']]),
+        melody: melody([
+            ['D4', 1 / 3], ['G4', 1 / 3], ['C5', 1 / 3], ['Eb4', 1 / 3], ['Ab4', 1 / 3], ['Db5', 1 / 3],
+            ['E4', 1 / 3], ['A4', 1 / 3], ['D5', 1 / 3], ['F4', 1 / 3], ['Bb4', 1 / 3], ['Eb5', 1 / 3],
+            ['F#4', 1 / 3], ['B4', 1 / 3], ['E5', 1 / 3], ['F4', 1 / 3], ['Bb4', 1 / 3], ['Eb5', 1 / 3],
+            ['E4', 1 / 3], ['A4', 1 / 3], ['D5', 1 / 3], ['A4', 1 / 3], ['D5', 1 / 3], ['G5', 1 / 3],
+        ]) },
+];
+
+// ── Coltrane changes ──
+
+/**
+ * Chords with Coltrane's 1-2-3-5 pattern over each (the root, 2nd, 3rd, and 5th of the
+ * chord, in eighth notes from the root in octave 4): `[symbol, roman, beats]`.
+ */
+function digitalPattern(list) {
+    const melodyList = [];
+    const chordList = list.map(([symbol, roman, beats = 2]) => {
+        const parsed = parseChord(symbol);
+        const root = C + parsed.root;
+        const third = parsed.intervals.includes(3) ? 3 : 4;
+        [0, 2, third, 7].forEach(s => melodyList.push({ midi: root + s, beats: 0.5 }));
+        if (beats > 2) melodyList.push({ midi: null, beats: beats - 2 });
+        return { symbol, roman, beats };
+    });
+    return { chords: chordList, melody: melodyList };
+}
+
+/**
+ * The plain ii–V–I and Coltrane's substitution for it (dominants that pass through keys
+ * a major third apart before reaching I), and the cycle of three keys a major third
+ * apart at the start of "Giant Steps", each chord with the 1-2-3-5 pattern.
+ */
+export const COLTRANE_PROGRESSIONS = [
+    { id: 'ii-v-i', label: 'ii–V–I', ...digitalPattern([
+        ['Dm7', 'ii7', 4], ['G7', 'V7', 4], ['Cmaj7', 'Imaj7', 8],
+    ]) },
+    { id: 'coltrane-substitution', label: 'Coltrane substitution', ...digitalPattern([
+        ['Dm7', 'ii7'], ['E♭7', 'V7/♭VI'], ['A♭maj7', '♭VImaj7'], ['B7', 'V7/III'],
+        ['Emaj7', 'IIImaj7'], ['G7', 'V7'], ['Cmaj7', 'Imaj7', 4],
+    ]) },
+    // How the "Giant Steps" changes are built, step by step: the three tonics alone, then
+    // each led into by its V7 (the first half of the tune), then by a ii–V (the second).
+    { id: 'three-tonics', label: 'Three tonics', key: 'B', ...digitalPattern([
+        ['Bmaj7', 'I', 4], ['Gmaj7', '♭VI', 4], ['E♭maj7', 'III', 4],
+    ]) },
+    { id: 'ii-v-cycle', label: 'With ii–Vs', key: 'B', ...digitalPattern([
+        ['E♭maj7', 'III', 4], ['Am7', 'ii7/♭VI'], ['D7', 'V7/♭VI'], ['Gmaj7', '♭VI', 4],
+        ['C♯m7', 'ii7'], ['F♯7', 'V7'], ['Bmaj7', 'I', 4], ['Fm7', 'ii7/III'], ['B♭7', 'V7/III'],
+    ]) },
+    { id: 'three-keys', label: 'With dominants', key: 'B', ...digitalPattern([
+        ['Bmaj7', 'I'], ['D7', 'V7/♭VI'], ['Gmaj7', '♭VI'], ['B♭7', 'V7/III'],
+        ['E♭maj7', 'III'], ['F♯7', 'V7'], ['Bmaj7', 'I', 4],
+    ]) },
+].map(p => ({ ...p, tempo: 132, loop: true }));
+
+// ── Triads inside scales ──
+
+/**
+ * Triads found inside a scale, played as a phrase over one sustained chord: each beat
+ * is one triad as a triplet, climbing through the triads (and, for a pair, their first
+ * inversions) and coming back down in reverse. `triads` are `[label, [three MIDI notes]]` in root
+ * position; the label (the triad's root counted from the chord's root) shows under
+ * each beat. After the phrase, an optional resolution chord with one held note.
+ */
+function triadPhrase(id, label, symbol, notes, triads, resolve) {
+    // Two triads climb through their first inversions too; more climb in root position.
+    const up = triads.length > 2 ? triads : [...triads, ...triads.map(([name, [a, b, c]]) => [name, [b, c, a + 12]])];
+    const beats = [...up, ...[...up].reverse().map(([name, t]) => [name, [...t].reverse()])];
+    const chordList = beats.map(([name], i) => ({ symbol: i ? '' : symbol, roman: name, beats: 1, notes, tied: i > 0 }));
+    const melodyList = beats.flatMap(([, t]) => t.map(midi => ({ midi, beats: 1 / 3 })));
+    if (resolve) {
+        chordList.push({ symbol: resolve.symbol, roman: resolve.roman, beats: 4, notes: resolve.notes });
+        melodyList.push({ midi: resolve.note, beats: 4 });
+    }
+    return { id, label, tempo: 90, loop: true, chords: chordList, melody: melodyList };
+}
+
+const CMAJ7_LOW = { symbol: 'Cmaj7', roman: 'Imaj7', notes: [36, 47, 52] };
+
+export const TRIAD_PAIR_PROGRESSIONS = [
+    triadPhrase('lydian', 'Lydian: I and II', 'Cmaj7(♯11)', [36, 47, 52],
+        [['I', [60, 64, 67]], ['II', [62, 66, 69]]]),
+    triadPhrase('dorian', 'Dorian: ♭III and IV', 'Dm7', [38, 48, 53],
+        [['♭III', [65, 69, 72]], ['IV', [67, 71, 74]]]),
+    triadPhrase('melodic-minor', 'Melodic minor: IV and V', 'CmMaj7', [36, 47, 51],
+        [['IV', [65, 69, 72]], ['V', [67, 71, 74]]]),
+    triadPhrase('altered', 'Altered: ♭V and ♭VI', 'G7alt', [43, 53, 59],
+        [['♭V', [61, 65, 68]], ['♭VI', [63, 67, 70]]], { ...CMAJ7_LOW, note: 60 }),
+    triadPhrase('half-whole', 'Half-whole: I, ♭III, ♭V, VI', 'G7(♭9)', [43, 53, 59],
+        [['I', [67, 71, 74]], ['♭III', [70, 74, 77]], ['♭V', [73, 77, 80]], ['VI', [76, 80, 83]]],
+        { ...CMAJ7_LOW, note: 64 }),
+];
+
+// ── Phrases over jazz chords and with modern pentatonics ──
+
+/**
+ * Written phrases rather than scale runs: a line through Cmaj7–D7(♯11)–Dm7–G7 that
+ * stresses the ♯11 (G♯) of the II7 and leans it into A; a line through a passing
+ * diminished chord and a G7(♭9) played as a diminished arpeggio; and a ii–V–I built
+ * from the modern pentatonic choices in short rhythmic cells. Chords name their scales
+ * for the Scale readout.
+ */
+export const JAZZ_PHRASE_PROGRESSIONS = [
+    { id: 'ii7-phrase', label: 'II7, phrase',
+        chords: [over('Cmaj7', 'Imaj7', 'Ionian'), over('D7(♯11)', 'II7', 'Lydian dominant'),
+            over('Dm7', 'ii7', 'Dorian'), over('G7', 'V7', 'Mixolydian'), over('Cmaj7', 'Imaj7', 'Ionian')],
+        melody: line([
+            'G4', 'C5', 'E5', 'G5', ['B5', 1], ['A5', 1],
+            'A5', 'G#5', 'F#5', 'E5', 'D5', 'C5', 'A4', 'G#4',
+            'A4', 'C5', 'F5', 'E5', 'D5', 'C5', 'A4', 'C5',
+            'B4', 'D5', 'F5', 'A5', 'G5', 'F5', 'D5', 'F5',
+            ['E5', 4],
+        ]) },
+    { id: 'augmented-phrase', label: '7♯5, phrase',
+        chords: [over('C6', 'I6', 'Ionian'), over('C7♯5', 'V7♯5/IV', 'whole tone'), over('Fmaj7', 'IVmaj7', 'Lydian')],
+        melody: line([
+            'E5', 'D5', 'C5', 'A4', 'G4', 'A4', ['C5', 1],
+            'C5', 'D5', 'E5', 'F#5', 'G#5', 'E5', 'C5', 'G#4',
+            ['A4', 1], ['C5', 1], ['E5', 1], ['F5', 1],
+        ]) },
+    { id: 'diminished-phrase', label: 'Diminished, phrase',
+        chords: [over('Cmaj7', 'Imaj7', 'Ionian'), over('C♯dim7', '♯i°7', 'whole-half diminished'),
+            over('Dm7', 'ii7', 'Dorian'), over('G7(♭9)', 'V7(♭9)', 'half-whole diminished'), over('Cmaj7', 'Imaj7', 'Ionian')],
+        melody: line([
+            ['E5', 1], ['C5', 1], ['G4', 1], 'B4', 'C5',
+            'C#5', 'E5', 'G5', 'Bb5', 'A5', 'G5', 'E5', 'C#5',
+            'D5', 'E5', 'F5', 'A5', 'C6', 'A5', 'G5', 'F5',
+            'B4', 'D5', 'F5', 'Ab5', 'G5', 'E5', 'C#5', 'Ab4',
+            ['G4', 4],
+        ]) },
+].map(p => ({ ...p, tempo: 120, loop: true }));
+
+export const MODERN_PENTATONIC_PHRASES = [
+    { id: 'ii-v-i-cells', label: 'ii–V–I phrase', tempo: 120, loop: true,
+        chords: [over('Dm7', 'ii', 'minor pentatonic', 4, 'E'), over('G7alt', '♭iii', 'minor pentatonic', 4, 'B♭'),
+            over('Cmaj7', 'vii', 'minor pentatonic', 8, 'B')],
+        melody: line([
+            'B5', 'A5', ['E5', 1], 'D5', 'E5', ['G5', 1],
+            'Ab5', 'F5', ['Eb5', 1], 'Db5', 'Bb4', ['Ab4', 1],
+            'B4', 'D5', 'E5', 'F#5', ['A5', 1], ['B5', 1],
+            'F#5', 'E5', 'D5', 'B4', ['E5', 2],
+        ]) },
+];
+
+// ── Modal jazz ──
+
+/** The "So What" voicing: three fourths and a major third (E, A, D, G, B) over a D bass. */
+const SO_WHAT = [38, 52, 57, 62, 67, 71];
+const up = (notes, n) => notes.map(m => m + n);
+
+/**
+ * Modal jazz: a shortened form of "So What" (D Dorian, a half step up to E♭ Dorian, and
+ * back), the chords in the So What voicing struck every two beats under a Dorian line
+ * that leans on the mode's 6th (B); fourth voicings moving in parallel through D Dorian
+ * over a held D, as McCoy Tyner comped; and suspended chords that drift by unusual
+ * intervals without resolving.
+ */
+export const MODAL_PROGRESSIONS = [
+    { id: 'so-what', label: 'Dorian, a half step up', tempo: 132, loop: true, comp: [['all', 2]],
+        chords: [
+            { ...over('Dm7', 'i7', 'Dorian', 16), notes: SO_WHAT },
+            { ...over('E♭m7', 'i7', 'Dorian', 8), notes: up(SO_WHAT, 1) },
+            { ...over('Dm7', 'i7', 'Dorian', 8), notes: SO_WHAT },
+        ],
+        melody: line([
+            'D5', 'E5', 'F5', 'G5', ['A5', 1], ['B5', 1],
+            'C6', 'A5', 'G5', 'E5', ['F5', 2],
+            ['D5', 1], [null, 0.5], 'A5', 'G5', 'F5', ['E5', 1],
+            ['D5', 4],
+            'Eb5', 'F5', 'Gb5', 'Ab5', ['Bb5', 1], ['C6', 1],
+            'Bb5', 'Ab5', 'Gb5', 'F5', ['Eb5', 2],
+            'D5', 'E5', 'F5', 'A5', ['B5', 2],
+            ['A5', 4],
+        ]) },
+    { id: 'fourths-comping', label: 'Fourths over a pedal', tempo: 120, loop: true,
+        chords: [
+            ['E–A–D', [50, 52, 57, 62]], ['F–B–E', [50, 53, 59, 64]], ['G–C–F', [50, 55, 60, 65]],
+            ['A–D–G', [50, 57, 62, 67]], ['G–C–F', [50, 55, 60, 65]], ['F–B–E', [50, 53, 59, 64]],
+        ].map(([roman, notes], i) => ({ symbol: i ? '' : 'Dm7', roman, beats: 2, notes, scale: 'Dorian', scaleRoot: 'D' })) },
+    { id: 'sus-chords', label: 'Suspended chords', tempo: 108, loop: true, comp: [['all', 2]],
+        chords: chords(4, [['D7sus4', 'sus'], ['F7sus4', 'sus'], ['D7sus4', 'sus'], ['B♭7sus4', 'sus']]) },
+];
+
+// ── Walking bass ──
+
+/**
+ * Walking bass lines over the turnaround Cmaj7–A7–Dm7–G7, written as the melody (MIDI,
+ * C3 = 48) under piano voicings kept above them and struck in a Charleston rhythm (on
+ * 1 and the "and" of 2): roots and fifths in half notes (a two feel), chord tones with
+ * a chromatic approach from above on beat 4, scale steps, and each bar starting a step
+ * above the root and sliding down by half steps to it.
+ */
+const WALK_CHORDS = [
+    { symbol: 'Cmaj7', roman: 'Imaj7', beats: 4, notes: [64, 67, 71, 74] },
+    { symbol: 'A7', roman: 'VI7', beats: 4, notes: [61, 66, 67, 71] },
+    { symbol: 'Dm7', roman: 'ii7', beats: 4, notes: [65, 69, 72, 76] },
+    { symbol: 'G7', roman: 'V7', beats: 4, notes: [65, 69, 71, 76] },
+];
+const walk = (id, label, notes, beats = 1) => ({
+    id, label, tempo: 132, loop: true, comp: [['all', 1.5], ['all', 2.5]], chords: WALK_CHORDS,
+    melody: notes.map(midi => ({ midi, beats })),
+});
+export const WALKING_BASS_PROGRESSIONS = [
+    walk('two-feel', 'Roots and fifths', [48, 43, 45, 40, 50, 45, 43, 50], 2),
+    walk('chord-tones', 'Chord tones', [48, 52, 55, 46, 45, 49, 52, 51, 50, 53, 57, 56, 43, 47, 50, 49]),
+    walk('scale-steps', 'Scale steps', [48, 50, 52, 55, 57, 55, 53, 52, 50, 52, 53, 54, 55, 53, 52, 50]),
+    walk('from-above', 'From above', [50, 49, 48, 46, 47, 46, 45, 51, 52, 51, 50, 46, 45, 44, 43, 49]),
+];
+
+// ── Voicing ──
+
+/** Hand-voiced chords: `[symbol, label, notes]`, the label shown under the chord. */
+const voiced = (beats, list) => list.map(([symbol, roman, notes]) => ({ symbol, roman, beats, notes }));
+
+/**
+ * One chord voiced in different ways: rotated (inversions), close against open,
+ * clustered in seconds against spread out, and with notes left out (the power chord,
+ * shells, a rootless voicing). C3 is 48.
+ */
+export const VOICING_PROGRESSIONS = [
+    { id: 'inversions', label: 'Inversions', chords: voiced(2, [
+        ['C', 'root', [48, 52, 55]], ['C/E', '1st', [52, 55, 60]], ['C/G', '2nd', [55, 60, 64]],
+        ['Cmaj7', 'root', [48, 52, 55, 59]], ['Cmaj7/E', '1st', [52, 55, 59, 60]],
+        ['Cmaj7/G', '2nd', [55, 59, 60, 64]], ['Cmaj7/B', '3rd', [59, 60, 64, 67]],
+    ]) },
+    { id: 'close-open', label: 'Close and open', chords: voiced(4, [
+        ['Cmaj7', 'close', [48, 52, 55, 59]], ['Cmaj7', 'drop 2', [48, 55, 59, 64]],
+        ['Cmaj7', 'open', [36, 55, 64, 71]], ['Cmaj7', 'wide', [36, 52, 67, 83]],
+    ]) },
+    { id: 'cluster-spread', label: 'Cluster and spread', chords: voiced(4, [
+        ['Cmaj9', 'thirds', [48, 52, 55, 59, 62]], ['Cmaj9', 'cluster', [48, 59, 60, 62, 64]],
+        ['Cmaj9', 'low', [36, 40, 43, 47, 50]], ['Cmaj9', 'spread', [36, 55, 64, 71, 74]],
+    ]) },
+    { id: 'omitting', label: 'Leaving notes out', chords: voiced(4, [
+        ['C7', 'all', [48, 52, 55, 58]], ['C5', 'power', [48, 55, 60]],
+        ['C7', 'shell 3–7', [36, 52, 58]], ['C7', 'shell 7–3', [36, 58, 64]],
+        ['C9', 'rootless', [52, 55, 58, 62]],
+    ]) },
+].map(p => ({ ...p, tempo: 90 }));
+
+// ── Upper structure triads ──
+
+/**
+ * A major triad over the shell of G7 (G, F, B: the root, 7th, and 3rd), named by the
+ * triad's root counted from G, then resolved to Cmaj9. Each triad adds a different set
+ * of tensions: II the 9th, ♯11, and 13th; ♭III the ♯9; ♭V the ♭9 and ♯11; VI the 13th
+ * and ♭9; ♭VI the ♭13 and ♯9.
+ */
+const G7_SHELL = [43, 53, 59];
+const CMAJ9 = [48, 52, 59, 62, 67];
+const ust = (id, label, symbol, roman, triad) => ({
+    id, label, tempo: 90, loop: true, chords: voiced(4, [
+        ['G7', 'shell', G7_SHELL], [symbol, roman, [...G7_SHELL, ...triad]], ['Cmaj9', 'Imaj9', CMAJ9],
+    ]),
+});
+export const UPPER_STRUCTURE_PROGRESSIONS = [
+    ust('ii', 'II: A/G7', 'G13(♯11)', 'A/G7', [69, 73, 76]),
+    ust('biii', '♭III: B♭/G7', 'G7(♯9)', 'B♭/G7', [70, 74, 77]),
+    ust('bv', '♭V: D♭/G7', 'G7(♭9, ♯11)', 'D♭/G7', [61, 65, 68]),
+    ust('vi', 'VI: E/G7', 'G13(♭9)', 'E/G7', [64, 68, 71]),
+    ust('bvi', '♭VI: E♭/G7', 'G7(♯5, ♯9)', 'E♭/G7', [63, 67, 70]),
+];
+
 /** Named sets of progressions, for a demo that takes the set as a URL parameter. */
 export const PROGRESSION_SETS = {
     diatonic: DIATONIC_PROGRESSIONS,
@@ -815,6 +1600,27 @@ export const PROGRESSION_SETS = {
     'minor-colors': MINOR_COLOR_PROGRESSIONS,
     'minor-modes': MINOR_MODE_PROGRESSIONS,
     'minor-chord-scales': MINOR_CHORD_SCALE_PROGRESSIONS,
+    'sixth-diminished': SIXTH_DIMINISHED_PROGRESSIONS,
+    'bebop-lines': BEBOP_LINE_PROGRESSIONS,
+    'bebop-ii-v': BEBOP_II_V_PROGRESSIONS,
+    pentatonic: PENTATONIC_PROGRESSIONS,
+    'diatonic-improv': DIATONIC_IMPROV_PROGRESSIONS,
+    'two-five-scales': TWO_FIVE_SCALE_PROGRESSIONS,
+    'two-five-phrases': TWO_FIVE_PHRASE_PROGRESSIONS,
+    'jazz-chord-scales': JAZZ_CHORD_SCALE_PROGRESSIONS,
+    'modern-pentatonics': [...MODERN_PENTATONIC_PROGRESSIONS, ...MODERN_PENTATONIC_PHRASES],
+    'jazz-phrases': JAZZ_PHRASE_PROGRESSIONS,
+    'jazz-chords': [...JAZZ_CHORD_SCALE_PROGRESSIONS, ...JAZZ_PHRASE_PROGRESSIONS],
+    'triad-pairs': TRIAD_PAIR_PROGRESSIONS,
+    'chord-tones': CHORD_TONE_PROGRESSIONS,
+    idioms: IDIOM_PROGRESSIONS,
+    outside: OUTSIDE_PROGRESSIONS,
+    fourths: FOURTHS_PROGRESSIONS,
+    coltrane: COLTRANE_PROGRESSIONS,
+    modal: MODAL_PROGRESSIONS,
+    'walking-bass': WALKING_BASS_PROGRESSIONS,
+    voicing: VOICING_PROGRESSIONS,
+    'upper-structures': UPPER_STRUCTURE_PROGRESSIONS,
     types: CHORD_TYPE_PROGRESSIONS,
     sevenths: SEVENTH_PROGRESSIONS,
     functional: FUNCTIONAL_PROGRESSIONS,
@@ -932,9 +1738,18 @@ export class ProgressionPlayer {
         const { chords, melody = [], riff, comp, drums } = this.progression;
         const events = [];
         let at = 0;
+        let held = null;   // the last struck chord, which a tied chord extends
         chords.forEach((chord, i) => {
-            events.push({ at, beats: chord.beats, notes: this.chordNotes(i), velocity: riff ? 0.35 : 0.5,
-                instrument: this.instrument, kind: 'chord', index: i });
+            // A tied chord keeps the previous one sounding and only reports itself.
+            if (chord.tied && held) {
+                held.beats += chord.beats;
+                events.push({ at, beats: chord.beats, notes: [], velocity: 0, instrument: this.instrument, kind: 'chord', index: i });
+                at += chord.beats;
+                return;
+            }
+            held = { at, beats: chord.beats, notes: this.chordNotes(i), velocity: riff ? 0.35 : 0.5,
+                instrument: this.instrument, kind: 'chord', index: i };
+            events.push(held);
             // A comp's hits, each reported with its index within the chord.
             if (comp) {
                 this.hits[i].forEach((hit, k) => events.push({ at: at + hit.at, beats: hit.beats, notes: hit.notes,

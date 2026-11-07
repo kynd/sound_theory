@@ -158,6 +158,13 @@ button, select, input { font: inherit; color: inherit; }
   background: var(--accent); cursor: pointer;
 }
 
+/* A mount whose controls are rebuilt in place (a synth engine's parameters), kept in
+   the DOM but adding no box of its own. */
+.dp-group { display: contents; }
+
+/* Read-only text value filling a row after its label (addReadout) */
+.dp-readout { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* Read-only numeric value beside a slider */
 .dp-val {
   width: calc(3 * var(--grid)); text-align: right; flex-shrink: 0;

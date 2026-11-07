@@ -124,6 +124,20 @@ export function addSelect(parent, { label, options, value, onChange }) {
 }
 
 /**
+ * Appends a labeled read-only value, one row tall, for something the demo reports as it
+ * plays (the scale over the sounding chord). Returns a function that sets the text; an
+ * empty string leaves the value blank.
+ * @returns {(text: string) => void}
+ */
+export function addReadout(parent, { label, value = '' }) {
+    const out = el('span', 'dp-readout', value);
+    const row = el('div', 'dp-row');
+    row.append(el('span', 'dp-label', label), out);
+    parent.append(row);
+    return text => { out.textContent = text; };
+}
+
+/**
  * Appends a collapsible `.dp-section` and returns its body for the caller to fill.
  * `color` sets the accent for the section and the controls in it.
  * Wired directly, so it does not depend on `wireCollapsibles` running afterward.
