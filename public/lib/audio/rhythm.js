@@ -84,6 +84,28 @@ export function pulsePattern(count, accent = null) {
 
 const quarters = (beats, perBeat) => Array(beats).fill(perBeat);
 
+/**
+ * Two pulses sharing one cycle, for polyrhythms: `high` evenly spaced rim clicks and
+ * `low` evenly spaced kicks in the same span (3 and 2 for three against two). The
+ * cycle is cut into as many steps as both need (their least common multiple), a beat
+ * is one of the high pulse's notes, and both pulses start together on step 0, which is
+ * accented. Returns the pattern and the tempo that makes the cycle last `cycle` seconds.
+ */
+export function polyrhythmPattern(high, low, { cycle = 2 } = {}) {
+    const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+    const steps = high * low / gcd(high, low);
+    const track = (id, count) => ({
+        ...DRUM_TRACKS.find(t => t.id === id),
+        steps: Array.from({ length: steps }, (_, i) => (i % (steps / count) === 0 ? (i === 0 ? FULL : 0.7) : 0)),
+    });
+    const pattern = {
+        id: `${high}-${low}`, label: `${high} against ${low}`, stepsPerBeat: steps / high,
+        groups: Array(high).fill(steps / high), tempo: high * 60 / cycle,
+        tracks: [track('rim', high), track('kick', low)],
+    };
+    return pattern;
+}
+
 /** Patterns in common time signatures, in eighth-note steps (thirds of a beat in the shuffle). */
 export const METER_PATTERNS = [
     makePattern({ id: '4-4', label: '4/4', stepsPerBeat: 2, groups: quarters(4, 2), tempo: 100, tracks: {
@@ -154,6 +176,55 @@ export const FEEL_PATTERNS = [
         hat:   'X x X x X x X x X x X x X x X x',
         rim:   'X - - X - - X - - - X - - X - -',
         kick:  'X - - x X - - x X - - x X - - x',
+    } }),
+];
+
+/**
+ * Drum patterns for styles, played under the backings on Syncopation and Anticipation
+ * and Rhythm Patterns. The four tracks stand in for the style's own instruments: the
+ * hat for a shaker or cymbal, the rim for a clave, bell, or cross-stick, the kick for
+ * a bass drum or surdo.
+ *
+ *   - rock: eighths on the hat, the backbeat on 2 and 4, kick on 1, 3, and the "and" of 3.
+ *   - one-drop: reggae's one drop, kick and cross-stick together on beat 3 only, the hat
+ *     leaning on the off-beats; beat 1 is left empty.
+ *   - samba: in sixteenths, a shaker pushing the last sixteenth of each beat, a
+ *     tamborim-like rim figure, and the surdo's low beat strongest on 2 and 4.
+ *   - son-clave: the 3-2 son clave on the rim over two bars, the kick on beat 4 as a
+ *     conga's open tone would be.
+ *   - bell-12-8: the standard bell pattern of West African and Afro-Cuban music, seven
+ *     strokes in twelve, over a soft kick on the four beats.
+ *   - boom-bap: hip-hop's kick and snare, the kick landing just before beat 3.
+ */
+export const STYLE_PATTERNS = [
+    makePattern({ id: 'rock', label: 'Rock', stepsPerBeat: 2, groups: quarters(4, 2), tempo: 120, tracks: {
+        hat:   'X x X x X x X x',
+        snare: '- - X - - - X -',
+        kick:  'X - - - X X - -',
+    } }),
+    makePattern({ id: 'one-drop', label: 'One drop', stepsPerBeat: 2, groups: quarters(4, 2), tempo: 76, tracks: {
+        hat:   'x X x X x X x X',
+        rim:   '- - - - X - - -',
+        kick:  '- - - - X - - -',
+    } }),
+    makePattern({ id: 'samba', label: 'Samba', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 100, tracks: {
+        hat:   'x x x X x x x X x x x X x x x X',
+        rim:   'X - X - - X - X - X - - X - X -',
+        kick:  'x - - - X - - x x - - - X - - x',
+    } }),
+    makePattern({ id: 'son-clave', label: 'Son clave', stepsPerBeat: 2, groups: quarters(8, 2), beatsPerBar: 4, tempo: 150, tracks: {
+        hat:   'x x x x x x x x x x x x x x x x',
+        rim:   'X - - X - - X - - - X - X - - -',
+        kick:  '- - - - - - X - - - - - - - X -',
+    } }),
+    makePattern({ id: 'bell-12-8', label: '12/8 bell', stepsPerBeat: 3, groups: quarters(4, 3), tempo: 100, tracks: {
+        rim:   'X - X - X X - X - X - X',
+        kick:  'x - - x - - x - - x - -',
+    } }),
+    makePattern({ id: 'boom-bap', label: 'Boom bap', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 88, tracks: {
+        hat:   'X - x - X - x - X - x - X - x -',
+        snare: '- - - - X - - - - - - - X - - -',
+        kick:  'X - - - - - - x - - X - - - - -',
     } }),
 ];
 
@@ -237,7 +308,7 @@ export function pitchedPattern(notes, { steps = 16, stepsPerBeat = 2, tempo = 11
 }
 
 /** Named sets of patterns, for a demo that takes the set as a URL parameter. */
-export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS, implied: IMPLIED_PATTERNS };
+export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS, implied: IMPLIED_PATTERNS, styles: STYLE_PATTERNS };
 
 // How far ahead notes are scheduled, and how often the scheduler wakes. The lead also
 // covers the earliest a track can be moved ahead of the grid (see MAX_EARLY).

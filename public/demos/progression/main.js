@@ -16,7 +16,7 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 // whose progressions have seventh chords gets a 7th toggle that switches to them, and
 // one whose chords name their chord scales shows the scale over the sounding chord.
 // A progression with `generate` (a function returning a new melody) gets a New line
-// button that replaces its melody.
+// button that replaces its melody; one with `vary` changes on every pass.
 // ?play is for playing along: the keyboard sits higher, a Phrase toggle turns the
 // written melody off to leave a backing track, and a progression with a `playScale`
 // shows only that scale's notes on the keyboard.
@@ -69,14 +69,15 @@ const player = new ProgressionPlayer(instrument({ id: 'piano' }), {
         chordNotes = i < 0 ? [] : player.chordNotes(i);
         light();
     },
-    onMelody: i => {
+    // The notes come with each event, so they stay right across a swap (`vary`).
+    onMelody: (i, notes) => {
         view.setNote(i);
-        melodyNote = i < 0 ? null : player.progression.melody[i].midi;
+        melodyNote = i < 0 ? null : notes[0];
         light();
     },
-    onHit: k => {
+    onHit: (k, notes) => {
         view.setHit(k);
-        chordNotes = k < 0 || chord < 0 ? [] : player.hits[chord][k].notes;
+        chordNotes = k < 0 || chord < 0 ? [] : notes;
         light();
     },
     onBass: midi => {
@@ -84,6 +85,17 @@ const player = new ProgressionPlayer(instrument({ id: 'piano' }), {
         light();
     },
     onEnd: () => syncPlay?.(),
+    // A progression with `vary` (a function returning new fields, such as chords and a
+    // melody) changes on every pass: the next pass is swapped in as it is scheduled, and
+    // the view follows when it starts.
+    onLoop: seconds => {
+        const base = PROGRESSIONS.find(p => p.id === progressionId);
+        if (!base.vary) return;
+        Object.assign(base, base.vary());
+        player.swap(currentProgression());
+        const { progression, voicings } = player;
+        setTimeout(() => view.update(progression, voicings), seconds * 1000);
+    },
 });
 
 // Pressing a chord in the view plays it while held.
@@ -121,15 +133,20 @@ function useKeyboardScale(scale) {
     keyboard.setRoot(pcOf(scale[0]));
 }
 
-function useProgression() {
+/** The chosen progression, in the chosen key, with sevenths and melody as toggled. */
+function currentProgression() {
     const base = PROGRESSIONS.find(p => p.id === progressionId);
     // The Key select names the first example's key; others written in another key (A
     // minor beside C major) move by the same interval.
     const firstKey = PROGRESSIONS[0].key ?? 'C';
     const target = transposeSymbol(base.key ?? 'C', firstKey, root);
     const moved = transposeProgression(sevenths ? withSevenths(base) : base, target);
-    const progression = phrase ? moved : { ...moved, melody: [] };
     if (playAlong) useKeyboardScale(moved.playScale);
+    return phrase ? moved : { ...moved, melody: [] };
+}
+
+function useProgression() {
+    const progression = currentProgression();
     const parts = progressionSounds(progression);
     player.instrument = instrument(parts.chords);
     player.melodyInstrument = instrument(parts.melody);

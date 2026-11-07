@@ -70,51 +70,68 @@ const SKETCHING_ORDER: Record<string, number> = {
 };
 
 // Order for children of sound-theory (folder or file names under sound-theory/)
+// Sound theory: categories (folders) and the pages inside them, in reading order.
 const SOUND_THEORY_ORDER: Record<string, number> = {
-  'sound-waves': 0,
-  'sound-sources': 1,
-  'synthesis': 2,
-  'tuning-systems': 3,
-  'scales': 4,
-  'church-modes': 5,
-  'minor-scales': 6,
-  'other-scales': 7,
-  'sound-toys': 8,
-  'pulse-and-cycles': 9,
-  'time-signatures': 10,
-  'rhythm-and-feel': 11,
-  'articulation': 12,
-  'diatonic-chords': 13,
-  'chord-types': 14,
-  'seventh-chords': 15,
-  'chord-voicing': 16,
-  'minor-key-chords': 17,
-  'functional-harmony': 18,
-  'tension-and-resolution': 19,
-  'subdominant-minor': 20,
-  'chord-progressions': 21,
-  'non-functional-harmony': 22,
-  'reharmonization': 23,
-  'blues': 24,
-  'chord-notation': 25,
-  'breaking-conventions': 26,
-  'sound-as-material': 27,
-  'pentatonic-improvisation': 28,
-  'diatonic-improvisation': 29,
-  'outlining-changes': 30,
-  'walking-bass': 31,
-  'jazz-idioms': 32,
-  'bebop-scale': 33,
-  'minor-chord-scales': 34,
-  'two-five-improvisation': 35,
-  'jazz-chord-improvisation': 36,
-  'modal-jazz': 37,
-  'upper-structure-triads': 38,
-  'triads-in-scales': 39,
-  'modern-pentatonics': 40,
-  'playing-outside': 41,
-  'fourths': 42,
-  'coltrane-changes': 43,
+  'sound': 0,
+  'sound-waves': 1,
+  'sound-sources': 2,
+  'synthesis': 3,
+  'sound-toys': 4,
+  'sound-as-material': 5,
+  'pitch': 6,
+  'tuning-systems': 7,
+  'scales': 8,
+  'church-modes': 9,
+  'minor-scales': 10,
+  'tetrachords': 11,
+  'other-scales': 12,
+  'rhythm': 13,
+  'pulse-and-cycles': 14,
+  'time-signatures': 15,
+  'rhythm-and-feel': 16,
+  'syncopation': 17,
+  'rhythm-patterns': 18,
+  'polyrhythm': 19,
+  'articulation': 20,
+  'harmony': 21,
+  'diatonic-chords': 22,
+  'chord-types': 23,
+  'seventh-chords': 24,
+  'chord-voicing': 25,
+  'minor-key-chords': 26,
+  'functional-harmony': 27,
+  'tension-and-resolution': 28,
+  'subdominant-minor': 29,
+  'chord-progressions': 30,
+  'jpop-progressions': 31,
+  'non-functional-harmony': 32,
+  'reharmonization': 33,
+  'history': 34,
+  'non-western-music': 35,
+  'blues': 36,
+  'jazz-history': 37,
+  'chord-notation': 38,
+  'breaking-conventions': 39,
+  'minimal-music': 40,
+  'improvisation': 41,
+  'pentatonic-improvisation': 42,
+  'diatonic-improvisation': 43,
+  'outlining-changes': 44,
+  'walking-bass': 45,
+  'jazz-idioms': 46,
+  'bebop-scale': 47,
+  'minor-chord-scales': 48,
+  'two-five-improvisation': 49,
+  'jazz-chord-improvisation': 50,
+  'stella-by-starlight': 51,
+  'modern-jazz': 52,
+  'modal-jazz': 53,
+  'upper-structure-triads': 54,
+  'triads-in-scales': 55,
+  'modern-pentatonics': 56,
+  'playing-outside': 57,
+  'fourths': 58,
+  'coltrane-changes': 59,
 };
 
 function buildTree(docs: typeof allDocs): TreeNode {
@@ -170,16 +187,14 @@ function buildTree(docs: typeof allDocs): TreeNode {
     sketchingNode.children = new Map(sortedSketching);
   }
 
-  // Sort children of sound-theory by SOUND_THEORY_ORDER
+  // Sort sound-theory's categories, and the pages in each, by SOUND_THEORY_ORDER
+  const sortSound = (node: TreeNode) => {
+    node.children = new Map([...node.children.entries()].sort(([a], [b]) =>
+      (SOUND_THEORY_ORDER[a] ?? 99) - (SOUND_THEORY_ORDER[b] ?? 99)));
+    node.children.forEach(sortSound);
+  };
   const soundNode = root.children.get('sound-theory');
-  if (soundNode) {
-    const sortedSound = [...soundNode.children.entries()].sort(([a], [b]) => {
-      const oa = SOUND_THEORY_ORDER[a] ?? 99;
-      const ob = SOUND_THEORY_ORDER[b] ?? 99;
-      return oa - ob;
-    });
-    soundNode.children = new Map(sortedSound);
-  }
+  if (soundNode) sortSound(soundNode);
 
   return root;
 }

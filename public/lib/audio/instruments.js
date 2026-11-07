@@ -233,6 +233,50 @@ export class NoiseInstrument extends Instrument {
     dispose() { this.synth.dispose(); super.dispose(); }
 }
 
+/**
+ * One impact built from layers, the way a film or game sound is: a low thump (a sine
+ * whose pitch drops fast, felt more than heard), a crack (a very short burst of bright
+ * noise, the attack that says "hard"), a ring (a short metallic clang, the body), and a
+ * tail (dark noise fading slowly into a long reverb, the space). Each layer in
+ * `layers` (`{ id, label, gain }`) has its own level; 0 silences it. Played from one
+ * pad.
+ */
+export class LayeredHit extends Instrument {
+    constructor() {
+        super();
+        const layer = (id, label) => ({ id, label, gain: new Tone.Gain(1).connect(this.output) });
+        this.layers = [layer('thump', 'Thump'), layer('crack', 'Crack'), layer('ring', 'Ring'), layer('tail', 'Tail')];
+        const [thump, crack, ring, tail] = this.layers;
+        this._thump = new Tone.MembraneSynth({ pitchDecay: 0.08, octaves: 6,
+            envelope: { attack: 0.001, decay: 0.7, sustain: 0, release: 0.2 }, volume: 0 }).connect(thump.gain);
+        this._crackFilter = new Tone.Filter(2500, 'highpass').connect(crack.gain);
+        this._crack = new Tone.NoiseSynth({ noise: { type: 'white' },
+            envelope: { attack: 0.001, decay: 0.06, sustain: 0, release: 0.02 }, volume: -2 }).connect(this._crackFilter);
+        this._ring = new Tone.MetalSynth({ harmonicity: 3.1, modulationIndex: 16, resonance: 3000, octaves: 1,
+            envelope: { attack: 0.001, decay: 0.5, release: 0.3 }, volume: -16 }).connect(ring.gain);
+        this._reverb = new Tone.Reverb({ decay: 5, wet: 1 }).connect(tail.gain);
+        this._tailFilter = new Tone.Filter(700, 'lowpass').connect(this._reverb);
+        this._tail = new Tone.NoiseSynth({ noise: { type: 'pink' },
+            envelope: { attack: 0.005, decay: 1.5, sustain: 0, release: 0.5 }, volume: -4 }).connect(this._tailFilter);
+        this.ready = this._reverb.ready;
+        this.pads = [{ label: 'Hit', midi: 60 }];
+    }
+
+    noteOn(midi, velocity = 0.9, time = Tone.now()) {
+        this._thump.triggerAttackRelease('G1', 0.5, time, velocity);
+        this._crack.triggerAttackRelease(0.06, time, velocity);
+        this._ring.triggerAttackRelease(200, 0.4, time, velocity);
+        this._tail.triggerAttackRelease(1.5, time, velocity);
+    }
+
+    dispose() {
+        [this._thump, this._crack, this._crackFilter, this._ring, this._reverb, this._tailFilter, this._tail]
+            .forEach(node => node.dispose());
+        this.layers.forEach(l => l.gain.dispose());
+        super.dispose();
+    }
+}
+
 /** Salamander Grand Piano samples, recorded every minor third, hosted by Tone.js. */
 /**
  * Orchestral and guitar samples from the tonejs-instruments library by Nicholas

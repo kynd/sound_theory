@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { FEEL_PATTERNS, HAMMER, pulsePattern } from './rhythm.js';
+import { FEEL_PATTERNS, STYLE_PATTERNS, HAMMER, pulsePattern } from './rhythm.js';
 import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } from './scales.js';
 
 /**
@@ -1328,6 +1328,33 @@ export const IDIOM_PROGRESSIONS = [
             ['D5', 1], ['F5', 1], ['A5', 1], [null, 0.5], ['B5', 2.5],
             'G5', 'F5', [null, 0.5], ['E5', 4.5],
         ]) },
+    // Longer lines that mix arpeggios, the ♭9, and guide tones, each bar ending in an
+    // enclosure of the next chord's 3rd (or root), so every chord change lands on a
+    // chord tone approached from above and below.
+    { id: 'long-ii-v-i', label: 'ii–V–I, enclosing each 3rd',
+        chords: [...chords(4, [['Dm7', 'ii7'], ['G7(♭9)', 'V7(♭9)']]), ...chords(8, [['Cmaj7', 'Imaj7']])],
+        melody: line([
+            'G4', 'E4', 'F4', 'A4', 'C5', 'E5', 'C5', 'A#4',
+            'B4', 'D5', 'F5', 'Ab5', 'G5', 'D5', 'F5', 'D#5',
+            ['E5', 1], 'G5', 'B5', ['A5', 1], 'G5', 'E5',
+            'D5', 'Db5', 'B4', ['C5', 2.5],
+        ]) },
+    { id: 'long-turnaround', label: 'Turnaround, enclosing each 3rd',
+        chords: chords(4, [['Cmaj7', 'Imaj7'], ['A7(♭9)', 'V7(♭9)/ii'], ['Dm7', 'ii7'], ['G7(♭9)', 'V7(♭9)']]),
+        melody: line([
+            'E5', 'G5', 'B5', 'G5', 'E5', 'B4', 'D5', 'C5',
+            'C#5', 'E5', 'G5', 'Bb5', 'A5', 'G5', 'Gb5', 'E5',
+            'F5', 'A5', 'C6', 'A5', 'F5', 'D5', 'C5', 'A#4',
+            'B4', 'D5', 'F5', 'A5', 'Ab5', 'G5', 'F5', 'D#5',
+        ]) },
+    { id: 'long-minor', label: 'Minor ii–V–i',
+        chords: [...chords(4, [['Dm7♭5', 'iiø7'], ['G7alt', 'V7alt']]), ...chords(8, [['Cm6', 'i6']])],
+        melody: line([
+            'D5', 'F5', 'Ab5', 'C6', 'Ab5', 'F5', 'C5', 'A#4',
+            'B4', 'D5', 'F5', 'Ab5', 'Bb5', 'Ab5', 'F5', 'D5',
+            ['Eb5', 1], 'G5', 'A5', ['C6', 1], 'A5', 'G5',
+            'D5', 'B4', ['C5', 3],
+        ]) },
 ].map(p => ({ ...p, tempo: 120, loop: true }));
 
 // ── Playing outside ──
@@ -1366,6 +1393,55 @@ export const OUTSIDE_PROGRESSIONS = [
             'D5', 'E5', 'F5', 'A5', 'C6', 'B5', 'A5', 'G5',
             'Gb5', 'Eb5', 'Cb5', 'Ab4', 'F5', 'Eb5', 'Db5', 'Cb5',
             ['C5', 4],
+        ]) },
+    // One four-note cell (up a minor 3rd, down a half step, up a fourth) moved up by
+    // whole steps until it is far out, then down by minor thirds back into D Dorian,
+    // landing on F, the 3rd of Dm7. The labels name the note each cell starts on.
+    { id: 'sequence', label: 'Motivic sequence', tempo: 120, loop: true, comp: EVERY_TWO_BEATS,
+        chords: [
+            { symbol: 'Dm7', roman: 'D, E', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'F♯, G♯', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'F, D', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'in', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+        ],
+        melody: line([
+            'D5', 'F5', 'E5', 'A5', 'E5', 'G5', 'F#5', 'B5',
+            'F#5', 'A5', 'G#5', 'C#6', 'G#5', 'B5', 'A#5', 'D#6',
+            'F5', 'Ab5', 'G5', 'C6', 'D5', 'F5', 'E5', 'A5',
+            ['F5', 2], [null, 2],
+        ]) },
+    // Over a vamp on Dm7, the line plays a turnaround that is not there, F♯m7–B7–Em7–A7
+    // (iii–VI–ii–V of D), one arpeggio a bar, and lands on D on beat 1 of bar 5; the
+    // rest is D Dorian. The labels name the imagined chords.
+    { id: 'imposed-turnaround', label: 'A turnaround over a vamp', tempo: 132, loop: true, comp: EVERY_TWO_BEATS,
+        chords: [
+            { symbol: 'Dm7', roman: 'F♯m7', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'B7', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'Em7', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'A7', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'in', beats: 16, notes: DM7_LOW, alt: DM9_ALT },
+        ],
+        melody: line([
+            'F#4', 'A4', 'C#5', 'E5', 'D5', 'C#5', 'A4', 'C#5',
+            'D#5', 'F#5', 'A5', 'B5', 'A5', 'F#5', 'D#5', 'B4',
+            'E5', 'G5', 'B5', 'D6', 'B5', 'G5', 'E5', 'D5',
+            'A4', 'C#5', 'E5', 'G5', 'Bb5', 'G5', 'E5', 'C#5',
+            ['D5', 2], 'F5', 'E5', 'D5', 'C5',
+            'A4', 'C5', 'D5', 'F5', 'A5', 'G5', 'F5', 'D5',
+            'E5', 'F5', 'A5', 'C6', 'B5', 'A5', 'G5', 'E5',
+            ['D5', 2], [null, 2],
+        ]) },
+    // Over C7, dominant arpeggios on C, E♭, F♯, and A, a minor third apart, all inside
+    // C half-whole diminished, then the resolution to F.
+    { id: 'minor-third-cycle', label: 'A cycle of minor thirds', tempo: 120, loop: true, comp: EVERY_TWO_BEATS,
+        chords: [
+            { symbol: 'C7', roman: 'C7, E♭7', beats: 4 }, { symbol: '', roman: 'F♯7, A7', beats: 4, tied: true },
+            { symbol: 'Fmaj7', roman: 'Imaj7', beats: 8 },
+        ].map(c => ({ ...c, notes: c.symbol === 'Fmaj7' ? [41, 57, 60, 64] : [36, 52, 58, 62] })),
+        melody: line([
+            'C5', 'E5', 'G5', 'Bb5', 'Eb5', 'G5', 'Bb5', 'Db6',
+            'F#4', 'A#4', 'C#5', 'E5', 'A4', 'C#5', 'E5', 'G5',
+            ['F5', 1], 'E5', 'C5', ['A4', 1], 'C5', 'E5', ['F5', 4],
         ]) },
 ];
 
@@ -1542,31 +1618,88 @@ const SO_WHAT = [38, 52, 57, 62, 67, 71];
 const up = (notes, n) => notes.map(m => m + n);
 
 /**
+ * Voicings in fourths that stay in D Dorian, over the D bass, for the comping to move
+ * between: the So What voicing on E and its neighbor a step down on D (E–A–D–G–B to
+ * D–G–C–F–A, the two chords of the tune's "so what" answer), and fourth stacks on C and
+ * G. `next` lists where each can step to.
+ */
+const SO_WHAT_VOICINGS = {
+    E: { notes: SO_WHAT, next: ['D', 'G', 'D'] },
+    D: { notes: [38, 50, 55, 60, 65, 69], next: ['E', 'E', 'C'] },
+    C: { notes: [38, 48, 53, 59, 64, 69], next: ['D', 'E'] },
+    G: { notes: [38, 55, 60, 65, 69, 74], next: ['E', 'D'] },
+};
+const pick = list => list[Math.floor(Math.random() * list.length)];
+
+/** Bar rhythms for the comping: the chord struck once or twice, durations in beats. */
+const SO_WHAT_BAR_RHYTHMS = [[4], [1.5, 2.5], [2, 2], [2.5, 1.5], [3, 1]];
+
+/**
+ * One section of comping, `bars` long: each bar strikes the chord once or twice in a
+ * rhythm from SO_WHAT_BAR_RHYTHMS, and each strike moves by step through
+ * SO_WHAT_VOICINGS from the So What voicing, sometimes keeping the voicing. Only the
+ * first chord carries the symbol.
+ */
+function soWhatComping(symbol, bars, semitones) {
+    let at = 'E';
+    const durations = Array.from({ length: bars }, () => pick(SO_WHAT_BAR_RHYTHMS)).flat();
+    return durations.map((beats, k) => {
+        if (k > 0 && Math.random() < 0.75) at = pick(SO_WHAT_VOICINGS[at].next);
+        return { ...over(k ? '' : symbol, k ? '' : 'i7', 'Dorian', beats), scaleRoot: semitones ? 'E♭' : 'D',
+            notes: up(SO_WHAT_VOICINGS[at].notes, semitones) };
+    });
+}
+
+/**
+ * The notes of D Dorian a line in fourths can start on: from A, B, D, and E, three
+ * perfect fourths up stay in the mode (A–D–G–C, B–E–A–D, D–G–C–F, E–A–D–G).
+ */
+const FOURTHS_STARTS = [57, 59, 62, 64, 69, 71];
+
+/**
+ * A line in fourths, `bars` long: every four eighth notes it climbs a stack of perfect
+ * fourths and then jumps to another starting note (never the same one), with now and
+ * then two beats of rest for a breath, but never two in a row and never at the start.
+ */
+function fourthsLine(bars) {
+    const notes = [];
+    let last = null, rested = true;
+    for (let k = 0; k < bars * 2; k++) {
+        if (!rested && Math.random() < 0.2) {
+            notes.push({ midi: null, beats: 2 });
+            rested = true;
+            continue;
+        }
+        const start = pick(FOURTHS_STARTS.filter(m => m !== last));
+        for (let i = 0; i < 4; i++) notes.push({ midi: start + 5 * i, beats: 0.5 });
+        last = start;
+        rested = false;
+    }
+    return notes;
+}
+
+/**
+ * A new So What chorus, shortened (four bars of D Dorian, two of E♭ Dorian, two of D):
+ * a line in fourths, moved up a half step over E♭, over comping that strikes once or
+ * twice a bar and moves through the fourth voicings, all chosen at random.
+ */
+function soWhatChorus() {
+    const shift = (notes, n) => notes.map(note => ({ ...note, midi: note.midi === null ? null : note.midi + n }));
+    return {
+        chords: [...soWhatComping('Dm7', 4, 0), ...soWhatComping('E♭m7', 2, 1), ...soWhatComping('Dm7', 2, 0)],
+        melody: [...fourthsLine(4), ...shift(fourthsLine(2), 1), ...fourthsLine(2)],
+    };
+}
+
+/**
  * Modal jazz: a shortened form of "So What" (D Dorian, a half step up to E♭ Dorian, and
- * back), the chords in the So What voicing struck every two beats under a Dorian line
- * of fourths and arpeggios that leans on the mode's 6th (B); fourth voicings moving in parallel through D Dorian
- * over a held D, as McCoy Tyner comped; and suspended chords that drift by unusual
- * intervals without resolving.
+ * back) with a new chorus on every pass (`vary`); fourth voicings moving in parallel
+ * through D Dorian over a held D, as McCoy Tyner comped; and suspended chords that
+ * drift by unusual intervals without resolving.
  */
 export const MODAL_PROGRESSIONS = [
-    { id: 'so-what', label: 'Dorian, a half step up', tempo: 132, loop: true, comp: [['all', 2]],
-        chords: [
-            { ...over('Dm7', 'i7', 'Dorian', 16), notes: SO_WHAT },
-            { ...over('E♭m7', 'i7', 'Dorian', 8), notes: up(SO_WHAT, 1) },
-            { ...over('Dm7', 'i7', 'Dorian', 8), notes: SO_WHAT },
-        ],
-        // Fourths (A–D–G–C) and arpeggios (Dm, Cmaj7 for the B) leaping across the mode,
-        // with space between phrases; the opening idea moves up a half step for E♭.
-        melody: line([
-            [null, 0.5], 'A4', 'D5', 'G5', 'C6', ['B5', 1], 'A5',
-            'F5', 'D5', 'A4', 'C5', ['E5', 1], [null, 1],
-            'C5', 'E5', 'G5', 'B5', ['A5', 1], 'G5', 'E5',
-            ['D5', 2], [null, 2],
-            [null, 0.5], 'Bb4', 'Eb5', 'Ab5', 'Db6', ['C6', 1], 'Bb5',
-            'Gb5', 'Eb5', 'Bb4', 'Db5', ['F5', 1], [null, 1],
-            'E5', 'A5', 'D6', 'A5', 'B5', 'G5', 'E5', 'B4',
-            ['C5', 1], 'A4', 'B4', ['D5', 2],
-        ]) },
+    { id: 'so-what', label: 'Dorian, a half step up', tempo: 132, loop: true,
+        ...soWhatChorus(), vary: soWhatChorus },
     { id: 'fourths-comping', label: 'Fourths over a pedal', tempo: 120, loop: true,
         chords: [
             ['E–A–D', [50, 52, 57, 62]], ['F–B–E', [50, 53, 59, 64]], ['G–C–F', [50, 55, 60, 65]],
@@ -1583,6 +1716,327 @@ export const MODAL_PROGRESSIONS = [
  * sit over the piano, plays the line.
  */
 export const BAND_SOUNDS = { chords: 'piano', melody: 'am', bass: 'synth-bass', levels: { melody: 8 } };
+
+// ── Syncopation and anticipation ──
+
+const STYLE = id => STYLE_PATTERNS.find(p => p.id === id);
+const FEEL = id => FEEL_PATTERNS.find(p => p.id === id);
+const POP = [['C', 'I'], ['Am', 'vi'], ['F', 'IV'], ['G', 'V']];
+
+/**
+ * A notes-and-beats melody where an `!` before the note name accents it (the syncopated
+ * notes): accented notes play louder than the rest.
+ */
+const accented = list => list.map(([name, beats]) => {
+    const accent = name?.startsWith('!');
+    const midi = name === null ? null : Tone.Frequency(accent ? name.slice(1) : name).toMidi();
+    return { midi, beats, velocity: accent ? 0.95 : 0.65 };
+});
+
+/**
+ * One short melody over C–Am–F–G, three ways with the same notes: on the beat (each
+ * note on a beat), syncopated (notes starting on the "and" and held across the next
+ * beat, accented), and anticipated (the note for each new bar arriving on the "and" of
+ * 4 before it, tied over); then anticipated with the chords anticipated too (each change
+ * on the "and" of 4). Backings: chords struck on every beat, in the Charleston rhythm (1
+ * and the "and" of 2), and pushed (the "and" of 4 anticipating the next chord); a bossa
+ * nova (nylon guitar in the bossa clave over two bars, the bass on 1 and 3 with the
+ * fifth before 3) and a samba (a syncopated guitar figure in sixteenths over a bass that
+ * leans on beat 2 like the surdo).
+ */
+export const SYNCOPATION_PROGRESSIONS = [
+    { id: 'on-beat', label: 'On the beat', drums: FEEL('eighths'),
+        chords: chords(4, POP),
+        melody: accented([['E5', 1], ['G5', 1], ['A5', 1], ['G5', 1], ['E5', 1], ['D5', 1], ['C5', 2],
+            ['F5', 1], ['A5', 1], ['G5', 1], ['F5', 1], ['E5', 1], ['D5', 1], ['G4', 2]]) },
+    { id: 'syncopated', label: 'Syncopated', drums: FEEL('eighths'),
+        chords: chords(4, POP),
+        melody: accented([['E5', 1], ['G5', 0.5], ['!A5', 1.5], ['G5', 1], ['E5', 0.5], ['!D5', 1], ['!C5', 2.5],
+            ['F5', 1], ['A5', 0.5], ['!G5', 1], ['!F5', 1.5], ['E5', 0.5], ['!D5', 1], ['!G4', 2.5]]) },
+    { id: 'anticipated', label: 'Anticipated', drums: FEEL('eighths'),
+        chords: chords(4, POP),
+        melody: accented([['E5', 1], ['G5', 1], ['A5', 1], ['G5', 0.5], ['!E5', 1.5], ['D5', 1], ['C5', 1.5],
+            ['!F5', 1.5], ['A5', 1], ['G5', 1], ['F5', 0.5], ['!E5', 1.5], ['D5', 1], ['G4', 2]]) },
+    { id: 'pushed', label: 'Anticipated, chords too', drums: FEEL('eighths'),
+        chords: chords(4, POP).map((chord, i) => ({ ...chord, beats: i === 0 ? 3.5 : i === 3 ? 4.5 : 4 })),
+        melody: accented([['E5', 1], ['G5', 1], ['A5', 1], ['G5', 0.5], ['!E5', 1.5], ['D5', 1], ['C5', 1.5],
+            ['!F5', 1.5], ['A5', 1], ['G5', 1], ['F5', 0.5], ['!E5', 1.5], ['D5', 1], ['G4', 2]]) },
+    { id: 'comp-on-beat', label: 'Chords on the beat', drums: FEEL('eighths'),
+        comp: [['all', 1]], chords: chords(4, POP) },
+    { id: 'comp-charleston', label: 'Charleston', drums: FEEL('eighths'),
+        comp: [['all', 1.5], ['all', 2.5]], chords: chords(4, POP) },
+    { id: 'comp-pushed', label: 'Pushed', drums: FEEL('eighths'),
+        comp: [['all', 3.5], ['all', 0.5]], chords: chords(4, POP).map((chord, i) => ({ ...chord, beats: i === 0 ? 3.5 : i === 3 ? 4.5 : 4 })) },
+    { id: 'bossa-nova', label: 'Bossa nova', tempo: 130, drums: FEEL('bossa-nova'),
+        sounds: { chords: 'guitar-nylon', bass: 'bass' },
+        riff: [[0, 1.5], [7, 0.5], [7, 2]],
+        comp: [['upper', 1.5], ['upper', 1.5], ['upper', 2], ['upper', 1.5], ['upper', 1.5]],
+        chords: chords(8, [['Dm9', 'ii9'], ['G13', 'V13'], ['Cmaj9', 'Imaj9'], ['A7(♭9)', 'VI7(♭9)']]) },
+    { id: 'samba', label: 'Samba', tempo: 100, drums: STYLE('samba'),
+        sounds: { chords: 'guitar-nylon', bass: 'bass' },
+        riff: [[0, 0.75], [0, 0.25], [-5, 1]],
+        comp: [['upper', 0.75], ['upper', 0.75], ['upper', 0.75], ['upper', 0.5], ['upper', 0.75], ['upper', 0.5]],
+        chords: chords(4, [['C6', 'I6'], ['A7', 'VI7'], ['Dm7', 'ii7'], ['G7', 'V7']]) },
+].map(p => ({ tempo: 100, loop: true, ...p }));
+
+// ── Rhythm patterns ──
+
+/**
+ * Grooves of a few styles, each a backing of chords, bass, and drums: rock (eighth-note
+ * chords and bass under a backbeat), funk (sixteenth-note stabs on one chord over a
+ * bass that jumps octaves), reggae (the one drop, the guitar skank on 2 and 4, a bass
+ * that leaves space), salsa (a piano montuno answering the son clave over a tumbao
+ * bass, which skips beat 1 and anticipates each chord on beat 4), a 12/8 groove (the
+ * bell pattern, chords and bass crossing its four beats), and hip-hop (a boom-bap beat
+ * under lazy electric piano chords).
+ */
+export const STYLE_PROGRESSIONS = [
+    { id: 'rock', label: 'Rock', tempo: 120, drums: STYLE('rock'),
+        sounds: { chords: 'guitar-electric', bass: 'bass' },
+        riff: [[0, 0.5]], comp: [['upper', 0.5]],
+        chords: chords(4, [['C', 'I'], ['G', 'V'], ['Am', 'vi'], ['F', 'IV']]) },
+    { id: 'funk', label: 'Funk', tempo: 96, drums: FEEL('funk'),
+        sounds: { chords: 'guitar-electric', bass: 'synth-bass' },
+        riff: [[0, 0.75], [12, 0.25], [0, 0.5], [10, 0.5], [0, 0.75], [7, 0.25], [10, 0.5], [12, 0.5]],
+        comp: [[null, 0.5], ['upper', 0.25], [null, 0.5], ['upper', 0.25], [null, 0.25], ['upper', 0.25],
+            [null, 0.5], ['upper', 0.25], [null, 0.5], ['upper', 0.25], [null, 0.25], ['upper', 0.25]],
+        chords: chords(4, [['C9', 'I9'], ['C9', 'I9'], ['F9', 'IV9'], ['C9', 'I9']]) },
+    { id: 'reggae', label: 'Reggae', tempo: 76, drums: STYLE('one-drop'),
+        sounds: { chords: 'organ', bass: 'bass' },
+        riff: [[0, 1.5], [0, 0.5], [7, 1], [10, 0.5], [12, 0.5]],
+        comp: [[null, 1], ['upper', 0.5], [null, 1.5], ['upper', 0.5], [null, 0.5]],
+        chords: chords(4, [['Am', 'i'], ['D', 'IV'], ['Am', 'i'], ['D', 'IV']]) },
+    { id: 'salsa', label: 'Salsa', tempo: 150, drums: STYLE('son-clave'),
+        sounds: { chords: 'piano', melody: 'bass' },
+        comp: [['upper', 1], ['upper', 0.5], ['upper', 1], ['upper', 0.5], ['upper', 1]],
+        chords: chords(4, [['C', 'I'], ['F', 'IV'], ['G', 'V'], ['F', 'IV']]),
+        // The tumbao: nothing on 1, the fifth on the "and" of 2, the next chord's root on 4.
+        melody: [[null, 1.5], [43, 1.5], [41, 1], [null, 1.5], [48, 1.5], [43, 1],
+            [null, 1.5], [50, 1.5], [41, 1], [null, 1.5], [48, 1.5], [36, 1]].map(([midi, beats]) => ({ midi, beats })) },
+    { id: 'twelve-eight', label: '12/8', tempo: 100, drums: STYLE('bell-12-8'),
+        sounds: { chords: 'piano', bass: 'bass' },
+        riff: [[0, 1], [7, 1], [0, 2 / 3], [12, 1 / 3], [10, 1]],
+        comp: [['upper', 4 / 3], ['upper', 2 / 3], ['upper', 1], [null, 1]],
+        chords: chords(4, [['Am7', 'i7'], ['Am7', 'i7'], ['G', '♭VII'], ['Am7', 'i7']]) },
+    { id: 'hip-hop', label: 'Hip-hop', tempo: 88, drums: STYLE('boom-bap'),
+        sounds: { chords: 'epiano', bass: 'synth-bass' },
+        riff: [[0, 1.5], [0, 0.5], [-2, 1], [-5, 1]],
+        comp: [['upper', 1.5], ['upper', 2.5]],
+        chords: chords(4, [['Cm9', 'i9'], ['Fm9', 'iv9'], ['A♭maj7', '♭VImaj7'], ['G7(♭9)', 'V7(♭9)']]) },
+].map(p => ({ loop: true, ...p }));
+
+// ── J-pop progressions ──
+
+/**
+ * Progressions common in Japanese pop, with their Japanese names: the royal road
+ * (王道進行, IVmaj7–V7–iii7–vi7) and its longer form with a secondary dominant; the
+ * Komuro progression (小室進行, vi–IV–V–I); the Canon progression (カノン進行); the
+ * Marusa progression (丸サ進行, IVmaj7–III7–vi7–v7–I7); a line cliché (a minor chord
+ * whose top or bass voice falls by half steps); borrowed chords (IV–iv–I and ♭VI–♭VII–I);
+ * a dense, chromatic progression in the spirit of aiko; and a last chorus a whole step
+ * up. Struck on every eighth note with the bass on the beat, over an eighth-note beat.
+ */
+const POP_COMP = [['all', 1], ['upper', 0.5], ['upper', 0.5], ['bass', 0.5], ['upper', 0.5], ['upper', 1]];
+export const JPOP_PROGRESSIONS = [
+    { id: 'royal-road', label: '王道進行', chords: chords(4, [
+        ['Fmaj7', 'IVmaj7'], ['G7', 'V7'], ['Em7', 'iii7'], ['Am7', 'vi7'],
+    ]) },
+    { id: 'royal-road-long', label: '王道進行, longer', chords: [
+        ...chords(4, [['Fmaj7', 'IVmaj7'], ['G7', 'V7'], ['Em7', 'iii7'], ['A7', 'V7/ii']]),
+        ...chords(4, [['Dm7', 'ii7'], ['G7', 'V7']]), ...chords(8, [['C', 'I']]),
+    ] },
+    { id: 'komuro', label: '小室進行', chords: chords(4, [
+        ['Am', 'vi'], ['F', 'IV'], ['G', 'V'], ['C', 'I'],
+    ]) },
+    { id: 'canon', label: 'カノン進行', chords: chords(2, [
+        ['C', 'I'], ['G/B', 'V⁶'], ['Am', 'vi'], ['Em/G', 'iii⁶'], ['F', 'IV'], ['C/E', 'I⁶'], ['F', 'IV'], ['G', 'V'],
+    ]) },
+    { id: 'marusa', label: '丸サ進行', chords: [
+        ...chords(4, [['Fmaj7', 'IVmaj7'], ['E7', 'V7/vi'], ['Am7', 'vi7']]),
+        ...chords(2, [['Gm7', 'v7'], ['C7', 'I7']]),
+    ] },
+    { id: 'cliche', label: 'Line cliché', chords: [
+        ...chords(4, [['Am', 'vi'], ['AmMaj7/G♯', 'vi(maj7)'], ['Am7/G', 'vi7'], ['Am6/F♯', 'vi6']]),
+        ...chords(4, [['Fmaj7', 'IVmaj7'], ['Fm6', 'iv6'], ['C/E', 'I⁶'], ['G7sus4', 'V7sus4']]),
+    ] },
+    { id: 'borrowed', label: 'Borrowed chords', chords: [
+        ...chords(4, [['F', 'IV'], ['Fm', 'iv'], ['C', 'I'], ['C', 'I']]),
+        ...chords(4, [['A♭', '♭VI'], ['B♭', '♭VII'], ['C', 'I'], ['C', 'I']]),
+    ] },
+    { id: 'chromatic', label: 'Chromatic, in the spirit of aiko', chords: [
+        ...chords(4, [['Fmaj7', 'IVmaj7']]),
+        ...chords(2, [['E7', 'V7/vi'], ['E♭dim7', '♭iii°7']]),
+        ...chords(4, [['Dm7', 'ii7']]),
+        ...chords(2, [['F♯m7♭5', '♯ivø7'], ['B7', 'V7/iii']]),
+        ...chords(2, [['Em7', 'iii7'], ['A7', 'V7/ii']]),
+        ...chords(2, [['E♭maj7', '♭IIImaj7'], ['A♭7', '♭VI7']]),
+        ...chords(2, [['Dm7', 'ii7'], ['G7sus4', 'V7sus4']]), ...chords(4, [['Cmaj7', 'Imaj7']]),
+    ] },
+    { id: 'key-change', label: 'Last chorus up a step', chords: [
+        ...chords(4, [['Fmaj7', 'IVmaj7'], ['G7', 'V7'], ['Em7', 'iii7'], ['Am7', 'vi7']]),
+        ...chords(4, [['Fmaj7', 'IVmaj7'], ['G7', 'V7'], ['C', 'I']]), ...chords(4, [['A7', 'V7/II']]),
+        ...chords(4, [['Gmaj7', 'IVmaj7'], ['A7', 'V7'], ['F♯m7', 'iii7'], ['Bm7', 'vi7']]),
+        ...chords(4, [['Gmaj7', 'IVmaj7'], ['A7', 'V7'], ['D', 'I'], ['D', 'I']]),
+    ] },
+].map(p => ({ tempo: 132, loop: true, comp: POP_COMP, drums: FEEL('eighths'), ...p }));
+
+// ── Music beyond the West, minimal music ──
+
+/** A drone held under a melody: `notes` (MIDI) for `beats`, with no chord symbol. */
+const drone = (notes, beats, label = '') => ({ symbol: '', roman: label, beats, notes });
+
+/**
+ * Melodies from traditions outside Western harmony, approximated in twelve-tone equal
+ * temperament: a raga-like phrase in the scale of Raga Bhairav (C D♭ E F G A♭ B) over a
+ * tanpura-like drone of C and G, unfolding slowly from low to high as an ālāp does; a
+ * phrase in maqam Hijaz (C D♭ E F G A♭ B♭) over a drone on C; and gamelan-style
+ * interlocking, two parts on a five-note scale (C D E G A, in place of slendro) whose
+ * notes fall between each other's to make one fast line, over a slow gong tone.
+ */
+export const WORLD_PROGRESSIONS = [
+    { id: 'raga', label: 'Raga Bhairav, over a drone', tempo: 72, loop: true,
+        sounds: { chords: 'harmonium', melody: 'flute' },
+        chords: [drone([36, 43, 48], 16, 'Sa–Pa'), drone([36, 43, 48], 16, 'Sa–Pa')],
+        melody: line([['C5', 2], ['Db5', 1], ['C5', 1], ['B4', 1.5], 'C5', ['Db5', 2],
+            ['E5', 1], ['F5', 1], ['E5', 1], ['Db5', 1], ['C5', 2], [null, 2],
+            ['E5', 1], ['F5', 1], ['G5', 2], ['Ab5', 1], ['G5', 1], ['F5', 1], ['E5', 1],
+            ['Db5', 1], ['E5', 1], ['F5', 0.5], ['E5', 0.5], ['Db5', 1], ['C5', 4]]) },
+    { id: 'hijaz', label: 'Maqam Hijaz, over a drone', tempo: 96, loop: true,
+        sounds: { chords: 'cello', melody: 'guitar-nylon' },
+        chords: [drone([36, 48], 16, 'C'), drone([36, 48], 16, 'C')],
+        melody: line(['G4', 'Ab4', 'G4', 'F4', ['E4', 1], ['Db4', 1], ['C4', 2], ['E4', 1], ['F4', 1],
+            'G4', 'Ab4', 'Bb4', 'Ab4', ['G4', 1], ['F4', 1], ['E4', 2], [null, 2],
+            'C5', 'Bb4', 'Ab4', 'G4', ['Ab4', 1], 'G4', 'F4', ['E4', 1], 'F4', 'E4', ['Db4', 1], 'E4', 'Db4',
+            ['C4', 4], [null, 4]]) },
+    { id: 'gamelan', label: 'Interlocking, gamelan style', tempo: 100, loop: true,
+        sounds: { chords: 'cello', melody: 'xylophone' },
+        chords: [drone([36], 8, 'gong'), drone([43], 8), drone([36], 8, 'gong'), drone([38], 8)],
+        // Two parts, the first on the beats and the second between them, written as the
+        // one line they make together.
+        melody: line([
+            'E5', 'G5', 'D5', 'E5', 'G5', 'A5', 'E5', 'G5', 'A5', 'C6', 'G5', 'A5', 'C6', 'A5', 'G5', 'E5',
+            'D5', 'E5', 'C5', 'D5', 'E5', 'G5', 'D5', 'E5', 'G5', 'E5', 'D5', 'C5', 'D5', 'E5', 'G5', 'A5',
+            'G5', 'A5', 'E5', 'G5', 'A5', 'C6', 'G5', 'A5', 'C6', 'D6', 'A5', 'C6', 'D6', 'C6', 'A5', 'G5',
+            'E5', 'G5', 'D5', 'E5', 'G5', 'E5', 'D5', 'C5', 'D5', 'C5', 'A4', 'C5', 'D5', 'E5', 'D5', 'C5',
+        ]) },
+];
+
+/**
+ * Philip Glass's additive process on five notes (C D E F G in eighth notes): the
+ * figure grows by one note each time it repeats (1, 1 2, 1 2 3, …), twice each, and
+ * then shrinks back, over a held C.
+ */
+const ADDITIVE = (() => {
+    const notes = [60, 62, 64, 65, 67].map(m => m + 12);
+    const lengths = [1, 2, 3, 4, 5, 4, 3, 2];
+    const out = [];
+    for (const n of lengths) for (let r = 0; r < 2; r++) notes.slice(0, n).forEach(midi => out.push({ midi, beats: 0.5 }));
+    return out;
+})();
+export const MINIMAL_PROGRESSIONS = [
+    { id: 'additive', label: 'Additive process', tempo: 160, loop: true,
+        sounds: { chords: 'organ-synth', melody: 'organ-synth' },
+        chords: [drone([48, 55], ADDITIVE.reduce((a, n) => a + n.beats, 0), 'C')],
+        melody: ADDITIVE },
+];
+
+// ── Song analysis: Stella by Starlight ──
+
+/** Chord scales by name, as semitones above the chord's root. */
+const SCALE_STEPS = {
+    'Ionian':            [0, 2, 4, 5, 7, 9, 11],
+    'Lydian':            [0, 2, 4, 6, 7, 9, 11],
+    'Dorian':            [0, 2, 3, 5, 7, 9, 10],
+    'Mixolydian':        [0, 2, 4, 5, 7, 9, 10],
+    'Locrian':           [0, 1, 3, 5, 6, 8, 10],
+    'Locrian ♮2':        [0, 2, 3, 5, 6, 8, 10],
+    'Phrygian dominant': [0, 1, 4, 5, 7, 8, 10],
+    'altered':           [0, 1, 3, 4, 6, 8, 10],
+    'Lydian dominant':   [0, 2, 4, 6, 7, 9, 10],
+    'whole tone':        [0, 2, 4, 6, 8, 10],
+};
+
+/**
+ * Chords with a chord scale each, `[symbol, roman, scale name, beats]`, and a melody
+ * that runs the scale in eighth notes from the chord's root (in octave 4): up, and
+ * back down when the chord lasts longer than a bar. For comparing interpretations of
+ * the same chords, which differ in their Roman numerals and in the scale chosen.
+ */
+function scaleLines(list) {
+    const melody = [];
+    const chordList = list.map(([symbol, roman, scale, beats = 4]) => {
+        const root = C + parseChord(symbol).root;
+        const steps = SCALE_STEPS[scale];
+        const up = [...steps, ...steps.map(s => s + 12)].slice(0, 8);
+        const line = beats > 4 ? [...up, ...up.slice(0, -1).reverse(), up[0]] : up.slice(0, beats * 2);
+        line.slice(0, beats * 2).forEach(s => melody.push({ midi: root + s, beats: 0.5 }));
+        for (let n = line.length; n < beats * 2; n++) melody.push({ midi: null, beats: 0.5 });
+        return { symbol, beats, roman, scale: `${scale}` };
+    });
+    return { chords: chordList, melody };
+}
+
+/**
+ * "Stella by Starlight" (Victor Young, 1944), the chord changes only, in B♭, in four
+ * eight-bar sections, each read two ways. Section A: a chain of ii–Vs heard in passing
+ * keys, or everything heard from B♭ with the borrowed chords from B♭ minor. Section A′:
+ * D minor and F major tonicized, with B♭m7–E♭7 as a backdoor ii–V into F or as a ii–V
+ * of A♭ that goes elsewhere. Section B: G7♯5 as an altered secondary dominant and
+ * A♭7 as a backdoor dominant, or G7♯5 as whole tone and A♭7 as subdominant minor.
+ * Section C: descending minor ii–Vs, in harmonic minor or in melodic minor sounds.
+ */
+export const STELLA_PROGRESSIONS = [
+    { id: 'a-chain', label: 'ii–Vs in passing keys', ...scaleLines([
+        ['Em7♭5', 'iiø7/iii', 'Locrian'], ['A7(♭9)', 'V7/iii', 'Phrygian dominant'],
+        ['Cm7', 'ii7', 'Dorian'], ['F7', 'V7', 'Mixolydian'],
+        ['Fm7', 'ii7/IV', 'Dorian'], ['B♭7', 'V7/IV', 'Mixolydian'],
+        ['E♭maj7', 'IVmaj7', 'Lydian'], ['A♭7', '♭VII7', 'Lydian dominant'],
+    ]) },
+    { id: 'a-home', label: 'All from B♭', ...scaleLines([
+        ['Em7♭5', '♯ivø7', 'Locrian'], ['A7(♭9)', 'VII7', 'altered'],
+        ['Cm7', 'ii7', 'Dorian'], ['F7', 'V7', 'Mixolydian'],
+        ['Fm7', 'v7', 'Dorian'], ['B♭7', 'I7', 'Mixolydian'],
+        ['E♭maj7', 'IVmaj7', 'Lydian'], ['A♭7', '♭VII7', 'Mixolydian'],
+    ]) },
+    { id: 'a2-backdoor', label: 'Backdoor into F', ...scaleLines([
+        ['B♭maj7', 'Imaj7', 'Ionian'],
+        ['Em7♭5', 'iiø7/iii', 'Locrian', 2], ['A7(♭9)', 'V7/iii', 'Phrygian dominant', 2],
+        ['Dm7', 'iii7', 'Dorian'],
+        ['B♭m7', 'iv7/V', 'Dorian', 2], ['E♭7', '♭VII7/V', 'Lydian dominant', 2],
+        ['Fmaj7', 'Vmaj7', 'Ionian'],
+        ['Em7♭5', 'iiø7/iii', 'Locrian', 2], ['A7(♭9)', 'V7/iii', 'Phrygian dominant', 2],
+        ['Am7♭5', 'iiø7/ii', 'Locrian'], ['D7(♭9)', 'V7/ii', 'Phrygian dominant'],
+    ]) },
+    { id: 'a2-deceptive', label: 'ii–V of A♭, deceived', ...scaleLines([
+        ['B♭maj7', 'Imaj7', 'Ionian'],
+        ['Em7♭5', 'iiø7/iii', 'Locrian', 2], ['A7(♭9)', 'V7/iii', 'Phrygian dominant', 2],
+        ['Dm7', 'iii7', 'Dorian'],
+        ['B♭m7', 'ii7/♭VII', 'Dorian', 2], ['E♭7', 'V7/♭VII', 'Mixolydian', 2],
+        ['Fmaj7', 'Vmaj7', 'Lydian'],
+        ['Em7♭5', 'iiø7/iii', 'Locrian', 2], ['A7(♭9)', 'V7/iii', 'altered', 2],
+        ['Am7♭5', 'iiø7/ii', 'Locrian'], ['D7(♭9)', 'V7/ii', 'altered'],
+    ]) },
+    { id: 'b-backdoor', label: 'Altered and backdoor', ...scaleLines([
+        ['G7♯5', 'V7/ii', 'altered', 8], ['Cm7', 'ii7', 'Dorian', 8],
+        ['A♭7', '♭VII7', 'Lydian dominant', 8], ['B♭maj7', 'Imaj7', 'Ionian', 8],
+    ]) },
+    { id: 'b-borrowed', label: 'Whole tone and borrowed', ...scaleLines([
+        ['G7♯5', 'V7/ii', 'whole tone', 8], ['Cm7', 'ii7', 'Dorian', 8],
+        ['A♭7', '♭VII7', 'Mixolydian', 8], ['B♭maj7', 'Imaj7', 'Lydian', 8],
+    ]) },
+    { id: 'c-harmonic', label: 'Minor ii–Vs, harmonic minor', ...scaleLines([
+        ['Em7♭5', 'iiø7/iii', 'Locrian'], ['A7(♭9)', 'V7/iii', 'Phrygian dominant'],
+        ['Dm7♭5', 'iiø7/ii', 'Locrian'], ['G7(♭9)', 'V7/ii', 'Phrygian dominant'],
+        ['Cm7♭5', 'iiø7', 'Locrian'], ['F7(♭9)', 'V7', 'Phrygian dominant'],
+        ['B♭maj7', 'Imaj7', 'Ionian', 8],
+    ]) },
+    { id: 'c-melodic', label: 'Minor ii–Vs, melodic minor', ...scaleLines([
+        ['Em7♭5', 'iiø7/iii', 'Locrian ♮2'], ['A7(♭9)', 'V7/iii', 'altered'],
+        ['Dm7♭5', 'iiø7/ii', 'Locrian ♮2'], ['G7(♭9)', 'V7/ii', 'altered'],
+        ['Cm7♭5', 'iiø7', 'Locrian ♮2'], ['F7(♭9)', 'V7', 'altered'],
+        ['B♭maj7', 'Imaj7', 'Ionian', 8],
+    ]) },
+].map(p => ({ key: 'B♭', tempo: 144, loop: true, ...p }));
 
 // ── Walking bass ──
 
@@ -1824,6 +2278,12 @@ export const PROGRESSION_SETS = {
     'non-functional': NON_FUNCTIONAL_PROGRESSIONS,
     reharmonization: REHARMONIZATION_PROGRESSIONS,
     'work-song': WORK_SONG_PROGRESSIONS,
+    syncopation: SYNCOPATION_PROGRESSIONS,
+    stella: rootless(STELLA_PROGRESSIONS),
+    world: WORLD_PROGRESSIONS,
+    minimal: MINIMAL_PROGRESSIONS,
+    jpop: JPOP_PROGRESSIONS,
+    styles: STYLE_PROGRESSIONS,
     blues: BLUES_PROGRESSIONS.map(p => ({ ...p, sounds: { chords: 'piano', melody: 'piano', bass: 'bass' } })),
     'jazz-blues': JAZZ_BLUES_PROGRESSIONS,
     waltz: WALTZ_PROGRESSIONS,
@@ -1840,7 +2300,10 @@ const TICK_MS = 25;
  * the audio clock so the parts stay together. `onChord(i)` and `onMelody(i)` are called
  * as chord or melody note `i` starts, `onBass(midi)` as each riff note starts,
  * `onHit(k)` as hit `k` of the current chord's comp starts (see `hits`), and each with
- * -1 when playback stops. A progression with `loop` repeats until stopped; others
+ * -1 when playback stops; each callback also gets the event's notes, which stay right
+ * when a swap changes the progression under notes still sounding. A progression with
+ * `loop` repeats until stopped, calling `onLoop(seconds)` as each new pass is scheduled
+ * (`seconds` until it starts), where `swap` can change it; others
  * stop at the end. Same start/stop/playing contract as a continuous source, so it works
  * with wirePlayButton; `onEnd` is called when it stops by itself.
  *
@@ -1855,7 +2318,7 @@ export class ProgressionPlayer {
      * @param {object} [opts.drums]             a drum kit, for progressions with `drums`.
      */
     constructor(instrument, { melodyInstrument = instrument, bassInstrument = null, drums = null,
-        onChord = () => {}, onMelody = () => {}, onBass = () => {}, onHit = () => {}, onEnd = () => {} } = {}) {
+        onChord = () => {}, onMelody = () => {}, onBass = () => {}, onHit = () => {}, onEnd = () => {}, onLoop = () => {} } = {}) {
         this.instrument = instrument;
         this.melodyInstrument = melodyInstrument;
         this.bassInstrument = bassInstrument;
@@ -1865,6 +2328,7 @@ export class ProgressionPlayer {
         this.onBass = onBass;
         this.onHit = onHit;
         this.onEnd = onEnd;
+        this.onLoop = onLoop;
         this.progression = null;
         this.voicings = [];
         this.hits = [];
@@ -1880,6 +2344,18 @@ export class ProgressionPlayer {
         this.voicings = voiceProgression(progression.chords, progression.melody ?? [],
             { bassLow: progression.bassLow, open: progression.voicing === 'open', rootless: progression.voicing === 'rootless' });
         this.hits = compHits(progression, this.voicings);
+    }
+
+    /**
+     * Changes the progression without stopping: a pass already under way finishes as it
+     * was, and the next pass plays the new one. For `onLoop`.
+     */
+    swap(progression) {
+        this.progression = progression;
+        this.voicings = voiceProgression(progression.chords, progression.melody ?? [],
+            { bassLow: progression.bassLow, open: progression.voicing === 'open', rootless: progression.voicing === 'rootless' });
+        this.hits = compHits(progression, this.voicings);
+        if (this.playing) this._events = this._timeline();
     }
 
     /**
@@ -2012,6 +2488,8 @@ export class ProgressionPlayer {
                 if (this.progression.loop) {
                     this._origin = end;
                     this._index = 0;
+                    // The listener may swap in the next pass, which starts in this many seconds.
+                    this.onLoop(Math.max(0, end - now));
                     continue;
                 }
                 if (now >= end) {
@@ -2038,7 +2516,7 @@ export class ProgressionPlayer {
             // Forget notes that have ended, so the set stays small while looping.
             for (const entry of this._sounding) if (entry.off < now) this._sounding.delete(entry);
             const callback = { chord: this.onChord, melody: this.onMelody, bass: this.onBass, hit: this.onHit }[event.kind];
-            const draw = setTimeout(() => { this._draws.delete(draw); callback(event.index); },
+            const draw = setTimeout(() => { this._draws.delete(draw); callback(event.index, event.notes); },
                 Math.max(0, (time - now) * 1000));
             this._draws.add(draw);
         }

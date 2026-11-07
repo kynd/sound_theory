@@ -110,6 +110,38 @@ const LYDIAN_7TH_ON_G_FLAT = {
     notes: ['G♭', 'A♭', 'B♭', 'C', 'D♭', 'E♭', 'F♭'],
 };
 
+/**
+ * The four diatonic tetrachords, four notes spanning a perfect fourth, written from C
+ * (the lower one) and from G (the upper one): major (W W H), minor (W H W), Phrygian
+ * (H W W), and harmonic (H, augmented second, H).
+ */
+export const TETRACHORDS = [
+    { id: 'major',    label: 'Major',    lower: ['C', 'D', 'E', 'F'],   upper: ['G', 'A', 'B', 'C'] },
+    { id: 'minor',    label: 'Minor',    lower: ['C', 'D', 'E♭', 'F'],  upper: ['G', 'A', 'B♭', 'C'] },
+    { id: 'phrygian', label: 'Phrygian', lower: ['C', 'D♭', 'E♭', 'F'], upper: ['G', 'A♭', 'B♭', 'C'] },
+    { id: 'harmonic', label: 'Harmonic', lower: ['C', 'D♭', 'E', 'F'],  upper: ['G', 'A♭', 'B', 'C'] },
+];
+
+/** Names of the scales two tetrachords make, by `lower-upper` id; others have no common name. */
+const TETRACHORD_SCALE_NAMES = {
+    'major-major': 'Major', 'major-minor': 'Mixolydian', 'major-phrygian': 'Mixolydian ♭6',
+    'major-harmonic': 'Harmonic major', 'minor-major': 'Melodic minor', 'minor-minor': 'Dorian',
+    'minor-phrygian': 'Natural minor', 'minor-harmonic': 'Harmonic minor', 'phrygian-major': 'Neapolitan major',
+    'phrygian-minor': 'Dorian ♭2', 'phrygian-phrygian': 'Phrygian', 'phrygian-harmonic': 'Neapolitan minor',
+    'harmonic-phrygian': 'Phrygian dominant', 'harmonic-harmonic': 'Double harmonic',
+};
+
+/**
+ * The seven-note scale on C made by joining a lower tetrachord (C to F) and an upper
+ * one (G to C) a whole step apart: `{ id, label, notes }`, the label being the scale's
+ * common name or an empty string.
+ */
+export function joinTetrachords(lowerId, upperId) {
+    const lower = TETRACHORDS.find(t => t.id === lowerId), upper = TETRACHORDS.find(t => t.id === upperId);
+    const id = `${lowerId}-${upperId}`;
+    return { id, label: TETRACHORD_SCALE_NAMES[id] ?? '', notes: [...lower.lower, ...upper.upper.slice(0, 3)] };
+}
+
 const other = (...ids) => ids.map(id => OTHER_SCALES.find(s => s.id === id));
 
 /** Named sets of scales, for a demo that takes the set as a URL parameter. */

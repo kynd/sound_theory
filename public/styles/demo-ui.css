@@ -46,7 +46,7 @@
   --font-size:    13px;       /* the only text size */
   --font-weight:  400;        /* the only text weight */
   --panel-width:  288px;
-  --radius:       6px;
+  --radius:       999px;      /* buttons and selects are fully rounded (pills) */
   --font:         'Google Sans Code', ui-monospace, monospace;  /* the only font */
 }
 
@@ -129,7 +129,8 @@ button, select, input { font: inherit; color: inherit; }
 .dp-note { margin-bottom: var(--grid); }
 .dp-note:empty { display: none; }
 /* Separates groups with one grid unit of space. */
-.dp-divider { border: none; height: 0; margin-top: var(--grid); }
+/* An <hr> or <div>; overflow visible so its margin collapses into its neighbors'. */
+.dp-divider { display: block; overflow: visible; border: none; height: 0; margin: var(--grid) 0 0; }
 
 .dp-row {
   display: flex; align-items: center; gap: var(--grid);
@@ -174,15 +175,14 @@ button, select, input { font: inherit; color: inherit; }
 .dp-select {
   border: none; border-radius: var(--radius);
   background: var(--demo-white);
-  height: var(--row); padding: 0 8px; width: 100%; cursor: pointer;
+  height: var(--row); padding: 0 var(--grid); width: 100%; cursor: pointer;
 }
 .dp-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 /* Two selects in a row would touch, two white wells merging into one; one grid unit
    keeps them apart, as between other items. */
-.dp-row:has(> .dp-select) + .dp-row:has(> .dp-select) { margin-top: var(--grid); }
 
 /* Buttons: one row tall, filled, no borders. A lone button is full width; buttons
-   that sit side by side go in a .dp-btn-row. Each is followed by one grid unit. */
+   that sit side by side go in a .dp-btn-row. Spacing: see Spacing below. */
 .dp-btn, .dp-toggle {
   display: block; width: 100%; height: var(--row);
   border: none; border-radius: var(--radius);
@@ -193,17 +193,15 @@ button, select, input { font: inherit; color: inherit; }
 .dp-btn:hover { filter: brightness(1.06); }
 .dp-toggle { background: var(--demo-white); }
 .dp-toggle.active { background: var(--accent-green); color: var(--demo-white); }
+/* A recording button is red, idle or recording (only its label changes). */
+.dp-record, .dp-record.active { background: var(--accent-red); color: var(--demo-white); }
 .dp-btn:disabled, .dp-toggle:disabled { opacity: 0.4; pointer-events: none; }
 .dp-btn:focus-visible, .dp-toggle:focus-visible { outline: 2px solid var(--demo-fg); outline-offset: 2px; }
-.dp-btn, .dp-toggle, .dp-btn-row { margin-bottom: var(--grid); }
 .dp-btn-row { display: flex; gap: 8px; }
-.dp-btn-row > * { flex: 1; margin-bottom: 0; }
-/* A button already ends with one grid unit, so a divider after it adds none. */
-.dp-btn + .dp-divider, .dp-toggle + .dp-divider, .dp-btn-row + .dp-divider { margin-top: 0; }
+.dp-btn-row > * { flex: 1; }
 
 /* Collapsible section: a header row and its rows, separated from the next by one
    grid unit. */
-.dp-section + .dp-section { margin-top: var(--grid); }
 .dp-section-hd {
   display: flex; align-items: center; gap: 8px;
   height: var(--row);
@@ -268,3 +266,29 @@ button, select, input { font: inherit; color: inherit; }
 /* Played keys and pads light up yellow. */
 .dp-key.active, .dp-key.white.root.active,
 .dp-key.lit, .dp-key.white.root.lit { background-color: var(--accent-yellow); }
+
+/* ── Spacing ─────────────────────────────────────────────────────────────── */
+
+/*
+ * One rule spaces every panel. Filled controls (buttons, toggles, rows of buttons,
+ * selects) and sections have one grid unit of space above and below them. The panel
+ * is ordinary block flow, so the margins of neighbors collapse into a single grid unit:
+ * a select and a button, two buttons, or a button and a slider are always one grid unit
+ * apart, never two. Slider rows and readouts, which have no fill of their own, stack
+ * directly on each other, one row apart. A divider (one grid unit) collapses into the
+ * same space, so it separates two groups of sliders but adds nothing next to a
+ * button. Nothing gets space at the top or bottom of the panel or of a section.
+ */
+/* :where keeps this rule weak, so the first and last item resets below win. */
+.dp-panel :where(.dp-btn, .dp-toggle, .dp-btn-row, .dp-section, .dp-row:has(> .dp-select), :not(.dp-row) > .dp-select) {
+  margin-block: var(--grid);
+}
+.dp-btn-row > * { margin: 0; }
+/* The first item that shows: after any empty status line or mount point, and inside a
+   group (display: contents) when the group comes first. */
+.dp-panel > :empty:not(.dp-divider) { display: none; }
+.dp-panel > :is(:first-child, :empty + *, :empty + :empty + *),
+.dp-panel > :is(:first-child, :empty + *, :empty + :empty + *).dp-group > :first-child,
+.dp-section-body > :first-child { margin-top: 0; }
+.dp-panel > :last-child, .dp-panel > .dp-group:last-child > :last-child,
+.dp-section-body > :last-child { margin-bottom: 0; }

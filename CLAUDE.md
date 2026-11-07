@@ -19,10 +19,15 @@ Keep everything mergeable by copying, with no rewriting:
   `wave`, `about-wave`, `sine-waves-and-additive-synthesis`, and `sound-visualization`;
   check before adding a slug.
 - `DocLayout.astro` is writing's file with four additions, all to be carried over:
-  `'sound-theory'` in `SECTION_ORDER`, the `SOUND_THEORY_ORDER` map and its sort, the
+  `'sound-theory'` in `SECTION_ORDER`, the `SOUND_THEORY_ORDER` map and its sort
+  (recursive, so the category folders and the pages in each are ordered), the
   `.demo-wrap` and `.demo-record` styles, and the `<script>` at the end of `<body>`
   that loads `public/lib/page/demoRecorder.js`. Add every new page to
   `SOUND_THEORY_ORDER`.
+- Pages are grouped into categories, one folder each under `sound-theory/`, with an
+  `index.md` that introduces the category and lists its pages. A new page goes in
+  its category's folder, its category index, the series index, and
+  `SOUND_THEORY_ORDER`. Slugs stay short and flat (`/syncopation`), whatever the folder.
 - Demos, the audio library, and their styles live under `public/demos/`,
   `public/lib/`, and `public/styles/`, which writing does not use.
 
@@ -64,12 +69,13 @@ Follow `documentation.md`. In short:
   the library. The library never imports from a demo.
 - `public/lib/audio/` makes and shapes sound: `AudioEngine.js`, `instruments.js`,
   `effects.js`, `additive.js` (with `Chord`), `tuning.js`, `scales.js`, `sequence.js`, `rhythm.js`,
-  `chords.js`, `granular.js`, `gesture.js`.
+  `chords.js`, `granular.js`, `gesture.js`, `sampler.js`, `spectral.js`.
   No DOM.
 - `public/lib/demo/` is shared demo support: `viewport.js`, `panel.js`, `controls.js`,
   `colors.js`, `Keyboard.js`, `Scope.js`, `PartialsView.js`, `BeatView.js`,
   `FifthsRing.js`, `ScaleView.js`, `CycleView.js`, `PulseView.js`, `StepGrid.js`,
-  `ProgressionView.js`, `ChordChart.js`, `XYPad.js`, `DrawPad.js`.
+  `ProgressionView.js`, `ChordChart.js`, `XYPad.js`, `DrawPad.js`, `SampleView.js`,
+  `PaintGrid.js`.
 - Every structural change updates `docs/audio-library.md` in the same change. When a
   group of classes shares behavior, write it once as a "common" section.
 - Demo chrome comes from the `dp-*` classes in `public/styles/demo-ui.css`. A new
@@ -100,6 +106,10 @@ canvas alike.
   (the waveform's time span). A slider's readout is the exact value applied (log
   sliders snap to `step`; Hz is shown in whole numbers, never abbreviated).
 - **Frames fit their controls:** a demo is no taller than its controls need.
+- **Uniform spacing:** one CSS rule in `demo-ui.css` (Spacing) spaces every panel:
+  buttons, toggles, button rows, selects, and sections have one grid unit above and
+  below, collapsing to a single unit between neighbors; slider rows and readouts
+  stack directly. Don't add margins to panel items in a demo.
 - **16px grid:** every height, gap, padding, and inset is a multiple of 16px
   (`--grid`), so text lines fall on the grid and spread evenly. Single-line items (a
   slider row, a button, a select, a section header, a stats line) are 32px tall
@@ -115,6 +125,10 @@ canvas alike.
 - **One background:** the panel and the stage share the paper (`#fbf8f5`, the
   brighter color the white keys used to be). Nothing divides left from right: no panel
   fill, no border, no rule.
+- **Rounded controls:** buttons, toggles, and selects are fully rounded pills
+  (`--radius`).
+- **Red for recording:** a button that records sound (the sampler's Record) is red
+  with white text (`.dp-record`), idle or recording.
 - **White for wells:** pure white (`--demo-white` / `COLORS.white`) for things that
   sit on the paper: white keys, slider tracks, idle toggles, selects.
 - **Green for the main controls:** play buttons, active toggles, and any slider that
@@ -183,61 +197,44 @@ color literal in a demo.
 src/content/docs/
   index.md                       root (local only, links to the series)
   sound-theory/
-    index.md                     series intro           slug: sound-theory
-    sound-waves.md               sine, additive, FFT    slug: sound-waves
-    sound-sources.md             instruments, effects   slug: sound-sources
-    synthesis.md                 subtractive, effects, FM/AM           slug: synthesis
-    tuning-systems.md            ratios, Pythagorean, 12-TET, others   slug: tuning-systems
-    scales.md                    what a scale is, scales from C        slug: scales
-    church-modes.md              modes from C, white keys, drone       slug: church-modes
-    minor-scales.md              natural, harmonic, melodic minor      slug: minor-scales
-    other-scales.md              pentatonic, blues, whole tone, …      slug: other-scales
-    sound-toys.md                XY pad, drawn melody, note grid       slug: sound-toys
-    pulse-and-cycles.md          pulse, accents, cycles                slug: pulse-and-cycles
-    time-signatures.md           meters, drum patterns                 slug: time-signatures
-    rhythm-and-feel.md           subdivisions, styles, timing          slug: rhythm-and-feel
-    articulation.md              legato, staccato, accents, swing      slug: articulation
-    diatonic-chords.md           triads, Roman numerals, functions     slug: diatonic-chords
-    chord-types.md               dim, aug, sus                         slug: chord-types
-    seventh-chords.md            sevenths, tensions                    slug: seventh-chords
-    chord-voicing.md             inversions, open/close, shells        slug: chord-voicing
-    minor-key-chords.md          minor diatonic chords, V7, colors     slug: minor-key-chords
-    functional-harmony.md        T, SD, D, progressions                slug: functional-harmony
-    tension-and-resolution.md    dominant motion, other resolutions    slug: tension-and-resolution
-    subdominant-minor.md         borrowed chords                       slug: subdominant-minor
-    chord-progressions.md        well-known progressions, songs        slug: chord-progressions
-    non-functional-harmony.md    modes, planing, twelve tones          slug: non-functional-harmony
-    reharmonization.md           Twinkle, five versions                slug: reharmonization
-    blues.md                     history, work songs, 12-bar, jazz blues   slug: blues
-    chord-notation.md            figured bass to chord symbols         slug: chord-notation
-    breaking-conventions.md      20th-century experiments, phasing     slug: breaking-conventions
-    sound-as-material.md         onkyō, sound design, granular         slug: sound-as-material
-    pentatonic-improvisation.md  pentatonic phrases, play-along        slug: pentatonic-improvisation
-    diatonic-improvisation.md    one key, its scale over every chord   slug: diatonic-improvisation
-    outlining-changes.md         chord tones, guide tones, enclosures  slug: outlining-changes
-    walking-bass.md              bass lines: roots, approaches, steps  slug: walking-bass
-    jazz-idioms.md               enclosures, approach notes, the lick  slug: jazz-idioms
-    bebop-scale.md               Barry Harris, sixth diminished scale  slug: bebop-scale
-    minor-chord-scales.md        melodic/harmonic minor modes, use     slug: minor-chord-scales
-    two-five-improvisation.md    scales and phrases over ii–V–I        slug: two-five-improvisation
-    jazz-chord-improvisation.md  Lydian dominant, whole tone, dim      slug: jazz-chord-improvisation
-    modal-jazz.md                So What, fourths, sus chords          slug: modal-jazz
-    upper-structure-triads.md    triads over dominant shells           slug: upper-structure-triads
-    triads-in-scales.md          triads in scales, triad pairs         slug: triads-in-scales
-    modern-pentatonics.md        pentatonics on other roots            slug: modern-pentatonics
-    playing-outside.md           side-stepping, superimposed ii–V      slug: playing-outside
-    fourths.md                   fourth shapes, parallel fourths       slug: fourths
-    coltrane-changes.md          major-third cycles, 1-2-3-5           slug: coltrane-changes
+    index.md                     series intro, pages by category   slug: sound-theory
+    sound/                       category; index.md has slug: sound-and-timbre
+      sound-waves.md  sound-sources.md  synthesis.md
+      sound-toys.md  sound-as-material.md
+    pitch/                       category; index.md has slug: pitch-and-scales
+      tuning-systems.md  scales.md  church-modes.md
+      minor-scales.md  tetrachords.md  other-scales.md
+    rhythm/                      category; index.md has slug: rhythm-and-time
+      pulse-and-cycles.md  time-signatures.md  rhythm-and-feel.md
+      syncopation.md  rhythm-patterns.md  polyrhythm.md
+      articulation.md
+    harmony/                     category; index.md has slug: chords-and-harmony
+      diatonic-chords.md  chord-types.md  seventh-chords.md
+      chord-voicing.md  minor-key-chords.md  functional-harmony.md
+      tension-and-resolution.md  subdominant-minor.md  chord-progressions.md
+      jpop-progressions.md  non-functional-harmony.md  reharmonization.md
+    history/                     category; index.md has slug: music-and-history
+      non-western-music.md  blues.md  jazz-history.md
+      chord-notation.md  breaking-conventions.md  minimal-music.md
+    improvisation/               category; index.md has slug: jazz-improvisation
+      pentatonic-improvisation.md  diatonic-improvisation.md  outlining-changes.md
+      walking-bass.md  jazz-idioms.md  bebop-scale.md
+      minor-chord-scales.md  two-five-improvisation.md  jazz-chord-improvisation.md
+      stella-by-starlight.md
+    modern-jazz/                 category; index.md has slug: modern-jazz-language
+      modal-jazz.md  upper-structure-triads.md  triads-in-scales.md
+      modern-pentatonics.md  playing-outside.md  fourths.md
+      coltrane-changes.md
 src/layouts/DocLayout.astro      writing's layout + sound-theory additions
 src/components/                  writing's Sidebar and Breadcrumbs
 public/lib/audio/                AudioEngine.js  instruments.js  effects.js  additive.js
                                  tuning.js  scales.js  sequence.js  rhythm.js
-                                 chords.js  granular.js  gesture.js
+                                 chords.js  granular.js  gesture.js  sampler.js  spectral.js
 public/lib/demo/                 viewport.js  panel.js  controls.js  colors.js
                                  Keyboard.js  Scope.js  PartialsView.js  BeatView.js
                                  FifthsRing.js  ScaleView.js  CycleView.js  PulseView.js
                                  StepGrid.js  ProgressionView.js  ChordChart.js
-                                 XYPad.js  DrawPad.js
+                                 XYPad.js  DrawPad.js  SampleView.js  PaintGrid.js
 public/demos/<name>/             index.html + main.js per demo
 public/styles/demo-ui.css        demo chrome
 public/lib/page/demoRecorder.js  record button under each embedded demo (page-level)
