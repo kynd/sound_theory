@@ -13,9 +13,9 @@ Bebop tunes change chords every bar or two, and players outline each change (see
 
 『カインド・オブ・ブルー』の1曲目「ソー・ホワット」は、32小節のAABA形式です。Dドリアンが16小節、半音上のE♭ドリアンが8小節、そしてまたDドリアンが8小節。和声はこれだけです。曲のピアノの和音は、ソー・ホワット・ボイシングと呼ばれることが多く、Dの上に3つの完全4度と長3度（E、A、D、G、B）を積んだものです。上のほうにはっきりした長3度も短3度もない、開いた現代的な響きです。ドリアンの特徴的な音、長6度（DドリアンではB）が自然短音階との違いで、モードの旋律はこの音に寄りかかります。コルトレーンの「インプレッションズ」（1961年）は、同じ形式を速いテンポで使いました。
 
-Press **Play** to hear a shortened version of that idea: four bars of D Dorian, two of E♭ Dorian, and two of D Dorian again, the chords in the So What voicing struck every two beats under a Dorian line that leans on B. **Scale** names the mode. The demo plays in C (on D), as in the text; choose a **Key** to hear it in another key.
+Press **Play** to hear a shortened version of that idea: four bars of D Dorian, two of E♭ Dorian, and two of D Dorian again, the chords in the So What voicing struck every two beats under a Dorian line that leaps instead of running up and down the mode: it climbs in fourths (A, D, G, C), skips through arpeggios found in the mode (D minor, and C major seventh, which brings in B), leaves space between phrases, and moves its opening idea up a half step for E♭ Dorian. **Scale** names the mode. The demo plays in C (on D), as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すと、この考え方を短くしたものが鳴ります。Dドリアンが4小節、E♭ドリアンが2小節、そしてまたDドリアンが2小節で、ソー・ホワット・ボイシングの和音が2拍ごとに鳴り、その上でBに寄りかかるドリアンの旋律が流れます。**Scale**には旋法の名前が表示されます。デモは本文と同じくC（Dの上）で鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すと、この考え方を短くしたものが鳴ります。Dドリアンが4小節、E♭ドリアンが2小節、そしてまたDドリアンが2小節で、ソー・ホワット・ボイシングの和音が2拍ごとに鳴り、その上でドリアンの旋律が流れます。旋律は旋法を順に上り下りするのではなく跳躍します。4度で上り（A、D、G、C）、旋法の中にあるアルペジオ（Dマイナーと、Bを含むCメジャー・セブンス）を音を飛ばしてたどり、フレーズのあいだに間を置き、E♭ドリアンでは最初のアイデアを半音上に移します。**Scale**には旋法の名前が表示されます。デモは本文と同じくC（Dの上）で鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=modal&example=so-what&key" title="Dorian, a half step up" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

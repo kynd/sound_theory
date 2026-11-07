@@ -1,6 +1,6 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
-import { PROGRESSION_SETS, ProgressionPlayer, transposeProgression, transposeSymbol, withSevenths } from '../../lib/audio/chords.js';
+import { PROGRESSION_SETS, ProgressionPlayer, progressionSounds, transposeProgression, transposeSymbol, withSevenths } from '../../lib/audio/chords.js';
 import { ROOTS, MINOR_ROOTS, parseNote } from '../../lib/audio/scales.js';
 import { Keyboard } from '../../lib/demo/Keyboard.js';
 import { ProgressionView } from '../../lib/demo/ProgressionView.js';
@@ -32,19 +32,24 @@ const View = params.get('view') === 'chart' ? ChordChart : ProgressionView;
 
 const master = new MasterBus();
 
-// Instruments by id, created when a progression first asks for them (`sounds`).
+// Instruments by id and level, created when a progression first asks for them (`sounds`).
 const instruments = new Map();
-const instrument = id => {
-    if (!instruments.has(id)) instruments.set(id, createInstrument(id).connect(master.input));
-    return instruments.get(id);
+const instrument = ({ id, level = 0 }) => {
+    const key = `${id}@${level}`;
+    if (!instruments.has(key)) {
+        const created = createInstrument(id).connect(master.input);
+        created.output.gain.value = 10 ** (level / 20);
+        instruments.set(key, created);
+    }
+    return instruments.get(key);
 };
-const sounds = PROGRESSIONS.flatMap(p => [p.sounds?.chords ?? 'piano', p.sounds?.melody ?? p.sounds?.chords ?? 'piano', p.sounds?.bass].filter(Boolean));
-if (PROGRESSIONS.some(p => p.drums)) sounds.push('drums');
+const sounds = PROGRESSIONS.flatMap(p => Object.values(progressionSounds(p)).filter(Boolean));
+if (PROGRESSIONS.some(p => p.drums)) sounds.push({ id: 'drums' });
 
 // Empty unless something is loading or failed.
 const status = document.getElementById('status');
 status.textContent = 'Loading samples…';
-Promise.all([...new Set(sounds)].map(id => instrument(id).ready)).then(
+Promise.all(sounds.map(sound => instrument(sound).ready)).then(
     () => { status.textContent = ''; },
     () => { status.textContent = 'The samples could not be loaded.'; });
 
@@ -55,8 +60,8 @@ let syncPlay = null;
 let chordNotes = [], melodyNote = null, bassNote = null, chord = -1;
 const light = () => keyboard.setLit([...chordNotes, melodyNote, bassNote].filter(n => n !== null));
 
-const player = new ProgressionPlayer(instrument('piano'), {
-    drums: PROGRESSIONS.some(p => p.drums) ? instrument('drums') : null,
+const player = new ProgressionPlayer(instrument({ id: 'piano' }), {
+    drums: PROGRESSIONS.some(p => p.drums) ? instrument({ id: 'drums' }) : null,
     onChord: i => {
         chord = i;
         showScale(i);
@@ -125,9 +130,10 @@ function useProgression() {
     const moved = transposeProgression(sevenths ? withSevenths(base) : base, target);
     const progression = phrase ? moved : { ...moved, melody: [] };
     if (playAlong) useKeyboardScale(moved.playScale);
-    player.instrument = instrument(progression.sounds?.chords ?? 'piano');
-    player.melodyInstrument = instrument(progression.sounds?.melody ?? progression.sounds?.chords ?? 'piano');
-    player.bassInstrument = progression.sounds?.bass ? instrument(progression.sounds.bass) : null;
+    const parts = progressionSounds(progression);
+    player.instrument = instrument(parts.chords);
+    player.melodyInstrument = instrument(parts.melody);
+    player.bassInstrument = parts.bass ? instrument(parts.bass) : null;
     player.setProgression(progression);
     view.update(player.progression, player.voicings);
     chordNotes = []; melodyNote = null; bassNote = null;

@@ -6,9 +6,9 @@ In most jazz, the bass plays one note on every beat, a walking bass line. It doe
 
 ほとんどのジャズで、ベースは毎拍ひとつずつ音を弾きます。ウォーキング・ベースです。ベースは2つの仕事を同時にこなします。時間を刻み、バンドにスウィングと推進力を与えること、そして下から和声を示し、各和音の根音に、ふつうは小節の頭で着地して、ソリストにも聞き手にも、音楽がいまどこにあるかを常に知らせることです。よいラインは、それ自体ひとつの旋律のようになめらかに動きながら、この両方を果たします。ベーシストは、ソリストがコード進行を描き出すのと同じ、いくつかの単純な考え方からラインを組み立てます（[コード進行を描き出す](/outlining-changes)を参照）。
 
-The demos on this page all use the turnaround Cmaj7–A7–Dm7–G7. The bass line, played on an electric bass, is drawn in pink below the chords; an electric piano plays each chord on 1 and on the "and" of 2, changing its voicing; and the keyboard lights the notes as they sound.
+The demos on this page all use the turnaround Cmaj7–A7–Dm7–G7. The bass line, played on a synth bass, is drawn in pink below the chords; a piano plays each chord on 1 and on the "and" of 2, changing its voicing; and the keyboard lights the notes as they sound.
 
-このページのデモは、どれもターンアラウンドCmaj7–A7–Dm7–G7を使います。エレクトリック・ベースで弾くベース・ラインは和音の下にピンクで描かれ、エレクトリック・ピアノはボイシングを変えながら各和音を1拍目と2拍目の裏で鳴らし、鍵盤では鳴っている音が点灯します。
+このページのデモは、どれもターンアラウンドCmaj7–A7–Dm7–G7を使います。シンセ・ベースで弾くベース・ラインは和音の下にピンクで描かれ、ピアノはボイシングを変えながら各和音を1拍目と2拍目の裏で鳴らし、鍵盤では鳴っている音が点灯します。
 
 # Roots and Fifths
 # 根音と5度

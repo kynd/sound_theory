@@ -1544,7 +1544,7 @@ const up = (notes, n) => notes.map(m => m + n);
 /**
  * Modal jazz: a shortened form of "So What" (D Dorian, a half step up to E♭ Dorian, and
  * back), the chords in the So What voicing struck every two beats under a Dorian line
- * that leans on the mode's 6th (B); fourth voicings moving in parallel through D Dorian
+ * of fourths and arpeggios that leans on the mode's 6th (B); fourth voicings moving in parallel through D Dorian
  * over a held D, as McCoy Tyner comped; and suspended chords that drift by unusual
  * intervals without resolving.
  */
@@ -1555,15 +1555,17 @@ export const MODAL_PROGRESSIONS = [
             { ...over('E♭m7', 'i7', 'Dorian', 8), notes: up(SO_WHAT, 1) },
             { ...over('Dm7', 'i7', 'Dorian', 8), notes: SO_WHAT },
         ],
+        // Fourths (A–D–G–C) and arpeggios (Dm, Cmaj7 for the B) leaping across the mode,
+        // with space between phrases; the opening idea moves up a half step for E♭.
         melody: line([
-            'D5', 'E5', 'F5', 'G5', ['A5', 1], ['B5', 1],
-            'C6', 'A5', 'G5', 'E5', ['F5', 2],
-            ['D5', 1], [null, 0.5], 'A5', 'G5', 'F5', ['E5', 1],
-            ['D5', 4],
-            'Eb5', 'F5', 'Gb5', 'Ab5', ['Bb5', 1], ['C6', 1],
-            'Bb5', 'Ab5', 'Gb5', 'F5', ['Eb5', 2],
-            'D5', 'E5', 'F5', 'A5', ['B5', 2],
-            ['A5', 4],
+            [null, 0.5], 'A4', 'D5', 'G5', 'C6', ['B5', 1], 'A5',
+            'F5', 'D5', 'A4', 'C5', ['E5', 1], [null, 1],
+            'C5', 'E5', 'G5', 'B5', ['A5', 1], 'G5', 'E5',
+            ['D5', 2], [null, 2],
+            [null, 0.5], 'Bb4', 'Eb5', 'Ab5', 'Db6', ['C6', 1], 'Bb5',
+            'Gb5', 'Eb5', 'Bb4', 'Db5', ['F5', 1], [null, 1],
+            'E5', 'A5', 'D6', 'A5', 'B5', 'G5', 'E5', 'B4',
+            ['C5', 1], 'A4', 'B4', ['D5', 2],
         ]) },
     { id: 'fourths-comping', label: 'Fourths over a pedal', tempo: 120, loop: true,
         chords: [
@@ -1574,11 +1576,19 @@ export const MODAL_PROGRESSIONS = [
         chords: chords(4, [['D7sus4', 'sus'], ['F7sus4', 'sus'], ['D7sus4', 'sus'], ['B♭7sus4', 'sus']]) },
 ];
 
+/**
+ * The jazz and improvisation examples sound like a small band: a piano comps (with
+ * rootless voicings where the chords are not voiced by hand, as a pianist would under a
+ * soloist), a synth bass plays the bass notes or riff, and an AM synth, raised 8 dB to
+ * sit over the piano, plays the line.
+ */
+export const BAND_SOUNDS = { chords: 'piano', melody: 'am', bass: 'synth-bass', levels: { melody: 8 } };
+
 // ── Walking bass ──
 
 /**
  * Walking bass lines over the turnaround Cmaj7–A7–Dm7–G7, written as the melody (MIDI,
- * C3 = 48, played an octave lower on the electric bass) under electric piano voicings kept above them and struck in a Charleston rhythm (on
+ * C3 = 48, played an octave lower on the band's bass) under the band's piano voicings kept above them and struck in a Charleston rhythm (on
  * 1 and the "and" of 2): roots and fifths in half notes (a two feel), chord tones with
  * a chromatic approach from above on beat 4, scale steps, and each bar starting a step
  * above the root and sliding down by half steps to it.
@@ -1591,7 +1601,7 @@ const WALK_CHORDS = [
 ];
 const walk = (id, label, notes, beats = 1) => ({
     id, label, tempo: 132, loop: true, comp: [['all', 1.5], ['all', 2.5]], chords: WALK_CHORDS,
-    sounds: { chords: 'epiano', melody: 'bass' },
+    sounds: { chords: BAND_SOUNDS.chords, melody: BAND_SOUNDS.bass },
     // Written at the bass's notated pitch; the bass sounds an octave lower.
     melody: notes.map(midi => ({ midi: midi - 12, beats })),
 });
@@ -1755,14 +1765,24 @@ export const UPPER_STRUCTURE_PROGRESSIONS = [
 ];
 
 /** Named sets of progressions, for a demo that takes the set as a URL parameter. */
+const band = list => list.map(p => ({ ...p, sounds: p.sounds ?? BAND_SOUNDS }));
+
 /**
- * The jazz and improvisation examples sound like a small band: an electric piano comps
- * (with rootless voicings where the chords are not voiced by hand, as a pianist would
- * under a soloist), an electric bass plays the bass notes or riff, and the piano plays
- * the line.
+ * What a progression's parts play on: `{ chords, melody, bass }`, each `{ id, level }`
+ * (an instrument id and a level in dB), or null for a bass with no instrument of its
+ * own. From the progression's `sounds` (`{ chords, melody, bass?, levels? }`, piano by
+ * default, the melody on the chords' instrument unless named).
  */
-const JAZZ_SOUNDS = { chords: 'epiano', melody: 'piano', bass: 'bass' };
-const band = list => list.map(p => ({ ...p, sounds: p.sounds ?? JAZZ_SOUNDS }));
+export function progressionSounds(progression) {
+    const sounds = progression.sounds ?? {};
+    const levels = sounds.levels ?? {};
+    const part = (name, id) => id ? { id, level: levels[name] ?? 0 } : null;
+    return {
+        chords: part('chords', sounds.chords ?? 'piano'),
+        melody: part('melody', sounds.melody ?? sounds.chords ?? 'piano'),
+        bass: part('bass', sounds.bass),
+    };
+}
 const rootless = list => band(list).map(p => ({ ...p, voicing: 'rootless' }));
 
 export const PROGRESSION_SETS = {

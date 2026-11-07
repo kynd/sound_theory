@@ -250,6 +250,18 @@ const TONEJS_INSTRUMENTS = {
     'trumpet':         ['F3', 'A3', 'C4', 'D#4', 'G4', 'A#4', 'D5', 'F5', 'A5', 'C6'],
     'guitar-acoustic': ['D2', 'F2', 'G#2', 'B2', 'D3', 'F3', 'G#3', 'B3', 'D4', 'F4', 'G#4', 'B4', 'D5'],
     'bass-electric':   ['E1', 'G1', 'A#1', 'C#2', 'E2', 'G2', 'A#2', 'C#3', 'E3', 'G3', 'A#3', 'C#4', 'E4', 'G4'],
+    'organ':           ['C1', 'D#1', 'F#1', 'A1', 'C2', 'D#2', 'F#2', 'A2', 'C3', 'D#3', 'F#3', 'A3', 'C4', 'D#4', 'F#4', 'A4', 'C5', 'D#5', 'F#5', 'A5', 'C6'],
+    'harmonium':       ['C2', 'D#2', 'F#2', 'A2', 'C3', 'D#3', 'F#3', 'A3', 'C4', 'D#4', 'G4', 'A#4', 'C#5'],
+    'guitar-electric': ['C#2', 'E2', 'A2', 'C3', 'D#3', 'F#3', 'A3', 'C4', 'D#4', 'F#4', 'A4', 'C5', 'D#5', 'F#5', 'A5', 'C6'],
+    'guitar-nylon':    ['B1', 'D2', 'F#2', 'A2', 'C#3', 'E3', 'G3', 'B3', 'D#4', 'F#4', 'A4', 'C#5', 'E5', 'G5', 'A#5'],
+    'harp':            ['E1', 'G1', 'B1', 'D2', 'F2', 'A2', 'C3', 'E3', 'G3', 'B3', 'D4', 'F4', 'A4', 'C5', 'E5', 'G5', 'B5', 'D6', 'F6', 'A6', 'D7', 'F7'],
+    'xylophone':       ['G4', 'C5', 'G5', 'C6', 'G6', 'C7', 'G7', 'C8'],
+    'saxophone':       ['C#3', 'E3', 'G3', 'A#3', 'C#4', 'E4', 'G4', 'A#4', 'C#5', 'E5', 'G5'],
+    'french-horn':     ['A1', 'C2', 'D#2', 'G2', 'D3', 'F3', 'A3', 'C4', 'D5', 'F5'],
+    'trombone':        ['A#1', 'C#2', 'F2', 'G#2', 'C3', 'D#3', 'G#3', 'C4', 'D#4'],
+    'tuba':            ['F1', 'A#1', 'D#2', 'A#2', 'D3', 'F3', 'A#3', 'D4'],
+    'bassoon':         ['G2', 'C3', 'G3', 'C4', 'E4', 'G4', 'C5'],
+    'contrabass':      ['F#1', 'A#1', 'D2', 'F#2', 'A2', 'C#3', 'E3', 'G#3', 'B3'],
 };
 function tonejsInstrument(name, opts) {
     const urls = Object.fromEntries(
@@ -388,6 +400,31 @@ export const INSTRUMENTS = [
         envelope: { attack: 0.002, decay: 1.6, sustain: 0.25, release: 0.8 },
         modulationEnvelope: { attack: 0.002, decay: 0.35, sustain: 0.05, release: 0.5 },
     }, { volume: -8 }) },
+    // The same tine piano with a stronger, longer bite, louder for backing a band.
+    { id: 'epiano-bright', label: 'Electric piano (bright)', group: 'Synths', create: () => new PolyInstrument(Tone.FMSynth, {
+        harmonicity: 1, modulationIndex: 9,
+        oscillator: { type: 'sine' }, modulation: { type: 'sine' },
+        envelope: { attack: 0.002, decay: 2, sustain: 0.35, release: 0.8 },
+        modulationEnvelope: { attack: 0.002, decay: 0.6, sustain: 0.1, release: 0.5 },
+    }, { volume: -4 }) },
+    // A drawbar organ: the fundamental and a few harmonics at fixed levels, sounding at
+    // full level for as long as the key is held and stopping at once.
+    { id: 'organ-synth', label: 'Drawbar organ', group: 'Synths', create: () => new PolyInstrument(Tone.Synth, {
+        oscillator: { type: 'custom', partials: [1, 0.8, 0.6, 0.5, 0, 0.3, 0, 0.3] },
+        envelope: { attack: 0.005, decay: 0, sustain: 1, release: 0.06 },
+    }, { volume: -16 }) },
+    // A soft pad: detuned saws with a slow attack and release.
+    { id: 'pad', label: 'Synth pad', group: 'Synths', create: () => new PolyInstrument(Tone.Synth, {
+        oscillator: { type: 'fatsawtooth', count: 3, spread: 20 },
+        envelope: { attack: 0.3, decay: 0.5, sustain: 0.8, release: 1.2 },
+    }, { volume: -20 }) },
+    // A synth bass: a saw through a low-pass filter that snaps open on each note.
+    { id: 'synth-bass', label: 'Synth bass', group: 'Synths', create: () => new PolyInstrument(Tone.MonoSynth, {
+        oscillator: { type: 'sawtooth' },
+        filter: { type: 'lowpass', Q: 2 },
+        envelope: { attack: 0.005, decay: 0.3, sustain: 0.6, release: 0.15 },
+        filterEnvelope: { attack: 0.005, decay: 0.2, sustain: 0.2, release: 0.2, baseFrequency: 100, octaves: 3 },
+    }, { volume: -10 }) },
     { id: 'piano', label: 'Piano', group: 'Sampled', create: () =>
         new SampledInstrument(salamanderUrls(), SALAMANDER_BASE, { release: 1, volume: -2 }) },
     { id: 'violin',   label: 'Violin',   group: 'Sampled', create: () => tonejsInstrument('violin',   { release: 0.6, volume: -10 }) },
@@ -397,6 +434,18 @@ export const INSTRUMENTS = [
     { id: 'trumpet',  label: 'Trumpet',  group: 'Sampled', create: () => tonejsInstrument('trumpet',  { release: 0.4, volume: -8 }) },
     { id: 'guitar',   label: 'Acoustic guitar', group: 'Sampled', create: () => tonejsInstrument('guitar-acoustic', { release: 1, volume: -11 }) },
     { id: 'bass',     label: 'Electric bass', group: 'Sampled', create: () => tonejsInstrument('bass-electric', { release: 0.3, volume: -4 }) },
+    { id: 'organ',    label: 'Organ',    group: 'Sampled', create: () => tonejsInstrument('organ',    { release: 0.3, volume: -10 }) },
+    { id: 'harmonium', label: 'Harmonium', group: 'Sampled', create: () => tonejsInstrument('harmonium', { release: 0.4, volume: -10 }) },
+    { id: 'guitar-electric', label: 'Electric guitar', group: 'Sampled', create: () => tonejsInstrument('guitar-electric', { release: 0.8, volume: -8 }) },
+    { id: 'guitar-nylon', label: 'Nylon guitar', group: 'Sampled', create: () => tonejsInstrument('guitar-nylon', { release: 1, volume: -8 }) },
+    { id: 'harp',     label: 'Harp',     group: 'Sampled', create: () => tonejsInstrument('harp',     { release: 1.5, volume: -6 }) },
+    { id: 'xylophone', label: 'Xylophone', group: 'Sampled', create: () => tonejsInstrument('xylophone', { release: 0.6, volume: -8 }) },
+    { id: 'saxophone', label: 'Saxophone', group: 'Sampled', create: () => tonejsInstrument('saxophone', { release: 0.3, volume: -8 }) },
+    { id: 'french-horn', label: 'French horn', group: 'Sampled', create: () => tonejsInstrument('french-horn', { release: 0.5, volume: -6 }) },
+    { id: 'trombone', label: 'Trombone', group: 'Sampled', create: () => tonejsInstrument('trombone', { release: 0.4, volume: -6 }) },
+    { id: 'tuba',     label: 'Tuba',     group: 'Sampled', create: () => tonejsInstrument('tuba',     { release: 0.4, volume: -4 }) },
+    { id: 'bassoon',  label: 'Bassoon',  group: 'Sampled', create: () => tonejsInstrument('bassoon',  { release: 0.4, volume: -6 }) },
+    { id: 'contrabass', label: 'Contrabass', group: 'Sampled', create: () => tonejsInstrument('contrabass', { release: 0.5, volume: -4 }) },
     { id: 'drums', label: 'Drum kit', group: 'Drums', create: () => new DrumKit() },
     { id: 'white-noise', label: 'White noise', group: 'Noise', create: () => new NoiseInstrument('white', { volume: -14 }) },
     { id: 'pink-noise',  label: 'Pink noise',  group: 'Noise', create: () => new NoiseInstrument('pink', { volume: -8 }) },
