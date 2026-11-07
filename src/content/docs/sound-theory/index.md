@@ -45,27 +45,31 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 12. [Other Chords](/chord-types): diminished, augmented, and suspended chords, and how they connect others.
 
-13. [Sevenths and Tensions](/seventh-chords): seventh chords, the 9th, 11th, and 13th, and altered tensions.
+13. [Chords in Minor Keys](/minor-key-chords): the diatonic chords of natural, harmonic, and melodic minor, the V7 in minor, and how the other chords are used.
 
-14. [Functional Harmony](/functional-harmony): tonic, subdominant, and dominant, and progressions as movement between them.
+14. [Sevenths and Tensions](/seventh-chords): seventh chords, the 9th, 11th, and 13th, and altered tensions.
 
-15. [Tension and Resolution](/tension-and-resolution): dominant motion, secondary dominants, and other ways to resolve.
+15. [Functional Harmony](/functional-harmony): tonic, subdominant, and dominant, and progressions as movement between them.
 
-16. [Subdominant Minor](/subdominant-minor): chords borrowed from the parallel minor, with practical examples.
+16. [Tension and Resolution](/tension-and-resolution): dominant motion, secondary dominants, and other ways to resolve.
 
-17. [Chord Progressions](/chord-progressions): well-known progressions, from I–IV–V–I and the four-chord pop loop to the canon, the royal road, and ii–V–I, with songs that use them.
+17. [Subdominant Minor](/subdominant-minor): chords borrowed from the parallel minor, with practical examples.
 
-18. [Beyond Functional Harmony](/non-functional-harmony): modes, quartal chords, planing, pedals, harmony from the melody, and twelve tones.
+18. [Minor Chord Scales](/minor-chord-scales): the seventh chords and modes of melodic and harmonic minor, and how they are used over a minor ii–V–i, tritone substitutes, and borrowed chords.
 
-19. [Reharmonization](/reharmonization): new chords under a familiar melody.
+19. [Chord Progressions](/chord-progressions): well-known progressions, from I–IV–V–I and the four-chord pop loop to the canon, the royal road, and ii–V–I, with songs that use them.
 
-20. [Blues](/blues): where the blues came from, work songs and call and response, the twelve-bar form with a riff, and how jazz reharmonized it.
+20. [Beyond Functional Harmony](/non-functional-harmony): modes, quartal chords, planing, pedals, harmony from the melody, and twelve tones.
 
-21. [Writing Chords](/chord-notation): from figured bass to chord symbols, and how one way of writing harmony shaped how we hear it.
+21. [Reharmonization](/reharmonization): new chords under a familiar melody.
 
-22. [Breaking Conventions](/breaking-conventions): how composers and players have broken the conventions, from noise and chance to minimalism and phasing.
+22. [Blues](/blues): where the blues came from, work songs and call and response, the twelve-bar form with a riff, and how jazz reharmonized it.
 
-23. [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
+23. [Writing Chords](/chord-notation): from figured bass to chord symbols, and how one way of writing harmony shaped how we hear it.
+
+24. [Breaking Conventions](/breaking-conventions): how composers and players have broken the conventions, from noise and chance to minimalism and phasing.
+
+25. [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
 
 1.  [音源](/sound-sources)：このシリーズ全体で使う楽器とエフェクト。
 
@@ -91,24 +95,28 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 12. [その他の和音](/chord-types)：減三和音、増三和音、サスペンデッド・コードと、それらによる和音のつなぎ方。
 
-13. [7の和音とテンション](/seventh-chords)：7の和音、9度、11度、13度、変化させたテンション。
+13. [短調の和音](/minor-key-chords)：自然短音階、和声的短音階、旋律的短音階のダイアトニック・コード、短調のV7、ほかの和音の使い方。
 
-14. [機能和声](/functional-harmony)：トニック、サブドミナント、ドミナントと、そのあいだの動きとしての進行。
+14. [7の和音とテンション](/seventh-chords)：7の和音、9度、11度、13度、変化させたテンション。
 
-15. [緊張と解決](/tension-and-resolution)：ドミナント・モーション、セカンダリー・ドミナント、ほかの解決のしかた。
+15. [機能和声](/functional-harmony)：トニック、サブドミナント、ドミナントと、そのあいだの動きとしての進行。
 
-16. [サブドミナント・マイナー](/subdominant-minor)：同主短調から借りた和音と、その実例。
+16. [緊張と解決](/tension-and-resolution)：ドミナント・モーション、セカンダリー・ドミナント、ほかの解決のしかた。
 
-17. [コード進行](/chord-progressions)：I–IV–V–Iや4つの和音のポップスのループから、カノン進行、王道進行、ツー・ファイブ・ワンまで、よく知られた進行と、それを使った曲。
+17. [サブドミナント・マイナー](/subdominant-minor)：同主短調から借りた和音と、その実例。
 
-18. [機能和声の外へ](/non-functional-harmony)：旋法、4度堆積和音、平行和音、保続音、旋律からの和声、十二音。
+18. [マイナーのコード・スケール](/minor-chord-scales)：旋律的短音階と和声的短音階の7の和音と旋法、そして短調のii–V–i、裏コード、借用和音での使い方。
 
-19. [リハーモナイズ](/reharmonization)：よく知られた旋律の下に新しい和音を。
+19. [コード進行](/chord-progressions)：I–IV–V–Iや4つの和音のポップスのループから、カノン進行、王道進行、ツー・ファイブ・ワンまで、よく知られた進行と、それを使った曲。
 
-20. [ブルース](/blues)：ブルースの成り立ち、労働歌とコール・アンド・レスポンス、リフで進む12小節の形式、そしてジャズによるリハーモナイズ。
+20. [機能和声の外へ](/non-functional-harmony)：旋法、4度堆積和音、平行和音、保続音、旋律からの和声、十二音。
 
-21. [コードの書き方](/chord-notation)：通奏低音からコード・シンボルまで、そして和声のひとつの書き方が、私たちの聞き方をどう形づくってきたか。
+21. [リハーモナイズ](/reharmonization)：よく知られた旋律の下に新しい和音を。
 
-22. [慣習を破る](/breaking-conventions)：ノイズや偶然性からミニマリズムやフェイズまで、作曲家やミュージシャンが慣習を破ってきた方法。
+22. [ブルース](/blues)：ブルースの成り立ち、労働歌とコール・アンド・レスポンス、リフで進む12小節の形式、そしてジャズによるリハーモナイズ。
 
-23. [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。
+23. [コードの書き方](/chord-notation)：通奏低音からコード・シンボルまで、そして和声のひとつの書き方が、私たちの聞き方をどう形づくってきたか。
+
+24. [慣習を破る](/breaking-conventions)：ノイズや偶然性からミニマリズムやフェイズまで、作曲家やミュージシャンが慣習を破ってきた方法。
+
+25. [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。

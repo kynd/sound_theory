@@ -51,6 +51,7 @@ export const QUALITIES = {
     'mMaj7': [0, 3, 7, 11],
     '7sus4': [0, 5, 7, 10],
     '7#5':   [0, 4, 8, 10],
+    'maj7#5': [0, 4, 8, 11],
     'maj9':  [0, 4, 7, 11, 14],
     '9':     [0, 4, 7, 10, 14],
     'm9':    [0, 3, 7, 10, 14],
@@ -265,6 +266,138 @@ export const DIATONIC_PROGRESSIONS = [
         ['C', 'I', 'T'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'],
     ]) },
 ];
+
+/** A key's seven triads in order, then the tonic again with its bass an octave up. */
+function scaleTriads(list) {
+    return [...chords(2, list), { ...chords(2, [list[0]])[0], bass: C }];
+}
+
+/**
+ * The diatonic triads of C minor in its three forms, natural, harmonic, and melodic,
+ * with the bass climbing from C3 to C4 as in the major set.
+ */
+export const DIATONIC_MINOR_PROGRESSIONS = [
+    { id: 'natural-minor-triads', label: 'Natural minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
+        ['Cm', 'i'], ['Ddim', 'ii°'], ['E♭', '♭III'], ['Fm', 'iv'], ['Gm', 'v'], ['A♭', '♭VI'], ['B♭', '♭VII'],
+    ]) },
+    { id: 'harmonic-minor-triads', label: 'Harmonic minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
+        ['Cm', 'i'], ['Ddim', 'ii°'], ['E♭aug', '♭III+'], ['Fm', 'iv'], ['G', 'V'], ['A♭', '♭VI'], ['Bdim', 'vii°'],
+    ]) },
+    { id: 'melodic-minor-triads', label: 'Melodic minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
+        ['Cm', 'i'], ['Dm', 'ii'], ['E♭aug', '♭III+'], ['F', 'IV'], ['G', 'V'], ['Adim', 'vi°'], ['Bdim', 'vii°'],
+    ]) },
+];
+
+/** The dominant in C minor: the natural minor's v, then V7 in common progressions. */
+export const MINOR_DOMINANT_PROGRESSIONS = [
+    { id: 'i-iv-v-i', label: 'i–iv–v–i', chords: chords(4, [
+        ['Cm', 'i'], ['Fm', 'iv'], ['Gm', 'v'], ['Cm', 'i'],
+    ]) },
+    { id: 'i-iv-v7-i', label: 'i–iv–V7–i', chords: chords(4, [
+        ['Cm', 'i'], ['Fm', 'iv'], ['G7', 'V7'], ['Cm', 'i'],
+    ]) },
+    { id: 'i-v7', label: 'i–V7', chords: chords(4, [
+        ['Cm', 'i'], ['G7', 'V7'], ['Cm', 'i'], ['G7', 'V7'],
+    ]) },
+    { id: 'minor-ii-v-i', label: 'i7–iv7–iiø7–V7', chords: chords(4, [
+        ['Cm7', 'i7'], ['Fm7', 'iv7'], ['Dm7♭5', 'iiø7'], ['G7', 'V7'],
+    ]) },
+].map(p => ({ ...p, tempo: 96, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));
+
+/**
+ * The other chords of C minor in use: natural-minor loops with ♭VI, ♭VII, and ♭III,
+ * the Dorian IV from melodic minor, the line cliché, and the diminished seventh.
+ */
+export const MINOR_COLOR_PROGRESSIONS = [
+    { id: 'i-bvii-bvi-bvii', label: 'i–♭VII–♭VI–♭VII', tempo: 104, chords: chords(4, [
+        ['Cm', 'i'], ['B♭', '♭VII'], ['A♭', '♭VI'], ['B♭', '♭VII'],
+    ]) },
+    { id: 'i-bvi-biii-bvii', label: 'i–♭VI–♭III–♭VII', tempo: 96, chords: chords(4, [
+        ['Cm', 'i'], ['A♭', '♭VI'], ['E♭', '♭III'], ['B♭', '♭VII'],
+    ]) },
+    { id: 'i-iv-dorian', label: 'i7–IV7', tempo: 112, chords: chords(4, [
+        ['Cm7', 'i7'], ['F7', 'IV7'], ['Cm7', 'i7'], ['F7', 'IV7'],
+    ]) },
+    { id: 'line-cliche', label: 'Line cliché', tempo: 84, chords: chords(4, [
+        ['Cm', 'i'], ['CmMaj7', 'i(maj7)'], ['Cm7', 'i7'], ['Cm6', 'i6'],
+    ]) },
+    { id: 'i-viidim7-i', label: 'i–vii°7–i', tempo: 84, chords: chords(4, [
+        ['Cm', 'i'], ['Fm', 'iv'], ['Bdim7', 'vii°7'], ['Cm', 'i'],
+    ]) },
+].map(p => ({ ...p, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));
+
+// ── Chord scales ──
+
+/** The major, melodic minor (jazz minor), and harmonic minor scales, in semitones from the root. */
+const MAJOR_STEPS = [0, 2, 4, 5, 7, 9, 11];
+const MELODIC_MINOR_STEPS = [0, 2, 3, 5, 7, 9, 11];
+const HARMONIC_MINOR_STEPS = [0, 2, 3, 5, 7, 8, 11];
+
+/** Mode `k` (0 for the scale itself) of a scale, in semitones from its own root. */
+function mode(steps, k) {
+    return steps.map((_, i) => (steps[(i + k) % 7] - steps[k] + 12) % 12);
+}
+
+/**
+ * Chords, each with its chord scale run up an octave over it in eighth notes as the
+ * melody, from the chord's root in octave 4: `[symbol, roman, steps, beats = 4]`. With
+ * `steps` null the chord is held with no run.
+ */
+function chordScaleRuns(list) {
+    const melody = [];
+    const chordList = list.map(([symbol, roman, steps, beats = 4]) => {
+        if (steps) {
+            const root = C + parseChord(symbol).root;
+            [...steps, 12].forEach(s => melody.push({ midi: root + s, beats: 0.5 }));
+            if (beats > 4) melody.push({ midi: null, beats: beats - 4 });
+        } else {
+            melody.push({ midi: null, beats });
+        }
+        return { symbol, beats, roman };
+    });
+    return { chords: chordList, melody };
+}
+
+/** The seven chord scales of C melodic minor and of C harmonic minor, each mode over its seventh chord. */
+export const MINOR_MODE_PROGRESSIONS = [
+    { id: 'melodic-minor-modes', label: 'Melodic minor modes', ...chordScaleRuns([
+        ['CmMaj7', 'I'], ['Dm7', 'II'], ['E♭maj7♯5', 'III'], ['F7(♯11)', 'IV'],
+        ['G7(♭13)', 'V'], ['Am7♭5', 'VI'], ['B7alt', 'VII'],
+    ].map(([symbol, roman], k) => [symbol, roman, mode(MELODIC_MINOR_STEPS, k)])) },
+    { id: 'harmonic-minor-modes', label: 'Harmonic minor modes', ...chordScaleRuns([
+        ['CmMaj7', 'I'], ['Dm7♭5', 'II'], ['E♭maj7♯5', 'III'], ['Fm7(♯11)', 'IV'],
+        ['G7(♭9, ♭13)', 'V'], ['A♭maj7(♯9)', 'VI'], ['Bdim7', 'VII'],
+    ].map(([symbol, roman], k) => [symbol, roman, mode(HARMONIC_MINOR_STEPS, k)])) },
+].map(p => ({ ...p, tempo: 96 }));
+
+/**
+ * Those chord scales in use: a minor ii–V–i with each system, a tritone substitute, and
+ * chords borrowed into C major.
+ */
+export const MINOR_CHORD_SCALE_PROGRESSIONS = [
+    { id: 'ii-v-i-altered', label: 'ii–V–i, altered', ...chordScaleRuns([
+        ['Dm7♭5', 'iiø7', mode(MELODIC_MINOR_STEPS, 5)],
+        ['G7alt', 'V7alt', mode(MELODIC_MINOR_STEPS, 6)],
+        ['Cm6', 'i6', MELODIC_MINOR_STEPS, 8],
+    ]) },
+    { id: 'ii-v-i-harmonic', label: 'ii–V–i, harmonic', ...chordScaleRuns([
+        ['Dm7♭5', 'iiø7', mode(HARMONIC_MINOR_STEPS, 1)],
+        ['G7(♭9, ♭13)', 'V7', mode(HARMONIC_MINOR_STEPS, 4)],
+        ['CmMaj7', 'i(maj7)', HARMONIC_MINOR_STEPS, 8],
+    ]) },
+    { id: 'tritone-substitute', label: 'Tritone substitute', ...chordScaleRuns([
+        ['Dm7♭5', 'iiø7', mode(MELODIC_MINOR_STEPS, 5)],
+        ['D♭7(♯11)', 'subV7', mode(MELODIC_MINOR_STEPS, 3)],
+        ['Cm6', 'i6', MELODIC_MINOR_STEPS, 8],
+    ]) },
+    { id: 'borrowed-in-major', label: 'Borrowed in C major', ...chordScaleRuns([
+        ['Cmaj7', 'Imaj7', MAJOR_STEPS],
+        ['A♭maj7', '♭VImaj7', mode(HARMONIC_MINOR_STEPS, 5)],
+        ['Fm6', 'iv6', MELODIC_MINOR_STEPS],
+        ['B♭7(♯11)', '♭VII7', mode(MELODIC_MINOR_STEPS, 3)],
+        ['Cmaj7', 'Imaj7', MAJOR_STEPS, 8],
+    ]) },
+].map(p => ({ ...p, tempo: 96 }));
 
 export const CHORD_TYPE_PROGRESSIONS = [
     { id: 'triad-types', label: 'Chord types', tempo: 80, chords: chords(2, [
@@ -569,6 +702,11 @@ export const WALTZ_PROGRESSIONS = [
 /** Named sets of progressions, for a demo that takes the set as a URL parameter. */
 export const PROGRESSION_SETS = {
     diatonic: DIATONIC_PROGRESSIONS,
+    'diatonic-minor': DIATONIC_MINOR_PROGRESSIONS,
+    'minor-dominant': MINOR_DOMINANT_PROGRESSIONS,
+    'minor-colors': MINOR_COLOR_PROGRESSIONS,
+    'minor-modes': MINOR_MODE_PROGRESSIONS,
+    'minor-chord-scales': MINOR_CHORD_SCALE_PROGRESSIONS,
     types: CHORD_TYPE_PROGRESSIONS,
     sevenths: SEVENTH_PROGRESSIONS,
     functional: FUNCTIONAL_PROGRESSIONS,

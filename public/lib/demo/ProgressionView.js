@@ -16,7 +16,8 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * chords in pink. A chord with a `comp` is drawn as its hits (the bass alone, the
  * notes above it) at the beats they fall on. Sounding notes are red.
  *
- * The chord symbols sit on a line above the roll; the Roman numerals and functions
+ * The chord symbols sit on a line above the roll (on two lines, alternating, when a
+ * symbol is wider than its chord); the Roman numerals and functions
  * (T, SD, D, SDm), where the progression has them, on lines below. Pressing a chord
  * plays it through `onPress(i)` / `onRelease(i)`.
  */
@@ -102,13 +103,19 @@ export class ProgressionView {
         const chordBeats = chords.reduce((s, c) => s + c.beats, 0);
         const melodyBeats = melody.reduce((s, n) => s + n.beats, 0);
         const beats = Math.max(chordBeats, melodyBeats);
-        const x0 = INSET, width = w - 2 * INSET;
-        const xOf = beat => x0 + (beat / beats) * width;
+        const x0 = INSET, rollWidth = w - 2 * INSET;
+        const xOf = beat => x0 + (beat / beats) * rollWidth;
 
         // Pitch: every note shown, with a semitone of room above and below.
         const all = [...this.voicings.flatMap(v => v.notes), ...melody.filter(n => n.midi !== null).map(n => n.midi)];
         const low = Math.min(...all) - 1, high = Math.max(...all) + 1;
-        const top = INSET + LINE + GRID;
+        // Symbols alternate between two lines when one would run into the next.
+        ctx.font = FONT;
+        const stagger = chords.some(c => {
+            const room = (c.beats / beats) * rollWidth - GAP;
+            return c.symbol && ctx.measureText(c.symbol).width > room;
+        });
+        const top = INSET + (stagger ? 2 : 1) * LINE + GRID;
         const bottom = h - INSET - (hasRoman ? LINE : 0) - (hasFn ? LINE : 0) - (hasRoman || hasFn ? GRID : 0);
         const row = (bottom - top) / (high - low + 1);
         const yOf = midi => top + (high - midi) * row;
@@ -136,7 +143,7 @@ export class ProgressionView {
             });
             const cx = (x1 + x2) / 2;
             ctx.fillStyle = COLORS.ink;
-            if (chord.symbol && this.voicings[i]?.notes.length) ctx.fillText(chord.symbol, cx, INSET + LINE / 2);
+            if (chord.symbol && this.voicings[i]?.notes.length) ctx.fillText(chord.symbol, cx, INSET + LINE / 2 + (stagger && i % 2 ? LINE : 0));
             let y = bottom + GRID + LINE / 2;
             if (hasRoman) { ctx.fillText(chord.roman ?? '', cx, y); y += LINE; }
             if (hasFn) ctx.fillText(chord.fn ?? '', cx, y);

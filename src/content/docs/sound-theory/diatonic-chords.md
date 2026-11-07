@@ -34,6 +34,6 @@ Choose an **Example** and press **Play**. The plot is a piano roll: time runs fr
 
 **Diatonic triads**は、7つの和音を順に、Cから1オクターブ上のCまで鳴らします。**I–IV–V–I**は最もシンプルな完結した進行で、帰る、離れる、緊張する、そして再び帰る、という流れです。**I–vi–IV–V**は、1950年代以降、数えきれないほどのポップスで使われてきた進行です。
 
-A minor key has its own diatonic chords. In C natural minor, they are Cm, Ddim, E♭, Fm, Gm, A♭, and B♭ (i, ii°, ♭III, iv, v, ♭VI, ♭VII). Raising the 7th in [harmonic minor](/minor-scales) turns Gm into G, a major dominant chord.
+A minor key has its own diatonic chords, and three sets of them, one for each form of the minor scale. They have a page of their own: [Chords in Minor Keys](/minor-key-chords).
 
-短調にも、その調ならではのダイアトニック・コードがあります。Cナチュラル・マイナーでは、Cm、Ddim、E♭、Fm、Gm、A♭、B♭（i、ii°、♭III、iv、v、♭VI、♭VII）です。[和声的短音階](/minor-scales)では7番目の音を上げることで、Gmが長三和音のG、つまりメジャー・ドミナントに変わります。
+短調にも、その調ならではのダイアトニック・コードがあり、短音階の3つの形に応じて3組あります。それについては[短調の和音](/minor-key-chords)のページで扱います。
