@@ -70,3 +70,11 @@ A perfectly steady tempo isn’t always necessary—or even desirable. Musicians
 Today, many musicians play to a click—a metronome only the players can hear, often through in-ear monitors—not only in the studio but also onstage. A click keeps a band synchronized with prerecorded tracks and aligns the music with a show’s video, lighting, and other elements. These tools help create the best possible audience experience and enable shows that would otherwise be impossible. But they also impose a constraint: the tempo is set in advance and can no longer respond to the players, the room, or the mood of the night. It’s worth noticing which music follows a grid and which is free to breathe—and how each feels.
 
 現在、多くのミュージシャンはクリックに合わせて演奏します。クリックとは、演奏者だけに聞こえるメトロノームで、イヤーモニターを通じて聞くことがよくあります。スタジオだけでなく、ステージでも使われています。クリックを使えば、バンドは事前に録音されたトラックと同期でき、映像や照明などの演出と音楽をぴったり合わせられます。こうしたツールは、観客に最高の体験を届けるのに役立ち、ほかの方法では実現できないショーも可能にします。しかし、制約もあります。テンポがあらかじめ決められ、演奏者や会場、その夜の雰囲気に応じて変えられなくなるのです。グリッドに沿って演奏される音楽と、自由に揺らぐ音楽の違いに耳を傾け、それぞれがどう感じられるかに注目してみましょう。
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

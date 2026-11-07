@@ -53,3 +53,11 @@ Choose an **Example** and press **Play**, each chord with the 1-2-3-5 pattern. *
 Chords that change every two beats leave no time for long scale runs. Coltrane often played a short four-note pattern on each chord, the root, 2nd, 3rd, and 5th, in eighth notes, sometimes called a digital pattern. It spells each chord quickly and clearly, so a fast cycle of keys becomes a chain of easy, recognizable shapes, and it moves easily into any key.
 
 2拍ごとに変わる和音では、長い音階を弾く時間がありません。コルトレーンはよく、各和音の上で、根音、2度、3度、5度という短い4音のパターンを8分音符で弾きました。デジタル・パターンと呼ばれることもあります。各和音を素早くはっきりと描くので、速く変わる調のめぐりが、弾きやすくわかりやすい形の連なりになり、どの調にも簡単に移せます。
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

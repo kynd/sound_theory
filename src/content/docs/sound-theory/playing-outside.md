@@ -22,12 +22,20 @@ Press **Play** to hear a D Dorian phrase over Dm7, the same phrase a half step h
 # Superimposing a ii–V
 # ii–Vを重ねる
 
-Another way is to play a different progression over the one that is sounding. Over a bar of G7 leading to C, play the ii–V a tritone away, A♭m7–D♭7, as if the harmony had moved there. D♭7 is the tritone substitute for G7 (see [Tension and Resolution](/tension-and-resolution)), so the superimposed line contains many altered tensions of G7 and resolves by half steps into C. The rhythm section keeps playing G7, and the clash between the line and the chord is the point.
+Another way is to play a different progression over the one that is sounding. Over a bar of G7 leading to C, play the ii–V a tritone away, A♭m7–D♭7, as if the harmony had moved there. D♭7 is the tritone substitute for G7 (see [Tension and Resolution](/tension-and-resolution)), and the two arpeggios bring in the altered sound: together they spell A♭, B, D♭, E♭, F, and G♭, which over G7 are the ♭9, 3rd, ♭5, ♭13, and 7th, plus G♭, a half step below the root. The scale behind A♭m7–D♭7 is G♭ major, which is the G altered scale (see [Minor Chord Scales](/minor-chord-scales)) with G♭ in place of G, so the line sounds altered over G7 and resolves by half steps into C. The rhythm section keeps playing G7, and the clash between the line and the chord is the point.
 
-もうひとつの方法は、鳴っている進行の上に別の進行を重ねることです。Cへ向かうG7の1小節の上で、和声がそこへ移ったかのように、三全音離れたii–V、A♭m7–D♭7を弾きます。D♭7はG7の裏コードなので（[緊張と解決](/tension-and-resolution)を参照）、重ねた旋律はG7の変化テンションを多く含み、半音でCへ解決します。リズム・セクションはG7を弾き続けていて、旋律と和音のぶつかりこそが狙いなのです。
+もうひとつの方法は、鳴っている進行の上に別の進行を重ねることです。Cへ向かうG7の1小節の上で、和声がそこへ移ったかのように、三全音離れたii–V、A♭m7–D♭7を弾きます。D♭7はG7の裏コードで（[緊張と解決](/tension-and-resolution)を参照）、2つのアルペジオはオルタードの響きをもたらします。あわせるとA♭、B、D♭、E♭、F、G♭となり、G7に対しては♭9、3度、♭5、♭13、7度、そして根音の半音下のG♭です。A♭m7–D♭7のもとになる音階はG♭メジャーで、これはGオルタード・スケール（[マイナーのコード・スケール](/minor-chord-scales)を参照）のGをG♭に置き換えたものです。そのため旋律はG7の上でオルタードの響きを持ち、半音でCへ解決します。リズム・セクションはG7を弾き続けていて、旋律と和音のぶつかりこそが狙いなのです。
 
 Press **Play** to hear a Dorian line over Dm7, then arpeggios of A♭m7 and D♭7 over the G7, named under the chord, landing on C. The backing keeps striking G7 every two beats underneath. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
 **Play**を押すと、Dm7の上でドリアンの旋律が、G7の上でA♭m7とD♭7のアルペジオ（和音の下に名前を示します）が鳴り、Cに着地します。伴奏はその下で、2拍ごとにG7を鳴らし続けます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=outside&example=tritone-ii-v&key" title="ii–V a tritone away" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

@@ -33,3 +33,11 @@ The grid shows one bar, with a row for each drum (hi-hat, rim click, snare, and 
 グリッドは1小節を表し、各行はドラム（ハイハット、リムクリック、スネア、キック）、各列は8分音符1つ（シャッフルでは1拍の3分の1）に対応します。拍の位置は、間隔を広くして示しています。黄色い打音の高さは音量を表し、セルいっぱいなら通常の打音、低ければ弱い打音です。再生中の列は点灯します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。ドラッグしているあいだは、その値がパーセントで表示されます。上の数字は小節の拍を示し、4/4なら1から4まで表示されます。再生中の拍は赤く表示されます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=meters" title="Drum patterns in time signatures" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

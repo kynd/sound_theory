@@ -25,3 +25,11 @@ Choose an **Example** and press **Play**. **Arpeggios** plays the chord tones of
 **Example**を選んで**Play**を押してください。**Arpeggios**は各和音の音を4分音符で、いつもいちばん近い音へ動きながら鳴らします。**Guide tones**は3度と7度だけを、1小節に2つずつ鳴らします。**Joined by steps**は拍ごとに和音の音を置いてそのあいだを音階でつなぎ、最後は半音のD♯からEへと冒頭に戻ります。**Enclosures**は1拍目と3拍目に和音の音で着地し、2拍目と4拍目で次の目標を囲んで、小節線で新しい和音の和音の音（多くは3度）に着地します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=chord-tones&key" title="Outlining the changes" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

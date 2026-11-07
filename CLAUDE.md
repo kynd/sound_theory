@@ -196,6 +196,7 @@ src/content/docs/
     pulse-and-cycles.md          pulse, accents, cycles                slug: pulse-and-cycles
     time-signatures.md           meters, drum patterns                 slug: time-signatures
     rhythm-and-feel.md           subdivisions, styles, timing          slug: rhythm-and-feel
+    articulation.md              legato, staccato, accents, swing      slug: articulation
     diatonic-chords.md           triads, Roman numerals, functions     slug: diatonic-chords
     chord-types.md               dim, aug, sus                         slug: chord-types
     seventh-chords.md            sevenths, tensions                    slug: seventh-chords

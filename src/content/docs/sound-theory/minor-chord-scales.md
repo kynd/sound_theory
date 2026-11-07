@@ -74,3 +74,11 @@ The demo below plays each of these with its chord scales, in the same way as the
 下のデモは、これらをそれぞれのコード・スケールとともに、上のデモと同じように鳴らします。**ii–V–i, altered**は、Dロクリアン♮2、Gオルタード、Cの旋律的短音階を使います。**ii–V–i, harmonic**は、Dロクリアン♮6、Gフリジアン・ドミナント、Cの和声的短音階を使います。**Tritone substitute**はG7をD♭7に置き換え、D♭リディアン・ドミナントを使います。**Borrowed in C major**はCmaj7–A♭maj7–Fm6–B♭7–Cmaj7と進み、どの和音も上で述べた音階とともに鳴ります。デモは本文と同じくCマイナー（**Borrowed in C major**はCメジャー）で鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-chord-scales&key=minor" title="Minor chord scales in practice" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

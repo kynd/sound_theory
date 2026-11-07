@@ -37,3 +37,11 @@ Choose an **Example** and press **Play**. Over one held chord, each beat plays o
 **Example**を選んで**Play**を押してください。ひとつの和音を鳴らし続けたまま、1拍ごとにひとつの三和音を3連符で弾き、三和音をたどって上ってから下りてきます。各拍の下のラベルは、和音の根音から数えた三和音の根音を示します。**Lydian: I and II**はCmaj7(♯11)の上でCとDを、**Dorian: ♭III and IV**はDm7の上でFとGを、**Melodic minor: IV and V**はCmMaj7の上でFとGを使います。**Altered: ♭V and ♭VI**はG7altの上でD♭とE♭を使ってCmaj7へ解決し、**Half-whole: I, ♭III, ♭V, VI**はG7(♭9)の上で、ハーフ・ホール・スケールの4つの長三和音を上ります。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=triad-pairs&key" title="Triad pairs" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

@@ -13,7 +13,8 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * (each chord as wide as its beats), pitch bottom to top, and each note of a chord's
  * voicing is a yellow bar across the chord's width, so the way voices move from chord
  * to chord shows as bars that stay level or step a little. A melody is drawn over the
- * chords in pink. A chord with a `comp` is drawn as its hits (the bass alone, the
+ * chords in pink, each note as long as it sounds and as thick as it is loud. A chord
+ * with a `comp` is drawn as its hits (the bass alone, the
  * notes above it) at the beats they fall on. Sounding notes are red.
  *
  * The chord symbols sit on a line above the roll (on two lines, alternating, when a
@@ -125,10 +126,10 @@ export class ProgressionView {
         const yOf = midi => top + (high - midi) * row;
         const barH = Math.max(2, Math.min(row - 1, 8));
 
-        const bar = (x1, x2, midi, color) => {
+        const bar = (x1, x2, midi, color, height = barH) => {
             ctx.fillStyle = color;
             ctx.beginPath();
-            ctx.roundRect(x1, yOf(midi) + (row - barH) / 2, Math.max(1, x2 - x1), barH, barH / 2);
+            ctx.roundRect(x1, yOf(midi) + (row - height) / 2, Math.max(1, x2 - x1), height, height / 2);
             ctx.fill();
         };
 
@@ -160,8 +161,12 @@ export class ProgressionView {
 
         at = 0;
         melody.forEach((note, i) => {
+            // A note's sounding length (`gate`) sets the bar's length, and its loudness
+            // (`velocity`) the bar's thickness.
             if (note.midi !== null) {
-                bar(xOf(at) + GAP / 2, xOf(at + note.beats) - GAP / 2, note.midi, i === this.note ? COLORS.red : COLORS.pink);
+                const height = Math.max(2, barH * (0.4 + 0.6 * (note.velocity ?? 0.8)) / 0.88);
+                bar(xOf(at) + GAP / 2, xOf(at + note.beats * (note.gate ?? 1)) - GAP / 2, note.midi,
+                    i === this.note ? COLORS.red : COLORS.pink, height);
             }
             at += note.beats;
         });

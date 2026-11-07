@@ -19,7 +19,9 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  *     stacks of thirds (quartal chords, chords from a twelve-tone row). A `tied`
  *     chord holds the previous one on instead of striking again, so the label under a
  *     sustained chord can change (the triads of a triad pair).
- *   - `melody`: `[{ midi, beats }]` played over the chords (`midi: null` is a rest).
+ *   - `melody`: `[{ midi, beats, velocity?, gate? }]` played over the chords (`midi:
+ *     null` is a rest); `velocity` (0–1) sets a note's loudness and `gate` the share of
+ *     its length that sounds (articulation).
  *   - `riff`: `[[semitones, beats], …]`, a bass riff played up from each chord's bass
  *     note in place of the held bass, repeated through the chord.
  *   - `comp`: `[[part, beats], …]`, a rhythm for the chords in place of holding them,
@@ -31,7 +33,8 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  *     play-along demo shows only these on its keyboard, the first as the root.
  *   - `key`: the root it is written on, for moving it to another key (default C).
  *   - `voicing`: `'open'` spreads each chord's notes at their own intervals above the
- *     root, so tensions sit above the chord tones (see voiceProgression).
+ *     root, so tensions sit above the chord tones; `'rootless'` uses jazz piano's
+ *     rootless voicings with added 9ths and 13ths (see voiceProgression).
  *   - `bassLow`: the lowest bass note (MIDI); the bass of every chord falls in the
  *     octave from it. Defaults to E2 (40).
  *   - `drums`: a rhythm pattern (see rhythm.js), looped along with the chords.
@@ -132,6 +135,30 @@ function upperPitchClasses(parsed) {
 }
 
 /**
+ * The notes a jazz pianist would play above the bass, as pitch classes: the root left
+ * to the bass, and the color the style expects added. A plain seventh chord gets its
+ * 9th (and a dominant its 13th in place of the 5th), the rootless voicings pianists use
+ * when a bassist plays the root: 3–5–7–9 for major and minor sevenths, 3–13–7–9 for a
+ * dominant. Sixth chords take the 9th too. Chords with written tensions keep them, the
+ * 5th dropped once there are more than four notes; diminished and half-diminished
+ * chords keep all four tones; triads stay triads.
+ */
+function rootlessPitchClasses(parsed) {
+    const COLOR = {
+        '0,4,7,11': [4, 7, 11, 14], '0,3,7,10': [3, 7, 10, 14], '0,4,7,10': [4, 9, 10, 14],
+        '0,4,7,9': [4, 7, 9, 14], '0,3,7,9': [3, 7, 9, 14], '0,3,7,11': [3, 7, 11, 14],
+        '0,5,7,10': [5, 7, 10, 14], '0,3,6,10': [0, 3, 6, 10], '0,3,6,9': [0, 3, 6, 9],
+    };
+    const ivs = parsed.intervals;
+    let upper = COLOR[ivs.join(',')];
+    if (!upper) {
+        upper = ivs.length >= 4 ? ivs.filter(i => i !== 0) : ivs;
+        if (upper.length > 4) upper = upper.filter(i => i !== 7);
+    }
+    return [...new Set(upper.map(i => (parsed.root + i) % 12))];
+}
+
+/**
  * An open voicing: the upper notes at their own intervals above the root (the 9th a
  * ninth up, the 13th a thirteenth up) rather than packed into one octave, from the
  * lowest octave that keeps them clear of the bass. Tensions then sit above the chord
@@ -174,11 +201,14 @@ function motion(notes, previous) {
  * position above it, each chord in the inversion that moves least from the one
  * before (smooth voice leading). With a melody, the chords stay below the melody notes
  * they sound under. The bass falls in the octave from `bassLow`. With `open`, every
- * chord takes an open voicing instead (see openVoicing), without voice leading. Returns
+ * chord takes an open voicing instead (see openVoicing), without voice leading. With
+ * `rootless`, chords take the rootless voicings of jazz piano (see rootlessPitchClasses)
+ * in close position between D3 and D5, moving as little as possible, and sit where a
+ * pianist comping under a soloist would rather than under the melody. Returns
  * `{ bass, upper, notes }` per chord, in MIDI numbers. Chords with hand-written
  * `notes` keep them.
  */
-export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open = false } = {}) {
+export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open = false, rootless = false } = {}) {
     // The lowest melody note during each chord, to keep the chord under it.
     const ceilings = [];
     let start = 0;
@@ -203,6 +233,14 @@ export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open
         const bass = chord.bass ?? bassLow + ((parsed.bass - bassLow) % 12 + 12) % 12;
         if (open) {
             const upper = openVoicing(parsed, bass);
+            return { bass, upper, notes: [bass, ...upper] };
+        }
+        if (rootless) {
+            const all = candidates(rootlessPitchClasses(parsed), 55).filter(v => v[0] > bass + 2);
+            const inRange = all.filter(v => v[0] >= 50 && v[v.length - 1] <= 74);
+            const options = inRange.length ? inRange : all;
+            const upper = options.reduce((best, v) => motion(v, previous) < motion(best, previous) ? v : best);
+            previous = upper;
             return { bass, upper, notes: [bass, ...upper] };
         }
         const options = candidates(upperPitchClasses(parsed), UPPER_LOW)
@@ -1538,6 +1576,65 @@ export const WALKING_BASS_PROGRESSIONS = [
     walk('from-above', 'From above', [50, 49, 48, 46, 47, 46, 45, 51, 52, 51, 50, 46, 45, 44, 43, 49]),
 ];
 
+// ── Articulation ──
+
+/**
+ * The same notes played in different ways: a melody (`[name, beats]` pairs) given a
+ * style that sets each note's length (`gate`) and loudness (`velocity`), and for
+ * swing, the timing of each pair of eighth notes.
+ *
+ *   - legato: every note held to the next, at one level.
+ *   - staccato: every note cut short.
+ *   - accents: the notes on beats 1 and 3 loud, the others soft.
+ *   - swell: a crescendo to the middle of the phrase and a decrescendo after.
+ *   - straight: even eighth notes, at one level.
+ *   - swing: each pair of eighths played long–short (2/3 and 1/3 of a beat), the
+ *     off-beat accented and slightly short, as horn players often phrase it.
+ */
+function articulate(list, style) {
+    const notes = melody(list);
+    let at = 0;
+    return notes.map((note, i) => {
+        const beat = at % 1 < 1e-6, strong = beat && Math.round(at) % 2 === 0;
+        at += note.beats;
+        const swell = 0.25 + 0.7 * Math.sin(Math.PI * i / Math.max(1, notes.length - 1));
+        switch (style) {
+            case 'legato': return { ...note, gate: 1, velocity: 0.7 };
+            case 'staccato': return { ...note, gate: 0.3, velocity: 0.75 };
+            case 'accents': return { ...note, gate: 0.9, velocity: strong ? 0.95 : 0.45 };
+            case 'swell': return { ...note, gate: 0.95, velocity: swell };
+            case 'swing': {
+                const eighth = Math.abs(note.beats - 0.5) < 1e-6;
+                if (!eighth) return { ...note, gate: 0.95, velocity: 0.75 };
+                return beat
+                    ? { ...note, beats: 2 / 3, gate: 1, velocity: 0.6 }
+                    : { ...note, beats: 1 / 3, gate: 0.8, velocity: 0.95 };
+            }
+            default: return { ...note, gate: 0.95, velocity: 0.75 };
+        }
+    });
+}
+
+/** "Ode to Joy" (Beethoven, 1824): the first four bars, over C and G. */
+const ODE = [
+    ['E5', 1], ['E5', 1], ['F5', 1], ['G5', 1], ['G5', 1], ['F5', 1], ['E5', 1], ['D5', 1],
+    ['C5', 1], ['C5', 1], ['D5', 1], ['E5', 1], ['E5', 1.5], ['D5', 0.5], ['D5', 2],
+];
+const ODE_CHORDS = chords(4, [['C', 'I'], ['G', 'V'], ['C', 'I'], ['G', 'V']]);
+/** An eighth-note line over C and G. */
+const EIGHTHS = [
+    'C5', 'D5', 'E5', 'G5', 'A5', 'G5', 'E5', 'D5', 'F5', 'E5', 'D5', 'B4', 'G4', 'A4', 'B4', 'D5',
+    'E5', 'D5', 'C5', 'A4', 'G4', 'A4', 'C5', 'D5', 'E5', 'D5', 'B4', 'G4', 'F4', 'G4', 'B4', 'D5',
+].map(n => [n, 0.5]);
+const EIGHTH_CHORDS = chords(4, [['C', 'I'], ['G', 'V'], ['C', 'I'], ['G', 'V']]);
+
+export const ARTICULATION_PROGRESSIONS = [
+    ...[['legato', 'Legato'], ['staccato', 'Staccato'], ['accents', 'Accents'], ['swell', 'Swell']]
+        .map(([style, label]) => ({ id: `ode-${style}`, label, tempo: 100, chords: ODE_CHORDS, melody: articulate(ODE, style) })),
+    ...[['straight', 'Straight'], ['swing', 'Swing']]
+        .map(([style, label]) => ({ id: `line-${style}`, label, tempo: 132, chords: EIGHTH_CHORDS, melody: articulate(EIGHTHS, style) })),
+].map(p => ({ ...p, loop: true }));
+
 // ── Voicing ──
 
 /** Hand-voiced chords: `[symbol, label, notes]`, the label shown under the chord. */
@@ -1593,32 +1690,36 @@ export const UPPER_STRUCTURE_PROGRESSIONS = [
 ];
 
 /** Named sets of progressions, for a demo that takes the set as a URL parameter. */
+/** The improvisation examples comp with rootless jazz piano voicings, as a pianist would under a soloist. */
+const rootless = list => list.map(p => ({ ...p, voicing: 'rootless' }));
+
 export const PROGRESSION_SETS = {
     diatonic: DIATONIC_PROGRESSIONS,
     'diatonic-minor': DIATONIC_MINOR_PROGRESSIONS,
     'minor-dominant': MINOR_DOMINANT_PROGRESSIONS,
     'minor-colors': MINOR_COLOR_PROGRESSIONS,
-    'minor-modes': MINOR_MODE_PROGRESSIONS,
-    'minor-chord-scales': MINOR_CHORD_SCALE_PROGRESSIONS,
+    'minor-modes': rootless(MINOR_MODE_PROGRESSIONS),
+    'minor-chord-scales': rootless(MINOR_CHORD_SCALE_PROGRESSIONS),
     'sixth-diminished': SIXTH_DIMINISHED_PROGRESSIONS,
     'bebop-lines': BEBOP_LINE_PROGRESSIONS,
     'bebop-ii-v': BEBOP_II_V_PROGRESSIONS,
-    pentatonic: PENTATONIC_PROGRESSIONS,
-    'diatonic-improv': DIATONIC_IMPROV_PROGRESSIONS,
-    'two-five-scales': TWO_FIVE_SCALE_PROGRESSIONS,
-    'two-five-phrases': TWO_FIVE_PHRASE_PROGRESSIONS,
+    pentatonic: rootless(PENTATONIC_PROGRESSIONS),
+    'diatonic-improv': rootless(DIATONIC_IMPROV_PROGRESSIONS),
+    'two-five-scales': rootless(TWO_FIVE_SCALE_PROGRESSIONS),
+    'two-five-phrases': rootless(TWO_FIVE_PHRASE_PROGRESSIONS),
     'jazz-chord-scales': JAZZ_CHORD_SCALE_PROGRESSIONS,
-    'modern-pentatonics': [...MODERN_PENTATONIC_PROGRESSIONS, ...MODERN_PENTATONIC_PHRASES],
-    'jazz-phrases': JAZZ_PHRASE_PROGRESSIONS,
-    'jazz-chords': [...JAZZ_CHORD_SCALE_PROGRESSIONS, ...JAZZ_PHRASE_PROGRESSIONS],
+    'modern-pentatonics': rootless([...MODERN_PENTATONIC_PROGRESSIONS, ...MODERN_PENTATONIC_PHRASES]),
+    'jazz-phrases': rootless(JAZZ_PHRASE_PROGRESSIONS),
+    'jazz-chords': rootless([...JAZZ_CHORD_SCALE_PROGRESSIONS, ...JAZZ_PHRASE_PROGRESSIONS]),
     'triad-pairs': TRIAD_PAIR_PROGRESSIONS,
-    'chord-tones': CHORD_TONE_PROGRESSIONS,
-    idioms: IDIOM_PROGRESSIONS,
+    'chord-tones': rootless(CHORD_TONE_PROGRESSIONS),
+    idioms: rootless(IDIOM_PROGRESSIONS),
     outside: OUTSIDE_PROGRESSIONS,
-    fourths: FOURTHS_PROGRESSIONS,
-    coltrane: COLTRANE_PROGRESSIONS,
+    fourths: rootless(FOURTHS_PROGRESSIONS),
+    coltrane: rootless(COLTRANE_PROGRESSIONS),
     modal: MODAL_PROGRESSIONS,
     'walking-bass': WALKING_BASS_PROGRESSIONS,
+    articulation: ARTICULATION_PROGRESSIONS,
     voicing: VOICING_PROGRESSIONS,
     'upper-structures': UPPER_STRUCTURE_PROGRESSIONS,
     types: CHORD_TYPE_PROGRESSIONS,
@@ -1684,7 +1785,7 @@ export class ProgressionPlayer {
         this.stop();
         this.progression = progression;
         this.voicings = voiceProgression(progression.chords, progression.melody ?? [],
-            { bassLow: progression.bassLow, open: progression.voicing === 'open' });
+            { bassLow: progression.bassLow, open: progression.voicing === 'open', rootless: progression.voicing === 'rootless' });
         this.hits = compHits(progression, this.voicings);
     }
 
@@ -1771,8 +1872,10 @@ export class ProgressionPlayer {
         const length = at;
         at = 0;
         melody.forEach((note, i) => {
+            // A note may set its own loudness (`velocity`) and the share of its length it
+            // sounds for (`gate`: 1 is legato, small is staccato).
             if (note.midi !== null) {
-                events.push({ at, beats: note.beats, notes: [note.midi], velocity: 0.8,
+                events.push({ at, beats: note.beats * (note.gate ?? 1), notes: [note.midi], velocity: note.velocity ?? 0.8,
                     instrument: this.melodyInstrument, kind: 'melody', index: i });
             }
             at += note.beats;

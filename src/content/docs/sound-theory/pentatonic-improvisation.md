@@ -32,3 +32,11 @@ Then turn off **Phrase** to leave only the backing, and play along. The keyboard
 次に**Phrase**をオフにして伴奏だけにし、一緒に弾いてみてください。鍵盤には、その例のペンタトニックの5つの音だけが、主音に印をつけて表示されるので、どの鍵を押しても合います。マウス、またはコンピューターのキーボードのAから;までのキーで弾けます（ZとXでオクターブが変わります）。あいだに間を置いた短いフレーズを弾いたり、ひとつのアイデアを繰り返してから変えたり、フレーズを主音で終えたりしてみてください。デモは本文と同じくC（**vi–IV–I–V**はAマイナー）で鳴りますが、**Key**を選ぶとほかの調で弾け、鍵盤もそれに合わせて変わります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=pentatonic&key&play" title="Pentatonic phrases and play-along" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>

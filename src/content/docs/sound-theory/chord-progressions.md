@@ -99,3 +99,11 @@ A minor-key progression whose bass walks down from i to V: A, G, F, E. It is nam
 短調の進行で、ベースがiからVへ、A、G、F、Eと下がっていきます。スペイン南部アンダルシアのフラメンコで基本となる進行であることから、この名で呼ばれ、何世紀にもわたって使われてきました。Vは和声的短音階から来た長三和音なので（[短音階](/minor-scales)を参照）、最後の和音がiへ強く引き戻します。「旅立てジャック」（レイ・チャールズ、1961年）や「悲しき街角」（デル・シャノン、1961年）は、この進行でできています。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=common&example=andalusian&key=minor" title="i–♭VII–♭VI–V" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+<aside>
+  <span class="aside-icon">🎧</span>
+  <div class="aside-body">
+    <p>The demos on this page play every note strictly on the grid, at even loudness, with sampled and synthesized sounds. They cannot express the human nuance that makes this music come alive: swing and the push and pull of time, articulation and accents, touch, tone, and the way musicians listen and respond to each other. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このページのデモは、すべての音を厳密にグリッドの上で、均一な音量で、サンプリングや合成の音で鳴らしています。この音楽を生き生きとさせる人間的なニュアンス、つまりスウィングや時間の揺れ、アーティキュレーションやアクセント、タッチや音色、そしてミュージシャンが互いに聞き合い応え合うやり方は表現できません。ここで取り上げた音楽の実際の録音を、ぜひ聴いてみてください。</p>
+  </div>
+</aside>
