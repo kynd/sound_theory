@@ -484,6 +484,13 @@ export const SEVENTH_PROGRESSIONS = [
         ['Cmaj7', 'Imaj7', 'T'], ['Dm7', 'ii7', 'SD'], ['Em7', 'iii7', 'T'], ['Fmaj7', 'IVmaj7', 'SD'],
         ['G7', 'V7', 'D'], ['Am7', 'vi7', 'T'], ['Bm7♭5', 'viiø7', 'D'], ['Cmaj7', 'Imaj7', 'T'],
     ]) },
+    // Sixth chords beside the triad and the major seventh; Am7 has the notes of C6 over A.
+    { id: 'sixth-chords', label: 'Sixth chords', tempo: 80, chords: chords(2, [
+        ['C', 'I'], ['C6', 'I6'], ['Cmaj7', 'Imaj7'], ['Am7', 'vi7'], ['Cm6', 'i6'], ['C6/9', 'I6/9'],
+    ]) },
+    { id: 'ii-v-i6', label: 'ii–V–I6', tempo: 135, chords: chords(4, [
+        ['Dm7', 'ii7'], ['G7', 'V7'], ['C6', 'I6'], ['C6', 'I6'],
+    ]) },
     // The tensions take open voicings, so the added notes sit above the chord instead
     // of crowding into it.
     { id: 'major-tensions', label: 'Tensions on Cmaj7', tempo: 80, voicing: 'open', chords: chords(2, [
