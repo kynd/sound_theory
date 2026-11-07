@@ -17,7 +17,8 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * notes above it) at the beats they fall on. Sounding notes are red.
  *
  * The chord symbols sit on a line above the roll (on two lines, alternating, when a
- * symbol is wider than its chord); the Roman numerals and functions
+ * symbol is wider than its chord, and the same for the Roman numerals); the Roman
+ * numerals and functions
  * (T, SD, D, SDm), where the progression has them, on lines below. Pressing a chord
  * plays it through `onPress(i)` / `onRelease(i)`.
  */
@@ -109,14 +110,17 @@ export class ProgressionView {
         // Pitch: every note shown, with a semitone of room above and below.
         const all = [...this.voicings.flatMap(v => v.notes), ...melody.filter(n => n.midi !== null).map(n => n.midi)];
         const low = Math.min(...all) - 1, high = Math.max(...all) + 1;
-        // Symbols alternate between two lines when one would run into the next.
+        // Symbols, and Roman numerals, alternate between two lines when one would run
+        // into the next.
         ctx.font = FONT;
-        const stagger = chords.some(c => {
+        const crowded = key => chords.some(c => {
             const room = (c.beats / beats) * rollWidth - GAP;
-            return c.symbol && ctx.measureText(c.symbol).width > room;
+            return c[key] && ctx.measureText(c[key]).width > room;
         });
+        const stagger = crowded('symbol'), romanStagger = hasRoman && crowded('roman');
+        const romanLines = hasRoman ? (romanStagger ? 2 : 1) : 0;
         const top = INSET + (stagger ? 2 : 1) * LINE + GRID;
-        const bottom = h - INSET - (hasRoman ? LINE : 0) - (hasFn ? LINE : 0) - (hasRoman || hasFn ? GRID : 0);
+        const bottom = h - INSET - romanLines * LINE - (hasFn ? LINE : 0) - (hasRoman || hasFn ? GRID : 0);
         const row = (bottom - top) / (high - low + 1);
         const yOf = midi => top + (high - midi) * row;
         const barH = Math.max(2, Math.min(row - 1, 8));
@@ -145,7 +149,10 @@ export class ProgressionView {
             ctx.fillStyle = COLORS.ink;
             if (chord.symbol && this.voicings[i]?.notes.length) ctx.fillText(chord.symbol, cx, INSET + LINE / 2 + (stagger && i % 2 ? LINE : 0));
             let y = bottom + GRID + LINE / 2;
-            if (hasRoman) { ctx.fillText(chord.roman ?? '', cx, y); y += LINE; }
+            if (hasRoman) {
+                ctx.fillText(chord.roman ?? '', cx, y + (romanStagger && i % 2 ? LINE : 0));
+                y += romanLines * LINE;
+            }
             if (hasFn) ctx.fillText(chord.fn ?? '', cx, y);
             this._columns.push({ x: x1, w: x2 - x1, index: i });
             at += chord.beats;

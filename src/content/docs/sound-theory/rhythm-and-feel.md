@@ -9,9 +9,9 @@ Two beats in the same time signature and at the same tempo can feel completely d
 # Subdivisions and Styles
 # 分割とスタイル
 
-Choose a **Pattern** and press **Play**, as in the [time signature demo](/time-signatures). **Tempo** sets the beats per minute; clicking a cell turns a hit on or off, and dragging a hit up or down changes its loudness. All the patterns are in 4/4. The first three keep the kick and snare the same and change only the hi-hat. The grid’s columns represent sixteenth notes in the straight patterns, eighth-note triplets (three per beat) in the shuffle, and eighth notes across two bars in the bossa nova.
+Choose a **Pattern** and press **Play**. **Tempo** sets the beats per minute; clicking a cell turns a hit on or off, and dragging a hit up or down changes its loudness. All the patterns are in 4/4. The first three keep the kick and snare the same and change only the hi-hat. The grid’s columns represent sixteenth notes in the straight patterns, eighth-note triplets (three per beat) in the shuffle, and eighth notes across two bars in the bossa nova.
 
-[拍子記号のデモ](/time-signatures)と同じように、**Pattern**を選んで**Play**を押してください。**Tempo**は1分あたりの拍数を設定します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。パターンはすべて4/4拍子です。最初の3つはキックとスネアを同じにして、ハイハットだけを変えています。グリッドの列は、ストレートなパターンでは16分音符、シャッフルでは8分音符の3連符（1拍に3つ）、ボサノヴァでは2小節分の8分音符を表しています。
+**Pattern**を選んで**Play**を押してください。**Tempo**は1分あたりの拍数を設定します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。パターンはすべて4/4拍子です。最初の3つはキックとスネアを同じにして、ハイハットだけを変えています。グリッドの列は、ストレートなパターンでは16分音符、シャッフルでは8分音符の3連符（1拍に3つ）、ボサノヴァでは2小節分の8分音符を表しています。
 
 <div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=feels" title="Drum patterns with different feels" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
 
@@ -46,9 +46,9 @@ The grid is only a reference. Human musicians rarely place every note exactly on
 
 グリッドはあくまで目安です。人間の演奏者がすべての音をグリッドにぴったり合わせることはめったにありません。意図的に、あるいは無意識に、拍よりわずかに前に演奏してビートを押し進めたり、わずかに後ろに演奏してゆったりさせたりします。数十ミリ秒のずれは、間違いではなく個性として感じられます。それぞれの音の大きさや音色（太鼓は強く叩くと、大きくなるだけでなく明るい音になります）も同じくらい重要です。
 
-To hear the difference, try the demo below. It plays a simple beat at a steady 92 BPM, with the kick on beats 1 and 3 and the snare on beats 2 and 4. Press **Play**, then drag a hit left or right to shift it ahead of or behind the beat by up to 40 ms, or up and down to make it louder or softer. Click a cell without dragging to turn a hit on or off, as in the drum patterns on [Time Signatures](/time-signatures). A hit’s height shows its loudness, and the numbers above show the beat count.
+To hear the difference, try the demo below. It plays a simple beat at a steady 92 BPM, with the kick on beats 1 and 3 and the snare on beats 2 and 4. Press **Play**, then drag a hit left or right to shift it ahead of or behind the beat by up to 40 ms, or up and down to make it louder or softer. Click a cell without dragging to turn a hit on or off. A hit’s height shows its loudness, and the numbers above show the beat count.
 
-違いを聞くには、下のデモを試してみてください。キックは1拍目と3拍目、スネアは2拍目と4拍目に鳴る、92 BPMのシンプルなビートです。**Play**を押してから、打音を左右にドラッグすると、拍より前または後ろに最大40ミリ秒ずらせます。上下にドラッグすると、音が大きく、または小さくなります。ドラッグせずにセルをクリックすると、[拍子記号](/time-signatures)のドラムパターンと同じように、打音のオン・オフが切り替わります。打音の高さは音量を表し、上の数字は拍数を示します。
+違いを聞くには、下のデモを試してみてください。キックは1拍目と3拍目、スネアは2拍目と4拍目に鳴る、92 BPMのシンプルなビートです。**Play**を押してから、打音を左右にドラッグすると、拍より前または後ろに最大40ミリ秒ずらせます。上下にドラッグすると、音が大きく、または小さくなります。ドラッグせずにセルをクリックすると、打音のオン・オフが切り替わります。打音の高さは音量を表し、上の数字は拍数を示します。
 
 <div class="demo-wrap"><iframe src="/writing/demos/groove-timing/index.html" title="Timing and loudness of the backbeat" allow="autoplay" loading="lazy" style="height: 176px"></iframe></div>
 

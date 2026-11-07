@@ -1,6 +1,6 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
-import { PROGRESSION_SETS, ProgressionPlayer, transposeProgression } from '../../lib/audio/chords.js';
+import { PROGRESSION_SETS, ProgressionPlayer, transposeProgression, withSevenths } from '../../lib/audio/chords.js';
 import { ROOTS, MINOR_ROOTS } from '../../lib/audio/scales.js';
 import { Keyboard } from '../../lib/demo/Keyboard.js';
 import { ProgressionView } from '../../lib/demo/ProgressionView.js';
@@ -12,14 +12,15 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 // one progression from it (with no menu). ?view=chart shows them as a chord chart
 // instead of a piano roll. ?key adds a Key select that moves the progressions to
 // another key (?key=minor spells the keys as minor keys), and ?roots the same select
-// labeled Root, for chords built on a root rather than progressions in a key.
+// labeled Root, for chords built on a root rather than progressions in a key. A set
+// whose progressions have seventh chords gets a 7th toggle that switches to them.
 const params = new URLSearchParams(location.search);
 const SET = PROGRESSION_SETS[params.get('set')] ?? PROGRESSION_SETS.diatonic;
 const ONLY = SET.filter(p => p.id === params.get('example'));
 const PROGRESSIONS = ONLY.length ? ONLY : SET;
 const movable = params.has('roots') || params.has('key');
 const keyNames = params.get('key') === 'minor' ? MINOR_ROOTS : ROOTS;
-let progressionId = PROGRESSIONS[0].id, root = PROGRESSIONS[0].key ?? 'C';
+let progressionId = PROGRESSIONS[0].id, root = PROGRESSIONS[0].key ?? 'C', sevenths = false;
 const View = params.get('view') === 'chart' ? ChordChart : ProgressionView;
 
 const master = new MasterBus();
@@ -96,7 +97,8 @@ const keyboard = new Keyboard(document.getElementById('keyboard'), {
 });
 
 function useProgression() {
-    const progression = transposeProgression(PROGRESSIONS.find(p => p.id === progressionId), root);
+    const base = PROGRESSIONS.find(p => p.id === progressionId);
+    const progression = transposeProgression(sevenths ? withSevenths(base) : base, root);
     player.instrument = instrument(progression.sounds?.chords ?? 'piano');
     player.melodyInstrument = instrument(progression.sounds?.melody ?? progression.sounds?.chords ?? 'piano');
     player.setProgression(progression);
@@ -122,6 +124,19 @@ if (movable) {
         value: root,
         onChange: name => { root = name; useProgression(); },
     });
+}
+if (PROGRESSIONS.some(p => p.sevenths)) {
+    const toggle = document.createElement('button');
+    toggle.className = 'dp-toggle';
+    toggle.textContent = '7th';
+    toggle.addEventListener('click', () => {
+        sevenths = !sevenths;
+        toggle.classList.toggle('active', sevenths);
+        useProgression();
+    });
+    const divider = document.createElement('div');
+    divider.className = 'dp-divider';
+    controls.append(divider, toggle);
 }
 unwrap(controls);
 

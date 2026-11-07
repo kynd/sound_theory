@@ -21,9 +21,9 @@ Functional harmony grew out of European classical music and was generalized by t
 # Examples
 # 例
 
-The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** and press **Play**, or click a chord to hold it. The line at the bottom shows each chord's function. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+Choose an **Example** and press **Play**, or click a chord to hold it. The line at the bottom shows each chord's function. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-デモの使い方は[ダイアトニック・コード](/diatonic-chords)と同じです。**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。いちばん下の行に、それぞれの和音の機能が表示されます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。いちばん下の行に、それぞれの和音の機能が表示されます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=functional&key" title="Functional harmony" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

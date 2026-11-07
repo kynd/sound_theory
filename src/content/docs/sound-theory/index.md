@@ -45,9 +45,9 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 12. [Other Chords](/chord-types): diminished, augmented, and suspended chords, and how they connect others.
 
-13. [Chords in Minor Keys](/minor-key-chords): the diatonic chords of natural, harmonic, and melodic minor, the V7 in minor, and how the other chords are used.
+13. [Sevenths and Tensions](/seventh-chords): seventh chords, the 9th, 11th, and 13th, and altered tensions.
 
-14. [Sevenths and Tensions](/seventh-chords): seventh chords, the 9th, 11th, and 13th, and altered tensions.
+14. [Chords in Minor Keys](/minor-key-chords): the diatonic chords of natural, harmonic, and melodic minor, the V7 in minor, and how the other chords are used.
 
 15. [Functional Harmony](/functional-harmony): tonic, subdominant, and dominant, and progressions as movement between them.
 
@@ -95,9 +95,9 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 12. [その他の和音](/chord-types)：減三和音、増三和音、サスペンデッド・コードと、それらによる和音のつなぎ方。
 
-13. [短調の和音](/minor-key-chords)：自然短音階、和声的短音階、旋律的短音階のダイアトニック・コード、短調のV7、ほかの和音の使い方。
+13. [7の和音とテンション](/seventh-chords)：7の和音、9度、11度、13度、変化させたテンション。
 
-14. [7の和音とテンション](/seventh-chords)：7の和音、9度、11度、13度、変化させたテンション。
+14. [短調の和音](/minor-key-chords)：自然短音階、和声的短音階、旋律的短音階のダイアトニック・コード、短調のV7、ほかの和音の使い方。
 
 15. [機能和声](/functional-harmony)：トニック、サブドミナント、ドミナントと、そのあいだの動きとしての進行。
 

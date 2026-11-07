@@ -11,7 +11,7 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  * may be written ♭/♯ or b/#. `parseChord` turns a symbol into pitch classes;
  * `voiceProgression` turns a list of chords into MIDI notes that move smoothly.
  *
- * A progression is `{ id, label, tempo, key?, loop?, chords, melody?, riff?, comp?, voicing?, bassLow?, drums?, sounds? }`:
+ * A progression is `{ id, label, tempo, key?, loop?, chords, sevenths?, melody?, riff?, comp?, voicing?, bassLow?, drums?, sounds? }`:
  *   - `chords`: `[{ symbol, beats, roman?, fn?, bass?, notes? }]`. `roman` is the Roman
  *     numeral shown under the chord, `fn` its function (T, SD, D, SDm). `bass` (MIDI)
  *     places the bass note itself, outside the usual range (see bassLow). `notes`
@@ -23,6 +23,8 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  *   - `comp`: `[[part, beats], …]`, a rhythm for the chords in place of holding them,
  *     repeated through each chord: `'bass'` plays the bass note, `'upper'` the notes
  *     above it, `'all'` both, and `null` rests (see compHits).
+ *   - `sevenths`: the same progression with seventh chords, in the form of `chords`,
+ *     for a demo that offers both (see withSevenths).
  *   - `key`: the root it is written on, for moving it to another key (default C).
  *   - `voicing`: `'open'` spreads each chord's notes at their own intervals above the
  *     root, so tensions sit above the chord tones (see voiceProgression).
@@ -281,6 +283,11 @@ export function transposeProgression(progression, root) {
     };
 }
 
+/** The progression with its seventh chords in place of its triads, when it has them. */
+export function withSevenths(progression) {
+    return progression.sevenths ? { ...progression, chords: progression.sevenths } : progression;
+}
+
 // ── Progressions ─────────────────────────────────────────────────────────────
 
 /** Chords of `beats` each from `[symbol, roman, fn]` triples (roman and fn optional). */
@@ -308,10 +315,10 @@ export const DIATONIC_PROGRESSIONS = [
         { symbol: 'C', beats: 2, roman: 'I', fn: 'T', bass: C },
     ] },
     // The progressions strike each chord on every beat, four times.
-    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 90, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
+    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 135, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
         ['C', 'I', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'], ['C', 'I', 'T'],
     ]) },
-    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 90, loop: true, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
+    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 135, loop: true, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
         ['C', 'I', 'T'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'],
     ]) },
 ];
@@ -328,12 +335,18 @@ function scaleTriads(list) {
 export const DIATONIC_MINOR_PROGRESSIONS = [
     { id: 'natural-minor-triads', label: 'Natural minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
         ['Cm', 'i'], ['Ddim', 'ii°'], ['E♭', '♭III'], ['Fm', 'iv'], ['Gm', 'v'], ['A♭', '♭VI'], ['B♭', '♭VII'],
+    ]), sevenths: scaleTriads([
+        ['Cm7', 'i7'], ['Dm7♭5', 'iiø7'], ['E♭maj7', '♭IIImaj7'], ['Fm7', 'iv7'], ['Gm7', 'v7'], ['A♭maj7', '♭VImaj7'], ['B♭7', '♭VII7'],
     ]) },
     { id: 'harmonic-minor-triads', label: 'Harmonic minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
         ['Cm', 'i'], ['Ddim', 'ii°'], ['E♭aug', '♭III+'], ['Fm', 'iv'], ['G', 'V'], ['A♭', '♭VI'], ['Bdim', 'vii°'],
+    ]), sevenths: scaleTriads([
+        ['CmMaj7', 'i(maj7)'], ['Dm7♭5', 'iiø7'], ['E♭maj7♯5', '♭III+maj7'], ['Fm7', 'iv7'], ['G7', 'V7'], ['A♭maj7', '♭VImaj7'], ['Bdim7', 'vii°7'],
     ]) },
     { id: 'melodic-minor-triads', label: 'Melodic minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
         ['Cm', 'i'], ['Dm', 'ii'], ['E♭aug', '♭III+'], ['F', 'IV'], ['G', 'V'], ['Adim', 'vi°'], ['Bdim', 'vii°'],
+    ]), sevenths: scaleTriads([
+        ['CmMaj7', 'i(maj7)'], ['Dm7', 'ii7'], ['E♭maj7♯5', '♭III+maj7'], ['F7', 'IV7'], ['G7', 'V7'], ['Am7♭5', 'viø7'], ['Bm7♭5', 'viiø7'],
     ]) },
 ];
 
@@ -351,26 +364,26 @@ export const MINOR_DOMINANT_PROGRESSIONS = [
     { id: 'minor-ii-v-i', label: 'i7–iv7–iiø7–V7', chords: chords(4, [
         ['Cm7', 'i7'], ['Fm7', 'iv7'], ['Dm7♭5', 'iiø7'], ['G7', 'V7'],
     ]) },
-].map(p => ({ ...p, tempo: 96, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));
+].map(p => ({ ...p, tempo: 144, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));
 
 /**
  * The other chords of C minor in use: natural-minor loops with ♭VI, ♭VII, and ♭III,
  * the Dorian IV from melodic minor, the line cliché, and the diminished seventh.
  */
 export const MINOR_COLOR_PROGRESSIONS = [
-    { id: 'i-bvii-bvi-bvii', label: 'i–♭VII–♭VI–♭VII', tempo: 104, chords: chords(4, [
+    { id: 'i-bvii-bvi-bvii', label: 'i–♭VII–♭VI–♭VII', tempo: 156, chords: chords(4, [
         ['Cm', 'i'], ['B♭', '♭VII'], ['A♭', '♭VI'], ['B♭', '♭VII'],
     ]) },
-    { id: 'i-bvi-biii-bvii', label: 'i–♭VI–♭III–♭VII', tempo: 96, chords: chords(4, [
+    { id: 'i-bvi-biii-bvii', label: 'i–♭VI–♭III–♭VII', tempo: 144, chords: chords(4, [
         ['Cm', 'i'], ['A♭', '♭VI'], ['E♭', '♭III'], ['B♭', '♭VII'],
     ]) },
-    { id: 'i-iv-dorian', label: 'i7–IV7', tempo: 112, chords: chords(4, [
+    { id: 'i-iv-dorian', label: 'i7–IV7', tempo: 168, chords: chords(4, [
         ['Cm7', 'i7'], ['F7', 'IV7'], ['Cm7', 'i7'], ['F7', 'IV7'],
     ]) },
-    { id: 'line-cliche', label: 'Line cliché', tempo: 84, chords: chords(4, [
+    { id: 'line-cliche', label: 'Line cliché', tempo: 126, chords: chords(4, [
         ['Cm', 'i'], ['CmMaj7', 'i(maj7)'], ['Cm7', 'i7'], ['Cm6', 'i6'],
     ]) },
-    { id: 'i-viidim7-i', label: 'i–vii°7–i', tempo: 84, chords: chords(4, [
+    { id: 'i-viidim7-i', label: 'i–vii°7–i', tempo: 126, chords: chords(4, [
         ['Cm', 'i'], ['Fm', 'iv'], ['Bdim7', 'vii°7'], ['Cm', 'i'],
     ]) },
 ].map(p => ({ ...p, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));
@@ -483,81 +496,120 @@ export const SEVENTH_PROGRESSIONS = [
         ]),
         { symbol: 'Cmaj7', beats: 4, roman: 'Imaj7', fn: '' },
     ] },
-    { id: 'ii-v-i-tensions', label: 'ii–V–I with tensions', tempo: 80, voicing: 'open', comp: EVERY_BEAT, chords: chords(4, [
+    { id: 'ii-v-i-tensions', label: 'ii–V–I with tensions', tempo: 120, voicing: 'open', comp: EVERY_BEAT, chords: chords(4, [
         ['Dm7', 'ii7', 'SD'], ['G7', 'V7', 'D'], ['Cmaj7', 'Imaj7', 'T'],
         ['Dm9', 'ii9', 'SD'], ['G13', 'V13', 'D'], ['Cmaj9', 'Imaj9', 'T'],
     ]) },
 ];
 
 export const FUNCTIONAL_PROGRESSIONS = [
-    { id: 't-sd-d-t', label: 'T–SD–D–T', tempo: 90, chords: chords(4, [
+    { id: 't-sd-d-t', label: 'T–SD–D–T', tempo: 135, chords: chords(4, [
         ['Cmaj7', 'I', 'T'], ['Fmaj7', 'IV', 'SD'], ['G7', 'V', 'D'], ['Cmaj7', 'I', 'T'],
     ]) },
-    { id: 'ii-v-i', label: 'ii–V–I', tempo: 90, chords: chords(4, [
+    { id: 'ii-v-i', label: 'ii–V–I', tempo: 135, chords: chords(4, [
         ['Dm7', 'ii', 'SD'], ['G7', 'V', 'D'], ['Cmaj7', 'I', 'T'], ['Cmaj7', 'I', 'T'],
     ]) },
-    { id: 'turnaround', label: 'I–vi–ii–V', tempo: 100, loop: true, chords: chords(4, [
+    { id: 'turnaround', label: 'I–vi–ii–V', tempo: 150, loop: true, chords: chords(4, [
         ['Cmaj7', 'I', 'T'], ['Am7', 'vi', 'T'], ['Dm7', 'ii', 'SD'], ['G7', 'V', 'D'],
     ]) },
-    { id: 'circle', label: 'iii–vi–ii–V–I', tempo: 100, chords: [
+    { id: 'circle', label: 'iii–vi–ii–V–I', tempo: 150, chords: [
         ...chords(4, [['Em7', 'iii', 'T'], ['Am7', 'vi', 'T'], ['Dm7', 'ii', 'SD'], ['G7', 'V', 'D']]),
         { symbol: 'Cmaj7', beats: 8, roman: 'I', fn: 'T' },
     ] },
-    { id: 'substitutes', label: 'Substitutes', tempo: 90, chords: chords(4, [
+    { id: 'substitutes', label: 'Substitutes', tempo: 135, chords: chords(4, [
         ['Cmaj7', 'I', 'T'], ['Em7', 'iii', 'T'], ['Dm7', 'ii', 'SD'], ['Bm7♭5', 'viiø', 'D'], ['Am7', 'vi', 'T'],
     ]) },
-    { id: 'pop', label: 'I–V–vi–IV', tempo: 90, loop: true, chords: chords(4, [
+    { id: 'pop', label: 'I–V–vi–IV', tempo: 135, loop: true, chords: chords(4, [
         ['C', 'I', 'T'], ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD'],
     ]) },
 ];
 
-export const RESOLUTION_PROGRESSIONS = [
-    { id: 'v-i', label: 'V7–I', tempo: 80, chords: chords(4, [
-        ['Cmaj7', 'I', 'T'], ['G7', 'V7', 'D'], ['Cmaj7', 'I', 'T'],
+/**
+ * Dominant motion: V and V7 to I, V7 to a minor i, secondary dominants, and a chain of
+ * dominants each resolving a fifth down to the next.
+ */
+export const DOMINANT_MOTION_PROGRESSIONS = [
+    { id: 'v-i', label: 'V–I', tempo: 120, chords: chords(4, [
+        ['C', 'I'], ['G', 'V'], ['C', 'I'],
     ]) },
-    { id: 'secondary-dominants', label: 'Secondary dominants', tempo: 90, chords: chords(4, [
+    { id: 'v7-i', label: 'V7–I', tempo: 120, chords: chords(4, [
+        ['C', 'I'], ['G7', 'V7'], ['C', 'I'],
+    ]) },
+    { id: 'v7-i-minor', label: 'V7–i', tempo: 120, chords: chords(4, [
+        ['Cm', 'i'], ['G7', 'V7'], ['Cm', 'i'],
+    ]) },
+    { id: 'secondary-dominants', label: 'Secondary dominants', tempo: 135, chords: chords(4, [
         ['Cmaj7', 'I'], ['A7', 'V7/ii'], ['Dm7', 'ii'], ['D7', 'V7/V'], ['G7', 'V7'], ['Cmaj7', 'I'],
     ]) },
-    { id: 'tritone-substitute', label: 'Tritone substitute', tempo: 80, chords: chords(4, [
+    { id: 'dominant-chain', label: 'Chain of dominants', tempo: 135, chords: chords(4, [
+        ['E7', 'V7/vi'], ['A7', 'V7/ii'], ['D7', 'V7/V'], ['G7', 'V7'], ['C', 'I'],
+    ]) },
+];
+
+/**
+ * The ii–V: to I in major and to i in minor, a ii–V to each chord in turn, and ii–Vs
+ * stepping down by whole steps through keys.
+ */
+export const TWO_FIVE_PROGRESSIONS = [
+    { id: 'ii-v-i', label: 'ii–V–I', tempo: 135, chords: chords(4, [
+        ['Dm7', 'ii7'], ['G7', 'V7'], ['Cmaj7', 'Imaj7'], ['Cmaj7', 'Imaj7'],
+    ]) },
+    { id: 'minor-ii-v-i', label: 'Minor ii–V–i', tempo: 135, chords: chords(4, [
+        ['Dm7♭5', 'iiø7'], ['G7', 'V7'], ['Cm6', 'i6'], ['Cm6', 'i6'],
+    ]) },
+    { id: 'ii-v-chain', label: 'ii–V to ii–V', tempo: 120, chords: [
+        ...chords(2, [['Em7', 'ii7/ii'], ['A7', 'V7/ii'], ['Dm7', 'ii7'], ['G7', 'V7']]),
+        ...chords(8, [['Cmaj7', 'Imaj7']]),
+    ] },
+    { id: 'descending-ii-v', label: 'Descending ii–Vs', tempo: 120, chords: [
+        ...chords(2, [['Dm7', 'ii7'], ['G7', 'V7']]),
+        ...chords(4, [['Cmaj7', 'Imaj7']]),
+        ...chords(2, [['Cm7', 'ii7/♭VII'], ['F7', 'V7/♭VII']]),
+        ...chords(4, [['B♭maj7', '♭VIImaj7']]),
+    ] },
+];
+
+export const RESOLUTION_PROGRESSIONS = [
+    { id: 'tritone-substitute', label: 'Tritone substitute', tempo: 120, chords: chords(4, [
         ['Dm7', 'ii'], ['D♭7', '♭II7'], ['Cmaj7', 'I'],
     ]) },
-    { id: 'half-step', label: 'Half step', tempo: 80, chords: chords(4, [
+    { id: 'half-step', label: 'Half step', tempo: 120, chords: chords(4, [
         ['Cmaj7', 'I'], ['D♭maj7', '♭IImaj7'], ['Cmaj7', 'I'],
     ]) },
-    { id: 'chromatic-mediants', label: 'Chromatic mediants', tempo: 80, chords: chords(4, [
+    { id: 'chromatic-mediants', label: 'Chromatic mediants', tempo: 120, chords: chords(4, [
         ['Cmaj7', 'I'], ['A♭maj7', '♭VImaj7'], ['Cmaj7', 'I'], ['Emaj7', 'IIImaj7'], ['Cmaj7', 'I'],
     ]) },
-    { id: 'plagal', label: 'Plagal', tempo: 80, chords: chords(4, [
+    { id: 'plagal', label: 'Plagal', tempo: 120, chords: chords(4, [
         ['C', 'I'], ['F', 'IV'], ['C', 'I'], ['Fm', 'iv'], ['C', 'I'],
     ]) },
-    { id: 'suspension', label: 'Suspension', tempo: 80, chords: chords(4, [
+    { id: 'suspension', label: 'Suspension', tempo: 120, chords: chords(4, [
         ['G7sus4', 'V7sus4'], ['G7', 'V7'], ['Cmaj7', 'I'],
     ]) },
-    { id: 'deceptive', label: 'Deceptive', tempo: 80, chords: chords(4, [
+    { id: 'deceptive', label: 'Deceptive', tempo: 120, chords: chords(4, [
         ['Dm7', 'ii'], ['G7', 'V7'], ['Am7', 'vi'], ['Dm7', 'ii'], ['G7', 'V7'], ['Cmaj7', 'I'],
     ]) },
 ];
 
 export const SUBDOMINANT_MINOR_PROGRESSIONS = [
-    { id: 'iv-iv-i', label: 'IV–iv–I', tempo: 80, chords: chords(4, [
+    { id: 'iv-iv-i', label: 'IV–iv–I', tempo: 120, chords: chords(4, [
         ['C', 'I', 'T'], ['F', 'IV', 'SD'], ['Fm', 'iv', 'SDm'], ['C', 'I', 'T'],
     ]) },
-    { id: 'iv6', label: 'IVmaj7–iv6', tempo: 80, chords: chords(4, [
+    { id: 'iv6', label: 'IVmaj7–iv6', tempo: 120, chords: chords(4, [
         ['Cmaj7', 'Imaj7', 'T'], ['Fmaj7', 'IVmaj7', 'SD'], ['Fm6', 'iv6', 'SDm'], ['Cmaj7', 'Imaj7', 'T'],
     ]) },
-    { id: 'backdoor', label: 'Backdoor', tempo: 80, chords: chords(4, [
+    { id: 'backdoor', label: 'Backdoor', tempo: 120, chords: chords(4, [
         ['Cmaj7', 'Imaj7', 'T'], ['Fm7', 'iv7', 'SDm'], ['B♭7', '♭VII7', 'SDm'], ['Cmaj7', 'Imaj7', 'T'],
     ]) },
-    { id: 'half-diminished', label: 'iiø–V–I', tempo: 80, chords: chords(4, [
+    { id: 'half-diminished', label: 'iiø–V–I', tempo: 120, chords: chords(4, [
         ['Dm7♭5', 'iiø7', 'SDm'], ['G7', 'V7', 'D'], ['Cmaj7', 'Imaj7', 'T'],
     ]) },
-    { id: 'flat-six-flat-seven', label: '♭VI–♭VII–I', tempo: 90, chords: chords(4, [
+    { id: 'flat-six-flat-seven', label: '♭VI–♭VII–I', tempo: 135, chords: chords(4, [
         ['C', 'I', 'T'], ['A♭', '♭VI', 'SDm'], ['B♭', '♭VII', 'SDm'], ['C', 'I', 'T'],
     ]) },
-    { id: 'major-third', label: 'I–III–IV–iv', tempo: 90, loop: true, chords: chords(4, [
+    { id: 'major-third', label: 'I–III–IV–iv', tempo: 135, loop: true, chords: chords(4, [
         ['C', 'I', 'T'], ['E', 'III', ''], ['F', 'IV', 'SD'], ['Fm', 'iv', 'SDm'],
     ]) },
-    { id: 'neapolitan', label: 'Neapolitan', tempo: 80, chords: chords(4, [
+    { id: 'neapolitan', label: 'Neapolitan', tempo: 120, chords: chords(4, [
         ['Cm', 'i', 'T'], ['D♭/F', '♭II6', 'SDm'], ['G7', 'V7', 'D'], ['Cm', 'i', 'T'],
     ]) },
 ];
@@ -569,7 +621,7 @@ const quartal = bass => [bass - 12, bass, bass + 5, bass + 10, bass + 15, bass +
 const ROW = [0, 11, 7, 8, 3, 1, 2, 10, 6, 5, 4, 9];
 
 export const NON_FUNCTIONAL_PROGRESSIONS = [
-    { id: 'dorian-vamp', label: 'Dorian vamp', tempo: 100, loop: true, chords: chords(4, [
+    { id: 'dorian-vamp', label: 'Dorian vamp', tempo: 150, loop: true, chords: chords(4, [
         ['Dm9', 'i'], ['G13', 'IV'], ['Dm9', 'i'], ['G13', 'IV'],
     ]) },
     { id: 'quartal', label: 'Quartal chords', tempo: 100, loop: true, chords: [
@@ -581,10 +633,10 @@ export const NON_FUNCTIONAL_PROGRESSIONS = [
     { id: 'planing', label: 'Planing', tempo: 80, chords: chords(2, [
         ['C', 'C'], ['D', 'D'], ['E', 'E'], ['F♯', 'F♯'], ['E', 'E'], ['D', 'D'], ['C', 'C'],
     ]) },
-    { id: 'constant-structure', label: 'Constant structure', tempo: 80, chords: chords(4, [
+    { id: 'constant-structure', label: 'Constant structure', tempo: 120, chords: chords(4, [
         ['Cmaj7', 'C'], ['A♭maj7', 'A♭'], ['Emaj7', 'E'], ['Cmaj7', 'C'],
     ]) },
-    { id: 'pedal', label: 'Pedal point', tempo: 80, loop: true, chords: chords(4, [
+    { id: 'pedal', label: 'Pedal point', tempo: 120, loop: true, chords: chords(4, [
         ['C', 'C'], ['D/C', 'D/C'], ['B♭/C', 'B♭/C'], ['C', 'C'],
     ]) },
     { id: 'parallel-melody', label: 'Following the melody', tempo: 70, chords: chords(4, [
@@ -635,34 +687,34 @@ export const REHARMONIZATION_PROGRESSIONS = [
  * each struck on every beat, with the bass from C3.
  */
 export const COMMON_PROGRESSIONS = [
-    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 112, chords: chords(4, [
+    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 168, chords: chords(4, [
         ['C', 'I'], ['F', 'IV'], ['G', 'V'], ['C', 'I'],
     ]) },
-    { id: 'i-v-vi-iv', label: 'I–V–vi–IV', tempo: 96, chords: chords(4, [
+    { id: 'i-v-vi-iv', label: 'I–V–vi–IV', tempo: 144, chords: chords(4, [
         ['C', 'I'], ['G', 'V'], ['Am', 'vi'], ['F', 'IV'],
     ]) },
-    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 88, chords: chords(4, [
+    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 132, chords: chords(4, [
         ['C', 'I'], ['Am', 'vi'], ['F', 'IV'], ['G', 'V'],
     ]) },
-    { id: 'vi-iv-i-v', label: 'vi–IV–I–V', tempo: 96, chords: chords(4, [
+    { id: 'vi-iv-i-v', label: 'vi–IV–I–V', tempo: 144, chords: chords(4, [
         ['Am', 'vi'], ['F', 'IV'], ['C', 'I'], ['G', 'V'],
     ]) },
-    { id: 'iv-v-iii-vi', label: 'IV–V–iii–vi', tempo: 100, chords: chords(4, [
+    { id: 'iv-v-iii-vi', label: 'IV–V–iii–vi', tempo: 150, chords: chords(4, [
         ['F', 'IV'], ['G', 'V'], ['Em', 'iii'], ['Am', 'vi'],
     ]) },
     { id: 'canon', label: 'I–V–vi–iii–IV–I–IV–V', tempo: 84, chords: chords(2, [
         ['C', 'I'], ['G', 'V'], ['Am', 'vi'], ['Em', 'iii'], ['F', 'IV'], ['C', 'I'], ['F', 'IV'], ['G', 'V'],
     ]) },
-    { id: 'ii-v-i', label: 'ii–V–I', tempo: 120, chords: chords(4, [
+    { id: 'ii-v-i', label: 'ii–V–I', tempo: 180, chords: chords(4, [
         ['Dm7', 'ii7'], ['G7', 'V7'], ['Cmaj7', 'Imaj7'], ['Cmaj7', 'Imaj7'],
     ]) },
     { id: 'i-vi-ii-v', label: 'I–vi–ii–V', tempo: 120, chords: chords(2, [
         ['C', 'I'], ['Am', 'vi'], ['Dm', 'ii'], ['G', 'V'],
     ]) },
-    { id: 'i-bvii-iv-i', label: 'I–♭VII–IV–I', tempo: 112, chords: chords(4, [
+    { id: 'i-bvii-iv-i', label: 'I–♭VII–IV–I', tempo: 168, chords: chords(4, [
         ['C', 'I'], ['B♭', '♭VII'], ['F', 'IV'], ['C', 'I'],
     ]) },
-    { id: 'andalusian', label: 'i–♭VII–♭VI–V', tempo: 100, key: 'A', chords: chords(4, [
+    { id: 'andalusian', label: 'i–♭VII–♭VI–V', tempo: 150, key: 'A', chords: chords(4, [
         ['Am', 'i'], ['G', '♭VII'], ['F', '♭VI'], ['E', 'V'],
     ]) },
 ].map(p => ({ ...p, loop: true, bassLow: C - 12, comp: EVERY_BEAT }));
@@ -759,6 +811,8 @@ export const PROGRESSION_SETS = {
     types: CHORD_TYPE_PROGRESSIONS,
     sevenths: SEVENTH_PROGRESSIONS,
     functional: FUNCTIONAL_PROGRESSIONS,
+    'dominant-motion': DOMINANT_MOTION_PROGRESSIONS,
+    'two-five': TWO_FIVE_PROGRESSIONS,
     resolution: RESOLUTION_PROGRESSIONS,
     'subdominant-minor': SUBDOMINANT_MINOR_PROGRESSIONS,
     'non-functional': NON_FUNCTIONAL_PROGRESSIONS,

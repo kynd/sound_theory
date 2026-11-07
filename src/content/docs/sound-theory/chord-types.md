@@ -29,9 +29,9 @@ A suspended chord replaces the third with a second (sus2) or fourth (sus4). With
 # Hearing Them
 # 聞いてみる
 
-Use the demo as you would the one on [Diatonic Chords](/diatonic-chords): select an **Example** and press **Play**, or click a chord to sustain it. The examples start on C, as in the explanations; choose a **Root** to hear them built on another note, with the same shapes and the same Roman numerals. In a chord progression, each chord plays a different role, and its sound depends on the surrounding context. Diminished and augmented chords may sound a little awkward on their own, but they can sound beautiful when used carefully to connect to other chords.
+Select an **Example** and press **Play**, or click a chord to sustain it. The examples start on C, as in the explanations; choose a **Root** to hear them built on another note, with the same shapes and the same Roman numerals. In a chord progression, each chord plays a different role, and its sound depends on the surrounding context. Diminished and augmented chords may sound a little awkward on their own, but they can sound beautiful when used carefully to connect to other chords.
 
-デモの使い方は[ダイアトニック・コード](/diatonic-chords)と同じです。**Example**を選んで**Play**を押すか、和音をクリックすると、その音を伸ばして聴けます。例は説明と同じくCから始まります。**Root**を選ぶと、同じ形、同じローマ数字のまま、ほかの音の上に組み立てた和音を聴けます。コード進行の中では、和音ごとに異なる役割があり、前後の文脈によって響き方も変わります。ディミニッシュやオーギュメントは単独では少し不自然に聞こえることがありますが、ほかの和音へつなぐためにうまく使うと、美しく響くこともあります。
+**Example**を選んで**Play**を押すか、和音をクリックすると、その音を伸ばして聴けます。例は説明と同じくCから始まります。**Root**を選ぶと、同じ形、同じローマ数字のまま、ほかの音の上に組み立てた和音を聴けます。コード進行の中では、和音ごとに異なる役割があり、前後の文脈によって響き方も変わります。ディミニッシュやオーギュメントは単独では少し不自然に聞こえることがありますが、ほかの和音へつなぐためにうまく使うと、美しく響くこともあります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=types&roots" title="Other chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

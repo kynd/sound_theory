@@ -45,9 +45,9 @@ Dominant chords also take altered tensions: the flat 9th, the sharp 9th, the sha
 
 ドミナントの和音には、変化させたテンションも使います。フラット9度、シャープ9度、シャープ11度、フラット13度です（[その他の音階](/other-scales)のオルタード・スケールを参照）。これらはドミナントの緊張を高め、解決をより強くします。実際には、ピアニストは大きな和音からいくつかの音を省きます。ふつうは5度、そしてベースが弾く根音も省くことがよくあります。デモも同じように、根音をベースに置き、5音以上の和音では5度を省いています。
 
-The demo works as on [Diatonic Chords](/diatonic-chords): choose an **Example** and press **Play**, or click a chord to hold it. The labels under the tension examples name the tensions added. In those examples the notes are spread out the way a pianist would open them up: each tension sits at its own distance above the root, the 9th a ninth up and the 13th a thirteenth up, above the chord tones instead of crowded in among them. **ii–V–I with tensions** plays each chord four times, once on every beat. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+Choose an **Example** and press **Play**, or click a chord to hold it. The labels under the tension examples name the tensions added. In those examples the notes are spread out the way a pianist would open them up: each tension sits at its own distance above the root, the 9th a ninth up and the 13th a thirteenth up, above the chord tones instead of crowded in among them. **ii–V–I with tensions** plays each chord four times, once on every beat. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-デモの使い方は[ダイアトニック・コード](/diatonic-chords)と同じです。**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。テンションの例の下のラベルは、加えたテンションの名前です。これらの例では、ピアニストが和音を開くように音を広げています。各テンションを根音からそれぞれの距離に、つまり9度は9度上に、13度は13度上に置くので、テンションは和音の音のあいだに詰め込まれず、その上に重なります。**ii–V–I with tensions**は、各和音を拍ごとに4回鳴らします。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。テンションの例の下のラベルは、加えたテンションの名前です。これらの例では、ピアニストが和音を開くように音を広げています。各テンションを根音からそれぞれの距離に、つまり9度は9度上に、13度は13度上に置くので、テンションは和音の音のあいだに詰め込まれず、その上に重なります。**ii–V–I with tensions**は、各和音を拍ごとに4回鳴らします。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=sevenths&key" title="Sevenths and tensions" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

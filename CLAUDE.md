@@ -196,8 +196,8 @@ src/content/docs/
     rhythm-and-feel.md           subdivisions, styles, timing          slug: rhythm-and-feel
     diatonic-chords.md           triads, Roman numerals, functions     slug: diatonic-chords
     chord-types.md               dim, aug, sus                         slug: chord-types
-    minor-key-chords.md          minor diatonic chords, V7, colors     slug: minor-key-chords
     seventh-chords.md            sevenths, tensions                    slug: seventh-chords
+    minor-key-chords.md          minor diatonic chords, V7, colors     slug: minor-key-chords
     functional-harmony.md        T, SD, D, progressions                slug: functional-harmony
     tension-and-resolution.md    dominant motion, other resolutions    slug: tension-and-resolution
     subdominant-minor.md         borrowed chords                       slug: subdominant-minor
