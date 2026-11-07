@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sound Theory 音の理論</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl current">Sound Theory 音の理論</a> </button> <ul class="sc open">
+        <li class="si">
+          <button class="st" data-path="sound-theory/sound" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/sound-and-timbre" class="sl">Sound and Timbre 音と音色</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:64px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:64px">Sound Sources 音源</a></li><li class="si"><a href="/writing/synthesis" class="sl" style="padding-left:64px">Synthesizers and Effects シンセサイザーとエフェクト</a></li><li class="si"><a href="/writing/sound-toys" class="sl" style="padding-left:64px">Sound Toys 音のおもちゃ</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:64px">Sound as Material 素材としての音</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/pitch" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/pitch-and-scales" class="sl">Pitch and Scales 音高と音階</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:64px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:64px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:64px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:64px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/tetrachords" class="sl" style="padding-left:64px">Tetrachords テトラコード</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:64px">Other Scales その他の音階</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/rhythm" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/rhythm-and-time" class="sl">Rhythm and Time リズムと時間</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:64px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:64px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:64px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/syncopation" class="sl" style="padding-left:64px">Syncopation and Anticipation シンコペーションと先取り</a></li><li class="si"><a href="/writing/rhythm-patterns" class="sl" style="padding-left:64px">Rhythm Patterns リズム・パターン</a></li><li class="si"><a href="/writing/polyrhythm" class="sl" style="padding-left:64px">Polyrhythm ポリリズム</a></li><li class="si"><a href="/writing/articulation" class="sl" style="padding-left:64px">Articulation アーティキュレーション</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/harmony" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/chords-and-harmony" class="sl">Chords and Harmony 和音と和声</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:64px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:64px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:64px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/chord-voicing" class="sl" style="padding-left:64px">Voicing ボイシング</a></li><li class="si"><a href="/writing/minor-key-chords" class="sl" style="padding-left:64px">Chords in Minor Keys 短調の和音</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:64px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:64px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:64px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/chord-progressions" class="sl" style="padding-left:64px">Chord Progressions コード進行</a></li><li class="si"><a href="/writing/jpop-progressions" class="sl" style="padding-left:64px">J-Pop Progressions J-POPのコード進行</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:64px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:64px">Reharmonization リハーモナイズ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/history" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/music-and-history" class="sl">Music and History 音楽と歴史</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/non-western-music" class="sl" style="padding-left:64px">Music Beyond the West 西洋の外の音楽</a></li><li class="si"><a href="/writing/blues" class="sl" style="padding-left:64px">Blues ブルース</a></li><li class="si"><a href="/writing/jazz-history" class="sl" style="padding-left:64px">A Short History of Jazz ジャズ小史</a></li><li class="si"><a href="/writing/chord-notation" class="sl" style="padding-left:64px">Writing Chords コードの書き方</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:64px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/minimal-music" class="sl" style="padding-left:64px">Minimal Music ミニマル・ミュージック</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/improvisation" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/jazz-improvisation" class="sl">Jazz Improvisation ジャズの即興</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pentatonic-improvisation" class="sl" style="padding-left:64px">Improvising with Pentatonics ペンタトニックで即興する</a></li><li class="si"><a href="/writing/diatonic-improvisation" class="sl" style="padding-left:64px">Improvising in One Key ひとつの調で即興する</a></li><li class="si"><a href="/writing/outlining-changes" class="sl" style="padding-left:64px">Outlining the Changes コード進行を描き出す</a></li><li class="si"><a href="/writing/walking-bass" class="sl" style="padding-left:64px">Walking Bass ウォーキング・ベース</a></li><li class="si"><a href="/writing/jazz-idioms" class="sl" style="padding-left:64px">Jazz Idioms ジャズのイディオム</a></li><li class="si"><a href="/writing/bebop-scale" class="sl" style="padding-left:64px">Barry Harris's Bebop Scale バリー・ハリスのビバップ・スケール</a></li><li class="si"><a href="/writing/minor-chord-scales" class="sl" style="padding-left:64px">Minor Chord Scales マイナーのコード・スケール</a></li><li class="si"><a href="/writing/two-five-improvisation" class="sl" style="padding-left:64px">Improvising on Two-Fives ツー・ファイブで即興する</a></li><li class="si"><a href="/writing/jazz-chord-improvisation" class="sl" style="padding-left:64px">Improvising on Jazz Chords ジャズの和音で即興する</a></li><li class="si"><a href="/writing/stella-by-starlight" class="sl" style="padding-left:64px">Analyzing a Song: Stella by Starlight 曲の分析：星影のステラ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/modern-jazz" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/modern-jazz-language" class="sl">Modern Jazz Language モダン・ジャズの語法</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/modal-jazz" class="sl" style="padding-left:64px">Modal Jazz モード・ジャズ</a></li><li class="si"><a href="/writing/upper-structure-triads" class="sl" style="padding-left:64px">Upper Structure Triads アッパー・ストラクチャー・トライアド</a></li><li class="si"><a href="/writing/triads-in-scales" class="sl" style="padding-left:64px">Triads Inside Scales スケールの中の三和音</a></li><li class="si"><a href="/writing/modern-pentatonics" class="sl" style="padding-left:64px">Pentatonics in Modern Jazz モダン・ジャズのペンタトニック</a></li><li class="si"><a href="/writing/playing-outside" class="sl" style="padding-left:64px">Playing Outside アウトサイド</a></li><li class="si"><a href="/writing/fourths" class="sl" style="padding-left:64px">Fourths and Intervallic Lines 4度と音程的な旋律</a></li><li class="si"><a href="/writing/coltrane-changes" class="sl" style="padding-left:64px">Coltrane Changes コルトレーン・チェンジ</a></li></ul>
+        </li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose">   <h1 class="page-title"> <span class="title-en">Sound Theory</span> <span class="title-ja">音の理論</span> </h1> <p>Playing music (or even just making noise; there is no essential difference between the two) is a joy. It is fun and a profound exercise for both mind and body. I am not a great musician, but that does not matter. I play simply because it is something I can enjoy for the rest of my life, whatever happens, regardless of how the industry changes.</p>
+<p>音楽を演奏すること、あるいはただ音を出すこと（この二つに本質的な違いはありません）は、喜びです。心から楽しく、心と体の両方を使う奥深い営みでもあります。自分は優れたミュージシャンではありませんが、それは問題ではありません。何があっても、産業としての音楽がどう変わろうともずっと楽しみ続けられる。それが、音を出す理由です。</p>
+<p>Music is also an intellectual pleasure. Beyond the joy of playing, there is the pleasure of wondering how it all works: why certain sounds seem to fit together, how a rhythm creates a sense of movement, or how the same notes can feel different in a new context. There is always more to notice, and more than one way to understand what we hear. For me, thinking about these things is not separate from making music; it is another way of enjoying it. Theory can help us explore these questions, giving us ways to recognize patterns, make connections, and discover new possibilities.</p>
+<p>音楽には、知的な楽しさもあります。演奏する喜びに加えて、なぜある音と音がよく合うように感じられるのか、リズムはどのように動きを生み出すのか、同じ音の並びでも文脈によって印象が変わるのはなぜか、と考える楽しみもあります。耳を傾ければ新たな発見があり、聴こえるものの捉え方も一つではありません。こうしたことを考えるのは音楽を奏でることと別の営みではなく、音楽を楽しむもう一つの方法です。理論は、パターンに気づき、つながりを見いだし、新たな可能性を探るための手がかりになります。</p>
+<p>People respond to theory in different ways. Some see it as a constraint on their freedom. I see it the other way around: theories are tools for thinking, and we can use them whenever they are useful. They fascinate me because they capture the many ways people have tried to make sense of sound. That is what theories are: attempts to make sense of it. The same sequence of notes can be understood in different ways, and each interpretation can lead to different choices in improvisation, harmonization, and so on. Theories can also inspire us to break their rules and try something different. The history of music, like that of any art form, is full of such departures.</p>
+<p>理論への反応は人それぞれです。理論を自由を縛るものと捉える人もいますが、むしろ逆だと思います。理論は考えるための道具であり、役に立つときに使えばよいのです。理論が興味深いのは、人々が音を理解しようと試みてきたさまざまな方法を映し出しているからです。理論とは、まさに音に意味を見いだそうとする試みです。同じ音の並びでも解釈はさまざまで、それぞれの解釈によって、即興や和声づけなどの選択も変わってきます。また、理論はときに、その枠を破って新しいことを試すきっかけにもなります。音楽の歴史は、ほかの芸術と同じように、そうした逸脱に満ちています。</p>
+<p>This is not a textbook. It is a collection of things I know about sound and music and find interesting, as well as an attempt to get them out of my head so I can understand and organize them better. Most of it is music theory—pitch, intervals, scales, chords, rhythm, and harmony—but it also explores the physics of sound, how we perceive it, and how sound is synthesized and processed. Each idea comes with an interactive demo, so you can hear an interval or a scale and see the waves behind it. I hope it will be interesting to others, too.</p>
+<p>これは教科書ではありません。音と音楽について、知っていることや面白いと思うことを集め、頭の中にあるものを外に出して、より深く理解し整理しようとする試みです。内容の大半は音楽理論（音高、音程、音階、和音、リズム、和声）ですが、音の物理や知覚、合成・加工についても扱います。それぞれのテーマには実際に操作できるデモを添えているので、音程や音階を耳で確かめ、その背後にある波形を見ることができます。結果として、ほかの人にとっても興味深いものになればと思います。</p>
+<h1 id="pages">Pages</h1>
+<h1 id="ページ">ページ</h1>
+<h2 id="sound-and-timbre"><a href="/writing/sound-and-timbre">Sound and Timbre</a></h2>
+<h2 id="音と音色"><a href="/writing/sound-and-timbre">音と音色</a></h2>
+<ul>
+<li>
+<p><a href="/writing/sound-waves">Sound Waves</a>: sine waves, adding sine waves, and the frequency components of sound.</p>
+</li>
+<li>
+<p><a href="/writing/sound-sources">Sound Sources</a>: the instruments and effects used throughout the series.</p>
+</li>
+<li>
+<p><a href="/writing/synthesis">Synthesizers and Effects</a>: subtractive synthesis with filters and envelopes, compressor, wah, chorus, phaser, delay, and reverb, and FM and AM synthesis.</p>
+</li>
+<li>
+<p><a href="/writing/sound-toys">Sound Toys</a>: playing sound by gesture and drawing: an XY pad, a drawn melody, and a grid of pentatonic notes.</p>
+</li>
+<li>
+<p><a href="/writing/sound-as-material">Sound as Material</a>: onkyō, sound design, and granular synthesis.</p>
+</li>
+<li>
+<p><a href="/writing/sound-waves">音の波</a>：サイン波、サイン波の足し合わせ、音の周波数成分。</p>
+</li>
+<li>
+<p><a href="/writing/sound-sources">音源</a>：このシリーズ全体で使う楽器とエフェクト。</p>
+</li>
+<li>
+<p><a href="/writing/synthesis">シンセサイザーとエフェクト</a>：フィルターとエンベロープによる減算合成、コンプレッサー、ワウ、コーラス、フェイザー、ディレイ、リバーブ、そしてFMとAMの合成。</p>
+</li>
+<li>
+<p><a href="/writing/sound-toys">音のおもちゃ</a>：身振りと絵で音を奏でる。XYパッド、描いた旋律、ペンタトニックの音の格子。</p>
+</li>
+<li>
+<p><a href="/writing/sound-as-material">素材としての音</a>：音響系、サウンドデザイン、グラニュラー合成。</p>
+</li>
+</ul>
+<h2 id="pitch-and-scales"><a href="/writing/pitch-and-scales">Pitch and Scales</a></h2>
+<h2 id="音高と音階"><a href="/writing/pitch-and-scales">音高と音階</a></h2>
+<ul>
+<li>
+<p><a href="/writing/tuning-systems">Tuning Systems</a>: how frequencies are chosen for notes, from simple ratios and Pythagorean tuning to equal temperament and other systems.</p>
+</li>
+<li>
+<p><a href="/writing/scales">Scales</a>: what a scale is, and scales built from the twelve notes, from major and minor to Japanese, Okinawan, and Arabic scales.</p>
+</li>
+<li>
+<p><a href="/writing/church-modes">Church Modes</a>: the seven modes, on one root and from the white keys, and how to hear them over a held root.</p>
+</li>
+<li>
+<p><a href="/writing/minor-scales">Minor Scales</a>: the natural, harmonic, and melodic minor scales.</p>
+</li>
+<li>
+<p><a href="/writing/tetrachords">Tetrachords</a>: four notes spanning a fourth, how two make a scale, the four diatonic tetrachords, and the Greek genera.</p>
+</li>
+<li>
+<p><a href="/writing/other-scales">Other Scales</a>: pentatonic, blues, whole tone, diminished, altered, and Lydian 7th scales, as used in jazz and pop music.</p>
+</li>
+<li>
+<p><a href="/writing/tuning-systems">音律</a>：音符の周波数の選び方。単純な比やピタゴラス音律から、平均律、ほかの音律まで。</p>
+</li>
+<li>
+<p><a href="/writing/scales">音階</a>：音階とは何か、そして12の音からつくる音階。長音階、短音階から、日本、沖縄、アラブの音階まで。</p>
+</li>
+<li>
+<p><a href="/writing/church-modes">教会旋法</a>：7つの旋法を、ひとつの主音から、そして白鍵から。主音を鳴らしながら旋法を聞く方法。</p>
+</li>
+<li>
+<p><a href="/writing/minor-scales">短音階</a>：自然短音階、和声的短音階、旋律的短音階。</p>
+</li>
+<li>
+<p><a href="/writing/tetrachords">テトラコード</a>：4度にわたる4つの音、2つで音階をつくる方法、4つの全音階的テトラコード、ギリシャの類。</p>
+</li>
+<li>
+<p><a href="/writing/other-scales">その他の音階</a>：ジャズやポップ音楽で使われる、ペンタトニック、ブルース、全音音階、ディミニッシュ、オルタード、リディアン・セブンスの各音階。</p>
+</li>
+</ul>
+<h2 id="rhythm-and-time"><a href="/writing/rhythm-and-time">Rhythm and Time</a></h2>
+<h2 id="リズムと時間"><a href="/writing/rhythm-and-time">リズムと時間</a></h2>
+<ul>
+<li>
+<p><a href="/writing/pulse-and-cycles">Pulse and Cycles</a>: repetition, an even pulse, and accents that group it into cycles.</p>
+</li>
+<li>
+<p><a href="/writing/time-signatures">Time Signatures</a>: bars and beats, how a beat is divided, and odd meters, with editable drum patterns.</p>
+</li>
+<li>
+<p><a href="/writing/rhythm-and-feel">Rhythm and Feel</a>: subdivisions and styles (funk, shuffle, bossa nova), implied subdivisions, how timing and loudness change the feel, and tempo that is free to move.</p>
+</li>
+<li>
+<p><a href="/writing/syncopation">Syncopation and Anticipation</a>: notes off the beat and held across it, anticipating the bar, syncopated backings, bossa nova, and samba.</p>
+</li>
+<li>
+<p><a href="/writing/rhythm-patterns">Rhythm Patterns</a>: the grooves of rock, funk, reggae, salsa, 12/8, and hip-hop.</p>
+</li>
+<li>
+<p><a href="/writing/polyrhythm">Polyrhythm</a>: two pulses in one cycle, three against two, four against three, and other ratios.</p>
+</li>
+<li>
+<p><a href="/writing/articulation">Articulation</a>: the same notes played legato, staccato, accented, with a swell, and straight or swung.</p>
+</li>
+<li>
+<p><a href="/writing/pulse-and-cycles">拍と周期</a>：繰り返し、等しい拍、そして拍を周期にまとめるアクセント。</p>
+</li>
+<li>
+<p><a href="/writing/time-signatures">拍子記号</a>：小節と拍、拍の分け方、変拍子を、編集できるドラムのパターンで。</p>
+</li>
+<li>
+<p><a href="/writing/rhythm-and-feel">リズムとフィール</a>：細分とスタイル（ファンク、シャッフル、ボサノヴァ）、演奏しなくても感じられる細分、タイミングと音量によるフィールの変化、そして揺れるテンポ。</p>
+</li>
+<li>
+<p><a href="/writing/syncopation">シンコペーションと先取り</a>：拍の外で始まり拍をまたぐ音、小節の先取り、シンコペーションする伴奏、ボサノヴァ、サンバ。</p>
+</li>
+<li>
+<p><a href="/writing/rhythm-patterns">リズム・パターン</a>：ロック、ファンク、レゲエ、サルサ、12/8、ヒップホップのグルーヴ。</p>
+</li>
+<li>
+<p><a href="/writing/polyrhythm">ポリリズム</a>：ひとつの周期の中の2つの拍、3対2、4対3、そしてほかの比。</p>
+</li>
+<li>
+<p><a href="/writing/articulation">アーティキュレーション</a>：同じ音を、レガート、スタッカート、アクセント、強弱の起伏で、そしてまっすぐに、あるいはスウィングして。</p>
+</li>
+</ul>
+<h2 id="chords-and-harmony"><a href="/writing/chords-and-harmony">Chords and Harmony</a></h2>
+<h2 id="和音と和声"><a href="/writing/chords-and-harmony">和音と和声</a></h2>
+<ul>
+<li>
+<p><a href="/writing/diatonic-chords">Diatonic Chords</a>: the seven chords of a major key, Roman numerals, and their functions.</p>
+</li>
+<li>
+<p><a href="/writing/chord-types">Other Chords</a>: diminished, augmented, and suspended chords, and how they connect others.</p>
+</li>
+<li>
+<p><a href="/writing/seventh-chords">Sevenths and Tensions</a>: seventh chords, the 9th, 11th, and 13th, and altered tensions.</p>
+</li>
+<li>
+<p><a href="/writing/chord-voicing">Voicing</a>: the same chord rotated, close and open, clustered and spread, and with notes left out (power chords, shells, rootless voicings).</p>
+</li>
+<li>
+<p><a href="/writing/minor-key-chords">Chords in Minor Keys</a>: the diatonic chords of natural, harmonic, and melodic minor, the V7 in minor, and how the other chords are used.</p>
+</li>
+<li>
+<p><a href="/writing/functional-harmony">Functional Harmony</a>: tonic, subdominant, and dominant, and progressions as movement between them.</p>
+</li>
+<li>
+<p><a href="/writing/tension-and-resolution">Tension and Resolution</a>: dominant motion, secondary dominants, and other ways to resolve.</p>
+</li>
+<li>
+<p><a href="/writing/subdominant-minor">Subdominant Minor</a>: chords borrowed from the parallel minor, with practical examples.</p>
+</li>
+<li>
+<p><a href="/writing/chord-progressions">Chord Progressions</a>: well-known progressions, from I–IV–V–I and the four-chord pop loop to the canon, the royal road, and ii–V–I, with songs that use them.</p>
+</li>
+<li>
+<p><a href="/writing/jpop-progressions">J-Pop Progressions</a>: the royal road, Komuro, Canon, and Marusa progressions, line clichés, borrowed chords, chromatic progressions, and the last chorus up a step.</p>
+</li>
+<li>
+<p><a href="/writing/non-functional-harmony">Beyond Functional Harmony</a>: modes, quartal chords, planing, pedals, harmony from the melody, and twelve tones.</p>
+</li>
+<li>
+<p><a href="/writing/reharmonization">Reharmonization</a>: new chords under a familiar melody.</p>
+</li>
+<li>
+<p><a href="/writing/diatonic-chords">ダイアトニック・コード</a>：長調の7つの和音、ローマ数字、そしてその機能。</p>
+</li>
+<li>
+<p><a href="/writing/chord-types">その他の和音</a>：減三和音、増三和音、サスペンデッド・コードと、それらによる和音のつなぎ方。</p>
+</li>
+<li>
+<p><a href="/writing/seventh-chords">7の和音とテンション</a>：7の和音、9度、11度、13度、変化させたテンション。</p>
+</li>
+<li>
+<p><a href="/writing/chord-voicing">ボイシング</a>：同じ和音を、転回し、密集と開離で、クラスターと広げた配置で、そして音を省いて（パワーコード、シェル、ルートレス）。</p>
+</li>
+<li>
+<p><a href="/writing/minor-key-chords">短調の和音</a>：自然短音階、和声的短音階、旋律的短音階のダイアトニック・コード、短調のV7、ほかの和音の使い方。</p>
+</li>
+<li>
+<p><a href="/writing/functional-harmony">機能和声</a>：トニック、サブドミナント、ドミナントと、そのあいだの動きとしての進行。</p>
+</li>
+<li>
+<p><a href="/writing/tension-and-resolution">緊張と解決</a>：ドミナント・モーション、セカンダリー・ドミナント、ほかの解決のしかた。</p>
+</li>
+<li>
+<p><a href="/writing/subdominant-minor">サブドミナント・マイナー</a>：同主短調から借りた和音と、その実例。</p>
+</li>
+<li>
+<p><a href="/writing/chord-progressions">コード進行</a>：I–IV–V–Iや4つの和音のポップスのループから、カノン進行、王道進行、ツー・ファイブ・ワンまで、よく知られた進行と、それを使った曲。</p>
+</li>
+<li>
+<p><a href="/writing/jpop-progressions">J-POPのコード進行</a>：王道進行、小室進行、カノン進行、丸サ進行、クリシェ、借用和音、半音的な進行、ラスサビの転調。</p>
+</li>
+<li>
+<p><a href="/writing/non-functional-harmony">機能和声の外へ</a>：旋法、4度堆積和音、平行和音、保続音、旋律からの和声、十二音。</p>
+</li>
+<li>
+<p><a href="/writing/reharmonization">リハーモナイズ</a>：よく知られた旋律の下に新しい和音を。</p>
+</li>
+</ul>
+<h2 id="music-and-history"><a href="/writing/music-and-history">Music and History</a></h2>
+<h2 id="音楽と歴史"><a href="/writing/music-and-history">音楽と歴史</a></h2>
+<ul>
+<li>
+<p><a href="/writing/non-western-music">Music Beyond the West</a>: raga and drone in India, maqam in the Middle East, gamelan, African rhythm in the Americas, and Japan, and how they changed Western music.</p>
+</li>
+<li>
+<p><a href="/writing/blues">Blues</a>: where the blues came from, work songs and call and response, the twelve-bar form with a riff, and how jazz reharmonized it.</p>
+</li>
+<li>
+<p><a href="/writing/jazz-history">A Short History of Jazz</a>: from New Orleans and the swing era to bebop, modal jazz, free jazz, and fusion.</p>
+</li>
+<li>
+<p><a href="/writing/chord-notation">Writing Chords</a>: from figured bass to chord symbols, and how one way of writing harmony shaped how we hear it.</p>
+</li>
+<li>
+<p><a href="/writing/breaking-conventions">Breaking Conventions</a>: how composers and players have broken the conventions, from noise and chance to minimalism and phasing.</p>
+</li>
+<li>
+<p><a href="/writing/minimal-music">Minimal Music</a>: drones, In C, phasing, and Philip Glass’s additive process, and what came after.</p>
+</li>
+<li>
+<p><a href="/writing/non-western-music">西洋の外の音楽</a>：インドのラーガと保続音、中東のマカーム、ガムラン、アメリカ大陸に渡ったアフリカのリズム、日本、そしてそれらが西洋音楽をどう変えたか。</p>
+</li>
+<li>
+<p><a href="/writing/blues">ブルース</a>：ブルースの成り立ち、労働歌とコール・アンド・レスポンス、リフで進む12小節の形式、そしてジャズによるリハーモナイズ。</p>
+</li>
+<li>
+<p><a href="/writing/jazz-history">ジャズ小史</a>：ニューオーリンズとスウィング時代から、ビバップ、モード・ジャズ、フリー・ジャズ、フュージョンまで。</p>
+</li>
+<li>
+<p><a href="/writing/chord-notation">コードの書き方</a>：通奏低音からコード・シンボルまで、そして和声のひとつの書き方が、私たちの聞き方をどう形づくってきたか。</p>
+</li>
+<li>
+<p><a href="/writing/breaking-conventions">慣習を破る</a>：ノイズや偶然性からミニマリズムやフェイズまで、作曲家やミュージシャンが慣習を破ってきた方法。</p>
+</li>
+<li>
+<p><a href="/writing/minimal-music">ミニマル・ミュージック</a>：ドローン、『In C』、フェイズ、フィリップ・グラスの加算的プロセス、そしてその後。</p>
+</li>
+</ul>
+<h2 id="jazz-improvisation"><a href="/writing/jazz-improvisation">Jazz Improvisation</a></h2>
+<h2 id="ジャズの即興"><a href="/writing/jazz-improvisation">ジャズの即興</a></h2>
+<ul>
+<li>
+<p><a href="/writing/pentatonic-improvisation">Improvising with Pentatonics</a>: major and minor pentatonic phrases over simple progressions and the blues, with a keyboard limited to the scale for playing along.</p>
+</li>
+<li>
+<p><a href="/writing/diatonic-improvisation">Improvising in One Key</a>: progressions that stay in one key, the key’s scale over every chord, and chord tones on the beats.</p>
+</li>
+<li>
+<p><a href="/writing/outlining-changes">Outlining the Changes</a>: bebop lines built from chord tones: arpeggios, guide tones, steps, and enclosures.</p>
+</li>
+<li>
+<p><a href="/writing/walking-bass">Walking Bass</a>: building a bass line: roots and fifths, chord tones and approach notes, scale steps, and starting from above.</p>
+</li>
+<li>
+<p><a href="/writing/jazz-idioms">Jazz Idioms</a>: the vocabulary of the style: enclosures, approach notes, the lick, 3 to ♭9, the blue third, and anticipation.</p>
+</li>
+<li>
+<p><a href="/writing/bebop-scale">Barry Harris’s Bebop Scale</a>: the sixth diminished scale, harmonized as sixth and diminished chords, and the added note that keeps chord tones on the beat.</p>
+</li>
+<li>
+<p><a href="/writing/minor-chord-scales">Minor Chord Scales</a>: the seventh chords and modes of melodic and harmonic minor, and how they are used over a minor ii–V–i, tritone substitutes, and borrowed chords.</p>
+</li>
+<li>
+<p><a href="/writing/two-five-improvisation">Improvising on Two-Fives</a>: pairs of scales over the ii–V–I and phrases over V with Mixolydian, altered, diminished, and harmonic minor.</p>
+</li>
+<li>
+<p><a href="/writing/jazz-chord-improvisation">Improvising on Jazz Chords</a>: Lydian dominant on dominants that do not resolve down a fifth, whole tone on 7♯5, and the diminished scales.</p>
+</li>
+<li>
+<p><a href="/writing/stella-by-starlight">Analyzing a Song: Stella by Starlight</a>: the chords of “Stella by Starlight” eight bars at a time, each section heard two ways.</p>
+</li>
+<li>
+<p><a href="/writing/pentatonic-improvisation">ペンタトニックで即興する</a>：簡単な進行とブルースの上のメジャーとマイナーのペンタトニックのフレーズと、音階の音だけの鍵盤での伴奏との演奏。</p>
+</li>
+<li>
+<p><a href="/writing/diatonic-improvisation">ひとつの調で即興する</a>：ひとつの調にとどまる進行、どの和音にも使えるその調の音階、拍の上の和音の音。</p>
+</li>
+<li>
+<p><a href="/writing/outlining-changes">コード進行を描き出す</a>：和音の音からつくるビバップの旋律。アルペジオ、ガイド・トーン、順次進行、エンクロージャー。</p>
+</li>
+<li>
+<p><a href="/writing/walking-bass">ウォーキング・ベース</a>：ベース・ラインの組み立て方。根音と5度、和音の音とアプローチ・ノート、順次進行、上から始める。</p>
+</li>
+<li>
+<p><a href="/writing/jazz-idioms">ジャズのイディオム</a>：このスタイルの語彙。エンクロージャー、アプローチ・ノート、ザ・リック、3から♭9へ、ブルーな3度、先取り。</p>
+</li>
+<li>
+<p><a href="/writing/bebop-scale">バリー・ハリスのビバップ・スケール</a>：6の和音と減七の和音で和声づけするシックス・ディミニッシュ・スケールと、和音の音を拍の上に保つ加えられた音。</p>
+</li>
+<li>
+<p><a href="/writing/minor-chord-scales">マイナーのコード・スケール</a>：旋律的短音階と和声的短音階の7の和音と旋法、そして短調のii–V–i、裏コード、借用和音での使い方。</p>
+</li>
+<li>
+<p><a href="/writing/two-five-improvisation">ツー・ファイブで即興する</a>：ii–V–Iの上の音階の組み合わせと、ミクソリディアン、オルタード、ディミニッシュ、和声的短音階を使ったVの上のフレーズ。</p>
+</li>
+<li>
+<p><a href="/writing/jazz-chord-improvisation">ジャズの和音で即興する</a>：5度下へ解決しないドミナントのリディアン・ドミナント、7♯5のホールトーン、ディミニッシュ・スケール。</p>
+</li>
+<li>
+<p><a href="/writing/stella-by-starlight">曲の分析：星影のステラ</a>：「星影のステラ」の和音を8小節ずつ、各部分を2通りの聞き方で。</p>
+</li>
+</ul>
+<h2 id="modern-jazz-language"><a href="/writing/modern-jazz-language">Modern Jazz Language</a></h2>
+<h2 id="モダンジャズの語法"><a href="/writing/modern-jazz-language">モダン・ジャズの語法</a></h2>
+<ul>
+<li>
+<p><a href="/writing/modal-jazz">Modal Jazz</a>: modes held for many bars, the form of “So What” and its voicing, fourths over a pedal, and suspended chords.</p>
+</li>
+<li>
+<p><a href="/writing/upper-structure-triads">Upper Structure Triads</a>: major triads over a dominant shell, and the tensions each one adds.</p>
+</li>
+<li>
+<p><a href="/writing/triads-in-scales">Triads Inside Scales</a>: the triads hidden in Lydian, Dorian, melodic minor, altered, and diminished scales, and triad pairs in phrases.</p>
+</li>
+<li>
+<p><a href="/writing/modern-pentatonics">Pentatonics in Modern Jazz</a>: pentatonics on other roots over each chord, such as B minor pentatonic over Cmaj7, and side-slipping.</p>
+</li>
+<li>
+<p><a href="/writing/playing-outside">Playing Outside</a>: side-stepping a half step and superimposing a ii–V a tritone away.</p>
+</li>
+<li>
+<p><a href="/writing/fourths">Fourths and Intervallic Lines</a>: lines of stacked fourths in a scale and moved in parallel.</p>
+</li>
+<li>
+<p><a href="/writing/coltrane-changes">Coltrane Changes</a>: three keys a major third apart, the Coltrane substitution for ii–V–I, and the 1-2-3-5 pattern.</p>
+</li>
+<li>
+<p><a href="/writing/modal-jazz">モード・ジャズ</a>：何小節も続く旋法、「ソー・ホワット」の形式とボイシング、保続音の上の4度、サスペンデッド・コード。</p>
+</li>
+<li>
+<p><a href="/writing/upper-structure-triads">アッパー・ストラクチャー・トライアド</a>：ドミナントのシェルの上の長三和音と、それぞれが加えるテンション。</p>
+</li>
+<li>
+<p><a href="/writing/triads-in-scales">スケールの中の三和音</a>：リディアン、ドリアン、旋律的短音階、オルタード、ディミニッシュに隠れた三和音と、フレーズの中のトライアド・ペア。</p>
+</li>
+<li>
+<p><a href="/writing/modern-pentatonics">モダン・ジャズのペンタトニック</a>：Cmaj7の上のBマイナー・ペンタトニックのような、ほかの根音のペンタトニックと、サイド・スリップ。</p>
+</li>
+<li>
+<p><a href="/writing/playing-outside">アウトサイド</a>：半音のサイド・ステップと、三全音離れたii–Vの重ね合わせ。</p>
+</li>
+<li>
+<p><a href="/writing/fourths">4度と音程的な旋律</a>：音階の中で積み重ね、平行に動かす4度の旋律。</p>
+</li>
+<li>
+<p><a href="/writing/coltrane-changes">コルトレーン・チェンジ</a>：長3度ずつ離れた3つの調、ii–V–Iのコルトレーンの代理、1-2-3-5のパターン。</p>
+</li>
+</ul>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

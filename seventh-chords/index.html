@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sevenths and Tensions 7の和音とテンション</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open">
+        <li class="si">
+          <button class="st" data-path="sound-theory/sound" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/sound-and-timbre" class="sl">Sound and Timbre 音と音色</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:64px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:64px">Sound Sources 音源</a></li><li class="si"><a href="/writing/synthesis" class="sl" style="padding-left:64px">Synthesizers and Effects シンセサイザーとエフェクト</a></li><li class="si"><a href="/writing/sound-toys" class="sl" style="padding-left:64px">Sound Toys 音のおもちゃ</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:64px">Sound as Material 素材としての音</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/pitch" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/pitch-and-scales" class="sl">Pitch and Scales 音高と音階</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:64px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:64px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:64px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:64px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/tetrachords" class="sl" style="padding-left:64px">Tetrachords テトラコード</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:64px">Other Scales その他の音階</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/rhythm" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/rhythm-and-time" class="sl">Rhythm and Time リズムと時間</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:64px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:64px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:64px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/syncopation" class="sl" style="padding-left:64px">Syncopation and Anticipation シンコペーションと先取り</a></li><li class="si"><a href="/writing/rhythm-patterns" class="sl" style="padding-left:64px">Rhythm Patterns リズム・パターン</a></li><li class="si"><a href="/writing/polyrhythm" class="sl" style="padding-left:64px">Polyrhythm ポリリズム</a></li><li class="si"><a href="/writing/articulation" class="sl" style="padding-left:64px">Articulation アーティキュレーション</a></li></ul>
+        </li>
+        <li class="si active">
+          <button class="st active" data-path="sound-theory/harmony" aria-expanded="true" style="padding-left:28px">
+            <span class="sa">−</span><a href="/writing/chords-and-harmony" class="sl">Chords and Harmony 和音と和声</a>
+          </button>
+          <ul class="sc open"><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:64px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:64px">Other Chords その他の和音</a></li><li class="si cur"><a href="/writing/seventh-chords" class="sl current" style="padding-left:64px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/chord-voicing" class="sl" style="padding-left:64px">Voicing ボイシング</a></li><li class="si"><a href="/writing/minor-key-chords" class="sl" style="padding-left:64px">Chords in Minor Keys 短調の和音</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:64px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:64px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:64px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/chord-progressions" class="sl" style="padding-left:64px">Chord Progressions コード進行</a></li><li class="si"><a href="/writing/jpop-progressions" class="sl" style="padding-left:64px">J-Pop Progressions J-POPのコード進行</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:64px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:64px">Reharmonization リハーモナイズ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/history" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/music-and-history" class="sl">Music and History 音楽と歴史</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/non-western-music" class="sl" style="padding-left:64px">Music Beyond the West 西洋の外の音楽</a></li><li class="si"><a href="/writing/blues" class="sl" style="padding-left:64px">Blues ブルース</a></li><li class="si"><a href="/writing/jazz-history" class="sl" style="padding-left:64px">A Short History of Jazz ジャズ小史</a></li><li class="si"><a href="/writing/chord-notation" class="sl" style="padding-left:64px">Writing Chords コードの書き方</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:64px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/minimal-music" class="sl" style="padding-left:64px">Minimal Music ミニマル・ミュージック</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/improvisation" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/jazz-improvisation" class="sl">Jazz Improvisation ジャズの即興</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pentatonic-improvisation" class="sl" style="padding-left:64px">Improvising with Pentatonics ペンタトニックで即興する</a></li><li class="si"><a href="/writing/diatonic-improvisation" class="sl" style="padding-left:64px">Improvising in One Key ひとつの調で即興する</a></li><li class="si"><a href="/writing/outlining-changes" class="sl" style="padding-left:64px">Outlining the Changes コード進行を描き出す</a></li><li class="si"><a href="/writing/walking-bass" class="sl" style="padding-left:64px">Walking Bass ウォーキング・ベース</a></li><li class="si"><a href="/writing/jazz-idioms" class="sl" style="padding-left:64px">Jazz Idioms ジャズのイディオム</a></li><li class="si"><a href="/writing/bebop-scale" class="sl" style="padding-left:64px">Barry Harris's Bebop Scale バリー・ハリスのビバップ・スケール</a></li><li class="si"><a href="/writing/minor-chord-scales" class="sl" style="padding-left:64px">Minor Chord Scales マイナーのコード・スケール</a></li><li class="si"><a href="/writing/two-five-improvisation" class="sl" style="padding-left:64px">Improvising on Two-Fives ツー・ファイブで即興する</a></li><li class="si"><a href="/writing/jazz-chord-improvisation" class="sl" style="padding-left:64px">Improvising on Jazz Chords ジャズの和音で即興する</a></li><li class="si"><a href="/writing/stella-by-starlight" class="sl" style="padding-left:64px">Analyzing a Song: Stella by Starlight 曲の分析：星影のステラ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/modern-jazz" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/modern-jazz-language" class="sl">Modern Jazz Language モダン・ジャズの語法</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/modal-jazz" class="sl" style="padding-left:64px">Modal Jazz モード・ジャズ</a></li><li class="si"><a href="/writing/upper-structure-triads" class="sl" style="padding-left:64px">Upper Structure Triads アッパー・ストラクチャー・トライアド</a></li><li class="si"><a href="/writing/triads-in-scales" class="sl" style="padding-left:64px">Triads Inside Scales スケールの中の三和音</a></li><li class="si"><a href="/writing/modern-pentatonics" class="sl" style="padding-left:64px">Pentatonics in Modern Jazz モダン・ジャズのペンタトニック</a></li><li class="si"><a href="/writing/playing-outside" class="sl" style="padding-left:64px">Playing Outside アウトサイド</a></li><li class="si"><a href="/writing/fourths" class="sl" style="padding-left:64px">Fourths and Intervallic Lines 4度と音程的な旋律</a></li><li class="si"><a href="/writing/coltrane-changes" class="sl" style="padding-left:64px">Coltrane Changes コルトレーン・チェンジ</a></li></ul>
+        </li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/chords-and-harmony">Chords and Harmony 和音と和声</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Sevenths and Tensions</span> <span class="title-ja">7の和音とテンション</span> </h1> <p>Stacking one more third on a triad adds the seventh above the root and makes a seventh chord. Seventh chords are richer than triads, and in jazz, as in much soul, R&#x26;B, and pop, they are the basic unit of harmony. The common ones, on C:</p>
+<ul>
+<li>
+<p><strong>Major seventh (Cmaj7):</strong> a major triad and a major seventh (C, E, G, B). Soft and settled.</p>
+</li>
+<li>
+<p><strong>Dominant seventh (C7):</strong> a major triad and a minor seventh (C, E, G, B♭). It contains a tritone (E to B♭) and pulls strongly toward a chord a fifth below.</p>
+</li>
+<li>
+<p><strong>Minor seventh (Cm7):</strong> a minor triad and a minor seventh (C, E♭, G, B♭). Mellow.</p>
+</li>
+<li>
+<p><strong>Half-diminished (Cm7♭5):</strong> a diminished triad and a minor seventh (C, E♭, G♭, B♭).</p>
+</li>
+<li>
+<p><strong>Diminished seventh (Cdim7):</strong> stacked minor thirds all the way (C, E♭, G♭, A). Symmetric, and very tense.</p>
+</li>
+<li>
+<p><strong>Minor major seventh (CmMaj7):</strong> a minor triad with a major seventh (C, E♭, G, B), the chord of the <a href="/writing/minor-scales">melodic minor</a>.</p>
+</li>
+</ul>
+<p>三和音にもう1つ3度を積むと、根音の7度上の音が加わり、7の和音（セブンス・コード）になります。7の和音は三和音より豊かに響き、ジャズでは、そしてソウルやR&#x26;B、ポップスの多くでも、和声の基本単位です。Cの上のよく使われるものは次のとおりです。</p>
+<ul>
+<li>
+<p><strong>メジャー・セブンス（Cmaj7）：</strong> 長三和音と長7度（C、E、G、B）。柔らかく、落ち着いています。</p>
+</li>
+<li>
+<p><strong>ドミナント・セブンス（C7）：</strong> 長三和音と短7度（C、E、G、B♭）。三全音（EからB♭）を含み、5度下の和音へ強く引き寄せられます。</p>
+</li>
+<li>
+<p><strong>マイナー・セブンス（Cm7）：</strong> 短三和音と短7度（C、E♭、G、B♭）。まろやかな響きです。</p>
+</li>
+<li>
+<p><strong>ハーフ・ディミニッシュ（Cm7♭5）：</strong> 減三和音と短7度（C、E♭、G♭、B♭）。</p>
+</li>
+<li>
+<p><strong>ディミニッシュ・セブンス（Cdim7）：</strong> 短3度だけを積み重ねたもの（C、E♭、G♭、A）。対称的で、とても緊張した響きです。</p>
+</li>
+<li>
+<p><strong>マイナー・メジャー・セブンス（CmMaj7）：</strong> 短三和音と長7度（C、E♭、G、B）。<a href="/writing/minor-scales">旋律的短音階</a>の和音です。</p>
+</li>
+</ul>
+<p>On the C major scale the diatonic sevenths are Cmaj7, Dm7, Em7, Fmaj7, G7, Am7, and Bm7♭5. Only V gets a dominant seventh, which is one reason it pulls home so clearly.</p>
+<p>Cの長音階の上のダイアトニックな7の和音は、Cmaj7、Dm7、Em7、Fmaj7、G7、Am7、Bm7♭5です。ドミナント・セブンスになるのはVだけで、Vがはっきりと家に向かう理由のひとつになっています。</p>
+<p>A sixth chord adds the 6th instead of the 7th: C6 (C, E, G, A) and Cm6 (C, E♭, G, A). Like a major seventh, C6 colors a major chord without changing what it does, and it often takes the major seventh’s place as the tonic, especially in swing and older popular songs, where the major seventh’s B can rub against a melody on C. C6 has the same notes as Am7, so which of the two we hear depends largely on the bass. Cm6, a minor triad with a major sixth, is a common tonic in minor (see <a href="/writing/minor-key-chords">Chords in Minor Keys</a>). Adding the 9th as well gives C6/9 (C, E, G, A, D), an open tonic heard in jazz and bossa nova.</p>
+<p>6の和音（シックス・コード）は、7度の代わりに6度を加えた和音です。C6（C、E、G、A）やCm6（C、E♭、G、A）がそうです。メジャー・セブンスと同じように、C6は長三和音の働きを変えずに色を加え、トニックとしてメジャー・セブンスの代わりに使われることがよくあります。特にスウィングや古いポピュラー・ソングでよく使われます。メジャー・セブンスのBが、Cの旋律とぶつかることがあるからです。C6はAm7と同じ音でできているので、どちらに聞こえるかは主にベースで決まります。短三和音に長6度を加えたCm6は、短調のトニックとしてよく使われます（<a href="/writing/minor-key-chords">短調の和音</a>を参照）。さらに9度を加えるとC6/9（C、E、G、A、D）になり、ジャズやボサノヴァで聞かれる、開いた響きのトニックになります。</p>
+<h1 id="tensions">Tensions</h1>
+<h1 id="テンション">テンション</h1>
+<p>Keep stacking thirds and the 9th, 11th, and 13th appear: the 2nd, 4th, and 6th, an octave up. Added to a seventh chord, they are called tensions. They color a chord without changing what it does: Cmaj9 is still a tonic, and G13 still pulls to C. A few clash with a chord tone a half step below and are usually avoided; the 11th over a major third is one, so a major chord takes the sharp 11th (♯11) instead.</p>
+<p>さらに3度を積むと、9度、11度、13度、つまり1オクターブ上の2度、4度、6度が現れます。7の和音に加えたこれらの音をテンションといいます。テンションは、和音の働きを変えずに色を加えます。Cmaj9は変わらずトニックで、G13は変わらずCへ向かいます。半音下の和音の音とぶつかるものはふつう避けられます。長3度の上の11度がそのひとつで、長和音には代わりにシャープ11度（♯11）を使います。</p>
+<p>Dominant chords also take altered tensions: the flat 9th, the sharp 9th, the sharp 11th, and the flat 13th (see the altered scale in <a href="/writing/other-scales">Other Scales</a>). They raise the tension of a dominant and make its resolution stronger. In practice, a pianist leaves some notes out of a big chord, usually the fifth and often the root, which the bass plays. The demo does the same: the root is in the bass and, in chords of five or more notes, the fifth is left out.</p>
+<p>ドミナントの和音には、変化させたテンションも使います。フラット9度、シャープ9度、シャープ11度、フラット13度です（<a href="/writing/other-scales">その他の音階</a>のオルタード・スケールを参照）。これらはドミナントの緊張を高め、解決をより強くします。実際には、ピアニストは大きな和音からいくつかの音を省きます。ふつうは5度、そしてベースが弾く根音も省くことがよくあります。デモも同じように、根音をベースに置き、5音以上の和音では5度を省いています。</p>
+<p>Choose an <strong>Example</strong> and press <strong>Play</strong>, or click a chord to hold it. <strong>Sixth chords</strong> plays C, C6, Cmaj7, Am7 (the notes of C6 over A), Cm6, and C6/9, and <strong>ii–V–I6</strong> ends a ii–V on C6 instead of Cmaj7. The labels under the tension examples name the tensions added. In those examples the notes are spread out the way a pianist would open them up: each tension sits at its own distance above the root, the 9th a ninth up and the 13th a thirteenth up, above the chord tones instead of crowded in among them. <strong>ii–V–I with tensions</strong> plays each chord four times, once on every beat. The demo plays in C, as in the text; choose a <strong>Key</strong> to hear it in another key.</p>
+<p><strong>Example</strong>を選んで<strong>Play</strong>を押すか、和音をクリックして鳴らしてください。<strong>Sixth chords</strong>はC、C6、Cmaj7、Am7（Aの上のC6の音）、Cm6、C6/9を鳴らし、<strong>ii–V–I6</strong>はii–VをCmaj7ではなくC6で終えます。テンションの例の下のラベルは、加えたテンションの名前です。これらの例では、ピアニストが和音を開くように音を広げています。各テンションを根音からそれぞれの距離に、つまり9度は9度上に、13度は13度上に置くので、テンションは和音の音のあいだに詰め込まれず、その上に重なります。<strong>ii–V–I with tensions</strong>は、各和音を拍ごとに4回鳴らします。デモは本文と同じくCで鳴りますが、<strong>Key</strong>を選ぶとほかの調で聞けます。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=sevenths&#x26;key" title="Sevenths and tensions" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<ul>
+<li>
+<p><strong>Seventh chords:</strong> the six kinds above, on C.</p>
+</li>
+<li>
+<p><strong>Diatonic sevenths:</strong> the seventh chords of C major, in order.</p>
+</li>
+<li>
+<p><strong>Tensions on Cmaj7:</strong> Cmaj7 with the 9th, the ♯11, the 9th and 13th, and C6/9, a common alternative to a major seventh.</p>
+</li>
+<li>
+<p><strong>Tensions on G7:</strong> G7 with natural and altered tensions, resolving to Cmaj7 at the end.</p>
+</li>
+<li>
+<p><strong>ii–V–I with tensions:</strong> Dm7, G7, Cmaj7 plain, then Dm9, G13, Cmaj9, the same progression with color.</p>
+</li>
+<li>
+<p><strong>Seventh chords：</strong> 上の6種類を、Cの上で。</p>
+</li>
+<li>
+<p><strong>Diatonic sevenths：</strong> Cメジャーの7の和音を順に。</p>
+</li>
+<li>
+<p><strong>Tensions on Cmaj7：</strong> Cmaj7に9度、♯11、9度と13度を加えたもの、そして長7度の代わりによく使われるC6/9。</p>
+</li>
+<li>
+<p><strong>Tensions on G7：</strong> G7にナチュラルと変化させたテンションを加え、最後にCmaj7へ解決します。</p>
+</li>
+<li>
+<p><strong>ii–V–I with tensions：</strong> Dm7、G7、Cmaj7をそのまま、次にDm9、G13、Cmaj9と、同じ進行に色を加えて。</p>
+</li>
+</ul>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>

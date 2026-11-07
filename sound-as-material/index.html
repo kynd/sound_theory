@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sound as Material 素材としての音</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.DbioNDfC.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open">
+        <li class="si active">
+          <button class="st active" data-path="sound-theory/sound" aria-expanded="true" style="padding-left:28px">
+            <span class="sa">−</span><a href="/writing/sound-and-timbre" class="sl">Sound and Timbre 音と音色</a>
+          </button>
+          <ul class="sc open"><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:64px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:64px">Sound Sources 音源</a></li><li class="si"><a href="/writing/synthesis" class="sl" style="padding-left:64px">Synthesizers and Effects シンセサイザーとエフェクト</a></li><li class="si"><a href="/writing/sound-toys" class="sl" style="padding-left:64px">Sound Toys 音のおもちゃ</a></li><li class="si cur"><a href="/writing/sound-as-material" class="sl current" style="padding-left:64px">Sound as Material 素材としての音</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/pitch" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/pitch-and-scales" class="sl">Pitch and Scales 音高と音階</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:64px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:64px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:64px">Church Modes 教会旋法</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:64px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/tetrachords" class="sl" style="padding-left:64px">Tetrachords テトラコード</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:64px">Other Scales その他の音階</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/rhythm" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/rhythm-and-time" class="sl">Rhythm and Time リズムと時間</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:64px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:64px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:64px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/syncopation" class="sl" style="padding-left:64px">Syncopation and Anticipation シンコペーションと先取り</a></li><li class="si"><a href="/writing/rhythm-patterns" class="sl" style="padding-left:64px">Rhythm Patterns リズム・パターン</a></li><li class="si"><a href="/writing/polyrhythm" class="sl" style="padding-left:64px">Polyrhythm ポリリズム</a></li><li class="si"><a href="/writing/articulation" class="sl" style="padding-left:64px">Articulation アーティキュレーション</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/harmony" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/chords-and-harmony" class="sl">Chords and Harmony 和音と和声</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:64px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:64px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:64px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/chord-voicing" class="sl" style="padding-left:64px">Voicing ボイシング</a></li><li class="si"><a href="/writing/minor-key-chords" class="sl" style="padding-left:64px">Chords in Minor Keys 短調の和音</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:64px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:64px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:64px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/chord-progressions" class="sl" style="padding-left:64px">Chord Progressions コード進行</a></li><li class="si"><a href="/writing/jpop-progressions" class="sl" style="padding-left:64px">J-Pop Progressions J-POPのコード進行</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:64px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:64px">Reharmonization リハーモナイズ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/history" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/music-and-history" class="sl">Music and History 音楽と歴史</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/non-western-music" class="sl" style="padding-left:64px">Music Beyond the West 西洋の外の音楽</a></li><li class="si"><a href="/writing/blues" class="sl" style="padding-left:64px">Blues ブルース</a></li><li class="si"><a href="/writing/jazz-history" class="sl" style="padding-left:64px">A Short History of Jazz ジャズ小史</a></li><li class="si"><a href="/writing/chord-notation" class="sl" style="padding-left:64px">Writing Chords コードの書き方</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:64px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/minimal-music" class="sl" style="padding-left:64px">Minimal Music ミニマル・ミュージック</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/improvisation" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/jazz-improvisation" class="sl">Jazz Improvisation ジャズの即興</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pentatonic-improvisation" class="sl" style="padding-left:64px">Improvising with Pentatonics ペンタトニックで即興する</a></li><li class="si"><a href="/writing/diatonic-improvisation" class="sl" style="padding-left:64px">Improvising in One Key ひとつの調で即興する</a></li><li class="si"><a href="/writing/outlining-changes" class="sl" style="padding-left:64px">Outlining the Changes コード進行を描き出す</a></li><li class="si"><a href="/writing/walking-bass" class="sl" style="padding-left:64px">Walking Bass ウォーキング・ベース</a></li><li class="si"><a href="/writing/jazz-idioms" class="sl" style="padding-left:64px">Jazz Idioms ジャズのイディオム</a></li><li class="si"><a href="/writing/bebop-scale" class="sl" style="padding-left:64px">Barry Harris's Bebop Scale バリー・ハリスのビバップ・スケール</a></li><li class="si"><a href="/writing/minor-chord-scales" class="sl" style="padding-left:64px">Minor Chord Scales マイナーのコード・スケール</a></li><li class="si"><a href="/writing/two-five-improvisation" class="sl" style="padding-left:64px">Improvising on Two-Fives ツー・ファイブで即興する</a></li><li class="si"><a href="/writing/jazz-chord-improvisation" class="sl" style="padding-left:64px">Improvising on Jazz Chords ジャズの和音で即興する</a></li><li class="si"><a href="/writing/stella-by-starlight" class="sl" style="padding-left:64px">Analyzing a Song: Stella by Starlight 曲の分析：星影のステラ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/modern-jazz" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/modern-jazz-language" class="sl">Modern Jazz Language モダン・ジャズの語法</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/modal-jazz" class="sl" style="padding-left:64px">Modal Jazz モード・ジャズ</a></li><li class="si"><a href="/writing/upper-structure-triads" class="sl" style="padding-left:64px">Upper Structure Triads アッパー・ストラクチャー・トライアド</a></li><li class="si"><a href="/writing/triads-in-scales" class="sl" style="padding-left:64px">Triads Inside Scales スケールの中の三和音</a></li><li class="si"><a href="/writing/modern-pentatonics" class="sl" style="padding-left:64px">Pentatonics in Modern Jazz モダン・ジャズのペンタトニック</a></li><li class="si"><a href="/writing/playing-outside" class="sl" style="padding-left:64px">Playing Outside アウトサイド</a></li><li class="si"><a href="/writing/fourths" class="sl" style="padding-left:64px">Fourths and Intervallic Lines 4度と音程的な旋律</a></li><li class="si"><a href="/writing/coltrane-changes" class="sl" style="padding-left:64px">Coltrane Changes コルトレーン・チェンジ</a></li></ul>
+        </li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-and-timbre">Sound and Timbre 音と音色</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Sound as Material</span> <span class="title-ja">素材としての音</span> </h1> <p>Most of music theory is about notes: which pitches, when, and in what combinations. Another tradition starts from the sound itself, its timbre, texture, and space, the small changes inside a single tone. It runs from musique concrète and electronic music (see <a href="/writing/breaking-conventions">Breaking Conventions</a>) to sound design for film and games and much of today’s electronic music, and to quiet, sparse improvised music such as onkyō (音響), which grew in Tokyo around 2000, and the reductionism of Berlin at the same time.</p>
+<p>音楽理論の大半は、音符についてのものです。どの音高を、いつ、どんな組み合わせで鳴らすか。それとは別の伝統は、音そのもの、つまり音色、質感、空間、ひとつの音の中の小さな変化から始まります。ミュジーク・コンクレートや電子音楽（<a href="/writing/breaking-conventions">慣習を破る</a>を参照）から、映画やゲームのサウンドデザイン、今日の電子音楽の多く、そして2000年前後に東京で育った音響系や、同じころのベルリンのリダクショニズムのような、静かでまばらな即興音楽へと続いています。</p>
+<p>Music made this way asks for a different kind of listening. The sounds can be very small: a single sine tone and how it fills the room as you move your head, the hum of a speaker or an amplifier, a click, a crackle, feedback slowly changing shape, a breath, the scrape of an object on a surface, a recording of a street or a room. Instead of following a melody or a beat, the listener attends to the grain and color of each sound, how it begins and decays, where it sits in the space, and how it changes over a long time. The silence between sounds, and the sounds of the room and the audience that fill it, become part of the music. Listening this way can start anywhere, with a sine wave on <a href="/writing/sound-waves">Sound Waves</a> played quietly and high, or with the sounds around you right now.</p>
+<p>こうしてつくられる音楽は、別の種類の聞き方を求めます。音はとても小さいことがあります。ひとつのサイン波と、頭を動かすとそれが部屋をどう満たすか、スピーカーやアンプのハム、クリック、パチパチという音、ゆっくり形を変えるフィードバック、息、ものが表面をこする音、通りや部屋の録音。聞き手は、旋律や拍を追う代わりに、それぞれの音の肌理と色合い、音がどう始まりどう消えていくか、空間のどこにあるか、長い時間の中でどう変わっていくかに注意を向けます。音と音のあいだの沈黙、そしてそれを満たす部屋や聴衆の音も、音楽の一部になります。こうした聞き方はどこからでも始められます。<a href="/writing/sound-waves">音の波</a>のサイン波を小さく高く鳴らしてみても、いま身の回りにある音からでも。</p>
+<h1 id="sampling">Sampling</h1>
+<h1 id="サンプリング">サンプリング</h1>
+<p>Sampling means recording a sound and using the recording as an instrument. It began with tape: from 1948 Pierre Schaeffer in Paris built musique concrète from recordings of trains, pans, and voices, looping, slowing, and reversing them by cutting and splicing tape. Digital samplers arrived around 1980 (the Fairlight CMI, the E-mu Emulator) and became cheap in the late 1980s (the Akai MPC, the E-mu SP-1200), which made sampling the backbone of hip-hop: producers looped and chopped drum breaks and phrases from funk and soul records into new beats. Since then, sampling ideas have multiplied:</p>
+<ul>
+<li>
+<p><strong>Looping:</strong> a short phrase repeated until it becomes a groove or a texture, as in Steve Reich’s tape pieces (see <a href="/writing/breaking-conventions">Breaking Conventions</a>) and countless hip-hop beats.</p>
+</li>
+<li>
+<p><strong>Chopping:</strong> cutting a recording into slices and playing them in a new order, the basis of beat-making and of jungle’s rapid edits of drum breaks.</p>
+</li>
+<li>
+<p><strong>Changing speed:</strong> playing a recording faster or slower, which moves its pitch with it, from chipmunk voices to the slowed, dreamy loops of vaporwave.</p>
+</li>
+<li>
+<p><strong>Reversing:</strong> playing it backward, which turns a sharp attack into a swell.</p>
+</li>
+<li>
+<p><strong>Plunderphonics and collage:</strong> building pieces from recognizable recordings, as John Oswald did in the 1980s, raising questions about authorship along the way.</p>
+</li>
+<li>
+<p><strong>Glitch:</strong> using the failures of playback, skipping CDs and digital errors, as material, as Oval did in the 1990s (see <a href="/writing/sound-toys">Sound Toys</a>).</p>
+</li>
+<li>
+<p><strong>Field recording:</strong> recording places, weather, machines, and animals, and composing with them, as a kind of listening.</p>
+</li>
+</ul>
+<p>サンプリングとは、音を録音し、その録音を楽器として使うことです。それはテープから始まりました。1948年から、パリのピエール・シェフェールは、列車、鍋、声の録音から、テープを切ってつなぐことでループさせたり、遅くしたり、逆にしたりして、ミュジーク・コンクレートを組み立てました。デジタルのサンプラーは1980年ごろ（フェアライトCMI、E-mu Emulator）に登場し、1980年代後半に安価になり（AKAI MPC、E-mu SP-1200）、サンプリングをヒップホップの背骨にしました。プロデューサーたちは、ファンクやソウルのレコードのドラム・ブレイクやフレーズをループさせ、切り刻んで、新しいビートにしたのです。それ以来、サンプリングのアイデアは増え続けています。</p>
+<ul>
+<li>
+<p><strong>ループ：</strong> 短いフレーズを、グルーヴや質感になるまで繰り返します。スティーヴ・ライヒのテープ作品（<a href="/writing/breaking-conventions">慣習を破る</a>を参照）や、数えきれないヒップホップのビートのように。</p>
+</li>
+<li>
+<p><strong>チョップ：</strong> 録音を切り分け、新しい順番で鳴らします。ビートメイキングの基本であり、ジャングルのドラム・ブレイクのすばやい編集の基本でもあります。</p>
+</li>
+<li>
+<p><strong>速さを変える：</strong> 録音を速く、あるいは遅く再生すると、音高も一緒に動きます。リスのような声から、ヴェイパーウェイヴの遅く夢のようなループまで。</p>
+</li>
+<li>
+<p><strong>逆再生：</strong> 後ろから再生すると、鋭い立ち上がりが、ふくらんでいく音に変わります。</p>
+</li>
+<li>
+<p><strong>プランダーフォニックスとコラージュ：</strong> 聞き覚えのある録音から作品を組み立てます。1980年代にジョン・オズワルドがしたように。その過程で、作者とは誰かという問いも生まれます。</p>
+</li>
+<li>
+<p><strong>グリッチ：</strong> 飛ぶCDやデジタルのエラーといった、再生の失敗を素材にします。1990年代のOvalのように（<a href="/writing/sound-toys">音のおもちゃ</a>を参照）。</p>
+</li>
+<li>
+<p><strong>フィールド・レコーディング：</strong> 場所、天気、機械、動物を録音し、それで作曲します。それ自体が、聞くことの一種です。</p>
+</li>
+</ul>
+<p>Choose a <strong>Sound</strong> and press <strong>Play</strong> to loop it, or press <strong>Record</strong> to record your own sound with the microphone (press it again to stop, or it stops after ten seconds); your recording appears in the menu as <strong>Recording</strong>. <strong>Speed</strong> plays it faster or slower, moving the pitch with it. <strong>Attack</strong> and <strong>Release</strong> fade each slice in and out. <strong>Slices</strong> cuts the recording into equal slices, played in order, and <strong>Shuffle</strong> plays them in a random order instead; <strong>Reverse</strong> plays each slice backward. The sections below add distortion, a filter, delay, and reverb. The plot shows the recording’s waveform, with the sounding slice marked in yellow (butter when it plays backward). Try the piano note with <strong>Reverse</strong>, the voice at half speed, and the drum break with eight slices and <strong>Shuffle</strong>.</p>
+<p><strong>Sound</strong>を選んで<strong>Play</strong>を押すとループします。<strong>Record</strong>を押すと、マイクで自分の音を録音できます（もう一度押すと止まり、10秒で自動的に止まります）。録音はメニューに<strong>Recording</strong>として現れます。<strong>Speed</strong>は速く、あるいは遅く再生し、音高も一緒に動かします。<strong>Attack</strong>と<strong>Release</strong>は、各スライスをフェードイン、フェードアウトさせます。<strong>Slices</strong>は録音を等しいスライスに切り分けて順に鳴らし、<strong>Shuffle</strong>はランダムな順番で鳴らします。<strong>Reverse</strong>は各スライスを逆再生します。下のセクションで、ディストーション、フィルター、ディレイ、リバーブを加えられます。図は録音の波形で、鳴っているスライスは黄色（逆再生のときはバター色）で示されます。ピアノの音を<strong>Reverse</strong>で、声を半分の速さで、ドラム・ブレイクを8つのスライスと<strong>Shuffle</strong>で試してみてください。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/sampler/index.html" title="Sampler" allow="autoplay; microphone" loading="lazy" style="height: 640px"></iframe></div>
+<h1 id="sound-design">Sound Design</h1>
+<h1 id="サウンドデザイン">サウンドデザイン</h1>
+<p>Sound design is the shaping of sounds themselves, for a piece of music, a film, a game, or a product. Its basic tools:</p>
+<ul>
+<li>
+<p><strong>Synthesis:</strong> making sounds from scratch. Subtractive synthesis filters a bright waveform, additive synthesis sums sine waves (see <a href="/writing/sound-waves">Sound Waves</a>), FM synthesis modulates one oscillator’s frequency with another, and physical modeling simulates strings, tubes, and plates.</p>
+</li>
+<li>
+<p><strong>Envelopes:</strong> how a sound starts, holds, and fades. The attack tells us a lot about what made a sound: a piano note played backward no longer sounds like a piano.</p>
+</li>
+<li>
+<p><strong>Sampling and manipulation:</strong> recording a sound and changing it, by speed, pitch, direction, slicing, or granular synthesis (below).</p>
+</li>
+<li>
+<p><strong>Effects as instruments:</strong> filters, distortion, delay, and reverb do more than polish a sound; pushed far, they become the sound (see <a href="/writing/sound-sources">Sound Sources</a>).</p>
+</li>
+<li>
+<p><strong>Space:</strong> reverb, panning, and distance place a sound somewhere, from a small room to an imagined place.</p>
+</li>
+<li>
+<p><strong>Layering:</strong> a single sound in a film is often several, a thump, a crack, and a tail combined.</p>
+</li>
+</ul>
+<p>サウンドデザインとは、音楽、映画、ゲーム、製品などのために、音そのものを形づくることです。基本的な道具は次のとおりです。</p>
+<ul>
+<li>
+<p><strong>シンセシス：</strong> 音を一からつくります。減算合成は明るい波形をフィルターで削り、加算合成はサイン波を足し合わせ（<a href="/writing/sound-waves">音の波</a>を参照）、FM合成はあるオシレーターの周波数を別のオシレーターで変調し、物理モデリングは弦や管や板をシミュレートします。</p>
+</li>
+<li>
+<p><strong>エンベロープ：</strong> 音がどう始まり、保たれ、消えていくか。立ち上がりは、何が音を立てたのかを多く語ります。逆再生したピアノの音は、もうピアノには聞こえません。</p>
+</li>
+<li>
+<p><strong>サンプリングと加工：</strong> 音を録音し、速さ、音高、向き、切り分け、グラニュラー合成（下記）などで変えます。</p>
+</li>
+<li>
+<p><strong>楽器としてのエフェクト：</strong> フィルター、ディストーション、ディレイ、リバーブは、音を磨くだけではありません。極端に使えば、それ自体が音になります（<a href="/writing/sound-sources">音源</a>を参照）。</p>
+</li>
+<li>
+<p><strong>空間：</strong> リバーブ、パン、距離感は、小さな部屋から想像上の場所まで、音をどこかに置きます。</p>
+</li>
+<li>
+<p><strong>レイヤー：</strong> 映画のひとつの音は、多くの場合、ドスンという音、パキッという音、余韻など、いくつかの音を重ねたものです。</p>
+</li>
+</ul>
+<p>Several of these tools can be heard on this site: synthesis on <a href="/writing/synthesis">Synthesizers and Effects</a>, envelopes, speed, direction, and effects in the sampler above. Layering is shown below.</p>
+<p>このサイトでも、これらの道具のいくつかを聞くことができます。シンセシスは<a href="/writing/synthesis">シンセサイザーとエフェクト</a>で、エンベロープ、速さ、向き、エフェクトは上のサンプラーで。レイヤーは下で示します。</p>
+<h2 id="layering">Layering</h2>
+<h2 id="レイヤー">レイヤー</h2>
+<p>Press the <strong>Hit</strong> pad (or A, or the space bar) to play an impact made of four layers, each with its own level: <strong>Thump</strong>, a sine wave whose pitch drops fast, felt more than heard; <strong>Crack</strong>, a very short burst of bright noise, which makes the hit sound hard; <strong>Ring</strong>, a short metallic clang that gives it a body; and <strong>Tail</strong>, dark noise fading into a long reverb, which gives it a space. Lower a layer to 0 to hear what it was adding, or play one alone. The plot shows the combined waveform.</p>
+<p><strong>Hit</strong>のパッド（またはA、スペースキー）を押すと、4つのレイヤーでできた衝撃音が鳴ります。それぞれに音量があります。<strong>Thump</strong>は音高が急速に下がるサイン波で、聞こえるというより体で感じる音です。<strong>Crack</strong>はごく短い明るいノイズで、打撃を硬く聞こえさせます。<strong>Ring</strong>は短い金属的な響きで、音に胴体を与えます。<strong>Tail</strong>は長いリバーブの中へ消えていく暗いノイズで、音に空間を与えます。レイヤーを0にすると、それが何を加えていたかがわかります。ひとつだけ鳴らしてみることもできます。図は合わさった波形です。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/layers/index.html" title="Layering" allow="autoplay" loading="lazy" style="height: 448px"></iframe></div>
+<h1 id="granular-synthesis">Granular Synthesis</h1>
+<h1 id="グラニュラー合成">グラニュラー合成</h1>
+<p>Granular synthesis cuts a recording into grains of a few to a few hundred milliseconds and plays many of them, overlapping. The idea goes back to Iannis Xenakis in the late 1950s and was developed in software by Curtis Roads and others. Because each grain keeps its own pitch, the speed through the recording and the pitch become independent: a single note can be stretched into a still cloud, or shifted in pitch without speeding up.</p>
+<p>グラニュラー合成は、録音を数ミリ秒から数百ミリ秒の粒（グレイン）に切り分け、多くの粒を重ねながら鳴らします。この考え方は1950年代後半のヤニス・クセナキスにさかのぼり、カーティス・ローズらがソフトウェアで発展させました。それぞれの粒は自分の音高を保つので、録音を進む速さと音高が独立します。ひとつの音を静止した雲のように引き伸ばしたり、速さを変えずに音高だけを変えたりできます。</p>
+<p>Choose a <strong>Sound</strong>, a recorded note, and press <strong>Play</strong> to loop it through grains. <strong>Rate</strong> is the speed through the recording: 1 is as recorded, and lower values stretch it in time without changing its pitch. <strong>Pitch</strong> shifts it up or down in cents (100 to a semitone) without changing its speed. <strong>Grain</strong> is the length of each grain: short grains sound buzzy and rough, long ones smooth. <strong>Overlap</strong> is the crossfade between grains. <strong>Reverse</strong> plays each grain backward. The plot shows the waveform above and the spectrum below.</p>
+<p><strong>Sound</strong>で録音された音を選び、<strong>Play</strong>を押すと、その音が粒になってループします。<strong>Rate</strong>は録音を進む速さで、1が録音どおり、小さくすると音高を変えずに時間を引き伸ばします。<strong>Pitch</strong>は、速さを変えずに音高をセント単位（半音が100）で上下させます。<strong>Grain</strong>はそれぞれの粒の長さで、短い粒はざらついたブザーのように、長い粒はなめらかに聞こえます。<strong>Overlap</strong>は粒どうしのクロスフェードの長さです。<strong>Reverse</strong>はそれぞれの粒を逆向きに鳴らします。図は、上に波形、下にスペクトルを表示します。</p>
+<div class="demo-wrap"><iframe src="/writing/demos/granular/index.html" title="Granular synthesis" allow="autoplay" loading="lazy" style="height: 352px"></iframe></div>
+<p>Try a Rate near 0.05 with long grains for a frozen drone, short grains with a lot of overlap for a buzzing texture, and Pitch an octave down with Reverse for something no instrument would play. Composing with sound in this way is less about choosing notes than about listening closely and shaping what you hear.</p>
+<p>Rateを0.05近くにして粒を長くすると凍りついたドローンに、粒を短くしてOverlapを多くするとざわめく質感に、Pitchを1オクターブ下げてReverseにすると、どんな楽器も奏でない音になります。こうして音で作曲することは、音符を選ぶことよりも、よく聞き、聞こえるものを形づくることに近いのです。</p>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>
