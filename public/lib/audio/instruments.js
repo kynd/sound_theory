@@ -249,6 +249,7 @@ const TONEJS_INSTRUMENTS = {
     'clarinet':        ['D3', 'F3', 'A#3', 'D4', 'F4', 'A#4', 'D5', 'F5', 'A#5', 'D6', 'F#6'],
     'trumpet':         ['F3', 'A3', 'C4', 'D#4', 'G4', 'A#4', 'D5', 'F5', 'A5', 'C6'],
     'guitar-acoustic': ['D2', 'F2', 'G#2', 'B2', 'D3', 'F3', 'G#3', 'B3', 'D4', 'F4', 'G#4', 'B4', 'D5'],
+    'bass-electric':   ['E1', 'G1', 'A#1', 'C#2', 'E2', 'G2', 'A#2', 'C#3', 'E3', 'G3', 'A#3', 'C#4', 'E4', 'G4'],
 };
 function tonejsInstrument(name, opts) {
     const urls = Object.fromEntries(
@@ -378,6 +379,15 @@ export const INSTRUMENTS = [
         harmonicity: 2,
         envelope: { attack: 0.01, decay: 0.2, sustain: 0.6, release: 0.8 },
     }, { volume: -4 }) },
+    // An electric piano in the manner of FM tine pianos: a sine modulating a sine at the
+    // same frequency, the modulation fading fast so each note starts with a bell-like
+    // bite and settles into a warm tone. Used for the backing in the jazz demos.
+    { id: 'epiano', label: 'Electric piano', group: 'Synths', create: () => new PolyInstrument(Tone.FMSynth, {
+        harmonicity: 1, modulationIndex: 4,
+        oscillator: { type: 'sine' }, modulation: { type: 'sine' },
+        envelope: { attack: 0.002, decay: 1.6, sustain: 0.25, release: 0.8 },
+        modulationEnvelope: { attack: 0.002, decay: 0.35, sustain: 0.05, release: 0.5 },
+    }, { volume: -8 }) },
     { id: 'piano', label: 'Piano', group: 'Sampled', create: () =>
         new SampledInstrument(salamanderUrls(), SALAMANDER_BASE, { release: 1, volume: -2 }) },
     { id: 'violin',   label: 'Violin',   group: 'Sampled', create: () => tonejsInstrument('violin',   { release: 0.6, volume: -10 }) },
@@ -386,6 +396,7 @@ export const INSTRUMENTS = [
     { id: 'clarinet', label: 'Clarinet', group: 'Sampled', create: () => tonejsInstrument('clarinet', { release: 0.4, volume: -11 }) },
     { id: 'trumpet',  label: 'Trumpet',  group: 'Sampled', create: () => tonejsInstrument('trumpet',  { release: 0.4, volume: -8 }) },
     { id: 'guitar',   label: 'Acoustic guitar', group: 'Sampled', create: () => tonejsInstrument('guitar-acoustic', { release: 1, volume: -11 }) },
+    { id: 'bass',     label: 'Electric bass', group: 'Sampled', create: () => tonejsInstrument('bass-electric', { release: 0.3, volume: -4 }) },
     { id: 'drums', label: 'Drum kit', group: 'Drums', create: () => new DrumKit() },
     { id: 'white-noise', label: 'White noise', group: 'Noise', create: () => new NoiseInstrument('white', { volume: -14 }) },
     { id: 'pink-noise',  label: 'Pink noise',  group: 'Noise', create: () => new NoiseInstrument('pink', { volume: -8 }) },

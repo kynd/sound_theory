@@ -15,6 +15,8 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 // labeled Root, for chords built on a root rather than progressions in a key. A set
 // whose progressions have seventh chords gets a 7th toggle that switches to them, and
 // one whose chords name their chord scales shows the scale over the sounding chord.
+// A progression with `generate` (a function returning a new melody) gets a New line
+// button that replaces its melody.
 // ?play is for playing along: the keyboard sits higher, a Phrase toggle turns the
 // written melody off to leave a backing track, and a progression with a `playScale`
 // shows only that scale's notes on the keyboard.
@@ -36,7 +38,7 @@ const instrument = id => {
     if (!instruments.has(id)) instruments.set(id, createInstrument(id).connect(master.input));
     return instruments.get(id);
 };
-const sounds = PROGRESSIONS.flatMap(p => [p.sounds?.chords ?? 'piano', p.sounds?.melody ?? p.sounds?.chords ?? 'piano']);
+const sounds = PROGRESSIONS.flatMap(p => [p.sounds?.chords ?? 'piano', p.sounds?.melody ?? p.sounds?.chords ?? 'piano', p.sounds?.bass].filter(Boolean));
 if (PROGRESSIONS.some(p => p.drums)) sounds.push('drums');
 
 // Empty unless something is loading or failed.
@@ -125,6 +127,7 @@ function useProgression() {
     if (playAlong) useKeyboardScale(moved.playScale);
     player.instrument = instrument(progression.sounds?.chords ?? 'piano');
     player.melodyInstrument = instrument(progression.sounds?.melody ?? progression.sounds?.chords ?? 'piano');
+    player.bassInstrument = progression.sounds?.bass ? instrument(progression.sounds.bass) : null;
     player.setProgression(progression);
     view.update(player.progression, player.voicings);
     chordNotes = []; melodyNote = null; bassNote = null;
@@ -170,6 +173,22 @@ if (PROGRESSIONS.some(p => p.sevenths)) {
     const divider = document.createElement('div');
     divider.className = 'dp-divider';
     controls.append(divider, toggle);
+}
+if (PROGRESSIONS.some(p => p.generate)) {
+    const button = document.createElement('button');
+    button.className = 'dp-btn';
+    button.textContent = 'New line';
+    button.addEventListener('click', () => {
+        const base = PROGRESSIONS.find(p => p.id === progressionId);
+        if (!base.generate) return;
+        const wasPlaying = player.playing;
+        base.melody = base.generate();
+        useProgression();
+        if (wasPlaying) { startAudio(); player.start(); syncPlay?.(); }
+    });
+    const divider = document.createElement('div');
+    divider.className = 'dp-divider';
+    controls.append(divider, button);
 }
 if (playAlong && PROGRESSIONS.some(p => p.melody?.length)) {
     const toggle = document.createElement('button');

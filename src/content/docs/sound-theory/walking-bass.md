@@ -6,9 +6,9 @@ In most jazz, the bass plays one note on every beat, a walking bass line. It doe
 
 ほとんどのジャズで、ベースは毎拍ひとつずつ音を弾きます。ウォーキング・ベースです。ベースは2つの仕事を同時にこなします。時間を刻み、バンドにスウィングと推進力を与えること、そして下から和声を示し、各和音の根音に、ふつうは小節の頭で着地して、ソリストにも聞き手にも、音楽がいまどこにあるかを常に知らせることです。よいラインは、それ自体ひとつの旋律のようになめらかに動きながら、この両方を果たします。ベーシストは、ソリストがコード進行を描き出すのと同じ、いくつかの単純な考え方からラインを組み立てます（[コード進行を描き出す](/outlining-changes)を参照）。
 
-The demos on this page all use the turnaround Cmaj7–A7–Dm7–G7. The bass line is drawn in pink below the chords, the piano plays each chord on 1 and on the "and" of 2, and the keyboard lights the notes as they sound.
+The demos on this page all use the turnaround Cmaj7–A7–Dm7–G7. The bass line, played on an electric bass, is drawn in pink below the chords; an electric piano plays each chord on 1 and on the "and" of 2, changing its voicing; and the keyboard lights the notes as they sound.
 
-このページのデモは、どれもターンアラウンドCmaj7–A7–Dm7–G7を使います。ベース・ラインは和音の下にピンクで描かれ、ピアノは各和音を1拍目と2拍目の裏で鳴らし、鍵盤では鳴っている音が点灯します。
+このページのデモは、どれもターンアラウンドCmaj7–A7–Dm7–G7を使います。エレクトリック・ベースで弾くベース・ラインは和音の下にピンクで描かれ、エレクトリック・ピアノはボイシングを変えながら各和音を1拍目と2拍目の裏で鳴らし、鍵盤では鳴っている音が点灯します。
 
 # Roots and Fifths
 # 根音と5度
@@ -26,9 +26,9 @@ Press **Play** to hear roots and fifths in a two feel. The demo plays in C, as i
 # Chord Tones and Approach Notes
 # 和音の音とアプローチ・ノート
 
-A walking line in quarter notes usually plays the root on beat 1 and other chord tones on beats 2 and 3, then uses beat 4 to lead into the next root. The most common lead-in is a chromatic approach: a note a half step above or below the next root. Here every bar ends a half step above the next root: B♭ into A, E♭ into D, A♭ into G, and D♭ into C. Other choices for beat 4 are a scale step, or the fifth of the next chord, its own dominant.
+A walking line in quarter notes usually plays the root on beat 1 and other chord tones on beats 2 and 3, then uses beat 4 to lead into the next root. The most common lead-in is a chromatic approach: a note a half step above or below the next root. Here every bar ends a half step above the next root: B♭ into A, E♭ into D, A♭ into G, and D♭ into C. The 5th of the next chord is another common approach note: it leads into the root the way V leads to I, from a fourth below or a fifth above. A scale step works too.
 
-4分音符で歩くラインは、ふつう1拍目に根音、2拍目と3拍目にほかの和音の音を弾き、4拍目で次の根音へ導きます。最もよく使われる導き方は、次の根音の半音上か半音下の音から入る、半音のアプローチです。ここでは、どの小節も次の根音の半音上で終わります。B♭からA、E♭からD、A♭からG、D♭からCへ。4拍目には、音階の順次進行や、次の和音の5度（その和音自身のドミナント）を使うこともできます。
+4分音符で歩くラインは、ふつう1拍目に根音、2拍目と3拍目にほかの和音の音を弾き、4拍目で次の根音へ導きます。最もよく使われる導き方は、次の根音の半音上か半音下の音から入る、半音のアプローチです。ここでは、どの小節も次の根音の半音上で終わります。B♭からA、E♭からD、A♭からG、D♭からCへ。次の和音の5度も、よく使われるアプローチ・ノートです。VがIへ進むのと同じように、4度下または5度上から根音へ導きます。音階の順次進行も使えます。
 
 Press **Play** to hear the chord tones of each chord, with a chromatic approach from above on every beat 4. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -61,6 +61,19 @@ Press **Play** to hear each bar start a step above its root and slide down by ha
 **Play**を押すと、各小節が根音のひとつ上から始まり、半音ずつ滑り下りて根音に着き、4つ目の音が次の小節の始まりの音へ導くラインが鳴ります。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=walking-bass&example=from-above&key" title="Starting from above" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+# Mixing the Ideas
+# アイデアを混ぜる
+
+Real lines mix all of these from bar to bar: an arpeggio here, a scale run there, an approach from above into one chord and from below into the next. The demo below makes a new line at random each time you press **New line**: for every bar it picks one shape for the first three beats (chord tones up, scale steps up, down from the root through the fifth and third, or a step above sliding down to the root) and one lead-in for beat 4 (a half step above or below the next root, its fifth, or a scale step). It is only an illustration of how the ideas fit together. Random choices make no musical decisions, so many of the lines will wander or repeat themselves awkwardly; a bassist chooses each note for where the line is going, how it fits the soloist, and how it builds over a chorus.
+
+実際のラインは、小節ごとにこれらすべてを混ぜ合わせます。ここではアルペジオ、そこでは音階、ある和音へは上から、次の和音へは下から導く、というようにです。下のデモは、**New line**を押すたびに新しいラインをランダムにつくります。各小節で、最初の3拍の形をひとつ（上がる和音の音、上がる順次進行、根音から5度と3度へ下りる形、根音のひとつ上から滑り下りる形）、4拍目の導き方をひとつ（次の根音の半音上か半音下、その5度、音階の順次進行）選びます。これはアイデアの組み合わせ方を示すためのものにすぎません。ランダムな選択は音楽的な判断をしないので、多くのラインはさまよったり、ぎこちなく繰り返したりします。ベーシストは、ラインがどこへ向かうか、ソリストとどう合うか、コーラスを通じてどう盛り上げるかを考えて、一つひとつの音を選んでいるのです。
+
+Press **Play**, then **New line** to replace the line, as often as you like; the line keeps playing. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+
+**Play**を押し、**New line**を押すとラインが入れ替わります。何度でも押せて、ラインは鳴り続けます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=walking-bass&example=random&key" title="A random walking line" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 <aside>
   <span class="aside-icon">🎧</span>

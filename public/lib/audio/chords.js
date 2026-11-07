@@ -18,7 +18,8 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  *     (MIDI numbers) voices a chord by hand instead, for chords that are not
  *     stacks of thirds (quartal chords, chords from a twelve-tone row). A `tied`
  *     chord holds the previous one on instead of striking again, so the label under a
- *     sustained chord can change (the triads of a triad pair).
+ *     sustained chord can change (the triads of a triad pair). `alt` (MIDI) is a second
+ *     hand voicing, taken by every other strike of a comp.
  *   - `melody`: `[{ midi, beats, velocity?, gate? }]` played over the chords (`midi:
  *     null` is a rest); `velocity` (0–1) sets a note's loudness and `gate` the share of
  *     its length that sounds (articulation).
@@ -38,8 +39,9 @@ import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } f
  *   - `bassLow`: the lowest bass note (MIDI); the bass of every chord falls in the
  *     octave from it. Defaults to E2 (40).
  *   - `drums`: a rhythm pattern (see rhythm.js), looped along with the chords.
- *   - `sounds`: `{ chords, melody }`, instrument ids from INSTRUMENTS (default piano),
- *     for the demo to create.
+ *   - `sounds`: `{ chords, melody, bass? }`, instrument ids from INSTRUMENTS (default
+ *     piano), for the demo to create. With `bass`, the riff, or else each chord's bass
+ *     note, is played on that instrument.
  */
 
 const LETTER_PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
@@ -190,6 +192,9 @@ function candidates(pcs, low) {
     return out;
 }
 
+/** Whether two voicings are the same notes. */
+const same = (a, b) => !!a && !!b && a.length === b.length && a.every((n, i) => n === b[i]);
+
 /** How far a voicing moves from the previous one: each note to its nearest old note. */
 function motion(notes, previous) {
     if (!previous?.length) return notes.reduce((s, n) => s + Math.abs(n - UPPER_CENTER), 0) / notes.length;
@@ -227,7 +232,8 @@ export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open
     return chords.map((chord, i) => {
         if (chord.notes) {
             if (chord.notes.length) previous = chord.notes.slice(1);
-            return { bass: chord.notes[0], upper: chord.notes.slice(1), notes: chord.notes };
+            const alt = chord.alt ? { bass: chord.alt[0], upper: chord.alt.slice(1), notes: chord.alt } : null;
+            return { bass: chord.notes[0], upper: chord.notes.slice(1), notes: chord.notes, ...(alt ? { alt } : {}) };
         }
         const parsed = parseChord(chord.symbol);
         const bass = chord.bass ?? bassLow + ((parsed.bass - bassLow) % 12 + 12) % 12;
@@ -238,10 +244,14 @@ export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open
         if (rootless) {
             const all = candidates(rootlessPitchClasses(parsed), 55).filter(v => v[0] > bass + 2);
             const inRange = all.filter(v => v[0] >= 50 && v[v.length - 1] <= 74);
-            const options = inRange.length ? inRange : all;
-            const upper = options.reduce((best, v) => motion(v, previous) < motion(best, previous) ? v : best);
+            const options = (inRange.length ? inRange : all)
+                .sort((a, b) => motion(a, previous) - motion(b, previous));
+            // The nearest voicing, and the nearest different one as an alternate. The same
+            // chord again in a row takes the other one, as a pianist would.
+            let [upper, other = upper] = options;
+            if (i > 0 && chords[i - 1].symbol === chord.symbol && same(upper, previous)) [upper, other] = [other, upper];
             previous = upper;
-            return { bass, upper, notes: [bass, ...upper] };
+            return { bass, upper, notes: [bass, ...upper], alt: { bass, upper: other, notes: [bass, ...other] } };
         }
         const options = candidates(upperPitchClasses(parsed), UPPER_LOW)
             .filter(v => v[0] >= UPPER_LOW - 2 && v[0] > bass + 2);
@@ -260,7 +270,8 @@ const COMP_VELOCITY = { bass: 0.6, upper: 0.4, all: 0.5 };
  * What each chord of a progression plays, as hits: one list per chord of
  * `{ at, beats, notes, part }`, with `at` in beats from the chord's start. Without a
  * `comp`, a chord is one hit held for its whole length (without its bass when a riff
- * plays the bass). With one, the comp repeats through the chord and is cut at its end.
+ * plays the bass). With one, the comp repeats through the chord and is cut at its end,
+ * every other hit taking the chord's alternate voicing (`alt`) when it has one.
  */
 export function compHits(progression, voicings) {
     const { chords, comp, riff } = progression;
@@ -270,7 +281,10 @@ export function compHits(progression, voicings) {
         const hits = [];
         for (let t = 0, k = 0; t < chord.beats - 1e-6; k++) {
             const [part, beats] = comp[k % comp.length];
-            const notes = v.notes.length ? { bass: [v.bass], upper: v.upper, all: v.notes }[part] ?? [] : [];
+            // A chord struck again takes its alternate voicing every other time, the way a
+            // pianist moves between two voicings rather than repeating one.
+            const w = v.alt && k % 2 ? v.alt : v;
+            const notes = w.notes.length ? { bass: [w.bass], upper: w.upper, all: w.notes }[part] ?? [] : [];
             if (notes.length) hits.push({ at: t, beats: Math.min(beats, chord.beats - t), notes, part });
             t += beats;
         }
@@ -319,6 +333,7 @@ export function transposeProgression(progression, root) {
             ...(chord.scaleRoot ? { scaleRoot: transposeName(chord.scaleRoot, from, root) } : {}),
             ...(chord.bass !== undefined ? { bass: chord.bass + semitones } : {}),
             ...(chord.notes ? { notes: chord.notes.map(n => n + semitones) } : {}),
+            ...(chord.alt ? { alt: chord.alt.map(n => n + semitones) } : {}),
         })),
         ...(progression.melody ? {
             melody: progression.melody.map(n => ({ ...n, midi: n.midi === null ? null : n.midi + semitones })),
@@ -926,8 +941,8 @@ export const BEBOP_LINE_PROGRESSIONS = [
     { id: 'major-scale-line', label: 'Major scale', melody: eighthNoteLine(MAJOR_STEPS) },
     { id: 'sixth-diminished-line', label: '6th diminished scale', melody: eighthNoteLine(MAJOR_SIXTH_DIMINISHED) },
 ].map(p => ({
-    ...p, tempo: 132, loop: true, drums: pulsePattern(4),
-    chords: [{ symbol: 'C6', beats: 8, roman: 'I6', notes: [C - 12, C - 8, C - 5, C - 3] }],
+    ...p, tempo: 132, loop: true, drums: pulsePattern(4), comp: [['all', 2]],
+    chords: [{ symbol: 'C6', beats: 8, roman: 'I6', notes: [C - 12, C - 8, C - 5, C - 3], alt: [C - 12, C - 5, C - 3, C + 2] }],
 }));
 
 /**
@@ -1263,6 +1278,7 @@ export const CHORD_TONE_PROGRESSIONS = [
 // ── Idioms ──
 
 const CMAJ7_MID = [36, 47, 52, 55];
+const CMAJ9_ALT = [36, 52, 55, 59, 62];
 
 /**
  * Common jazz idioms in short phrases: the three enclosures of C (one bar each, the
@@ -1274,11 +1290,12 @@ const CMAJ7_MID = [36, 47, 52, 55];
 export const IDIOM_PROGRESSIONS = [
     { id: 'enclosures', label: 'Enclosures',
         chords: [
-            { symbol: 'Cmaj7', roman: 'Imaj7', beats: 4, notes: CMAJ7_MID },
-            { symbol: '', roman: 'D–B–C', beats: 4, notes: CMAJ7_MID, tied: true },
-            { symbol: '', roman: 'D♭–B–C', beats: 4, notes: CMAJ7_MID, tied: true },
-            { symbol: '', roman: 'D–D♭–B–C', beats: 4, notes: CMAJ7_MID, tied: true },
+            { symbol: 'Cmaj7', roman: 'Imaj7', beats: 4, notes: CMAJ7_MID, alt: CMAJ9_ALT },
+            { symbol: '', roman: 'D–B–C', beats: 4, notes: CMAJ7_MID, alt: CMAJ9_ALT },
+            { symbol: '', roman: 'D♭–B–C', beats: 4, notes: CMAJ7_MID, alt: CMAJ9_ALT },
+            { symbol: '', roman: 'D–D♭–B–C', beats: 4, notes: CMAJ7_MID, alt: CMAJ9_ALT },
         ],
+        comp: [['all', 2]],
         melody: line([
             [null, 3], 'D5', 'B4',
             ['C5', 2], [null, 1], 'Db5', 'B4',
@@ -1316,6 +1333,7 @@ export const IDIOM_PROGRESSIONS = [
 // ── Playing outside ──
 
 const DM7_LOW = [38, 48, 53, 57];
+const DM9_ALT = [38, 53, 57, 60, 64];
 
 /**
  * Going outside the harmony and back: a D Dorian line over Dm7 slipped up a half step
@@ -1329,8 +1347,9 @@ const EVERY_TWO_BEATS = [['all', 2]];
 export const OUTSIDE_PROGRESSIONS = [
     { id: 'side-step', label: 'Side-stepping', tempo: 120, loop: true, comp: EVERY_TWO_BEATS,
         chords: [
-            { symbol: 'Dm7', roman: 'in', beats: 4, notes: DM7_LOW }, { symbol: '', roman: 'out', beats: 4, notes: DM7_LOW },
-            { symbol: '', roman: 'in', beats: 8, notes: DM7_LOW },
+            { symbol: 'Dm7', roman: 'in', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'out', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: '', roman: 'in', beats: 8, notes: DM7_LOW, alt: DM9_ALT },
         ],
         melody: line([
             'D5', 'E5', 'F5', 'A5', 'G5', 'F5', 'E5', 'C5',
@@ -1339,8 +1358,8 @@ export const OUTSIDE_PROGRESSIONS = [
         ]) },
     { id: 'tritone-ii-v', label: 'ii–V a tritone away', tempo: 120, loop: true, comp: EVERY_TWO_BEATS,
         chords: [
-            { symbol: 'Dm7', roman: 'ii7', beats: 4, notes: DM7_LOW },
-            { symbol: 'G7', roman: 'A♭m7', beats: 2, notes: [43, 53, 59] }, { symbol: '', roman: 'D♭7', beats: 2, notes: [43, 53, 59] },
+            { symbol: 'Dm7', roman: 'ii7', beats: 4, notes: DM7_LOW, alt: DM9_ALT },
+            { symbol: 'G7', roman: 'A♭m7', beats: 2, notes: [43, 53, 59] }, { symbol: '', roman: 'D♭7', beats: 2, notes: [43, 53, 59, 64] },
             { symbol: 'Cmaj7', roman: 'Imaj7', beats: 4, notes: [36, 47, 52, 55] },
         ],
         melody: line([
@@ -1429,13 +1448,18 @@ export const COLTRANE_PROGRESSIONS = [
  * is one triad as a triplet, climbing through the triads (and, for a pair, their first
  * inversions) and coming back down in reverse. `triads` are `[label, [three MIDI notes]]` in root
  * position; the label (the triad's root counted from the chord's root) shows under
- * each beat. After the phrase, an optional resolution chord with one held note.
+ * each beat. The chord is struck every two beats, alternating between the given
+ * `voicings`. After the phrase, an optional resolution chord with one held note.
  */
-function triadPhrase(id, label, symbol, notes, triads, resolve) {
+function triadPhrase(id, label, symbol, voicings, triads, resolve) {
     // Two triads climb through their first inversions too; more climb in root position.
     const up = triads.length > 2 ? triads : [...triads, ...triads.map(([name, [a, b, c]]) => [name, [b, c, a + 12]])];
     const beats = [...up, ...[...up].reverse().map(([name, t]) => [name, [...t].reverse()])];
-    const chordList = beats.map(([name], i) => ({ symbol: i ? '' : symbol, roman: name, beats: 1, notes, tied: i > 0 }));
+    // The chord is struck every two beats, alternating between two voicings; the beats
+    // between are tied, so each can still carry its triad's label.
+    const chordList = beats.map(([name], i) => ({
+        symbol: i ? '' : symbol, roman: name, beats: 1, notes: voicings[(i >> 1) % voicings.length], tied: i % 2 === 1,
+    }));
     const melodyList = beats.flatMap(([, t]) => t.map(midi => ({ midi, beats: 1 / 3 })));
     if (resolve) {
         chordList.push({ symbol: resolve.symbol, roman: resolve.roman, beats: 4, notes: resolve.notes });
@@ -1447,15 +1471,15 @@ function triadPhrase(id, label, symbol, notes, triads, resolve) {
 const CMAJ7_LOW = { symbol: 'Cmaj7', roman: 'Imaj7', notes: [36, 47, 52] };
 
 export const TRIAD_PAIR_PROGRESSIONS = [
-    triadPhrase('lydian', 'Lydian: I and II', 'Cmaj7(♯11)', [36, 47, 52],
+    triadPhrase('lydian', 'Lydian: I and II', 'Cmaj7(♯11)', [[36, 47, 52], [36, 52, 59]],
         [['I', [60, 64, 67]], ['II', [62, 66, 69]]]),
-    triadPhrase('dorian', 'Dorian: ♭III and IV', 'Dm7', [38, 48, 53],
+    triadPhrase('dorian', 'Dorian: ♭III and IV', 'Dm7', [[38, 48, 53], [38, 53, 60]],
         [['♭III', [65, 69, 72]], ['IV', [67, 71, 74]]]),
-    triadPhrase('melodic-minor', 'Melodic minor: IV and V', 'CmMaj7', [36, 47, 51],
+    triadPhrase('melodic-minor', 'Melodic minor: IV and V', 'CmMaj7', [[36, 47, 51], [36, 51, 59]],
         [['IV', [65, 69, 72]], ['V', [67, 71, 74]]]),
-    triadPhrase('altered', 'Altered: ♭V and ♭VI', 'G7alt', [43, 53, 59],
+    triadPhrase('altered', 'Altered: ♭V and ♭VI', 'G7alt', [[43, 53, 59], [43, 47, 53]],
         [['♭V', [61, 65, 68]], ['♭VI', [63, 67, 70]]], { ...CMAJ7_LOW, note: 60 }),
-    triadPhrase('half-whole', 'Half-whole: I, ♭III, ♭V, VI', 'G7(♭9)', [43, 53, 59],
+    triadPhrase('half-whole', 'Half-whole: I, ♭III, ♭V, VI', 'G7(♭9)', [[43, 53, 59], [43, 47, 53]],
         [['I', [67, 71, 74]], ['♭III', [70, 74, 77]], ['♭V', [73, 77, 80]], ['VI', [76, 80, 83]]],
         { ...CMAJ7_LOW, note: 64 }),
 ];
@@ -1554,7 +1578,7 @@ export const MODAL_PROGRESSIONS = [
 
 /**
  * Walking bass lines over the turnaround Cmaj7–A7–Dm7–G7, written as the melody (MIDI,
- * C3 = 48) under piano voicings kept above them and struck in a Charleston rhythm (on
+ * C3 = 48, played an octave lower on the electric bass) under electric piano voicings kept above them and struck in a Charleston rhythm (on
  * 1 and the "and" of 2): roots and fifths in half notes (a two feel), chord tones with
  * a chromatic approach from above on beat 4, scale steps, and each bar starting a step
  * above the root and sliding down by half steps to it.
@@ -1567,14 +1591,55 @@ const WALK_CHORDS = [
 ];
 const walk = (id, label, notes, beats = 1) => ({
     id, label, tempo: 132, loop: true, comp: [['all', 1.5], ['all', 2.5]], chords: WALK_CHORDS,
-    melody: notes.map(midi => ({ midi, beats })),
+    sounds: { chords: 'epiano', melody: 'bass' },
+    // Written at the bass's notated pitch; the bass sounds an octave lower.
+    melody: notes.map(midi => ({ midi: midi - 12, beats })),
 });
+/**
+ * A walking line made at random from the ideas above, one bar per chord: each bar picks
+ * a shape for its first three beats (chord tones up, scale steps up, chord tones down
+ * from the root, or a step above sliding down to the root) and a lead-in on beat 4 (a
+ * half step above or below the next root, its fifth, or a scale step). Each note takes
+ * the octave nearest the one before, kept between E2 and A3 (written; the bass sounds an
+ * octave lower). It only shows how the ideas combine; it makes no musical choices.
+ */
+export function randomWalkingLine(chords) {
+    const roots = chords.map(c => parseChord(c.symbol));
+    const pick = list => list[Math.floor(Math.random() * list.length)];
+    const near = (pc, from) => {
+        let m = from - 6 + (((pc - (from - 6)) % 12) + 12) % 12;
+        while (m < 40) m += 12;
+        while (m > 57) m -= 12;
+        return m;
+    };
+    let last = 48;
+    const line = [];
+    roots.forEach((chord, i) => {
+        const r = chord.root, third = chord.intervals.includes(3) ? 3 : 4;
+        const next = roots[(i + 1) % roots.length].root;
+        const shape = pick([
+            [0, third, 7],          // chord tones up
+            [0, 2, third],          // scale steps up
+            [0, -5, third - 12],    // root, fifth and third below
+            [2, 1, 0],              // a step above, sliding down
+        ]);
+        const notes = shape.map(s => r + s);
+        notes.forEach(pc => { last = near(pc, last); line.push(last); });
+        last = near(pick([next + 1, next - 1, next + 7, next + 2]), last);
+        line.push(last);
+    });
+    return line.map(midi => ({ midi: midi - 12, beats: 1 }));
+}
+
 export const WALKING_BASS_PROGRESSIONS = [
     walk('two-feel', 'Roots and fifths', [48, 43, 45, 40, 50, 45, 43, 50], 2),
     walk('chord-tones', 'Chord tones', [48, 52, 55, 46, 45, 49, 52, 51, 50, 53, 57, 56, 43, 47, 50, 49]),
     walk('scale-steps', 'Scale steps', [48, 50, 52, 55, 57, 55, 53, 52, 50, 52, 53, 54, 55, 53, 52, 50]),
     walk('from-above', 'From above', [50, 49, 48, 46, 47, 46, 45, 51, 52, 51, 50, 46, 45, 44, 43, 49]),
+    // A new random line each time `generate` is called (the demo's New line button).
+    { ...walk('random', 'Random mix', []), generate: () => randomWalkingLine(WALK_CHORDS) },
 ];
+WALKING_BASS_PROGRESSIONS.at(-1).melody = randomWalkingLine(WALK_CHORDS);
 
 // ── Articulation ──
 
@@ -1690,8 +1755,15 @@ export const UPPER_STRUCTURE_PROGRESSIONS = [
 ];
 
 /** Named sets of progressions, for a demo that takes the set as a URL parameter. */
-/** The improvisation examples comp with rootless jazz piano voicings, as a pianist would under a soloist. */
-const rootless = list => list.map(p => ({ ...p, voicing: 'rootless' }));
+/**
+ * The jazz and improvisation examples sound like a small band: an electric piano comps
+ * (with rootless voicings where the chords are not voiced by hand, as a pianist would
+ * under a soloist), an electric bass plays the bass notes or riff, and the piano plays
+ * the line.
+ */
+const JAZZ_SOUNDS = { chords: 'epiano', melody: 'piano', bass: 'bass' };
+const band = list => list.map(p => ({ ...p, sounds: p.sounds ?? JAZZ_SOUNDS }));
+const rootless = list => band(list).map(p => ({ ...p, voicing: 'rootless' }));
 
 export const PROGRESSION_SETS = {
     diatonic: DIATONIC_PROGRESSIONS,
@@ -1701,8 +1773,8 @@ export const PROGRESSION_SETS = {
     'minor-modes': rootless(MINOR_MODE_PROGRESSIONS),
     'minor-chord-scales': rootless(MINOR_CHORD_SCALE_PROGRESSIONS),
     'sixth-diminished': SIXTH_DIMINISHED_PROGRESSIONS,
-    'bebop-lines': BEBOP_LINE_PROGRESSIONS,
-    'bebop-ii-v': BEBOP_II_V_PROGRESSIONS,
+    'bebop-lines': band(BEBOP_LINE_PROGRESSIONS),
+    'bebop-ii-v': band(BEBOP_II_V_PROGRESSIONS),
     pentatonic: rootless(PENTATONIC_PROGRESSIONS),
     'diatonic-improv': rootless(DIATONIC_IMPROV_PROGRESSIONS),
     'two-five-scales': rootless(TWO_FIVE_SCALE_PROGRESSIONS),
@@ -1711,13 +1783,13 @@ export const PROGRESSION_SETS = {
     'modern-pentatonics': rootless([...MODERN_PENTATONIC_PROGRESSIONS, ...MODERN_PENTATONIC_PHRASES]),
     'jazz-phrases': rootless(JAZZ_PHRASE_PROGRESSIONS),
     'jazz-chords': rootless([...JAZZ_CHORD_SCALE_PROGRESSIONS, ...JAZZ_PHRASE_PROGRESSIONS]),
-    'triad-pairs': TRIAD_PAIR_PROGRESSIONS,
+    'triad-pairs': band(TRIAD_PAIR_PROGRESSIONS),
     'chord-tones': rootless(CHORD_TONE_PROGRESSIONS),
     idioms: rootless(IDIOM_PROGRESSIONS),
-    outside: OUTSIDE_PROGRESSIONS,
+    outside: band(OUTSIDE_PROGRESSIONS),
     fourths: rootless(FOURTHS_PROGRESSIONS),
     coltrane: rootless(COLTRANE_PROGRESSIONS),
-    modal: MODAL_PROGRESSIONS,
+    modal: band(MODAL_PROGRESSIONS),
     'walking-bass': WALKING_BASS_PROGRESSIONS,
     articulation: ARTICULATION_PROGRESSIONS,
     voicing: VOICING_PROGRESSIONS,
@@ -1732,7 +1804,7 @@ export const PROGRESSION_SETS = {
     'non-functional': NON_FUNCTIONAL_PROGRESSIONS,
     reharmonization: REHARMONIZATION_PROGRESSIONS,
     'work-song': WORK_SONG_PROGRESSIONS,
-    blues: BLUES_PROGRESSIONS,
+    blues: BLUES_PROGRESSIONS.map(p => ({ ...p, sounds: { chords: 'piano', melody: 'piano', bass: 'bass' } })),
     'jazz-blues': JAZZ_BLUES_PROGRESSIONS,
     waltz: WALTZ_PROGRESSIONS,
     common: COMMON_PROGRESSIONS,
@@ -1762,10 +1834,11 @@ export class ProgressionPlayer {
      * @param {object} [opts.melodyInstrument]  defaults to `instrument`.
      * @param {object} [opts.drums]             a drum kit, for progressions with `drums`.
      */
-    constructor(instrument, { melodyInstrument = instrument, drums = null,
+    constructor(instrument, { melodyInstrument = instrument, bassInstrument = null, drums = null,
         onChord = () => {}, onMelody = () => {}, onBass = () => {}, onHit = () => {}, onEnd = () => {} } = {}) {
         this.instrument = instrument;
         this.melodyInstrument = melodyInstrument;
+        this.bassInstrument = bassInstrument;
         this.drums = drums;
         this.onChord = onChord;
         this.onMelody = onMelody;
@@ -1839,21 +1912,32 @@ export class ProgressionPlayer {
         const { chords, melody = [], riff, comp, drums } = this.progression;
         const events = [];
         let at = 0;
-        let held = null;   // the last struck chord, which a tied chord extends
+        let held = null, heldBass = null;   // the last struck chord and bass note, which a tied chord extends
+        // With a bass instrument, the bass note of each chord is played on it, held for
+        // the chord, and the chord instrument plays only the notes above.
+        const bassApart = this.bassInstrument && !riff;
+        const withoutBass = (notes, i) => (bassApart ? notes.filter(n => n !== this.voicings[i].bass) : notes);
         chords.forEach((chord, i) => {
             // A tied chord keeps the previous one sounding and only reports itself.
             if (chord.tied && held) {
                 held.beats += chord.beats;
+                if (heldBass) heldBass.beats += chord.beats;
                 events.push({ at, beats: chord.beats, notes: [], velocity: 0, instrument: this.instrument, kind: 'chord', index: i });
                 at += chord.beats;
                 return;
             }
-            held = { at, beats: chord.beats, notes: this.chordNotes(i), velocity: riff ? 0.35 : 0.5,
+            held = { at, beats: chord.beats, notes: withoutBass(this.chordNotes(i), i), velocity: riff ? 0.35 : 0.5,
                 instrument: this.instrument, kind: 'chord', index: i };
             events.push(held);
+            heldBass = null;
+            if (bassApart && this.voicings[i].notes.length) {
+                const bass = this.voicings[i].bass;
+                heldBass = { at, beats: chord.beats, notes: [bass], velocity: 0.75, instrument: this.bassInstrument, kind: 'bass', index: bass };
+                events.push(heldBass);
+            }
             // A comp's hits, each reported with its index within the chord.
             if (comp) {
-                this.hits[i].forEach((hit, k) => events.push({ at: at + hit.at, beats: hit.beats, notes: hit.notes,
+                this.hits[i].forEach((hit, k) => events.push({ at: at + hit.at, beats: hit.beats, notes: withoutBass(hit.notes, i),
                     velocity: COMP_VELOCITY[hit.part], instrument: this.instrument, kind: 'hit', index: k }));
             }
             // The riff from the chord's bass, restarted at each chord and cut at its end.
@@ -1863,7 +1947,7 @@ export class ProgressionPlayer {
                     const midi = this.voicings[i].bass + semitones;
                     const length = Math.min(beats, chord.beats - t);
                     events.push({ at: at + t, beats: length, notes: [midi], velocity: 0.7,
-                        instrument: this.instrument, kind: 'bass', index: midi });
+                        instrument: this.bassInstrument ?? this.instrument, kind: 'bass', index: midi });
                     t += beats;
                 }
             }

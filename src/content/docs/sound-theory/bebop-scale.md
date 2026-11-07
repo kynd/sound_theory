@@ -45,9 +45,9 @@ The eighth note fixes this. With G♯ added between G and A, the scale has eight
 
 8つ目の音がこれを解決します。GとAのあいだにG♯を加えると、音階は8音、つまり偶数になり、拍の上の和音の音から始めた旋律は、和音の音を拍の上に保ち続けます。シックス・ディミニッシュ・スケールをCから下ると、拍の上にはC6の音であるC、A、G、Eが来て、裏には減七の和音の音であるB、G♯、F、Dが来ます。旋律そのものが、和声づけした音階と同じように、安定と緊張のあいだを交互するのです。ビバップ・ドミナント・スケールは、♭7と根音のあいだに加えた音によって、ドミナントの和音に対して同じことをします。
 
-Choose an **Example** and press **Play**. Over a held C6, with a click on every beat, the melody runs down two octaves in eighth notes: **Major scale** uses the seven-note scale, and **6th diminished scale** adds G♯. Listen to which notes land on the clicks. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+Choose an **Example** and press **Play**. Over C6, struck every two beats, with a click on every beat, the melody runs down two octaves in eighth notes: **Major scale** uses the seven-note scale, and **6th diminished scale** adds G♯. Listen to which notes land on the clicks. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。C6を鳴らし続け、拍ごとにクリックを鳴らしながら、旋律が8分音符で2オクターブ下っていきます。**Major scale**は7音の音階を、**6th diminished scale**はG♯を加えた音階を使います。クリックの上にどの音が来るかを聞いてみてください。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してください。2拍ごとにC6を鳴らし、拍ごとにクリックを鳴らしながら、旋律が8分音符で2オクターブ下っていきます。**Major scale**は7音の音階を、**6th diminished scale**はG♯を加えた音階を使います。クリックの上にどの音が来るかを聞いてみてください。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=bebop-lines&key" title="Eighth-note lines with and without the added note" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
