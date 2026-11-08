@@ -374,17 +374,17 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 
 ## Scope
 
-`Scope` (`public/lib/demo/Scope.js`) draws a signal on a canvas inside a `.canvas-wrap`, sized by `Viewport`. It listens to a source node and does not pass audio on. Set `mode` to switch views. `size` (2048) is the waveform's analysis length and `fftSize` (4096) the number of spectrum bins; more bins resolve low frequencies better but react more slowly.
-<div class="jp">`Scope`（`public/lib/demo/Scope.js`）は、`.canvas-wrap`の中のキャンバスに信号を描きます。サイズは`Viewport`で決まります。ソースのノードを聞くだけで、音を先に渡しません。`mode`で表示を切り替えます。`size`（2048）は波形の解析長、`fftSize`（4096）はスペクトルのビン数です。ビンが多いほど低い周波数をよく分解できますが、反応は遅くなります。</div>
+`Scope` (`public/lib/demo/Scope.js`) draws a signal on a canvas inside a `.canvas-wrap`, sized by `Viewport`. It listens to a source node and does not pass audio on. Set `mode` to switch views. `size` (2048) sets the waveform's length, half of which is drawn (the scope reads twice `size` so its trigger filter can settle), and `fftSize` (4096) the number of spectrum bins; more bins resolve low frequencies better but react more slowly.
+<div class="jp">`Scope`（`public/lib/demo/Scope.js`）は、`.canvas-wrap`の中のキャンバスに信号を描きます。サイズは`Viewport`で決まります。ソースのノードを聞くだけで、音を先に渡しません。`mode`で表示を切り替えます。`size`（2048）は波形の長さで、その半分を描きます（トリガーのフィルターが落ち着くよう、スコープは`size`の2倍を読み取ります）。`fftSize`（4096）はスペクトルのビン数です。ビンが多いほど低い周波数をよく分解できますが、反応は遅くなります。</div>
 
-- **`'wave'`:** amplitude over half the analysis length (about 21 ms at 2048 samples and 48 kHz), starting at a rising zero crossing so a periodic wave holds still.
+- **`'wave'`:** amplitude over half of `size` (about 21 ms at 2048 samples and 48 kHz), starting at a rising zero crossing so a periodic wave holds still. The crossing is chosen like an oscilloscope's "HF reject" trigger: on a filtered copy of the signal (a DC blocker and a steep low pass at 150 Hz) the fundamental outweighs every harmonic, so a strong harmonic, such as a resonant filter's peak, cannot add crossings that make the picture jump between frames. Drawing then starts at the signal's own next rising crossing, interpolated between samples, so a sine still starts at zero.
 - **`'spectrum'`:** level in dB from 20 Hz to 20 kHz on a logarithmic frequency axis.
 - **`'both'`:** the waveform in the upper half and the spectrum in the lower half.
 - **`freeze()`, `unfreeze()`:** `freeze()` holds the current frame (or replaces the held one) until `unfreeze()`, for reading short sounds.
 - **`freezeOnNextOnset()`:** (not used by any demo at present) freezes just after the next sound arrives. It watches the newest samples for the signal to rise above a threshold, since output latency varies by device and a fixed delay after the note can miss a drum hit.
 <div class="jp">
 
-- **`'wave'`：**解析長の半分（2048サンプル、48 kHzで約21ミリ秒）の振幅を描きます。周期的な波が静止して見えるよう、上向きのゼロ交差から描き始めます。
+- **`'wave'`：**`size`の半分（2048サンプル、48 kHzで約21ミリ秒）の振幅を描きます。周期的な波が静止して見えるよう、上向きのゼロ交差から描き始めます。交差はオシロスコープの「HFリジェクト」トリガーのように選びます。信号をフィルターに通した複製（DCブロッカーと、150 Hzの急なローパス）では基音がどの倍音よりも強いので、レゾナンスのピークのような強い倍音が交差を増やして、フレームごとに絵が跳ぶことがありません。そのうえで、信号そのものの次の上向きの交差（サンプル間を補間した位置）から描くので、サイン波はやはり0から始まります。
 - **`'spectrum'`：**20 Hzから20 kHzまでの音量（dB）を、対数の周波数軸で描きます。
 - **`'both'`：**上半分に波形、下半分にスペクトルを描きます。
 - **`freeze()`、`unfreeze()`：**`freeze()`は、`unfreeze()`まで現在のフレームを保持します（すでに保持していれば置き換えます）。短い音を読み取るために使います。
@@ -396,6 +396,11 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 
 `PartialsView` (`public/lib/demo/PartialsView.js`) draws an additive tone from its partial list rather than from audio, so it shows whether or not the tone is playing. It draws directly on the paper with no panels, titles, or labels: two periods of the fundamental, each partial as a thin yellow line and their sum (the main wave) as a thick red line on top, all at the scale `AdditiveOscillator` plays, so the yellow lines add up to the red one. Call `update(partials)` after every change. With `{ spectrum: true }` it also draws each partial's magnitude as a yellow bar below the wave, one slot per entry in the list, so a list padded with zeros keeps the bars in place as partials are added.
 <div class="jp">`PartialsView`（`public/lib/demo/PartialsView.js`）は、加算合成の音を、音声からではなく部分音のリストから描きます。そのため、音が鳴っていてもいなくても表示されます。パネルや見出し、ラベルを使わず、紙の上に直接、基音の2周期分を描きます。各部分音を黄色の細い線で、その和（主要な波）を赤い太い線で上に重ね、`AdditiveOscillator`が鳴らすのと同じスケールで描くため、黄色の線を足すと赤い線になります。変更のたびに`update(partials)`を呼びます。`{ spectrum: true }`を渡すと、波の下に各部分音の大きさを黄色い棒で描きます。棒の位置はリストの要素ごとに1つなので、0で埋めたリストを渡せば、部分音を加えても棒の位置は変わりません。</div>
+
+## EnvelopeView
+
+`EnvelopeView` (`public/lib/demo/EnvelopeView.js`) draws an ADSR envelope as a yellow filled shape on the paper, level over time for a note held `hold` seconds, across a fixed `span` of seconds so that longer stages take more room. `update({ attack, decay, sustain, release })` redraws it; `play(time)` fills the part already sounded in pink, following the audio clock from `time`. `envelopeLevel(t, envelope, hold)` gives the level at a moment, with straight-line stages and a release that starts from wherever the level is when the note is let go, matching the `envelope` synth engine.
+<div class="jp">`EnvelopeView`（`public/lib/demo/EnvelopeView.js`）は、ADSRエンベロープを、紙の上に黄色の塗りの形で描きます。`hold`秒押した音の音量の時間変化を、決まった`span`秒の幅で描くので、長い段階ほど広く場所をとります。`update({ attack, decay, sustain, release })`で描き直し、`play(time)`は、`time`からの音声の時計に合わせて、鳴り終えた部分をピンクで塗ります。`envelopeLevel(t, envelope, hold)`はある時点のレベルを返します。各段階は直線で、リリースは音を離した時点のレベルから始まり、`envelope`シンセ・エンジンと一致します。</div>
 
 ## Recording demos
 
@@ -416,8 +421,8 @@ The demo style rules are listed in `CLAUDE.md`: one font (monospace), size, and 
 
 ## Synth engines and the new effects
 
-`instruments.js` also has `SYNTH_ENGINES`, synthesizers described as data like the effects: `subtractive` (an oscillator through a resonant low-pass filter with its own envelope, then the amplitude ADSR), `fm` (ratio, index, modulation decay), and `am` (ratio). Each parameter has `key`, `label`, `apply(synth, value)`, and either a range or `options` (a select). `SynthEngine(id)` is a `PolyInstrument` with `set(key, value)` and `get(key)`. `MalletSynth` is a short struck tone that decays by itself, for players that only send noteOn (a step sequencer of pitched notes). `effects.js` adds `compressor` (threshold, ratio; transparent at 0 dB and 1), `autowah` (base, octaves, mix), `chorus` and `phaser` (rate, depth or octaves, mix); `DEFAULT_CHAIN` keeps the instrument demos on distortion, filter, delay, and reverb. The `synth` demo takes `?engine=` (one engine or a comma list offered in a select), `?presets` (the instrument presets), and `?effects=` (the chain, in order); a `.dp-group` mount holds controls that are rebuilt in place.
-<div class="jp">`instruments.js`には、エフェクトと同じようにデータとして記述したシンセサイザー、`SYNTH_ENGINES`もあります。`subtractive`（レゾナンスつきローパス・フィルターと、そのエンベロープ、音量のADSRを通るオシレーター）、`fm`（比、インデックス、変調のディケイ）、`am`（比）です。各パラメータは`key`、`label`、`apply(synth, value)`と、範囲か`options`（選択）を持ちます。`SynthEngine(id)`は`set(key, value)`と`get(key)`を持つ`PolyInstrument`です。`MalletSynth`は自然に減衰する短い打音で、noteOnだけを送るもの（音高のあるステップ・シーケンサー）のためのものです。`effects.js`には`compressor`（スレッショルド、レシオ。0 dBと1で透明）、`autowah`（ベース、オクターブ、ミックス）、`chorus`と`phaser`（速さ、深さまたはオクターブ、ミックス）を加え、`DEFAULT_CHAIN`で楽器のデモはディストーション、フィルター、ディレイ、リバーブのままです。`synth`のデモは`?engine=`（ひとつのエンジン、またはカンマ区切りで選択に）、`?presets`（楽器のプリセット）、`?effects=`（順に並べたチェーン）を受け取ります。その場で組み立て直すコントロールは`.dp-group`のマウントに置きます。</div>
+`instruments.js` also has `SYNTH_ENGINES`, synthesizers described as data like the effects: `subtractive` (an oscillator through a resonant low-pass filter with its own envelope, then the amplitude ADSR), its two halves on their own, `filter` (wave, cutoff, resonance; the cutoff fixed, the sound at full level while held) and `envelope` (wave and a straight-line ADSR, so `EnvelopeView` draws it exactly), `fm` (ratio, index, modulation decay), and `am` (ratio). Each parameter has `key`, `label`, `apply(synth, value)`, and either a range or `options` (a select). `SynthEngine(id)` is a `PolyInstrument` with `set(key, value)` and `get(key)`. `HeldNote(instrument, midi)` gives one note the `start()`/`stop()`/`playing` contract of a continuous source, so `wirePlayButton` can hold it. `MalletSynth` is a short struck tone that decays by itself, for players that only send noteOn (a step sequencer of pitched notes). `effects.js` adds `compressor` (threshold, ratio; transparent at 0 dB and 1), `autowah` (base, octaves, mix), `chorus` and `phaser` (rate, depth or octaves, mix); `DEFAULT_CHAIN` keeps the instrument demos on distortion, filter, delay, and reverb. The `synth` demo takes `?engine=` (one engine or a comma list offered in a select), `?presets` (the instrument presets), and `?effects=` (the chain, in order); a `.dp-group` mount holds controls that are rebuilt in place.
+<div class="jp">`instruments.js`には、エフェクトと同じようにデータとして記述したシンセサイザー、`SYNTH_ENGINES`もあります。`subtractive`（レゾナンスつきローパス・フィルターと、そのエンベロープ、音量のADSRを通るオシレーター）、その前半と後半だけの`filter`（波形、カットオフ、レゾナンス。カットオフは固定で、押しているあいだは一定の音量）と`envelope`（波形と直線のADSR。そのため`EnvelopeView`で正確に描けます）、`fm`（比、インデックス、変調のディケイ）、`am`（比）です。各パラメータは`key`、`label`、`apply(synth, value)`と、範囲か`options`（選択）を持ちます。`SynthEngine(id)`は`set(key, value)`と`get(key)`を持つ`PolyInstrument`です。`HeldNote(instrument, midi)`は、ひとつの音に、鳴り続ける音源と同じ`start()`/`stop()`/`playing`の約束を与え、`wirePlayButton`で保てるようにします。`MalletSynth`は自然に減衰する短い打音で、noteOnだけを送るもの（音高のあるステップ・シーケンサー）のためのものです。`effects.js`には`compressor`（スレッショルド、レシオ。0 dBと1で透明）、`autowah`（ベース、オクターブ、ミックス）、`chorus`と`phaser`（速さ、深さまたはオクターブ、ミックス）を加え、`DEFAULT_CHAIN`で楽器のデモはディストーション、フィルター、ディレイ、リバーブのままです。`synth`のデモは`?engine=`（ひとつのエンジン、またはカンマ区切りで選択に）、`?presets`（楽器のプリセット）、`?effects=`（順に並べたチェーン）を受け取ります。その場で組み立て直すコントロールは`.dp-group`のマウントに置きます。</div>
 
 ## Gesture
 
@@ -443,6 +448,7 @@ The demo style rules are listed in `CLAUDE.md`: one font (monospace), size, and 
 - **`addSection(parent, title, { collapsed, color })`:** a collapsible section; returns its body. `color` sets the accent for the section and its controls.
 - **`unwrap(mount)`:** replaces a mount element with the controls built into it, so they sit directly in the panel.
 - **`addEffectControls(parent, chain)`:** one section per effect in an `EffectChain`, one slider per parameter. Each section takes the next accent color.
+- **`addEngineControls(parent, engine, { onChange })`:** one control per parameter of a `SynthEngine`, a select for a parameter with `options` and a slider otherwise; `onChange(key, value)` runs after the engine is set.
 <div class="jp">
 
 - **`addRange(parent, param)`：**ラベル付きのスライダーです。エフェクトのパラメータの項目をそのまま受け取ります。トラックは値の位置までアクセントカラーで塗られ（`--fill`をスクリプトで更新）、`color`でその行のアクセントを設定します。
@@ -453,6 +459,7 @@ The demo style rules are listed in `CLAUDE.md`: one font (monospace), size, and 
 - **`addSection(parent, title, { collapsed, color })`：**折りたたみ可能なセクションをつくり、その本体を返します。`color`で、セクションとその中のコントロールのアクセントを設定します。
 - **`unwrap(mount)`：**マウント用の要素を、その中につくったコントロールで置き換え、コントロールがパネルの直下に並ぶようにします。
 - **`addEffectControls(parent, chain)`：**`EffectChain`のエフェクトごとにセクションを、パラメータごとにスライダーをつくります。各セクションには順にアクセントカラーが割り当てられます。
+- **`addEngineControls(parent, engine, { onChange })`：**`SynthEngine`のパラメータごとにコントロールをつくります。`options`を持つパラメータは選択、それ以外はスライダーです。`onChange(key, value)`はエンジンに値を設定したあとに呼ばれます。
 
 </div>
 

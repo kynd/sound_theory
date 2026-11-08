@@ -3,7 +3,7 @@ import { INSTRUMENTS, SYNTH_ENGINES, SynthEngine, createInstrument } from '../..
 import { EffectChain } from '../../lib/audio/effects.js';
 import { Keyboard } from '../../lib/demo/Keyboard.js';
 import { Scope } from '../../lib/demo/Scope.js';
-import { addSelect, addRange, addEffectControls, unwrap } from '../../lib/demo/controls.js';
+import { addSelect, addEngineControls, addEffectControls, unwrap } from '../../lib/demo/controls.js';
 
 // What to offer: ?engine= names one synth engine or several (comma-separated, offered
 // in a select) with sliders for their parameters; ?presets offers the instrument
@@ -47,17 +47,7 @@ function useEngine(id) {
     const engine = new SynthEngine(id);
     use(engine);
     engineControls.replaceChildren();
-    for (const param of engine.def.params) {
-        if (param.options) {
-            addSelect(engineControls, {
-                label: param.label, value: param.value,
-                options: param.options.map(value => ({ value, label: value })),
-                onChange: v => engine.set(param.key, v),
-            });
-        } else {
-            addRange(engineControls, { ...param, value: engine.get(param.key), onChange: v => engine.set(param.key, v) });
-        }
-    }
+    addEngineControls(engineControls, engine);
 }
 
 const soundControls = document.getElementById('sound-controls');

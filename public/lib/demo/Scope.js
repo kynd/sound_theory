@@ -8,6 +8,63 @@ const GRID = 16;     // the demos' base grid
 const INSET = 2 * GRID;   // space around the plots and between them
 const LABEL = 2 * GRID;   // the spectrum's frequency labels and the grid unit above them
 
+// The trigger's filter: a band pass, a DC blocker and a steep low pass, as in a
+// hardware oscilloscope's "HF reject" trigger coupling.
+const TRIGGER_HIGHPASS = 20;    // Hz, removes any offset
+const TRIGGER_LOWPASS = 150;    // Hz, leaves the fundamental in charge
+const TRIGGER_STAGES = 4;       // one-pole low passes in a row, 24 dB per octave
+
+/**
+ * Where to start drawing a waveform so that a periodic wave holds still from frame to
+ * frame: the position of a rising zero crossing, at most `values.length - span`. It is
+ * fractional, interpolated between the samples on either side, so the picture does not
+ * shimmer by a sample from frame to frame.
+ *
+ * Triggering on the raw signal fails when a strong harmonic (a resonant filter's peak)
+ * crosses zero several times per period: each frame may pick a different crossing, and
+ * the picture jumps. So the crossing is found on a filtered copy in which the
+ * fundamental outweighs every harmonic, and the drawing then starts at the signal's
+ * own next rising crossing, so a sine still starts at zero. The filters settle over the
+ * first part of the buffer, which is not searched. Falls back to the first raw
+ * crossing (or 0) when the filtered copy has none, as in silence.
+ */
+function triggerPoint(values, span, sampleRate) {
+    const n = values.length;
+    const last = n - span;
+    const rawCrossing = from => {
+        for (let i = Math.max(1, from); i <= last; i++) {
+            const a = values[i - 1], b = values[i];
+            if (a < 0 && b >= 0) return i - 1 + a / (a - b);
+        }
+        return -1;
+    };
+
+    const hp = Math.exp(-2 * Math.PI * TRIGGER_HIGHPASS / sampleRate);
+    const lp = 1 - Math.exp(-2 * Math.PI * TRIGGER_LOWPASS / sampleRate);
+    const settle = n - 2 * span;   // the part of the buffer left for the filters to settle
+    // Start the DC blocker as if it had been running, at the first sample less the
+    // settling part's mean; started from zero, its slow decay would shift the crossing
+    // by a different amount in every frame.
+    let mean = 0;
+    for (let i = 0; i < settle; i++) mean += values[i];
+    mean /= Math.max(1, settle);
+    let prevIn = values[0], prevHp = values[0] - mean, prevOut = 0;
+    const stages = new Float64Array(TRIGGER_STAGES).fill(prevHp);
+    for (let i = 0; i <= last; i++) {
+        const hpOut = values[i] - prevIn + hp * prevHp;
+        prevIn = values[i]; prevHp = hpOut;
+        let v = hpOut;
+        for (let k = 0; k < TRIGGER_STAGES; k++) v = stages[k] += lp * (v - stages[k]);
+        if (i > settle && prevOut < 0 && v >= 0) {
+            const raw = rawCrossing(i);
+            return raw >= 0 ? raw : i;
+        }
+        prevOut = v;
+    }
+    const raw = rawCrossing(settle);
+    return raw >= 0 ? raw : Math.max(0, settle);
+}
+
 /**
  * Draws a signal on a canvas, as a waveform (amplitude over time), a spectrum (level
  * over frequency), or both stacked. Connect any Tone node as the source; the scope
@@ -23,8 +80,9 @@ export class Scope {
      * @param {Tone.ToneAudioNode} source
      * @param {object} [opts]
      * @param {'wave'|'spectrum'|'both'} [opts.mode]
-     * @param {number} [opts.size]      waveform analysis length in samples, a power of
-     *                                  two. Half of it is drawn.
+     * @param {number} [opts.size]      waveform length in samples, a power of two. Half
+     *                                  of it is drawn; the scope reads twice as much, so
+     *                                  the trigger filter has time to settle.
      * @param {number} [opts.fftSize]   spectrum bins, a power of two. More bins resolve
      *                                  low frequencies better but react more slowly.
      */
@@ -33,7 +91,8 @@ export class Scope {
         this.ctx = canvas.getContext('2d');
         this.mode = mode;
         this.viewport = new Viewport(canvas);
-        this.waveform = new Tone.Waveform(size);
+        this.waveform = new Tone.Waveform(2 * size);
+        this.size = size;
         this.fft = new Tone.FFT(fftSize);
         source.connect(this.waveform);
         source.connect(this.fft);
@@ -124,21 +183,17 @@ export class Scope {
 
     _drawWave(values, x0, y0, w, h) {
         const { ctx } = this;
-        const span = values.length >> 1;
+        const span = this.size >> 1;
         const mid = y0 + h / 2, amp = h / 2;
-
-        // Start at a rising zero crossing so a periodic wave holds still (a trigger).
-        let start = 0;
-        for (let i = 1; i < span; i++) {
-            if (values[i - 1] < 0 && values[i] >= 0) { start = i; break; }
-        }
+        const crossing = triggerPoint(values, span, Tone.getContext().sampleRate);
+        const start = Math.ceil(crossing), shift = start - crossing;
 
         ctx.strokeStyle = COLORS.red;
         ctx.lineWidth = 2.5;
         ctx.lineJoin = 'round';
         ctx.beginPath();
         for (let i = 0; i < span; i++) {
-            const x = x0 + (i / (span - 1)) * w;
+            const x = x0 + ((i + shift) / (span - 1)) * w;
             const y = mid - Math.max(-1.1, Math.min(1.1, values[start + i])) * amp;
             if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }

@@ -172,6 +172,25 @@ export function addEffectControls(parent, chain, { collapsed = false } = {}) {
 }
 
 /**
+ * Appends a control per parameter of a SynthEngine: a select for a parameter with
+ * `options`, a slider otherwise. `onChange(key, value)` runs after the engine is set.
+ */
+export function addEngineControls(parent, engine, { onChange } = {}) {
+    for (const param of engine.def.params) {
+        const set = v => { engine.set(param.key, v); onChange?.(param.key, v); };
+        if (param.options) {
+            addSelect(parent, {
+                label: param.label, value: engine.get(param.key),
+                options: param.options.map(value => ({ value, label: value })),
+                onChange: set,
+            });
+        } else {
+            addRange(parent, { ...param, value: engine.get(param.key), onChange: set });
+        }
+    }
+}
+
+/**
  * Replaces a mount element (an empty element in the demo's HTML that marks where
  * built controls go) with the controls built into it, so they sit directly in the
  * panel without an extra container. Call it after the controls are built.

@@ -350,6 +350,11 @@ const waveform = (type, volume) =>
  *
  *   - subtractive: a bright oscillator through a resonant low-pass filter, the filter
  *     opened by its own envelope, then shaped by the amplitude envelope (ADSR).
+ *   - filter: the subtractive engine's first half alone, an oscillator through a
+ *     resonant low-pass filter that stays where it is set, with no envelope to speak
+ *     of (the sound starts and stops at once and holds at full level).
+ *   - envelope: the second half alone, a plain oscillator shaped by an ADSR envelope.
+ *     Its stages are straight lines, so they can be drawn exactly (EnvelopeView).
  *   - fm: frequency modulation, one sine (the modulator) bending the pitch of another
  *     (the carrier); the ratio of their frequencies sets which partials appear and
  *     the index how strong they are.
@@ -378,6 +383,33 @@ export const SYNTH_ENGINES = [
         { key: 'sustain', label: 'Sustain', min: 0, max: 1, step: 0.01, value: 0.6,
           apply: (s, v) => s.set({ envelope: { sustain: v } }) },
         { key: 'release', label: 'Release', ...SECONDS, max: 4, value: 0.5, apply: (s, v) => s.set(bothEnvelopes('release', v)) },
+    ] },
+    { id: 'filter', label: 'Filter', voice: Tone.MonoSynth, volume: -14, options: {
+        oscillator: { type: 'sawtooth' },
+        filter: { type: 'lowpass', rolloff: -24 },
+        envelope: { attack: 0.02, decay: 0, sustain: 1, release: 0.05 },
+        // Zero octaves: the envelope never moves the cutoff.
+        filterEnvelope: { attack: 0, decay: 0, sustain: 1, release: 0, baseFrequency: 10000, octaves: 0 },
+    }, params: [
+        { key: 'wave', label: 'Wave', options: ['sawtooth', 'square', 'triangle', 'sine'], value: 'sawtooth',
+          apply: (s, v) => s.set({ oscillator: { type: v } }) },
+        { key: 'cutoff', label: 'Cutoff', min: 40, max: 10000, step: 1, scale: 'log', unit: 'Hz', value: 10000,
+          apply: (s, v) => s.set({ filterEnvelope: { baseFrequency: v } }) },
+        { key: 'resonance', label: 'Resonance', min: 0.1, max: 15, step: 0.1, value: 1,
+          apply: (s, v) => s.set({ filter: { Q: v } }) },
+    ] },
+    { id: 'envelope', label: 'Envelope', voice: Tone.Synth, volume: -12, options: {
+        oscillator: { type: 'sawtooth' },
+        envelope: { attack: 0.01, decay: 0.3, sustain: 0.6, release: 0.5,
+            attackCurve: 'linear', decayCurve: 'linear', releaseCurve: 'linear' },
+    }, params: [
+        { key: 'wave', label: 'Wave', options: ['sawtooth', 'square', 'triangle', 'sine'], value: 'sawtooth',
+          apply: (s, v) => s.set({ oscillator: { type: v } }) },
+        { key: 'attack', label: 'Attack', ...SECONDS, value: 0.01, apply: (s, v) => s.set({ envelope: { attack: v } }) },
+        { key: 'decay', label: 'Decay', ...SECONDS, value: 0.3, apply: (s, v) => s.set({ envelope: { decay: v } }) },
+        { key: 'sustain', label: 'Sustain', min: 0, max: 1, step: 0.01, value: 0.6,
+          apply: (s, v) => s.set({ envelope: { sustain: v } }) },
+        { key: 'release', label: 'Release', ...SECONDS, value: 0.5, apply: (s, v) => s.set({ envelope: { release: v } }) },
     ] },
     { id: 'fm', label: 'FM', voice: Tone.FMSynth, volume: -12, options: {
         harmonicity: 2, modulationIndex: 10,
@@ -419,6 +451,22 @@ export class SynthEngine extends PolyInstrument {
         this.values[key] = value;
         param.apply(this.synth, value);
     }
+}
+
+/**
+ * One note of an instrument held for as long as it plays, with the start/stop/playing
+ * contract of a continuous source, so wirePlayButton can sound a steady tone.
+ */
+export class HeldNote {
+    constructor(instrument, midi) {
+        this.instrument = instrument;
+        this.midi = midi;
+        this._playing = false;
+    }
+
+    get playing() { return this._playing; }
+    start() { if (!this._playing) this.instrument.noteOn(this.midi); this._playing = true; }
+    stop() { if (this._playing) this.instrument.noteOff(this.midi); this._playing = false; }
 }
 
 export const INSTRUMENTS = [
