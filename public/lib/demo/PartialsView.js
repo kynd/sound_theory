@@ -15,11 +15,21 @@ const PERIODS = 2;
  * way AdditiveOscillator plays it, so the yellow lines add up to the red one.
  * The drawing is computed from the partials, not measured from audio, so it shows
  * whether or not the tone is playing.
+ *
+ * With `spectrum: true` the partials' amplitudes are also drawn below the wave as
+ * yellow bars, one slot per entry in the partial list (so a list padded with zeros
+ * keeps the slots fixed while partials are added). A bar's height is the partial's
+ * magnitude; its sign (a sine turned upside down) shows only in the wave.
  */
 export class PartialsView {
-    /** @param {HTMLCanvasElement} canvas  inside a `.canvas-wrap`. */
-    constructor(canvas) {
+    /**
+     * @param {HTMLCanvasElement} canvas  inside a `.canvas-wrap`.
+     * @param {object} [opts]
+     * @param {boolean} [opts.spectrum]  also draw the amplitudes as bars below the wave.
+     */
+    constructor(canvas, { spectrum = false } = {}) {
         this.canvas = canvas;
+        this.spectrum = spectrum;
         this.ctx = canvas.getContext('2d');
         this.viewport = new Viewport(canvas);
         this.partials = [1];
@@ -47,7 +57,12 @@ export class PartialsView {
         ctx.clearRect(0, 0, w, h);
 
         const x0 = INSET, width = w - 2 * INSET;
-        const mid = h / 2, amp = h / 2 - INSET;
+        // With a spectrum, the wave takes the top and the bars the bottom, one inset
+        // apart; the bars' height is a whole number of grid units.
+        const bars = this.spectrum
+            ? Math.max(4 * GRID, Math.floor((h - 3 * INSET) * 0.35 / GRID) * GRID) : 0;
+        const waveHeight = this.spectrum ? h - 3 * INSET - bars : h - 2 * INSET;
+        const mid = INSET + waveHeight / 2, amp = waveHeight / 2;
         const peak = partialPeak(partials);
         const scale = peak > 0 ? 1 / peak : 0;
         const steps = Math.max(200, Math.round(width));
@@ -69,5 +84,20 @@ export class PartialsView {
             if (a !== 0) trace(phase => a * Math.sin(2 * Math.PI * (k + 1) * phase), COLORS.yellow, 2);
         });
         if (peak > 0) trace(phase => partialSum(partials, phase), COLORS.red, 3);
+
+        if (this.spectrum) this._drawSpectrum(x0, h - INSET, width, bars);
+    }
+
+    _drawSpectrum(x0, bottom, width, height) {
+        const { ctx, partials } = this;
+        const largest = Math.max(...partials.map(Math.abs));
+        if (largest === 0) return;
+        const slot = width / partials.length;
+        const gap = Math.min(2, slot / 4);
+        ctx.fillStyle = COLORS.yellow;
+        partials.forEach((a, k) => {
+            const barHeight = Math.abs(a) / largest * height;
+            if (barHeight > 0) ctx.fillRect(x0 + k * slot + gap / 2, bottom - barHeight, slot - gap, barHeight);
+        });
     }
 }

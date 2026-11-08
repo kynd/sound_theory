@@ -9,13 +9,18 @@ import * as Tone from 'tone';
  * scaled so its peak is 1, matching what the Web Audio PeriodicWave plays.
  */
 
-/** Amplitudes of the first `n` harmonics of a classic waveform. */
+/**
+ * Amplitudes of the first `n` harmonics of a classic waveform: the first `n` terms of
+ * its Fourier series. A negative amplitude is a sine turned upside down.
+ */
 export function harmonicSeries(shape, n) {
     return Array.from({ length: n }, (_, i) => {
         const k = i + 1;
         if (shape === 'sine') return k === 1 ? 1 : 0;
         if (shape === 'square') return k % 2 ? 1 / k : 0;
         if (shape === 'sawtooth') return 1 / k;
+        // Odd harmonics at 1/k², alternating in sign.
+        if (shape === 'triangle') return k % 2 ? (k % 4 === 1 ? 1 : -1) / (k * k) : 0;
         throw new Error(`Unknown shape: ${shape}`);
     });
 }

@@ -199,7 +199,7 @@ src/content/docs/
   sound-theory/
     index.md                     series intro, pages by category   slug: sound-theory
     sound/                       category; index.md has slug: sound-and-timbre
-      sound-waves.md  sound-sources.md  synthesis.md
+      sound-waves.md  building-waveforms.md  sound-sources.md  synthesis.md
       sound-toys.md  sound-as-material.md
     pitch/                       category; index.md has slug: pitch-and-scales
       tuning-systems.md  scales.md  church-modes.md

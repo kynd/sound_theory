@@ -122,12 +122,12 @@ Every effect with a dry/wet balance has a **Mix** parameter that starts at 0, so
 `additive.js` builds a tone as a sum of sine waves (partials) at whole-number multiples of a fundamental frequency. A partial list is an array of amplitudes, fundamental first, so `[1]` is a plain sine wave. Every partial starts in phase (a rising sine at time zero), and the sum is scaled to a peak of 1, matching what the Web Audio PeriodicWave plays.
 <div class="jp">`additive.js`は、基音の整数倍の周波数にあるサイン波（部分音）の和として音をつくります。部分音のリストは、基音を先頭にした振幅の配列で、`[1]`はただのサイン波です。すべての部分音は同じ位相（時刻0で上昇するサイン）から始まり、和はピークが1になるようにスケールされます。これはWeb AudioのPeriodicWaveが鳴らす音と一致します。</div>
 
-- **`harmonicSeries(shape, n)`:** the first `n` harmonic amplitudes of `'sine'`, `'square'` (odd harmonics at 1/n), or `'sawtooth'` (every harmonic at 1/n).
+- **`harmonicSeries(shape, n)`:** the first `n` harmonic amplitudes of `'sine'`, `'square'` (odd harmonics at 1/n), `'sawtooth'` (every harmonic at 1/n), or `'triangle'` (odd harmonics at 1/n², alternating in sign): the first `n` terms of each wave's Fourier series.
 - **`partialSum(partials, phase)`, `partialPeak(partials)`:** the unscaled sum at a phase (0–1 is one period), and its largest absolute value over a period. Views use them to draw what the oscillator plays.
 - **`AdditiveOscillator`:** a continuously running additive tone with `frequency`, `amplitude` (the summed wave's peak, 0–1), `partials`, and `setPartial(index, amplitude)`. `start()` and `stop()` fade over 30 ms so they never click; call `start()` after `startAudio()`. When every partial is 0 the output is muted, since a PeriodicWave of zeros cannot be normalized.
 <div class="jp">
 
-- **`harmonicSeries(shape, n)`：**`'sine'`、`'square'`（奇数次の倍音を1/nで）、`'sawtooth'`（すべての倍音を1/nで）の最初の`n`個の倍音の振幅を返します。
+- **`harmonicSeries(shape, n)`：**`'sine'`、`'square'`（奇数次の倍音を1/nで）、`'sawtooth'`（すべての倍音を1/nで）、`'triangle'`（奇数次の倍音を1/n²で、符号を交互に）の最初の`n`個の倍音の振幅、つまりそれぞれの波のフーリエ級数の最初の`n`項を返します。
 - **`partialSum(partials, phase)`、`partialPeak(partials)`：**ある位相（0〜1が1周期）でのスケール前の和と、1周期のなかでのその絶対値の最大値です。ビューはこれらを使って、オシレーターが鳴らす波を描きます。
 - **`AdditiveOscillator`：**鳴り続ける加算合成の音で、`frequency`、`amplitude`（和の波のピーク、0〜1）、`partials`、`setPartial(index, amplitude)`を持ちます。`start()`と`stop()`は30ミリ秒かけてフェードするため、クリックノイズが出ません。`start()`は`startAudio()`のあとに呼びます。すべての部分音が0のときは出力を消音します。ゼロだけのPeriodicWaveは正規化できないためです。
 
@@ -394,8 +394,8 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 
 ## PartialsView
 
-`PartialsView` (`public/lib/demo/PartialsView.js`) draws an additive tone from its partial list rather than from audio, so it shows whether or not the tone is playing. It draws directly on the paper with no panels, titles, or labels: two periods of the fundamental, each partial as a thin yellow line and their sum (the main wave) as a thick red line on top, all at the scale `AdditiveOscillator` plays, so the yellow lines add up to the red one. Call `update(partials)` after every change.
-<div class="jp">`PartialsView`（`public/lib/demo/PartialsView.js`）は、加算合成の音を、音声からではなく部分音のリストから描きます。そのため、音が鳴っていてもいなくても表示されます。パネルや見出し、ラベルを使わず、紙の上に直接、基音の2周期分を描きます。各部分音を黄色の細い線で、その和（主要な波）を赤い太い線で上に重ね、`AdditiveOscillator`が鳴らすのと同じスケールで描くため、黄色の線を足すと赤い線になります。変更のたびに`update(partials)`を呼びます。</div>
+`PartialsView` (`public/lib/demo/PartialsView.js`) draws an additive tone from its partial list rather than from audio, so it shows whether or not the tone is playing. It draws directly on the paper with no panels, titles, or labels: two periods of the fundamental, each partial as a thin yellow line and their sum (the main wave) as a thick red line on top, all at the scale `AdditiveOscillator` plays, so the yellow lines add up to the red one. Call `update(partials)` after every change. With `{ spectrum: true }` it also draws each partial's magnitude as a yellow bar below the wave, one slot per entry in the list, so a list padded with zeros keeps the bars in place as partials are added.
+<div class="jp">`PartialsView`（`public/lib/demo/PartialsView.js`）は、加算合成の音を、音声からではなく部分音のリストから描きます。そのため、音が鳴っていてもいなくても表示されます。パネルや見出し、ラベルを使わず、紙の上に直接、基音の2周期分を描きます。各部分音を黄色の細い線で、その和（主要な波）を赤い太い線で上に重ね、`AdditiveOscillator`が鳴らすのと同じスケールで描くため、黄色の線を足すと赤い線になります。変更のたびに`update(partials)`を呼びます。`{ spectrum: true }`を渡すと、波の下に各部分音の大きさを黄色い棒で描きます。棒の位置はリストの要素ごとに1つなので、0で埋めたリストを渡せば、部分音を加えても棒の位置は変わりません。</div>
 
 ## Recording demos
 

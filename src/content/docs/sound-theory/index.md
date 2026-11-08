@@ -26,6 +26,8 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 -   [Sound Waves](/sound-waves): sine waves, adding sine waves, and the frequency components of sound.
 
+-   [Building Waveforms](/building-waveforms): square, sawtooth, and triangle waves from sine waves, Fourier series, and Fourier analysis.
+
 -   [Sound Sources](/sound-sources): the instruments and effects used throughout the series.
 
 -   [Synthesizers and Effects](/synthesis): subtractive synthesis with filters and envelopes, compressor, wah, chorus, phaser, delay, and reverb, and FM and AM synthesis.
@@ -35,6 +37,8 @@ This is not a textbook. It is a collection of things I know about sound and musi
 -   [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
 
 -   [音の波](/sound-waves)：サイン波、サイン波の足し合わせ、音の周波数成分。
+
+-   [波形を組み立てる](/building-waveforms)：サイン波からつくる矩形波、のこぎり波、三角波、フーリエ級数とフーリエ解析。
 
 -   [音源](/sound-sources)：このシリーズ全体で使う楽器とエフェクト。
 

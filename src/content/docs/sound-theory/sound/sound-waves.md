@@ -40,9 +40,9 @@ Adding harmonics changes the waveform and the sound's character (timbre) without
 
 <div class="demo-wrap"><iframe src="/writing/demos/adding-sines/index.html" title="Adding sine waves" allow="autoplay" loading="lazy" style="height: 400px"></iframe></div>
 
-The yellow lines show the individual sine waves, and the red line shows their sum over two periods of the fundamental.
+The yellow lines show the individual sine waves, and the red line shows their sum over two periods of the fundamental. [Building Waveforms](/building-waveforms) uses the same idea to build square, sawtooth, and triangle waves.
 
-黄色の線は個々のサイン波、赤い線はそれらを足し合わせた波を示しています（基音の2周期分）。
+黄色の線は個々のサイン波、赤い線はそれらを足し合わせた波を示しています（基音の2周期分）。[波形を組み立てる](/building-waveforms)では、同じ考え方で矩形波、のこぎり波、三角波を組み立てます。
 
 All the sine waves here start in phase. Changing their relative phases changes the shape of the combined wave, but usually has little effect on the sound of a steady tone like this. Phase still matters in audio processing: when peaks from multiple components align, their combined peak can exceed a system's limits and cause clipping. In some synthesis and signal-processing applications, phases are deliberately adjusted to reduce these peaks.
 
