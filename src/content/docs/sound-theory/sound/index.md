@@ -14,9 +14,9 @@ How sound works and how it is made: waves and their frequencies, the instruments
 
 4.  [Synthesizers and Effects](/synthesis): subtractive synthesis with filters and envelopes, compressor, wah, chorus, phaser, delay, and reverb, and FM and AM synthesis.
 
-5.  [Sound Toys](/sound-toys): playing sound by gesture and drawing: a canvas to drag across, a drawn melody, and a grid of pentatonic notes.
+5.  [Sound as Material](/sound-as-material): onkyō, sampling, and granular synthesis.
 
-6.  [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
+6.  [Sound Toys](/sound-toys): playing sound by gesture and drawing: a canvas to drag across, a drawn melody, and a grid of notes.
 
 1.  [音の波](/sound-waves)：サイン波、サイン波の足し合わせ、音の周波数成分。
 
@@ -26,6 +26,6 @@ How sound works and how it is made: waves and their frequencies, the instruments
 
 4.  [シンセサイザーとエフェクト](/synthesis)：フィルターとエンベロープによる減算合成、コンプレッサー、ワウ、コーラス、フェイザー、ディレイ、リバーブ、そしてFMとAMの合成。
 
-5.  [音のおもちゃ](/sound-toys)：身振りと絵で音を奏でる。ドラッグして弾くキャンバス、描いた旋律、ペンタトニックの音の格子。
+5.  [素材としての音](/sound-as-material)：音響系、サンプリング、グラニュラー合成。
 
-6.  [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。
+6.  [音のおもちゃ](/sound-toys)：身振りと絵で音を奏でる。ドラッグして弾くキャンバス、描いた旋律、音の格子。

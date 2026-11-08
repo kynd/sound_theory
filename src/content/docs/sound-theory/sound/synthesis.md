@@ -9,9 +9,9 @@ A synthesizer generates sound electronically or computationally rather than simp
 # Classic Synthesizers
 # 古典的シンセサイザー
 
-Classic analog synthesizers, including the Moog and its successors of the 1960s and 1970s, create sound by subtraction.
+Classic analog synthesizers, including the [Moog](https://en.wikipedia.org/wiki/Moog_synthesizer) and its successors of the 1960s and 1970s, create sound by subtraction.
 
-1960年代から1970年代のモーグとその後継機に代表される古典的なアナログ・シンセサイザーは、音を引き算でつくります。
+1960年代から1970年代の[モーグ](https://ja.wikipedia.org/wiki/モーグ・シンセサイザー)とその後継機に代表される古典的なアナログ・シンセサイザーは、音を引き算でつくります。
 
 First, an oscillator produces a wave rich in harmonics (see [Building Waveforms](/building-waveforms)). A sawtooth wave, for example, contains every harmonic, while a square wave contains only the odd ones. A low-pass filter then removes higher harmonics, darkening the sound. Its cutoff sets the frequency at which filtering begins, while resonance boosts frequencies around the cutoff, adding a vocal, ringing edge.
 
@@ -65,9 +65,9 @@ Choose a **Preset**, open an effect, and turn up its mix. Each effect starts out
 # Other Methods
 # そのほかの手法
 
-Frequency modulation (FM), developed by John Chowning at Stanford in the late 1960s and popularized by Yamaha's DX7 in 1983, creates complex sounds using just two sine waves. One, the modulator, rapidly bends the pitch of the other, the carrier. The ratio between their frequencies determines which partials appear: whole-number ratios produce harmonic tones, such as electric pianos and organs, while other ratios create bell-like, metallic sounds. The modulation index determines the strength of these partials. Applying an envelope to the index makes a note bright at the start and mellow as it decays, like a struck instrument.
+Frequency modulation (FM), developed by [John Chowning](https://en.wikipedia.org/wiki/John_Chowning) at Stanford in the late 1960s and popularized by Yamaha's [DX7](https://en.wikipedia.org/wiki/Yamaha_DX7) in 1983, creates complex sounds using just two sine waves. One, the modulator, rapidly bends the pitch of the other, the carrier. The ratio between their frequencies determines which partials appear: whole-number ratios produce harmonic tones, such as electric pianos and organs, while other ratios create bell-like, metallic sounds. The modulation index determines the strength of these partials. Applying an envelope to the index makes a note bright at the start and mellow as it decays, like a struck instrument.
 
-周波数変調（FM）は2つのサイン波だけで複雑な音をつくる方法で、1960年代後半にスタンフォード大学のジョン・チャウニングが開発し、1983年のヤマハDX7によって広く知られるようになりました。モジュレーターと呼ばれる一方のサイン波が、キャリアと呼ばれるもう一方の音高をすばやく変化させます。2つの周波数の比によって現れる部分音が決まり、整数比ではエレクトリック・ピアノやオルガンのような倍音的な音が生まれ、それ以外の比では鐘のような金属的な音になります。変調指数は、これらの部分音の強さを決めます。変調指数にエンベロープをかけると、打楽器のように、音は始まりで明るく、減衰するにつれてまろやかになります。
+周波数変調（FM）は2つのサイン波だけで複雑な音をつくる方法で、1960年代後半にスタンフォード大学の[ジョン・チャウニング](https://ja.wikipedia.org/wiki/ジョン・チャウニング)が開発し、1983年の[ヤマハDX7](https://ja.wikipedia.org/wiki/ヤマハ・DXシリーズ)によって広く知られるようになりました。モジュレーターと呼ばれる一方のサイン波が、キャリアと呼ばれるもう一方の音高をすばやく変化させます。2つの周波数の比によって現れる部分音が決まり、整数比ではエレクトリック・ピアノやオルガンのような倍音的な音が生まれ、それ以外の比では鐘のような金属的な音になります。変調指数は、これらの部分音の強さを決めます。変調指数にエンベロープをかけると、打楽器のように、音は始まりで明るく、減衰するにつれてまろやかになります。
 
 Amplitude modulation (AM) uses one wave to vary the loudness of another. This adds sidebands—extra partials on either side of each existing partial—creating a hollow or ringing tone.
 

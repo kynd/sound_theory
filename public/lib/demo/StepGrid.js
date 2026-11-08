@@ -5,7 +5,6 @@ import { formatValue } from './controls.js';
 
 const GRID = 16;           // the demos' base grid
 const ROW = 2 * GRID;      // one track per row
-const LABEL = 5 * GRID;    // label column, like the panel's labels
 const GAP = 4;             // background showing between cells, like the keys' gaps
 const GROUP_GAP = 12;      // between beat groups
 const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
@@ -16,7 +15,8 @@ const DRAG_START = 4;      // pixels a press moves before it becomes a drag
 
 /**
  * A rhythm pattern (see rhythm.js) as an editable grid, one row per track (labeled on
- * the left) and one cell per step, with extra space between beat groups. Cells are
+ * the left, in a column as wide as the longest label, rounded up to the grid) and
+ * one cell per step, with extra space between beat groups. Cells are
  * white wells; a hit fills its cell yellow from the bottom, as high as its velocity.
  * The column that is sounding shows its wells in butter and its hits in red. Clicking
  * a cell turns it on (a full hit) or off, and dragging a hit up or down makes it
@@ -30,6 +30,11 @@ const DRAG_START = 4;      // pixels a press moves before it becomes a drag
  * quarter of a millisecond per pixel, drawn at the step's scale), and its offset is
  * shown on its cell while dragging. A drag goes the way it starts, sideways or up and
  * down. The grid leaves room on the right for the last hit moved as late as it can go.
+ *
+ * With `paint`, cells can be toggled by dragging across them. A press on an empty cell
+ * turns it on at once, and the drag turns on every cell it passes; a press on a hit
+ * that moves sideways turns off the hits it passes (up or down still changes the
+ * volume). It cannot be combined with `shift`, which uses sideways drags.
  *
  * With `count`, a row above the tracks counts the beats: one well per beat group,
  * as wide as the group, numbered from 1 and starting again each bar
@@ -47,11 +52,13 @@ export class StepGrid {
      * @param {boolean}  [opts.count]   show the beat count above the tracks.
      * @param {number}   [opts.shift]   let hits be dragged off the grid, up to this
      *                                  many seconds either way.
+     * @param {boolean}  [opts.paint]   toggle cells by dragging across them.
      */
-    constructor(canvas, { onEdit = () => {}, count = false, shift = 0 } = {}) {
+    constructor(canvas, { onEdit = () => {}, count = false, shift = 0, paint = false } = {}) {
         this.canvas = canvas;
         this.count = count;
         this.shift = shift;
+        this.paint = paint && !shift;
         this._drag = null;
         this.ctx = canvas.getContext('2d');
         this.viewport = new Viewport(canvas);
@@ -68,6 +75,8 @@ export class StepGrid {
         canvas.addEventListener('pointerup', () => this._release());
         canvas.addEventListener('pointercancel', () => { this._drag = null; this.draw(); });
         this._resize();
+        // Labels are measured to size their column; measure again once the font is in.
+        document.fonts?.ready.then(() => this.draw());
     }
 
     /** Redraws for a pattern; `stepDuration` (seconds) converts track offsets to steps. */
@@ -95,15 +104,35 @@ export class StepGrid {
         this.draw();
     }
 
-    _press(e) {
+    /** The cell under a pointer event, or undefined. */
+    _cellAt(e) {
         const rect = this.canvas.getBoundingClientRect();
         const x = e.clientX - rect.left, y = e.clientY - rect.top;
-        const cell = this._cells.find(c => x >= c.x && x <= c.x + c.w && y >= c.y && y <= c.y + c.h);
+        return this._cells.find(c => x >= c.x && x <= c.x + c.w && y >= c.y && y <= c.y + c.h);
+    }
+
+    /** Sets a cell to `velocity` (0 is off) if it is not already, and reports it. */
+    _set(cell, velocity) {
+        const track = this.pattern.tracks[cell.track];
+        if (track.steps[cell.step] === velocity || (velocity > 0 && track.steps[cell.step] > 0)) return;
+        track.steps[cell.step] = velocity;
+        this.onEdit(cell.track, cell.step, velocity);
+    }
+
+    _press(e) {
+        const cell = this._cellAt(e);
         if (!cell) return;
         e.preventDefault();
-        // Wait to see whether the press becomes a drag (only a hit can be dragged).
         const track = this.pattern.tracks[cell.track];
         this.canvas.setPointerCapture(e.pointerId);
+        // Painting: an empty cell turns on now, and so does every cell the drag passes.
+        if (this.paint && track.steps[cell.step] <= 0) {
+            this._drag = { cell, paint: FULL };
+            this._set(cell, FULL);
+            this.draw();
+            return;
+        }
+        // Otherwise wait to see whether the press becomes a drag (only a hit can be dragged).
         this._drag = {
             cell, x: e.clientX, y: e.clientY, axis: null,
             offset: track.offsets?.[cell.step] ?? 0,
@@ -113,12 +142,24 @@ export class StepGrid {
 
     _move(e) {
         const drag = this._drag;
+        if (drag?.paint !== undefined) {
+            const cell = this._cellAt(e);
+            if (cell) { this._set(cell, drag.paint); this.draw(); }
+            return;
+        }
         if (!drag || drag.velocity <= 0) return;
         const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
         if (!drag.axis) {
             if (Math.max(Math.abs(dx), Math.abs(dy)) < DRAG_START) return;
-            // Sideways only moves hits in time when the grid allows it.
-            drag.axis = Math.abs(dx) > Math.abs(dy) ? (this.shift ? 'time' : 'none') : 'volume';
+            // Sideways moves hits in time when the grid allows it, or erases when it paints.
+            const sideways = Math.abs(dx) > Math.abs(dy);
+            if (sideways && this.paint) {
+                drag.paint = 0;
+                this._set(drag.cell, 0);
+                this._move(e);
+                return;
+            }
+            drag.axis = sideways ? (this.shift ? 'time' : 'none') : 'volume';
         }
         const { track: t, step } = drag.cell;
         const track = this.pattern.tracks[t];
@@ -138,7 +179,7 @@ export class StepGrid {
         const drag = this._drag;
         if (!drag) return;
         this._drag = null;
-        if (drag.axis) this.draw();
+        if (drag.axis || drag.paint !== undefined) this.draw();
         else this._toggle(drag.cell);
     }
 
@@ -164,7 +205,9 @@ export class StepGrid {
         const steps = pattern.tracks[0].steps.length;
         const starts = new Set();
         pattern.groups.reduce((at, size) => { starts.add(at); return at + size; }, 0);
-        const left = LABEL + GRID;
+        ctx.font = FONT;
+        const labelW = Math.ceil(Math.max(...pattern.tracks.map(t => ctx.measureText(t.label).width)) / GRID) * GRID;
+        const left = labelW + GRID;
         const gaps = (steps - 1) * GAP + (pattern.groups.length - 1) * (GROUP_GAP - GAP);
         // Room on the right for the last hit moved late: `late` steps at most.
         const late = (this.shift + Math.max(0, ...pattern.tracks.map(t => t.offset ?? 0))) / this.stepDuration;

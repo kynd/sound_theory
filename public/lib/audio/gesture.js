@@ -1,5 +1,4 @@
 import * as Tone from 'tone';
-import { findScale } from './scales.js';
 
 /**
  * Sound controlled continuously by a gesture rather than by notes: one voice whose
@@ -8,13 +7,6 @@ import { findScale } from './scales.js';
 
 /** Semitones of the major pentatonic scale, for snapping a gesture to notes that never clash. */
 export const PENTATONIC_PCS = [0, 2, 4, 7, 9];
-
-/**
- * Scales a gesture can snap to, all on C, in menu order: pentatonics first, since any
- * line in them sounds musical. Turn one into `pcs` with `scalePitchClasses`.
- */
-export const SNAP_SCALES = ['major-pentatonic', 'minor-pentatonic', 'blues', 'major', 'whole-tone', 'in', 'hijaz']
-    .map(findScale);
 
 /**
  * Maps a position from 0 to 1 onto a MIDI pitch between `low` and `high`, either

@@ -28,6 +28,8 @@ Keep everything mergeable by copying, with no rewriting:
   `index.md` that introduces the category and lists its pages. A new page goes in
   its category's folder, its category index, the series index, and
   `SOUND_THEORY_ORDER`. Slugs stay short and flat (`/syncopation`), whatever the folder.
+- `astro.config.mjs` adds one remark plugin, `remarkExternalLinksNewTab`, to be carried
+  over: links to other sites (http/https) on sound-theory pages open in a new tab.
 - Demos, the audio library, and their styles live under `public/demos/`,
   `public/lib/`, and `public/styles/`, which writing does not use.
 
@@ -209,7 +211,7 @@ src/content/docs/
     index.md                     series intro, pages by category   slug: sound-theory
     sound/                       category; index.md has slug: sound-and-timbre
       sound-waves.md  building-waveforms.md  sound-sources.md  synthesis.md
-      sound-toys.md  sound-as-material.md
+      sound-as-material.md  sound-toys.md
     pitch/                       category; index.md has slug: pitch-and-scales
       tuning-systems.md  scales.md  church-modes.md
       minor-scales.md  tetrachords.md  other-scales.md

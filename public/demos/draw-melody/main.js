@@ -1,7 +1,7 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { EffectChain } from '../../lib/audio/effects.js';
-import { GestureSynth, ContourPlayer, SNAP_SCALES, pitchAt } from '../../lib/audio/gesture.js';
-import { findScale, scalePitchClasses } from '../../lib/audio/scales.js';
+import { GestureSynth, ContourPlayer, pitchAt } from '../../lib/audio/gesture.js';
+import { TOY_SCALES, findScale, scalePitchClasses } from '../../lib/audio/scales.js';
 import { DrawPad } from '../../lib/demo/DrawPad.js';
 import { addSelect, addRange, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
@@ -13,7 +13,7 @@ const effects = new EffectChain(['delay', 'reverb']).connect(master.input);
 effects.set('reverb', 'mix', 0.25);
 const synth = new GestureSynth({ type: 'triangle', resonance: 1 }).connect(effects.input);
 synth.setCutoff(3000);
-let pcs = scalePitchClasses(SNAP_SCALES[0]);
+let pcs = scalePitchClasses(TOY_SCALES[0]);
 
 const pad = new DrawPad(document.getElementById('canvas'));
 const player = new ContourPlayer(synth, {
@@ -29,8 +29,8 @@ document.getElementById('clear').addEventListener('click', () => pad.clear());
 const controls = document.getElementById('controls');
 addSelect(controls, {
     label: 'Pitch',
-    options: [...SNAP_SCALES.map(({ id, label }) => ({ value: id, label })), { value: 'free', label: 'Free' }],
-    value: SNAP_SCALES[0].id,
+    options: [...TOY_SCALES.map(({ id, label }) => ({ value: id, label })), { value: 'free', label: 'Free' }],
+    value: TOY_SCALES[0].id,
     onChange: v => { pcs = v === 'free' ? null : scalePitchClasses(findScale(v)); },
 });
 addRange(controls, {

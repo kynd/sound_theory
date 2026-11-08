@@ -164,6 +164,28 @@ export function findScale(id) {
     }
 }
 
+/**
+ * Scales the sound toys offer, all on C, in menu order: pentatonics first, since any
+ * line or pattern in them sounds musical.
+ */
+export const TOY_SCALES = ['major-pentatonic', 'minor-pentatonic', 'blues', 'major', 'whole-tone', 'in', 'hijaz']
+    .map(findScale);
+
+/**
+ * The first `count` notes of a scale going up from its root in `octave`, low to high,
+ * as `{ label, midi }` (the label is the scale's spelling with the octave, "E♭4").
+ * A scale with more notes covers fewer octaves.
+ */
+export function scaleLadder(scale, count, octave = 4) {
+    const notes = [];
+    for (let o = octave; notes.length < count; o++) {
+        for (const { name, midi } of scaleNotes(scale, o).slice(0, -1)) {
+            if (notes.length < count) notes.push({ label: `${name}${Math.floor(midi / 12) - 1}`, midi });
+        }
+    }
+    return notes;
+}
+
 /** A scale's pitch classes (0 = C … 11 = B), in its own order. */
 export function scalePitchClasses(scale) {
     return scale.notes.map(n => ((parseNote(n).semitones % 12) + 12) % 12);

@@ -32,9 +32,9 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 -   [Synthesizers and Effects](/synthesis): subtractive synthesis with filters and envelopes, compressor, wah, chorus, phaser, delay, and reverb, and FM and AM synthesis.
 
--   [Sound Toys](/sound-toys): playing sound by gesture and drawing: a canvas to drag across, a drawn melody, and a grid of pentatonic notes.
+-   [Sound as Material](/sound-as-material): onkyō, sampling, and granular synthesis.
 
--   [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
+-   [Sound Toys](/sound-toys): playing sound by gesture and drawing: a canvas to drag across, a drawn melody, and a grid of notes.
 
 -   [音の波](/sound-waves)：サイン波、サイン波の足し合わせ、音の周波数成分。
 
@@ -44,9 +44,9 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 -   [シンセサイザーとエフェクト](/synthesis)：フィルターとエンベロープによる減算合成、コンプレッサー、ワウ、コーラス、フェイザー、ディレイ、リバーブ、そしてFMとAMの合成。
 
--   [音のおもちゃ](/sound-toys)：身振りと絵で音を奏でる。ドラッグして弾くキャンバス、描いた旋律、ペンタトニックの音の格子。
+-   [素材としての音](/sound-as-material)：音響系、サンプリング、グラニュラー合成。
 
--   [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。
+-   [音のおもちゃ](/sound-toys)：身振りと絵で音を奏でる。ドラッグして弾くキャンバス、描いた旋律、音の格子。
 
 ## [Pitch and Scales](/pitch-and-scales)
 ## [音高と音階](/pitch-and-scales)

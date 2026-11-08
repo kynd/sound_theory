@@ -1,7 +1,7 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { EffectChain } from '../../lib/audio/effects.js';
-import { GestureSynth, SNAP_SCALES, pitchAt, cutoffAt } from '../../lib/audio/gesture.js';
-import { findScale, scalePitchClasses } from '../../lib/audio/scales.js';
+import { GestureSynth, pitchAt, cutoffAt } from '../../lib/audio/gesture.js';
+import { TOY_SCALES, findScale, scalePitchClasses } from '../../lib/audio/scales.js';
 import { XYPad } from '../../lib/demo/XYPad.js';
 import { addSelect, addEffectControls, unwrap } from '../../lib/demo/controls.js';
 
@@ -9,8 +9,11 @@ import { addSelect, addEffectControls, unwrap } from '../../lib/demo/controls.js
 const LOW = 48, HIGH = 84;
 const master = new MasterBus();
 const effects = new EffectChain(['delay', 'reverb']).connect(master.input);
+// Some space from the start, so a gesture rings on after the pointer lifts.
+effects.set('delay', 'mix', 0.3);
+effects.set('reverb', 'mix', 0.2);
 const synth = new GestureSynth().connect(effects.input);
-let pcs = scalePitchClasses(SNAP_SCALES[0]);
+let pcs = scalePitchClasses(TOY_SCALES[0]);
 
 const play = (x, y) => {
     synth.setPitch(pitchAt(x, { low: LOW, high: HIGH, pcs }));
@@ -29,8 +32,8 @@ const showMarks = () => pad.setMarks(pcs
 const controls = document.getElementById('controls');
 addSelect(controls, {
     label: 'Pitch',
-    options: [...SNAP_SCALES.map(({ id, label }) => ({ value: id, label })), { value: 'free', label: 'Free' }],
-    value: SNAP_SCALES[0].id,
+    options: [...TOY_SCALES.map(({ id, label }) => ({ value: id, label })), { value: 'free', label: 'Free' }],
+    value: TOY_SCALES[0].id,
     onChange: v => { pcs = v === 'free' ? null : scalePitchClasses(findScale(v)); showMarks(); },
 });
 addSelect(controls, {

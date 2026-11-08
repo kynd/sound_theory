@@ -17,6 +17,19 @@ function remarkRebaseLinks() {
   };
 }
 
+// Sound theory: links to other sites (Wikipedia, recordings) open in a new tab.
+// Limited to the series' own pages, so writing's other pages keep their behavior.
+function remarkExternalLinksNewTab() {
+  return (tree, file) => {
+    if (!String(file.path ?? file.history?.[0] ?? '').includes('/docs/sound-theory/')) return;
+    visit(tree, 'link', (node) => {
+      if (!/^https?:\/\//.test(node.url)) return;
+      node.data = node.data ?? {};
+      node.data.hProperties = { ...node.data.hProperties, target: '_blank', rel: 'noopener noreferrer' };
+    });
+  };
+}
+
 // Rebases absolute src/href paths inside raw HTML nodes in markdown.
 // Raw HTML in markdown is not yet parsed into hast elements when rehype plugins run,
 // so we rewrite the string directly.
@@ -51,7 +64,7 @@ export default defineConfig({
     port: 4321,
   },
   markdown: {
-    remarkPlugins: [remarkRebaseLinks, remarkMath],
+    remarkPlugins: [remarkRebaseLinks, remarkExternalLinksNewTab, remarkMath],
     rehypePlugins: [rehypeImageSize, rehypeRebaseVideoSrc, rehypeKatex],
   },
   output: 'static',
