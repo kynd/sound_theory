@@ -2,14 +2,23 @@ import { Viewport } from './viewport.js';
 import { COLORS } from './colors.js';
 
 const INSET = 32;       // the demos' plot inset
-const TRAIL = 40;       // points kept in the trail
+const TRAIL = 120;      // points kept in the trail
 const DOT = 16;         // size of the pointer's dot
+const LINE = 8;         // width of the trail where it meets the dot
+
+const rgb = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+/** `a` mixed toward `b` by `t` (0–1), as an opaque CSS color. */
+const mix = (a, b, t) => {
+    const [p, q] = [rgb(a), rgb(b)];
+    return `rgb(${p.map((v, i) => Math.round(v + (q[i] - v) * t)).join(',')})`;
+};
 
 /**
  * A surface to play by dragging: a white well on the paper where the pointer's
  * position is reported as x and y from 0 to 1 (y = 0 at the bottom) through
  * `onStart(x, y)`, `onMove(x, y)`, and `onEnd()`. While dragging, the pointer shows as a
- * red dot trailed by fading yellow dots, so the gesture stays visible. With `marks`
+ * red dot trailing a yellow line, a smooth curve through the recent positions that
+ * thins and fades toward its tail, so the gesture stays visible. With `marks`
  * (positions from 0 to 1 along x), short ticks along the bottom edge show where
  * snapped notes fall.
  */
@@ -88,15 +97,43 @@ export class XYPad {
         ctx.fill();
         ctx.fillStyle = COLORS.butter;
         for (const m of this.marks) ctx.fillRect(a.x + m * a.w - 1, a.y + a.h - 8, 2, 8);
-        this.trail.forEach((p, i) => {
-            const last = i === this.trail.length - 1 && this.down;
-            ctx.globalAlpha = last ? 1 : Math.max(0, p.life);
-            ctx.fillStyle = last ? COLORS.red : COLORS.yellow;
-            const size = last ? DOT : DOT * 0.6;
+        this._drawTrail(a);
+        const head = this.trail[this.trail.length - 1];
+        if (this.down && head) {
+            ctx.fillStyle = COLORS.red;
             ctx.beginPath();
-            ctx.arc(a.x + p.x * a.w, a.y + (1 - p.y) * a.h, size / 2, 0, Math.PI * 2);
+            ctx.arc(a.x + head.x * a.w, a.y + (1 - head.y) * a.h, DOT / 2, 0, Math.PI * 2);
             ctx.fill();
-        });
+        }
         ctx.globalAlpha = 1;
+    }
+
+    /**
+     * The trail as quadratic curves through the midpoints between positions (each
+     * position is a control point), one piece per position so that each can take its own
+     * fade and width. The fade mixes yellow into the well's white rather than using
+     * transparency, so the round ends where pieces overlap don't show as beads.
+     */
+    _drawTrail(a) {
+        const { ctx, trail } = this;
+        const pts = trail.map(p => ({ x: a.x + p.x * a.w, y: a.y + (1 - p.y) * a.h, life: p.life }));
+        const n = pts.length;
+        if (n < 2) return;
+        const mid = (p, q) => ({ x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 });
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        for (let i = 0; i < n - 1; i++) {
+            const from = i === 0 ? pts[0] : mid(pts[i - 1], pts[i]);
+            const to = i === n - 2 ? pts[n - 1] : mid(pts[i], pts[i + 1]);
+            const life = Math.max(0, Math.min(pts[i].life, pts[i + 1].life));
+            const along = (i + 1) / (n - 1);    // 0 at the tail, 1 at the head
+            ctx.strokeStyle = mix(COLORS.white, COLORS.yellow, life);
+            ctx.lineWidth = LINE * (0.25 + 0.75 * along);
+            ctx.beginPath();
+            ctx.moveTo(from.x, from.y);
+            if (i === 0) ctx.lineTo(to.x, to.y);
+            else ctx.quadraticCurveTo(pts[i].x, pts[i].y, to.x, to.y);
+            ctx.stroke();
+        }
     }
 }

@@ -20,9 +20,9 @@ Some inventors went further and made the picture itself play. Evgeny Murzin's AN
 # Drag to Play
 # ドラッグして弾く
 
-Press and drag on the pad. Left to right is pitch, from C3 to C6; bottom to top is the cutoff of a low-pass filter, from dark to bright (see [Synthesizers and Effects](/synthesis)). The sound starts when you press and stops when you let go, and the trail shows your gesture. With **Pitch** set to **Pentatonic**, the pitch snaps to the C major pentatonic, marked by ticks along the bottom; with **Free**, it glides continuously like a theremin. **Wave** picks the oscillator, and the **Delay** and **Reverb** sections add space.
+Drag on the canvas. Left to right is pitch, from C3 to C6; bottom to top is the cutoff of a low-pass filter, from dark to bright (see [Synthesizers and Effects](/synthesis)). The sound starts when you press and stops when you let go, and the trail shows your gesture. With **Pitch** set to **Pentatonic**, the pitch snaps to the C major pentatonic, marked by ticks along the bottom; with **Free**, it glides continuously like a theremin. **Wave** picks the oscillator, and the **Delay** and **Reverb** sections add space.
 
-パッドを押してドラッグしてください。左から右が音高（C3からC6）、下から上がローパス・フィルターのカットオフ（暗いから明るいへ）です（[シンセサイザーとエフェクト](/synthesis)を参照）。押すと音が鳴り始め、離すと止まり、軌跡が身振りを示します。**Pitch**を**Pentatonic**にすると、音高は下端の目盛りで示したCのメジャー・ペンタトニックにそろい、**Free**にすると、テルミンのように連続して滑ります。**Wave**はオシレーターを選び、**Delay**と**Reverb**のセクションは空間を加えます。
+キャンバスの上でドラッグしてください。左から右が音高（C3からC6）、下から上がローパス・フィルターのカットオフ（暗いから明るいへ）です（[シンセサイザーとエフェクト](/synthesis)を参照）。押すと音が鳴り始め、離すと止まり、軌跡が身振りを示します。**Pitch**を**Pentatonic**にすると、音高は下端の目盛りで示したCのメジャー・ペンタトニックにそろい、**Free**にすると、テルミンのように連続して滑ります。**Wave**はオシレーターを選び、**Delay**と**Reverb**のセクションは空間を加えます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/xy-pad/index.html" title="XY pad" allow="autoplay" loading="lazy"></iframe></div>
 

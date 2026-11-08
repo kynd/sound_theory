@@ -29,9 +29,14 @@ export function cutoffAt(position) {
     return 100 * Math.pow(80, position);
 }
 
+/** Maps a position from 0 to 1 onto a filter resonance (Q) from 0.5 to 15, evenly in ratio. */
+export function resonanceAt(position) {
+    return 0.5 * Math.pow(30, position);
+}
+
 /**
  * One continuous voice: an oscillator through a resonant low-pass filter and a gate.
- * `setPitch` and `setCutoff` glide to new values; `start` and `stop` open and close
+ * `setPitch`, `setCutoff`, and `setResonance` glide to new values; `start` and `stop` open and close
  * the gate. The oscillator runs silently while the gate is closed.
  */
 export class GestureSynth {
@@ -52,6 +57,8 @@ export class GestureSynth {
     setPitch(midi, glide = 0.02) { this.osc.frequency.rampTo(Tone.Frequency(midi, 'midi').toFrequency(), glide); }
 
     setCutoff(hz, glide = 0.02) { this.filter.frequency.rampTo(hz, glide); }
+
+    setResonance(q, glide = 0.02) { this.filter.Q.rampTo(q, glide); }
 
     start() { this.sounding = true; this.gate.gain.rampTo(1, 0.02); }
 
