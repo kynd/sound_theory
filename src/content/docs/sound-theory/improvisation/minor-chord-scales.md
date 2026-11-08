@@ -4,7 +4,7 @@ slug: minor-chord-scales
 ---
 The major scale gives seven chords and seven modes, one on each of its notes (see [Diatonic Chords](/diatonic-chords) and [Church Modes](/church-modes)). The harmonic minor and the jazz melodic minor do the same: harmonized in stacked thirds, each gives seven seventh chords, and started from each of its notes, seven modes. Each is a complete harmonic system of its own, and the word "diatonic" is often stretched to cover them. In jazz they are the source of many chord scales, the scales an improviser plays over a chord (see [Writing Chords](/chord-notation) on chord–scale theory). This page builds both systems on C, then shows how their chords and scales are used.
 
-長音階は、各音の上に7つの和音と7つの旋法をつくります（[ダイアトニック・コード](/diatonic-chords)と[教会旋法](/church-modes)を参照）。和声的短音階とジャズの旋律的短音階も同じです。3度を積んで和声づけすると7つの7の和音が、各音から始めると7つの旋法ができます。どちらもそれだけで完結したひとつの和声の体系で、「ダイアトニック」という言葉がこれらにまで広げて使われることもよくあります。ジャズでは、これらはコード・スケール、つまり即興演奏者がある和音の上で弾く音階の、大きな供給源です（コード・スケール理論については[コードの書き方](/chord-notation)を参照）。このページでは、2つの体系をCの上に組み立て、その和音と音階がどう使われるかを見ていきます。
+長音階は、それぞれの音の上に7つの和音と7つの旋法をつくります（[ダイアトニック・コード](/diatonic-chords)と[教会旋法](/church-modes)を参照）。和声的短音階とジャズの旋律的短音階も同じです。3度を積んで和声づけすると7つの7の和音が、それぞれの音から始めると7つの旋法ができます。どちらもそれだけで完結したひとつの和声の体系で、「ダイアトニック」という言葉がこれらにまで広げて使われることもよくあります。ジャズでは、これらはコード・スケール、つまり即興演奏者がある和音の上で弾く音階の、大きな供給源です（コード・スケール理論については[コードの書き方](/chord-notation)を参照）。このページでは、2つの体系をCの上に組み立て、その和音と音階がどう使われるかを見ていきます。
 
 # The Melodic Minor System
 # 旋律的短音階の体系
@@ -83,6 +83,6 @@ The demo below plays each of these with its chord scales, in the same way as the
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

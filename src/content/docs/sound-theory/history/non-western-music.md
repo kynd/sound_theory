@@ -8,7 +8,7 @@ Most of this series follows the theory of Western music: twelve equal notes, maj
 
 The demos on this page approximate these musics in twelve-tone equal temperament, with the instruments of this series. The real tunings, instruments, ornaments, and the freedom of time are much of what makes them what they are, so please treat the demos as sketches and listen to real performances.
 
-このページのデモは、これらの音楽を、このシリーズの楽器を使い、12平均律で近似しています。実際の音律、楽器、装飾、そして時間の自由さこそが、それらの音楽をそれらしくしているものの多くです。デモはスケッチとして受け取り、実際の演奏を聴いてみてください。
+このページのデモは、これらの音楽を、このシリーズの楽器を使い、12平均律で近似しています。実際の音律、楽器、装飾、そして時間の自由さこそが、それらの音楽をそれらしくしているものの多くです。デモはスケッチとして受け取り、実際の演奏を聴いてみましょう。
 
 # India: Raga and Tala
 # インド：ラーガとターラ
@@ -75,6 +75,6 @@ Japanese traditional music values ma (間), the charged space between sounds, an
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

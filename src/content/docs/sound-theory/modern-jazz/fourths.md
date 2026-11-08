@@ -11,7 +11,7 @@ Bebop lines move mostly by step and through the chord in thirds. From the 1960s 
 
 A three-note fourth shape, such as D, G, C, can be built on each note of a scale and moved up through it. In D Dorian (the white keys) almost every shape is two perfect fourths; only the one starting on F has an augmented fourth, F to B. Played as triplets, one shape a beat, the line climbs the scale in leaps. Alternating the direction of each shape, up and then down, keeps it from sounding mechanical.
 
-D、G、Cのような3音の4度の形は、音階の各音の上につくり、音階に沿って上へ動かせます。Dドリアン（白鍵）では、ほとんどの形が2つの完全4度でできていて、Fから始まる形だけがFからBの増4度を含みます。1拍にひとつの形を3連符で弾くと、旋律は跳躍しながら音階を上っていきます。形ごとに上向きと下向きを交互にすると、機械的に聞こえなくなります。
+D、G、Cのような3音の4度の形は、音階のそれぞれの音の上につくり、音階に沿って上へ動かせます。Dドリアン（白鍵）では、ほとんどの形が2つの完全4度でできていて、Fから始まる形だけがFからBの増4度を含みます。1拍にひとつの形を3連符で弾くと、旋律は跳躍しながら音階を上っていきます。形ごとに上向きと下向きを交互にすると、機械的に聞こえなくなります。
 
 Press **Play** to hear the eight fourth shapes of D Dorian climb over Dm7, one triplet a beat, alternating up and down, with the chord struck every two beats. The demo plays in C (on D), as in the text; choose a **Key** to hear it in another key.
 
@@ -36,6 +36,6 @@ Press **Play** to hear the D–G–C shape move by half steps up and back over D
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

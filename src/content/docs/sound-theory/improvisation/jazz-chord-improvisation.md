@@ -15,7 +15,7 @@ A dominant seventh that does not resolve down a fifth is often played with the L
 
 Choose an **Example** and press **Play**. **II7, scale** and **♭VII7, scale** hold each chord of Cmaj7–D7(♯11)–Dm7–G7–Cmaj7 and Cmaj7–Fm7–B♭7(♯11)–Cmaj7 while its scale runs up over it, and **Scale** names the scale. **II7, phrase** plays a line through the first progression: over D7 it falls from A through the ♯11, G♯, which leans up into A, the 5th of Dm7, the way the II7 of "Take the 'A' Train" pulls toward ii. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**II7, scale**と**♭VII7, scale**は、Cmaj7–D7(♯11)–Dm7–G7–Cmaj7とCmaj7–Fm7–B♭7(♯11)–Cmaj7の各和音を鳴らしたまま、その上で音階を上らせ、**Scale**に音階の名前を表示します。**II7, phrase**は最初の進行の上で旋律を弾きます。D7の上ではAから♯11のG♯を通って下り、G♯がDm7の5度であるAへ寄りかかります。「A列車で行こう」のII7がiiへ引かれるのと同じです。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**II7, scale**と**♭VII7, scale**は、Cmaj7–D7(♯11)–Dm7–G7–Cmaj7とCmaj7–Fm7–B♭7(♯11)–Cmaj7のそれぞれの和音を鳴らしたまま、その上で音階を上らせ、**Scale**に音階の名前を表示します。**II7, phrase**は最初の進行の上で旋律を弾きます。D7の上ではAから♯11のG♯を通って下り、G♯がDm7の5度であるAへ寄りかかります。「A列車で行こう」のII7がiiへ引かれるのと同じです。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-chords&example=ii7-lydian-dominant,backdoor-lydian-dominant,ii7-phrase&key" title="Lydian dominant" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -28,7 +28,7 @@ A dominant seventh with a raised 5th, written 7♯5 or 7+, has the notes of the 
 
 Choose an **Example** and press **Play**. **7♯5, scale** plays C6–C7♯5–Fmaj7–G7♯5–Cmaj7, each augmented dominant with the whole-tone scale over it. **7♯5, phrase** plays a line over C6–C7♯5–Fmaj7 in which the whole-tone notes rise to G♯, the ♯5, and G♯ moves up into A, the 3rd of Fmaj7. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**7♯5, scale**はC6–C7♯5–Fmaj7–G7♯5–Cmaj7と進み、増5度のドミナントの上でホールトーン・スケールを上らせます。**7♯5, phrase**はC6–C7♯5–Fmaj7の上で旋律を弾き、ホールトーンの音が♯5のG♯まで上がって、G♯がFmaj7の3度であるAへ進みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**7♯5, scale**はC6–C7♯5–Fmaj7–G7♯5–Cmaj7と進み、増5度のドミナントの上でホールトーン・スケールを上らせます。**7♯5, phrase**はC6–C7♯5–Fmaj7の上で旋律を弾き、ホールトーンの音が♯5のG♯まで上がって、G♯がFmaj7の3度であるAへ進みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-chords&example=augmented-whole-tone,augmented-phrase&key" title="Augmented dominants" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -41,7 +41,7 @@ Two diminished scales alternate half and whole steps (see [Other Scales](/other-
 
 Choose an **Example** and press **Play**. **Diminished, scales** plays Cmaj7–C♯°7–Dm7–G7(♭9)–Cmaj7 with the whole-half scale over C♯°7 and the half-whole scale over G7(♭9). **Diminished, phrase** plays a line over the same chords: it climbs the C♯°7 arpeggio, whose C♯ resolves up into D, and over G7(♭9) runs up the B°7 arpeggio (G7 with ♭9 and without its root), touching C♯, the ♯11, before A♭ falls to G. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**Diminished, scales**はCmaj7–C♯°7–Dm7–G7(♭9)–Cmaj7と進み、C♯°7の上でホール・ハーフ・スケールを、G7(♭9)の上でハーフ・ホール・スケールを上らせます。**Diminished, phrase**は同じ和音の上で旋律を弾きます。C♯°7のアルペジオを上ってC♯がDへ解決し、G7(♭9)の上ではB°7のアルペジオ（根音のない、♭9を持つG7）を上り、♯11のC♯に触れてから、A♭がGへ下がります。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**Diminished, scales**はCmaj7–C♯°7–Dm7–G7(♭9)–Cmaj7と進み、C♯°7の上でホール・ハーフ・スケールを、G7(♭9)の上でハーフ・ホール・スケールを上らせます。**Diminished, phrase**は同じ和音の上で旋律を弾きます。C♯°7のアルペジオを上ってC♯がDへ解決し、G7(♭9)の上ではB°7のアルペジオ（根音のない、♭9を持つG7）を上り、♯11のC♯に触れてから、A♭がGへ下がります。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-chords&example=diminished,diminished-phrase&key" title="Diminished chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -49,6 +49,6 @@ Choose an **Example** and press **Play**. **Diminished, scales** plays Cmaj7–C
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

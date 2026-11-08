@@ -11,7 +11,7 @@ The church modes are seven scales of seven notes each: Ionian, Dorian, Phrygian,
 
 Written from the same root, the modes differ in only a few notes each. Choose a **Scale** and press **Play** to hear it go up from the root and back down, or click a square to play its note. The demo starts on C, as in the text; **Root** moves all of them to start on another note.
 
-同じ主音から書くと、各旋法はいくつかの音だけが異なります。**Scale**を選んで**Play**を押すと、主音から上がって戻る旋法が聞こえます。四角をクリックすると、その音を鳴らせます。デモは本文と同じくCから始まりますが、**Root**を変えると、どの旋法もほかの音から始まります。
+同じ主音から書くと、それぞれの旋法はいくつかの音だけが異なります。**Scale**を選んで**Play**を押すと、主音から上がって戻る旋法が聞こえます。四角をクリックすると、その音を鳴らせます。デモは本文と同じくCから始まりますが、**Root**を変えると、どの旋法もほかの音から始まります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?set=modes&roots" title="Modes on one root" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
@@ -21,7 +21,7 @@ Each mode has a distinctive character. Ionian, the major scale, sounds bright an
 
 It's interesting to consider how closely related the modes are. Starting from Ionian, both Lydian and Mixolydian differ by just one note. Lower the 3rd of Mixolydian by a half step, and you get Dorian. As you switch between modes, compare the yellow squares and look for other connections: which modes differ by just one note, and can you find a path that links all seven?
 
-旋法どうしの近さについて考えるのも面白いでしょう。イオニアンから見ると、リディアンもミクソリディアンも、違う音は1つだけです。ミクソリディアンの3度を半音下げると、ドリアンになります。旋法を切り替えながら黄色い四角を見比べ、ほかの関係も探してみてください。音が1つだけ違う旋法はどれでしょうか。7つすべてをつなぐ道筋も見つけられるでしょうか。
+旋法どうしの近さについて考えるのも面白いでしょう。イオニアンから見ると、リディアンもミクソリディアンも、違う音は1つだけです。ミクソリディアンの3度を半音下げると、ドリアンになります。旋法を切り替えながら黄色い四角を見比べ、ほかの関係も探してみましょう。音が1つだけ違う旋法はどれでしょうか。7つすべてをつなぐ道筋も見つけられるでしょうか。
 
 # Modes from a Major Scale
 # 長音階から生まれる旋法
@@ -49,10 +49,10 @@ Modes derived from the same major scale share the same notes, but have different
 
 Because every mode uses the same notes as a major scale—and as the other modes derived from it—a set of notes alone doesn't tell us which mode we're hearing. What distinguishes them is which note feels like home. This is true in any key: G Ionian, A Dorian, and D Mixolydian, for example, all use the notes of G major, but each has a different root. To hear the difference, keep the root sounding as you play the other notes over it, and return to it from time to time. Feeling that center helps you hear each note in relation to it, bringing out the mode's character. The demo below starts on the white keys of C major, and you can move it to any other key.
 
-どの旋法も、長音階や、そこから導かれるほかの旋法と同じ音を使うため、音の集まりだけではどの旋法を聴いているのか分かりません。旋法を区別するのは、どの音が「帰る場所」と感じられるかです。これはどの調でも同じです。たとえば、Gイオニアン、Aドリアン、Dミクソリディアンは、すべてGの長音階の音を使いますが、主音はそれぞれ異なります。その違いを聴くには、主音を鳴らし続けながらほかの音を弾き、ときどき主音に戻ってみてください。主音を響きの中心として感じると、それぞれの音との関係が分かり、旋法の特徴が浮かび上がります。下のデモはCの長音階の白鍵から始まり、ほかのどの調にも移せます。
+どの旋法も、長音階や、そこから導かれるほかの旋法と同じ音を使うため、音の集まりだけではどの旋法を聴いているのか分かりません。旋法を区別するのは、どの音が「帰る場所」と感じられるかです。これはどの調でも同じです。たとえば、Gイオニアン、Aドリアン、Dミクソリディアンは、すべてGの長音階の音を使いますが、主音はそれぞれ異なります。その違いを聴くには、主音を鳴らし続けながらほかの音を弾き、ときどき主音に戻ってみましょう。主音を響きの中心として感じると、それぞれの音との関係が分かり、旋法の特徴が浮かび上がります。下のデモはCの長音階の白鍵から始まり、ほかのどの調にも移せます。
 
 Choose a **Mode** and press **Play** to play its root in the bass twice per second. Then play the keys with the mouse or with the keys from A to ; on your computer keyboard (A is the lowest key). In C the keys are the white keys; choose another **Key** and they become the seven notes of that major key, named as it spells them. The root keys are marked in pale yellow. Try returning to the root and playing the notes that set each mode apart. In C, these are B over F in Lydian, F over E in Phrygian, B over D in Dorian, and F over G in Mixolydian.
 
-**Mode**を選んで**Play**を押すと、主音が低音で1秒に2回鳴ります。そのうえで、マウスかコンピューターのキーボードのAから;までのキーで鍵盤を弾いてください（Aがいちばん低い鍵盤です）。Cでは鍵盤は白鍵です。**Key**でほかの調を選ぶと、鍵盤はその長調の7つの音になり、その調の綴りで名前が表示されます。主音の鍵盤は薄い黄色で示されます。主音に戻りながら、各旋法を特徴づける音も弾いてみてください。Cでは、リディアンではFの上のB、フリジアンではEの上のF、ドリアンではDの上のB、ミクソリディアンではGの上のFです。
+**Mode**を選んで**Play**を押すと、主音が低音で1秒に2回鳴ります。そのうえで、マウスかコンピューターのキーボードのAから;までのキーで鍵盤を弾いてみましょう（Aがいちばん低い鍵盤です）。Cでは鍵盤は白鍵です。**Key**でほかの調を選ぶと、鍵盤はその長調の7つの音になり、その調の綴りで名前が表示されます。主音の鍵盤は薄い黄色で示されます。主音に戻りながら、それぞれの旋法を特徴づける音も弾いてみましょう。Cでは、リディアンではFの上のB、フリジアンではEの上のF、ドリアンではDの上のB、ミクソリディアンではGの上のFです。
 
 <div class="demo-wrap"><iframe src="/writing/demos/mode-drone/index.html" title="Playing over the root" allow="autoplay" loading="lazy" style="height: 448px"></iframe></div>

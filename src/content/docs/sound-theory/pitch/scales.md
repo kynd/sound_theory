@@ -4,7 +4,7 @@ slug: scales
 ---
 A scale is a set of notes arranged in order of pitch, used to form melodies and harmonies. It is usually written from a note called the root (or tonic) up to the octave above; the same notes then repeat in every octave.
 
-音階とは、旋律や和音を形づくる音を音高順に並べたものです。ふつうは、主音から1オクターブ上までを書き表し、同じ音の並びが各オクターブで繰り返されます。
+音階とは、旋律や和音を形づくる音を音高順に並べたものです。ふつうは、主音から1オクターブ上までを書き表し、同じ音の並びがそれぞれのオクターブで繰り返されます。
 
 # Choosing Notes from Twelve
 # 12音から選ぶ

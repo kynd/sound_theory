@@ -30,6 +30,6 @@ Each triad comes from a scale that fits the chord. II, with its natural 9th, ♯
 
 Choose an **Example** and press **Play**. Each example plays the G7 shell alone, then the shell with the upper structure triad on top, then resolves to Cmaj9, and loops. The label under each chord shows the triad over the chord. Compare the colors: II and VI sound bright, ♭V and ♭VI dark and tense, ♭III bluesy. Click a chord to hold it. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。どの例も、まずG7のシェルだけを、次にシェルの上にアッパー・ストラクチャーの三和音を重ねたものを鳴らし、Cmaj9へ解決して繰り返します。和音の下のラベルは、和音の上の三和音を示します。色の違いを比べてみてください。IIとVIは明るく、♭Vと♭VIは暗く緊張した響きで、♭IIIはブルージーです。和音をクリックすると、その和音を鳴らし続けられます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。どの例も、まずG7のシェルだけを、次にシェルの上にアッパー・ストラクチャーの三和音を重ねたものを鳴らし、Cmaj9へ解決して繰り返します。和音の下のラベルは、和音の上の三和音を示します。色の違いを比べてみましょう。IIとVIは明るく、♭Vと♭VIは暗く緊張した響きで、♭IIIはブルージーです。和音をクリックすると、その和音を鳴らし続けられます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=upper-structures&key" title="Upper structure triads" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

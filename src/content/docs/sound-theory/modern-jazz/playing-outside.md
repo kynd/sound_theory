@@ -41,7 +41,7 @@ A line can also leave the key by following a pattern instead of a scale. Take a 
 
 Press **Play** to hear the cell D, F, E, A over Dm7, moved up a whole step at a time (starting on D, E, F♯, and G♯, the last far outside), then down by a minor third to F and to D, back inside, landing on F, the 3rd of Dm7. The labels under the chord name the note each cell starts on. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すと、Dm7の上でD、F、E、Aというセルが鳴り、全音ずつ上へ移って（D、E、F♯、G♯から始まり、最後はかなり外側）、それから短3度下のFへ、そしてDへと内側に戻り、Dm7の3度であるFに着地します。和音の下のラベルは、各セルが始まる音を示します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すと、Dm7の上でD、F、E、Aというセルが鳴り、全音ずつ上へ移って（D、E、F♯、G♯から始まり、最後はかなり外側）、それから短3度下のFへ、そしてDへと内側に戻り、Dm7の3度であるFに着地します。和音の下のラベルは、それぞれのセルが始まる音を示します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=outside&example=sequence&key" title="Motivic sequence" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -58,7 +58,7 @@ Dividing the octave evenly gives another kind of logic. Arpeggios moved by minor
 
 Choose an **Example** and press **Play**. **A turnaround over a vamp** plays the imagined F♯m7–B7–Em7–A7 over Dm7, named under each bar, landing on D in bar 5 and continuing in D Dorian. **A cycle of minor thirds** plays the four dominant arpeggios over C7, two to a bar, and resolves to Fmaj7. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**A turnaround over a vamp**は、Dm7の上で想像上のF♯m7–B7–Em7–A7を弾き（各小節の下に名前を示します）、5小節目でDに着地して、Dドリアンで続けます。**A cycle of minor thirds**は、C7の上で4つのドミナントのアルペジオを1小節に2つずつ弾き、Fmaj7へ解決します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**A turnaround over a vamp**は、Dm7の上で想像上のF♯m7–B7–Em7–A7を弾き（それぞれの小節の下に名前を示します）、5小節目でDに着地して、Dドリアンで続けます。**A cycle of minor thirds**は、C7の上で4つのドミナントのアルペジオを1小節に2つずつ弾き、Fmaj7へ解決します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=outside&example=imposed-turnaround,minor-third-cycle&key" title="Imagined changes and symmetric cycles" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -89,6 +89,6 @@ Whatever the method, outside playing works when the listener can tell it is mean
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

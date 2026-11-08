@@ -15,7 +15,7 @@ What they share is A♭, the minor sixth of the key. In C major it is a half ste
 
 Choose an **Example** and press **Play**, or click a chord to hold it. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=subdominant-minor&key" title="Subdominant minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

@@ -4,7 +4,7 @@ slug: minor-key-chords
 ---
 A minor key has its own diatonic chords, built the same way as in major (see [Diatonic Chords](/diatonic-chords)): a triad on each note of the scale, using only the notes of the scale. But the minor scale comes in three forms, natural, harmonic, and melodic (see [Minor Scales](/minor-scales)), and each gives a slightly different set of chords. In practice, musicians often move freely among all three.
 
-短調にも、長調と同じようにしてつくるダイアトニック・コードがあります（[ダイアトニック・コード](/diatonic-chords)を参照）。音階の各音の上に、その音階の音だけを使って三和音を積みます。ただし短音階には、自然短音階、和声的短音階、旋律的短音階の3つの形があり（[短音階](/minor-scales)を参照）、それぞれが少しずつ違う和音の組をつくります。実際の演奏では、ミュージシャンはこの3つを自由に行き来することがよくあります。
+短調にも、長調と同じようにしてつくるダイアトニック・コードがあります（[ダイアトニック・コード](/diatonic-chords)を参照）。音階のそれぞれの音の上に、その音階の音だけを使って三和音を積みます。ただし短音階には、自然短音階、和声的短音階、旋律的短音階の3つの形があり（[短音階](/minor-scales)を参照）、それぞれが少しずつ違う和音の組をつくります。実際の演奏では、ミュージシャンはこの3つを自由に行き来することがよくあります。
 
 # Three Scales, Three Sets of Chords
 # 3つの音階、3組の和音
@@ -36,7 +36,7 @@ A piece in a minor key often mixes the forms of the scale. One common habit is i
 
 So a minor key often mixes its forms: i, iv, ♭VI, and the iiø7 (Dm7♭5) from the natural minor, with V7 from the harmonic minor. Beethoven's "Für Elise" rocks between A minor and its dominant E (often E7), and jazz tunes in minor such as "Blue Bossa" (Kenny Dorham, 1963) run i7–iv7–iiø7–V7. Choose an **Example** and press **Play**. **i–iv–v–i** uses the natural minor's Gm, and **i–iv–V7–i** the same progression with G7: compare how the last chord arrives. **i–V7** rocks between the tonic and the dominant, and **i7–iv7–iiø7–V7** is the minor ii–V that leads back to the top. Each chord is struck on every beat. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-つまり短調では、形が混ざり合うことがよくあります。i、iv、♭VI、そしてiiø7（Dm7♭5）は自然短音階から、V7は和声的短音階から使います。ベートーヴェンの「エリーゼのために」はイ短調とそのドミナントE（多くはE7）のあいだを揺れ動き、「ブルー・ボッサ」（ケニー・ドーハム、1963年）のような短調のジャズ曲は、i7–iv7–iiø7–V7と進みます。**Example**を選んで**Play**を押してください。**i–iv–v–i**は自然短音階のGmを使い、**i–iv–V7–i**は同じ進行をG7で鳴らします。最後の和音への着き方を比べてみてください。**i–V7**はトニックとドミナントのあいだを行き来し、**i7–iv7–iiø7–V7**は、短調のii–Vで冒頭へ戻ります。どの和音も拍ごとに鳴らします。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
+つまり短調では、形が混ざり合うことがよくあります。i、iv、♭VI、そしてiiø7（Dm7♭5）は自然短音階から、V7は和声的短音階から使います。ベートーヴェンの「エリーゼのために」はイ短調とそのドミナントE（多くはE7）のあいだを揺れ動き、「ブルー・ボッサ」（ケニー・ドーハム、1963年）のような短調のジャズ曲は、i7–iv7–iiø7–V7と進みます。**Example**を選んで**Play**を押してみましょう。**i–iv–v–i**は自然短音階のGmを使い、**i–iv–V7–i**は同じ進行をG7で鳴らします。最後の和音への着き方を比べてみましょう。**i–V7**はトニックとドミナントのあいだを行き来し、**i7–iv7–iiø7–V7**は、短調のii–Vで冒頭へ戻ります。どの和音も拍ごとに鳴らします。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-dominant&key=minor" title="The dominant in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

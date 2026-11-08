@@ -31,7 +31,7 @@ Enclosures delay the resolution and build a little forward tension, and because 
 
 Press **Play** to hear the three enclosures of C over Cmaj7, one bar each; the label under each bar names the notes that close in on C. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すと、Cmaj7の上でCへの3つのエンクロージャーが1小節ずつ鳴ります。各小節の下のラベルは、Cを囲む音を示します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すと、Cmaj7の上でCへの3つのエンクロージャーが1小節ずつ鳴ります。それぞれの小節の下のラベルは、Cを囲む音を示します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=idioms&example=enclosures&key" title="Enclosures" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -44,7 +44,7 @@ A single chromatic note a half step below a chord tone, on the "and" just before
 
 Choose an **Example** and press **Play**. **Approach from below** arpeggiates Dm7 and G7 and leads into the next chord's 3rd from a half step below. **The lick, 3 to ♭9** plays the lick over Dm7, the 3-to-♭9 arpeggio over G7, and resolves F to E. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**Approach from below**はDm7とG7をアルペジオで弾き、次の和音の3度へ半音下から導きます。**The lick, 3 to ♭9**はDm7の上でザ・リックを、G7の上で3から♭9へのアルペジオを弾き、FからEへ解決します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**Approach from below**はDm7とG7をアルペジオで弾き、次の和音の3度へ半音下から導きます。**The lick, 3 to ♭9**はDm7の上でザ・リックを、G7の上で3から♭9へのアルペジオを弾き、FからEへ解決します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=idioms&example=approach,lick&key" title="Approach notes and the lick" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -57,7 +57,7 @@ From the blues, jazz inherited the move from the minor 3rd to the major 3rd over
 
 Choose an **Example** and press **Play**. **Minor to major 3rd** plays the blue third over C7 and F7. **Anticipation** lands the 3rd of G7 and of Cmaj7 a half beat early, on the "and" of 4. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**Minor to major 3rd**はC7とF7の上でブルーな3度を鳴らします。**Anticipation**はG7とCmaj7の3度に、半拍早く、4拍目の裏で着地します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**Minor to major 3rd**はC7とF7の上でブルーな3度を鳴らします。**Anticipation**はG7とCmaj7の3度に、半拍早く、4拍目の裏で着地します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=idioms&example=blue-third,anticipation&key" title="The blue third and anticipation" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -66,11 +66,11 @@ Choose an **Example** and press **Play**. **Minor to major 3rd** plays the blue 
 
 In real lines these devices rarely appear alone. A bebop player outlines each chord with arpeggios and guide tones (see [Outlining the Changes](/outlining-changes)), adds color such as the ♭9 over a dominant, and uses the last notes of each bar to set up the next chord, very often with an enclosure, so that the line lands on a chord tone, usually the 3rd, right on the change. The enclosure works like a hinge between chords: the line can leap or run anywhere within a bar, and the enclosure brings it back to the harmony on time.
 
-実際の旋律では、これらの手法が単独で現れることはまれです。ビバップの演奏者は、各和音をアルペジオとガイド・トーンで描き出し（[コード進行を描き出す](/outlining-changes)を参照）、ドミナントの上の♭9のような色を加え、各小節の最後の音で次の和音への準備をします。それはとてもしばしばエンクロージャーで、旋律がちょうど和音の変わり目で和音の音、ふつうは3度に着地するようにするのです。エンクロージャーは和音と和音のあいだの蝶番のように働きます。旋律は小節の中ではどこへ跳んでも走ってもよく、エンクロージャーが、それを時間どおりに和声へ連れ戻します。
+実際の旋律では、これらの手法が単独で現れることはまれです。ビバップの演奏者は、それぞれの和音をアルペジオとガイド・トーンで描き出し（[コード進行を描き出す](/outlining-changes)を参照）、ドミナントの上の♭9のような色を加え、それぞれの小節の最後の音で次の和音への準備をします。それはとてもしばしばエンクロージャーで、旋律がちょうど和音の変わり目で和音の音、ふつうは3度に着地するようにするのです。エンクロージャーは和音と和音のあいだの蝶番のように働きます。旋律は小節の中ではどこへ跳んでも走ってもよく、エンクロージャーが、それを時間どおりに和声へ連れ戻します。
 
 Choose an **Example** and press **Play**. In each, the last two (or three) eighth notes of every bar enclose the next chord's 3rd or root. **ii–V–I, enclosing each 3rd** starts by enclosing F, the 3rd of Dm7, climbs the Dm9 arpeggio, encloses B, runs up G7(♭9) from its 3rd, encloses E, and ends with an extended enclosure of C. **Turnaround, enclosing each 3rd** does the same over Cmaj7–A7–Dm7–G7, each dominant arpeggio reaching its ♭9, and the last bar encloses E so the loop lands on Cmaj7's 3rd. **Minor ii–V–i** encloses B over G7alt and E♭ over Cm6. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。どの例でも、各小節の最後の2つ（または3つ）の8分音符が、次の和音の3度か根音を囲みます。**ii–V–I, enclosing each 3rd**は、Dm7の3度であるFを囲んで始まり、Dm9のアルペジオを上り、Bを囲み、G7(♭9)を3度から駆け上がり、Eを囲み、Cへの拡張型のエンクロージャーで終わります。**Turnaround, enclosing each 3rd**は、Cmaj7–A7–Dm7–G7の上で同じことをし、ドミナントのアルペジオはそれぞれ♭9まで届き、最後の小節がEを囲むので、ループはCmaj7の3度に着地します。**Minor ii–V–i**は、G7altの上でBを、Cm6の上でE♭を囲みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。どの例でも、それぞれの小節の最後の2つ（または3つ）の8分音符が、次の和音の3度か根音を囲みます。**ii–V–I, enclosing each 3rd**は、Dm7の3度であるFを囲んで始まり、Dm9のアルペジオを上り、Bを囲み、G7(♭9)を3度から駆け上がり、Eを囲み、Cへの拡張型のエンクロージャーで終わります。**Turnaround, enclosing each 3rd**は、Cmaj7–A7–Dm7–G7の上で同じことをし、ドミナントのアルペジオはそれぞれ♭9まで届き、最後の小節がEを囲むので、ループはCmaj7の3度に着地します。**Minor ii–V–i**は、G7altの上でBを、Cm6の上でE♭を囲みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=idioms&example=long-ii-v-i,long-turnaround,long-minor&key" title="Enclosures in longer lines" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -78,6 +78,6 @@ Choose an **Example** and press **Play**. In each, the last two (or three) eight
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

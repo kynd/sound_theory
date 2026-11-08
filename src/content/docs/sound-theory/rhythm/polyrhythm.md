@@ -24,7 +24,7 @@ Three against two is the simplest polyrhythm and the most common. Of the six equ
 
 Four against three divides the cycle into twelve: the four-pulse takes every third part and the three-pulse every fourth. It is harder to hear as one pattern, and the two pulses sound more independent. In jazz, Elvin Jones, the drummer of John Coltrane's quartet in the 1960s, often laid groupings of three and four over each other this way, so the time seemed to roll rather than tick. Try listening to the clicks as the beat and then to the kicks: the same pattern feels like two different rhythms.
 
-4対3は周期を12に分けます。4つの拍は3つおきに、3つの拍は4つおきに入ります。ひとつの型として聞くのは難しくなり、2つの拍はより独立して聞こえます。ジャズでは、1960年代のジョン・コルトレーンのカルテットのドラマー、エルヴィン・ジョーンズが、よくこのように3つと4つのまとまりを重ね、時間が刻むのではなく転がるように聞こえさせました。クリックを拍として聞き、次にキックを拍として聞いてみてください。同じ型が、2つの違うリズムに感じられます。
+4対3は周期を12に分けます。4つの拍は3つおきに、3つの拍は4つおきに入ります。ひとつの型として聞くのは難しくなり、2つの拍はより独立して聞こえます。ジャズでは、1960年代のジョン・コルトレーンのカルテットのドラマー、エルヴィン・ジョーンズが、よくこのように3つと4つのまとまりを重ね、時間が刻むのではなく転がるように聞こえさせました。クリックを拍として聞き、次にキックを拍として聞いてみましょう。同じ型が、2つの違うリズムに感じられます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/polyrhythm/index.html?high=4&low=3" title="Four against three" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
@@ -33,6 +33,6 @@ Four against three divides the cycle into twelve: the four-pulse takes every thi
 
 Any two numbers make a polyrhythm. When one divides the other (four against two), the pulses always meet and the result is just a subdivision. When they share no factor (five against four, seven against three), they meet only at the start, and the pattern takes the whole cycle to come round. The larger the numbers, the more the two pulses sound like separate streams; Conlon Nancarrow and György Ligeti wrote music that layers such ratios far beyond what players can easily keep together. Set **High** and **Low** to any numbers from 1 to 9 and listen to how they fit.
 
-どんな2つの数でもポリリズムになります。一方がもう一方を割り切るとき（4対2）は、拍はいつも出会い、結果はただの細分になります。共通の約数を持たないとき（5対4、7対3）は、始まりでしか出会わず、型は周期全体をかけてひと回りします。数が大きくなるほど、2つの拍は別々の流れのように聞こえます。コンロン・ナンカロウやジェルジ・リゲティは、演奏者が簡単にはそろえられないほど、こうした比を重ねた音楽を書きました。**High**と**Low**を1から9までの好きな数にして、それらがどう組み合うかを聞いてみてください。
+どんな2つの数でもポリリズムになります。一方がもう一方を割り切るとき（4対2）は、拍はいつも出会い、結果はただの細分になります。共通の約数を持たないとき（5対4、7対3）は、始まりでしか出会わず、型は周期全体をかけてひと回りします。数が大きくなるほど、2つの拍は別々の流れのように聞こえます。コンロン・ナンカロウやジェルジ・リゲティは、演奏者が簡単にはそろえられないほど、こうした比を重ねた音楽を書きました。**High**と**Low**を1から9までの好きな数にして、それらがどう組み合うかを聞いてみましょう。
 
 <div class="demo-wrap"><iframe src="/writing/demos/polyrhythm/index.html?high=5&low=4" title="Any two pulses" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>

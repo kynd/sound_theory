@@ -29,7 +29,7 @@ Choose an **Example** and press **Play** to hear a short phrase over each progre
 
 Then turn off **Phrase** to leave only the backing, and play along. The keyboard shows only the five notes of the example's pentatonic, with the root marked, so every key you press fits. Play with the mouse or the keys from A to ; on your computer keyboard (Z and X shift the octave). Try short phrases with space between them, repeat an idea before changing it, and end phrases on the root. The demo plays in C (A minor for **vi–IV–I–V**), as in the text; choose a **Key** to play in another key, and the keyboard follows.
 
-次に**Phrase**をオフにして伴奏だけにし、一緒に弾いてみてください。鍵盤には、その例のペンタトニックの5つの音だけが、主音に印をつけて表示されるので、どの鍵を押しても合います。マウス、またはコンピューターのキーボードのAから;までのキーで弾けます（ZとXでオクターブが変わります）。あいだに間を置いた短いフレーズを弾いたり、ひとつのアイデアを繰り返してから変えたり、フレーズを主音で終えたりしてみてください。デモは本文と同じくC（**vi–IV–I–V**はAマイナー）で鳴りますが、**Key**を選ぶとほかの調で弾け、鍵盤もそれに合わせて変わります。
+次に**Phrase**をオフにして伴奏だけにし、一緒に弾いてみましょう。鍵盤には、その例のペンタトニックの5つの音だけが、主音に印をつけて表示されるので、どの鍵を押しても合います。マウス、またはコンピューターのキーボードのAから;までのキーで弾けます（ZとXでオクターブが変わります）。あいだに間を置いた短いフレーズを弾いたり、ひとつのアイデアを繰り返してから変えたり、フレーズを主音で終えたりしてみましょう。デモは本文と同じくC（**vi–IV–I–V**はAマイナー）で鳴りますが、**Key**を選ぶとほかの調で弾け、鍵盤もそれに合わせて変わります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=pentatonic&key&play" title="Pentatonic phrases and play-along" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -37,6 +37,6 @@ Then turn off **Phrase** to leave only the backing, and play along. The keyboard
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

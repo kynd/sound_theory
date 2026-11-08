@@ -38,6 +38,12 @@ Follow `documentation.md`. In short:
 - Frontmatter: `title: "English Title 日本語タイトル"` and `slug: short-slug`.
 - English paragraph, then its Japanese paragraph. Headings: the English heading, then
   the Japanese heading at the same level (`# Sine Wave` / `# サイン波`).
+- In Japanese, avoid 「各」: write 「それぞれの〜」 (or rephrase: 「どの〜も」, 「〜ごと」)
+  instead of 「各和音」, 「各小節」, and so on. This also covers set words like 「世界各地」
+  (「世界中」).
+- In Japanese demo instructions, invite rather than instruct: 「〜てみましょう」, not
+  「〜てください」 or 「〜てみてください」 (「**Play**を押してみましょう」). Cross-references
+  keep 「〜を参照してください」.
 - Lists: all English items, then the Japanese intro and all Japanese items. Do not
   interleave.
 - Block math goes between `$$` lines of their own. `$$…$$` on one line renders inline,

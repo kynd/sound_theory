@@ -21,7 +21,7 @@ Press **Play** to hear a short call and response written for this page. The hamm
 
 Much of this carried into the blues. A blues verse is often a call and response within itself: a line is sung, repeated, and then answered by a third line that completes it (the AAB form). The singer leaves space after each line, and a guitar or piano answers, so the call and response continues between the voice and the instrument. And the bent, sliding pitches of the hollers became the blue notes.
 
-こうした特徴の多くは、ブルースに受け継がれました。ブルースの1節は、それ自体がコール・アンド・レスポンスになっていることがよくあります。1行を歌い、それを繰り返し、3行目で答えて締めくくります（AAB形式）。歌い手は各行のあとに間を空け、そこにギターやピアノが答えるので、コール・アンド・レスポンスは声と楽器のあいだで続きます。そして、ハラーの揺れて滑る音高は、ブルー・ノートになりました。
+こうした特徴の多くは、ブルースに受け継がれました。ブルースの1節は、それ自体がコール・アンド・レスポンスになっていることがよくあります。1行を歌い、それを繰り返し、3行目で答えて締めくくります（AAB形式）。歌い手はそれぞれの行のあとに間を空け、そこにギターやピアノが答えるので、コール・アンド・レスポンスは声と楽器のあいだで続きます。そして、ハラーの揺れて滑る音高は、ブルー・ノートになりました。
 
 # The Twelve-Bar Blues
 # 12小節のブルース
@@ -77,6 +77,6 @@ Choose an **Example** and press **Play**: the basic twelve-bar blues, the jazz b
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

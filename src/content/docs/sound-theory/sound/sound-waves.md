@@ -15,7 +15,7 @@ But these vibrations tell only part of the story. Like other sensory experiences
 
 A sine wave is a smooth, repeating oscillation at a single frequency. A perfectly pure, steady sine wave is a mathematical ideal, but a tuning fork produces a sound that comes close. Once its initial vibrations settle, the sound is dominated by a single frequency, though it gradually fades. In this demo, frequency—the number of cycles per second, measured in hertz (Hz)—determines pitch. Amplitude—the size of the pressure variation—affects loudness: at a fixed frequency, a larger amplitude generally sounds louder. Press **Play** and move the sliders.
 
-サイン波は、単一の周波数でなめらかに繰り返す振動です。完全に純粋で振幅が一定のサイン波は数学上の理想ですが、音叉はそれに近い音を出します。最初の振動が落ち着くと、音は単一の周波数が中心になりますが、次第に弱まっていきます。このデモでは、周波数（1秒あたりの振動回数。単位はヘルツ、Hz）が音の高さを決めます。振幅（気圧の変化の大きさ）は音の大きさに影響します。周波数が同じなら、振幅が大きいほど一般に大きな音に聞こえます。**Play**を押して、スライダーを動かしてみてください。
+サイン波は、単一の周波数でなめらかに繰り返す振動です。完全に純粋で振幅が一定のサイン波は数学上の理想ですが、音叉はそれに近い音を出します。最初の振動が落ち着くと、音は単一の周波数が中心になりますが、次第に弱まっていきます。このデモでは、周波数（1秒あたりの振動回数。単位はヘルツ、Hz）が音の高さを決めます。振幅（気圧の変化の大きさ）は音の大きさに影響します。周波数が同じなら、振幅が大きいほど一般に大きな音に聞こえます。**Play**を押して、スライダーを動かしてみましょう。
 
 <div class="demo-wrap"><iframe src="/writing/demos/sine-wave/index.html" title="Sine wave" allow="autoplay" loading="lazy" style="height: 192px"></iframe></div>
 
@@ -36,7 +36,7 @@ A sine wave sounds plain, and few instruments produce one on its own. A plucked 
 
 Adding harmonics changes the waveform and the sound's character (timbre) without changing the pitch, because their sum still repeats at the fundamental's period. The demo starts with a 220 Hz fundamental. Press **Play** and raise the sliders one at a time. Each slider sets the amplitude of the sine wave at the frequency shown beside it—a whole-number multiple of 220 Hz.
 
-倍音を加えると、波形と音色は変わりますが、音高は変わりません。合成した波も基音の周期で繰り返すためです。デモは220 Hzの基音から始まります。**Play**を押し、スライダーをひとつずつ上げてみてください。各スライダーで、横に示された周波数（220 Hzの整数倍）のサイン波の振幅を調整できます。
+倍音を加えると、波形と音色は変わりますが、音高は変わりません。合成した波も基音の周期で繰り返すためです。デモは220 Hzの基音から始まります。**Play**を押し、スライダーをひとつずつ上げてみましょう。それぞれのスライダーで、横に示された周波数（220 Hzの整数倍）のサイン波の振幅を調整できます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/adding-sines/index.html" title="Adding sine waves" allow="autoplay" loading="lazy" style="height: 368px"></iframe></div>
 
@@ -46,7 +46,7 @@ The yellow lines show the individual sine waves, and the red line shows their su
 
 All the sine waves here start in phase. Changing their relative phases changes the shape of the combined wave, but usually has little effect on the sound of a steady tone like this. Phase still matters in audio processing: when peaks from multiple components align, their combined peak can exceed a system's limits and cause clipping. In some synthesis and signal-processing applications, phases are deliberately adjusted to reduce these peaks.
 
-ここでは、すべてのサイン波が同じ位相で始まります。各成分の相対的な位相を変えると合成波の形は変わりますが、このような持続音では、聞こえ方への影響は大抵ほとんどありません。位相は音声処理でも重要です。複数の成分のピークが重なると、合成波のピークが信号や機器の扱える上限を超え、クリッピングによる歪みが生じることがあります。そのため、音の合成や信号処理では、ピークを抑えるために位相を意図的に調整する場合があります。
+ここでは、すべてのサイン波が同じ位相で始まります。それぞれの成分の相対的な位相を変えると合成波の形は変わりますが、このような持続音では、聞こえ方への影響は大抵ほとんどありません。位相は音声処理でも重要です。複数の成分のピークが重なると、合成波のピークが信号や機器の扱える上限を超え、クリッピングによる歪みが生じることがあります。そのため、音の合成や信号処理では、ピークを抑えるために位相を意図的に調整する場合があります。
 
 # Frequency Components
 # 周波数成分
@@ -64,7 +64,7 @@ A sound with a clear pitch is periodic, so its components sit at the harmonics o
 
 Real sounds change over time, so a spectrum is measured over a short window of the signal with the FFT (fast Fourier transform). This demo shows the waveform (above) and the spectrum (below) of the same sound at once. Choose a **Preset** (a recorded instrument, the drum kit, or noise) and play a few notes with the mouse, or with the keys from A to ; on your computer keyboard (Z and X shift the octave).
 
-実際の音は時間とともに変化するため、スペクトルは、信号の短い区間に対してFFT（高速フーリエ変換）を使って求めます。このデモでは、同じ音の波形（上）とスペクトル（下）を同時に表示します。**Preset**（録音した楽器、ドラムキット、ノイズ）を選んで、マウスか、コンピューターのキーボードのAから;までのキーでいくつか音を弾いてみてください（ZとXでオクターブを切り替えられます）。
+実際の音は時間とともに変化するため、スペクトルは、信号の短い区間に対してFFT（高速フーリエ変換）を使って求めます。このデモでは、同じ音の波形（上）とスペクトル（下）を同時に表示します。**Preset**（録音した楽器、ドラムキット、ノイズ）を選んで、マウスか、コンピューターのキーボードのAから;までのキーでいくつか音を弾いてみましょう（ZとXでオクターブを切り替えられます）。
 
 <div class="demo-wrap"><iframe src="/writing/demos/waveform-spectrum/index.html" title="Waveform and spectrum" allow="autoplay" loading="lazy" style="height: 544px"></iframe></div>
 

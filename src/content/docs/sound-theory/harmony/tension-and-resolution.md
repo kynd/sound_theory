@@ -23,7 +23,7 @@ Secondary dominants can also follow one another: E7–A7–D7–G7–C, each cho
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **V–I** and **V7–I** compare the dominant without and with its seventh: adding F brings in the tritone, and the pull to C grows stronger. **V7–i** resolves the same G7 to C minor, where F falls to E♭ instead. **Secondary dominants** and **Chain of dominants** lend the pull to other chords. Watch B and F in the piano roll as G7 resolves. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。**V–I**と**V7–I**は、7度のないドミナントとあるドミナントを比べます。Fを加えると三全音が生まれ、Cへの引力が強まります。**V7–i**は同じG7をCマイナーへ解決し、FはEではなくE♭へ下がります。**Secondary dominants**と**Chain of dominants**は、この引力をほかの和音に貸します。G7が解決するとき、ピアノロールのBとFを見てください。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。**V–I**と**V7–I**は、7度のないドミナントとあるドミナントを比べます。Fを加えると三全音が生まれ、Cへの引力が強まります。**V7–i**は同じG7をCマイナーへ解決し、FはEではなくE♭へ下がります。**Secondary dominants**と**Chain of dominants**は、この引力をほかの和音に貸します。G7が解決するとき、ピアノロールのBとFを見てみましょう。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=dominant-motion&key" title="Dominant motion" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -40,7 +40,7 @@ In a minor key, the ii–V usually takes the natural minor's half-diminished ii 
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **ii–V–I** and **Minor ii–V–i** resolve to C major and to C minor. **ii–V to ii–V** precedes Dm7 with its own ii–V, two chords a bar. **Descending ii–Vs** moves from C major to B♭ major. A Roman numeral with a slash names the chord a ii–V points to: ii7/ii is the ii of Dm7. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。**ii–V–I**と**Minor ii–V–i**は、CメジャーとCマイナーへ解決します。**ii–V to ii–V**は、Dm7の前にDm7自身のii–Vを置き、1小節に2つの和音で進みます。**Descending ii–Vs**は、CメジャーからB♭メジャーへ移ります。スラッシュのついたローマ数字は、そのii–Vが向かう和音を示します。ii7/iiは、Dm7にとってのiiです。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。**ii–V–I**と**Minor ii–V–i**は、CメジャーとCマイナーへ解決します。**ii–V to ii–V**は、Dm7の前にDm7自身のii–Vを置き、1小節に2つの和音で進みます。**Descending ii–Vs**は、CメジャーからB♭メジャーへ移ります。スラッシュのついたローマ数字は、そのii–Vが向かう和音を示します。ii7/iiは、Dm7にとってのiiです。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=two-five&key" title="Two-five" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -77,10 +77,10 @@ Dominant motion in this narrow sense, a dominant seventh moving down a fifth, is
 
 Choose an **Example** and press **Play**, or click a chord to hold it. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=resolution&key" title="Tension and resolution" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 Watch the voices in the piano roll as each example resolves. In most of them, the notes of the last chord are reached by small steps, often by a half step. That smooth arrival is as much a part of the resolution as the chord itself.
 
-それぞれの例が解決するとき、ピアノロールの声部の動きを見てください。ほとんどの例で、最後の和音の音には小さな歩幅で、しばしば半音で到達しています。このなめらかな到着も、和音そのものと同じくらい、解決の一部なのです。
+それぞれの例が解決するとき、ピアノロールの声部の動きを見てみましょう。ほとんどの例で、最後の和音の音には小さな歩幅で、しばしば半音で到達しています。このなめらかな到着も、和音そのものと同じくらい、解決の一部なのです。

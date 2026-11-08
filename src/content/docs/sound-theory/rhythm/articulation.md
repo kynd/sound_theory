@@ -36,6 +36,6 @@ Choose an **Example** and press **Play** to hear the same eighth-note line over 
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>These demos only change each note's length, loudness, and timing in fixed steps, with a sampled piano. Real articulation is far richer: the attack of a breath or a bow, a slight bend into a note, a vibrato that blooms, a swing that breathes with the tempo. We strongly recommend listening to real recordings and noticing how different players shape the same melody.</p>
-    <p>これらのデモは、サンプリングしたピアノで、それぞれの音の長さ、音量、タイミングを決まった段階で変えているだけです。実際のアーティキュレーションははるかに豊かです。息や弓のアタック、音へのわずかなベンド、広がっていくビブラート、テンポとともに息づくスウィング。実際の録音を聴き、ミュージシャンによって同じ旋律がどう形づくられるかに耳を傾けてみてください。</p>
+    <p>これらのデモは、サンプリングしたピアノで、それぞれの音の長さ、音量、タイミングを決まった段階で変えているだけです。実際のアーティキュレーションははるかに豊かです。息や弓のアタック、音へのわずかなベンド、広がっていくビブラート、テンポとともに息づくスウィング。実際の録音を聴き、ミュージシャンによって同じ旋律がどう形づくられるかに耳を傾けてみましょう。</p>
   </div>
 </aside>

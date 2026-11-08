@@ -19,7 +19,7 @@ First, an oscillator produces a wave rich in harmonics (see [Building Waveforms]
 
 Try this in the demo. Press **Play** to hold an A3 (220 Hz), then choose a **Wave**. The filter starts fully open, with **Cutoff** set to 10000 Hz. Lower it to remove higher harmonics, and raise **Resonance** to boost those near the cutoff. As harmonics are removed, the waveform (above) grows smoother, while the spectrum (below) shows them disappearing from the right. With high resonance, frequencies near the cutoff are strongly boosted. As you move the cutoff, different harmonics are boosted in turn, making each one stand out in the sound and the spectrum.
 
-デモで試してみましょう。**Play**を押すとA3（220 Hz）が鳴り続けます。次に**Wave**で波形を選んでください。フィルターは**Cutoff**が10000 Hzの、完全に開いた状態から始まります。Cutoffを下げると高い倍音が取り除かれ、**Resonance**を上げるとカットオフ付近の倍音が強調されます。倍音が取り除かれるにつれて、波形（上）はなめらかになり、スペクトル（下）では倍音が右から消えていきます。レゾナンスを高くすると、カットオフ付近の周波数が強く増幅されます。カットオフを動かすと、強調される倍音が次々に変わり、それぞれの倍音が音でもスペクトルでも際立ちます。
+デモで試してみましょう。**Play**を押すとA3（220 Hz）が鳴り続けます。次に**Wave**で波形を選んでみましょう。フィルターは**Cutoff**が10000 Hzの、完全に開いた状態から始まります。Cutoffを下げると高い倍音が取り除かれ、**Resonance**を上げるとカットオフ付近の倍音が強調されます。倍音が取り除かれるにつれて、波形（上）はなめらかになり、スペクトル（下）では倍音が右から消えていきます。レゾナンスを高くすると、カットオフ付近の周波数が強く増幅されます。カットオフを動かすと、強調される倍音が次々に変わり、それぞれの倍音が音でもスペクトルでも際立ちます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/synth-filter/index.html" title="Oscillator and filter" allow="autoplay" loading="lazy" style="height: 352px"></iframe></div>
 
@@ -29,7 +29,7 @@ An amplifier then shapes the sound's loudness over time using an envelope: attac
 
 Try the envelope on the oscillator alone. Press **Play** to hear the A3 note. Choose a **Wave** and set **Attack**, **Decay**, **Sustain**, and **Release**. The yellow shape shows the note's loudness over time, from its start through the end of the release.
 
-フィルターを使わず、オシレーターにエンベロープだけをかけて試してみましょう。**Play**を押してA3の音を鳴らし、**Wave**で波形を選んでから、**Attack**、**Decay**、**Sustain**、**Release**を設定してください。黄色の形は、音の始まりからリリースが終わるまでの音量変化を示します。
+フィルターを使わず、オシレーターにエンベロープだけをかけて試してみましょう。**Play**を押してA3の音を鳴らし、**Wave**で波形を選んでから、**Attack**、**Decay**、**Sustain**、**Release**を設定してみましょう。黄色の形は、音の始まりからリリースが終わるまでの音量変化を示します。
 
 <div class="demo-wrap"><iframe src="/writing/demos/synth-envelope/index.html" title="Envelope" allow="autoplay" loading="lazy" style="height: 288px"></iframe></div>
 
@@ -37,15 +37,15 @@ The filter can change over time too. A second envelope can move the filter's cut
 
 フィルターも時間とともに変化させられます。2つ目のエンベロープで音ごとにカットオフを動かすと、音は始まりに明るく、減衰するにつれて暗くなります。これがアナログ・シンセを象徴する変化です。
 
-Try moving the filter by hand first. Drag on the canvas to sound an A2 (110 Hz): left to right sets the **Cutoff** from 100 Hz to 8000 Hz, and bottom to top the **Resonance** from 0.5 to 15. Releasing stops the sound. Sweep slowly from left to right near the top for the classic resonant sweep, or move quickly to make the sound talk. A filter envelope makes this kind of move by itself on every note.
+Start by moving the filter manually. Drag across the canvas to hear an A2 (110 Hz). Moving left to right sets the **Cutoff** from 100 Hz to 8000 Hz; moving bottom to top sets the **Resonance** from 0.5 to 15. Release to stop the sound. Sweep slowly from left to right near the top for a classic resonant sweep, or move quickly to make the sound talk. A filter envelope automates this movement with every note.
 
-まず、手でフィルターを動かしてみましょう。キャンバスの上でドラッグすると、A2（110 Hz）が鳴ります。左から右で**Cutoff**が100 Hzから8000 Hzまで、下から上で**Resonance**が0.5から15まで変わります。離すと音が止まります。上のほうで左から右へゆっくり動かすと典型的なレゾナンスのスイープに、すばやく動かすと話すような音になります。フィルターのエンベロープは、こうした動きを音ごとに自動で行います。
+まずはフィルターを手動で動かしてみましょう。キャンバス上をドラッグすると、A2（110 Hz）の音が鳴ります。左から右へ動かすと**Cutoff**が100 Hzから8000 Hzまで変化し、下から上へ動かすと**Resonance**が0.5から15まで変化します。指を離すと音が止まります。上のほうで左から右へゆっくり動かすと、典型的なレゾナンススイープになります。すばやく動かすと、話し声のように聞こえます。フィルターエンベロープを使えば、この動きをそれぞれの音符で自動化できます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/filter-sweep/index.html" title="Filter sweep" allow="autoplay" loading="lazy" style="height: 176px"></iframe></div>
 
 Let's put everything together. Play the keyboard with your mouse or by pressing the A-to-; keys on your computer keyboard (Z and X shift the octave). **Wave** selects the oscillator; **Cutoff** and **Resonance** control the filter; **Env amt** sets how many octaves above the cutoff the filter envelope opens it; and **Attack**, **Decay**, **Sustain**, and **Release** shape both envelopes. **Waveform** and **Spectrum** switch the display between the waveform and its frequency spectrum. Try a low cutoff, high resonance, and a large envelope amount for a classic bass sound, or a slow attack and release for a pad.
 
-すべてを組み合わせてみましょう。マウス、またはコンピューターのキーボードのAから;までのキーで鍵盤を弾いてください（ZとXでオクターブが変わります）。**Wave**はオシレーターを選び、**Cutoff**と**Resonance**はフィルターを調整します。**Env amt**は、フィルターのエンベロープがカットオフより何オクターブ高い位置までフィルターを開くかを決めます。**Attack**、**Decay**、**Sustain**、**Release**は両方のエンベロープの形を決めます。**Waveform**と**Spectrum**で、表示を波形と周波数スペクトルに切り替えられます。低いカットオフ、高いレゾナンス、大きなエンベロープ量を組み合わせると典型的なベース音になり、ゆっくりしたアタックとリリースを使うとパッドになります。
+すべてを組み合わせてみましょう。マウス、またはコンピューターのキーボードのAから;までのキーで鍵盤を弾いてみましょう（ZとXでオクターブが変わります）。**Wave**はオシレーターを選び、**Cutoff**と**Resonance**はフィルターを調整します。**Env amt**は、フィルターのエンベロープがカットオフより何オクターブ高い位置までフィルターを開くかを決めます。**Attack**、**Decay**、**Sustain**、**Release**は両方のエンベロープの形を決めます。**Waveform**と**Spectrum**で、表示を波形と周波数スペクトルに切り替えられます。低いカットオフ、高いレゾナンス、大きなエンベロープ量を組み合わせると典型的なベース音になり、ゆっくりしたアタックとリリースを使うとパッドになります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/synth/index.html?engine=subtractive" title="Subtractive synthesizer" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 
@@ -58,7 +58,7 @@ Effects can further shape a sound and change its character. For example, a compr
 
 Choose a **Preset**, open an effect, and turn up its mix. Each effect starts out transparent, with its mix set to 0 (the compressor starts with its threshold at 0 dB and ratio at 1), so you can hear the difference it makes. **Compressor** controls **Threshold** and **Ratio**; **Auto-wah** controls the filter's resting frequency (**Base**) and how far it opens (**Octaves**); **Chorus** and **Phaser** control their speed (**Rate**, in cycles per second) and range; **Delay** controls the time between echoes and their feedback; and **Reverb** controls the decay time. **Mix** blends each effect with the dry sound. The effects are applied in the order listed.
 
-**Preset**を選び、エフェクトを開いてミックスを上げてみてください。どのエフェクトも、ミックス0（コンプレッサーはスレッショルド0 dB、レシオ1）の、元の音に影響しない状態から始まるため、効果を聞き比べられます。**Compressor**では**Threshold**と**Ratio**を、**Auto-wah**ではフィルターの基準周波数（**Base**）と開く幅（**Octaves**）を設定します。**Chorus**と**Phaser**では動く速さ（**Rate**、1秒あたりの周期数）と幅を、**Delay**ではこだまの間隔とフィードバックを、**Reverb**では残響の長さを設定します。**Mix**は各エフェクトと元の音を混ぜ合わせます。エフェクトは表示されている順に適用されます。
+**Preset**を選び、エフェクトを開いてミックスを上げてみましょう。どのエフェクトも、ミックス0（コンプレッサーはスレッショルド0 dB、レシオ1）の、元の音に影響しない状態から始まるため、効果を聞き比べられます。**Compressor**では**Threshold**と**Ratio**を、**Auto-wah**ではフィルターの基準周波数（**Base**）と開く幅（**Octaves**）を設定します。**Chorus**と**Phaser**では動く速さ（**Rate**、1秒あたりの周期数）と幅を、**Delay**ではこだまの間隔とフィードバックを、**Reverb**では残響の長さを設定します。**Mix**はそれぞれのエフェクトと元の音を混ぜ合わせます。エフェクトは表示されている順に適用されます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/synth/index.html?presets&effects=compressor,autowah,chorus,phaser,delay,reverb" title="Effects" allow="autoplay" loading="lazy" style="height: 496px"></iframe></div>
 
@@ -75,7 +75,7 @@ Amplitude modulation (AM) uses one wave to vary the loudness of another. This ad
 
 Choose an **Engine** and play. In **FM**, **Ratio** sets the modulator's frequency as a multiple of the carrier's, **Index** sets the modulation strength, and **Mod decay** sets how quickly the modulation fades during each note. Try a ratio of 1 with a high index for a brassy sound, a ratio of 3.5 for a bell-like sound, or a short mod decay for an electric-piano sound. In **AM**, **Ratio** sets the modulating wave's frequency.
 
-**Engine**を選んで弾いてみましょう。**FM**では、**Ratio**がモジュレーターの周波数をキャリア周波数の何倍にするかを、**Index**が変調の強さを、**Mod decay**が各音の中で変調が減衰する速さを決めます。比を1にしてインデックスを高くすると金管のような音になり、比を3.5にすると鐘のような音に、Mod decayを短くするとエレクトリック・ピアノのような音になります。**AM**では、**Ratio**が変調する波の周波数を決めます。
+**Engine**を選んで弾いてみましょう。**FM**では、**Ratio**がモジュレーターの周波数をキャリア周波数の何倍にするかを、**Index**が変調の強さを、**Mod decay**がそれぞれの音の中で変調が減衰する速さを決めます。比を1にしてインデックスを高くすると金管のような音になり、比を3.5にすると鐘のような音に、Mod decayを短くするとエレクトリック・ピアノのような音になります。**AM**では、**Ratio**が変調する波の周波数を決めます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/synth/index.html?engine=fm,am" title="FM and AM synthesis" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 

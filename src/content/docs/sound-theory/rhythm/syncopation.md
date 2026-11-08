@@ -28,7 +28,7 @@ The most common syncopation in pop, rock, jazz, and Latin music is the anticipat
 
 Choose an **Example** and press **Play**. **Anticipated** plays the melody with the first note of bars 2, 3, and 4 moved half a beat early, onto the "and" of 4, and accented. **Anticipated, chords too** moves the chord changes there as well, so the melody and the chords arrive early together. The demo plays in C; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**Anticipated**は、2、3、4小節目の最初の音を半拍早く4拍目の裏に移し、アクセントを置いて旋律を弾きます。**Anticipated, chords too**は和音の変わり目もそこへ移すので、旋律と和音が一緒に早く着きます。デモはCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**Anticipated**は、2、3、4小節目の最初の音を半拍早く4拍目の裏に移し、アクセントを置いて旋律を弾きます。**Anticipated, chords too**は和音の変わり目もそこへ移すので、旋律と和音が一緒に早く着きます。デモはCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=anticipated,pushed&key" title="Anticipation" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -37,7 +37,7 @@ Choose an **Example** and press **Play**. **Anticipated** plays the melody with 
 
 A backing can syncopate on its own, even under a melody that does not. The rhythm the chords are struck in sets much of a style's character. Struck on every beat, chords mark time plainly. Struck on beat 1 and the "and" of 2, the rhythm known as the Charleston after the 1920s dance, they swing and leave space; jazz pianists use it constantly. Struck on beat 1 and then on the "and" of 4, anticipating the next chord, they push each bar forward.
 
-伴奏は、旋律がシンコペーションしなくても、それだけでシンコペーションできます。和音を鳴らすリズムが、スタイルの性格の多くを決めます。毎拍鳴らすと、和音は素直に拍を刻みます。1拍目と2拍目の裏で鳴らす、1920年代のダンスにちなんでチャールストンと呼ばれるリズムでは、和音はスウィングし、間を残します。ジャズ・ピアニストはこれを絶えず使います。1拍目と、次の和音を先取りする4拍目の裏で鳴らすと、各小節が前へ押し出されます。
+伴奏は、旋律がシンコペーションしなくても、それだけでシンコペーションできます。和音を鳴らすリズムが、スタイルの性格の多くを決めます。毎拍鳴らすと、和音は素直に拍を刻みます。1拍目と2拍目の裏で鳴らす、1920年代のダンスにちなんでチャールストンと呼ばれるリズムでは、和音はスウィングし、間を残します。ジャズ・ピアニストはこれを絶えず使います。1拍目と、次の和音を先取りする4拍目の裏で鳴らすと、それぞれの小節が前へ押し出されます。
 
 Choose an **Example** and press **Play** to hear C, Am, F, and G struck three ways: **Chords on the beat**, **Charleston**, and **Pushed**. The demo plays in C; choose a **Key** to hear it in another key.
 
@@ -63,11 +63,11 @@ Press **Play** to hear a bossa nova backing on a nylon-string guitar and bass ov
 
 Samba, the older and faster music that bossa nova grew from, is felt in two, and its syncopation lives in the sixteenth notes. The surdo, a large bass drum, plays its strongest beat on beat 2 of each 2/4 bar rather than beat 1, the shaker pushes the last sixteenth of every beat, and the guitar or cavaquinho plays chords in short syncopated figures that land between the beats and anticipate the next bar.
 
-ボサノヴァのもとになった、より古く速いサンバは、2拍子で感じられ、そのシンコペーションは16分音符の中にあります。大きなバスドラムであるスルドは、2/4の各小節で、1拍目ではなく2拍目にいちばん強い音を打ちます。シェイカーは各拍の最後の16分音符を押し出し、ギターやカヴァキーニョは、拍のあいだに落ちて次の小節を先取りする、短いシンコペーションの音型で和音を弾きます。
+ボサノヴァのもとになった、より古く速いサンバは、2拍子で感じられ、そのシンコペーションは16分音符の中にあります。大きなバスドラムであるスルドは、2/4のそれぞれの小節で、1拍目ではなく2拍目にいちばん強い音を打ちます。シェイカーはそれぞれの拍の最後の16分音符を押し出し、ギターやカヴァキーニョは、拍のあいだに落ちて次の小節を先取りする、短いシンコペーションの音型で和音を弾きます。
 
 Press **Play** to hear a samba backing over C6, A7, Dm7, and G7, written here in 4/4, so each bar holds two bars of samba's 2/4. The guitar strikes six times per bar, almost all off the beat, over a bass that plays the root and then the fifth below on the beat the surdo stresses. The demo plays in C; choose a **Key** to hear it in another key.
 
-**Play**を押すと、C6、A7、Dm7、G7の上でサンバの伴奏が鳴ります。ここでは4/4で書いているので、各小節にサンバの2/4の2小節が入ります。ギターは1小節に6回、ほとんどすべて拍の外で鳴らし、その下でベースは根音を弾いてから、スルドが強調する拍で下の5度を弾きます。デモはCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すと、C6、A7、Dm7、G7の上でサンバの伴奏が鳴ります。ここでは4/4で書いているので、それぞれの小節にサンバの2/4の2小節が入ります。ギターは1小節に6回、ほとんどすべて拍の外で鳴らし、その下でベースは根音を弾いてから、スルドが強調する拍で下の5度を弾きます。デモはCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=samba&key" title="Samba" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -75,6 +75,6 @@ Press **Play** to hear a samba backing over C6, A7, Dm7, and G7, written here in
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

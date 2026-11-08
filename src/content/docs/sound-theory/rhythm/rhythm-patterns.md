@@ -24,7 +24,7 @@ Rock grew from rhythm and blues in the 1950s and is built on the backbeat: the s
 
 Funk, shaped by James Brown's bands in the late 1960s, puts the weight on "the one", the first beat of the bar, and fills the rest with interlocking sixteenth notes. Each instrument plays a short part with plenty of space, and the parts fit together like gears: the guitar plays short, choked chord stabs, mostly off the beat, the bass jumps between the root and its octave, and the drums add ghost notes on the snare. Often the whole tune stays on one or two chords.
 
-1960年代後半のジェームス・ブラウンのバンドが形づくったファンクは、小節の最初の拍である「ワン」に重みを置き、残りを噛み合う16分音符で埋めます。各楽器は間の多い短いパートを弾き、パートは歯車のように組み合わさります。ギターは主に拍の外で、短く切った和音を刻み、ベースは根音とそのオクターブのあいだを跳び、ドラムはスネアにゴースト・ノートを加えます。曲全体が1つか2つの和音にとどまることもよくあります。
+1960年代後半のジェームス・ブラウンのバンドが形づくったファンクは、小節の最初の拍である「ワン」に重みを置き、残りを噛み合う16分音符で埋めます。それぞれの楽器は間の多い短いパートを弾き、パートは歯車のように組み合わさります。ギターは主に拍の外で、短く切った和音を刻み、ベースは根音とそのオクターブのあいだを跳び、ドラムはスネアにゴースト・ノートを加えます。曲全体が1つか2つの和音にとどまることもよくあります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=funk&key" title="Funk" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -68,6 +68,6 @@ Hip-hop grew in the Bronx in the 1970s from DJs looping the drum breaks of funk 
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

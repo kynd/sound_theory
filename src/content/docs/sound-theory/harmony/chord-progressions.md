@@ -4,11 +4,11 @@ slug: chord-progressions
 ---
 Some chord progressions work so well that they turn up in song after song, across decades and styles. This page collects some of the most common. Each section is titled with the progression in Roman numerals (see [Diatonic Chords](/diatonic-chords)), so it can be played in any key, and most of the songs named are in other keys. The demos are all in C, or A minor for the last one, so the progressions are easy to compare.
 
-いくつかのコード進行はとてもよくできていて、時代やスタイルを越えて、曲から曲へと現れます。このページでは、その中でも特によく使われるものを集めました。各セクションの見出しは進行をローマ数字で表しているので（[ダイアトニック・コード](/diatonic-chords)を参照）、どの調でも弾けます。挙げた曲の多くは別の調です。デモはどれもC（最後のひとつはAマイナー）なので、進行どうしを比べやすくなっています。
+いくつかのコード進行はとてもよくできていて、時代やスタイルを越えて、曲から曲へと現れます。このページでは、その中でも特によく使われるものを集めました。それぞれのセクションの見出しは進行をローマ数字で表しているので（[ダイアトニック・コード](/diatonic-chords)を参照）、どの調でも弾けます。挙げた曲の多くは別の調です。デモはどれもC（最後のひとつはAマイナー）なので、進行どうしを比べやすくなっています。
 
 Every demo works the same way. Press **Play** to loop the progression, one chord a bar unless noted, with each chord struck on every beat. The piano roll shows the chords, with their names above and their Roman numerals below, and the sounding chord turns red. Click a chord to hear it on its own; the keyboard lights the notes as they sound. Choose a **Key** to hear a progression in another key. A progression is only a frame: the same chords with a different rhythm, voicing, and melody can sound like a completely different song.
 
-どのデモも使い方は同じです。**Play**を押すと進行が繰り返し鳴ります。特に断りのない限り1小節に1つの和音で、各和音を拍ごとに鳴らします。ピアノロールには和音が示され、和音名が上に、ローマ数字が下に表示され、鳴っている和音は赤くなります。和音をクリックすると、その和音だけを鳴らせます。鍵盤では、鳴っている音が点灯します。**Key**を選ぶと、進行をほかの調で聞けます。進行は枠組みにすぎません。同じ和音でも、リズムやボイシング、旋律が違えば、まったく別の曲に聞こえます。
+どのデモも使い方は同じです。**Play**を押すと進行が繰り返し鳴ります。特に断りのない限り1小節に1つの和音で、それぞれの和音を拍ごとに鳴らします。ピアノロールには和音が示され、和音名が上に、ローマ数字が下に表示され、鳴っている和音は赤くなります。和音をクリックすると、その和音だけを鳴らせます。鍵盤では、鳴っている音が点灯します。**Key**を選ぶと、進行をほかの調で聞けます。進行は枠組みにすぎません。同じ和音でも、リズムやボイシング、旋律が違えば、まったく別の曲に聞こえます。
 
 # I–IV–V–I
 # I–IV–V–Iの進行
@@ -104,6 +104,6 @@ A minor-key progression whose bass walks down from i to V: A, G, F, E. It is nam
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

@@ -8,7 +8,7 @@ In Western classical theory, the minor scale has three standard forms: natural, 
 
 In each demo below, press **Play** to hear the scale ascend from the root to the octave above, then descend. Or click a square to play its note. The squares show the 13 chromatic pitches in that octave, with the scale notes highlighted in yellow; the staff shows the scale in notation. **Key** moves the scale to another root; the demos start in C minor.
 
-以下の各デモでは、**Play**を押すと、主音から1オクターブ上まで上行してから下行する音階を聴けます。四角をクリックすると、その音を鳴らせます。四角には、その1オクターブ内の13の半音が並び、音階に含まれる音は黄色で示されています。五線譜には音階が記譜されています。**Key**を変えると、音階がほかの主音から始まります。デモはハ短調（Cマイナー）から始まります。
+以下のどのデモでも、**Play**を押すと、主音から1オクターブ上まで上行してから下行する音階を聴けます。四角をクリックすると、その音を鳴らせます。四角には、その1オクターブ内の13の半音が並び、音階に含まれる音は黄色で示されています。五線譜には音階が記譜されています。**Key**を変えると、音階がほかの主音から始まります。デモはハ短調（Cマイナー）から始まります。
 
 # Natural Minor
 # 自然短音階

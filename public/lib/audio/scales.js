@@ -164,6 +164,11 @@ export function findScale(id) {
     }
 }
 
+/** A scale's pitch classes (0 = C … 11 = B), in its own order. */
+export function scalePitchClasses(scale) {
+    return scale.notes.map(n => ((parseNote(n).semitones % 12) + 12) % 12);
+}
+
 /** Roots a scale can be moved to, in the spellings of the usual major keys. */
 export const ROOTS = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'A♭', 'A', 'B♭', 'B'];
 

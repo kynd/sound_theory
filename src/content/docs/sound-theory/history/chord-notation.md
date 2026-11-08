@@ -11,7 +11,7 @@ The earlier pages write harmony as chord symbols (Dm7, G7, Cmaj7) and Roman nume
 
 Shorthand for harmony is centuries old. In the Baroque era (roughly 1600 to 1750), keyboard and lute players read figured bass: a bass line with small numbers above it giving the intervals to play over each note, within the key. The player made up the actual chords on the spot, much as a jazz pianist does from a chord symbol today. Around the same time, Italian and Spanish guitar books used the alfabeto, a system in which a letter stood for a chord shape to strum.
 
-和声を略して書く方法は、何世紀も前からあります。バロック時代（おおよそ1600年から1750年）には、鍵盤楽器やリュートの奏者は通奏低音を読みました。ベースラインの上に小さな数字を添えて、各音の上で弾く音程を、調の中で示したものです。実際の和音はその場で組み立てられ、今日のジャズ・ピアニストがコード・シンボルから弾くのとよく似ていました。同じころ、イタリアやスペインのギター教本では、アルファベットが使われていました。1文字がかき鳴らす和音の形を表す仕組みです。
+和声を略して書く方法は、何世紀も前からあります。バロック時代（おおよそ1600年から1750年）には、鍵盤楽器やリュートの奏者は通奏低音を読みました。ベースラインの上に小さな数字を添えて、それぞれの音の上で弾く音程を、調の中で示したものです。実際の和音はその場で組み立てられ、今日のジャズ・ピアニストがコード・シンボルから弾くのとよく似ていました。同じころ、イタリアやスペインのギター教本では、アルファベットが使われていました。1文字がかき鳴らす和音の形を表す仕組みです。
 
 Roman numerals came from music theory rather than performance. Gottfried Weber's treatise of the 1810s and 1820s spread the practice of naming chords by the scale degree of their root, so that the same pattern could be recognized in any key. At the end of the nineteenth century, Hugo Riemann grouped chords by function, tonic, subdominant, and dominant (see [Functional Harmony](/functional-harmony)). Both were tools for analyzing written music, in which every note was already on the page.
 
@@ -26,7 +26,7 @@ Chord symbols as we know them grew out of American popular music in the early tw
 
 Jazz education turned this practice into a system. Berklee College of Music in Boston, founded in 1945, built its teaching around chord symbols, Roman numerals for analysis, and chord–scale theory, which pairs each chord with the scales that fit over it (as on [Other Scales](/other-scales)). In the 1970s, Berklee students compiled The Real Book, an unofficial collection of jazz standards that became the standard lead-sheet book, and many musicians learned what a chord symbol looks like from its pages. Spellings still vary (Cm7, C−7, and Cmi7 mean the same chord, as do Cmaj7 and CΔ7), and proposals to standardize them never fully settled the matter. In Japan, this approach is often called the Berklee method (バークリー・メソッド), or simply chord theory.
 
-ジャズ教育は、この慣習を体系にしました。1945年にボストンで創立されたバークリー音楽大学は、コード・シンボル、分析のためのローマ数字、そして各和音にその上で使える音階を組み合わせるコード・スケール理論（[その他の音階](/other-scales)のような）を中心に教えました。1970年代には、バークリーの学生たちがジャズ・スタンダードの非公式な曲集『リアル・ブック』をまとめ、それがリード・シートの標準的な本になりました。多くのミュージシャンは、そのページからコード・シンボルの見た目を覚えました。書き方は今も一定ではなく（Cm7、C−7、Cmi7は同じ和音で、Cmaj7とCΔ7も同じです）、統一しようという提案も、完全には決着をつけられませんでした。日本では、この考え方は「バークリー・メソッド」、あるいは単に「コード理論」と呼ばれることがよくあります。
+ジャズ教育は、この慣習を体系にしました。1945年にボストンで創立されたバークリー音楽大学は、コード・シンボル、分析のためのローマ数字、そしてそれぞれの和音にその上で使える音階を組み合わせるコード・スケール理論（[その他の音階](/other-scales)のような）を中心に教えました。1970年代には、バークリーの学生たちがジャズ・スタンダードの非公式な曲集『リアル・ブック』をまとめ、それがリード・シートの標準的な本になりました。多くのミュージシャンは、そのページからコード・シンボルの見た目を覚えました。書き方は今も一定ではなく（Cm7、C−7、Cmi7は同じ和音で、Cmaj7とCΔ7も同じです）、統一しようという提案も、完全には決着をつけられませんでした。日本では、この考え方は「バークリー・メソッド」、あるいは単に「コード理論」と呼ばれることがよくあります。
 
 Other notations kept appearing beside it. In the late 1950s, session musicians in Nashville began writing chords as numbers of the scale (1, 4, 5, 6m), often credited to Neal Matthews of the Jordanaires. Like Roman numerals, the Nashville number system writes a song independently of its key, so a band can change keys for a singer without rewriting the chart.
 

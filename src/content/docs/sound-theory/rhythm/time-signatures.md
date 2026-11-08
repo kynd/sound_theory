@@ -30,7 +30,7 @@ Choose a **Pattern** and press **Play** to hear a simple drum beat in that time 
 
 The grid shows one bar, with a row for each drum (hi-hat, rim click, snare, and kick) and a column for each eighth note (or, in a shuffle, each third of a beat). Wider gaps mark the beats. The height of a yellow hit shows its loudness: a full cell is a full hit, a short one a soft hit. The column currently playing lights up. Click a cell to turn a hit on or off, and drag a hit up or down to change its loudness; its value shows as a percentage while you drag. The numbers above show the beats in the bar—1 to 4 in 4/4—and the beat currently playing turns red.
 
-グリッドは1小節を表し、各行はドラム（ハイハット、リムクリック、スネア、キック）、各列は8分音符1つ（シャッフルでは1拍の3分の1）に対応します。拍の位置は、間隔を広くして示しています。黄色い打音の高さは音量を表し、セルいっぱいなら通常の打音、低ければ弱い打音です。再生中の列は点灯します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。ドラッグしているあいだは、その値がパーセントで表示されます。上の数字は小節の拍を示し、4/4なら1から4まで表示されます。再生中の拍は赤く表示されます。
+グリッドは1小節を表し、それぞれの行はドラム（ハイハット、リムクリック、スネア、キック）、それぞれの列は8分音符1つ（シャッフルでは1拍の3分の1）に対応します。拍の位置は、間隔を広くして示しています。黄色い打音の高さは音量を表し、セルいっぱいなら通常の打音、低ければ弱い打音です。再生中の列は点灯します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。ドラッグしているあいだは、その値がパーセントで表示されます。上の数字は小節の拍を示し、4/4なら1から4まで表示されます。再生中の拍は赤く表示されます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=meters" title="Drum patterns in time signatures" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
 
@@ -38,6 +38,6 @@ The grid shows one bar, with a row for each drum (hi-hat, rim click, snare, and 
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

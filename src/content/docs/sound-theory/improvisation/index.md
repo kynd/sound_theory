@@ -44,4 +44,4 @@ Making up lines over chords, from pentatonics and one key to bebop: chord tones,
 
 9.  [ジャズの和音で即興する](/jazz-chord-improvisation)：5度下へ解決しないドミナントのリディアン・ドミナント、7♯5のホールトーン、ディミニッシュ・スケール。
 
-10. [曲の分析：星影のステラ](/stella-by-starlight)：「星影のステラ」の和音を8小節ずつ、各部分を2通りの聞き方で。
+10. [曲の分析：星影のステラ](/stella-by-starlight)：「星影のステラ」の和音を8小節ずつ、それぞれの部分を2通りの聞き方で。

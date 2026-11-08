@@ -32,7 +32,7 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 -   [Synthesizers and Effects](/synthesis): subtractive synthesis with filters and envelopes, compressor, wah, chorus, phaser, delay, and reverb, and FM and AM synthesis.
 
--   [Sound Toys](/sound-toys): playing sound by gesture and drawing: an XY pad, a drawn melody, and a grid of pentatonic notes.
+-   [Sound Toys](/sound-toys): playing sound by gesture and drawing: a canvas to drag across, a drawn melody, and a grid of pentatonic notes.
 
 -   [Sound as Material](/sound-as-material): onkyō, sound design, and granular synthesis.
 
@@ -44,7 +44,7 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 -   [シンセサイザーとエフェクト](/synthesis)：フィルターとエンベロープによる減算合成、コンプレッサー、ワウ、コーラス、フェイザー、ディレイ、リバーブ、そしてFMとAMの合成。
 
--   [音のおもちゃ](/sound-toys)：身振りと絵で音を奏でる。XYパッド、描いた旋律、ペンタトニックの音の格子。
+-   [音のおもちゃ](/sound-toys)：身振りと絵で音を奏でる。ドラッグして弾くキャンバス、描いた旋律、ペンタトニックの音の格子。
 
 -   [素材としての音](/sound-as-material)：音響系、サウンドデザイン、グラニュラー合成。
 
@@ -73,7 +73,7 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 -   [テトラコード](/tetrachords)：4度にわたる4つの音、2つで音階をつくる方法、4つの全音階的テトラコード、ギリシャの類。
 
--   [その他の音階](/other-scales)：ジャズやポップ音楽で使われる、ペンタトニック、ブルース、全音音階、ディミニッシュ、オルタード、リディアン・セブンスの各音階。
+-   [その他の音階](/other-scales)：ジャズやポップ音楽で使われる、ペンタトニック、ブルース、全音音階、ディミニッシュ、オルタード、リディアン・セブンスの音階。
 
 ## [Rhythm and Time](/rhythm-and-time)
 ## [リズムと時間](/rhythm-and-time)
@@ -225,7 +225,7 @@ This is not a textbook. It is a collection of things I know about sound and musi
 
 -   [ジャズの和音で即興する](/jazz-chord-improvisation)：5度下へ解決しないドミナントのリディアン・ドミナント、7♯5のホールトーン、ディミニッシュ・スケール。
 
--   [曲の分析：星影のステラ](/stella-by-starlight)：「星影のステラ」の和音を8小節ずつ、各部分を2通りの聞き方で。
+-   [曲の分析：星影のステラ](/stella-by-starlight)：「星影のステラ」の和音を8小節ずつ、それぞれの部分を2通りの聞き方で。
 
 ## [Modern Jazz Language](/modern-jazz-language)
 ## [モダン・ジャズの語法](/modern-jazz-language)

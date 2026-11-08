@@ -4,7 +4,7 @@ slug: tuning-systems
 ---
 Music can draw on pitches from a continuous range, as well as on sounds without a clear pitch, such as many drum sounds. In much music, though, melodies and harmonies are organized around a set of distinct pitches, or notes. A tuning system defines the frequency relationships among those notes, while a reference pitch assigns them specific frequencies.
 
-音楽では、連続した範囲の音高だけでなく、多くの太鼓の音のように明確な音高を持たない音も使えます。ただし、多くの音楽では、旋律や和声は、区別された音高、つまり音の集まりをもとに組み立てられています。音律はそれらの音の周波数比を定め、基準音は各音に具体的な周波数を与えます。
+音楽では、連続した範囲の音高だけでなく、多くの太鼓の音のように明確な音高を持たない音も使えます。ただし、多くの音楽では、旋律や和声は、区別された音高、つまり音の集まりをもとに組み立てられています。音律はそれらの音の周波数比を定め、基準音はそれぞれの音に具体的な周波数を与えます。
 
 # Simple Ratios
 # 単純な比
@@ -42,7 +42,7 @@ $$
 
 Raise **Fifths** one step at a time to stack fifths from C. Press **Play** to hear the starting C alongside the latest note. The ring represents one octave, starting at the top and moving clockwise; each note marks where its fifth falls when folded back into the octave. After twelve fifths, B♯ (red) lands just beyond C. That gap is the comma, and you can hear the two notes beat about three and a half times per second.
 
-**Fifths**を1段ずつ上げて、Cから5度を重ねていきます。**Play**を押すと、最初のCと最新の音を同時に聞けます。リングは1オクターブを表し、上から時計回りに進みます。各音は、5度を1オクターブ内に折り返した位置にあります。5度を12回重ねると、B♯（赤）はCをわずかに越えた位置に着地します。この差がコンマです。2つの音が1秒に約3.5回うなるのが聞こえます。
+**Fifths**を1段ずつ上げて、Cから5度を重ねていきます。**Play**を押すと、最初のCと最新の音を同時に聞けます。リングは1オクターブを表し、上から時計回りに進みます。それぞれの音は、5度を1オクターブ内に折り返した位置にあります。5度を12回重ねると、B♯（赤）はCをわずかに越えた位置に着地します。この差がコンマです。2つの音が1秒に約3.5回うなるのが聞こえます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/stacking-fifths/index.html" title="Stacking fifths" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 
@@ -55,7 +55,7 @@ Tunings that directly use simple ratios—such as 5:4 for thirds—are called ju
 
 Instruments with fixed pitches, such as pianos and fretted guitars, need a single set of notes that works in every key. Today, this is achieved by dividing the octave into 12 equal steps. The steps have equal frequency ratios, not equal frequency differences: each step multiplies the frequency by the same factor, and twelve steps double it exactly.
 
-ピアノやフレットのあるギターのように音高が固定された楽器には、どの調でも使える一組の音が必要です。現在一般的な方法では、1オクターブを12の等しい段階に分けます。ここで等しいのは周波数の差ではなく比です。各段階で周波数に同じ倍率を掛けるため、12段階でちょうど2倍になります。
+ピアノやフレットのあるギターのように音高が固定された楽器には、どの調でも使える一組の音が必要です。現在一般的な方法では、1オクターブを12の等しい段階に分けます。ここで等しいのは周波数の差ではなく比です。それぞれの段階で周波数に同じ倍率を掛けるため、12段階でちょうど2倍になります。
 
 $$
 2^{1/12} \approx 1.0595
@@ -87,7 +87,7 @@ Dividing the octave into twelve steps is no arbitrary choice. It is the smallest
 
 Choose an **Interval** and press **Play** to hear two tones, 220 Hz and the note above it, each with eight harmonics. Switch between **Pure** (the simple ratio) and **Equal** (the equal-tempered step). The plot shows half a second of the two harmonics that meet in the pure interval (for a major third, the 5th harmonic of the lower note and the 4th of the upper one, both near 1100 Hz) as yellow lines, and their sum as a red line. When the harmonics coincide, the sum keeps a steady size; when they don't, it swells and shrinks at the beat rate. The waves are drawn at a lower pitch than they sound, so each cycle is visible, but the swells keep their real rate: in equal temperament the major third beats almost nine times a second, while the fifth beats less than once. Equal temperament is a compromise: every key is equally usable, and every key is equally, slightly, out of tune.
 
-**Interval**を選んで**Play**を押すと、220 Hzとその上の音、それぞれ8つの倍音を持つ2つの音が聞こえます。**Pure**（単純な比）と**Equal**（平均律の段階）を切り替えてみてください。グラフは、純正な音程で重なる2つの倍音（長3度では、低い音の5番目と高い音の4番目の倍音で、どちらも約1100 Hz）を黄色の線で、その和を赤い線で、0.5秒分示しています。倍音が一致していれば和の大きさは一定で、一致しなければ、うなりの速さで膨らんだり縮んだりします。各周期が見えるよう、波は実際より低い音高で描いていますが、膨らみの速さは実際のままです。平均律では、長3度は1秒に約9回うなり、5度は1回未満しかうなりません。平均律は妥協の産物です。どの調も等しく使え、どの調もわずかに等しく狂っています。
+**Interval**を選んで**Play**を押すと、220 Hzとその上の音、それぞれ8つの倍音を持つ2つの音が聞こえます。**Pure**（単純な比）と**Equal**（平均律の段階）を切り替えてみましょう。グラフは、純正な音程で重なる2つの倍音（長3度では、低い音の5番目と高い音の4番目の倍音で、どちらも約1100 Hz）を黄色の線で、その和を赤い線で、0.5秒分示しています。倍音が一致していれば和の大きさは一定で、一致しなければ、うなりの速さで膨らんだり縮んだりします。それぞれの周期が見えるよう、波は実際より低い音高で描いていますが、膨らみの速さは実際のままです。平均律では、長3度は1秒に約9回うなり、5度は1回未満しかうなりません。平均律は妥協の産物です。どの調も等しく使え、どの調もわずかに等しく狂っています。
 
 <div class="demo-wrap"><iframe src="/writing/demos/intervals/index.html" title="Intervals" allow="autoplay" loading="lazy" style="height: 272px"></iframe></div>
 
@@ -96,11 +96,11 @@ Choose an **Interval** and press **Play** to hear two tones, 220 Hz and the note
 
 Pitch is continuous, so there is no requirement for twelve notes, equal steps, or even an octave. Many musical cultures and composers divide pitch in other ways. The few below are only starting points, each touched on briefly. Every one of them is a world of its own, so look them up, find recordings, and listen for yourself.
 
-音高は連続しているため、12音に分けることも、等間隔にすることも、オクターブを基準にすることも必須ではありません。多くの音楽文化や作曲家が、異なる方法で音高を分けています。以下はほんの入り口として、それぞれを簡単に紹介したものにすぎません。どれもそれだけでひとつの世界なので、ぜひ自分で調べ、録音を探して、耳で確かめてみてください。
+音高は連続しているため、12音に分けることも、等間隔にすることも、オクターブを基準にすることも必須ではありません。多くの音楽文化や作曲家が、異なる方法で音高を分けています。以下はほんの入り口として、それぞれを簡単に紹介したものにすぎません。どれもそれだけでひとつの世界なので、ぜひ自分で調べ、録音を探して、耳で確かめてみましょう。
 
 Arabic maqam uses intervals between a semitone and a whole tone, such as the neutral second, about three-quarters of a tone, whose exact size varies by maqam and region. In Indian classical music, theory describes 22 śruti, small divisions of the octave from which each rāga draws its notes, and performers tune against a drone, which draws the intervals toward pure ratios.
 
-アラブ音楽のマカームは、約4分の3音にあたる中立2度など、半音と全音のあいだの音程を使い、その正確な大きさはマカームや地域によって異なります。インド古典音楽の理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、各ラーガはそこから音を選びます。ミュージシャンはドローンを基準に音を合わせるため、音程は純正な比に近づきます。
+アラブ音楽のマカームは、約4分の3音にあたる中立2度など、半音と全音のあいだの音程を使い、その正確な大きさはマカームや地域によって異なります。インド古典音楽の理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、それぞれのラーガはそこから音を選びます。ミュージシャンはドローンを基準に音を合わせるため、音程は純正な比に近づきます。
 
 In Indonesian gamelan, slendro has five roughly equal steps per octave, while pelog has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.
 

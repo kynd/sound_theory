@@ -51,7 +51,7 @@ Dominant chords also take altered tensions: the flat 9th, the sharp 9th, the sha
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **Sixth chords** plays C, C6, Cmaj7, Am7 (the notes of C6 over A), Cm6, and C6/9, and **ii–V–I6** ends a ii–V on C6 instead of Cmaj7. The labels under the tension examples name the tensions added. In those examples the notes are spread out the way a pianist would open them up: each tension sits at its own distance above the root, the 9th a ninth up and the 13th a thirteenth up, above the chord tones instead of crowded in among them. **ii–V–I with tensions** plays each chord four times, once on every beat. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。**Sixth chords**はC、C6、Cmaj7、Am7（Aの上のC6の音）、Cm6、C6/9を鳴らし、**ii–V–I6**はii–VをCmaj7ではなくC6で終えます。テンションの例の下のラベルは、加えたテンションの名前です。これらの例では、ピアニストが和音を開くように音を広げています。各テンションを根音からそれぞれの距離に、つまり9度は9度上に、13度は13度上に置くので、テンションは和音の音のあいだに詰め込まれず、その上に重なります。**ii–V–I with tensions**は、各和音を拍ごとに4回鳴らします。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。**Sixth chords**はC、C6、Cmaj7、Am7（Aの上のC6の音）、Cm6、C6/9を鳴らし、**ii–V–I6**はii–VをCmaj7ではなくC6で終えます。テンションの例の下のラベルは、加えたテンションの名前です。これらの例では、ピアニストが和音を開くように音を広げています。テンションを根音からそれぞれの距離に、つまり9度は9度上に、13度は13度上に置くので、テンションは和音の音のあいだに詰め込まれず、その上に重なります。**ii–V–I with tensions**は、それぞれの和音を拍ごとに4回鳴らします。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=sevenths&key" title="Sevenths and tensions" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

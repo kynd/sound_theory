@@ -19,7 +19,7 @@ Over a minor seventh chord, the same idea uses minor pentatonics on the root, th
 
 Choose an **Example** and press **Play**. **On Cmaj7**, **On Dm7**, and **On G7** hold the chord while each of its three pentatonics runs up over it in turn. **Scale** names the pentatonic being played, and the label under each chord gives its root, counted from the chord's root (upper case for major, lower case for minor). The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**On Cmaj7**、**On Dm7**、**On G7**は和音を鳴らしたまま、その上で3つのペンタトニックを順に上らせます。**Scale**には、いま弾いているペンタトニックの名前が表示され、和音の下のラベルは、和音の根音から数えたその主音を示します（大文字はメジャー、小文字はマイナー）。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**On Cmaj7**、**On Dm7**、**On G7**は和音を鳴らしたまま、その上で3つのペンタトニックを順に上らせます。**Scale**には、いま弾いているペンタトニックの名前が表示され、和音の下のラベルは、和音の根音から数えたその主音を示します（大文字はメジャー、小文字はマイナー）。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=modern-pentatonics&example=on-maj7,on-m7,on-7&key" title="Three pentatonics for each chord" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -32,7 +32,7 @@ Playing the pentatonic straight up and down the scale is only the start. Players
 
 Cのii–V–Iで組み合わせると、モダンな選択は、Dm7の上にEのマイナー・ペンタトニック、G7altの上にB♭のマイナー・ペンタトニック、Cmaj7の上にBのマイナー・ペンタトニックになります。どれも小さく歌いやすい形ですが、合わせると、ドリアン、オルタード、リディアンの響きを網羅します。
 
-ペンタトニックを音階どおりに上り下りするのは、始まりにすぎません。ミュージシャンはよく、音を飛ばしてより広い形をつくり、もっと縦に使います。Cのメジャー・ペンタトニックなら、C、E、A、次にD、G、C、次にE、A、Dと、ひとつおきの音でできた3音の形です。これらの形は3度と4度が混ざり、開いた現代的な響きになり、形の中では跳躍しながら、音階を1段ずつ進んでいきます。ii–V–Iの上では、各和音のペンタトニックに同じ飛ばし方を使います。Dm7の上ではE、A、DやG、B、E、G7altの上ではB♭、E♭、A♭、Cmaj7の上ではB、E、Aです。
+ペンタトニックを音階どおりに上り下りするのは、始まりにすぎません。ミュージシャンはよく、音を飛ばしてより広い形をつくり、もっと縦に使います。Cのメジャー・ペンタトニックなら、C、E、A、次にD、G、C、次にE、A、Dと、ひとつおきの音でできた3音の形です。これらの形は3度と4度が混ざり、開いた現代的な響きになり、形の中では跳躍しながら、音階を1段ずつ進んでいきます。ii–V–Iの上では、それぞれの和音のペンタトニックに同じ飛ばし方を使います。Dm7の上ではE、A、DやG、B、E、G7altの上ではB♭、E♭、A♭、Cmaj7の上ではB、E、Aです。
 
 Because the shapes are so clear, a pentatonic can also be slipped a half step away from the harmony and brought back, called side-slipping. Over a long Cm7, playing C minor pentatonic, then C♯ minor pentatonic, then C minor again creates tension that is released when the line returns. The ear accepts the outside notes because the shape stays the same and the line comes home.
 
@@ -40,7 +40,7 @@ Because the shapes are so clear, a pentatonic can also be slipped a half step aw
 
 Choose an **Example** and press **Play**. **ii–V–I** runs the modern choices up over each chord. **On Cmaj7, skipping** and **ii–V–I, skipping** play the same pentatonics in skipping shapes, one triplet a beat. **ii–V–I phrase** turns them into a phrase of short rhythmic cells with space between them. **Side-slipping** moves between C minor pentatonic and the ones a half step above and below over Cm7, the labels marking in and out. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。**ii–V–I**は、各和音の上でモダンな選択を上らせます。**On Cmaj7, skipping**と**ii–V–I, skipping**は、同じペンタトニックを、1拍に1つの3連符で、音を飛ばした形で弾きます。**ii–V–I phrase**は、それらをあいだに間を置いた短いリズムの断片からなるフレーズにします。**Side-slipping**はCm7の上で、Cのマイナー・ペンタトニックと、その半音上と半音下のものを行き来し、ラベルが内側か外側かを示します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**ii–V–I**は、それぞれの和音の上でモダンな選択を上らせます。**On Cmaj7, skipping**と**ii–V–I, skipping**は、同じペンタトニックを、1拍に1つの3連符で、音を飛ばした形で弾きます。**ii–V–I phrase**は、それらをあいだに間を置いた短いリズムの断片からなるフレーズにします。**Side-slipping**はCm7の上で、Cのマイナー・ペンタトニックと、その半音上と半音下のものを行き来し、ラベルが内側か外側かを示します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=modern-pentatonics&example=ii-v-i,on-maj7-skips,ii-v-i-skips,ii-v-i-cells,side-slip&key" title="A ii–V–I and side-slipping" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -48,6 +48,6 @@ Choose an **Example** and press **Play**. **ii–V–I** runs the modern choices
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

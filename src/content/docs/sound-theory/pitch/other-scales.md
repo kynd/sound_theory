@@ -8,7 +8,7 @@ Besides the major scale, the church modes, and the minor scales, several other s
 
 In each demo, press **Play** to hear the scale ascend from its root and descend again, or click a square to play that note. If a demo has a **Scale** menu, choose a scale there first. The demos start on C, as in the text; use **Root** to change the scale's starting note. The descriptions below give each scale in C, but the same patterns apply starting on any root.
 
-どのデモでも、**Play**を押すと、主音から上がって再び下がる音階を聴けます。四角をクリックすると、その音を鳴らせます。**Scale**メニューがあるデモでは、まずそこで音階を選んでください。デモは本文と同じくCから始まりますが、**Root**を変えると、音階の主音が変わります。以下では各音階をCを主音として表記していますが、どの主音に移調しても同じ形で使えます。
+どのデモでも、**Play**を押すと、主音から上がって再び下がる音階を聴けます。四角をクリックすると、その音を鳴らせます。**Scale**メニューがあるデモでは、まずそこで音階を選んでみましょう。デモは本文と同じくCから始まりますが、**Root**を変えると、音階の主音が変わります。以下では、どの音階もCを主音として表記していますが、どの主音に移調しても同じ形で使えます。
 
 Heard on their own, ascending and descending from C, these scales may not reveal much. Much of their character depends on context: the underlying chord, the notes a melody emphasizes and resolves to, and where the music goes next. Later pages show how these scales are used in practice, over chords and in melodies.
 

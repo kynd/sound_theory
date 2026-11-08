@@ -11,7 +11,7 @@ In the 1960s a group of American composers turned away from the complexity of se
 
 La Monte Young began with sustained tones, held for minutes or hours, often in just intonation, so that the listener could hear the beating and the overtones inside the sound. Terry Riley's *In C* (1964) gives any number of players 53 short phrases. Each player repeats each phrase as many times as they like before moving to the next, over a steady pulse on high Cs, so the phrases overlap in ever-changing combinations, and the piece lasts as long as the players take to get through them.
 
-ラ・モンテ・ヤングは、数分から数時間保たれる持続音から始めました。しばしば純正律で鳴らし、聞き手が音の中のうなりや倍音を聞き取れるようにしたのです。テリー・ライリーの『In C』（1964年）は、何人でもよい演奏者に53の短いフレーズを与えます。各演奏者は、高いCの安定した拍の上で、それぞれのフレーズを好きなだけ繰り返してから次へ進むので、フレーズは絶えず変わる組み合わせで重なり、曲は演奏者たちがすべてを通り抜けるまで続きます。
+ラ・モンテ・ヤングは、数分から数時間保たれる持続音から始めました。しばしば純正律で鳴らし、聞き手が音の中のうなりや倍音を聞き取れるようにしたのです。テリー・ライリーの『In C』（1964年）は、何人でもよい演奏者に53の短いフレーズを与えます。演奏者はひとりひとり、高いCの安定した拍の上で、それぞれのフレーズを好きなだけ繰り返してから次へ進むので、フレーズは絶えず変わる組み合わせで重なり、曲は演奏者たちがすべてを通り抜けるまで続きます。
 
 # Phasing
 # フェイズ
@@ -44,6 +44,6 @@ The techniques spread widely. Brian Eno's ambient records, beginning with *Music
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

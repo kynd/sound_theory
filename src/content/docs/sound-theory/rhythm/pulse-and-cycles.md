@@ -28,6 +28,6 @@ Now give every third or fourth beat a different sound. The pulse forms cycles: w
 
 Press **Play**, then use **Accent** to set the cycle length from 2 to 7 beats. The first beat of each cycle is a low drum sound; the remaining beats are clicks. All the sounds are at the same volume. Cycles of 2 and 4 beats feel like a march, while a cycle of 3 feels like a waltz. Cycles of 5 and 7 may feel uneven at first, so we tend to hear them as smaller groups, such as 2 + 3 or 3 + 4. Many musicians count them this way too.
 
-**Play**を押し、**Accent**で周期の拍数を2〜7拍に設定します。各周期の最初の拍は低いドラム音で、残りの拍はクリック音です。どの音も同じ音量です。2拍や4拍の周期は行進曲のように、3拍の周期はワルツのように感じられます。5拍や7拍の周期は、初めは不均等に感じられるため、2 + 3や3 + 4のような小さなまとまりに分けて聞く傾向があります。多くのミュージシャンも、実際にこのように数えます。
+**Play**を押し、**Accent**で周期の拍数を2〜7拍に設定します。それぞれの周期の最初の拍は低いドラム音で、残りの拍はクリック音です。どの音も同じ音量です。2拍や4拍の周期は行進曲のように、3拍の周期はワルツのように感じられます。5拍や7拍の周期は、初めは不均等に感じられるため、2 + 3や3 + 4のような小さなまとまりに分けて聞く傾向があります。多くのミュージシャンも、実際にこのように数えます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/pulse/index.html" title="Accents every few beats" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>

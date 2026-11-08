@@ -11,7 +11,7 @@ Every demo in this series plays through the same set of instruments and effects,
 
 Choose a sound with **Preset**, then play the keyboard below the display with the mouse, or with the keys from A to ; on your computer keyboard (Z and X shift the octave).
 
-**Preset**で音を選び、表示の下にある鍵盤をマウスで弾くか、コンピューターのキーボードのAから;までのキーで弾いてください（ZとXでオクターブを切り替えられます）。
+**Preset**で音を選び、表示の下にある鍵盤をマウスで弾くか、コンピューターのキーボードのAから;までのキーで弾いてみましょう（ZとXでオクターブを切り替えられます）。
 
 <div class="demo-wrap"><iframe src="/writing/demos/instruments/index.html" title="Instruments and effects" allow="autoplay" loading="lazy" style="height: 672px"></iframe></div>
 
@@ -31,14 +31,14 @@ A sine wave is a single frequency (a pure tone). The other three are built from 
 
 **FM synth** and **AM synth** use one oscillator to modulate another: FM (frequency modulation) varies its frequency, and AM (amplitude modulation) varies its volume. Modulation at audio rates adds new frequencies around the carrier (sidebands), giving bell-like and metallic tones from only two oscillators. **Electric piano** is an FM synth tuned like the tine pianos of the 1970s: the modulation fades fast, so each note starts with a bell-like bite and settles into a warm tone, and **Electric piano (bright)** keeps the bite longer. **Drawbar organ** adds a few harmonics at fixed levels, the way an organ's drawbars do, and sounds at full level for as long as a key is held. **Synth pad** stacks slightly detuned sawtooth waves that fade in and out slowly, and **Synth bass** is a sawtooth through a low-pass filter that opens at the start of each note.
 
-**FM synth**と**AM synth**は、あるオシレーターで別のオシレーターを変調します。FM（周波数変調）は周波数を、AM（振幅変調）は音量を変化させます。可聴域の速さで変調すると、搬送波の周りに新しい周波数（側波帯）が生まれ、2つのオシレーターだけで鐘のような音や金属的な音がつくれます。**Electric piano**は、1970年代のトーン・バー式のエレクトリック・ピアノのように設定したFMシンセです。変調がすぐに弱まるので、各音は鐘のような鋭いアタックで始まり、温かい音に落ち着きます。**Electric piano (bright)**は、その鋭さがより長く続きます。**Drawbar organ**は、オルガンのドローバーのように、いくつかの倍音を決まった量で加え、鍵盤を押しているあいだ同じ音量で鳴り続けます。**Synth pad**は、わずかにずらしたノコギリ波を重ね、ゆっくり現れてゆっくり消えます。**Synth bass**は、各音の始まりで開くローパスフィルターを通したノコギリ波です。
+**FM synth**と**AM synth**は、あるオシレーターで別のオシレーターを変調します。FM（周波数変調）は周波数を、AM（振幅変調）は音量を変化させます。可聴域の速さで変調すると、搬送波の周りに新しい周波数（側波帯）が生まれ、2つのオシレーターだけで鐘のような音や金属的な音がつくれます。**Electric piano**は、1970年代のトーン・バー式のエレクトリック・ピアノのように設定したFMシンセです。変調がすぐに弱まるので、それぞれの音は鐘のような鋭いアタックで始まり、温かい音に落ち着きます。**Electric piano (bright)**は、その鋭さがより長く続きます。**Drawbar organ**は、オルガンのドローバーのように、いくつかの倍音を決まった量で加え、鍵盤を押しているあいだ同じ音量で鳴り続けます。**Synth pad**は、わずかにずらしたノコギリ波を重ね、ゆっくり現れてゆっくり消えます。**Synth bass**は、それぞれの音の始まりで開くローパスフィルターを通したノコギリ波です。
 
 ## Recorded Instruments
 ## 録音した楽器
 
 **Piano**, the strings (**Violin**, **Cello**, **Contrabass**), the winds (**Flute**, **Clarinet**, **Saxophone**, **Bassoon**), the brass (**Trumpet**, **French horn**, **Trombone**, **Tuba**), the guitars (**Acoustic guitar**, **Nylon guitar**, **Electric guitar**, **Electric bass**), **Harp**, **Xylophone**, **Organ**, and **Harmonium** play recordings of real instruments. Each is recorded at a handful of notes a few semitones apart, and the notes in between are played by shifting the nearest recording up or down in pitch. The piano is the [Salamander Grand Piano](https://archive.org/details/SalamanderGrandPianoV3) by Alexander Holm, and the others come from the [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) collection by Nicholas Brosowsky (samples from VSCO 2 Community Edition, the University of Iowa Electronic Music Studios, and Freesound). All are licensed CC BY 3.0.
 
-**Piano**、弦楽器（**Violin**、**Cello**、**Contrabass**）、木管楽器（**Flute**、**Clarinet**、**Saxophone**、**Bassoon**）、金管楽器（**Trumpet**、**French horn**、**Trombone**、**Tuba**）、ギター（**Acoustic guitar**、**Nylon guitar**、**Electric guitar**、**Electric bass**）、**Harp**、**Xylophone**、**Organ**、**Harmonium**は、実際の楽器の録音を再生します。各楽器は数半音おきのいくつかの音だけを録音しており、そのあいだの音は、最も近い録音の音高を上下にずらして鳴らします。ピアノはAlexander Holmによる[Salamander Grand Piano](https://archive.org/details/SalamanderGrandPianoV3)、ほかはNicholas Brosowskyによる[tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments)のコレクション（VSCO 2 Community Edition、アイオワ大学Electronic Music Studios、Freesoundのサンプル）です。いずれもCC BY 3.0です。
+**Piano**、弦楽器（**Violin**、**Cello**、**Contrabass**）、木管楽器（**Flute**、**Clarinet**、**Saxophone**、**Bassoon**）、金管楽器（**Trumpet**、**French horn**、**Trombone**、**Tuba**）、ギター（**Acoustic guitar**、**Nylon guitar**、**Electric guitar**、**Electric bass**）、**Harp**、**Xylophone**、**Organ**、**Harmonium**は、実際の楽器の録音を再生します。それぞれの楽器は数半音おきのいくつかの音だけを録音しており、そのあいだの音は、最も近い録音の音高を上下にずらして鳴らします。ピアノはAlexander Holmによる[Salamander Grand Piano](https://archive.org/details/SalamanderGrandPianoV3)、ほかはNicholas Brosowskyによる[tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments)のコレクション（VSCO 2 Community Edition、アイオワ大学Electronic Music Studios、Freesoundのサンプル）です。いずれもCC BY 3.0です。
 
 ## Drum Kit and Noise
 ## ドラムキットとノイズ
@@ -66,7 +66,7 @@ Effects run in a fixed order: distortion, filter, delay, then reverb. Each one i
 
 -   **Filter：** カットオフより上の周波数を取り除くローパスフィルターです。**Resonance**を上げると、カットオフ付近が強調されます。
 
--   **Delay：** **Time**だけ遅れて音を繰り返し、各反復を**Feedback**の量で再び入力に戻します。
+-   **Delay：** **Time**だけ遅れて音を繰り返し、それぞれの反復を**Feedback**の量で再び入力に戻します。
 
 -   **Reverb：** 部屋の反射音を再現します。**Decay**で、反射音が消えるまでの長さを決めます。
 
@@ -79,6 +79,6 @@ The jazz and improvisation pages play their examples as a small band of three pa
 
 Choose an **Example** and press **Play**. **Melody**, **Backing**, and **Bass** choose each part's instrument, from any of the pitched sounds above; **Volume** raises or lowers that part in decibels, and the toggle below it turns the part on and off, so you can hear one part alone or the band without it. **Walking bass** has no melody: its line is on the bass. The piano roll shows the chords, the melody in pink, and the bass below, and the keyboard lights the sounding notes. You can also play the keyboard with the melody's instrument, with the mouse or the keys from A to ; (Z and X shift the octave).
 
-**Example**を選んで**Play**を押してください。**Melody**、**Backing**、**Bass**で、上の音高のある音の中から各パートの楽器を選びます。**Volume**はそのパートの音量をデシベルで上げ下げし、その下のトグルはパートをオンとオフに切り替えます。ひとつのパートだけを聞いたり、そのパートを抜いたバンドを聞いたりできます。**Walking bass**には旋律がなく、ラインはベースにあります。ピアノロールには、和音、ピンクの旋律、その下のベースが表示され、鍵盤では鳴っている音が点灯します。鍵盤は、旋律の楽器で、マウスまたはAから;までのキーで弾くこともできます（ZとXでオクターブが変わります）。
+**Example**を選んで**Play**を押してみましょう。**Melody**、**Backing**、**Bass**で、上の音高のある音の中からそれぞれのパートの楽器を選びます。**Volume**はそのパートの音量をデシベルで上げ下げし、その下のトグルはパートをオンとオフに切り替えます。ひとつのパートだけを聞いたり、そのパートを抜いたバンドを聞いたりできます。**Walking bass**には旋律がなく、ラインはベースにあります。ピアノロールには、和音、ピンクの旋律、その下のベースが表示され、鍵盤では鳴っている音が点灯します。鍵盤は、旋律の楽器で、マウスまたはAから;までのキーで弾くこともできます（ZとXでオクターブが変わります）。
 
 <div class="demo-wrap"><iframe src="/writing/demos/band-mix/index.html" title="A small band" allow="autoplay" loading="lazy" style="height: 784px"></iframe></div>

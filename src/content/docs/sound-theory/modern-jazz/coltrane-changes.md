@@ -30,7 +30,7 @@ Where the idea came from is debated. Writers often point to the bridge of Rodger
 
 Choose an **Example** and press **Play** to hear the three steps, each chord spelled with the 1-2-3-5 pattern (described below): **Three tonics** alone, **With dominants** (the first half's cycle), and **With ii–Vs** (the second half's). The demo plays on B, as in the text; choose a **Key** to hear it on another root.
 
-**Example**を選んで**Play**を押すと、3つの段階が、各和音を1-2-3-5のパターン（下で説明します）でなぞりながら鳴ります。**Three tonics**はトニックだけ、**With dominants**は前半のめぐり方、**With ii–Vs**は後半のめぐり方です。デモは本文と同じくBの上で鳴りますが、**Key**を選ぶとほかの根音の上で聞けます。
+**Example**を選んで**Play**を押すと、3つの段階が、それぞれの和音を1-2-3-5のパターン（下で説明します）でなぞりながら鳴ります。**Three tonics**はトニックだけ、**With dominants**は前半のめぐり方、**With ii–Vs**は後半のめぐり方です。デモは本文と同じくBの上で鳴りますが、**Key**を選ぶとほかの根音の上で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=coltrane&example=three-tonics,three-keys,ii-v-cycle&key" title="How Giant Steps is built" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -43,7 +43,7 @@ Coltrane also used the cycle in place of an ordinary ii–V–I. Instead of Dm7�
 
 Choose an **Example** and press **Play**, each chord with the 1-2-3-5 pattern. **ii–V–I** is the plain progression, one chord a bar. **Coltrane substitution** passes through E♭7–A♭maj7 and B7–Emaj7 between Dm7 and G7, two beats a chord. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してください。どの和音にも1-2-3-5のパターンを弾きます。**ii–V–I**はふつうの進行で、1小節にひとつの和音です。**Coltrane substitution**は、Dm7とG7のあいだでE♭7–A♭maj7とB7–Emaj7を通り、2拍にひとつの和音で進みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。どの和音にも1-2-3-5のパターンを弾きます。**ii–V–I**はふつうの進行で、1小節にひとつの和音です。**Coltrane substitution**は、Dm7とG7のあいだでE♭7–A♭maj7とB7–Emaj7を通り、2拍にひとつの和音で進みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=coltrane&example=ii-v-i,coltrane-substitution&key" title="The Coltrane substitution" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -52,12 +52,12 @@ Choose an **Example** and press **Play**, each chord with the 1-2-3-5 pattern. *
 
 Chords that change every two beats leave no time for long scale runs. Coltrane often played a short four-note pattern on each chord, the root, 2nd, 3rd, and 5th, in eighth notes, sometimes called a digital pattern. It spells each chord quickly and clearly, so a fast cycle of keys becomes a chain of easy, recognizable shapes, and it moves easily into any key.
 
-2拍ごとに変わる和音では、長い音階を弾く時間がありません。コルトレーンはよく、各和音の上で、根音、2度、3度、5度という短い4音のパターンを8分音符で弾きました。デジタル・パターンと呼ばれることもあります。各和音を素早くはっきりと描くので、速く変わる調のめぐりが、弾きやすくわかりやすい形の連なりになり、どの調にも簡単に移せます。
+2拍ごとに変わる和音では、長い音階を弾く時間がありません。コルトレーンはよく、それぞれの和音の上で、根音、2度、3度、5度という短い4音のパターンを8分音符で弾きました。デジタル・パターンと呼ばれることもあります。それぞれの和音を素早くはっきりと描くので、速く変わる調のめぐりが、弾きやすくわかりやすい形の連なりになり、どの調にも簡単に移せます。
 
 <aside>
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

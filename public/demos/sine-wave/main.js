@@ -6,7 +6,8 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 
 const master = new MasterBus();
 const tone = new AdditiveOscillator({ frequency: 220, partials: [1], amplitude: 0.6 }).connect(master.input);
-new Scope(document.getElementById('canvas'), tone.output, { mode: 'wave' });
+// gain 1: the Amplitude slider's 0 to 1 spans the plot's full height.
+new Scope(document.getElementById('canvas'), tone.output, { mode: 'wave', gain: 1 });
 
 const controls = document.getElementById('controls');
 // step: 1 snaps the slider to whole hertz, so the value shown is the frequency played.

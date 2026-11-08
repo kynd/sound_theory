@@ -11,7 +11,7 @@ Two beats in the same time signature and at the same tempo can feel completely d
 
 Choose a **Pattern** and press **Play**. **Tempo** sets the beats per minute; clicking a cell turns a hit on or off, and dragging a hit up or down changes its loudness. All the patterns are in 4/4. The first three keep the kick and snare the same and change only the hi-hat. The grid’s columns represent sixteenth notes in the straight patterns, eighth-note triplets (three per beat) in the shuffle, and eighth notes across two bars in the bossa nova.
 
-**Pattern**を選んで**Play**を押してください。**Tempo**は1分あたりの拍数を設定します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。パターンはすべて4/4拍子です。最初の3つはキックとスネアを同じにして、ハイハットだけを変えています。グリッドの列は、ストレートなパターンでは16分音符、シャッフルでは8分音符の3連符（1拍に3つ）、ボサノヴァでは2小節分の8分音符を表しています。
+**Pattern**を選んで**Play**を押してみましょう。**Tempo**は1分あたりの拍数を設定します。セルをクリックすると打音のオン・オフが切り替わり、打音を上下にドラッグすると音量が変わります。パターンはすべて4/4拍子です。最初の3つはキックとスネアを同じにして、ハイハットだけを変えています。グリッドの列は、ストレートなパターンでは16分音符、シャッフルでは8分音符の3連符（1拍に3つ）、ボサノヴァでは2小節分の8分音符を表しています。
 
 <div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=feels" title="Drum patterns with different feels" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
 
@@ -25,17 +25,17 @@ We don’t need to hear every subdivision to feel it. A few notes placed on the 
 
 Choose a **Pattern** and press **Play**. **Sixteenths** plays the hi-hat on every sixteenth-note slot. **Sixteenths, implied** keeps the same kick and snare pattern but plays the hi-hat only on the beats; one kick and one snare fall on sixteenth-note slots. **Shuffle** and **Shuffle, implied** create the same contrast using three notes per beat. Compare the two implied patterns: their hi-hats are identical, and only a few kick and snare notes shift position, yet one feels straight while the other shuffles.
 
-**Pattern**を選んで**Play**を押してください。**Sixteenths**では、ハイハットが16分音符のすべての位置で鳴ります。**Sixteenths, implied**ではキックとスネアのパターンはそのままに、ハイハットを拍の位置だけで鳴らします。キックとスネアはそれぞれ1つずつ、16分音符の位置に置かれています。**Shuffle**と**Shuffle, implied**も、1拍を3つに分けて同じ違いを作ります。2つのimpliedパターンを比べてみてください。ハイハットは同じですが、キックとスネアの位置が少し違うだけで、一方はストレートに、もう一方はシャッフルに聞こえます。
+**Pattern**を選んで**Play**を押してみましょう。**Sixteenths**では、ハイハットが16分音符のすべての位置で鳴ります。**Sixteenths, implied**ではキックとスネアのパターンはそのままに、ハイハットを拍の位置だけで鳴らします。キックとスネアはそれぞれ1つずつ、16分音符の位置に置かれています。**Shuffle**と**Shuffle, implied**も、1拍を3つに分けて同じ違いを作ります。2つのimpliedパターンを比べてみましょう。ハイハットは同じですが、キックとスネアの位置が少し違うだけで、一方はストレートに、もう一方はシャッフルに聞こえます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/drum-pattern/index.html?set=implied" title="Subdivisions played and implied" allow="autoplay" loading="lazy" style="height: 240px"></iframe></div>
 
 The same is true beyond drums. A waltz, for instance, is in 3/4, and its accompaniment often plays all three beats. But you can feel the meter with far fewer notes. The melody of “Edelweiss” consists mostly of a half note followed by a quarter note, or a note sustained for a whole bar, so it rarely has a note on every beat. Yet it unmistakably sounds like a waltz: a long note on each downbeat, followed by a short one leading into the next bar, is enough.
 
-これはドラムに限りません。たとえば、ワルツは3/4拍子で、伴奏では3拍すべてを鳴らすことがよくあります。しかし、音数がずっと少なくても、3拍子は感じられます。「エーデルワイス」の旋律は、2分音符のあとに4分音符が続く形や、1小節まるごと伸ばす音が中心なので、3拍すべてに音が鳴ることはほとんどありません。それでも、まぎれもなくワルツに聞こえます。各小節の1拍目に長い音を置き、次の小節へつなぐ短い音を続けるだけで十分です。
+これはドラムに限りません。たとえば、ワルツは3/4拍子で、伴奏では3拍すべてを鳴らすことがよくあります。しかし、音数がずっと少なくても、3拍子は感じられます。「エーデルワイス」の旋律は、2分音符のあとに4分音符が続く形や、1小節まるごと伸ばす音が中心なので、3拍すべてに音が鳴ることはほとんどありません。それでも、まぎれもなくワルツに聞こえます。それぞれの小節の1拍目に長い音を置き、次の小節へつなぐ短い音を続けるだけで十分です。
 
 Press **Play** to hear the first eight bars in C at 108 BPM. **Melody alone** plays only the melody; listen for the three beats in it. Then choose another **Example**: **Chord on 1** adds a chord on the first beat of each bar and sustains it through the bar, while **Oom-pah-pah** plays all three beats in the accompaniment. The accompaniment makes the beats explicit, but they were already present in the melody. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すと、C、108 BPMで最初の8小節が聞けます。**Melody alone**では旋律だけが鳴ります。その中に3拍を聞き取ってみてください。次に、別の**Example**を選びます。**Chord on 1**では各小節の1拍目に和音を加え、小節の終わりまで伸ばします。一方、**Oom-pah-pah**では伴奏が3拍すべてを鳴らします。伴奏によって拍がはっきりしますが、拍はもともと旋律の中にありました。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すと、C、108 BPMで最初の8小節が聞けます。**Melody alone**では旋律だけが鳴ります。その中に3拍を聞き取ってみましょう。次に、別の**Example**を選びます。**Chord on 1**ではそれぞれの小節の1拍目に和音を加え、小節の終わりまで伸ばします。一方、**Oom-pah-pah**では伴奏が3拍すべてを鳴らします。伴奏によって拍がはっきりしますが、拍はもともと旋律の中にありました。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=waltz&key" title="A waltz with and without its beats" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -48,17 +48,17 @@ The grid is only a reference. Human musicians rarely place every note exactly on
 
 To hear the difference, try the demo below. It plays a simple beat at a steady 92 BPM, with the kick on beats 1 and 3 and the snare on beats 2 and 4. Press **Play**, then drag a hit left or right to shift it ahead of or behind the beat by up to 40 ms, or up and down to make it louder or softer. Click a cell without dragging to turn a hit on or off. A hit’s height shows its loudness, and the numbers above show the beat count.
 
-違いを聞くには、下のデモを試してみてください。キックは1拍目と3拍目、スネアは2拍目と4拍目に鳴る、92 BPMのシンプルなビートです。**Play**を押してから、打音を左右にドラッグすると、拍より前または後ろに最大40ミリ秒ずらせます。上下にドラッグすると、音が大きく、または小さくなります。ドラッグせずにセルをクリックすると、打音のオン・オフが切り替わります。打音の高さは音量を表し、上の数字は拍数を示します。
+違いを聞くには、下のデモを試してみましょう。キックは1拍目と3拍目、スネアは2拍目と4拍目に鳴る、92 BPMのシンプルなビートです。**Play**を押してから、打音を左右にドラッグすると、拍より前または後ろに最大40ミリ秒ずらせます。上下にドラッグすると、音が大きく、または小さくなります。ドラッグせずにセルをクリックすると、打音のオン・オフが切り替わります。打音の高さは音量を表し、上の数字は拍数を示します。
 
 <div class="demo-wrap"><iframe src="/writing/demos/groove-timing/index.html" title="Timing and loudness of the backbeat" allow="autoplay" loading="lazy" style="height: 176px"></iframe></div>
 
 Try dragging both snare hits about 20 ms early, then about 20 ms late. When they’re early, the beat sounds hasty and urgent, as if it wants to speed up. When they’re late, it sounds heavy and relaxed, even though the tempo hasn’t changed. Then drag the snares down to make them softer; the beat becomes lighter. The drums here are synthesized and only get louder or softer, so they lack the change in tone of a real drum. Even so, the effects of timing and loudness alone are already clear.
 
-2つのスネアをどちらも20ミリ秒ほど前に、次に20ミリ秒ほど後ろにドラッグしてみてください。前にずらすと、ビートは急いでいるように、まるで速くなりたがっているように聞こえます。後ろにずらすと、テンポは変わっていないのに、重くゆったりと聞こえます。次にスネアを下にドラッグして弱くすると、ビートも軽くなります。ここでのドラムは合成音で、音量が変わるだけなので、本物のような音色の変化はありません。それでも、タイミングと音量だけで生まれる効果ははっきりわかります。
+2つのスネアをどちらも20ミリ秒ほど前に、次に20ミリ秒ほど後ろにドラッグしてみましょう。前にずらすと、ビートは急いでいるように、まるで速くなりたがっているように聞こえます。後ろにずらすと、テンポは変わっていないのに、重くゆったりと聞こえます。次にスネアを下にドラッグして弱くすると、ビートも軽くなります。ここでのドラムは合成音で、音量が変わるだけなので、本物のような音色の変化はありません。それでも、タイミングと音量だけで生まれる効果ははっきりわかります。
 
 **Randomize** applies a random timing offset of up to 30 ms in either direction to every hit and assigns each one a random loudness. Press it a few times. Some results sound sloppy, while others have a feel of their own.
 
-**Randomize**を押すと、すべての打音が前後それぞれ最大30ミリ秒の範囲でランダムにずれ、音量もランダムに設定されます。何度か押してみてください。だらしなく聞こえることもあれば、独自のノリが感じられる場合もあります。
+**Randomize**を押すと、すべての打音が前後それぞれ最大30ミリ秒の範囲でランダムにずれ、音量もランダムに設定されます。何度か押してみましょう。だらしなく聞こえることもあれば、独自のノリが感じられる場合もあります。
 
 # Tempo That Breathes
 # 揺れるテンポ
@@ -75,6 +75,6 @@ Today, many musicians play to a click—a metronome only the players can hear, o
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

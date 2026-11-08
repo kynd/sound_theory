@@ -28,7 +28,7 @@ In close position, all the notes fit within an octave, stacked as tightly as the
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **Close and open** plays Cmaj7 in close position, drop 2, open, and wide. **Cluster and spread** plays Cmaj9 in thirds, with a cluster, low and close, and spread. The label under each chord names the voicing. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてください。**Close and open**はCmaj7を、密集、ドロップ2、開離、さらに広い配置で鳴らします。**Cluster and spread**はCmaj9を、3度の積み重ね、クラスター、低く狭い配置、広げた配置で鳴らします。和音の下のラベルはボイシングの名前です。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。**Close and open**はCmaj7を、密集、ドロップ2、開離、さらに広い配置で鳴らします。**Cluster and spread**はCmaj9を、3度の積み重ね、クラスター、低く狭い配置、広げた配置で鳴らします。和音の下のラベルはボイシングの名前です。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=voicing&example=close-open,cluster-spread&key" title="Close and open voicings" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -41,6 +41,6 @@ Not every note of a chord needs to be played. The fifth adds the least and is of
 
 Press **Play**, or click a chord to hold it: a full C7, a power chord, two shells (the 3rd below the 7th, and the 7th below the 3rd), and a rootless C9. The label under each chord names the voicing. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すか、和音をクリックして鳴らしてください。すべての音を含むC7、パワーコード、2つのシェル（7度の下に3度、3度の下に7度）、ルートレスのC9が鳴ります。和音の下のラベルはボイシングの名前です。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すか、和音をクリックして鳴らしてみましょう。すべての音を含むC7、パワーコード、2つのシェル（7度の下に3度、3度の下に7度）、ルートレスのC9が鳴ります。和音の下のラベルはボイシングの名前です。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=voicing&example=omitting&key" title="Leaving notes out" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

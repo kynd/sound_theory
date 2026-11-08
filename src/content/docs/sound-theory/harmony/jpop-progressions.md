@@ -8,7 +8,7 @@ Japanese pop has its own favorite chord progressions, and Japanese musicians hav
 
 In every demo, choose an **Example** (where there is a menu) and press **Play**. The chords are struck in a pop rhythm over an eighth-note drum beat, with Roman numerals below them; click a chord to hold it. Each demo plays in C; choose a **Key** to hear it in another key.
 
-どのデモでも、（メニューがあれば）**Example**を選んで**Play**を押してください。和音は8分音符のドラムのビートの上でポップスのリズムで鳴り、下にローマ数字が表示されます。和音をクリックすると鳴らし続けられます。どのデモもCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+どのデモでも、（メニューがあれば）**Example**を選んで**Play**を押してみましょう。和音は8分音符のドラムのビートの上でポップスのリズムで鳴り、下にローマ数字が表示されます。和音をクリックすると鳴らし続けられます。どのデモもCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 # The Royal Road
 # 王道進行
@@ -72,6 +72,6 @@ Many J-pop songs raise the key for the final chorus (ラスサビ転調), usuall
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>

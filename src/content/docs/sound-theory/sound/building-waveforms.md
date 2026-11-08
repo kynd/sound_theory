@@ -23,14 +23,14 @@ Here $k$ is the harmonic number and $b_k$ is the amplitude of the $k$th harmonic
 
 Real sums cannot go on forever, so the demos stop after a number of harmonics. In each demo, press **Play** and raise **Harmonics** from 1 to add the harmonics one at a time; **Shape** switches between the three waves. The fundamental is fixed at 220 Hz. The yellow lines are the individual sine waves and the red line their sum, over two periods. The yellow bars below show the amplitude of each harmonic, the fundamental on the left; a bar's height is the size of $b_k$, whatever its sign.
 
-実際の和は無限には続けられないので、デモはある数の倍音で止めます。どのデモでも、**Play**を押して**Harmonics**を1から上げると、倍音がひとつずつ加わります。**Shape**で3つの波を切り替えられます。基音は220 Hzに固定しています。黄色の線は個々のサイン波、赤い線はその和で、2周期分を示しています。下の黄色い棒は各倍音の振幅で、左端が基音です。棒の高さは、符号にかかわらず$b_k$の大きさを示します。
+実際の和は無限には続けられないので、デモはある数の倍音で止めます。どのデモでも、**Play**を押して**Harmonics**を1から上げると、倍音がひとつずつ加わります。**Shape**で3つの波を切り替えられます。基音は220 Hzに固定しています。黄色の線は個々のサイン波、赤い線はその和で、2周期分を示しています。下の黄色い棒はそれぞれの倍音の振幅で、左端が基音です。棒の高さは、符号にかかわらず$b_k$の大きさを示します。
 
 # Square Wave
 # 矩形波
 
 A square wave jumps between two levels, spending half of each period at the top and half at the bottom. Its series has only the odd harmonics, each with amplitude $1/k$:
 
-矩形波は2つの値のあいだを跳び移り、各周期の半分を上に、半分を下にとどまります。その級数には奇数次の倍音だけがあり、それぞれの振幅は$1/k$です。
+矩形波は2つの値のあいだを跳び移り、それぞれの周期の半分を上に、半分を下にとどまります。その級数には奇数次の倍音だけがあり、それぞれの振幅は$1/k$です。
 
 $$
 x(t) = \dfrac{4}{\pi} \left( \sin(2\pi f t) + \dfrac{1}{3}\sin(2\pi \cdot 3 f t) + \dfrac{1}{5}\sin(2\pi \cdot 5 f t) + \cdots \right)
@@ -44,7 +44,7 @@ With the fundamental alone, the wave is a sine. Adding the third harmonic flatte
 
 Look closely at the corners. However many harmonics are added, the sum overshoots just before and after each jump, by about 9% of the jump. Adding harmonics squeezes the ripple closer to the jump but never makes it smaller. This is the Gibbs phenomenon, and it is why a sudden jump needs infinitely many harmonics to be drawn exactly.
 
-角をよく見てください。倍音をいくつ加えても、和は段差の直前と直後で、段差の約9%だけ行き過ぎます。倍音を加えると、この波打ちは段差の近くへ押し縮められますが、小さくはなりません。これをギブズ現象といいます。急な段差を正確に描くには、無限に多くの倍音が必要なのです。
+角をよく見てみましょう。倍音をいくつ加えても、和は段差の直前と直後で、段差の約9%だけ行き過ぎます。倍音を加えると、この波打ちは段差の近くへ押し縮められますが、小さくはなりません。これをギブズ現象といいます。急な段差を正確に描くには、無限に多くの倍音が必要なのです。
 
 # Sawtooth Wave
 # のこぎり波

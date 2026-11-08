@@ -85,11 +85,16 @@ export class Scope {
      *                                  the trigger filter has time to settle.
      * @param {number} [opts.fftSize]   spectrum bins, a power of two. More bins resolve
      *                                  low frequencies better but react more slowly.
+     * @param {number} [opts.gain]      how much the wave is magnified: at 2 (the
+     *                                  default), a level of ±0.5 reaches the plot's
+     *                                  edges, since sounds rarely come near full scale.
+     *                                  Louder parts are flattened just past the edges.
      */
-    constructor(canvas, source, { mode = 'wave', size = 2048, fftSize = 4096 } = {}) {
+    constructor(canvas, source, { mode = 'wave', size = 2048, fftSize = 4096, gain = 2 } = {}) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.mode = mode;
+        this.gain = gain;
         canvas.parentElement.classList.add('dp-plot');
         if (mode === 'both') canvas.parentElement.classList.add('dp-plots-2');
         this.viewport = new Viewport(canvas);
@@ -186,7 +191,8 @@ export class Scope {
     _drawWave(values, x0, y0, w, h) {
         const { ctx } = this;
         const span = this.size >> 1;
-        const mid = y0 + h / 2, amp = h / 2;
+        const mid = y0 + h / 2, amp = (h / 2) * this.gain;
+        const limit = 1.1 / this.gain;   // up to 10% past the plot's edges
         const crossing = triggerPoint(values, span, Tone.getContext().sampleRate);
         const start = Math.ceil(crossing), shift = start - crossing;
 
@@ -196,7 +202,7 @@ export class Scope {
         ctx.beginPath();
         for (let i = 0; i < span; i++) {
             const x = x0 + ((i + shift) / (span - 1)) * w;
-            const y = mid - Math.max(-1.1, Math.min(1.1, values[start + i])) * amp;
+            const y = mid - Math.max(-limit, Math.min(limit, values[start + i])) * amp;
             if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.stroke();

@@ -4,7 +4,7 @@ slug: stella-by-starlight
 ---
 Analyzing a song means asking what each chord is doing: which key it points to, where it is going, and what it borrows. The answers are not facts written in the music but ways of hearing it, and the same chords can often be heard in more than one way. Each way suggests different notes to a soloist and a different sense of where the music is. This page walks through "Stella by Starlight", eight bars at a time, and offers two readings of each section. They are common readings, not the only possible ones: players, teachers, and books disagree, and finding your own hearing is part of the point.
 
-曲を分析するとは、それぞれの和音が何をしているのかを問うことです。どの調を指しているのか、どこへ向かっているのか、何を借りているのか。その答えは音楽に書かれた事実ではなく聞き方であり、同じ和音を複数の聞き方で聞けることもよくあります。聞き方が違えば、ソリストが選ぶ音も、音楽がいまどこにいるかという感覚も変わります。このページでは「星影のステラ」を8小節ずつたどり、各部分について2つの読み方を示します。これはよくある読み方であって、ありうる唯一の読み方ではありません。ミュージシャンも教師も本も意見が分かれますし、自分なりの聞き方を見つけることも大切なのです。
+曲を分析するとは、それぞれの和音が何をしているのかを問うことです。どの調を指しているのか、どこへ向かっているのか、何を借りているのか。その答えは音楽に書かれた事実ではなく聞き方であり、同じ和音を複数の聞き方で聞けることもよくあります。聞き方が違えば、ソリストが選ぶ音も、音楽がいまどこにいるかという感覚も変わります。このページでは「星影のステラ」を8小節ずつたどり、それぞれの部分について2つの読み方を示します。これはよくある読み方であって、ありうる唯一の読み方ではありません。ミュージシャンも教師も本も意見が分かれますし、自分なりの聞き方を見つけることも大切なのです。
 
 "Stella by Starlight" was written by Victor Young for the film *The Uninvited* (1944) and became one of the most played jazz standards after recordings by Charlie Parker, Miles Davis, and many others. It is in B♭, but it begins far from B♭, on Em7♭5, and reaches B♭ only now and then; much of the tune moves through ii–Vs that lead somewhere other than where they seem to point. That makes it a favorite for analysis and a challenge for improvisers. The chords below are the changes as commonly played; published versions differ in small details.
 
@@ -12,7 +12,7 @@ Analyzing a song means asking what each chord is doing: which key it points to, 
 
 In every demo, choose an **Example** to pick a reading and press **Play**. The band plays the chords, and over each one the soloist's line runs up the chord scale that reading suggests, in eighth notes; **Scale** names it, and the Roman numerals under the chords follow the reading. The melody of the song is not played. The demos play in B♭, as in the text; choose a **Key** to hear them in another key.
 
-どのデモでも、**Example**で読み方を選んで**Play**を押してください。バンドが和音を弾き、それぞれの和音の上で、その読み方が示すコード・スケールをソリストの旋律が8分音符で上っていきます。**Scale**にはその名前が表示され、和音の下のローマ数字はその読み方にしたがいます。曲の旋律は鳴りません。デモは本文と同じくB♭で鳴りますが、**Key**を選ぶとほかの調で聞けます。
+どのデモでも、**Example**で読み方を選んで**Play**を押してみましょう。バンドが和音を弾き、それぞれの和音の上で、その読み方が示すコード・スケールをソリストの旋律が8分音符で上っていきます。**Scale**にはその名前が表示され、和音の下のローマ数字はその読み方にしたがいます。曲の旋律は鳴りません。デモは本文と同じくB♭で鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 # Bars 1–8
 # 1〜8小節
@@ -90,6 +90,6 @@ The ending is a chain of minor ii–Vs falling by whole steps, toward D minor, t
   <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
+    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
   </div>
 </aside>
