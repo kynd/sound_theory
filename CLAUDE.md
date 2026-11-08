@@ -106,6 +106,9 @@ canvas alike.
   (the waveform's time span). A slider's readout is the exact value applied (log
   sliders snap to `step`; Hz is shown in whole numbers, never abbreviated).
 - **Frames fit their controls:** a demo is no taller than its controls need.
+- **One plot height:** every wave or spectrum plot (Scope, PartialsView) is `--plot`
+  (128px) tall, the same on every page; the classes fix their canvas themselves. A frame
+  with a plot is the taller of its stage and its panel.
 - **Uniform spacing:** one CSS rule in `demo-ui.css` (Spacing) spaces every panel:
   buttons, toggles, button rows, selects, and sections have one grid unit above and
   below, collapsing to a single unit between neighbors; slider rows and readouts

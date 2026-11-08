@@ -13,7 +13,7 @@ Choose a sound with **Preset**, then play the keyboard below the display with th
 
 **Preset**で音を選び、表示の下にある鍵盤をマウスで弾くか、コンピューターのキーボードのAから;までのキーで弾いてください（ZとXでオクターブを切り替えられます）。
 
-<div class="demo-wrap"><iframe src="/writing/demos/instruments/index.html" title="Instruments and effects" allow="autoplay" loading="lazy" style="height: 720px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/instruments/index.html" title="Instruments and effects" allow="autoplay" loading="lazy" style="height: 672px"></iframe></div>
 
 The display shows the signal after the effects. **Waveform** plots amplitude over the last few milliseconds, and **Spectrum** plots level against frequency on a logarithmic scale, where each octave takes the same width.
 

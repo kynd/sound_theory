@@ -93,7 +93,7 @@ Press the **Hit** pad (or A, or the space bar) to play an impact made of four la
 
 **Hit**のパッド（またはA、スペースキー）を押すと、4つのレイヤーでできた衝撃音が鳴ります。それぞれに音量があります。**Thump**は音高が急速に下がるサイン波で、聞こえるというより体で感じる音です。**Crack**はごく短い明るいノイズで、打撃を硬く聞こえさせます。**Ring**は短い金属的な響きで、音に胴体を与えます。**Tail**は長いリバーブの中へ消えていく暗いノイズで、音に空間を与えます。レイヤーを0にすると、それが何を加えていたかがわかります。ひとつだけ鳴らしてみることもできます。図は合わさった波形です。
 
-<div class="demo-wrap"><iframe src="/writing/demos/layers/index.html" title="Layering" allow="autoplay" loading="lazy" style="height: 448px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/layers/index.html" title="Layering" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 
 # Granular Synthesis
 # グラニュラー合成

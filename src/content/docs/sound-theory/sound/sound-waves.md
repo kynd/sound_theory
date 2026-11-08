@@ -17,7 +17,7 @@ A sine wave is a smooth, repeating oscillation at a single frequency. A perfectl
 
 サイン波は、単一の周波数でなめらかに繰り返す振動です。完全に純粋で振幅が一定のサイン波は数学上の理想ですが、音叉はそれに近い音を出します。最初の振動が落ち着くと、音は単一の周波数が中心になりますが、次第に弱まっていきます。このデモでは、周波数（1秒あたりの振動回数。単位はヘルツ、Hz）が音の高さを決めます。振幅（気圧の変化の大きさ）は音の大きさに影響します。周波数が同じなら、振幅が大きいほど一般に大きな音に聞こえます。**Play**を押して、スライダーを動かしてみてください。
 
-<div class="demo-wrap"><iframe src="/writing/demos/sine-wave/index.html" title="Sine wave" allow="autoplay" loading="lazy" style="height: 208px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/sine-wave/index.html" title="Sine wave" allow="autoplay" loading="lazy" style="height: 192px"></iframe></div>
 
 The display always shows the same brief interval (about 20 milliseconds), so a higher frequency packs more cycles into it. The time required for one cycle is the period, the reciprocal of the frequency (a 440 Hz wave repeats about every 2.27 ms).
 
@@ -38,7 +38,7 @@ Adding harmonics changes the waveform and the sound's character (timbre) without
 
 倍音を加えると、波形と音色は変わりますが、音高は変わりません。合成した波も基音の周期で繰り返すためです。デモは220 Hzの基音から始まります。**Play**を押し、スライダーをひとつずつ上げてみてください。各スライダーで、横に示された周波数（220 Hzの整数倍）のサイン波の振幅を調整できます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/adding-sines/index.html" title="Adding sine waves" allow="autoplay" loading="lazy" style="height: 400px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/adding-sines/index.html" title="Adding sine waves" allow="autoplay" loading="lazy" style="height: 368px"></iframe></div>
 
 The yellow lines show the individual sine waves, and the red line shows their sum over two periods of the fundamental. [Building Waveforms](/building-waveforms) uses the same idea to build square, sawtooth, and triangle waves.
 
@@ -66,7 +66,7 @@ Real sounds change over time, so a spectrum is measured over a short window of t
 
 実際の音は時間とともに変化するため、スペクトルは、信号の短い区間に対してFFT（高速フーリエ変換）を使って求めます。このデモでは、同じ音の波形（上）とスペクトル（下）を同時に表示します。**Preset**（録音した楽器、ドラムキット、ノイズ）を選んで、マウスか、コンピューターのキーボードのAから;までのキーでいくつか音を弾いてみてください（ZとXでオクターブを切り替えられます）。
 
-<div class="demo-wrap"><iframe src="/writing/demos/waveform-spectrum/index.html" title="Waveform and spectrum" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/waveform-spectrum/index.html" title="Waveform and spectrum" allow="autoplay" loading="lazy" style="height: 544px"></iframe></div>
 
 Because the spectrum's frequency axis is logarithmic, each octave occupies the same width. As a result, evenly spaced harmonics appear increasingly close together toward the right.
 

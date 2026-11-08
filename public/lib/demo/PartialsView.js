@@ -30,6 +30,8 @@ export class PartialsView {
     constructor(canvas, { spectrum = false } = {}) {
         this.canvas = canvas;
         this.spectrum = spectrum;
+        canvas.parentElement.classList.add('dp-plot');
+        if (spectrum) canvas.parentElement.classList.add('dp-plots-2');
         this.ctx = canvas.getContext('2d');
         this.viewport = new Viewport(canvas);
         this.partials = [1];
@@ -58,9 +60,8 @@ export class PartialsView {
 
         const x0 = INSET, width = w - 2 * INSET;
         // With a spectrum, the wave takes the top and the bars the bottom, one inset
-        // apart; the bars' height is a whole number of grid units.
-        const bars = this.spectrum
-            ? Math.max(4 * GRID, Math.floor((h - 3 * INSET) * 0.35 / GRID) * GRID) : 0;
+        // apart, each half the height, as the plots of a Scope in 'both' mode.
+        const bars = this.spectrum ? Math.round((h - 3 * INSET) / 2) : 0;
         const waveHeight = this.spectrum ? h - 3 * INSET - bars : h - 2 * INSET;
         const mid = INSET + waveHeight / 2, amp = waveHeight / 2;
         const peak = partialPeak(partials);

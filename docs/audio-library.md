@@ -372,6 +372,11 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 
 </div>
 
+### Common to Scope and PartialsView: one plot height
+
+Every wave or spectrum plot on the site is the same height, `--plot` (128px) in `demo-ui.css`. Both classes add `.dp-plot` to their `.canvas-wrap`, which fixes it at the plot plus the 32px inset above and below (192px); with two plots stacked (Scope's `'both'`, PartialsView's `spectrum`) they also add `.dp-plots-2`, two plots with one inset between them (352px), split evenly. In a `.stage-col` the canvas no longer stretches, so a keyboard sits right under it. A frame is sized to the taller of the stage and the panel; space left over stays empty below the stage.
+<div class="jp">サイトのすべての波形・スペクトルのプロットは、同じ高さ、`demo-ui.css`の`--plot`（128px）です。どちらのクラスも自分の`.canvas-wrap`に`.dp-plot`をつけ、プロットとその上下32pxの余白の高さ（192px）に固定します。2つのプロットを重ねる場合（Scopeの`'both'`、PartialsViewの`spectrum`）は`.dp-plots-2`もつけ、あいだに余白ひとつを挟んだ2つ分（352px）にして、均等に分けます。`.stage-col`の中ではキャンバスが伸びなくなるので、鍵盤はそのすぐ下に来ます。フレームの高さは、ステージとパネルの高いほうに合わせます。余った空間は、ステージの下に空いたまま残ります。</div>
+
 ## Scope
 
 `Scope` (`public/lib/demo/Scope.js`) draws a signal on a canvas inside a `.canvas-wrap`, sized by `Viewport`. It listens to a source node and does not pass audio on. Set `mode` to switch views. `size` (2048) sets the waveform's length, half of which is drawn (the scope reads twice `size` so its trigger filter can settle), and `fftSize` (4096) the number of spectrum bins; more bins resolve low frequencies better but react more slowly.

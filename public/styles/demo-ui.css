@@ -46,6 +46,7 @@
   --font-size:    13px;       /* the only text size */
   --font-weight:  400;        /* the only text weight */
   --panel-width:  288px;
+  --plot:         128px;      /* eight grid units: the height of every wave or spectrum plot */
   --radius:       999px;      /* buttons and selects are fully rounded (pills) */
   --font:         'Google Sans Code', ui-monospace, monospace;  /* the only font */
 }
@@ -84,6 +85,13 @@ button, select, input { font: inherit; color: inherit; }
   min-width: 0;
   overflow: hidden;
 }
+/* Plots of a wave or a spectrum (Scope, PartialsView) are the same height in every
+   demo: `--plot` plus the 32px inset above and below. `.dp-plots-2` stacks two (a
+   wave over its spectrum) with one inset between them. The plot classes add these
+   themselves. The frame is sized to the taller of the panel and the stage; any
+   space left over stays empty below the stage. */
+.canvas-wrap.dp-plot { height: calc(var(--plot) + 4 * var(--grid)); }
+.canvas-wrap.dp-plot.dp-plots-2 { height: calc(2 * var(--plot) + 6 * var(--grid)); }
 .canvas-wrap > canvas {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
@@ -96,6 +104,7 @@ button, select, input { font: inherit; color: inherit; }
   display: flex; flex-direction: column;
 }
 .stage-col > .canvas-wrap { flex: 1 1 auto; min-height: 0; }
+.stage-col > .canvas-wrap.dp-plot { flex: none; }
 
 /* A layout with the canvas and panel side by side on top and a full-width strip (a
    keyboard) below, for demos whose panel is short. */

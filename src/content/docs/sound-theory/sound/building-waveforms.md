@@ -40,7 +40,7 @@ With the fundamental alone, the wave is a sine. Adding the third harmonic flatte
 
 基音だけなら、波はサイン波です。3倍音を加えると、山の上が平らになり、両側が急になります。奇数次の倍音を加えるたびに、少しずつ四角くなっていきます。音はうつろで、リードのような響きです。奇数次の倍音が偶数次よりずっと強い、クラリネットの低音域に似ています。
 
-<div class="demo-wrap"><iframe src="/writing/demos/fourier-series/index.html?shape=square" title="Square wave from sine waves" allow="autoplay" loading="lazy" style="height: 400px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/fourier-series/index.html?shape=square" title="Square wave from sine waves" allow="autoplay" loading="lazy" style="height: 352px"></iframe></div>
 
 Look closely at the corners. However many harmonics are added, the sum overshoots just before and after each jump, by about 9% of the jump. Adding harmonics squeezes the ripple closer to the jump but never makes it smaller. This is the Gibbs phenomenon, and it is why a sudden jump needs infinitely many harmonics to be drawn exactly.
 
@@ -61,7 +61,7 @@ This sum falls steadily and jumps back up; changing the sign of every term turns
 
 この和は一定の速さで下がり、跳び上がって戻ります。すべての項の符号を変えると上下が逆になり、上がっていく傾斜になりますが、聞こえ方は同じです。すべての倍音が強く含まれるので、のこぎり波は3つのうちで最も明るく、ざらついた音で、弓で弾く弦楽器や金管楽器に近い響きです。フィルターで倍音を取り除いていく減算合成の、ふつうの出発点でもあります。
 
-<div class="demo-wrap"><iframe src="/writing/demos/fourier-series/index.html?shape=sawtooth" title="Sawtooth wave from sine waves" allow="autoplay" loading="lazy" style="height: 400px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/fourier-series/index.html?shape=sawtooth" title="Sawtooth wave from sine waves" allow="autoplay" loading="lazy" style="height: 352px"></iframe></div>
 
 # Triangle Wave
 # 三角波
@@ -78,7 +78,7 @@ Three or four terms already look like a triangle, and beyond the first few the b
 
 3つか4つの項で、もう三角形に見えます。最初のいくつかより先の棒は、ほとんど見えません。音は柔らかく丸く、サイン波に少し輪郭を加えたような、フルートに近い響きです。
 
-<div class="demo-wrap"><iframe src="/writing/demos/fourier-series/index.html?shape=triangle" title="Triangle wave from sine waves" allow="autoplay" loading="lazy" style="height: 400px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/fourier-series/index.html?shape=triangle" title="Triangle wave from sine waves" allow="autoplay" loading="lazy" style="height: 352px"></iframe></div>
 
 The three waves show a general rule. A wave with a jump (the square and the sawtooth) has harmonics that shrink only as $1/k$; a wave with corners but no jumps (the triangle) has harmonics that shrink as $1/k^2$; a smooth wave needs even fewer. The sharper the shape, the more strong high harmonics it has, and the brighter it sounds.
 

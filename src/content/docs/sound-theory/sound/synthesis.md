@@ -41,7 +41,7 @@ Try moving the filter by hand first. Drag on the canvas to sound an A2 (110 Hz):
 
 まず、手でフィルターを動かしてみましょう。キャンバスの上でドラッグすると、A2（110 Hz）が鳴ります。左から右で**Cutoff**が100 Hzから8000 Hzまで、下から上で**Resonance**が0.5から15まで変わります。離すと音が止まります。上のほうで左から右へゆっくり動かすと典型的なレゾナンスのスイープに、すばやく動かすと話すような音になります。フィルターのエンベロープは、こうした動きを音ごとに自動で行います。
 
-<div class="demo-wrap"><iframe src="/writing/demos/filter-sweep/index.html" title="Filter sweep" allow="autoplay" loading="lazy" style="height: 352px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/filter-sweep/index.html" title="Filter sweep" allow="autoplay" loading="lazy" style="height: 176px"></iframe></div>
 
 Let's put everything together. Play the keyboard with your mouse or by pressing the A-to-; keys on your computer keyboard (Z and X shift the octave). **Wave** selects the oscillator; **Cutoff** and **Resonance** control the filter; **Env amt** sets how many octaves above the cutoff the filter envelope opens it; and **Attack**, **Decay**, **Sustain**, and **Release** shape both envelopes. **Waveform** and **Spectrum** switch the display between the waveform and its frequency spectrum. Try a low cutoff, high resonance, and a large envelope amount for a classic bass sound, or a slow attack and release for a pad.
 
@@ -60,7 +60,7 @@ Choose a **Preset**, open an effect, and turn up its mix. Each effect starts out
 
 **Preset**を選び、エフェクトを開いてミックスを上げてみてください。どのエフェクトも、ミックス0（コンプレッサーはスレッショルド0 dB、レシオ1）の、元の音に影響しない状態から始まるため、効果を聞き比べられます。**Compressor**では**Threshold**と**Ratio**を、**Auto-wah**ではフィルターの基準周波数（**Base**）と開く幅（**Octaves**）を設定します。**Chorus**と**Phaser**では動く速さ（**Rate**、1秒あたりの周期数）と幅を、**Delay**ではこだまの間隔とフィードバックを、**Reverb**では残響の長さを設定します。**Mix**は各エフェクトと元の音を混ぜ合わせます。エフェクトは表示されている順に適用されます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/synth/index.html?presets&effects=compressor,autowah,chorus,phaser,delay,reverb" title="Effects" allow="autoplay" loading="lazy"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/synth/index.html?presets&effects=compressor,autowah,chorus,phaser,delay,reverb" title="Effects" allow="autoplay" loading="lazy" style="height: 496px"></iframe></div>
 
 # Other Methods
 # そのほかの手法
@@ -77,7 +77,7 @@ Choose an **Engine** and play. In **FM**, **Ratio** sets the modulator's frequen
 
 **Engine**を選んで弾いてみましょう。**FM**では、**Ratio**がモジュレーターの周波数をキャリア周波数の何倍にするかを、**Index**が変調の強さを、**Mod decay**が各音の中で変調が減衰する速さを決めます。比を1にしてインデックスを高くすると金管のような音になり、比を3.5にすると鐘のような音に、Mod decayを短くするとエレクトリック・ピアノのような音になります。**AM**では、**Ratio**が変調する波の周波数を決めます。
 
-<div class="demo-wrap"><iframe src="/writing/demos/synth/index.html?engine=fm,am" title="FM and AM synthesis" allow="autoplay" loading="lazy"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/synth/index.html?engine=fm,am" title="FM and AM synthesis" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 
 There are many other methods. Additive synthesis builds sounds from individual sine waves (see [Sound Waves](/sound-waves)). Wavetable synthesis moves through a series of stored waveforms, while granular synthesis rebuilds sound from tiny grains (see [Sound as Material](/sound-as-material)). Sampling plays recordings at new pitches, as the piano in these demos does. Physical modeling simulates the vibrations of real instruments' strings, tubes, and bodies.
 

@@ -90,6 +90,8 @@ export class Scope {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.mode = mode;
+        canvas.parentElement.classList.add('dp-plot');
+        if (mode === 'both') canvas.parentElement.classList.add('dp-plots-2');
         this.viewport = new Viewport(canvas);
         this.waveform = new Tone.Waveform(2 * size);
         this.size = size;
