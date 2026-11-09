@@ -214,8 +214,8 @@ export class Keyboard {
             if (k === 'z') { this.shiftOctave(-1); return; }
             if (k === 'x') { this.shiftOctave(1); return; }
             if (this.pads) {
-                // A single pad answers to every pad key and the space bar.
-                const i = this.pads.length === 1 && (PAD_KEYS.includes(k) || k === ' ') ? 0 : PAD_KEYS.indexOf(k);
+                // The space bar plays the first pad; a single pad answers to every pad key.
+                const i = k === ' ' || (this.pads.length === 1 && PAD_KEYS.includes(k)) ? 0 : PAD_KEYS.indexOf(k);
                 if (i >= 0 && i < this.pads.length) {
                     e.preventDefault();
                     this._press(`key:${k}`, this.pads[i].midi);

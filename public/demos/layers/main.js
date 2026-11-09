@@ -5,8 +5,9 @@ import { Scope } from '../../lib/demo/Scope.js';
 import { addRange, unwrap } from '../../lib/demo/controls.js';
 import { accent } from '../../lib/demo/colors.js';
 
-// One impact from four layers, each with its own level; the pad (or A, or the space
-// bar) plays them together. The scope shows the sum.
+// One impact from four layers, each with its own level. The Mix pad (A, or the space
+// bar) plays them together; the pads after it (S, D, F, G) play one layer alone. The
+// scope shows what is sounding.
 const master = new MasterBus();
 const hit = new LayeredHit().connect(master.input);
 new Scope(document.getElementById('canvas'), hit.output);

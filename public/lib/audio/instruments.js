@@ -259,14 +259,21 @@ export class LayeredHit extends Instrument {
         this._tail = new Tone.NoiseSynth({ noise: { type: 'pink' },
             envelope: { attack: 0.005, decay: 1.5, sustain: 0, release: 0.5 }, volume: -4 }).connect(this._tailFilter);
         this.ready = this._reverb.ready;
-        this.pads = [{ label: 'Hit', midi: 60 }];
+        // The Mix pad plays every layer; the pads after it play one layer each.
+        this.pads = [{ label: 'Mix', midi: 60 }, ...this.layers.map((l, i) => ({ label: l.label, midi: 61 + i }))];
+        this._triggers = [
+            (time, velocity) => this._thump.triggerAttackRelease('G1', 0.5, time, velocity),
+            (time, velocity) => this._crack.triggerAttackRelease(0.06, time, velocity),
+            (time, velocity) => this._ring.triggerAttackRelease(200, 0.4, time, velocity),
+            (time, velocity) => this._tail.triggerAttackRelease(1.5, time, velocity),
+        ];
     }
 
+    /** MIDI 60 (the Mix pad) plays all four layers; 61 to 64 play one layer alone. */
     noteOn(midi, velocity = 0.9, time = Tone.now()) {
-        this._thump.triggerAttackRelease('G1', 0.5, time, velocity);
-        this._crack.triggerAttackRelease(0.06, time, velocity);
-        this._ring.triggerAttackRelease(200, 0.4, time, velocity);
-        this._tail.triggerAttackRelease(1.5, time, velocity);
+        const solo = this._triggers[midi - 61];
+        if (solo) solo(time, velocity);
+        else this._triggers.forEach(trigger => trigger(time, velocity));
     }
 
     dispose() {

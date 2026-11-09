@@ -55,14 +55,14 @@ The classes that make and shape sound (`public/lib/audio/`), and the demo compon
 - **`SampledInstrument`:** a `Tone.Sampler`, which repitches the nearest recorded note. Notes played before the samples load are ignored.
 - **`DrumKit`:** synthesized drums (kick, snare, clap, hat, open hat, tom, crash), played from one pad per piece. Each piece also sits on a white key in every octave, C to B in that order. A rim click sits on C♯ (as General MIDI's side stick) without a pad, for rhythm patterns; the other black keys are silent. `DRUM_NOTES` names each piece's note. Both hi-hats share one synth, so a closed hat chokes an open one.
 - **`NoiseInstrument`:** a held white, pink, or brown noise, played from a single pad. Any note plays the same sound, which lasts while any is held.
-- **`LayeredHit`:** one impact from four layers in `layers` (`{ id, label, gain }`): a thump (a sine whose pitch drops), a crack (a burst of high-passed noise), a ring (a metallic clang), and a tail (dark noise into a long reverb). Each layer's `gain` sets its level. Played from a single pad, for the layering demo.
+- **`LayeredHit`:** one impact from four layers in `layers` (`{ id, label, gain }`): a thump (a sine whose pitch drops), a crack (a burst of high-passed noise), a ring (a metallic clang), and a tail (dark noise into a long reverb). Each layer's `gain` sets its level. Its `pads` are **Mix** (MIDI 60, every layer) and one pad per layer (61 to 64, that layer alone), for the layering demo.
 <div class="jp">
 
 - **`PolyInstrument`：**Toneのモノフォニックな音源（`Synth`、`FMSynth`、`AMSynth`など）を`Tone.PolySynth`で束ねたもので、最大32音を同時に鳴らせます。
 - **`SampledInstrument`：**`Tone.Sampler`です。最も近い録音の音高をずらして鳴らします。サンプルの読み込み前に弾いた音は無視します。
 - **`DrumKit`：**合成ドラム（キック、スネア、クラップ、ハイハット、オープンハイハット、タム、クラッシュ）で、パーツごとのパッドで演奏します。それぞれのパーツは、どのオクターブでも白鍵にも割り当てています（CからBへこの順）。リズムのパターン用に、リムクリックをパッドなしでC♯に置いています（General MIDIのサイドスティックと同じ）。ほかの黒鍵は鳴りません。`DRUM_NOTES`がそれぞれのパーツの音を示します。2つのハイハットはひとつのシンセを共有するため、クローズドハイハットがオープンハイハットを止めます（チョーク）。
 - **`NoiseInstrument`：**持続するホワイト、ピンク、ブラウンノイズで、ひとつのパッドで演奏します。どの音符でも同じ音が鳴り、いずれかを押さえているあいだ続きます。
-- **`LayeredHit`：**4つのレイヤー（`layers`、`{ id, label, gain }`）でできたひとつの衝撃音です。ドスン（音高が下がるサイン波）、パキッ（ハイパスしたノイズのバースト）、響き（金属的な音）、余韻（長いリバーブへ入る暗いノイズ）。それぞれのレイヤーの`gain`が音量を決めます。ひとつのパッドで演奏し、レイヤーのデモで使います。
+- **`LayeredHit`：**4つのレイヤー（`layers`、`{ id, label, gain }`）でできたひとつの衝撃音です。ドスン（音高が下がるサイン波）、パキッ（ハイパスしたノイズのバースト）、響き（金属的な音）、余韻（長いリバーブへ入る暗いノイズ）。それぞれのレイヤーの`gain`が音量を決めます。`pads`は、すべてのレイヤーを鳴らす**Mix**（MIDI 60）と、レイヤーをひとつだけ鳴らすレイヤーごとのパッド（61〜64）で、レイヤーのデモで使います。
 
 </div>
 
@@ -364,7 +364,7 @@ Both draw a rhythm pattern and share `update(pattern, stepDuration)` (the step d
 - **Computer keys:** A to ; play from the lowest C (white keys on the home row, black keys on the row above). Z and X shift the octave.
 - **Overlapping sources:** a note held by a key and a pointer at once sounds once, and stops when the last one lets go.
 - **`whiteOnly`, `setRoot(pc)`:** `whiteOnly: true` builds white keys only, each labeled with its letter, played from the home row (A = the lowest C, S = D, …), for music on the white keys. `setRoot(pc)` marks every key of one pitch class in butter yellow, so the home note stays visible.
-- **`setPads(pads)`:** switches to a row of pads (an instrument's `pads`) or back to piano keys (null). Pads are equal white shapes one grid unit apart, labeled at the bottom; A, S, D, … play them from the left, and a single pad answers to all of those keys and the space bar. Octave shifting applies to keys only.
+- **`setPads(pads)`:** switches to a row of pads (an instrument's `pads`) or back to piano keys (null). Pads are equal white shapes one grid unit apart, labeled at the bottom; A, S, D, … play them from the left, the space bar plays the first pad, and a single pad answers to all of those keys. Octave shifting applies to keys only.
 <div class="jp">
 
 - **音域：**`low`（Cの音）と`octaves`で決まり、最上部にCが1つ加わります。`shiftOctave(±1)`で移動します。
