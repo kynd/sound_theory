@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Writing Chords コードの書き方</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=link"><script async src="//www.instagram.com/embed.js"></script><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script><script>
+    (function() {
+      var f = localStorage.getItem('font-mode') || 'serif';
+      document.documentElement.setAttribute('data-font', f);
+      // Set sidebar state before first paint to prevent flash of wrong state
+      if (localStorage.getItem('sidebar-open') === 'true') {
+        document.documentElement.classList.add('sidebar-open');
+      }
+    })();
+  </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Google+Sans+Code:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/writing/assets/_slug_.CkZkILpl.css"><script type="module" src="/writing/assets/hoisted.Dt3PigE0.js"></script></head> <body> <header class="topbar"> <div class="topbar-controls topbar-controls-left"> <button class="topbar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"> <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"> <line x1="0" y1="1" x2="18" y2="1"></line> <line x1="0" y1="7" x2="18" y2="7"></line> <line x1="0" y1="13" x2="18" y2="13"></line> </svg> </button> </div> <div class="topbar-search-wrap" id="topbar-search-wrap"> <input id="q" class="search-input" type="text" autocomplete="off" placeholder="Search…" data-base="/writing" aria-label="Search pages"> </div> <div class="topbar-controls topbar-controls-right"> <div class="topbar-font-switcher"> <button class="font-opt" id="font-btn-serif" style="font-family:'Lora','Noto Serif JP',serif">Serif</button> <span class="font-sep">|</span> <button class="font-opt" id="font-btn-sans" style="font-family:'Sora','Noto Sans JP',sans-serif">Sans</button> </div> </div> </header> <div class="shell" id="app-shell"> <div class="sidebar-backdrop" id="sidebar-backdrop"></div> <nav class="sidebar" aria-label="Site navigation"> <a href="/writing" class="sl sidebar-home" style="padding-left:36px; margin-bottom:0.25rem">kynd.info/writing/</a> <ul class="sc open" style="padding-left:0"> <li class="si active"> <button class="st active" data-path="sound-theory" aria-expanded="true" style="padding-left:14px"> <span class="sa">−</span> <a href="/writing/sound-theory" class="sl">Sound Theory 音の理論</a> </button> <ul class="sc open">
+        <li class="si">
+          <button class="st" data-path="sound-theory/sound" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/sound-and-timbre" class="sl">Sound and Timbre 音と音色</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/sound-waves" class="sl" style="padding-left:64px">Sound Waves 音の波</a></li><li class="si"><a href="/writing/building-waveforms" class="sl" style="padding-left:64px">Building Waveforms 波形を組み立てる</a></li><li class="si"><a href="/writing/synthesis" class="sl" style="padding-left:64px">Synthesizers and Effects シンセサイザーとエフェクト</a></li><li class="si"><a href="/writing/sound-as-material" class="sl" style="padding-left:64px">Sound as Material 素材としての音</a></li><li class="si"><a href="/writing/sound-toys" class="sl" style="padding-left:64px">Sound Toys 音のおもちゃ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/pitch" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/pitch-and-scales" class="sl">Pitch and Scales 音高と音階</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/tuning-systems" class="sl" style="padding-left:64px">Tuning Systems 音律</a></li><li class="si"><a href="/writing/scales" class="sl" style="padding-left:64px">Scales 音階</a></li><li class="si"><a href="/writing/church-modes" class="sl" style="padding-left:64px">Church Modes チャーチ・モード</a></li><li class="si"><a href="/writing/minor-scales" class="sl" style="padding-left:64px">Minor Scales 短音階</a></li><li class="si"><a href="/writing/tetrachords" class="sl" style="padding-left:64px">Tetrachords テトラコード</a></li><li class="si"><a href="/writing/other-scales" class="sl" style="padding-left:64px">Other Scales その他の音階</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/rhythm" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/rhythm-and-time" class="sl">Rhythm and Time リズムと時間</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pulse-and-cycles" class="sl" style="padding-left:64px">Pulse and Cycles 拍と周期</a></li><li class="si"><a href="/writing/time-signatures" class="sl" style="padding-left:64px">Time Signatures 拍子記号</a></li><li class="si"><a href="/writing/rhythm-and-feel" class="sl" style="padding-left:64px">Rhythm and Feel リズムとフィール</a></li><li class="si"><a href="/writing/syncopation" class="sl" style="padding-left:64px">Syncopation and Anticipation シンコペーションとアンティシペーション</a></li><li class="si"><a href="/writing/rhythm-patterns" class="sl" style="padding-left:64px">Rhythm Patterns リズム・パターン</a></li><li class="si"><a href="/writing/polyrhythm" class="sl" style="padding-left:64px">Polyrhythm ポリリズム</a></li><li class="si"><a href="/writing/articulation" class="sl" style="padding-left:64px">Articulation アーティキュレーション</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/harmony" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/chords-and-harmony" class="sl">Chords and Harmony 和音と和声</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/diatonic-chords" class="sl" style="padding-left:64px">Diatonic Chords ダイアトニック・コード</a></li><li class="si"><a href="/writing/chord-types" class="sl" style="padding-left:64px">Other Chords その他の和音</a></li><li class="si"><a href="/writing/seventh-chords" class="sl" style="padding-left:64px">Sevenths and Tensions 7の和音とテンション</a></li><li class="si"><a href="/writing/chord-voicing" class="sl" style="padding-left:64px">Voicing ボイシング</a></li><li class="si"><a href="/writing/minor-key-chords" class="sl" style="padding-left:64px">Chords in Minor Keys 短調の和音</a></li><li class="si"><a href="/writing/functional-harmony" class="sl" style="padding-left:64px">Functional Harmony 機能和声</a></li><li class="si"><a href="/writing/tension-and-resolution" class="sl" style="padding-left:64px">Tension and Resolution 緊張と解決</a></li><li class="si"><a href="/writing/subdominant-minor" class="sl" style="padding-left:64px">Subdominant Minor サブドミナント・マイナー</a></li><li class="si"><a href="/writing/chord-progressions" class="sl" style="padding-left:64px">Chord Progressions コード進行</a></li><li class="si"><a href="/writing/jpop-progressions" class="sl" style="padding-left:64px">J-Pop Progressions J-POPのコード進行</a></li><li class="si"><a href="/writing/non-functional-harmony" class="sl" style="padding-left:64px">Beyond Functional Harmony 機能和声の外へ</a></li><li class="si"><a href="/writing/reharmonization" class="sl" style="padding-left:64px">Reharmonization リハーモナイズ</a></li></ul>
+        </li>
+        <li class="si active">
+          <button class="st active" data-path="sound-theory/history" aria-expanded="true" style="padding-left:28px">
+            <span class="sa">−</span><a href="/writing/music-and-history" class="sl">Music and History 音楽と歴史</a>
+          </button>
+          <ul class="sc open"><li class="si"><a href="/writing/non-western-music" class="sl" style="padding-left:64px">Music Beyond the West 西洋の外の音楽</a></li><li class="si"><a href="/writing/blues" class="sl" style="padding-left:64px">Blues ブルース</a></li><li class="si"><a href="/writing/jazz-history" class="sl" style="padding-left:64px">A Short History of Jazz ジャズ小史</a></li><li class="si cur"><a href="/writing/chord-notation" class="sl current" style="padding-left:64px">Writing Chords コードの書き方</a></li><li class="si"><a href="/writing/breaking-conventions" class="sl" style="padding-left:64px">Breaking Conventions 慣習を破る</a></li><li class="si"><a href="/writing/minimal-music" class="sl" style="padding-left:64px">Minimal Music ミニマル・ミュージック</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/improvisation" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/jazz-improvisation" class="sl">Jazz Improvisation ジャズの即興</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/pentatonic-improvisation" class="sl" style="padding-left:64px">Improvising with Pentatonics ペンタトニックで即興する</a></li><li class="si"><a href="/writing/diatonic-improvisation" class="sl" style="padding-left:64px">Improvising in One Key ひとつの調で即興する</a></li><li class="si"><a href="/writing/outlining-changes" class="sl" style="padding-left:64px">Outlining the Changes コード進行を描き出す</a></li><li class="si"><a href="/writing/walking-bass" class="sl" style="padding-left:64px">Walking Bass ウォーキング・ベース</a></li><li class="si"><a href="/writing/jazz-idioms" class="sl" style="padding-left:64px">Jazz Idioms ジャズのイディオム</a></li><li class="si"><a href="/writing/bebop-scale" class="sl" style="padding-left:64px">Barry Harris's Bebop Scale バリー・ハリスのビバップ・スケール</a></li><li class="si"><a href="/writing/minor-chord-scales" class="sl" style="padding-left:64px">Minor Chord Scales マイナーのコード・スケール</a></li><li class="si"><a href="/writing/two-five-improvisation" class="sl" style="padding-left:64px">Improvising on Two-Fives ツー・ファイブで即興する</a></li><li class="si"><a href="/writing/jazz-chord-improvisation" class="sl" style="padding-left:64px">Improvising on Jazz Chords ジャズの和音で即興する</a></li><li class="si"><a href="/writing/stella-by-starlight" class="sl" style="padding-left:64px">Analyzing a Song: Stella by Starlight 曲の分析：星影のステラ</a></li></ul>
+        </li>
+        <li class="si">
+          <button class="st" data-path="sound-theory/modern-jazz" aria-expanded="false" style="padding-left:28px">
+            <span class="sa">+</span><a href="/writing/modern-jazz-language" class="sl">Modern Jazz Language モダン・ジャズの語法</a>
+          </button>
+          <ul class="sc"><li class="si"><a href="/writing/modal-jazz" class="sl" style="padding-left:64px">Modal Jazz モード・ジャズ</a></li><li class="si"><a href="/writing/upper-structure-triads" class="sl" style="padding-left:64px">Upper Structure Triads アッパー・ストラクチャー・トライアド</a></li><li class="si"><a href="/writing/triads-in-scales" class="sl" style="padding-left:64px">Triads Inside Scales スケールの中の三和音</a></li><li class="si"><a href="/writing/modern-pentatonics" class="sl" style="padding-left:64px">Pentatonics in Modern Jazz モダン・ジャズのペンタトニック</a></li><li class="si"><a href="/writing/playing-outside" class="sl" style="padding-left:64px">Playing Outside アウトサイド</a></li><li class="si"><a href="/writing/fourths" class="sl" style="padding-left:64px">Fourths and Intervallic Lines 4度と音程的な旋律</a></li><li class="si"><a href="/writing/coltrane-changes" class="sl" style="padding-left:64px">Coltrane Changes コルトレーン・チェンジ</a></li></ul>
+        </li><li class="si"><a href="/writing/sound-sources" class="sl" style="padding-left:50px">Sound Sources 音源</a></li></ul> </li> </ul> <!-- Global styles so they apply to both JSX-rendered and set:html content -->   </nav> <div id="search-view" hidden></div> <main class="main-wrap" id="page-view"> <div class="main-inner"> <article class="prose"> <nav class="content-breadcrumb" aria-label="Breadcrumb"> <span style="display:contents">  <a href="/writing">Home</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/sound-theory">Sound Theory 音の理論</a> </span><span style="display:contents"> <span class="cb-sep">/</span> <a href="/writing/music-and-history">Music and History 音楽と歴史</a> </span> </nav>  <h1 class="page-title"> <span class="title-en">Writing Chords</span> <span class="title-ja">コードの書き方</span> </h1> <p>The earlier pages write harmony as chord symbols (Dm7, G7, Cmaj7) and Roman numerals (ii7, V7, Imaj7). These look so natural now that it is easy to forget they are an invention, and a fairly recent one. Thinking of music as chords moving one after another is old, but the way we write them today took shape in American popular music and jazz in the twentieth century and was then taught around the world. This page looks briefly at where it came from and what it leaves out.</p>
+<p>これまでのページでは、和声をコード・シンボル（Dm7、G7、Cmaj7）とローマ数字（ii7、V7、Imaj7）で書いてきました。今ではあまりに自然に見えるので、これが発明であり、それもかなり新しいものだということを忘れがちです。音楽を次々と移り変わる和音として考える見方は古くからありますが、今日の書き方は、20世紀のアメリカのポピュラー音楽とジャズの中で形づくられ、その後世界中で教えられるようになりました。このページでは、それがどこから来たのか、そして何を書き残さないのかを簡単に見ていきます。</p>
+<h1 id="before-chord-symbols">Before Chord Symbols</h1>
+<h1 id="コードシンボル以前">コード・シンボル以前</h1>
+<p>Shorthand for harmony is centuries old. In the Baroque era (roughly 1600 to 1750), keyboard and lute players read figured bass: a bass line with small numbers above it giving the intervals to play over each note, within the key. The player made up the actual chords on the spot, much as a jazz pianist does from a chord symbol today. Around the same time, Italian and Spanish guitar books used the alfabeto, a system in which a letter stood for a chord shape to strum.</p>
+<p>和声を略して書く方法は、何世紀も前からあります。バロック時代（おおよそ1600年から1750年）には、鍵盤楽器やリュートの奏者は通奏低音を読みました。ベースラインの上に小さな数字を添えて、それぞれの音の上で弾く音程を、調の中で示したものです。実際の和音はその場で組み立てられ、今日のジャズ・ピアニストがコード・シンボルから弾くのとよく似ていました。同じころ、イタリアやスペインのギター教本では、アルファベットが使われていました。1文字がかき鳴らす和音の形を表す仕組みです。</p>
+<p>Roman numerals came from music theory rather than performance. Gottfried Weber’s treatise of the 1810s and 1820s spread the practice of naming chords by the scale degree of their root, so that the same pattern could be recognized in any key. At the end of the nineteenth century, Hugo Riemann grouped chords by function, tonic, subdominant, and dominant (see <a href="/writing/functional-harmony">Functional Harmony</a>). Both were tools for analyzing written music, in which every note was already on the page.</p>
+<p>ローマ数字は、演奏ではなく音楽理論から生まれました。1810年代から1820年代にかけてのゴットフリート・ウェーバーの理論書が、和音を根音の音階上の位置で呼ぶやり方を広め、同じパターンをどの調でも見分けられるようにしました。19世紀の終わりには、フーゴー・リーマンが和音をトニック、サブドミナント、ドミナントという機能でまとめました（<a href="/writing/functional-harmony">機能和声</a>を参照）。どちらも、すべての音がすでに楽譜に書かれた音楽を分析するための道具でした。</p>
+<h1 id="chord-symbols">Chord Symbols</h1>
+<h1 id="コードシンボル">コード・シンボル</h1>
+<p>Chord symbols as we know them grew out of American popular music in the early twentieth century. Sheet music for songs printed chord names, and often small chord diagrams, above the melody for ukulele and guitar players, especially during the ukulele boom of the 1920s. Dance-band and jazz musicians, who played from memory and by ear, needed only the melody and the changes, and the lead sheet, a melody with chord symbols above it, became their working score. From the 1940s, fake books collected hundreds of songs in this form.</p>
+<p>私たちの知るコード・シンボルは、20世紀初めのアメリカのポピュラー音楽から生まれました。歌の楽譜には、ウクレレやギターを弾く人のために、旋律の上にコード名と、しばしば小さなコード・ダイアグラムが印刷されました。1920年代のウクレレ・ブームのころには特にそうでした。暗譜や耳で演奏するダンス・バンドやジャズのミュージシャンには、旋律とコード進行さえあれば十分で、旋律の上にコード・シンボルを書いたリード・シートが、彼らの実用的な楽譜になりました。1940年代からは、フェイク・ブックが数百の曲をこの形で集めました。</p>
+<p>Jazz education turned this practice into a system. Berklee College of Music in Boston, founded in 1945, built its teaching around chord symbols, Roman numerals for analysis, and chord–scale theory, which pairs each chord with the scales that fit over it (as on <a href="/writing/other-scales">Other Scales</a>). In the 1970s, Berklee students compiled The Real Book, an unofficial collection of jazz standards that became the standard lead-sheet book, and many musicians learned what a chord symbol looks like from its pages. Spellings still vary (Cm7, C−7, and Cmi7 mean the same chord, as do Cmaj7 and CΔ7), and proposals to standardize them never fully settled the matter. In Japan, this approach is often called the Berklee method (バークリー・メソッド), or simply chord theory.</p>
+<p>ジャズ教育は、この慣習を体系にしました。1945年にボストンで創立されたバークリー音楽大学は、コード・シンボル、分析のためのローマ数字、そしてそれぞれの和音にその上で使える音階を組み合わせるコード・スケール理論（<a href="/writing/other-scales">その他の音階</a>のような）を中心に教えました。1970年代には、バークリーの学生たちがジャズ・スタンダードの非公式な曲集『リアル・ブック』をまとめ、それがリード・シートの標準的な本になりました。多くのミュージシャンは、そのページからコード・シンボルの見た目を覚えました。書き方は今も一定ではなく（Cm7、C−7、Cmi7は同じ和音で、Cmaj7とCΔ7も同じです）、統一しようという提案も、完全には決着をつけられませんでした。日本では、この考え方は「バークリー・メソッド」、あるいは単に「コード理論」と呼ばれることがよくあります。</p>
+<p>Other notations kept appearing beside it. In the late 1950s, session musicians in Nashville began writing chords as numbers of the scale (1, 4, 5, 6m), often credited to Neal Matthews of the Jordanaires. Like Roman numerals, the Nashville number system writes a song independently of its key, so a band can change keys for a singer without rewriting the chart.</p>
+<p>それと並んで、ほかの書き方も生まれ続けました。1950年代後半、ナッシュビルのセッション・ミュージシャンたちは、和音を音階の番号（1、4、5、6m）で書き始めました。ジョーダネアーズのニール・マシューズの考案とされることが多い方法です。ナッシュビル・ナンバー・システムは、ローマ数字と同じように曲を調から切り離して書くので、バンドは譜面を書き直さずに、歌い手に合わせて調を変えられます。</p>
+<p>The same ii–V–I in C, written in several of these ways:</p>
+<p>同じCのii–V–Iを、これらのいくつかの方法で書くと次のようになります。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Notation 表記</th><th>ii</th><th>V</th><th>I</th></tr></thead><tbody><tr><td>Chord symbols コード・シンボル</td><td>Dm7</td><td>G7</td><td>Cmaj7</td></tr><tr><td>Roman numerals ローマ数字</td><td>ii7</td><td>V7</td><td>Imaj7</td></tr><tr><td>Nashville numbers ナッシュビル・ナンバー</td><td>2m7</td><td>5⁷</td><td>1maj7</td></tr><tr><td>Functions 機能</td><td>SD</td><td>D</td><td>T</td></tr><tr><td>Figured bass 通奏低音</td><td>7 over D</td><td>7 over G</td><td>7 over C</td></tr></tbody></table>
+<h1 id="one-way-of-hearing">One Way of Hearing</h1>
+<h1 id="ひとつの聞き方">ひとつの聞き方</h1>
+<p>Today chord symbols are everywhere: on lead sheets and in songbooks, on guitar chord websites, in the chord tracks of music software, and in how musicians talk (“it’s just a ii–V”). This success has shaped how people think about music. A chord symbol names a stack of thirds over a root and leaves the rest to the player: which notes, in which octave, in what rhythm, with what sound. It treats music as a series of vertical sonorities over a steady pulse, and chord–scale theory extends this to melody, turning improvisation into a choice of scale for each chord. For jazz standards and songs, this is wonderfully efficient.</p>
+<p>今では、コード・シンボルはどこにでもあります。リード・シートや歌本に、ギターのコード譜のウェブサイトに、音楽ソフトのコード・トラックに、そしてミュージシャンの話し方の中に（「ただのツー・ファイブだよ」）。この成功は、人々の音楽の考え方を形づくってきました。コード・シンボルは、根音の上に積んだ3度の重なりに名前をつけ、それ以外は演奏者に任せます。どの音を、どのオクターブで、どんなリズムで、どんな音色で弾くかです。音楽を、一定の拍の上に並んだ縦の響きの連なりとして扱い、コード・スケール理論はこれを旋律にまで広げて、即興を和音ごとの音階選びにします。ジャズ・スタンダードや歌には、これは見事に効率的です。</p>
+<p>But it is one way of hearing among many. Counterpoint, where the music is the independent lines, is hard to see in chord symbols. So are quartal chords and clusters, which fit badly into stacks of thirds (see <a href="/writing/non-functional-harmony">Beyond Functional Harmony</a>), and so is music built on a drone, on microtones, or on timbre (see <a href="/writing/sound-as-material">Sound as Material</a>). Many traditions, such as Indian classical music, Indonesian gamelan, and much of the world’s folk music, do not think in chords at all. A notation makes some ideas easy to write and to think, and others hard to notice. It is worth asking, when a piece seems to resist analysis, whether the music is unusual or whether the notation simply has no place for it. For more on the symbols themselves, a good starting point is <a href="https://en.wikipedia.org/wiki/Chord_names_and_symbols_%28popular_music%29" target="_blank" rel="noopener noreferrer">Chord names and symbols on Wikipedia</a>.</p>
+<p>しかし、それは数ある聞き方のひとつにすぎません。独立した複数の線そのものが音楽である対位法は、コード・シンボルでは見えにくくなります。3度の重なりにうまく収まらない4度堆積和音やクラスター（<a href="/writing/non-functional-harmony">機能和声の外へ</a>を参照）、そしてドローンや微分音、音色の上に築かれた音楽（<a href="/writing/sound-as-material">素材としての音</a>を参照）も同じです。インド古典音楽、インドネシアのガムラン、そして世界の多くの民俗音楽のように、そもそも和音で考えない伝統もたくさんあります。記譜法は、ある考えを書きやすく、考えやすくする一方で、別の考えには気づきにくくします。ある曲が分析しにくく感じられたら、その音楽が変わっているのか、それとも記譜法にその音楽の居場所がないだけなのかを問うてみる価値があります。記号そのものについては、<a href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%BC%E3%83%89%E3%83%BB%E3%83%8D%E3%83%BC%E3%83%A0" target="_blank" rel="noopener noreferrer">Wikipediaのコード・ネーム</a>から調べ始めるとよいでしょう。</p>  </article> <footer class="site-footer"> <div class="site-footer-left"> <a href="/writing">kynd.info/writing/</a> <a href="/writing/faq">FAQs</a> <a href="https://github.com/kynd/writing/discussions" target="_blank" rel="noopener">Feedback</a> </div> <div class="site-footer-right"> <a href="https://www.kynd.info/" target="_blank" rel="noopener">kynd.info</a> <a href="https://www.instagram.com/kyndinfo/" target="_blank" rel="noopener">Instagram</a> <a href="https://vimeo.com/kynd" target="_blank" rel="noopener">Vimeo</a> <a href="https://bsky.app/profile/kyndinfo.bsky.social" target="_blank" rel="noopener">Bluesky</a> <a href="https://www.threads.net/@kyndinfo" target="_blank" rel="noopener">Threads</a> <a href="https://twitter.com/kyndinfo" target="_blank" rel="noopener">Twitter</a> </div> </footer> </div> </main> </div>     <!-- Sound theory demos: a record button under each embedded demo. --> <script type="module" src="/writing/lib/page/demoRecorder.js"></script> </body> </html>
