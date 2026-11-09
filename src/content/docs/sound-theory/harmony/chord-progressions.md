@@ -87,7 +87,7 @@ Like the fifties progression, but with ii in place of IV. ii shares two notes wi
 
 ♭VII (B♭ in C) is not in the major scale. It comes from the Mixolydian mode (see [Church Modes](/church-modes)), or is borrowed from the parallel minor (see [Subdominant Minor](/subdominant-minor)). It replaces the pull of V with a broad, open sound common in rock. The verse of "Sweet Child o' Mine" (Guns N' Roses, 1987) moves through it, as do "Sympathy for the Devil" (the Rolling Stones, 1968) and the long coda of "Hey Jude" (the Beatles, 1968).
 
-♭VII（CではB♭）は、長音階には含まれません。ミクソリディアン旋法から来た和音（[教会旋法](/church-modes)を参照）、あるいは同主短調から借りた和音（[サブドミナント・マイナー](/subdominant-minor)を参照）です。Vの引力の代わりに、ロックによくある、広々と開けた響きをもたらします。「スウィート・チャイルド・オブ・マイン」（ガンズ・アンド・ローゼズ、1987年）のヴァースはこの進行を通り、「悪魔を憐れむ歌」（ローリング・ストーンズ、1968年）や「ヘイ・ジュード」（ビートルズ、1968年）の長いコーダも同じです。
+♭VII（CではB♭）は、長音階には含まれません。ミクソリディアン・モードから来た和音（[チャーチ・モード](/church-modes)を参照）、あるいは同主短調から借りた和音（[サブドミナント・マイナー](/subdominant-minor)を参照）です。Vの引力の代わりに、ロックによくある、広々と開けた響きをもたらします。「スウィート・チャイルド・オブ・マイン」（ガンズ・アンド・ローゼズ、1987年）のヴァースはこの進行を通り、「悪魔を憐れむ歌」（ローリング・ストーンズ、1968年）や「ヘイ・ジュード」（ビートルズ、1968年）の長いコーダも同じです。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=common&example=i-bvii-iv-i&key" title="I–♭VII–IV–I" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -101,7 +101,6 @@ A minor-key progression whose bass walks down from i to V: A, G, F, E. It is nam
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=common&example=andalusian&key=minor" title="i–♭VII–♭VI–V" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 <aside>
-  <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
     <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>

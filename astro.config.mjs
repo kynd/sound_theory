@@ -17,15 +17,25 @@ function remarkRebaseLinks() {
   };
 }
 
-// Sound theory: links to other sites (Wikipedia, recordings) open in a new tab.
-// Limited to the series' own pages, so writing's other pages keep their behavior.
+// Links to other sites (http/https) open in a new tab, on every page: markdown links
+// here, links written as raw HTML (asides, bookmark cards) in rehypeExternalRawLinks.
 function remarkExternalLinksNewTab() {
-  return (tree, file) => {
-    if (!String(file.path ?? file.history?.[0] ?? '').includes('/docs/sound-theory/')) return;
+  return (tree) => {
     visit(tree, 'link', (node) => {
       if (!/^https?:\/\//.test(node.url)) return;
       node.data = node.data ?? {};
       node.data.hProperties = { ...node.data.hProperties, target: '_blank', rel: 'noopener noreferrer' };
+    });
+  };
+}
+
+// The same for <a href="http..."> written as raw HTML in markdown, which is still a
+// string when rehype plugins run. Anchors that already set a target are left alone.
+function rehypeExternalRawLinks() {
+  const ANCHOR = /<a\s(?![^>]*\btarget=)([^>]*\bhref="https?:\/\/[^"]*"[^>]*)>/g;
+  return (tree) => {
+    visit(tree, 'raw', (node) => {
+      node.value = node.value.replace(ANCHOR, '<a $1 target="_blank" rel="noopener noreferrer">');
     });
   };
 }
@@ -65,7 +75,7 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [remarkRebaseLinks, remarkExternalLinksNewTab, remarkMath],
-    rehypePlugins: [rehypeImageSize, rehypeRebaseVideoSrc, rehypeKatex],
+    rehypePlugins: [rehypeImageSize, rehypeRebaseVideoSrc, rehypeExternalRawLinks, rehypeKatex],
   },
   output: 'static',
   build: {

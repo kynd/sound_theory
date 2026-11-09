@@ -2,35 +2,59 @@
 title: "Tuning Systems 音律"
 slug: tuning-systems
 ---
-Music can draw on pitches from a continuous range, as well as on sounds without a clear pitch, such as many drum sounds. In much music, though, melodies and harmonies are organized around a set of distinct pitches, or notes. A tuning system defines the frequency relationships among those notes, while a reference pitch assigns them specific frequencies.
+As discussed in [Sound and Timbre](/sound-and-timbre), pitch is only one aspect of sound; many sounds have no definite pitch. In much music, however, melodies and harmonies are built from a set of distinct pitches, or notes. A tuning system defines the frequency relationships among those notes, while a reference pitch assigns each one a specific frequency.
 
-音楽では、連続した範囲の音高だけでなく、多くの太鼓の音のように明確な音高を持たない音も使えます。ただし、多くの音楽では、旋律や和声は、区別された音高、つまり音の集まりをもとに組み立てられています。音律はそれらの音の周波数比を定め、基準音はそれぞれの音に具体的な周波数を与えます。
+[音と音色](/sound-and-timbre)のページで見たように、音高は音の一要素にすぎず、明確な音高を持たない音も数多くあります。一方、多くの音楽では、旋律や和声は明確な音高を持つ個々の音（音符）をもとに組み立てられています。音律はそれらの音の周波数の関係を定め、基準音はそれぞれの音の周波数を具体的に定めます。
 
 # Simple Ratios
 # 単純な比
 
-A string fixed at both ends vibrates along its whole length, and also in halves, thirds, quarters, and so on (see [Sound Waves](/sound-waves)). Its sound therefore contains the frequencies $f$, $2f$, $3f$, $4f$, …, the harmonic series. The same numbers appear when you change the length of the string: halving it doubles the frequency, and shortening it to two-thirds raises the frequency by a ratio of 3:2.
+A taut string is one of the simplest instruments to make, and its pitch is easy to change. You can easily try this at home with a rubber band, too.
 
-両端を固定した弦は、全体で振動すると同時に、2分の1、3分の1、4分の1……の長さでも振動します（[音の波](/sound-waves)を参照）。そのため弦の音には、$f$、$2f$、$3f$、$4f$……の周波数、つまり倍音列が含まれます。弦の長さを変えたときにも同じ数が現れます。長さを半分にすると周波数は2倍に、3分の2にすると周波数は3:2の比で高くなります。
+ピンと張った弦は、最も簡単に作れる楽器の1つで、音高も簡単に変えられます。輪ゴムを使えば、家でも手軽に試せます。
+
+A string's fundamental frequency depends on its vibrating length, mass per unit length, and tension. A shorter or more tightly stretched string sounds higher; a heavier string with the same length and tension sounds lower. On instruments such as guitars and violins, players press a string against the fingerboard, shortening its vibrating length to produce different notes. Stopping the string at its midpoint halves its vibrating length. If the tension remains unchanged, its frequency doubles, raising the note by one octave.
+
+弦の基音の周波数は、振動する部分の長さ、単位長さあたりの質量、張力によって決まります。弦は短いほど、また張力が強いほど高い音を出し、長さと張力が同じなら、質量の大きい弦ほど低い音になります。ギターやバイオリンなどでは、弦を指板に押さえて振動部分を短くし、音高を変えます。弦の中央を押さえると、振動部分の長さは半分になります。張力が変わらなければ周波数は2倍になり、音高は1オクターブ上がります。
+
+A string fixed at both ends vibrates along its whole length, and also in halves, thirds, quarters, and so on (see [Sound Waves](/sound-waves)). Its sound therefore contains the frequencies $f$, $2f$, $3f$, $4f$, …, the harmonic series. The relative strengths of these harmonics, and how they change over time, play a major role in shaping the instrument's timbre. The same numbers appear when you change the length of the string: halving it doubles the frequency, and shortening it to two-thirds raises the frequency by a ratio of 3:2.
+
+両端を固定した弦は、全体で振動すると同時に、2分の1、3分の1、4分の1……の長さでも振動します（[音の波](/sound-waves)を参照）。そのため弦の音には、$f$、$2f$、$3f$、$4f$……の周波数、つまり倍音列が含まれます。これらの倍音の強さのバランスと、その時間的な変化は、楽器の音色を形づくるうえで大きな役割を果たします。弦の長さを変えたときにも同じ数が現れます。長さを半分にすると周波数は2倍に、3分の2にすると周波数は3:2の比で高くなります。
 
 Two notes whose frequencies form a simple ratio share many harmonics. At 3:2, every third harmonic of the lower note lands exactly on every second harmonic of the upper one. The combined wave repeats after a short time, and the two notes blend. When the ratio is slightly off, harmonics that should coincide are close but not equal, and they beat (the loudness wavers at the difference of their frequencies), which sounds rough.
 
 周波数が単純な比をなす2つの音は、多くの倍音を共有します。3:2では、低い音の3番目ごとの倍音が、高い音の2番目ごとの倍音にぴったり重なります。合わさった波は短い時間で繰り返し、2つの音はよく溶け合います。比が少しずれると、重なるはずの倍音が近いのに一致せず、うなり（2つの周波数の差の速さで音量が揺れる現象）が生じて、ざらついて聞こえます。
 
-The simplest ratios have names: 2:1 is the octave, 3:2 the perfect fifth, 4:3 the perfect fourth, 5:4 the major third, and 6:5 the minor third. In an octave, the upper note sounds so much like the lower one that both get the same note name.
+Press **Play** to hear two sine waves, the lower fixed at 220 Hz and the upper at a ratio to it. Choose a whole-number **Ratio**, from 1:1 (the unison) to 2:1 (the octave), or move **Upper** to set the upper frequency as any multiple of the lower one between 1 and 2; the menu shows **Other** between the whole-number ratios. The plot shows eight cycles of the lower wave and the upper wave at the same ratio as yellow lines, and their sum as a red line. At a ratio $p$:$q$, the sum repeats every $q$ cycles of the lower wave: every two cycles at 3:2, every four at 5:4. Between them, it changes from cycle to cycle and never quite repeats. Sine waves have no harmonics, so mistuned ratios sound rough only where the two tones themselves come close; near 1:1, the two waves beat.
 
-最も単純な比には名前があります。2:1はオクターブ、3:2は完全5度、4:3は完全4度、5:4は長3度、6:5は短3度です。オクターブでは、上の音が下の音とよく似て聞こえるため、どちらにも同じ音名をつけます。
+**Play**を押すと、2つのサイン波が鳴ります。低い音は220 Hzに固定され、高い音はそれに対する比で決まります。**Ratio**で1:1（同音）から2:1（オクターブ）までの整数比を選ぶか、**Upper**を動かして、高い音の周波数を低い音の1倍から2倍のあいだの好きな倍率にしてみましょう。整数比のあいだでは、メニューは**Other**になります。図は、低い波の8周期分と、同じ比の高い波を黄色の線で、その和を赤い線で示しています。比が$p$:$q$のとき、和は低い波の$q$周期ごとに繰り返します。3:2では2周期ごと、5:4では4周期ごとです。そのあいだの比では、和は周期ごとに形を変え、きちんと繰り返すことはありません。サイン波には倍音がないため、比がずれてざらついて聞こえるのは、2つの音そのものが近づくときだけです。1:1の近くでは、2つの波がうなります。
 
-A bar free at both ends, like one on a xylophone or glockenspiel, does not vibrate in segments that are simple fractions of its length. Its overtones therefore are not whole-number multiples of the fundamental: in a uniform bar, they occur at about 2.76, 5.40, and 8.93 times the fundamental frequency. Bells and gongs are similarly inharmonic. Makers carve away material from the underside of a marimba bar to tune its first overtone to 4 times the fundamental (two octaves); for a xylophone bar, they tune it to 3 times the fundamental (an octave and a fifth). This brings the overtones closer to the harmonic series. Which ratios sound smooth depends on an instrument's overtones. This may help explain why music built around metallophones, such as Indonesian gamelan, uses different tunings.
+<div class="demo-wrap"><iframe src="/writing/demos/ratios/index.html" title="Frequency ratios" allow="autoplay" loading="lazy" style="height: 192px"></iframe></div>
 
-木琴や鉄琴の音板のように両端が自由な棒は、長さを単純な分数に分けた部分ごとには振動しません。そのため、倍音は基音の整数倍にならず、均一な棒では基音周波数の約2.76倍、5.40倍、8.93倍に現れます。鐘やゴングも同様に、倍音が基音の整数倍になりません。マリンバの音板は裏側を削って、最初の倍音が基音の4倍（2オクターブ）になるように調整します。木琴の音板では、最初の倍音が基音の3倍（1オクターブと5度）になるように調整します。こうして、倍音を倍音列に近づけます。どの比がなめらかに聞こえるかは、楽器の倍音によって異なります。これが、インドネシアのガムランのように金属製の旋律打楽器を中心とする音楽で、異なる音律が使われる理由のひとつかもしれません。
+The simplest ratios have names: 2:1 is the octave, 3:2 the perfect fifth, 4:3 the perfect fourth, 5:4 the major third, and 6:5 the minor third. In an octave, the upper note sounds so similar to the lower one that both are given the same note name.
+
+最も単純な比には、それぞれ名前があります。2:1はオクターブ、3:2は完全5度、4:3は完全4度、5:4は長3度、6:5は短3度です。オクターブでは、上の音が下の音とよく似て聞こえるため、どちらにも同じ音名が与えられます。
+
+A bar free at both ends, such as a xylophone or glockenspiel bar, does not vibrate in segments whose lengths are simple fractions of the bar's length. Its overtones are therefore not whole-number multiples of the fundamental: in a uniform bar, they occur at about 2.76, 5.40, and 8.93 times the fundamental frequency. Bells and gongs are similarly inharmonic. Makers carve material from the underside of marimba bars to tune the first overtone to four times the fundamental (two octaves); for xylophone bars, they tune it to three times the fundamental (an octave and a fifth). This brings the overtones closer to the harmonic series. Which ratios sound smooth depends on an instrument's overtones. This may help explain why music centered on metallophones, such as Indonesian gamelan, uses different tunings.
+
+木琴や鉄琴の音板のように両端が自由な棒は、長さを単純な分数に分けた部分ごとには振動しません。そのため、その倍音は基音の整数倍にはならず、均一な棒では基音周波数の約2.76倍、5.40倍、8.93倍に現れます。鐘やゴングも同様に、倍音は基音の整数倍にはなりません。マリンバでは、音板の裏側を削って最初の倍音が基音の4倍（2オクターブ）になるように調整します。木琴では、最初の倍音が基音の3倍（1オクターブと5度）になるように調整します。こうして、主な上音の周波数を基音の整数倍に近づけます。どの比がなめらかに聞こえるかは、楽器の倍音によって異なります。そのため、インドネシアのガムランのように金属製の旋律打楽器を中心とする音楽では、異なる音律が使われるのかもしれません。
+
+<aside>
+  <span class="aside-icon">💡</span>
+  <div class="aside-body">
+    <p><strong>Overtones, harmonics, and the harmonic series</strong></p>
+    <p>An <strong>overtone</strong> is any component above the fundamental frequency. A <strong>harmonic</strong> is a component at a whole-number multiple of the fundamental; the fundamental itself is the first harmonic. Overtones can be harmonic or inharmonic, so the first overtone is not necessarily the second harmonic. The <strong>harmonic series</strong> is the sequence of whole-number multiples: 1, 2, 3, 4, … times the fundamental.</p>
+    <p><strong>上音・倍音・倍音列の違い</strong></p>
+    <p><strong>上音</strong>は、基音より高い周波数の成分を指します。<strong>倍音</strong>は、厳密には基音の整数倍の周波数を持つ成分で、基音自体が第1倍音です。上音には、基音の整数倍になるものと、ならないものがあるため、最初の上音が必ず第2倍音になるわけではありません。<strong>倍音列</strong>は、基音の1倍、2倍、3倍、4倍……という周波数の並びです。日本語では「倍音」を上音全般の意味で使うこともありますが、この違いを説明するときは「上音」と「基音の整数倍」を使い分けると明確になります。</p>
+  </div>
+</aside>
 
 # Pythagorean Tuning
 # ピタゴラス音律
 
-According to Greek tradition, Pythagoras (6th century BCE) studied these ratios using a monochord—a single string with a movable bridge. Pythagorean tuning derives every note from two simple ratios: repeatedly raise the pitch by a fifth (×3/2), then lower it by an octave (÷2) whenever it exceeds the octave. Starting from C, successive fifths produce G, D, A, E, B, F♯, and so on. Folded into a single octave, these notes fill out a scale.
+According to Greek tradition, [Pythagoras](https://en.wikipedia.org/wiki/Pythagoras) (6th century BCE) studied these ratios using a [monochord](https://en.wikipedia.org/wiki/Monochord)—a single string with a movable bridge. Pythagorean tuning derives every note from two simple ratios: repeatedly raise the pitch by a fifth (×3/2), then lower it by an octave (÷2) whenever it exceeds the octave. Starting from C, successive fifths produce G, D, A, E, B, F♯, and so on. Folded into a single octave, these notes fill out a scale.
 
-ギリシャの伝承によれば、ピタゴラス（紀元前6世紀）は、可動式の駒を備えた1本の弦、モノコードを使ってこれらの比を調べました。ピタゴラス音律では、2つの単純な比を使ってすべての音を導きます。5度上げる（×3/2）操作を繰り返し、音が1オクターブを超えたら1オクターブ下げます（÷2）。Cから始めると、5度上げるたびにG、D、A、E、B、F♯……が得られます。これらを1オクターブ内に収めると、音階ができます。
+ギリシャの伝承によれば、[ピタゴラス](https://ja.wikipedia.org/wiki/ピタゴラス)（紀元前6世紀）は、可動式の駒を備えた1本の弦、[モノコード](https://ja.wikipedia.org/wiki/モノコード)を使ってこれらの比を調べました。ピタゴラス音律では、2つの単純な比を使ってすべての音を導きます。5度上げる（×3/2）操作を繰り返し、音が1オクターブを超えたら1オクターブ下げます（÷2）。Cから始めると、5度上げるたびにG、D、A、E、B、F♯……が得られます。これらを1オクターブ内に収めると、音階ができます。
 
 Stacking pure fifths does not form an exactly closed circle: twelve pure fifths span slightly more than seven octaves. The gap, a ratio of about 1.0136 (about a quarter of a semitone), is called the Pythagorean comma.
 
@@ -46,16 +70,16 @@ Raise **Fifths** one step at a time to stack fifths from C. Press **Play** to he
 
 <div class="demo-wrap"><iframe src="/writing/demos/stacking-fifths/index.html" title="Stacking fifths" allow="autoplay" loading="lazy" style="height: 384px"></iframe></div>
 
-Tunings that directly use simple ratios—such as 5:4 for thirds—are called just intonation. They sound pure in their home key, but go out of tune when the music moves to another key.
+Tunings that directly use simple ratios—such as 5:4 for thirds—are called [just intonation](https://en.wikipedia.org/wiki/Just_intonation). They sound pure in their home key, but go out of tune when the music moves to another key.
 
-3度に5:4などの単純な比を直接用いる音律を純正律と呼びます。基準となる調では純粋に響きますが、別の調に移ると音程が合わなくなります。
+3度に5:4などの単純な比を直接用いる音律を[純正律](https://ja.wikipedia.org/wiki/純正律)と呼びます。基準となる調では純粋に響きますが、別の調に移ると音程が合わなくなります。
 
 # Twelve-Tone Equal Temperament
 # 十二平均律
 
 Instruments with fixed pitches, such as pianos and fretted guitars, need a single set of notes that works in every key. Today, this is achieved by dividing the octave into 12 equal steps. The steps have equal frequency ratios, not equal frequency differences: each step multiplies the frequency by the same factor, and twelve steps double it exactly.
 
-ピアノやフレットのあるギターのように音高が固定された楽器には、どの調でも使える一組の音が必要です。現在一般的な方法では、1オクターブを12の等しい段階に分けます。ここで等しいのは周波数の差ではなく比です。それぞれの段階で周波数に同じ倍率を掛けるため、12段階でちょうど2倍になります。
+ピアノやフレットのあるギターのように音高が固定された楽器には、どの調でも使える1組の音が必要です。現在一般的な方法では、1オクターブを12の等しい段階に分けます。ここで等しいのは周波数の差ではなく比です。それぞれの段階で周波数に同じ倍率を掛けるため、12段階でちょうど2倍になります。
 
 $$
 2^{1/12} \approx 1.0595
@@ -98,14 +122,14 @@ Pitch is continuous, so there is no requirement for twelve notes, equal steps, o
 
 音高は連続しているため、12音に分けることも、等間隔にすることも、オクターブを基準にすることも必須ではありません。多くの音楽文化や作曲家が、異なる方法で音高を分けています。以下はほんの入り口として、それぞれを簡単に紹介したものにすぎません。どれもそれだけでひとつの世界なので、ぜひ自分で調べ、録音を探して、耳で確かめてみましょう。
 
-Arabic maqam uses intervals between a semitone and a whole tone, such as the neutral second, about three-quarters of a tone, whose exact size varies by maqam and region. In Indian classical music, theory describes 22 śruti, small divisions of the octave from which each rāga draws its notes, and performers tune against a drone, which draws the intervals toward pure ratios.
+[Arabic maqam](https://en.wikipedia.org/wiki/Arabic_maqam) uses intervals between a semitone and a whole tone, such as the [neutral second](https://en.wikipedia.org/wiki/Neutral_interval), about three-quarters of a tone, whose exact size varies by maqam and region. In Indian classical music, theory describes 22 [śruti](https://en.wikipedia.org/wiki/Shruti_%28music%29), small divisions of the octave from which each [rāga](https://en.wikipedia.org/wiki/Raga) draws its notes, and performers tune against a drone, which draws the intervals toward pure ratios.
 
-アラブ音楽のマカームは、約4分の3音にあたる中立2度など、半音と全音のあいだの音程を使い、その正確な大きさはマカームや地域によって異なります。インド古典音楽の理論では、1オクターブを分ける小さな音程として22のシュルティが挙げられ、それぞれのラーガはそこから音を選びます。ミュージシャンはドローンを基準に音を合わせるため、音程は純正な比に近づきます。
+アラブ音楽の[マカーム](https://ja.wikipedia.org/wiki/マカーム)は、約4分の3音にあたる[中立2度](https://en.wikipedia.org/wiki/Neutral_interval)など、半音と全音のあいだの音程を使い、その正確な大きさはマカームや地域によって異なります。インド古典音楽の理論では、1オクターブを分ける小さな音程として22の[シュルティ](https://en.wikipedia.org/wiki/Shruti_%28music%29)が挙げられ、それぞれの[ラーガ](https://ja.wikipedia.org/wiki/ラーガ)はそこから音を選びます。ミュージシャンはドローンを基準に音を合わせるため、音程は純正な比に近づきます。
 
-In Indonesian gamelan, slendro has five roughly equal steps per octave, while pelog has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.
+In Indonesian [gamelan](https://en.wikipedia.org/wiki/Gamelan), [slendro](https://en.wikipedia.org/wiki/Slendro) has five roughly equal steps per octave, while [pelog](https://en.wikipedia.org/wiki/Pelog) has seven unequal steps. Each gamelan set is tuned as a whole, so no two sets sound exactly alike.
 
-インドネシアのガムランでは、スレンドロが1オクターブをほぼ等しい5段階に、ペロッグが不均等な7段階に分けます。ガムランは1組ごとに調律されるため、どの2組もまったく同じ響きにはなりません。
+インドネシアの[ガムラン](https://ja.wikipedia.org/wiki/ガムラン)では、[スレンドロ](https://ja.wikipedia.org/wiki/スレンドロ)が1オクターブをほぼ等しい5段階に、[ペロッグ](https://ja.wikipedia.org/wiki/ペロッグ)が不均等な7段階に分けます。ガムランは1組ごとに調律されるため、どの2組もまったく同じ響きにはなりません。
 
-Equal divisions other than twelve are possible too. Dividing the octave into 19 or 31 equal steps gives purer thirds than dividing it into 12; the major third in 31-tone equal temperament is within 1 cent of 5:4. The Bohlen–Pierce scale goes further: it divides the ratio 3:1, rather than the octave, into 13 steps, and has no octave at all.
+Equal divisions other than twelve are possible too. Dividing the octave into [19](https://en.wikipedia.org/wiki/19_equal_temperament) or [31](https://en.wikipedia.org/wiki/31_equal_temperament) equal steps gives purer thirds than dividing it into 12; the major third in 31-tone equal temperament is within 1 cent of 5:4. The [Bohlen–Pierce scale](https://en.wikipedia.org/wiki/Bohlen%E2%80%93Pierce_scale) goes further: it divides the ratio 3:1, rather than the octave, into 13 steps, and has no octave at all.
 
-12以外の等分も可能です。1オクターブを19または31段階に等分すると、12等分より純正な3度が得られ、31等分の平均律における長3度は、5:4との差が1セント以内です。ボーレン＝ピアス音階はさらに進んで、オクターブではなく3:1の比を13段階に分け、オクターブをまったく持ちません。
+12以外の等分も可能です。1オクターブを[19](https://en.wikipedia.org/wiki/19_equal_temperament)または[31](https://en.wikipedia.org/wiki/31_equal_temperament)段階に等分すると、12等分より純正な3度が得られ、31等分の平均律における長3度は、5:4との差が1セント以内です。[ボーレン＝ピアス音階](https://en.wikipedia.org/wiki/Bohlen%E2%80%93Pierce_scale)はさらに進んで、オクターブではなく3:1の比を13段階に分け、オクターブをまったく持ちません。

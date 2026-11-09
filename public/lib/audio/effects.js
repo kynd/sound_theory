@@ -66,6 +66,28 @@ export const EFFECTS = [
         ],
     },
     {
+        // Fewer bits per sample: the grainy, crunchy sound of early samplers.
+        id: 'bitcrush', label: 'Bit crusher',
+        create: () => new Tone.BitCrusher({ bits: 8 }),
+        params: [
+            { key: 'bits', label: 'Bits', min: 2, max: 16, step: 1, value: 8,
+              apply: (node, v) => { node.bits.value = v; } },
+            MIX,
+        ],
+    },
+    {
+        // A slow pitch wobble, like worn tape or a warped record.
+        id: 'vibrato', label: 'Vibrato',
+        create: () => new Tone.Vibrato({ frequency: 0.6, depth: 0.1 }),
+        params: [
+            { key: 'rate', label: 'Rate', min: 0.1, max: 10, step: 0.1, value: 0.6,
+              apply: (node, v) => node.frequency.rampTo(v, 0.05) },
+            { key: 'depth', label: 'Depth', min: 0, max: 1, step: 0.01, value: 0.1,
+              apply: (node, v) => node.depth.rampTo(v, 0.05) },
+            MIX,
+        ],
+    },
+    {
         id: 'distortion', label: 'Distortion',
         create: () => new Tone.Distortion({ oversample: '4x' }),
         params: [

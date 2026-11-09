@@ -15,7 +15,7 @@ A dominant seventh that does not resolve down a fifth is often played with the L
 
 Choose an **Example** and press **Play**. **II7, scale** and **♭VII7, scale** hold each chord of Cmaj7–D7(♯11)–Dm7–G7–Cmaj7 and Cmaj7–Fm7–B♭7(♯11)–Cmaj7 while its scale runs up over it, and **Scale** names the scale. **II7, phrase** plays a line through the first progression: over D7 it falls from A through the ♯11, G♯, which leans up into A, the 5th of Dm7, the way the II7 of "Take the 'A' Train" pulls toward ii. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してみましょう。**II7, scale**と**♭VII7, scale**は、Cmaj7–D7(♯11)–Dm7–G7–Cmaj7とCmaj7–Fm7–B♭7(♯11)–Cmaj7のそれぞれの和音を鳴らしたまま、その上で音階を上らせ、**Scale**に音階の名前を表示します。**II7, phrase**は最初の進行の上で旋律を弾きます。D7の上ではAから♯11のG♯を通って下り、G♯がDm7の5度であるAへ寄りかかります。「A列車で行こう」のII7がiiへ引かれるのと同じです。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**II7, scale**と<strong>♭VII7, scale</strong>は、Cmaj7–D7(♯11)–Dm7–G7–Cmaj7とCmaj7–Fm7–B♭7(♯11)–Cmaj7のそれぞれの和音を鳴らしたまま、その上で音階を上らせ、**Scale**に音階の名前を表示します。**II7, phrase**は最初の進行の上で旋律を弾きます。D7の上ではAから♯11のG♯を通って下り、G♯がDm7の5度であるAへ寄りかかります。「A列車で行こう」のII7がiiへ引かれるのと同じです。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-chords&example=ii7-lydian-dominant,backdoor-lydian-dominant,ii7-phrase&key" title="Lydian dominant" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -46,7 +46,6 @@ Choose an **Example** and press **Play**. **Diminished, scales** plays Cmaj7–C
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-chords&example=diminished,diminished-phrase&key" title="Diminished chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 <aside>
-  <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
     <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>

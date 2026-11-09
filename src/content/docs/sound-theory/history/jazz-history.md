@@ -32,7 +32,7 @@ In the early 1940s, in late-night sessions in New York, Charlie Parker, Dizzy Gi
 
 The 1950s branched out. Cool jazz (Miles Davis's *Birth of the Cool*, Gerry Mulligan, Chet Baker) was lighter and more arranged. Hard bop (Art Blakey, Horace Silver, Clifford Brown) brought back the blues and gospel with bebop's language. And in 1959 Miles Davis's *Kind of Blue* turned to modal jazz, a few modes held for many bars in place of fast chord changes (see [Modal Jazz](/modal-jazz)). The same year John Coltrane recorded "Giant Steps", the opposite extreme, changing key every few beats (see [Coltrane Changes](/coltrane-changes)).
 
-1950年代には枝分かれが起こりました。クール・ジャズ（マイルス・デイヴィスの『クールの誕生』、ジェリー・マリガン、チェット・ベイカー）は、より軽く、より編曲されていました。ハード・バップ（アート・ブレイキー、ホレス・シルヴァー、クリフォード・ブラウン）は、ビバップの語法とともにブルースとゴスペルを呼び戻しました。そして1959年、マイルス・デイヴィスの『カインド・オブ・ブルー』は、速いコード進行の代わりに少数の旋法を長く保つモード・ジャズへ向かいました（[モード・ジャズ](/modal-jazz)を参照）。同じ年、ジョン・コルトレーンは、その逆の極、数拍ごとに調が変わる「ジャイアント・ステップス」を録音しました（[コルトレーン・チェンジ](/coltrane-changes)を参照）。
+1950年代には枝分かれが起こりました。クール・ジャズ（マイルス・デイヴィスの『クールの誕生』、ジェリー・マリガン、チェット・ベイカー）は、より軽く、より編曲されていました。ハード・バップ（アート・ブレイキー、ホレス・シルヴァー、クリフォード・ブラウン）は、ビバップの語法とともにブルースとゴスペルを呼び戻しました。そして1959年、マイルス・デイヴィスの『カインド・オブ・ブルー』は、速いコード進行の代わりに少数のモードを長く保つモード・ジャズへ向かいました（[モード・ジャズ](/modal-jazz)を参照）。同じ年、ジョン・コルトレーンは、その逆の極、数拍ごとに調が変わる「ジャイアント・ステップス」を録音しました（[コルトレーン・チェンジ](/coltrane-changes)を参照）。
 
 # Free Jazz, Fusion, and After
 # フリー・ジャズ、フュージョン、そのあと

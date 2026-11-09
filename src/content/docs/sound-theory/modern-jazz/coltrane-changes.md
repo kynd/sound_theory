@@ -55,7 +55,6 @@ Chords that change every two beats leave no time for long scale runs. Coltrane o
 2拍ごとに変わる和音では、長い音階を弾く時間がありません。コルトレーンはよく、それぞれの和音の上で、根音、2度、3度、5度という短い4音のパターンを8分音符で弾きました。デジタル・パターンと呼ばれることもあります。それぞれの和音を素早くはっきりと描くので、速く変わる調のめぐりが、弾きやすくわかりやすい形の連なりになり、どの調にも簡単に移せます。
 
 <aside>
-  <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
     <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>

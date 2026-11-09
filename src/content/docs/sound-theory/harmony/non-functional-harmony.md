@@ -7,11 +7,11 @@ Not all harmony is about tension pulling toward a tonic. Much music treats chord
 すべての和声が、トニックへ向かう緊張でできているわけではありません。多くの音楽は、和音を色や質感、あるいは旋律や体系から導かれるものとして扱い、[機能和声](/functional-harmony)の論理によらずに動かします。ここではその方法のいくつかを見ていきます。
 
 # Modes
-# 旋法
+# モード
 
 Modal music stays in one mode (see [Church Modes](/church-modes)) for a long time, over a single chord or a short vamp, and lets the color of the mode carry the music instead of the movement of chords. Modal jazz, such as Miles Davis's *Kind of Blue* (1959), stays on Dm for sixteen bars at a time. In the **Dorian vamp** example, Dm9 and G13 alternate; G13 is not a dominant here, since it never goes to C. It is the IV of D Dorian, and the B natural in it is what makes the mode Dorian.
 
-旋法的な音楽は、ひとつの旋法（[教会旋法](/church-modes)を参照）に、1つの和音や短い繰り返し（ヴァンプ）の上で長く留まり、和音の動きの代わりに旋法の色で音楽を運びます。マイルス・デイヴィスの『カインド・オブ・ブルー』（1959年）のようなモード・ジャズは、一度に16小節もDmに留まります。**Dorian vamp**の例では、Dm9とG13が交互に鳴ります。G13はここではドミナントではなく、Cへ進むことはありません。DドリアンのIVであり、その中のナチュラルのBが、この旋法をドリアンにしています。
+モード的な音楽は、ひとつのモード（[チャーチ・モード](/church-modes)を参照）に、1つの和音や短い繰り返し（ヴァンプ）の上で長く留まり、和音の動きの代わりにモードの色で音楽を運びます。マイルス・デイヴィスの『カインド・オブ・ブルー』（1959年）のようなモード・ジャズは、一度に16小節もDmに留まります。**Dorian vamp**の例では、Dm9とG13が交互に鳴ります。G13はここではドミナントではなく、Cへ進むことはありません。DドリアンのIVであり、その中のナチュラルのBが、このモードをドリアンにしています。
 
 **Quartal chords** are stacked fourths instead of thirds. They are neither major nor minor and sound open and ambiguous. The example uses the voicing heard in "So What" from that album: three fourths with a major third on top, moved as a block.
 

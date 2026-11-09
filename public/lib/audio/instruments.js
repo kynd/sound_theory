@@ -1,5 +1,13 @@
 import * as Tone from 'tone';
-import { midiToNote } from './AudioEngine.js';
+import { midiToNote, midiToFrequency } from './AudioEngine.js';
+
+/**
+ * What Tone is given for a MIDI note: its name for a whole number, its frequency for a
+ * fractional one (64.5 is a quarter tone above E4), so every instrument can play
+ * pitches between the keys. The same MIDI number always gives the same value, so a
+ * noteOff finds its noteOn.
+ */
+const pitch = midi => (Number.isInteger(midi) ? midiToNote(midi) : midiToFrequency(midi));
 
 /**
  * Sound sources behind one contract, so a demo can swap a sine wave for a piano or a
@@ -33,6 +41,13 @@ export class Instrument {
     /** Releases every sounding note. */
     releaseAll() {}
 
+    /**
+     * Bends the sounding note `midi` to `toMidi` (fractional for a quarter tone), from
+     * `time` over `seconds`. Only instruments that can glide a sounding note do it
+     * (BendSynth); the others ignore it and keep the note at its pitch.
+     */
+    bend(midi, toMidi, time = Tone.now(), seconds = 0.1) {}
+
     dispose() { this.output.dispose(); }
 }
 
@@ -51,8 +66,8 @@ export class PolyInstrument extends Instrument {
         this.synth.volume.value = volume;
     }
 
-    noteOn(midi, velocity = 0.8, time = Tone.now()) { this.synth.triggerAttack(midiToNote(midi), time, velocity); }
-    noteOff(midi, time = Tone.now()) { this.synth.triggerRelease(midiToNote(midi), time); }
+    noteOn(midi, velocity = 0.8, time = Tone.now()) { this.synth.triggerAttack(pitch(midi), time, velocity); }
+    noteOff(midi, time = Tone.now()) { this.synth.triggerRelease(pitch(midi), time); }
     releaseAll() { this.synth.releaseAll(); }
     dispose() { this.synth.dispose(); super.dispose(); }
 }
@@ -72,8 +87,40 @@ export class MalletSynth extends Instrument {
         this.synth.volume.value = volume;
     }
 
-    noteOn(midi, velocity = 0.8, time = Tone.now()) { this.synth.triggerAttackRelease(midiToNote(midi), 0.3, time, velocity); }
+    noteOn(midi, velocity = 0.8, time = Tone.now()) { this.synth.triggerAttackRelease(pitch(midi), 0.3, time, velocity); }
     releaseAll() { this.synth.releaseAll(); }
+    dispose() { this.synth.dispose(); super.dispose(); }
+}
+
+/**
+ * A monophonic synth whose sounding note can bend: one voice, so its pitch can glide
+ * after the note starts, as a guitarist bends a string. Samplers and the polyphonic
+ * synths cannot. A new note replaces the one sounding; a noteOff releases only the
+ * note that is sounding, so a late noteOff never cuts off the next note.
+ */
+export class BendSynth extends Instrument {
+    constructor(options = {}, { volume = 0 } = {}) {
+        super();
+        this.synth = new Tone.MonoSynth(options).connect(this.output);
+        this.synth.volume.value = volume;
+        this._midi = null;
+    }
+
+    noteOn(midi, velocity = 0.8, time = Tone.now()) {
+        this._midi = midi;
+        this.synth.triggerAttack(midiToFrequency(midi), time, velocity);
+    }
+    noteOff(midi, time = Tone.now()) {
+        if (midi === this._midi) this.synth.triggerRelease(time);
+    }
+    releaseAll() { this.synth.triggerRelease(); this._midi = null; }
+
+    bend(midi, toMidi, time = Tone.now(), seconds = 0.1) {
+        const frequency = this.synth.frequency;
+        frequency.setValueAtTime(midiToFrequency(midi), time);
+        frequency.exponentialRampToValueAtTime(midiToFrequency(toMidi), time + seconds);
+    }
+
     dispose() { this.synth.dispose(); super.dispose(); }
 }
 
@@ -103,10 +150,10 @@ export class SampledInstrument extends Instrument {
     }
 
     noteOn(midi, velocity = 0.8, time = Tone.now()) {
-        if (this.loaded) this.sampler.triggerAttack(midiToNote(midi), time, velocity);
+        if (this.loaded) this.sampler.triggerAttack(pitch(midi), time, velocity);
     }
     noteOff(midi, time = Tone.now()) {
-        if (this.loaded) this.sampler.triggerRelease(midiToNote(midi), time);
+        if (this.loaded) this.sampler.triggerRelease(pitch(midi), time);
     }
     releaseAll() { this.sampler.releaseAll(); }
     dispose() { this.sampler.dispose(); super.dispose(); }
@@ -524,6 +571,14 @@ export const INSTRUMENTS = [
         envelope: { attack: 0.005, decay: 0.3, sustain: 0.6, release: 0.15 },
         filterEnvelope: { attack: 0.005, decay: 0.2, sustain: 0.2, release: 0.2, baseFrequency: 100, octaves: 3 },
     }, { volume: -10 }) },
+    // One voice, so its notes can bend (BendSynth): a sawtooth through a low-pass
+    // filter that opens at the start of each note, like a lead guitar.
+    { id: 'synth-lead', label: 'Synth lead', group: 'Synths', create: () => new BendSynth({
+        oscillator: { type: 'sawtooth' },
+        filter: { type: 'lowpass', Q: 1 },
+        envelope: { attack: 0.005, decay: 0.4, sustain: 0.7, release: 0.25 },
+        filterEnvelope: { attack: 0.005, decay: 0.5, sustain: 0.5, release: 0.3, baseFrequency: 400, octaves: 3 },
+    }, { volume: -12 }) },
     { id: 'piano', label: 'Piano', group: 'Sampled', create: () =>
         new SampledInstrument(salamanderUrls(), SALAMANDER_BASE, { release: 1, volume: -2 }) },
     { id: 'violin',   label: 'Violin',   group: 'Sampled', create: () => tonejsInstrument('violin',   { release: 0.6, volume: -10 }) },

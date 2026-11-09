@@ -4,7 +4,7 @@ slug: non-western-music
 ---
 Most of this series follows the theory of Western music: twelve equal notes, major and minor keys, chords and their functions. That system is one tradition among many. Other musics organize pitch, time, and sound in different ways, and many of the ideas that seem modern in Western music, such as modes held over a drone, layered cycles of rhythm, and sound valued for its own color, are old and central elsewhere. This page touches a few of these traditions and how they reshaped Western music in the 20th century. It is only a glimpse; each tradition is a world of its own, and the line between "Western" and "non-Western" is itself a simplification, since music has always traveled.
 
-このシリーズの大部分は、西洋音楽の理論にしたがっています。12の等しい音、長調と短調、和音とその機能。この体系は、多くの伝統のひとつにすぎません。ほかの音楽は、音高、時間、音を別のやり方で組み立てます。西洋音楽では現代的に見える考え方の多く、たとえば保続音の上で保たれる旋法、重なり合うリズムの周期、音色そのものを大切にすることは、ほかの場所では古くからの中心的なものです。このページでは、そうした伝統のいくつかと、それらが20世紀の西洋音楽をどう変えたかに触れます。ほんの一端にすぎません。どの伝統もそれ自体がひとつの世界ですし、「西洋」と「非西洋」の境界そのものが単純化です。音楽はいつも旅をしてきたのですから。
+このシリーズの大部分は、西洋音楽の理論にしたがっています。12の等しい音、長調と短調、和音とその機能。この体系は、多くの伝統のひとつにすぎません。ほかの音楽は、音高、時間、音を別のやり方で組み立てます。西洋音楽では現代的に見える考え方の多く、たとえば保続音の上で保たれるモード、重なり合うリズムの周期、音色そのものを大切にすることは、ほかの場所では古くからの中心的なものです。このページでは、そうした伝統のいくつかと、それらが20世紀の西洋音楽をどう変えたかに触れます。ほんの一端にすぎません。どの伝統もそれ自体がひとつの世界ですし、「西洋」と「非西洋」の境界そのものが単純化です。音楽はいつも旅をしてきたのですから。
 
 The demos on this page approximate these musics in twelve-tone equal temperament, with the instruments of this series. The real tunings, instruments, ornaments, and the freedom of time are much of what makes them what they are, so please treat the demos as sketches and listen to real performances.
 
@@ -32,7 +32,7 @@ Indian music reached Western audiences widely in the 1960s, above all through th
 
 Arabic, Turkish, and Persian music are organized by modes called maqam (makam in Turkish, dastgah in Persian), each with its characteristic intervals and melodic paths. Many use intervals between a semitone and a whole tone, such as the neutral second, about three-quarters of a tone (see [Tuning Systems](/tuning-systems)), which a piano cannot play. Maqam Hijaz, with its augmented second between the second and third notes (D♭ to E over C), is one of the few that fit twelve-tone tuning closely, and its sound traveled far: through flamenco and klezmer, and into surf rock with Dick Dale's 1962 recording of "Misirlou", a Greek and Middle Eastern tune.
 
-アラブ、トルコ、ペルシャの音楽は、マカーム（トルコ語ではマカム、ペルシャ語ではダストガー）と呼ばれる旋法で組み立てられ、それぞれに特徴的な音程と旋律の道筋があります。多くは、半音と全音のあいだの音程、たとえばおよそ4分の3音の中立2度（[音律](/tuning-systems)を参照）を使い、ピアノでは弾けません。2番目と3番目の音のあいだに増2度（Cの上でD♭からE）を持つマカーム・ヒジャーズは、12音の音律にほぼ収まる数少ないもののひとつで、その響きは遠くまで旅をしました。フラメンコやクレズマーを通り、ギリシャと中東の曲をディック・デイルが1962年に録音した「ミザルー」で、サーフ・ロックにまで届いたのです。
+アラブ、トルコ、ペルシャの音楽は、マカーム（トルコ語ではマカム、ペルシャ語ではダストガー）と呼ばれるモードで組み立てられ、それぞれに特徴的な音程と旋律の道筋があります。多くは、半音と全音のあいだの音程、たとえばおよそ4分の3音の中立2度（[音律](/tuning-systems)を参照）を使い、ピアノでは弾けません。2番目と3番目の音のあいだに増2度（Cの上でD♭からE）を持つマカーム・ヒジャーズは、12音の音律にほぼ収まる数少ないもののひとつで、その響きは遠くまで旅をしました。フラメンコやクレズマーを通り、ギリシャと中東の曲をディック・デイルが1962年に録音した「ミザルー」で、サーフ・ロックにまで届いたのです。
 
 Press **Play** to hear a phrase in Hijaz on a nylon-string guitar over a low drone on C, leaning on the augmented second as it descends to the tonic. The demo plays in C; choose a **Key** to hear it in another key.
 
@@ -62,7 +62,7 @@ Claude Debussy heard a Javanese gamelan at the Paris Exposition of 1889, and its
 
 Much music of sub-Saharan Africa layers several rhythmic patterns of different lengths over a shared cycle, often in 12/8, so that three and two are heard at once (see [Polyrhythm](/polyrhythm)), and builds songs from call and response between a leader and a group. Carried to the Americas by enslaved people, these ideas met European harmony and instruments and became the foundation of much of the world's popular music: the blues and jazz (see [Blues](/blues)), Afro-Cuban son and rumba with the clave, Brazilian samba (see [Rhythm Patterns](/rhythm-patterns) and [Syncopation and Anticipation](/syncopation)), and from them rock, funk, reggae, and hip-hop. The influence keeps flowing both ways: Dizzy Gillespie brought the Cuban drummer Chano Pozo into bebop in 1947, Fela Kuti combined Yoruba music with jazz and funk into Afrobeat, and Steve Reich studied Ewe drumming in Ghana in 1970.
 
-サハラ以南のアフリカの多くの音楽は、長さの違ういくつかのリズムの型を、ひとつの共通の周期の上に、しばしば12/8で重ねるので、3と2が同時に聞こえます（[ポリリズム](/polyrhythm)を参照）。そして、リーダーと集団のコール・アンド・レスポンスから歌を組み立てます。奴隷にされた人々によってアメリカ大陸へ運ばれたこれらの考え方は、ヨーロッパの和声や楽器と出会い、世界のポピュラー音楽の多くの土台になりました。ブルースとジャズ（[ブルース](/blues)を参照）、クラーベを持つアフロ・キューバンのソンやルンバ、ブラジルのサンバ（[リズム・パターン](/rhythm-patterns)と[シンコペーションと先取り](/syncopation)を参照）、そしてそこからロック、ファンク、レゲエ、ヒップホップへ。影響は両方向に流れ続けています。ディジー・ガレスピーは1947年にキューバの打楽器奏者チャノ・ポソをビバップに迎え入れ、フェラ・クティはヨルバの音楽をジャズやファンクと結びつけてアフロビートにし、スティーヴ・ライヒは1970年にガーナでエウェの太鼓を学びました。
+サハラ以南のアフリカの多くの音楽は、長さの違ういくつかのリズムの型を、ひとつの共通の周期の上に、しばしば12/8で重ねるので、3と2が同時に聞こえます（[ポリリズム](/polyrhythm)を参照）。そして、リーダーと集団のコール・アンド・レスポンスから歌を組み立てます。奴隷にされた人々によってアメリカ大陸へ運ばれたこれらの考え方は、ヨーロッパの和声や楽器と出会い、世界のポピュラー音楽の多くの土台になりました。ブルースとジャズ（[ブルース](/blues)を参照）、クラーベを持つアフロ・キューバンのソンやルンバ、ブラジルのサンバ（[リズム・パターン](/rhythm-patterns)と[シンコペーションとアンティシペーション](/syncopation)を参照）、そしてそこからロック、ファンク、レゲエ、ヒップホップへ。影響は両方向に流れ続けています。ディジー・ガレスピーは1947年にキューバの打楽器奏者チャノ・ポソをビバップに迎え入れ、フェラ・クティはヨルバの音楽をジャズやファンクと結びつけてアフロビートにし、スティーヴ・ライヒは1970年にガーナでエウェの太鼓を学びました。
 
 # Japan
 # 日本
@@ -72,7 +72,6 @@ Japanese traditional music values ma (間), the charged space between sounds, an
 日本の伝統音楽は、間、つまり音と音のあいだの張りつめた空白と、音の中の色合いや雑音を大切にします。尺八の息、琵琶のさわり、雅楽のゆっくりとした大きな音高の揺れ。その音階には、2つの半音を含むペンタトニックである都節（陰）音階があります（[音階](/scales)を参照）。こうした考え方は、ジョン・ケージらを日本の美学や禅へと引き寄せ、武満徹は『ノヴェンバー・ステップス』（1967年）で、琵琶と尺八を、西洋の和声に合わせるのではなく、それぞれの音を保ったまま、オーケストラの中に迎え入れました。
 
 <aside>
-  <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
     <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>

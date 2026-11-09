@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { FEEL_PATTERNS, STYLE_PATTERNS, HAMMER, pulsePattern } from './rhythm.js';
+import { FEEL_PATTERNS, STYLE_PATTERNS, HAMMER, LOFI_BEAT, pulsePattern } from './rhythm.js';
 import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } from './scales.js';
 
 /**
@@ -380,7 +380,8 @@ function chords(beats, list) {
 
 /** A melody from `[note, beats]` pairs, note names with octaves (`'C5'`, `'Bb4'`, ASCII flats) or null for rests. */
 function melody(list) {
-    return list.map(([name, beats]) => ({ midi: name === null ? null : Tone.Frequency(name).toMidi(), beats }));
+    return list.map(([name, beats, options]) =>
+        ({ midi: name === null ? null : Tone.Frequency(name).toMidi(), beats, ...options }));
 }
 
 const C = 60;   // C4, for hand-voiced chords and bass ranges
@@ -866,6 +867,25 @@ export const BLUES_PROGRESSIONS = [
         // shuffled eighths (long, short).
         riff: [[0, 2 * third], [4, third], [7, 2 * third], [9, third], [10, 2 * third], [9, third], [7, 2 * third], [4, third]],
         chords: chords(4, TWELVE_BAR) },
+];
+
+/**
+ * A blues phrase over two bars of C7, struck once a bar as just its root and 7th, that
+ * uses both thirds, in shuffled eighths (long, short). E♭, the blue third, is marked
+ * (`mark`): first bent up a semitone to E, as a guitarist bends into the 3rd, then,
+ * after a run up the blues scale and back, bent a quarter tone sharp before the phrase
+ * lands on C. Played on the Synth lead, which can bend; no bass or drums.
+ */
+export const BLUE_NOTE_PROGRESSIONS = [
+    { id: 'blue-third', label: 'Blue third over C7', tempo: 100, loop: true,
+        // Only the root and the 7th (C3, B♭3), so the 3rd is the phrase's own.
+        chords: chords(4, [['C7', 'I7'], ['C7', 'I7']]).map(c => ({ ...c, notes: [48, 58] })),
+        melody: melody([
+            ['Eb4', 1, { mark: true, bend: 1, bendAt: 0.25, bendBeats: 0.15 }],
+            ['G4', 2 * third], ['Bb4', third],
+            ['C5', 2 * third], ['Bb4', third], ['G4', 2 * third], ['E4', third],
+            ['Eb4', 2 * third, { mark: true, bend: 0.5, bendAt: third, bendBeats: 0.15 }], ['C4', 1], [null, 2 + third],
+        ]) },
 ];
 
 export const JAZZ_BLUES_PROGRESSIONS = [
@@ -1745,16 +1765,40 @@ export const BAND_SOUNDS = { chords: 'piano', melody: 'am', bass: 'synth-bass', 
 
 const STYLE = id => STYLE_PATTERNS.find(p => p.id === id);
 const FEEL = id => FEEL_PATTERNS.find(p => p.id === id);
-const POP = [['C', 'I'], ['Am', 'vi'], ['F', 'IV'], ['G', 'V']];
+/**
+ * A gospel-style I–I7–IV–iv in C for the backings, hand-voiced: a walking bass (C, E,
+ * F, F) under four close notes with ninths, one or two of them moving a half step at
+ * each change (B to B♭ into C9, B♭ to A and D to C into Fmaj9, E to E♭ and A to A♭
+ * into the minor iv, Fm9, the gospel "amen" color).
+ */
+const GOSPEL = [
+    { symbol: 'Cmaj9',  roman: 'Imaj9',   notes: [36, 52, 55, 59, 62] },
+    { symbol: 'C9/E',   roman: 'I9',      notes: [40, 52, 55, 58, 62] },
+    { symbol: 'Fmaj9',  roman: 'IVmaj9',  notes: [41, 52, 55, 57, 60] },
+    { symbol: 'Fm9',    roman: 'iv9',     notes: [41, 51, 55, 56, 60] },
+].map(chord => ({ ...chord, beats: 4 }));
+/**
+ * Settings for the progression demo's effect chain (bit crusher, filter, vibrato) that
+ * make a backing sound lo-fi: a little bit-crushed grit, the highs rolled off, and a
+ * slow tape wobble.
+ */
+const LOFI_EFFECTS = {
+    bitcrush: { bits: 6, mix: 0.25 },
+    filter: { cutoff: 2800, resonance: 0.7 },
+    vibrato: { rate: 0.5, depth: 0.12, mix: 1 },
+};
+const LOFI = { tempo: 80, drums: LOFI_BEAT, effects: LOFI_EFFECTS };
 
 /**
  * A notes-and-beats melody where an `!` before the note name accents it (the syncopated
  * notes): accented notes play louder than the rest.
  */
+// A name starting with '!' is a moved note (syncopated or anticipated): accented, and
+// marked (`mark`) so the piano roll draws it in its own color.
 const accented = list => list.map(([name, beats]) => {
     const accent = name?.startsWith('!');
     const midi = name === null ? null : Tone.Frequency(accent ? name.slice(1) : name).toMidi();
-    return { midi, beats, velocity: accent ? 0.95 : 0.65 };
+    return { midi, beats, velocity: accent ? 0.95 : 0.65, ...(accent ? { mark: true } : {}) };
 });
 
 /**
@@ -1770,45 +1814,147 @@ const accented = list => list.map(([name, beats]) => {
  */
 const BOSSA_RIFF = [[0, 1.5], [7, 0.5], [7, 2]];
 const BOSSA_COMP = [['upper', 1.5], ['upper', 1.5], ['upper', 2], ['upper', 1.5], ['upper', 1.5]];
-/** A chord that starts half a beat early: one short stroke, then the usual pattern from the bar line. */
-const anticipated = (chord, beats) => ({ ...chord, beats,
-    comp: [['upper', 0.5], ...BOSSA_COMP], riff: [[0, 0.5], ...BOSSA_RIFF, ...BOSSA_RIFF] });
+/**
+ * A chord that starts half a beat early: one short stroke (and its bass note) on the
+ * "and" of 4, then the usual pattern from the bar line. `comp` and `riff` are the
+ * style's patterns, the riff repeated `repeats` times to fill the chord.
+ */
+const earlyChord = (chord, beats, comp, riff, repeats) => ({ ...chord, beats,
+    comp: [['upper', 0.5], ...comp], riff: [[0, 0.5], ...Array(repeats).fill(riff).flat()] });
+// The bossa nova's two-bar guitar pattern, split for chords a bar long: the first bar
+// (three strokes) and the second (two, after a beat's rest).
+const BOSSA_BAR_1 = [['upper', 1.5], ['upper', 1.5], ['upper', 1]];
+const BOSSA_BAR_2 = [[null, 1], ['upper', 1.5], ['upper', 1.5]];
+const SAMBA_RIFF = [[0, 0.75], [0, 0.25], [-5, 1]];
+const SAMBA_COMP = [['upper', 0.75], ['upper', 0.75], ['upper', 0.75], ['upper', 0.5], ['upper', 0.75], ['upper', 0.5]];
+/**
+ * The first eight bars of the chorus of "Honeysuckle Rose" (Thomas "Fats" Waller,
+ * 1929; public domain in the US since 2025), in F, from the 1929 Santly Bros. sheet
+ * music. The sheet writes uneven eighths as a dotted eighth and a sixteenth; they are
+ * played swung (two thirds and one third of a beat). The harmony is simplified from
+ * the piano part, the ii–V vamp then the tonic, and voiced the way a jazz pianist might:
+ * a low root and three notes below the melody, with tensions and without the 5th
+ * (Gm9: F, A, B♭; C13: E, A, B♭; F6/9: D, G, A), so only one note moves between Gm9
+ * and C13. The last bar is a turnaround, Am11–D7(♭9), back to Gm9 as it loops. A click
+ * on every beat keeps time.
+ *
+ * As written, every long note lands on a beat. The other versions move the long notes
+ * ("bee," "jealousy," "me," "knows," "Rose"), accented and marked:
+ *   - syncopated: each comes in late, after a short rest on its beat, on the swung
+ *     "and" (the last third of the beat), and is held across the next beat;
+ *   - anticipated: each comes early, on the swung "and" before its beat (before beat 3
+ *     in the middle of a bar, before the bar line at the start of one), and is held
+ *     into it; the pickup notes before it tighten into triplets;
+ *   - pushed: the same, with the chord changes at the bar lines early too.
+ */
+const HONEYSUCKLE_VOICINGS = {
+    Gm9:    { symbol: 'Gm9',   roman: 'ii9',  notes: [43, 53, 57, 58] },
+    C13:    { symbol: 'C13',   roman: 'V13',  notes: [36, 52, 57, 58] },
+    'F6/9': { symbol: 'F6/9',  roman: 'I6/9', notes: [41, 50, 55, 57] },
+    // The last bar turns back to Gm9: Am11 without its 5th (E), which would rub against
+    // the melody's held F, then D7(♭9), whose E♭ and C step down to Gm9's D and B♭.
+    Am11:      { symbol: 'Am11',    roman: 'iii11',       notes: [45, 55, 60, 62] },
+    'D7(♭9)':  { symbol: 'D7(♭9)', roman: 'V7(♭9)/ii', notes: [38, 54, 60, 63] },
+};
+const vamp = (beats, names) => names.map(name => ({ ...HONEYSUCKLE_VOICINGS[name], beats }));
+const HONEYSUCKLE_CHORDS = [
+    ...vamp(2, ['Gm9', 'C13', 'Gm9', 'C13', 'Gm9', 'C13', 'Gm9', 'C13']),
+    ...vamp(4, ['F6/9']),
+    ...vamp(2, ['Gm9', 'C13']),
+    ...vamp(4, ['F6/9']),
+    ...vamp(2, ['Am11', 'D7(♭9)']),
+];
+// Each chord that starts on a bar line comes a swung eighth early.
+const pushBarLines = list => {
+    let at = 0;
+    const starts = list.map(c => { const s = at; at += c.beats; return s; });
+    return list.map((chord, i) => {
+        const early = i > 0 && starts[i] % 4 === 0 ? third : 0;
+        const late = i + 1 < list.length && starts[i + 1] % 4 === 0 ? third : 0;
+        return { ...chord, beats: chord.beats + early - late };
+    });
+};
+const riff = (long, { tight = false } = {}) => [
+    ['C5', 2 * third], ['Bb4', third], ...(tight ? [['D4', third], ['F4', third], [`!${long}`, 2 + third]]
+        : [['D4', 2 * third], ['F4', third], [long, 2]]),
+];
+const HONEYSUCKLE_WRITTEN = accented([
+    ...riff('A4'), ...riff('A4'),
+    ['C5', 2 * third], ['Bb4', third], ['D4', 2 * third], ['F4', third], ['A4', 1], ['A4', 1],
+    ['A4', 2], ['A4', 2 * third], ['G4', third], ['F4', 2 * third], ['D4', third],
+    ['F4', 1], ['F4', 1], ['F4', 4], ['A4', 2 * third], ['G4', third], ['F4', 2 * third], ['D4', third],
+    ['F4', 5], [null, 3],
+]);
+const HONEYSUCKLE_SYNCOPATED = accented([
+    ['C5', 2 * third], ['Bb4', third], ['D4', 2 * third], ['F4', third], [null, 2 * third], ['!A4', 1 + third],
+    ['C5', 2 * third], ['Bb4', third], ['D4', 2 * third], ['F4', third], [null, 2 * third], ['!A4', 1 + third],
+    ['C5', 2 * third], ['Bb4', third], ['D4', 2 * third], ['F4', third], ['A4', 1], ['A4', 1],
+    [null, 2 * third], ['!A4', 1 + third], ['A4', 2 * third], ['G4', third], ['F4', 2 * third], ['D4', third],
+    ['F4', 1], ['F4', 1], [null, 2 * third], ['!F4', 3 + third], ['A4', 2 * third], ['G4', third], ['F4', 2 * third], ['D4', third],
+    [null, 2 * third], ['!F4', 4 + third], [null, 3],
+]);
+// Syncopated 2: every two-beat stretch with notes starts a triplet late. Of its six
+// triplet slots, the first is a rest, the first note takes the next two, and the quick
+// notes after it one slot each, so the figure starts on a weak slot with the beat left
+// empty. Over Gm9 in bars 1–3 the riff becomes a rest, C, B♭, F, and G, a step up into
+// "bee" (A), which stays on beat 3. Notes held longer keep their length, less the rest.
+// Over F6/9 only the first note ("good-," "Rose") comes a triplet late; bars 4 and 6
+// ("me, I don't blame them," "knows" and the figure into "Rose") stay as written.
+const delayedRiff = [[null, third], ['!C5', 2 * third], ['Bb4', third], ['F4', third], ['G4', third]];
+const HONEYSUCKLE_SYNCOPATED_2 = accented([
+    ...delayedRiff, ['A4', 2],
+    ...delayedRiff, ['A4', 2],
+    ...delayedRiff, ['A4', 1], ['A4', 1],
+    ['A4', 2], ['A4', 2 * third], ['G4', third], ['F4', 2 * third], ['D4', third],
+    [null, third], ['!F4', 2 * third], ['F4', 1], ['F4', 4], ['A4', 2 * third], ['G4', third], ['F4', 2 * third], ['D4', third],
+    [null, third], ['!F4', 4 + 2 * third], [null, 3],
+]);
+const HONEYSUCKLE_ANTICIPATED = accented([
+    ...riff('A4', { tight: true }), ...riff('A4', { tight: true }),
+    ['C5', 2 * third], ['Bb4', third], ['D4', 2 * third], ['F4', third], ['A4', 1], ['A4', 2 * third],
+    ['!A4', 2 + third], ['A4', 2 * third], ['G4', third], ['F4', 2 * third], ['D4', third],
+    ['F4', 1], ['F4', 2 * third], ['!F4', 4 + third], ['A4', 2 * third], ['G4', third], ['F4', third], ['D4', third],
+    ['!F4', 5 + third], [null, 3],
+]);
+const HONEYSUCKLE = { key: 'F', tempo: 120, bar: 4, drums: pulsePattern(4), chords: HONEYSUCKLE_CHORDS };
+
 export const SYNCOPATION_PROGRESSIONS = [
-    { id: 'on-beat', label: 'On the beat', drums: FEEL('eighths'),
-        chords: chords(4, POP),
-        melody: accented([['E5', 1], ['G5', 1], ['A5', 1], ['G5', 1], ['E5', 1], ['D5', 1], ['C5', 2],
-            ['F5', 1], ['A5', 1], ['G5', 1], ['F5', 1], ['E5', 1], ['D5', 1], ['G4', 2]]) },
-    { id: 'syncopated', label: 'Syncopated', drums: FEEL('eighths'),
-        chords: chords(4, POP),
-        melody: accented([['E5', 1], ['G5', 0.5], ['!A5', 1.5], ['G5', 1], ['E5', 0.5], ['!D5', 1], ['!C5', 2.5],
-            ['F5', 1], ['A5', 0.5], ['!G5', 1], ['!F5', 1.5], ['E5', 0.5], ['!D5', 1], ['!G4', 2.5]]) },
-    { id: 'anticipated', label: 'Anticipated', drums: FEEL('eighths'),
-        chords: chords(4, POP),
-        melody: accented([['E5', 1], ['G5', 1], ['A5', 1], ['G5', 0.5], ['!E5', 1.5], ['D5', 1], ['C5', 1.5],
-            ['!F5', 1.5], ['A5', 1], ['G5', 1], ['F5', 0.5], ['!E5', 1.5], ['D5', 1], ['G4', 2]]) },
-    { id: 'pushed', label: 'Anticipated, chords too', drums: FEEL('eighths'),
-        chords: chords(4, POP).map((chord, i) => ({ ...chord, beats: i === 0 ? 3.5 : i === 3 ? 4.5 : 4 })),
-        melody: accented([['E5', 1], ['G5', 1], ['A5', 1], ['G5', 0.5], ['!E5', 1.5], ['D5', 1], ['C5', 1.5],
-            ['!F5', 1.5], ['A5', 1], ['G5', 1], ['F5', 0.5], ['!E5', 1.5], ['D5', 1], ['G4', 2]]) },
-    { id: 'comp-on-beat', label: 'Chords on the beat', drums: FEEL('eighths'),
-        comp: [['all', 1]], chords: chords(4, POP) },
-    { id: 'comp-charleston', label: 'Charleston', drums: FEEL('eighths'),
-        comp: [['all', 1.5], ['all', 2.5]], chords: chords(4, POP) },
-    { id: 'comp-pushed', label: 'Pushed', drums: FEEL('eighths'),
-        comp: [['all', 3.5], ['all', 0.5]], chords: chords(4, POP).map((chord, i) => ({ ...chord, beats: i === 0 ? 3.5 : i === 3 ? 4.5 : 4 })) },
-    // The changes into G13 and Cmaj9 come half a beat early, on the "and" of 4 at the
-    // end of bars 2 and 4: the chord before is cut short, and the anticipated chord
-    // starts with a short stroke (and bass note) before falling back into the pattern.
-    { id: 'bossa-nova', label: 'Bossa nova', tempo: 130, drums: FEEL('bossa-nova'),
-        sounds: { chords: 'guitar-nylon', bass: 'bass' },
+    { id: 'honeysuckle-written', label: 'As written', ...HONEYSUCKLE, melody: HONEYSUCKLE_WRITTEN },
+    { id: 'honeysuckle-syncopated', label: 'Syncopated', ...HONEYSUCKLE, melody: HONEYSUCKLE_SYNCOPATED },
+    { id: 'honeysuckle-syncopated-2', label: 'Syncopated 2', ...HONEYSUCKLE, melody: HONEYSUCKLE_SYNCOPATED_2 },
+    { id: 'honeysuckle-anticipated', label: 'Anticipated', ...HONEYSUCKLE, melody: HONEYSUCKLE_ANTICIPATED },
+    { id: 'honeysuckle-pushed', label: 'Anticipated, chords too', ...HONEYSUCKLE, melody: HONEYSUCKLE_ANTICIPATED,
+        chords: pushBarLines(HONEYSUCKLE_CHORDS) },
+    { id: 'comp-on-beat', label: 'Chords on the beat', ...LOFI,
+        comp: [['all', 1]], chords: GOSPEL },
+    { id: 'comp-charleston', label: 'Charleston', ...LOFI,
+        comp: [['all', 1.5], ['all', 2.5]], chords: GOSPEL },
+    { id: 'comp-pushed', label: 'Pushed', ...LOFI,
+        comp: [['all', 3.5], ['all', 0.5]], chords: GOSPEL.map((chord, i) => ({ ...chord, beats: i === 0 ? 3.5 : i === 3 ? 4.5 : 4 })) },
+    // A common bossa nova progression in F, a bar or two to each chord. The changes into
+    // G9 and Gm9 come half a beat early, on the "and" of 4 at the end of bars 2 and 4:
+    // the chord before is cut short, and the anticipated chord starts with a short
+    // stroke (and bass note) before falling back into the pattern.
+    { id: 'bossa-nova', label: 'Bossa nova', key: 'F', tempo: 130, bar: 4, drums: FEEL('bossa-nova'),
+        sounds: BAND_SOUNDS,
         riff: BOSSA_RIFF, comp: BOSSA_COMP,
-        chords: chords(8, [['Dm9', 'ii9'], ['G13', 'V13'], ['Cmaj9', 'Imaj9'], ['A7(♭9)', 'VI7(♭9)']])
-            .map((chord, i) => [{ ...chord, beats: 7.5 }, anticipated(chord, 8), anticipated(chord, 8.5), chord][i]) },
-    { id: 'samba', label: 'Samba', tempo: 100, drums: STYLE('samba'),
-        sounds: { chords: 'guitar-nylon', bass: 'bass' },
-        riff: [[0, 0.75], [0, 0.25], [-5, 1]],
-        comp: [['upper', 0.75], ['upper', 0.75], ['upper', 0.75], ['upper', 0.5], ['upper', 0.75], ['upper', 0.5]],
-        chords: chords(4, [['C6', 'I6'], ['A7', 'VI7'], ['Dm7', 'ii7'], ['G7', 'V7']]) },
+        chords: [
+            { ...chords(8, [['F6', 'I6']])[0], beats: 7.5 },
+            earlyChord(chords(8, [['G9', 'II9']])[0], 8, BOSSA_COMP, BOSSA_RIFF, 2),
+            earlyChord(chords(4, [['Gm9', 'ii9']])[0], 4.5, BOSSA_BAR_1, BOSSA_RIFF, 1),
+            { ...chords(4, [['C7alt', 'V7alt']])[0], comp: BOSSA_BAR_2 },
+            { ...chords(4, [['F6', 'I6']])[0], comp: BOSSA_BAR_1 },
+            { ...chords(4, [['C7alt', 'V7alt']])[0], comp: BOSSA_BAR_2 },
+        ] },
+    // A common samba progression in A: two bars of A6, two of Am9. The change into Am9
+    // comes half a beat early, on the guitar's stroke on the "and" of 4 at the end of bar 2.
+    { id: 'samba', label: 'Samba', key: 'A', tempo: 100, bar: 4, drums: STYLE('samba'),
+        sounds: BAND_SOUNDS,
+        riff: SAMBA_RIFF, comp: SAMBA_COMP,
+        chords: [
+            { ...chords(8, [['A6', 'I6']])[0], beats: 7.5 },
+            earlyChord(chords(8, [['Am9', 'i9']])[0], 8.5, [...SAMBA_COMP, ...SAMBA_COMP], SAMBA_RIFF, 4),
+        ] },
 ].map(p => ({ tempo: 100, loop: true, ...p }));
 
 // ── Rhythm patterns ──
@@ -2318,6 +2464,7 @@ export const PROGRESSION_SETS = {
     styles: STYLE_PROGRESSIONS,
     blues: BLUES_PROGRESSIONS.map(p => ({ ...p, sounds: { chords: 'piano', melody: 'piano', bass: 'bass' } })),
     'jazz-blues': JAZZ_BLUES_PROGRESSIONS,
+    'blue-notes': BLUE_NOTE_PROGRESSIONS.map(p => ({ ...p, sounds: { chords: 'piano', melody: 'synth-lead' } })),
     waltz: WALTZ_PROGRESSIONS,
     common: COMMON_PROGRESSIONS,
 };
@@ -2481,8 +2628,11 @@ export class ProgressionPlayer {
             // A note may set its own loudness (`velocity`) and the share of its length it
             // sounds for (`gate`: 1 is legato, small is staccato).
             if (note.midi !== null) {
+                // A note may also bend (`bend` semitones, fractional for a quarter tone), starting
+                // `bendAt` beats in and taking `bendBeats`, on an instrument that can (BendSynth).
+                const bend = note.bend ? { to: note.midi + note.bend, at: note.bendAt ?? 0, beats: note.bendBeats ?? 1 / 3 } : null;
                 events.push({ at, beats: note.beats * (note.gate ?? 1), notes: [note.midi], velocity: note.velocity ?? 0.8,
-                    instrument: this.melodyInstrument, kind: 'melody', index: i });
+                    instrument: this.melodyInstrument, kind: 'melody', index: i, bend });
             }
             at += note.beats;
         });
@@ -2536,6 +2686,7 @@ export class ProgressionPlayer {
             const off = time + event.beats * beat * 0.95;
             for (const midi of event.notes) {
                 event.instrument.noteOn(midi, event.velocity, time);
+                if (event.bend) event.instrument.bend(midi, event.bend.to, time + event.bend.at * beat, event.bend.beats * beat);
                 event.instrument.noteOff(midi, off);
                 this._sounding.add({ instrument: event.instrument, midi, off });
             }

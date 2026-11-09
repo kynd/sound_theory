@@ -16,11 +16,11 @@
  * Loaded once by the page layout; it does nothing on pages without demos.
  */
 
-// Best first: H.264 + AAC in MP4, then plain MP4, then WebM as a fallback. avc3 comes
-// before avc1 because it allows the frame size to change mid-recording; with avc1 a
-// size change can freeze or corrupt the rest of the video.
+// Best first: H.264 + AAC in MP4, then plain MP4, then WebM as a fallback. avc1, not
+// avc3: QuickTime cannot decode avc3 files. With avc1 the frame size must not change
+// during a recording (tab capture's does, which garbled the video after the change),
+// one more reason the video is composed at a fixed size.
 const MIME_TYPES = [
-    'video/mp4;codecs=avc3.640028,mp4a.40.2',
     'video/mp4;codecs=avc1.640028,mp4a.40.2',
     'video/mp4;codecs=avc1,mp4a',
     'video/mp4',
@@ -59,7 +59,13 @@ class FrameComposer {
         this.canvas.height = 2 * Math.round(iframe.clientHeight * this.scale / 2);
         this.ctx = this.canvas.getContext('2d');
         this.video = Object.assign(document.createElement('video'), { muted: true, playsInline: true, srcObject: stream });
-        this.ready = this.video.play().catch(() => {});
+        // Ready once the captured video has its first frame, so the recording does not
+        // open on the background alone.
+        this.ready = this.video.play().catch(() => {})
+            .then(() => new Promise(resolve => {
+                const check = () => (this.video.videoWidth ? resolve() : setTimeout(check, 20));
+                check();
+            }));
         this.stream = this.canvas.captureStream(60);
 
         this.pointer = null;   // { x, y } in the iframe's CSS pixels, or null when outside

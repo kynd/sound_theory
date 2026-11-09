@@ -19,6 +19,16 @@ export const INTERVALS = [
     { id: 'minor-sixth', label: 'Minor sixth', ratio: [8, 5], semitones: 8 },
 ];
 
+/**
+ * Whole-number frequency ratios from the unison to the octave, smallest first, each
+ * [p, q] with upper / lower = p / q: the named intervals above and a few more
+ * (16:15, 9:8, 7:5, 7:4, 15:8).
+ */
+export const SIMPLE_RATIOS = [
+    [1, 1], [16, 15], [9, 8], [6, 5], [5, 4], [4, 3], [7, 5],
+    [3, 2], [8, 5], [5, 3], [7, 4], [15, 8], [2, 1],
+];
+
 /** The frequency factor of an interval, `'pure'` (its ratio) or `'equal'` (2^(semitones/12)). */
 export function intervalFactor(interval, system) {
     const [p, q] = interval.ratio;

@@ -47,6 +47,7 @@ export const SCALES = [
     { id: 'major',           label: 'Major',           notes: ['C', 'D', 'E', 'F', 'G', 'A', 'B'] },
     { id: 'minor',           label: 'Minor',           notes: ['C', 'D', 'E♭', 'F', 'G', 'A♭', 'B♭'] },
     { id: 'in',              label: 'In',              notes: ['C', 'D♭', 'F', 'G', 'A♭'] },
+    { id: 'yo',              label: 'Yo',              notes: ['C', 'D', 'F', 'G', 'A'] },
     { id: 'ryukyu',          label: 'Ryukyu',          notes: ['C', 'E', 'F', 'G', 'B'] },
     { id: 'hijaz',           label: 'Hijaz',           notes: ['C', 'D♭', 'E', 'F', 'G', 'A♭', 'B♭'] },
     { id: 'hungarian-minor', label: 'Hungarian minor', notes: ['C', 'D', 'E♭', 'F♯', 'G', 'A♭', 'B'] },
@@ -110,6 +111,12 @@ const LYDIAN_7TH_ON_G_FLAT = {
     notes: ['G♭', 'A♭', 'B♭', 'C', 'D♭', 'E♭', 'F♭'],
 };
 
+/** D♭ melodic minor (ascending, used both ways as in jazz): the altered scale on C is its 7th mode, the Lydian 7th on G♭ its 4th. */
+const MELODIC_MINOR_ON_D_FLAT = {
+    id: 'melodic-minor-d-flat', label: 'Melodic minor', root: 'D♭',
+    notes: ['D♭', 'E♭', 'F♭', 'G♭', 'A♭', 'B♭', 'C'],
+};
+
 /**
  * The four diatonic tetrachords, four notes spanning a perfect fourth, written from C
  * (the lower one) and from G (the upper one): major (W W H), minor (W H W), Phrygian
@@ -120,6 +127,19 @@ export const TETRACHORDS = [
     { id: 'minor',    label: 'Minor',    lower: ['C', 'D', 'E♭', 'F'],  upper: ['G', 'A', 'B♭', 'C'] },
     { id: 'phrygian', label: 'Phrygian', lower: ['C', 'D♭', 'E♭', 'F'], upper: ['G', 'A♭', 'B♭', 'C'] },
     { id: 'harmonic', label: 'Harmonic', lower: ['C', 'D♭', 'E', 'F'],  upper: ['G', 'A♭', 'B', 'C'] },
+];
+
+/**
+ * The three genera of ancient Greek theory: a tetrachord whose outer notes are fixed a
+ * perfect fourth apart and whose two inner notes move. `cents` gives the four notes
+ * from the bottom, in cents above the lowest (0 and 500 are the fixed notes). The
+ * enharmonic genus divides a semitone into two quarter tones, between the keys of
+ * twelve-tone equal temperament.
+ */
+export const GENERA = [
+    { id: 'diatonic',   label: 'Diatonic',   cents: [0, 100, 300, 500] },
+    { id: 'chromatic',  label: 'Chromatic',  cents: [0, 100, 200, 500] },
+    { id: 'enharmonic', label: 'Enharmonic', cents: [0, 50, 100, 500] },
 ];
 
 /** Names of the scales two tetrachords make, by `lower-upper` id; others have no common name. */
@@ -153,7 +173,7 @@ export const SCALE_SETS = {
     other: OTHER_SCALES,
     pentatonic: other('major-pentatonic', 'minor-pentatonic'),
     diminished: other('diminished-half-whole', 'diminished-whole-half'),
-    'altered-lydian': [...other('altered'), LYDIAN_7TH_ON_G_FLAT],
+    'altered-lydian': [...other('altered'), LYDIAN_7TH_ON_G_FLAT, MELODIC_MINOR_ON_D_FLAT],
 };
 
 /** Finds a scale by its id in any set, or undefined. */

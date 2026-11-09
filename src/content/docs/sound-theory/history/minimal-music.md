@@ -41,7 +41,6 @@ The techniques spread widely. Brian Eno's ambient records, beginning with *Music
 その手法は広く広がりました。ブライアン・イーノのアンビエントのレコードは、『ミュージック・フォー・エアポーツ』（1978年）に始まり、長さの違うテープ・ループを使い、二度と同じようにそろわないようにしました。ジョン・アダムズやアルヴォ・ペルトのような作曲家は、反復と単純な和声をそれぞれの方向へ進めました。テクノやハウスは、小さな追加と削除で変わっていく繰り返しのパターンから、加算的プロセスのようにトラックを組み立て、映画音楽の作曲家は、ミニマリズムの拍を使って緊張と推進力をつくります。
 
 <aside>
-  <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
     <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>

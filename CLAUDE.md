@@ -25,11 +25,15 @@ Keep everything mergeable by copying, with no rewriting:
   that loads `public/lib/page/demoRecorder.js`. Add every new page to
   `SOUND_THEORY_ORDER`.
 - Pages are grouped into categories, one folder each under `sound-theory/`, with an
-  `index.md` that introduces the category and lists its pages. A new page goes in
-  its category's folder, its category index, the series index, and
-  `SOUND_THEORY_ORDER`. Slugs stay short and flat (`/syncopation`), whatever the folder.
-- `astro.config.mjs` adds one remark plugin, `remarkExternalLinksNewTab`, to be carried
-  over: links to other sites (http/https) on sound-theory pages open in a new tab.
+  `index.md` that introduces the category and then lists its pages as plain bullets of
+  full titles (`-   [Sound Waves 音の波](/sound-waves)`), with no descriptions. The series
+  index lists every category the same way, its pages nested under it, then
+  `sound-sources` last (the style of writing's own section pages). A new page goes in its
+  category's folder, both lists, and `SOUND_THEORY_ORDER`. Slugs stay short and flat
+  (`/syncopation`), whatever the folder.
+- `astro.config.mjs` adds two plugins, to be carried over: `remarkExternalLinksNewTab`
+  and `rehypeExternalRawLinks`. Links to other sites (http/https) open in a new tab on
+  every page, markdown links and raw HTML `<a>` (asides, bookmark cards) alike.
 - Demos, the audio library, and their styles live under `public/demos/`,
   `public/lib/`, and `public/styles/`, which writing does not use.
 
@@ -43,9 +47,19 @@ Follow `documentation.md`. In short:
 - In Japanese, avoid 「各」: write 「それぞれの〜」 (or rephrase: 「どの〜も」, 「〜ごと」)
   instead of 「各和音」, 「各小節」, and so on. This also covers set words like 「世界各地」
   (「世界中」).
+- In Japanese, count with Arabic numerals: 「1つ」「2つ」「1個」「1人」「1組」「3回」, not
+  「一つ」「一人」. Words that only contain a numeral keep their kanji: 一般, 一部, 一緒, 唯一,
+  一定, 三和音, 五音音階, 十二音, and set phrases (一つひとつ, 一段, 一度に, もう一度, 二度と).
+  「一度」 for "once" stays in kanji too, since 「1度」 is the interval.
+  Hiragana 「ひとつ」 (ひとつの主音) stays as it is.
+- In Japanese, a mode is 「モード」, never 「旋法」: 「チャーチ・モード」, 「ドリアン・モード」,
+  「モード的」. The Church Modes intro alone gives 教会旋法 as the other name.
 - In Japanese demo instructions, invite rather than instruct: 「〜てみましょう」, not
   「〜てください」 or 「〜てみてください」 (「**Play**を押してみましょう」). Cross-references
   keep 「〜を参照してください」.
+- Bold in Japanese: `**` does not close after full-width punctuation followed by text
+  (`**長調（メジャー）**の` breaks), nor open after text followed by a symbol (`と**♭VII7**`).
+  Keep the punctuation outside the bold (`**長調**（メジャー）の`), or use `<strong>`.
 - Lists: all English items, then the Japanese intro and all Japanese items. Do not
   interleave.
 - Block math goes between `$$` lines of their own. `$$…$$` on one line renders inline,
@@ -83,7 +97,7 @@ Follow `documentation.md`. In short:
   `colors.js`, `Keyboard.js`, `Scope.js`, `PartialsView.js`, `BeatView.js`,
   `FifthsRing.js`, `ScaleView.js`, `CycleView.js`, `PulseView.js`, `StepGrid.js`,
   `ProgressionView.js`, `ChordChart.js`, `XYPad.js`, `DrawPad.js`, `SampleView.js`,
-  `PaintGrid.js`, `EnvelopeView.js`.
+  `PaintGrid.js`, `EnvelopeView.js`, `TetrachordView.js`.
 - Every structural change updates `docs/audio-library.md` in the same change. When a
   group of classes shares behavior, write it once as a "common" section.
 - Demo chrome comes from the `dp-*` classes in `public/styles/demo-ui.css`. A new
@@ -159,7 +173,9 @@ canvas alike.
   as a line.
 - **No borders or rules:** separate areas with space and a change of fill. `.dp-divider`
   is space only. No grid lines on plots. The one exception is music notation: a staff's
-  five lines and ledger lines are drawn, thin and black, because they are the notation.
+  five lines and ledger lines are drawn, thin and black, because they are the notation. Bar lines in a piano roll are the other
+  exception (a progression's `bar`): thin, and pale (ink at 15% opacity), so a note held
+  across one shows it.
 - **No unnecessary boxes:** no nested containers, visual or structural. Nothing gets
   its own card or panel inside the panel, plots sit directly on the paper, a lone
   button is not wrapped in a row, a title is not wrapped in a header div, and mount
@@ -208,9 +224,9 @@ color literal in a demo.
 src/content/docs/
   index.md                       root (local only, links to the series)
   sound-theory/
-    index.md                     series intro, pages by category   slug: sound-theory
+    index.md                     series intro, nested page list  slug: sound-theory
     sound/                       category; index.md has slug: sound-and-timbre
-      sound-waves.md  building-waveforms.md  sound-sources.md  synthesis.md
+      sound-waves.md  building-waveforms.md  synthesis.md
       sound-as-material.md  sound-toys.md
     pitch/                       category; index.md has slug: pitch-and-scales
       tuning-systems.md  scales.md  church-modes.md
@@ -236,6 +252,8 @@ src/content/docs/
       modal-jazz.md  upper-structure-triads.md  triads-in-scales.md
       modern-pentatonics.md  playing-outside.md  fourths.md
       coltrane-changes.md
+    sound-sources.md             not in a category: a record of the instruments and
+                                 effects, listed after every category
 src/layouts/DocLayout.astro      writing's layout + sound-theory additions
 src/components/                  writing's Sidebar and Breadcrumbs
 public/lib/audio/                AudioEngine.js  instruments.js  effects.js  additive.js
@@ -246,7 +264,7 @@ public/lib/demo/                 viewport.js  panel.js  controls.js  colors.js
                                  FifthsRing.js  ScaleView.js  CycleView.js  PulseView.js
                                  StepGrid.js  ProgressionView.js  ChordChart.js
                                  XYPad.js  DrawPad.js  SampleView.js  PaintGrid.js
-                                 EnvelopeView.js
+                                 EnvelopeView.js  TetrachordView.js
 public/demos/<name>/             index.html + main.js per demo
 public/styles/demo-ui.css        demo chrome
 public/lib/page/demoRecorder.js  record button under each embedded demo (page-level)

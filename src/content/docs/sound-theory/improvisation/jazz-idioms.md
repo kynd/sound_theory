@@ -49,11 +49,11 @@ Choose an **Example** and press **Play**. **Approach from below** arpeggiates Dm
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=idioms&example=approach,lick&key" title="Approach notes and the lick" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # The Blue Third and Anticipation
-# ブルーな3度と先取り
+# ブルーな3度とアンティシペーション
 
 From the blues, jazz inherited the move from the minor 3rd to the major 3rd over a major or dominant chord: E♭ sliding up to E over C7, often as a quick grace note. And rhythm has idioms too. Swung eighths (see [Rhythm and Feel](/rhythm-and-feel)) are the most basic. Another is anticipation: a note of the next chord played on the "and" of 4, a half beat early, and held over the bar line, which pushes the line forward into the change.
 
-ブルースから、ジャズは長三和音やドミナントの上で短3度から長3度へ動く表現を受け継ぎました。C7の上でE♭からEへ滑り上がるもので、短い装飾音として弾かれることがよくあります。リズムにもイディオムがあります。最も基本的なのはスウィングする8分音符です（[リズムとフィール](/rhythm-and-feel)を参照）。もうひとつは先取り（アンティシペーション）で、次の和音の音を4拍目の裏、つまり半拍早く弾いて小節線をまたいで伸ばし、旋律を和音の変化へと押し進めます。
+ブルースから、ジャズは長三和音やドミナントの上で短3度から長3度へ動く表現を受け継ぎました。C7の上でE♭からEへ滑り上がるもので、短い装飾音として弾かれることがよくあります。リズムにもイディオムがあります。最も基本的なのはスウィングする8分音符です（[リズムとフィール](/rhythm-and-feel)を参照）。もうひとつはアンティシペーションで、次の和音の音を4拍目の裏、つまり半拍早く弾いて小節線をまたいで伸ばし、旋律を和音の変化へと押し進めます。
 
 Choose an **Example** and press **Play**. **Minor to major 3rd** plays the blue third over C7 and F7. **Anticipation** lands the 3rd of G7 and of Cmaj7 a half beat early, on the "and" of 4. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -75,7 +75,6 @@ Choose an **Example** and press **Play**. In each, the last two (or three) eight
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=idioms&example=long-ii-v-i,long-turnaround,long-minor&key" title="Enclosures in longer lines" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 <aside>
-  <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
     <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>

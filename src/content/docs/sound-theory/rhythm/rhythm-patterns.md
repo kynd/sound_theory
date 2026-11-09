@@ -4,7 +4,7 @@ slug: rhythm-patterns
 ---
 Much of what makes a style recognizable is a rhythm pattern shared by the whole band: where the drums put their weight, which beats the chords are struck on, and how the bass moves between them. A few bars are often enough to tell reggae from funk or salsa from rock, whatever the melody. This page plays a backing in several styles. Each pattern is a simplified version of one common way to play the style; real players vary it constantly. Bossa nova and samba are on [Syncopation and Anticipation](/syncopation).
 
-スタイルを聞き分けられるものの多くは、バンド全体が共有するリズム・パターンです。ドラムがどこに重みを置くか、和音をどの拍で鳴らすか、ベースがそのあいだをどう動くか。旋律が何であれ、数小節でレゲエとファンク、サルサとロックを聞き分けられることがよくあります。このページでは、いくつかのスタイルで伴奏を鳴らします。どのパターンも、そのスタイルのよくある弾き方のひとつを単純にしたもので、実際のミュージシャンは絶えずそれを変化させます。ボサノヴァとサンバは[シンコペーションと先取り](/syncopation)にあります。
+スタイルを聞き分けられるものの多くは、バンド全体が共有するリズム・パターンです。ドラムがどこに重みを置くか、和音をどの拍で鳴らすか、ベースがそのあいだをどう動くか。旋律が何であれ、数小節でレゲエとファンク、サルサとロックを聞き分けられることがよくあります。このページでは、いくつかのスタイルで伴奏を鳴らします。どのパターンも、そのスタイルのよくある弾き方のひとつを単純にしたもので、実際のミュージシャンは絶えずそれを変化させます。ボサノヴァとサンバは[シンコペーションとアンティシペーション](/syncopation)にあります。
 
 In every demo, press **Play** to hear the backing: the chords are drawn as yellow bars where they are struck, the bass line in dark green below them, and the keyboard lights the sounding notes. Each demo plays in C or A minor; choose a **Key** to hear it in another key.
 
@@ -42,7 +42,7 @@ Reggae, from Jamaica in the late 1960s, turns the usual weights around. In the o
 
 Salsa, which took shape in New York in the 1960s and 70s from Cuban son and other Latin styles, is organized around the clave, a two-bar pattern of five strokes (here the son clave, three strokes then two) that every part fits around. The bass plays the tumbao: it leaves beat 1 empty, plays on the "and" of 2, and lands on beat 4 on the root of the next chord, anticipating it. The piano plays a montuno, a repeating syncopated figure that answers the clave.
 
-1960年代と70年代のニューヨークで、キューバのソンやほかのラテンのスタイルから形づくられたサルサは、クラーベを軸に組み立てられています。クラーベは5打からなる2小節の型で（ここではソン・クラーベ。3打、そして2打）、すべてのパートがこれに合わせます。ベースはトゥンバオを弾きます。1拍目を空け、2拍目の裏で弾き、4拍目で次の和音の根音に着いて、その和音を先取りするのです。ピアノは、クラーベに応えて繰り返すシンコペーションの音型、モントゥーノを弾きます。
+1960年代と70年代のニューヨークで、キューバのソンやほかのラテンのスタイルから形づくられたサルサは、クラーベを軸に組み立てられています。クラーベは5打からなる2小節の型で（ここではソン・クラーベ。3打、そして2打）、すべてのパートがこれに合わせます。ベースはトゥンバオを弾きます。1拍目を空け、2拍目の裏で弾き、4拍目で次の和音の根音に着いて、その和音をアンティシペーションするのです。ピアノは、クラーベに応えて繰り返すシンコペーションの音型、モントゥーノを弾きます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=salsa&key" title="Salsa" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -65,7 +65,6 @@ Hip-hop grew in the Bronx in the 1970s from DJs looping the drum breaks of funk 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=hip-hop&key" title="Hip-hop" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 <aside>
-  <span class="aside-icon">🎧</span>
   <div class="aside-body">
     <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
     <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>

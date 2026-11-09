@@ -1,5 +1,6 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
+import { EffectChain, EFFECTS } from '../../lib/audio/effects.js';
 import { PROGRESSION_SETS, ProgressionPlayer, progressionSounds, transposeProgression, transposeSymbol, withSevenths } from '../../lib/audio/chords.js';
 import { ROOTS, MINOR_ROOTS, parseNote } from '../../lib/audio/scales.js';
 import { Keyboard } from '../../lib/demo/Keyboard.js';
@@ -32,12 +33,28 @@ const View = params.get('view') === 'chart' ? ChordChart : ProgressionView;
 
 const master = new MasterBus();
 
+// A progression with `effects` ({ id: { key: value } }) plays through a lo-fi chain
+// (bit crusher, filter, vibrato), set from it; the others leave the chain transparent.
+// The chain exists only when one of the progressions on offer asks for it.
+const FX_IDS = ['bitcrush', 'filter', 'vibrato'];
+const fx = PROGRESSIONS.some(p => p.effects) ? new EffectChain(FX_IDS) : null;
+fx?.output.connect(master.input);
+const destination = fx ? fx.input : master.input;
+function useEffects(effects = {}) {
+    if (!fx) return;
+    for (const id of FX_IDS) {
+        for (const param of EFFECTS.find(d => d.id === id).params) {
+            fx.set(id, param.key, effects[id]?.[param.key] ?? param.value);
+        }
+    }
+}
+
 // Instruments by id and level, created when a progression first asks for them (`sounds`).
 const instruments = new Map();
 const instrument = ({ id, level = 0 }) => {
     const key = `${id}@${level}`;
     if (!instruments.has(key)) {
-        const created = createInstrument(id).connect(master.input);
+        const created = createInstrument(id).connect(destination);
         created.output.gain.value = 10 ** (level / 20);
         instruments.set(key, created);
     }
@@ -101,7 +118,9 @@ const player = new ProgressionPlayer(instrument({ id: 'piano' }), {
 });
 
 // Pressing a chord in the view plays it while held.
+// ?bars=4 shows four bars (of 4/4) at a time in the piano roll, turning the page as it plays.
 const view = new View(document.getElementById('canvas'), {
+    pageBeats: params.has('bars') ? 4 * Number(params.get('bars')) : null,
     onPress: i => {
         startAudio();
         chordNotes = player.voicings[i].notes;
@@ -153,6 +172,7 @@ function useProgression() {
     player.instrument = instrument(parts.chords);
     player.melodyInstrument = instrument(parts.melody);
     player.bassInstrument = parts.bass ? instrument(parts.bass) : null;
+    useEffects(progression.effects);
     player.setProgression(progression);
     view.update(player.progression, player.voicings);
     chordNotes = []; melodyNote = null; bassNote = null;

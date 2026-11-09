@@ -25,7 +25,8 @@ export function formatValue(v, unit = '', step = 0.01) {
     if (unit === 'dB') return `${Math.round(v)}`;
     // A whole-number slider shows whole numbers.
     if (step >= 1) return `${Math.round(v)}`;
-    return Math.abs(v) >= 10 ? v.toFixed(1) : v.toFixed(2);
+    // Otherwise as many decimals as the step has (two, or three for finer steps).
+    return Math.abs(v) >= 10 ? v.toFixed(1) : v.toFixed(step < 0.01 ? 3 : 2);
 }
 
 // Per-slider value mapping and readout, so setRange can move a slider from code.

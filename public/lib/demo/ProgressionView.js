@@ -23,15 +23,25 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * numerals and functions
  * (T, SD, D, SDm), where the progression has them, on lines below. Pressing a chord
  * plays it through `onPress(i)` / `onRelease(i)`.
+ *
+ * With `pageBeats`, the roll shows that many beats at a time (16: four bars of 4/4)
+ * and turns the page as the sounding chord or melody note moves on; a chord or note
+ * that comes up to half a beat early (an anticipation) counts with the page it leads
+ * into. Only chords that show for more than half a beat are labeled.
+ *
+ * A progression with `bar` (beats per bar) gets a thin, pale, see-through line at every
+ * bar line, behind the notes, so a note held across one shows it.
  */
 export class ProgressionView {
     /** @param {HTMLCanvasElement} canvas  inside a `.canvas-wrap`. */
-    constructor(canvas, { onPress = () => {}, onRelease = () => {} } = {}) {
+    constructor(canvas, { onPress = () => {}, onRelease = () => {}, pageBeats = null } = {}) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.viewport = new Viewport(canvas);
         this.onPress = onPress;
         this.onRelease = onRelease;
+        this.pageBeats = pageBeats;
+        this.page = 0;
         this.progression = null;
         this.voicings = [];
         this.hits = [];
@@ -53,14 +63,34 @@ export class ProgressionView {
         this.hits = compHits(progression, voicings);
         this.riff = riffNotes(progression, voicings);
         this.chord = this.note = this.hit = this.bass = -1;
+        this.page = 0;
         this.draw();
     }
 
+    /** Turns to the page holding an event that starts at `beat` (see `pageBeats`). */
+    _turnTo(beat) {
+        if (this.pageBeats) this.page = Math.floor((beat + 0.5) / this.pageBeats);
+    }
+
+    _start(list, i) {
+        let at = 0;
+        for (let k = 0; k < i; k++) at += list[k].beats;
+        return at;
+    }
+
     /** Marks chord `i` as sounding, or none with -1. */
-    setChord(i) { this.chord = i; this.draw(); }
+    setChord(i) {
+        this.chord = i;
+        if (i >= 0 && this.progression) this._turnTo(this._start(this.progression.chords, i));
+        this.draw();
+    }
 
     /** Marks melody note `i` as sounding, or none with -1. */
-    setNote(i) { this.note = i; this.draw(); }
+    setNote(i) {
+        this.note = i;
+        if (i >= 0 && this.progression?.melody) this._turnTo(this._start(this.progression.melody, i));
+        this.draw();
+    }
 
     /** Marks riff note `i` as sounding, or none with a negative index. */
     setBass(i) { this.bass = i; this.draw(); }
@@ -111,9 +141,11 @@ export class ProgressionView {
         // Time: the whole progression (or melody, if longer) across the width.
         const chordBeats = chords.reduce((s, c) => s + c.beats, 0);
         const melodyBeats = melody.reduce((s, n) => s + n.beats, 0);
-        const beats = Math.max(chordBeats, melodyBeats);
+        // With pages, only `pageBeats` from the current page's start.
+        const beats = this.pageBeats ?? Math.max(chordBeats, melodyBeats);
+        const p0 = this.pageBeats ? this.page * this.pageBeats : 0, p1 = p0 + beats;
         const x0 = INSET, rollWidth = w - 2 * INSET;
-        const xOf = beat => x0 + (beat / beats) * rollWidth;
+        const xOf = beat => x0 + ((beat - p0) / beats) * rollWidth;
 
         // Pitch: every note shown, with a semitone of room above and below.
         const all = [...this.voicings.flatMap(v => v.notes), ...melody.filter(n => n.midi !== null).map(n => n.midi),
@@ -141,9 +173,43 @@ export class ProgressionView {
             ctx.fill();
         };
 
+        // A bar that runs level at `midi`, climbs to `to` between bx1 and bx2, and runs on
+        // level: a band as thick as a bar, with round ends.
+        const bentBar = (x1, x2, bx1, bx2, midi, to, color, height) => {
+            const yAt = m => yOf(m) + row / 2;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = height;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            ctx.moveTo(x1 + height / 2, yAt(midi));
+            ctx.lineTo(Math.max(x1 + height / 2, bx1), yAt(midi));
+            ctx.lineTo(Math.min(x2 - height / 2, bx2), yAt(to));
+            ctx.lineTo(x2 - height / 2, yAt(to));
+            ctx.stroke();
+        };
+
         ctx.font = FONT;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
+        // Bars are clipped to the page; labels go only on chords that show on it.
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(x0 - GAP, 0, rollWidth + 2 * GAP, h);
+        ctx.clip();
+        // Bar lines, thin, pale, and see-through, behind everything: at every bar,
+        // the start and end of the progression included.
+        if (progression.bar) {
+            ctx.save();
+            ctx.globalAlpha = 0.15;
+            ctx.fillStyle = COLORS.ink;
+            const end = Math.max(chordBeats, melodyBeats);
+            for (let b = 0; b <= end + 1e-6; b += progression.bar) {
+                if (b < p0 - 1e-6 || b > p1 + 1e-6) continue;
+                ctx.fillRect(Math.round(xOf(b)) - 0.5, top, 1, bottom - top);
+            }
+            ctx.restore();
+        }
         let at = 0;
         chords.forEach((chord, i) => {
             const x1 = xOf(at) + GAP / 2, x2 = xOf(at + chord.beats) - GAP / 2;
@@ -154,7 +220,9 @@ export class ProgressionView {
                 const h2 = hit.at + hit.beats < chord.beats - 1e-6 ? xOf(at + hit.at + hit.beats) - GAP / 2 : x2;
                 for (const midi of hit.notes) bar(h1, h2, midi, red ? COLORS.red : COLORS.yellow);
             });
-            const cx = (x1 + x2) / 2;
+            const shown = Math.min(at + chord.beats, p1) - Math.max(at, p0);
+            if (shown <= 0.5) { at += chord.beats; return; }
+            const cx = (Math.max(x1, xOf(p0)) + Math.min(x2, xOf(p1))) / 2;
             ctx.fillStyle = COLORS.ink;
             if (chord.symbol && this.voicings[i]?.notes.length) ctx.fillText(chord.symbol, cx, INSET + LINE / 2 + (stagger && i % 2 ? LINE : 0));
             let y = bottom + GRID + LINE / 2;
@@ -176,12 +244,21 @@ export class ProgressionView {
         melody.forEach((note, i) => {
             // A note's sounding length (`gate`) sets the bar's length, and its loudness
             // (`velocity`) the bar's thickness.
+            // A marked note (`mark`, the blue third of a blues phrase) is dark green, and a
+            // bent one (`bend`) climbs from its pitch to the bent pitch where the bend is.
             if (note.midi !== null) {
                 const height = Math.max(2, barH * (0.4 + 0.6 * (note.velocity ?? 0.8)) / 0.88);
-                bar(xOf(at) + GAP / 2, xOf(at + note.beats * (note.gate ?? 1)) - GAP / 2, note.midi,
-                    i === this.note ? COLORS.red : COLORS.pink, height);
+                const x1 = xOf(at) + GAP / 2, x2 = xOf(at + note.beats * (note.gate ?? 1)) - GAP / 2;
+                const color = i === this.note ? COLORS.red : note.mark ? COLORS.darkGreen : COLORS.pink;
+                if (note.bend) {
+                    const bendAt = note.bendAt ?? 0, bendBeats = note.bendBeats ?? 1 / 3;
+                    bentBar(x1, x2, xOf(at + bendAt), xOf(at + bendAt + bendBeats), note.midi, note.midi + note.bend, color, height);
+                } else {
+                    bar(x1, x2, note.midi, color, height);
+                }
             }
             at += note.beats;
         });
+        ctx.restore();
     }
 }

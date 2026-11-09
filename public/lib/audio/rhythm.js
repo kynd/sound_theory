@@ -308,6 +308,17 @@ export function pitchedPattern(notes, { steps = 16, stepsPerBeat = 2, tempo = 11
 }
 
 /** Named sets of patterns, for a demo that takes the set as a URL parameter. */
+/**
+ * A laid-back lo-fi hip-hop beat: sixteenth-note hi-hats, accented on the eighths and
+ * soft in between, a kick on 1 and the "and" of 3, and the snare on 2 and 4. Not in a
+ * menu of its own; the backings on the syncopation page use it.
+ */
+export const LOFI_BEAT = makePattern({ id: 'lofi', label: 'Lo-fi', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 80, tracks: {
+    hat:   'X x X x X x X x X x X x X x X x',
+    snare: '- - - - X - - - - - - - X - - -',
+    kick:  'X - - - - - - - - - X - - - - -',
+} });
+
 export const PATTERN_SETS = { meters: METER_PATTERNS, feels: FEEL_PATTERNS, implied: IMPLIED_PATTERNS, styles: STYLE_PATTERNS };
 
 // How far ahead notes are scheduled, and how often the scheduler wakes. The lead also

@@ -75,7 +75,6 @@ const SOUND_THEORY_ORDER: Record<string, number> = {
   'sound': 0,
   'sound-waves': 1,
   'building-waveforms': 2,
-  'sound-sources': 3,
   'synthesis': 4,
   'sound-as-material': 5,
   'sound-toys': 6,
@@ -133,6 +132,8 @@ const SOUND_THEORY_ORDER: Record<string, number> = {
   'playing-outside': 58,
   'fourths': 59,
   'coltrane-changes': 60,
+  // Not in a category: a record of the instruments and effects, after every category.
+  'sound-sources': 61,
 };
 
 function buildTree(docs: typeof allDocs): TreeNode {
@@ -680,7 +681,7 @@ const breadcrumbs = buildBreadcrumbs(filePath, allDocs);
       margin: 0.5rem 0 0 auto;
       padding: 0;
       background: none; border: none; cursor: pointer;
-      font: inherit; font-size: 0.75rem; color: var(--fg-muted, #777);
+      font: inherit; font-family: 'Sora', 'Noto Sans JP', sans-serif; font-size: 0.75rem; color: var(--fg-muted, #777);
     }
     .prose .demo-wrap .demo-record:hover { color: var(--fg, #000); }
     .prose .demo-wrap .demo-record-mark {
