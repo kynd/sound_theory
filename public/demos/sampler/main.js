@@ -1,8 +1,8 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
-import { SAMPLE_SOURCES, loadSample, MicRecorder, SliceLooper } from '../../lib/audio/sampler.js';
+import { SAMPLE_SOURCES, loadSample, SliceLooper } from '../../lib/audio/sampler.js';
 import { EffectChain } from '../../lib/audio/effects.js';
 import { SampleView } from '../../lib/demo/SampleView.js';
-import { addRange, addSelect, addEffectControls, unwrap } from '../../lib/demo/controls.js';
+import { addRange, addSelect, addRecordButton, addEffectControls, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
 
 // A recording (a file or the microphone) played slice by slice through effects.
@@ -17,7 +17,7 @@ chain.connect(master.input);
 const view = new SampleView(document.getElementById('canvas'));
 const looper = new SliceLooper(skip
     ? { slices: 32, repeat: 0.5, jump: 0.3, reverse: 0.1, spread: 0.5, attack: 0.002, release: 0.004 }
-    : { slices: 1 });
+    : { slices: 8 });
 looper.output.connect(chain.input);
 looper.onSlice = (i, reversed) => view.setSlice(i, reversed);
 
@@ -45,43 +45,11 @@ const select = addSelect(controls, {
     label: 'Sound', options, value: SAMPLE_SOURCES[skip ? 1 : 0].id, onChange: useSource,
 });
 
-// Record: press to start, press again (or wait ten seconds) to stop. The recording
-// becomes "Recording" in the Sound menu.
-const mic = new MicRecorder();
-const record = document.createElement('button');
-record.className = 'dp-toggle dp-record';
-record.textContent = 'Record';
-let timeout = null;
-async function stopRecording() {
-    clearTimeout(timeout);
-    record.classList.remove('active');
-    record.textContent = 'Record';
-    status.textContent = '';
-    recorded = await mic.stop();
-    if (![...select.options].some(o => o.value === 'recording')) {
-        const option = document.createElement('option');
-        option.value = 'recording';
-        option.textContent = 'Recording';
-        select.append(option);
-    }
-    select.value = 'recording';
-    useSource('recording');
-}
-record.addEventListener('click', async () => {
-    if (mic.recording) { stopRecording(); return; }
-    startAudio();
-    try {
-        await mic.start();
-    } catch {
-        status.textContent = 'The microphone is not available.';
-        return;
-    }
-    record.classList.add('active');
-    record.textContent = 'Stop recording';
-    status.textContent = 'Recording…';
-    timeout = setTimeout(stopRecording, MAX_RECORDING * 1000);
+// Record: the recording becomes "Recording" in the Sound menu.
+addRecordButton(controls, {
+    select, status, maxSeconds: MAX_RECORDING,
+    onRecorded: buffer => { recorded = buffer; useSource('recording'); },
 });
-controls.append(record);
 const divider = () => { const d = document.createElement('div'); d.className = 'dp-divider'; controls.append(d); };
 divider();
 

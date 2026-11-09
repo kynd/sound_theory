@@ -33,19 +33,27 @@ export class GranularSource {
     /** Loads a recording from GRAIN_SOURCES by id; playback continues once it has loaded. */
     setSource(id) {
         const { url } = GRAIN_SOURCES.find(s => s.id === id);
-        const wasPlaying = this._playing;
-        if (wasPlaying) this.player.stop();
+        if (this._playing) this.player.stop();
         this.ready = new Promise((resolve, reject) => {
-            const buffer = new Tone.ToneAudioBuffer(url, () => {
-                // Loop the first two seconds, the body of the note, not its quiet tail.
-                this.player.buffer = buffer;
-                this.player.loopStart = 0;
-                this.player.loopEnd = Math.min(buffer.duration, LOOP_SECONDS);
-                if (this._playing) this.player.start();
-                resolve();
-            }, reject);
+            // Loop the first two seconds, the body of the note, not its quiet tail.
+            const buffer = new Tone.ToneAudioBuffer(url, () => { this._use(buffer, LOOP_SECONDS); resolve(); }, reject);
         });
         return this.ready;
+    }
+
+    /** Plays a loaded ToneAudioBuffer (a microphone recording), looping all of it. */
+    setBuffer(buffer) {
+        if (this._playing) this.player.stop();
+        this._use(buffer, buffer.duration);
+        this.ready = Promise.resolve();
+        return this.ready;
+    }
+
+    _use(buffer, seconds) {
+        this.player.buffer = buffer;
+        this.player.loopStart = 0;
+        this.player.loopEnd = Math.min(buffer.duration, seconds);
+        if (this._playing) this.player.start();
     }
 
     get playing() { return this._playing; }

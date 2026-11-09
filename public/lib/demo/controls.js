@@ -1,4 +1,6 @@
 import { accent } from './colors.js';
+import { startAudio } from '../audio/AudioEngine.js';
+import { MicRecorder } from '../audio/sampler.js';
 
 /**
  * Builds panel controls from data, using the `dp-*` components in demo-ui.css.
@@ -121,6 +123,50 @@ export function addSelect(parent, { label, options, value, onChange }) {
         parent.append(select);
     }
     return select;
+}
+
+/**
+ * Appends a red Record button (`.dp-record`) that records the microphone: press to
+ * start, press again (or wait `maxSeconds`) to stop. The recording is added to the
+ * Sound `select` as "Recording" (once) and selected, then passed to
+ * `onRecorded(buffer)` (a ToneAudioBuffer). `status` (an element) shows "Recording…"
+ * while it records, and a message when the microphone is not available.
+ * @returns {HTMLButtonElement}
+ */
+export function addRecordButton(parent, { select, status, maxSeconds = 10, onRecorded }) {
+    const mic = new MicRecorder();
+    const button = el('button', 'dp-toggle dp-record', 'Record');
+    let timeout = null;
+    const stop = async () => {
+        clearTimeout(timeout);
+        button.classList.remove('active');
+        button.textContent = 'Record';
+        status.textContent = '';
+        const buffer = await mic.stop();
+        if (![...select.options].some(o => o.value === 'recording')) {
+            const option = el('option', null, 'Recording');
+            option.value = 'recording';
+            select.append(option);
+        }
+        select.value = 'recording';
+        onRecorded(buffer);
+    };
+    button.addEventListener('click', async () => {
+        if (mic.recording) { stop(); return; }
+        startAudio();
+        try {
+            await mic.start();
+        } catch {
+            status.textContent = 'The microphone is not available.';
+            return;
+        }
+        button.classList.add('active');
+        button.textContent = 'Stop recording';
+        status.textContent = 'Recording…';
+        timeout = setTimeout(stop, maxSeconds * 1000);
+    });
+    parent.append(button);
+    return button;
 }
 
 /**

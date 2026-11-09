@@ -1,7 +1,7 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { GranularSource, GRAIN_SOURCES } from '../../lib/audio/granular.js';
 import { Scope } from '../../lib/demo/Scope.js';
-import { addRange, addSelect, unwrap } from '../../lib/demo/controls.js';
+import { addRange, addSelect, addRecordButton, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
 
 const master = new MasterBus();
@@ -19,11 +19,17 @@ const watch = ready => {
 watch(grains.ready);
 
 const controls = document.getElementById('controls');
-addSelect(controls, {
+let recorded = null;
+const select = addSelect(controls, {
     label: 'Sound',
     options: GRAIN_SOURCES.map(({ id, label }) => ({ value: id, label })),
     value: GRAIN_SOURCES[0].id,
-    onChange: id => watch(grains.setSource(id)),
+    onChange: id => (id === 'recording' ? grains.setBuffer(recorded) : watch(grains.setSource(id))),
+});
+// Record: the recording (up to ten seconds) becomes "Recording" in the Sound menu.
+addRecordButton(controls, {
+    select, status,
+    onRecorded: buffer => { recorded = buffer; grains.setBuffer(buffer); },
 });
 addRange(controls, {
     label: 'Rate', min: 0.05, max: 2, step: 0.01, value: 1, scale: 'log',
