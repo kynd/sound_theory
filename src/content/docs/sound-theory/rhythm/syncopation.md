@@ -2,78 +2,70 @@
 title: "Syncopation and Anticipation シンコペーションとアンティシペーション"
 slug: syncopation
 ---
-Every bar has strong and weak places. In 4/4 the strongest is beat 1, then beat 3, then beats 2 and 4, and the "and" between beats is weaker still (see [Time Signatures](/time-signatures)). A rhythm that keeps to the strong places sounds settled. Syncopation puts the weight somewhere the ear does not expect it: a note starts on a weak place and is held through the strong one that follows, or is accented there. Anticipation is a particular kind of syncopation, where a note or chord that belongs to a strong beat arrives a little early, usually half a beat, and is held into it. Together they give much popular music its lift and forward motion.
+Rhythms have strong and weak beats. In 4/4, beat 1 is the strongest, followed by beat 3, then beats 2 and 4. The offbeats between them are weaker still (see [Time Signatures](/time-signatures)). A rhythm that follows the strong beats sounds settled. Syncopation deliberately shifts the emphasis to an unexpected position, adding energy to the performance. For example, a note may start on a weak position and be held into the next strong beat, or a weak position may be accented.
 
-どの小節にも、強い位置と弱い位置があります。4/4では、いちばん強いのが1拍目、次が3拍目、そして2拍目と4拍目で、拍と拍のあいだの裏はさらに弱くなります（[拍子記号](/time-signatures)を参照）。強い位置を守るリズムは落ち着いて聞こえます。シンコペーションは、耳が予想しないところに重みを置きます。弱い位置で音を始め、続く強い位置を越えて伸ばしたり、そこにアクセントを置いたりするのです。アンティシペーションはシンコペーションの一種で、強い拍に属する音や和音が少し、ふつうは半拍早くやってきて、その拍まで伸ばされます。この2つが、多くのポピュラー音楽に浮き立つような感じと前へ進む力を与えます。
+リズムには強拍と弱拍があります。4/4拍子では1拍目が最も強く、次に3拍目、2拍目と4拍目が続きます。拍と拍の間（裏拍）は、さらに弱い位置です（[拍子記号](/time-signatures)を参照）。強拍に沿ったリズムは落ち着いて聞こえます。シンコペーションでは、音の重心をあえて予想外の位置に移し、演奏に躍動感を加えます。たとえば、弱い位置で音を始めて次の強拍まで伸ばしたり、弱い位置にアクセントを置いたりします。
 
 # Syncopation
 # シンコペーション
 
-A melody can keep its notes and change only where they start. Moved off the beat and held across it, the same notes start to push and pull against the steady beat of the drums. The tension between the two is what the ear enjoys: the beat stays where it was, and the melody leans against it. Accenting the off-beat notes makes the effect stronger.
+Let's use the chorus of ["Honeysuckle Rose"](https://en.wikipedia.org/wiki/Honeysuckle_Rose_(song)) by [Fats Waller](https://en.wikipedia.org/wiki/Fats_Waller) (1929) to illustrate the difference. Choose an **Example** and press **Play**. The **As written** version plays the melody as it appears in the [1929 sheet music](https://archive.org/details/carner_43_2103). The **Syncopated** version delays the long notes so they enter on the swung "and," giving them a noticeable accent. The **Syncopated 2** version instead delays a few short figures at the beginnings of phrases, adding a gentle hesitation to the melody. In practice, you would also want to shift the notes slightly off the strict triplets and add nuances of loudness, but we'll leave that aside here. The moved notes are accented and dark green. In the demos on this page, the piano roll shows two bars at a time, with a pale line at each bar line, and **Key** moves the music to another key.
 
-旋律は、音はそのままに、始まる位置だけを変えられます。拍からずらして拍をまたいで伸ばすと、同じ音が、ドラムの安定した拍に対して押したり引いたりし始めます。耳が楽しむのは、この2つのあいだの緊張です。拍は同じところにとどまり、旋律はそれに寄りかかるのです。裏拍の音にアクセントを置くと、効果はさらに強くなります。
-
-The chorus of ["Honeysuckle Rose"](https://en.wikipedia.org/wiki/Honeysuckle_Rose_(song)) by [Fats Waller](https://en.wikipedia.org/wiki/Fats_Waller) (1929) shows the difference. In the [1929 sheet music](https://archive.org/details/carner_43_2103), every long note ("bee," "jealousy," "me," "knows," "Rose") starts on a beat. Choose an **Example** and press **Play**. **As written** keeps them there. **Syncopated** starts them late: after a short rest on the beat, each comes in on the swung "and" (the last third of the beat) and is held across the next beat. **Syncopated 2** delays the short figures instead: each starts a triplet after the beat, leaving the beat empty. The moved notes are accented and dark green. In the demos on this page, the piano roll shows two bars at a time, with a pale line at each bar line, and **Key** moves the music to another key.
-
-[ファッツ・ウォーラー](https://ja.wikipedia.org/wiki/ファッツ・ウォーラー)の[「ハニーサックル・ローズ」](https://ja.wikipedia.org/wiki/ハニーサックル・ローズ_(曲))（1929年）のコーラスで、その違いを聞いてみましょう。[1929年の楽譜](https://archive.org/details/carner_43_2103)では、長い音（「bee」「jealousy」「me」「knows」「Rose」）はすべて拍の上で始まります。**Example**を選んで**Play**を押してみましょう。**As written**は、それらを拍の上に置きます。**Syncopated**は遅く始めます。拍の上で短く休んでから、それぞれの音がスウィングの裏（拍の最後の3分の1）で入り、次の拍をまたいで伸びます。**Syncopated 2**は、代わりに短い音型を遅らせます。どの音型も拍から3連符1つぶん遅れて始まり、拍の上は空いたままです。移した音はアクセントを置かれ、深緑になります。このページのデモでは、ピアノロールは2小節ずつ表示して小節線を薄い線で示し、**Key**でほかの調に移せます。
+[ファッツ・ウォーラー](https://ja.wikipedia.org/wiki/ファッツ・ウォーラー)の[「ハニーサックル・ローズ」](https://ja.wikipedia.org/wiki/ハニーサックル・ローズ_(曲))（1929年）のコーラスで、その違いを聞いてみましょう。**Example**を選んで**Play**を押してみましょう。**As written**では、[1929年の楽譜](https://archive.org/details/carner_43_2103)に書かれたとおりに旋律が鳴ります。**Syncopated**では、長い音を遅らせてスウィングの裏で入り、はっきりとアクセントを付けます。**Syncopated 2**では、代わりにフレーズの始まりにあるいくつかの短い音型を遅らせ、旋律に軽いためらいを加えます。実際には厳密な三連符から少しずらして強弱のニュアンスも付けたいところですが置いておきます。移動した音は深緑で表示され、アクセントが付けられています。このページのデモでは、ピアノロールに2小節ずつ表示され、小節線は薄い線で示されます。**Key**で別の調に移せます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=honeysuckle-written,honeysuckle-syncopated,honeysuckle-syncopated-2&key&bars=2" title="Honeysuckle Rose, as written and syncopated" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # Anticipation
 # アンティシペーション
 
-The most common syncopation in pop, rock, jazz, and Latin music is the anticipation of the bar: the note that would land on beat 1 comes on the "and" of beat 4 instead and is tied over the bar line. The melody seems to arrive a moment before the music does, which makes it sound eager and conversational, the way people speak rather than march. Chords can be anticipated too. When the band changes chord on the "and" of 4, the whole bar leans forward; this "push" is everywhere in pop and in big-band writing.
+Anticipation is a kind of syncopation in which a note or chord belonging to a strong beat is played a little early. The melody seems to arrive a moment before the music does, which makes it sound eager and conversational, the way people speak rather than march.
 
-ポップス、ロック、ジャズ、ラテン音楽で最もよく使われるシンコペーションは、小節のアンティシペーションです。1拍目に来るはずの音が、代わりに4拍目の裏に来て、小節線を越えてタイでつながります。旋律が音楽より一瞬先に着くように聞こえるので、行進ではなく人が話すような、意欲的で語りかけるような響きになります。和音でもアンティシペーションができます。バンドが4拍目の裏で和音を変えると、小節全体が前のめりになります。この「プッシュ」は、ポップスにもビッグバンドの編曲にも、いたるところにあります。
+アンティシペーションはシンコペーションの一種で、強拍に属する音や和音を少し早く鳴らします。旋律が音楽より一瞬先に着くように聞こえることで、行進するような響きではなく、人が話すような、生き生きと語りかける響きになります。
 
-Choose an **Example** and press **Play** to hear the same chorus. **Anticipated** brings every long note in a swung eighth early and holds it into its beat: "bee," "jealousy," and "knows" just before beat 3, "me" and "Rose" just before the bar line. **Anticipated, chords too** moves the chord changes at the bar lines early as well. Singers and players phrase the song this way, though the sheet music does not.
+Choose an **Example** and press **Play** to hear the same chorus. **Anticipated** brings every long note in a swung eighth early and holds it into its beat.
 
-**Example**を選んで**Play**を押すと、同じコーラスが聞こえます。**Anticipated**は、長い音をすべてスウィングの8分音符ぶん早く入れ、その拍まで伸ばします。「bee」「jealousy」「knows」は3拍目の直前に、「me」と「Rose」は小節線の直前に来ます。**Anticipated, chords too**は、小節線での和音の変わり目も早めます。楽譜にはなくても、歌手や演奏者はこの曲をこのように歌い、演奏します。
+**Example**を選んで**Play**を押すと、同じコーラスが聞こえます。**Anticipated**では、長い音をすべてスウィングの8分音符ぶん早く鳴らし、本来の拍まで伸ばします。
 
-<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=honeysuckle-written,honeysuckle-anticipated,honeysuckle-pushed&key&bars=2" title="Honeysuckle Rose, anticipated" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=honeysuckle-written,honeysuckle-anticipated&key&bars=2" title="Honeysuckle Rose, anticipated" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # In the Backing
 # 伴奏の中で
 
-A backing can syncopate on its own, even under a melody that does not. The rhythm the chords are struck in sets much of a style's character. Struck on every beat, chords mark time plainly. Struck on beat 1 and the "and" of 2, the rhythm known as the Charleston after the 1920s dance, they swing and leave space; jazz pianists use it constantly. Struck on beat 1 and then on the "and" of 4, anticipating the next chord, they push each bar forward.
+Backing rhythms can be syncopated too, and the timing of chord strikes shapes much of a style's character. Choose an **Example** and press **Play** to hear the differences. In **Chords on the beat**, chords fall on every beat, making the rhythm sound straightforward. **Charleston** places chords on beat 1 and the "and" of beat 2; the pattern is named after the 1920s dance. In **Pushed**, chords fall on beat 1 and the "and" of beat 4, anticipating the next chord and propelling each bar forward.
 
-伴奏は、旋律がシンコペーションしなくても、それだけでシンコペーションできます。和音を鳴らすリズムが、スタイルの性格の多くを決めます。毎拍鳴らすと、和音は素直に拍を刻みます。1拍目と2拍目の裏で鳴らす、1920年代のダンスにちなんでチャールストンと呼ばれるリズムでは、和音はスウィングし、間を残します。ジャズ・ピアニストはこれを絶えず使います。1拍目と、次の和音をアンティシペーションする4拍目の裏で鳴らすと、それぞれの小節が前へ押し出されます。
-
-Choose an **Example** and press **Play** to hear the same four chords struck three ways: **Chords on the beat**, **Charleston**, and **Pushed**.
-
-**Example**を選んで**Play**を押すと、同じ4つの和音が3通りに鳴ります。**Chords on the beat**、**Charleston**、**Pushed**です。
+伴奏のリズムにもシンコペーションを取り入れられます。和音を鳴らすタイミングは、スタイルの個性を大きく左右します。**Example**を選んで**Play**を押し、違いを聴いてみましょう。**Chords on the beat**では毎拍和音を鳴らし、素直なリズムになります。**Charleston**では1拍目と2拍目の裏で和音を鳴らします。このパターンは、1920年代のダンスにちなんで「チャールストン」と呼ばれます。**Pushed**では1拍目と4拍目の裏で和音を鳴らし、次の和音をアンティシペーションすることで小節を前へと押し出します。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=comp-on-beat,comp-charleston,comp-pushed&key" title="Syncopated backings" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # Bossa Nova
 # ボサノヴァ
 
-Bossa nova, from Rio de Janeiro in the late 1950s (João Gilberto, Antônio Carlos Jobim), is built on a quiet but constant syncopation. The guitarist's thumb plays the bass on beats 1 and 3, steady as a heartbeat, while the fingers pluck the chord in a syncopated pattern over two bars, related to the clave of Afro-Cuban music: on 1, the "and" of 2, and 4 in the first bar, and on 2 and the "and" of 3 in the second. Many of the chord strokes fall between the bass notes, so the two hands seem to talk to each other. The bass itself anticipates beat 3 with a short fifth just before it.
+Bossa nova emerged in Rio de Janeiro in the late 1950s, with João Gilberto and Antônio Carlos Jobim among its leading figures. Its rhythm is built on subtle but steady syncopation. The guitarist's thumb plays bass notes on beats 1 and 3, steady as a heartbeat, while the fingers pluck chords in a two-bar syncopated pattern related to the clave of Afro-Cuban music: on beat 1, the "and" of beat 2, and beat 4 in the first bar, then on beat 2 and the "and" of beat 3 in the second. Many chord strokes fall between the bass notes, making the two hands seem to talk to each other. The bass itself anticipates beat 3 with a short fifth just before it. The same rhythmic pattern can also be played on other instruments.
 
-1950年代後半のリオデジャネイロで生まれたボサノヴァ（ジョアン・ジルベルト、アントニオ・カルロス・ジョビン）は、静かですが絶え間ないシンコペーションの上に成り立っています。ギタリストの親指は、心臓の鼓動のように安定して1拍目と3拍目でベースを弾き、ほかの指は、アフロ・キューバン音楽のクラーベに通じる、2小節にわたるシンコペーションの型で和音をはじきます。最初の小節では1拍目、2拍目の裏、4拍目、次の小節では2拍目と3拍目の裏です。和音の多くはベースの音のあいだに落ちるので、2つの手が会話しているように聞こえます。ベース自体も、3拍目の直前に短い5度を置いて、3拍目をアンティシペーションします。
+1950年代後半、リオデジャネイロで生まれたボサノヴァは、ジョアン・ジルベルトやアントニオ・カルロス・ジョビンらを中心に広まりました。そのリズムは、控えめながら絶えず続くシンコペーションの上に成り立っています。ギタリストは親指で1拍目と3拍目にベース音を弾き、心臓の鼓動のような安定感を保ちます。一方、ほかの指では、アフロ・キューバン音楽のクラーベに通じる2小節のシンコペーションの型で和音をつま弾きます。1小節目では1拍目、2拍目の裏、4拍目に、2小節目では2拍目と3拍目の裏に鳴らします。和音の多くはベース音の間に入るため、両手が会話しているように聞こえます。ベースも3拍目の直前に短い5度の音を置き、3拍目をアンティシペーションします。同じリズムの型は、ほかの楽器でも演奏できます。
 
-Press **Play** to hear a bossa nova backing. The chords follow the two-bar pattern above, three strokes and then two, over the bass on 1 and 3. Twice, at the end of bars 2 and 4, the next chord comes half a beat early, on the "and" of 4, and the pattern picks up again from the bar line. In the piano roll the chords are yellow and the bass is dark green.
+Press **Play** to hear a bossa nova backing played on piano and synth bass. The chords follow the two-bar pattern above—three strokes in the first bar, then two in the second—over bass notes on beats 1 and 3. At the end of bars 2 and 4, the next chord comes half a beat early, on the "and" of beat 4; the pattern then resumes at the bar line. In the piano roll, the chords are yellow and the bass is dark green.
 
-**Play**を押すと、ボサノヴァの伴奏が鳴ります。和音は上の2小節の型（3回、そして2回）で、1拍目と3拍目のベースの上に鳴ります。2小節目と4小節目の終わりの2回、次の和音が半拍早く4拍目の裏にやってきて、小節線から型に戻ります。ピアノロールでは、和音が黄色、ベースが深緑です。
+**Play**を押すと、ピアノとシンセベースによるボサノヴァの伴奏が聞こえます。和音は上記の2小節の型に沿って、1小節目に3回、2小節目に2回鳴り、1拍目と3拍目のベース音に重なります。2小節目と4小節目の終わりには、次の和音が半拍早く、4拍目の裏に入ります。その後、小節線から型が再開します。ピアノロールでは、和音が黄色、ベースが深緑で表示されます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=bossa-nova&key&bars=2" title="Bossa nova" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # Samba
 # サンバ
 
-Samba, the older and faster music that bossa nova grew from, is felt in two, and its syncopation lives in the sixteenth notes. The surdo, a large bass drum, plays its strongest beat on beat 2 of each 2/4 bar rather than beat 1, the shaker pushes the last sixteenth of every beat, and the guitar or cavaquinho plays chords in short syncopated figures that land between the beats and anticipate the next bar.
+Samba, the older and faster music from which bossa nova grew, is typically felt in two, with its syncopation driven by sixteenth notes. In one group arrangement, the surdo, a large bass drum, emphasizes beat 2 of each 2/4 bar, while a shaker can push the last sixteenth of each beat and a guitar or cavaquinho can play short syncopated chord figures between beats. Samba can also be played on other instruments or by a solo guitarist or pianist, who can adapt the bass pulse and syncopated chords to suggest the groove. Exact patterns vary by performance and style.
 
-ボサノヴァのもとになった、より古く速いサンバは、2拍子で感じられ、そのシンコペーションは16分音符の中にあります。大きなバスドラムであるスルドは、2/4のそれぞれの小節で、1拍目ではなく2拍目にいちばん強い音を打ちます。シェイカーはそれぞれの拍の最後の16分音符を押し出し、ギターやカヴァキーニョは、拍のあいだに落ちて次の小節をアンティシペーションする、短いシンコペーションの音型で和音を弾きます。
+ボサノヴァのもとになった、より古く速いサンバは、一般に2拍子で感じられ、シンコペーションは16分音符によって生まれます。たとえば合奏では、大きなバスドラムであるスルドが2/4のそれぞれの小節の2拍目を強調し、シェイカーがそれぞれの拍の最後の16分音符を押し出し、ギターやカヴァキーニョが拍の間に短いシンコペーションの音型で和音を鳴らすことがあります。サンバはほかの楽器でも、ギターやピアノの独奏でも演奏できます。独奏では、ベースの拍やシンコペーションを効かせた和音を工夫して、グルーヴを表現できます。具体的なパターンは演奏やスタイルによって異なります。
 
-Press **Play** to hear a samba backing, written in 4/4, so each bar holds two bars of samba's 2/4. The chords strike six times per bar, almost all off the beat, and the bass lands on the beat the surdo stresses. At the end of bar 2, the next chord comes half a beat early, on the "and" of 4.
+Press **Play** to hear a samba backing written in 4/4, with each bar containing two bars of samba in 2/4. The chords strike six times per bar, almost always off the beat, while the bass lands on the beat emphasized by the surdo. At the end of bar 2, the next chord comes half a beat early, on the "and" of beat 4.
 
-**Play**を押すと、サンバの伴奏が鳴ります。4/4で書いているので、それぞれの小節にサンバの2/4の2小節が入ります。和音は1小節に6回、ほとんどすべて拍の外で鳴り、ベースはスルドが強調する拍に着きます。2小節目の終わりに、次の和音が半拍早く、4拍目の裏にやってきます。
+**Play**を押すと、4/4で書かれたサンバの伴奏が鳴ります。それぞれの小節には、サンバの2/4の小節が2つ入ります。和音は1小節に6回、ほとんどすべて拍の外で鳴り、ベースはスルドが強調する拍に重なります。2小節目の終わりには、次の和音が半拍早く、4拍目の裏に入ります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=syncopation&example=samba&key&bars=2" title="Samba" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 <aside>
   <div class="aside-body">
-    <p>Most demos on this site play notes mechanically, without human nuances such as the push and pull of time, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
-    <p>このサイトのデモの多くは、音を機械的に鳴らしており、タイミングの微妙な緩急、アーティキュレーション、アクセント、タッチ、音色といった人間的なニュアンスは表現していません。これらのデモは、あくまで概念を説明するためのものです。ここで取り上げている音楽の実際の録音を、ぜひ聴いてみましょう。</p>
+    <p>Most demos on this site play notes mechanically, without human nuances such as subtle timing shifts, articulation, accents, touch, and tone. They are intended only to illustrate concepts. We strongly recommend listening to real recordings of the music discussed here.</p>
+    <p>このサイトのデモの多くは、微妙なタイミングの揺れ、アーティキュレーション、アクセント、タッチ、音色といった人間らしいニュアンスなしに、機械的に音を鳴らしています。これらはあくまで概念を説明するためのものなので、ここで取り上げている音楽の実際の録音を、ぜひ聴いてみてください。</p>
   </div>
 </aside>

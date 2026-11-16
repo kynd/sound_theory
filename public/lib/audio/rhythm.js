@@ -16,7 +16,10 @@ import { DRUM_NOTES } from './instruments.js';
  *     tracks: [{ id, label, midi, steps, offset?, offsets?, gain? }],
  *   }
  *
- * Each track's `steps` holds one velocity per step, 0–1, where 0 is silence. A track
+ * Each track's `steps` holds one velocity per step, 0–1, where 0 is silence. Tracks are
+ * usually as long as the pattern; a shorter track loops on its own length, so tracks of
+ * different lengths make a polymeter, and the pattern lasts until they meet again (the
+ * least common multiple of their lengths, `cycleLength`). A track
  * may be moved off the grid by `offset` seconds (negative is early) and scaled by
  * `gain`; `offsets`, one per step, moves single hits on top of that. Patterns are written as strings, one character per step: `X` is a full hit,
  * `x` a soft one (half velocity), and `-` a rest.
@@ -28,6 +31,15 @@ export const DRUM_TRACKS = [
     { id: 'rim',   label: 'Rim',   midi: DRUM_NOTES.rim },
     { id: 'snare', label: 'Snare', midi: DRUM_NOTES.snare },
     { id: 'kick',  label: 'Kick',  midi: DRUM_NOTES.kick },
+];
+
+/**
+ * Pieces of the kit a pattern can add by naming them in `trackIds` (clap, open hi-hat).
+ * They are not in DRUM_TRACKS, so the patterns that do not use them keep four rows.
+ */
+const EXTRA_TRACKS = [
+    { id: 'open',  label: 'Open',  midi: DRUM_NOTES.open },
+    { id: 'clap',  label: 'Clap',  midi: DRUM_NOTES.clap },
 ];
 
 /** Velocities of a full and a soft hit. */
@@ -42,15 +54,15 @@ export function parseSteps(text) {
 }
 
 /**
- * Builds a pattern from strings per track. `trackIds` picks the tracks (in
- * DRUM_TRACKS order); a track without a string is all rests.
+ * Builds a pattern from strings per track. `trackIds` picks the tracks, from DRUM_TRACKS
+ * and EXTRA_TRACKS, in the order given; a track without a string is all rests.
  */
 export function makePattern({ id, label, stepsPerBeat, groups, beatsPerBar, tempo, tracks, trackIds = DRUM_TRACKS.map(t => t.id) }) {
     const steps = groups.reduce((a, b) => a + b, 0);
     return {
         id, label, stepsPerBeat, groups, tempo,
         ...(beatsPerBar ? { beatsPerBar } : {}),
-        tracks: DRUM_TRACKS.filter(t => trackIds.includes(t.id)).map(t => {
+        tracks: trackIds.map(id => [...DRUM_TRACKS, ...EXTRA_TRACKS].find(t => t.id === id)).map(t => {
             const parsed = tracks[t.id] ? parseSteps(tracks[t.id]) : [];
             return { ...t, steps: Array.from({ length: steps }, (_, i) => parsed[i] ?? 0) };
         }),
@@ -92,8 +104,7 @@ const quarters = (beats, perBeat) => Array(beats).fill(perBeat);
  * accented. Returns the pattern and the tempo that makes the cycle last `cycle` seconds.
  */
 export function polyrhythmPattern(high, low, { cycle = 2 } = {}) {
-    const gcd = (a, b) => (b ? gcd(b, a % b) : a);
-    const steps = high * low / gcd(high, low);
+    const steps = lcm(high, low);
     const track = (id, count) => ({
         ...DRUM_TRACKS.find(t => t.id === id),
         steps: Array.from({ length: steps }, (_, i) => (i % (steps / count) === 0 ? (i === 0 ? FULL : 0.7) : 0)),
@@ -105,6 +116,46 @@ export function polyrhythmPattern(high, low, { cycle = 2 } = {}) {
     };
     return pattern;
 }
+
+/**
+ * Two loops of different lengths over one pulse, for polymeters: a loop of `top` steps
+ * over a loop of `bottom` steps, one note per step, each loop accenting its own first
+ * note. The loops start together and meet again after their least common multiple of
+ * steps (8 and 5 meet every 40), which is the pattern's length. A step lasts `step`
+ * seconds.
+ *
+ * `sounds` gives each loop 'drums' or 'notes'. On drums, the top loop is rim clicks and
+ * the bottom one kicks. As notes, a loop climbs the C major scale from C, one note per
+ * step (C, D, E, …), from C4 on top and C3 below; such a track has `voice: 'notes'`,
+ * a pitch per step in `notes`, and the note names in `names`.
+ */
+export function polymeterPattern(top, bottom, { step = 0.25, sounds = ['drums', 'drums'] } = {}) {
+    const SOFT_COUNT = 0.4;
+    const MAJOR = [0, 2, 4, 5, 7, 9, 11];
+    const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    const steps = count => Array.from({ length: count }, (_, i) => (i === 0 ? FULL : SOFT_COUNT));
+    const track = (count, sound, drum, low) => (sound === 'notes'
+        ? {
+            id: `notes-${drum}`, label: 'Notes', voice: 'notes', steps: steps(count),
+            notes: Array.from({ length: count }, (_, i) => low + 12 * Math.floor(i / 7) + MAJOR[i % 7]),
+            names: Array.from({ length: count }, (_, i) => LETTERS[i % 7]),
+        }
+        : { ...DRUM_TRACKS.find(t => t.id === drum), steps: steps(count) });
+    const length = lcm(top, bottom);
+    return {
+        id: `${top}-${bottom}-meter`, label: `${top} over ${bottom}`, stepsPerBeat: 1,
+        groups: Array(length / top).fill(top), tempo: 60 / step,
+        tracks: [track(top, sounds[0], 'rim', 60), track(bottom, sounds[1], 'kick', 48)],
+    };
+}
+
+/** The steps before every track of a pattern starts again together. */
+export function cycleLength(pattern) {
+    return pattern.tracks.reduce((length, track) => lcm(length, track.steps.length), 1);
+}
+
+const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+const lcm = (a, b) => a * b / gcd(a, b);
 
 /** Patterns in common time signatures, in eighth-note steps (thirds of a beat in the shuffle). */
 export const METER_PATTERNS = [
@@ -226,6 +277,41 @@ export const STYLE_PATTERNS = [
         snare: '- - - - X - - - - - - - X - - -',
         kick:  'X - - - - - - x - - X - - - - -',
     } }),
+    // Motown: the snare on every beat, a clap (for the tambourine) on 2 and 4.
+    makePattern({ id: 'motown', label: 'Motown', stepsPerBeat: 2, groups: quarters(4, 2), tempo: 120,
+        trackIds: ['hat', 'clap', 'snare', 'kick'], tracks: {
+        hat:   'X x X x X x X x',
+        clap:  '- - X - - - X -',
+        snare: 'X - X - X - X -',
+        kick:  'X - - X X - - -',
+    } }),
+    // Disco: four on the floor, the open hi-hat on every "and," a clap on 2 and 4.
+    makePattern({ id: 'disco', label: 'Disco', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 120,
+        trackIds: ['hat', 'open', 'clap', 'kick'], tracks: {
+        hat:   'X x - x X x - x X x - x X x - x',
+        open:  '- - X - - - X - - - X - - - X -',
+        clap:  '- - - - X - - - - - - - X - - -',
+        kick:  'X - - - X - - - X - - - X - - -',
+    } }),
+    // Ska: fast, the hi-hat on every offbeat, the snare on 2 and 4.
+    makePattern({ id: 'ska', label: 'Ska', stepsPerBeat: 2, groups: quarters(4, 2), tempo: 160, tracks: {
+        hat:   '- X - X - X - X',
+        snare: '- - X - - - X -',
+        kick:  'X - - - X - - -',
+    } }),
+    // Dembow (reggaeton): four on the floor under a 3+3+2 snare, the "boom-ch-boom-chick."
+    makePattern({ id: 'dembow', label: 'Dembow', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 95, tracks: {
+        hat:   'x - x - x - x - x - x - x - x -',
+        snare: '- - - X - - X - - - - X - - X -',
+        kick:  'X - - - X - - - X - - - X - - -',
+    } }),
+    // Trap: half time, the clap on beat 3, hi-hats in sixteenths rolling at the end.
+    makePattern({ id: 'trap', label: 'Trap', stepsPerBeat: 4, groups: quarters(4, 4), tempo: 140,
+        trackIds: ['hat', 'clap', 'kick'], tracks: {
+        hat:   'X x X x X x X x X x X x X X X X',
+        clap:  '- - - - - - - - X - - - - - - -',
+        kick:  'X - - - - - - X - - X - - - - -',
+    } }),
 ];
 
 /**
@@ -345,9 +431,12 @@ export class StepSequencer {
      * @param {Function} [opts.onStep]
      * @param {Function} [opts.onSchedule]  (i, time): step `i` will sound at `time`
      *                                      on the audio clock; called ahead of it.
+     * @param {object}   [opts.voices]      instruments by name, for tracks with a
+     *                                      `voice` (pitched, with noteOn and noteOff).
      */
-    constructor(instrument, { pattern = null, tempo = 100, onStep = () => {}, onSchedule = () => {} } = {}) {
+    constructor(instrument, { pattern = null, tempo = 100, onStep = () => {}, onSchedule = () => {}, voices = {} } = {}) {
         this.instrument = instrument;
+        this.voices = voices;
         this.pattern = pattern;
         this.tempo = tempo;
         this.onStep = onStep;
@@ -384,11 +473,20 @@ export class StepSequencer {
         // still lands in the future.
         while (this._next < now + AHEAD + MAX_EARLY) {
             const { pattern } = this;
-            const i = this._step % pattern.tracks[0].steps.length;
+            const i = this._step % cycleLength(pattern);
             for (const track of pattern.tracks) {
-                const velocity = track.steps[i] * (track.gain ?? 1);
-                const offset = (track.offset ?? 0) + (track.offsets?.[i] ?? 0);
-                if (velocity > 0) this.instrument.noteOn(track.midi, velocity, this._next + offset);
+                // A shorter track loops on its own length (a polymeter).
+                const j = i % track.steps.length;
+                const velocity = track.steps[j] * (track.gain ?? 1);
+                const offset = (track.offset ?? 0) + (track.offsets?.[j] ?? 0);
+                if (velocity <= 0) continue;
+                // A track with a `voice` plays its own instrument, a pitch per step
+                // (`notes`), held for most of the step.
+                const instrument = track.voice ? this.voices[track.voice] : this.instrument;
+                const midi = track.notes?.[j] ?? track.midi;
+                const time = this._next + offset;
+                instrument.noteOn(midi, velocity, time);
+                if (track.voice) instrument.noteOff(midi, time + 0.9 * this.stepDuration);
             }
             this.onSchedule(i, this._next);
             const draw = setTimeout(() => { this._draws.delete(draw); this.onStep(i); },

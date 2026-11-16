@@ -9,6 +9,7 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 // the inner ring). ?high=3&low=2 sets where the sliders start.
 const params = new URLSearchParams(location.search);
 let high = Number(params.get('high') ?? 3), low = Number(params.get('low') ?? 2);
+const MAX = 9;
 
 const master = new MasterBus();
 const drums = createInstrument('drums').connect(master.input);
@@ -26,8 +27,8 @@ function usePattern() {
 }
 
 const controls = document.getElementById('controls');
-addRange(controls, { label: 'High', min: 1, max: 9, step: 1, value: high, onChange: v => { high = v; usePattern(); } });
-addRange(controls, { label: 'Low', min: 1, max: 9, step: 1, value: low, onChange: v => { low = v; usePattern(); } });
+addRange(controls, { label: 'High', min: 1, max: MAX, step: 1, value: high, onChange: v => { high = v; usePattern(); } });
+addRange(controls, { label: 'Low', min: 1, max: MAX, step: 1, value: low, onChange: v => { low = v; usePattern(); } });
 unwrap(controls);
 
 usePattern();

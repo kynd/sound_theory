@@ -307,7 +307,8 @@ export function riffNotes(progression, voicings) {
         if (riff && voicings[i]?.notes.length) {
             for (let t = 0, k = 0; t < chord.beats - 1e-6; k++) {
                 const [semitones, beats] = riff[k % riff.length];
-                notes.push({ at: at + t, beats: Math.min(beats, chord.beats - t), midi: voicings[i].bass + semitones });
+                // A null in place of the semitones is a rest.
+                if (semitones !== null) notes.push({ at: at + t, beats: Math.min(beats, chord.beats - t), midi: voicings[i].bass + semitones });
                 t += beats;
             }
         }
@@ -1788,6 +1789,39 @@ const LOFI_EFFECTS = {
     vibrato: { rate: 0.5, depth: 0.12, mix: 1 },
 };
 const LOFI = { tempo: 80, drums: LOFI_BEAT, effects: LOFI_EFFECTS };
+/**
+ * Settings for the progression demo's drum chain (compressor, distortion, bit crusher,
+ * filter, reverb) that make synthesized drums sound less raw and more lo-fi: squeezed
+ * together, a little warm and gritty, the hard highs softened, in a small room.
+ */
+const LOFI_DRUMS = {
+    compressor: { threshold: -24, ratio: 4 },
+    distortion: { drive: 0.2, mix: 0.25 },
+    bitcrush: { bits: 8, mix: 0.3 },
+    filter: { cutoff: 4500, resonance: 0.7 },
+    reverb: { decay: 0.8, mix: 0.15 },
+};
+/**
+ * Settings for the progression demo's chord chain (bit crusher, filter, chorus, vibrato,
+ * reverb): the lo-fi keys sound, a little crushed, dulled, widened, wobbling like worn
+ * tape, in some room.
+ */
+const LOFI_CHORDS = {
+    bitcrush: { bits: 8, mix: 0.2 },
+    filter: { cutoff: 3000, resonance: 0.7 },
+    chorus: { rate: 0.8, depth: 0.5, mix: 0.3 },
+    vibrato: { rate: 0.4, depth: 0.08, mix: 1 },
+    reverb: { decay: 2, mix: 0.2 },
+};
+/**
+ * Chord chain settings for a distorted rock guitar: an overdriven amp (heavy distortion)
+ * through a speaker cabinet, which rolls off the fizz above about 3.5 kHz, in a small room.
+ */
+const DISTORTED_GUITAR = {
+    distortion: { drive: 0.85, mix: 1 },
+    filter: { cutoff: 3500, resonance: 1 },
+    reverb: { decay: 1.2, mix: 0.12 },
+};
 
 /**
  * A notes-and-beats melody where an `!` before the note name accents it (the syncopated
@@ -1845,7 +1879,6 @@ const SAMBA_COMP = [['upper', 0.75], ['upper', 0.75], ['upper', 0.75], ['upper',
  *   - anticipated: each comes early, on the swung "and" before its beat (before beat 3
  *     in the middle of a bar, before the bar line at the start of one), and is held
  *     into it; the pickup notes before it tighten into triplets;
- *   - pushed: the same, with the chord changes at the bar lines early too.
  */
 const HONEYSUCKLE_VOICINGS = {
     Gm9:    { symbol: 'Gm9',   roman: 'ii9',  notes: [43, 53, 57, 58] },
@@ -1864,16 +1897,6 @@ const HONEYSUCKLE_CHORDS = [
     ...vamp(4, ['F6/9']),
     ...vamp(2, ['Am11', 'D7(♭9)']),
 ];
-// Each chord that starts on a bar line comes a swung eighth early.
-const pushBarLines = list => {
-    let at = 0;
-    const starts = list.map(c => { const s = at; at += c.beats; return s; });
-    return list.map((chord, i) => {
-        const early = i > 0 && starts[i] % 4 === 0 ? third : 0;
-        const late = i + 1 < list.length && starts[i + 1] % 4 === 0 ? third : 0;
-        return { ...chord, beats: chord.beats + early - late };
-    });
-};
 const riff = (long, { tight = false } = {}) => [
     ['C5', 2 * third], ['Bb4', third], ...(tight ? [['D4', third], ['F4', third], [`!${long}`, 2 + third]]
         : [['D4', 2 * third], ['F4', third], [long, 2]]),
@@ -1923,8 +1946,6 @@ export const SYNCOPATION_PROGRESSIONS = [
     { id: 'honeysuckle-syncopated', label: 'Syncopated', ...HONEYSUCKLE, melody: HONEYSUCKLE_SYNCOPATED },
     { id: 'honeysuckle-syncopated-2', label: 'Syncopated 2', ...HONEYSUCKLE, melody: HONEYSUCKLE_SYNCOPATED_2 },
     { id: 'honeysuckle-anticipated', label: 'Anticipated', ...HONEYSUCKLE, melody: HONEYSUCKLE_ANTICIPATED },
-    { id: 'honeysuckle-pushed', label: 'Anticipated, chords too', ...HONEYSUCKLE, melody: HONEYSUCKLE_ANTICIPATED,
-        chords: pushBarLines(HONEYSUCKLE_CHORDS) },
     { id: 'comp-on-beat', label: 'Chords on the beat', ...LOFI,
         comp: [['all', 1]], chords: GOSPEL },
     { id: 'comp-charleston', label: 'Charleston', ...LOFI,
@@ -1960,48 +1981,144 @@ export const SYNCOPATION_PROGRESSIONS = [
 // ── Rhythm patterns ──
 
 /**
- * Grooves of a few styles, each a backing of chords, bass, and drums: rock (eighth-note
- * chords and bass under a backbeat), funk (sixteenth-note stabs on one chord over a
- * bass that jumps octaves), reggae (the one drop, the guitar skank on 2 and 4, a bass
- * that leaves space), salsa (a piano montuno answering the son clave over a tumbao
- * bass, which skips beat 1 and anticipates each chord on beat 4), a 12/8 groove (the
- * bell pattern, chords and bass crossing its four beats), and hip-hop (a boom-bap beat
- * under lazy electric piano chords).
+ * Grooves of a few styles, each a backing of chords, bass, and drums, over progressions
+ * and voicings of the kind real songs in the style use, hand-voiced (`notes`: bass, then
+ * the voices above it):
+ *   - rock: punk's three chords, I–IV–V–IV in E, as low power chords (root, fifth,
+ *     octave) on a distorted guitar (`DISTORTED_GUITAR`), struck in fast eighth notes
+ *     over a driving eighth-note bass and a backbeat;
+ *   - funk: a one-chord vamp on E9 with A13 in the third bar, sixteenth-note stabs of
+ *     the 3rd, 7th, and 9th (one voice slides between the two chords) over a bass that
+ *     jumps octaves;
+ *   - reggae: i–♭VII–♭VI–♭VII in A minor, piano skanks on 2 and 4 over the one drop and
+ *     a bass that leaves space;
+ *   - salsa: the minor montuno i–iv–V7–i in A minor, the piano answering the son clave
+ *     over a tumbao bass, which skips beat 1 and anticipates each chord on beat 4;
+ *   - 12/8: Am9–Am9–Fmaj7–E7(♭9) over the bell pattern, chords and bass crossing its
+ *     four beats;
+ *   - hip-hop: a boom-bap beat under IV–V–vi in G (|C D|Em|, twice, Em anticipated)
+ *     on electric piano.
+ * Every style plays its bass on the synth bass, its drums through the lo-fi drum chain
+ * (`LOFI_DRUMS`), and its chords through the lo-fi chord chain (`LOFI_CHORDS`), unless
+ * it sets its own `chordEffects` (rock's distorted guitar, ska's clean piano).
  */
+const hv = (symbol, roman, notes, beats = 4) => ({ symbol, roman, notes, beats });
 export const STYLE_PROGRESSIONS = [
-    { id: 'rock', label: 'Rock', tempo: 120, drums: STYLE('rock'),
-        sounds: { chords: 'guitar-electric', bass: 'bass' },
+    // Power chords low on the neck (root, fifth, octave: E5 is E2–B2–E3, the open low E),
+    // the bass an octave below, through a distorted amp.
+    { id: 'rock', label: 'Rock', key: 'E', tempo: 170, drums: STYLE('rock'),
+        sounds: { chords: 'guitar-electric', bass: 'synth-bass' }, chordEffects: DISTORTED_GUITAR,
         riff: [[0, 0.5]], comp: [['upper', 0.5]],
-        chords: chords(4, [['C', 'I'], ['G', 'V'], ['Am', 'vi'], ['F', 'IV']]) },
-    { id: 'funk', label: 'Funk', tempo: 96, drums: FEEL('funk'),
+        chords: [
+            hv('E5', 'I5', [28, 40, 47, 52]), hv('A5', 'IV5', [33, 45, 52, 57]),
+            hv('B5', 'V5', [35, 47, 54, 59]), hv('A5', 'IV5', [33, 45, 52, 57]),
+        ] },
+    { id: 'funk', label: 'Funk', key: 'E', tempo: 96, drums: FEEL('funk'),
         sounds: { chords: 'guitar-electric', bass: 'synth-bass' },
         riff: [[0, 0.75], [12, 0.25], [0, 0.5], [10, 0.5], [0, 0.75], [7, 0.25], [10, 0.5], [12, 0.5]],
         comp: [[null, 0.5], ['upper', 0.25], [null, 0.5], ['upper', 0.25], [null, 0.25], ['upper', 0.25],
             [null, 0.5], ['upper', 0.25], [null, 0.5], ['upper', 0.25], [null, 0.25], ['upper', 0.25]],
-        chords: chords(4, [['C9', 'I9'], ['C9', 'I9'], ['F9', 'IV9'], ['C9', 'I9']]) },
-    { id: 'reggae', label: 'Reggae', tempo: 76, drums: STYLE('one-drop'),
-        sounds: { chords: 'organ', bass: 'bass' },
-        riff: [[0, 1.5], [0, 0.5], [7, 1], [10, 0.5], [12, 0.5]],
+        chords: [
+            hv('E9', 'I9', [40, 56, 62, 66]), hv('E9', 'I9', [40, 56, 62, 66]),
+            hv('A13', 'IV13', [45, 55, 61, 66]), hv('E9', 'I9', [40, 56, 62, 66]),
+        ] },
+    { id: 'reggae', label: 'Reggae', key: 'A', tempo: 96, drums: STYLE('one-drop'),
+        sounds: { chords: 'piano', bass: 'synth-bass' },
+        // Root, fifth, and octave only, so the bass stays in A minor over F.
+        riff: [[0, 1.5], [0, 0.5], [7, 1], [7, 0.5], [12, 0.5]],
         comp: [[null, 1], ['upper', 0.5], [null, 1.5], ['upper', 0.5], [null, 0.5]],
-        chords: chords(4, [['Am', 'i'], ['D', 'IV'], ['Am', 'i'], ['D', 'IV']]) },
-    { id: 'salsa', label: 'Salsa', tempo: 150, drums: STYLE('son-clave'),
-        sounds: { chords: 'piano', melody: 'bass' },
+        chords: [
+            hv('Am', 'i', [45, 57, 60, 64]), hv('G', '♭VII', [43, 55, 59, 62]),
+            hv('F', '♭VI', [41, 57, 60, 65]), hv('G', '♭VII', [43, 59, 62, 67]),
+        ] },
+    { id: 'salsa', label: 'Salsa', key: 'A', tempo: 150, drums: STYLE('son-clave'),
+        sounds: { chords: 'piano', melody: 'synth-bass' },
         comp: [['upper', 1], ['upper', 0.5], ['upper', 1], ['upper', 0.5], ['upper', 1]],
-        chords: chords(4, [['C', 'I'], ['F', 'IV'], ['G', 'V'], ['F', 'IV']]),
+        chords: [
+            hv('Am', 'i', [45, 60, 64, 69]), hv('Dm', 'iv', [38, 62, 65, 69]),
+            hv('E7', 'V7', [40, 59, 62, 68]), hv('Am', 'i', [45, 60, 64, 69]),
+        ],
         // The tumbao: nothing on 1, the fifth on the "and" of 2, the next chord's root on 4.
-        melody: [[null, 1.5], [43, 1.5], [41, 1], [null, 1.5], [48, 1.5], [43, 1],
-            [null, 1.5], [50, 1.5], [41, 1], [null, 1.5], [48, 1.5], [36, 1]].map(([midi, beats]) => ({ midi, beats })) },
-    { id: 'twelve-eight', label: '12/8', tempo: 100, drums: STYLE('bell-12-8'),
-        sounds: { chords: 'piano', bass: 'bass' },
-        riff: [[0, 1], [7, 1], [0, 2 / 3], [12, 1 / 3], [10, 1]],
+        melody: [[null, 1.5], [40, 1.5], [38, 1], [null, 1.5], [45, 1.5], [40, 1],
+            [null, 1.5], [47, 1.5], [45, 1], [null, 1.5], [40, 1.5], [45, 1]].map(([midi, beats]) => ({ midi, beats })) },
+    { id: 'twelve-eight', label: '12/8', key: 'A', tempo: 100, drums: STYLE('bell-12-8'),
+        sounds: { chords: 'piano', bass: 'synth-bass' },
+        riff: [[0, 1], [7, 1], [0, 2 / 3], [12, 1 / 3], [7, 1]],
         comp: [['upper', 4 / 3], ['upper', 2 / 3], ['upper', 1], [null, 1]],
-        chords: chords(4, [['Am7', 'i7'], ['Am7', 'i7'], ['G', '♭VII'], ['Am7', 'i7']]) },
-    { id: 'hip-hop', label: 'Hip-hop', tempo: 88, drums: STYLE('boom-bap'),
+        chords: [
+            hv('Am9', 'i9', [45, 55, 59, 60, 64]), hv('Am9', 'i9', [45, 55, 59, 60, 64]),
+            hv('Fmaj7', '♭VImaj7', [41, 57, 60, 64]), hv('E7(♭9)', 'V7(♭9)', [40, 56, 62, 65]),
+        ] },
+    // Hip-hop: IV–V–vi in G, twice (C and D for two beats each, then a bar of Em,
+    // anticipated on the "and" of 4 and held over the bar line instead of struck again),
+    // plain triads on the electric piano struck on the beat and on the "and" of the next,
+    // the bass moving between root, fifth, and octave.
+    ...(() => {
+        const riff = [[0, 1], [7, 0.5], [12, 0.5]];
+        const comp = [['upper', 1.5], ['upper', 0.5]];
+        const C = hv('C', 'IV', [36, 60, 64, 67], 2), D = hv('D', 'V', [38, 62, 66, 69], 1.5);
+        // The early stroke runs into the bar's first one: a single chord two beats long.
+        const Em = { ...earlyChord(hv('Em', 'vi', [40, 59, 64, 67]), 4.5, [], riff, 2),
+            comp: [['upper', 2], ['upper', 0.5], ...comp] };
+        return [{ id: 'hip-hop', label: 'Hip-hop', key: 'G', tempo: 88, drums: STYLE('boom-bap'),
+            sounds: { chords: 'epiano', bass: 'synth-bass' }, riff, comp, chords: [C, D, Em, C, D, Em] }];
+    })(),
+    // Motown: I–vi–ii–V with sevenths, piano stabs on 2 and 4 over the snare on every
+    // beat, and a busy bass moving between root, fifth, and octave.
+    { id: 'motown', label: 'Motown', key: 'C', tempo: 120, drums: STYLE('motown'),
+        sounds: { chords: 'piano', bass: 'synth-bass' },
+        riff: [[0, 0.75], [0, 0.25], [7, 0.5], [12, 0.5], [0, 0.75], [0, 0.25], [7, 0.5], [5, 0.5]],
+        comp: [[null, 1], ['upper', 1], [null, 1], ['upper', 1]],
+        chords: [
+            hv('Cmaj7', 'Imaj7', [36, 52, 55, 59]), hv('Am7', 'vi7', [45, 52, 55, 60]),
+            hv('Dm7', 'ii7', [38, 53, 57, 60]), hv('G7', 'V7', [43, 53, 55, 59]),
+        ] },
+    // Disco: a Dorian vamp, Am9–D9, chords on every "and" over four on the floor and an
+    // octave-jumping bass.
+    { id: 'disco', label: 'Disco', key: 'A', tempo: 120, drums: STYLE('disco'),
         sounds: { chords: 'epiano', bass: 'synth-bass' },
-        riff: [[0, 1.5], [0, 0.5], [-2, 1], [-5, 1]],
-        comp: [['upper', 1.5], ['upper', 2.5]],
-        chords: chords(4, [['Cm9', 'i9'], ['Fm9', 'iv9'], ['A♭maj7', '♭VImaj7'], ['G7(♭9)', 'V7(♭9)']]) },
-].map(p => ({ loop: true, ...p }));
+        riff: [[0, 0.5], [12, 0.5], [0, 0.5], [12, 0.5], [0, 0.5], [12, 0.5], [0, 0.5], [12, 0.5]],
+        comp: [[null, 0.5], ['upper', 0.5], [null, 0.5], ['upper', 0.5], [null, 0.5], ['upper', 0.5], [null, 0.5], ['upper', 0.5]],
+        chords: [
+            hv('Am9', 'i9', [33, 55, 59, 60, 64]), hv('D9', 'IV9', [38, 54, 60, 64]),
+            hv('Am9', 'i9', [33, 55, 59, 60, 64]), hv('D9', 'IV9', [38, 54, 60, 64]),
+        ] },
+    // Ska: I–IV–V–IV, chords on every offbeat (the upstroke) over a walking bass. The
+    // piano plays clean, in a small room, instead of through the lo-fi chord chain.
+    { id: 'ska', label: 'Ska', key: 'C', tempo: 160, drums: STYLE('ska'),
+        sounds: { chords: 'piano', bass: 'synth-bass' }, chordEffects: { reverb: { decay: 1.5, mix: 0.15 } },
+        riff: [[0, 1], [4, 1], [7, 1], [9, 1]],
+        comp: [[null, 0.5], ['upper', 0.5], [null, 0.5], ['upper', 0.5], [null, 0.5], ['upper', 0.5], [null, 0.5], ['upper', 0.5]],
+        chords: [
+            hv('C', 'I', [36, 60, 64, 67]), hv('F', 'IV', [41, 60, 65, 69]),
+            hv('G', 'V', [43, 59, 62, 67]), hv('F', 'IV', [41, 60, 65, 69]),
+        ] },
+    // Reggaeton: i–♭VI–♭III–♭VII, chords and bass in the dembow's 3+3+2.
+    { id: 'reggaeton', label: 'Reggaeton', key: 'A', tempo: 95, drums: STYLE('dembow'),
+        sounds: { chords: 'piano', bass: 'synth-bass' },
+        riff: [[0, 0.75], [0, 0.75], [0, 0.5], [0, 0.75], [0, 0.75], [0, 0.5]],
+        comp: [['upper', 0.75], ['upper', 0.75], ['upper', 0.5], ['upper', 0.75], ['upper', 0.75], ['upper', 0.5]],
+        chords: [
+            hv('Am', 'i', [45, 57, 60, 64]), hv('F', '♭VI', [41, 57, 60, 65]),
+            hv('C', '♭III', [36, 55, 60, 64]), hv('G', '♭VII', [43, 55, 59, 62]),
+        ] },
+    // Trap: a dark minor pad held through each bar, half-time drums, and an 808 written
+    // as the melody so it can glide: up an octave at the end of the first bar, and from
+    // the last bar's root up a minor third back toward the top.
+    { id: 'trap', label: 'Trap', key: 'A', tempo: 140, drums: STYLE('trap'),
+        sounds: { chords: 'pad', melody: 'sub-808' },
+        comp: [['upper', 4]],
+        chords: [
+            hv('Am', 'i', [45, 57, 60, 64]), hv('F', '♭VI', [41, 57, 60, 65]),
+            hv('Dm', 'iv', [38, 57, 62, 65]), hv('E', 'V', [40, 56, 59, 64]),
+        ],
+        melody: melody([
+            ['A1', 2.5], ['A1', 1.5, { bend: 12, bendAt: 0.75, bendBeats: 0.25 }],
+            ['F1', 2.5], ['F1', 1.5],
+            ['D2', 2.5], ['D2', 1.5],
+            ['E1', 3], ['E1', 1, { bend: 3, bendAt: 0.5, bendBeats: 0.25 }],
+        ]) },
+].map(p => ({ loop: true, drumEffects: LOFI_DRUMS, chordEffects: LOFI_CHORDS, ...p }));
 
 // ── J-pop progressions ──
 
@@ -2116,6 +2233,51 @@ export const MINIMAL_PROGRESSIONS = [
         sounds: { chords: 'organ-synth', melody: 'organ-synth' },
         chords: [drone([48, 55], ADDITIVE.reduce((a, n) => a + n.beats, 0), 'C')],
         melody: ADDITIVE },
+];
+
+// ── Polymeter ──
+
+/**
+ * A figure of five sixteenths, a rest and then four notes climbing in fourths (D, G, C,
+ * F), repeated three times over a bar of four beats, as a polymeter used for a moment:
+ * the bar has a sixteenth left over, so the figure starts again with the bar, a rest
+ * after the rest, each time it loops. Under it, Dm7 and G7 are each struck twice, on a
+ * beat and three sixteenths later, and an 808 plays a syncopated line with chromatic
+ * approaches (G♯ into G, C♯ back into D). Arranged from a MIDI sketch.
+ */
+const FOURTHS_FIGURE = [null, 74, 79, 84, 89];
+/**
+ * Settings for the progression demo's melody chain (bit crusher, filter, chorus,
+ * vibrato, delay, reverb): a lo-fi lead, a little crushed and dulled, wobbling like worn
+ * tape, with an echo an eighth note later (at 60 BPM) and some room.
+ */
+const LOFI_MELODY = {
+    bitcrush: { bits: 8, mix: 0.2 },
+    filter: { cutoff: 3500, resonance: 0.7 },
+    chorus: { rate: 0.6, depth: 0.4, mix: 0.2 },
+    vibrato: { rate: 0.4, depth: 0.08, mix: 1 },
+    delay: { time: 0.5, feedback: 0.35, mix: 0.3 },
+    reverb: { decay: 2.5, mix: 0.25 },
+};
+// At half speed, lo-fi: the chords on the electric piano and the figure on a soft AM
+// lead, each through its own lo-fi chain (the figure with an echo), over the lo-fi
+// hip-hop beat in 4/4 through the lo-fi drum chain.
+export const POLYMETER_PROGRESSIONS = [
+    { id: 'fives-in-four', label: 'Fives in a bar of four', tempo: 60, loop: true,
+        // The figure 6 dB down and the 808 6 dB up, so the bass carries under the chords.
+        sounds: { chords: 'epiano', melody: 'am', bass: 'sub-808', levels: { melody: -6, bass: 6 } },
+        drums: LOFI_BEAT, drumEffects: LOFI_DRUMS, chordEffects: LOFI_CHORDS, melodyEffects: LOFI_MELODY,
+        comp: [['upper', 0.75], [null, 0.5], ['upper', 0.75]],
+        chords: [
+            // D2–E2–F2, a rest, then G♯2 leading into G7.
+            { symbol: 'Dm7', roman: 'ii7', beats: 2, notes: [38, 50, 53, 57, 60],
+                riff: [[0, 0.25], [2, 0.5], [3, 0.75], [null, 0.25], [6, 0.25]] },
+            // G2–D2–E2–G2, then C♯2 leading back into D.
+            { symbol: 'G7', roman: 'V7', beats: 2, notes: [43, 50, 53, 55, 59],
+                riff: [[0, 0.25], [-5, 0.5], [-3, 0.5], [0, 0.5], [-6, 0.25]] },
+        ],
+        melody: Array.from({ length: 16 }, (_, i) => FOURTHS_FIGURE[i % 5])
+            .map(midi => ({ midi, beats: 0.25, gate: 1, velocity: 0.8 })) },
 ];
 
 // ── Song analysis: Stella by Starlight ──
@@ -2295,8 +2457,9 @@ WALKING_BASS_PROGRESSIONS.at(-1).melody = randomWalkingLine(WALK_CHORDS);
  *   - accents: the notes on beats 1 and 3 loud, the others soft.
  *   - swell: a crescendo to the middle of the phrase and a decrescendo after.
  *   - straight: even eighth notes, at one level.
- *   - swing: each pair of eighths played long–short (2/3 and 1/3 of a beat), the
- *     off-beat accented and slightly short, as horn players often phrase it.
+ *   - swing: the off-beat eighths accented and slightly short, as horn players often
+ *     phrase it. The timing is left even here; `swingEighths` plays the pairs
+ *     long–short.
  */
 function articulate(list, style) {
     const notes = melody(list);
@@ -2313,9 +2476,7 @@ function articulate(list, style) {
             case 'swing': {
                 const eighth = Math.abs(note.beats - 0.5) < 1e-6;
                 if (!eighth) return { ...note, gate: 0.95, velocity: 0.75 };
-                return beat
-                    ? { ...note, beats: 2 / 3, gate: 1, velocity: 0.6 }
-                    : { ...note, beats: 1 / 3, gate: 0.8, velocity: 0.95 };
+                return beat ? { ...note, gate: 1, velocity: 0.6 } : { ...note, gate: 0.8, velocity: 0.95 };
             }
             default: return { ...note, gate: 0.95, velocity: 0.75 };
         }
@@ -2328,18 +2489,76 @@ const ODE = [
     ['C5', 1], ['C5', 1], ['D5', 1], ['E5', 1], ['E5', 1.5], ['D5', 0.5], ['D5', 2],
 ];
 const ODE_CHORDS = chords(4, [['C', 'I'], ['G', 'V'], ['C', 'I'], ['G', 'V']]);
-/** An eighth-note line over C and G. */
+/**
+ * A bebop line in eighth notes over iii–VI–ii–V in C (Em7, A7alt, Dm7, G7alt), built
+ * from the idioms on Jazz Idioms and Minor Chord Scales, mixing steps with leaps:
+ *   1. Em7: the lick in E (E, F♯, G, A, F♯, D, E), then a leap up to B, a half step
+ *      above the B♭ that starts the next bar.
+ *   2. A7alt: a climb from the ♭9 through the ♯9 to the 3rd, a leap to the ♭13 and the
+ *      root, then down through ♭7 and ♭13 to the ♯11, a half step below the next E.
+ *   3. Dm7: 1-2-3-5 on D, then on C.
+ *   4. G7alt: the same shape in the altered scale, 1-2-3-5 from the ♯11 (C♯, D♯, F,
+ *      A♭), then a step lower from the 3rd, the last note dropping to F, a half step
+ *      above the E that starts the line again.
+ */
 const EIGHTHS = [
-    'C5', 'D5', 'E5', 'G5', 'A5', 'G5', 'E5', 'D5', 'F5', 'E5', 'D5', 'B4', 'G4', 'A4', 'B4', 'D5',
-    'E5', 'D5', 'C5', 'A4', 'G4', 'A4', 'C5', 'D5', 'E5', 'D5', 'B4', 'G4', 'F4', 'G4', 'B4', 'D5',
+    'E4', 'F#4', 'G4', 'A4', 'F#4', 'D4', 'E4', 'B4',
+    'A#4', 'C5', 'C#5', 'F5', 'A5', 'G5', 'F5', 'D#5',
+    'D5', 'E5', 'F5', 'A5', 'C5', 'D5', 'E5', 'G5',
+    'C#5', 'D#5', 'F5', 'G#5', 'B4', 'C#5', 'D#5', 'F4',
 ].map(n => [n, 0.5]);
-const EIGHTH_CHORDS = chords(4, [['C', 'I'], ['G', 'V'], ['C', 'I'], ['G', 'V']]);
+// Shell voicings, just the root, 3rd, and 7th, so the line carries the color: the 3rds
+// and 7ths move by step from chord to chord (G and D, G and C♯, F and C, F and B).
+const EIGHTH_CHORDS = [
+    hv('Em7', 'iii7', [40, 55, 62]), hv('A7alt', 'VI7', [45, 55, 61]),
+    hv('Dm7', 'ii7', [38, 53, 60]), hv('G7alt', 'V7', [43, 53, 59]),
+];
+
+/**
+ * Where a pair of eighth notes falls in its beat, in beats from the beat: `first` (0 is
+ * on the beat, negative a little ahead of it) and `second` (0.5 is even, 2/3 the
+ * triplet swing).
+ */
+export const STRAIGHT_EIGHTHS = { first: 0, second: 0.5 };
+export const SWUNG_EIGHTHS = { first: 0, second: 2 / 3 };
+
+/**
+ * A melody of even eighth notes with every pair moved to `timing` ({ first, second }):
+ * the eighth on the beat lasts from `first` to `second`, the one off the beat from
+ * `second` to the next beat's `first`, and every note is moved by `first` (`offset`),
+ * so a negative `first` plays each beat's first note ahead of the beat. Other notes
+ * keep their lengths and move by `first` too.
+ */
+export function swingEighths(melody, { first, second }) {
+    let at = 0;
+    return melody.map(note => {
+        const eighth = Math.abs(note.beats - 0.5) < 1e-6;
+        const onBeat = Math.abs(at - Math.round(at)) < 1e-6;
+        at += note.beats;
+        const beats = !eighth ? note.beats : onBeat ? second - first : 1 - (second - first);
+        return { ...note, beats, offset: first };
+    });
+}
+
+/**
+ * A progression whose melody is written as even eighths (`evenMelody`) with its pairs
+ * played at `timing` (see swingEighths); the progression keeps the timing as `swing`.
+ */
+export function withSwing(progression, timing = progression.swing) {
+    return { ...progression, swing: timing, melody: swingEighths(progression.evenMelody, timing) };
+}
+
+const swungLine = (style, timing) => {
+    const evenMelody = articulate(EIGHTHS, style);
+    return { evenMelody, swing: timing, melody: swingEighths(evenMelody, timing) };
+};
 
 export const ARTICULATION_PROGRESSIONS = [
     ...[['legato', 'Legato'], ['staccato', 'Staccato'], ['accents', 'Accents'], ['swell', 'Swell']]
         .map(([style, label]) => ({ id: `ode-${style}`, label, tempo: 100, chords: ODE_CHORDS, melody: articulate(ODE, style) })),
-    ...[['straight', 'Straight'], ['swing', 'Swing']]
-        .map(([style, label]) => ({ id: `line-${style}`, label, tempo: 132, chords: EIGHTH_CHORDS, melody: articulate(EIGHTHS, style) })),
+    // The eighth-note line, its pairs even or swung; the demo can move them (`withSwing`).
+    ...[['straight', 'Even', STRAIGHT_EIGHTHS], ['swing', 'Shuffle', SWUNG_EIGHTHS]]
+        .map(([style, label, timing]) => ({ id: `line-${style}`, label, tempo: 132, chords: EIGHTH_CHORDS, ...swungLine(style, timing) })),
 ].map(p => ({ ...p, loop: true }));
 
 // ── Voicing ──
@@ -2460,6 +2679,7 @@ export const PROGRESSION_SETS = {
     stella: rootless(STELLA_PROGRESSIONS),
     world: WORLD_PROGRESSIONS,
     minimal: MINIMAL_PROGRESSIONS,
+    polymeter: POLYMETER_PROGRESSIONS,
     jpop: JPOP_PROGRESSIONS,
     styles: STYLE_PROGRESSIONS,
     blues: BLUES_PROGRESSIONS.map(p => ({ ...p, sounds: { chords: 'piano', melody: 'piano', bass: 'bass' } })),
@@ -2548,11 +2768,38 @@ export class ProgressionPlayer {
 
     get playing() { return this._timer !== null; }
 
+    /**
+     * Where playback is, in beats from the start of the progression, or null when
+     * stopped (for views that follow the music). Notes are scheduled a little ahead,
+     * so this is the pass that is sounding, not the one being scheduled.
+     */
+    position() {
+        if (!this.playing) return null;
+        const at = (Tone.immediate() - this._origin) / (60 / this.progression.tempo);
+        return at < 0 ? at + this._length : at;
+    }
+
+    /**
+     * Changes the tempo (beats per minute), while playing too: the pass carries on from
+     * the beat it has reached, at the new speed. Notes already scheduled (a fraction of
+     * a second ahead) keep their times.
+     */
+    setTempo(bpm) {
+        if (this.playing) {
+            const now = Tone.immediate();
+            const at = (now - this._origin) / (60 / this.progression.tempo);
+            this._origin = now - at * 60 / bpm;
+        }
+        this.progression = { ...this.progression, tempo: bpm };
+    }
+
     start() {
         this.stop();
         this._events = this._timeline();
         this._index = 0;
-        this._origin = Tone.immediate() + 0.05;
+        // Room for notes moved ahead of the start (a negative `offset`).
+        const early = Math.max(0, -Math.min(0, ...this._events.map(e => e.at)));
+        this._origin = Tone.immediate() + 0.05 + early * 60 / this.progression.tempo;
         this._timer = setInterval(() => this._schedule(), TICK_MS);
         this._schedule();
     }
@@ -2626,12 +2873,13 @@ export class ProgressionPlayer {
         at = 0;
         melody.forEach((note, i) => {
             // A note may set its own loudness (`velocity`) and the share of its length it
-            // sounds for (`gate`: 1 is legato, small is staccato).
+            // sounds for (`gate`: 1 is legato, small is staccato), and be moved off its
+            // place by `offset` beats (negative is early) without moving the notes after it.
             if (note.midi !== null) {
                 // A note may also bend (`bend` semitones, fractional for a quarter tone), starting
                 // `bendAt` beats in and taking `bendBeats`, on an instrument that can (BendSynth).
                 const bend = note.bend ? { to: note.midi + note.bend, at: note.bendAt ?? 0, beats: note.bendBeats ?? 1 / 3 } : null;
-                events.push({ at, beats: note.beats * (note.gate ?? 1), notes: [note.midi], velocity: note.velocity ?? 0.8,
+                events.push({ at: at + (note.offset ?? 0), beats: note.beats * (note.gate ?? 1), notes: [note.midi], velocity: note.velocity ?? 0.8,
                     instrument: this.melodyInstrument, kind: 'melody', index: i, bend });
             }
             at += note.beats;

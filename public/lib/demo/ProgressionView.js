@@ -13,7 +13,8 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * (each chord as wide as its beats), pitch bottom to top, and each note of a chord's
  * voicing is a yellow bar across the chord's width, so the way voices move from chord
  * to chord shows as bars that stay level or step a little. A melody is drawn over the
- * chords in pink, each note as long as it sounds and as thick as it is loud. A chord
+ * chords in pink, each note as long as it sounds and as thick as it is loud, and moved
+ * by its `offset` (beats; negative is early) where it has one. A chord
  * with a `comp` is drawn as its hits (the bass alone, the
  * notes above it) at the beats they fall on. A bass riff is drawn as its own line in
  * dark green, and the chords above it without their bass. Sounding notes are red.
@@ -88,7 +89,8 @@ export class ProgressionView {
     /** Marks melody note `i` as sounding, or none with -1. */
     setNote(i) {
         this.note = i;
-        if (i >= 0 && this.progression?.melody) this._turnTo(this._start(this.progression.melody, i));
+        const melody = this.progression?.melody;
+        if (i >= 0 && melody) this._turnTo(this._start(melody, i) + (melody[i].offset ?? 0));
         this.draw();
     }
 
@@ -248,11 +250,12 @@ export class ProgressionView {
             // bent one (`bend`) climbs from its pitch to the bent pitch where the bend is.
             if (note.midi !== null) {
                 const height = Math.max(2, barH * (0.4 + 0.6 * (note.velocity ?? 0.8)) / 0.88);
-                const x1 = xOf(at) + GAP / 2, x2 = xOf(at + note.beats * (note.gate ?? 1)) - GAP / 2;
+                const start = at + (note.offset ?? 0);
+                const x1 = xOf(start) + GAP / 2, x2 = xOf(start + note.beats * (note.gate ?? 1)) - GAP / 2;
                 const color = i === this.note ? COLORS.red : note.mark ? COLORS.darkGreen : COLORS.pink;
                 if (note.bend) {
                     const bendAt = note.bendAt ?? 0, bendBeats = note.bendBeats ?? 1 / 3;
-                    bentBar(x1, x2, xOf(at + bendAt), xOf(at + bendAt + bendBeats), note.midi, note.midi + note.bend, color, height);
+                    bentBar(x1, x2, xOf(start + bendAt), xOf(start + bendAt + bendBeats), note.midi, note.midi + note.bend, color, height);
                 } else {
                     bar(x1, x2, note.midi, color, height);
                 }

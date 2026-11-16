@@ -579,6 +579,13 @@ export const INSTRUMENTS = [
         envelope: { attack: 0.005, decay: 0.4, sustain: 0.7, release: 0.25 },
         filterEnvelope: { attack: 0.005, decay: 0.5, sustain: 0.5, release: 0.3, baseFrequency: 400, octaves: 3 },
     }, { volume: -12 }) },
+    // The 808 of trap: a deep sine on one voice, so it can glide (bend) between notes.
+    { id: 'sub-808', label: '808 bass', group: 'Synths', create: () => new BendSynth({
+        oscillator: { type: 'sine' },
+        filter: { type: 'lowpass', Q: 0 },
+        envelope: { attack: 0.003, decay: 1.2, sustain: 0.5, release: 0.4 },
+        filterEnvelope: { attack: 0.001, decay: 0.1, sustain: 1, release: 0.1, baseFrequency: 4000, octaves: 0 },
+    }, { volume: -6 }) },
     { id: 'piano', label: 'Piano', group: 'Sampled', create: () =>
         new SampledInstrument(salamanderUrls(), SALAMANDER_BASE, { release: 1, volume: -2 }) },
     { id: 'violin',   label: 'Violin',   group: 'Sampled', create: () => tonejsInstrument('violin',   { release: 0.6, volume: -10 }) },

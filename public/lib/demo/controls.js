@@ -74,6 +74,69 @@ export function addRange(parent, { label, min, max, value, step = 0.01, unit = '
     return input;
 }
 
+/**
+ * Appends a labeled row with a beat-split control (`.dp-split`): a white track for one
+ * beat, in four parts (sixteenths), with two handles that set where a pair of notes
+ * falls in the beat, in beats from its start. The first handle stays at or after the
+ * start of the beat, unless `early` (beats) extends the track to the left so it can be
+ * pulled a little ahead of it; the second stays after the first and before the end. A press on the track moves the nearer
+ * handle there. Values snap to `step`, and `onChange(first, second)` is called as they
+ * move.
+ * @returns {{ set(first: number, second: number): void }}  moves the handles without
+ *          calling onChange.
+ */
+export function addBeatSplit(parent, { label, first = 0, second = 0.5, early = 0, step = 0.01, gap = 1 / 16, onChange }) {
+    const row = el('div', 'dp-row');
+    const split = el('div', 'dp-split');
+    const span = 1 + early;
+    // Position in the track, as a percentage, of a time in beats.
+    const pct = beats => `${(100 * (beats + early)) / span}%`;
+    for (let k = 0; k < 4; k++) {
+        const part = el('div', 'dp-split-part');
+        // Two pixels of paper on each side, so the parts are set apart by space.
+        part.style.left = `calc(${pct(k / 4)} + 2px)`;
+        part.style.width = `calc(${100 / 4 / span}% - 4px)`;
+        split.append(part);
+    }
+    const handles = [el('div', 'dp-split-handle'), el('div', 'dp-split-handle')];
+    split.append(...handles);
+    let values = [first, second];
+    const place = () => handles.forEach((h, i) => { h.style.left = pct(values[i]); });
+    const clamp = (i, v) => {
+        const snapped = Math.round(v / step) * step;
+        return i === 0
+            ? Math.min(values[1] - gap, Math.max(-early, snapped))
+            : Math.min(1 - gap, Math.max(values[0] + gap, snapped));
+    };
+    const beatsAt = e => {
+        const rect = split.getBoundingClientRect();
+        return ((e.clientX - rect.left) / rect.width) * span - early;
+    };
+    let dragging = -1;
+    split.addEventListener('pointerdown', e => {
+        e.preventDefault();
+        const v = beatsAt(e);
+        dragging = Math.abs(v - values[0]) <= Math.abs(v - values[1]) ? 0 : 1;
+        split.setPointerCapture(e.pointerId);
+        move(e);
+    });
+    const move = e => {
+        if (dragging < 0) return;
+        const v = clamp(dragging, beatsAt(e));
+        if (v === values[dragging]) return;
+        values[dragging] = v;
+        place();
+        onChange?.(values[0], values[1]);
+    };
+    split.addEventListener('pointermove', move);
+    split.addEventListener('pointerup', () => { dragging = -1; });
+    split.addEventListener('pointercancel', () => { dragging = -1; });
+    place();
+    row.append(el('span', 'dp-label', label), split);
+    parent.append(row);
+    return { set(a, b) { values = [a, b]; place(); } };
+}
+
 /** Moves a slider made by addRange to `value` and updates its readout, without firing onChange. */
 export function setRange(input, value) {
     const { toSlider, readout, unit, step } = ranges.get(input);

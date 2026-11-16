@@ -97,7 +97,7 @@ Follow `documentation.md`. In short:
   `colors.js`, `Keyboard.js`, `Scope.js`, `PartialsView.js`, `BeatView.js`,
   `FifthsRing.js`, `ScaleView.js`, `CycleView.js`, `PulseView.js`, `StepGrid.js`,
   `ProgressionView.js`, `ChordChart.js`, `XYPad.js`, `DrawPad.js`, `SampleView.js`,
-  `PaintGrid.js`, `EnvelopeView.js`, `TetrachordView.js`.
+  `PaintGrid.js`, `EnvelopeView.js`, `TetrachordView.js`, `LoopView.js`, `GrooveView.js`.
 - Every structural change updates `docs/audio-library.md` in the same change. When a
   group of classes shares behavior, write it once as a "common" section.
 - Demo chrome comes from the `dp-*` classes in `public/styles/demo-ui.css`. A new
@@ -234,7 +234,7 @@ src/content/docs/
     rhythm/                      category; index.md has slug: rhythm-and-time
       pulse-and-cycles.md  time-signatures.md  rhythm-and-feel.md
       syncopation.md  rhythm-patterns.md  polyrhythm.md
-      articulation.md
+      polymeter.md  articulation.md
     harmony/                     category; index.md has slug: chords-and-harmony
       diatonic-chords.md  chord-types.md  seventh-chords.md
       chord-voicing.md  minor-key-chords.md  functional-harmony.md
@@ -264,7 +264,8 @@ public/lib/demo/                 viewport.js  panel.js  controls.js  colors.js
                                  FifthsRing.js  ScaleView.js  CycleView.js  PulseView.js
                                  StepGrid.js  ProgressionView.js  ChordChart.js
                                  XYPad.js  DrawPad.js  SampleView.js  PaintGrid.js
-                                 EnvelopeView.js  TetrachordView.js
+                                 EnvelopeView.js  TetrachordView.js  LoopView.js
+                                 GrooveView.js
 public/demos/<name>/             index.html + main.js per demo
 public/styles/demo-ui.css        demo chrome
 public/lib/page/demoRecorder.js  record button under each embedded demo (page-level)

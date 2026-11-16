@@ -168,6 +168,21 @@ button, select, input { font: inherit; color: inherit; }
   background: var(--accent); cursor: pointer;
 }
 
+/* Beat split (addBeatSplit): one beat as a white track in four parts, with two handles
+   for where a pair of notes falls in it. The parts are spaced, not ruled. */
+.dp-split {
+  position: relative; flex: 1; min-width: 0; height: var(--row);
+  cursor: pointer; touch-action: none;
+}
+.dp-split-part {
+  position: absolute; top: 12px; height: 8px;
+  background: var(--demo-white); border-radius: 4px;
+}
+.dp-split-handle {
+  position: absolute; top: 8px; width: 16px; height: 16px; margin-left: -8px;
+  border-radius: 50%; background: var(--accent);
+}
+
 /* A mount whose controls are rebuilt in place (a synth engine's parameters), kept in
    the DOM but adding no box of its own. */
 .dp-group { display: contents; }

@@ -19,7 +19,7 @@ The presets:
 
 -   **Waveforms:** Sine, Triangle, Square, Sawtooth.
 
--   **Synths:** FM synth, AM synth, Electric piano, Electric piano (bright), Drawbar organ, Synth pad, Synth bass, Synth lead. The Synth lead plays one note at a time, so a sounding note can bend; the other instruments cannot bend.
+-   **Synths:** FM synth, AM synth, Electric piano, Electric piano (bright), Drawbar organ, Synth pad, Synth bass, Synth lead, 808 bass. The Synth lead and the 808 bass play one note at a time, so a sounding note can bend; the other instruments cannot bend.
 
 -   **Recorded instruments:** Piano, Violin, Cello, Contrabass, Flute, Clarinet, Saxophone, Bassoon, Trumpet, French horn, Trombone, Tuba, Acoustic guitar, Nylon guitar, Electric guitar, Electric bass, Harp, Xylophone, Organ, Harmonium. Each is recorded at a handful of notes, and the notes in between are played by shifting the nearest recording in pitch. The piano is the [Salamander Grand Piano](https://archive.org/details/SalamanderGrandPianoV3) by Alexander Holm; the others come from the [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) collection by Nicholas Brosowsky (samples from VSCO 2 Community Edition, the University of Iowa Electronic Music Studios, and Freesound). All are licensed CC BY 3.0.
 
@@ -31,7 +31,7 @@ The presets:
 
 -   **波形：** Sine、Triangle、Square、Sawtooth。
 
--   **シンセ：** FM synth、AM synth、Electric piano、Electric piano (bright)、Drawbar organ、Synth pad、Synth bass、Synth lead。Synth leadは一度にひとつの音だけを鳴らすので、鳴っている音をベンドできます。ほかの楽器ではベンドできません。
+-   **シンセ：** FM synth、AM synth、Electric piano、Electric piano (bright)、Drawbar organ、Synth pad、Synth bass、Synth lead、808 bass。Synth leadと808 bassは一度にひとつの音だけを鳴らすので、鳴っている音をベンドできます。ほかの楽器ではベンドできません。
 
 -   **録音した楽器：** Piano、Violin、Cello、Contrabass、Flute、Clarinet、Saxophone、Bassoon、Trumpet、French horn、Trombone、Tuba、Acoustic guitar、Nylon guitar、Electric guitar、Electric bass、Harp、Xylophone、Organ、Harmonium。それぞれいくつかの音だけを録音しており、そのあいだの音は、最も近い録音の音高をずらして鳴らします。ピアノはAlexander Holmによる[Salamander Grand Piano](https://archive.org/details/SalamanderGrandPianoV3)、ほかはNicholas Brosowskyによる[tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments)のコレクション（VSCO 2 Community Edition、アイオワ大学Electronic Music Studios、Freesoundのサンプル）です。いずれもCC BY 3.0です。
 

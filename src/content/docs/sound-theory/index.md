@@ -49,6 +49,7 @@ This is not a textbook. It is a collection of things I know about sound and musi
     -   [Syncopation and Anticipation シンコペーションとアンティシペーション](/syncopation)
     -   [Rhythm Patterns リズム・パターン](/rhythm-patterns)
     -   [Polyrhythm ポリリズム](/polyrhythm)
+    -   [Polymeter ポリメーター](/polymeter)
     -   [Articulation アーティキュレーション](/articulation)
 -   [Chords and Harmony 和音と和声](/chords-and-harmony)
     -   [Diatonic Chords ダイアトニック・コード](/diatonic-chords)

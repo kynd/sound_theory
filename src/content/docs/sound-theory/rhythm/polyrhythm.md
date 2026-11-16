@@ -2,37 +2,45 @@
 title: "Polyrhythm ポリリズム"
 slug: polyrhythm
 ---
-A polyrhythm is two or more pulses that divide the same span of time into different numbers of equal parts and sound at once: three evenly spaced notes against two, for example. The pulses meet at the start of the span and drift apart in between, and the ear can follow either one as the beat, or hear the pattern they make together. Polyrhythm is at the heart of much West African and Afro-Cuban music, where several layers run in different groupings over one cycle, and it appears in classical music and jazz as a way to cross the meter for a moment.
+A polyrhythm is the simultaneous sounding of two or more pulses that divide the same span of time into different numbers of equal parts: for example, three evenly spaced notes against two. The pulses align at the beginning of the span, diverge, then meet again at the end. You can follow either pulse as the beat or hear the pattern they create together. Polyrhythm is found in many musical traditions, including those of Africa and Afro-Cuban music. It also appears in classical music and jazz, where it briefly cuts across the meter.
 
-ポリリズムとは、同じ長さの時間を異なる数の等しい部分に分ける2つ以上の拍を、同時に鳴らすことです。たとえば、等間隔の3つの音に対する2つの音です。拍はその時間の始まりで出会い、そのあいだでは互いに離れていきます。耳はどちらの拍でも拍として追えますし、2つが一緒につくる型を聞くこともできます。ポリリズムは、異なる分け方の層がひとつの周期の上でいくつも重なる西アフリカやアフロ・キューバンの音楽の核心にあり、クラシックやジャズでも、一時的に拍子をまたぐ方法として現れます。
+ポリリズムとは、同じ長さの時間を異なる数の等しい部分に分ける2つ以上の拍を、同時に鳴らすことです。たとえば、3つの音を等間隔に並べた拍と、2つの音を等間隔に並べた拍を重ねます。拍は時間の始まりでそろい、その後ずれていき、終わりに再び重なります。どちらかの拍を基準にして追うことも、2つが一緒につくる型を聞くこともできます。ポリリズムは、アフリカやアフロ・キューバンをはじめ、さまざまな音楽の伝統に見られます。また、クラシック音楽やジャズにも見られ、拍子の枠を一時的にまたぐ形で現れます。
 
-In each demo, press **Play** to hear two pulses in one cycle that lasts two seconds. **High** sets how many rim clicks fall in the cycle and **Low** how many kicks. In the plot, each pulse is a ring, the clicks on the outer ring and the kicks on the inner one, with every note a dot running clockwise from the top; the dot of the sounding note turns red. Both pulses start together at the top, which is played louder.
+All the demos on this page are identical except for their default rhythm. Press **Play** to hear them. **High** sets the number of rim clicks per cycle, and **Low** sets the number of kicks. In the plot, each pulse appears as a ring: clicks on the outer ring and kicks on the inner ring. The dot of the sounding note turns red.
 
-どのデモでも、**Play**を押すと、2秒続くひとつの周期の中で2つの拍が鳴ります。**High**は周期の中に入るリム・クリックの数を、**Low**はキックの数を決めます。図では、それぞれの拍がひとつの輪で、クリックが外側の輪、キックが内側の輪にあり、どの音も上から時計回りに並ぶ点で表されます。鳴っている音の点は赤くなります。2つの拍はどちらも上で一緒に始まり、そこは大きく鳴ります。
+このページのデモはすべて同じで、初期設定のリズムだけが異なります。**Play**を押すと鳴ります。**High**は周期ごとのリム・クリックの数を、**Low**はキックの数を設定します。図では、それぞれの拍を輪で示し、クリックは外側の輪、キックは内側の輪に配置しています。鳴っている音の点は赤くなります。
 
 # Three Against Two
 # 3対2
 
-Three against two is the simplest polyrhythm and the most common. Of the six equal parts in the cycle, the three-pulse takes every second one and the two-pulse every third, so between their shared start the notes fall in the order three, two, three. In Western music it appears as the hemiola: two bars of 3/4 regrouped as if they were one bar of 3/2, or six eighth notes heard as two groups of three and then three groups of two. Baroque composers used it to broaden the rhythm into a cadence, Brahms used it constantly, and "America" from Leonard Bernstein's *West Side Story* (1957) alternates the two groupings bar by bar. In West African and Afro-Cuban 6/8, three against two runs all the time, between the dotted-quarter beat and the quarter-note pulse heard against it.
+Three against two is the simplest and most common polyrhythm. The cycle is divided into six equal subdivisions: the three-pulse pattern falls on every second subdivision, and the two-pulse pattern on every third.
 
-3対2は、いちばん単純で、いちばんよく使われるポリリズムです。周期の6つの等しい部分のうち、3つの拍は2つおきに、2つの拍は3つおきに入るので、一緒に始まったあと、音は3の拍、2の拍、3の拍の順に落ちます。西洋音楽では、これはヘミオラとして現れます。3/4の2小節を3/2の1小節のように分け直したり、6つの8分音符を、3つずつの2組から2つずつの3組として聞いたりするのです。バロックの作曲家はリズムを広げて終止に入るためにこれを使い、ブラームスは絶えず使いました。レナード・バーンスタインの『ウエスト・サイド・ストーリー』（1957年）の「アメリカ」は、2つの分け方を小節ごとに交互に使います。西アフリカやアフロ・キューバンの6/8では、付点4分音符の拍と、それに対して聞こえる4分音符の拍のあいだで、3対2が絶えず流れています。
+3対2は、最もシンプルでよく見られるポリリズムです。1周期を6等分し、3拍のパターンは2つおきに、2拍のパターンは3つおきに鳴ります。
+
+In Western music, this pattern is known as a hemiola. For example, two bars of 3/4 can be regrouped as one bar of 3/2. Alternatively, six eighth notes can be heard first as two groups of three, then as three groups of two. Baroque composers used this technique to create a sense of rhythmic expansion leading into a cadence, and Brahms made extensive use of it. In Leonard Bernstein's *West Side Story* (1957), "America" shifts between these groupings. In West African and Afro-Cuban 6/8, the main dotted-quarter-note beat and the quarter-note cross-rhythm pulse interact continuously, creating a three-against-two polyrhythm.
+
+西洋音楽では、このパターンは「ヘミオラ」と呼ばれます。たとえば、3/4拍子の2小節を3/2拍子の1小節として捉え直したり、6つの8分音符を、まず「3つずつの2組」、次に「2つずつの3組」として聞いたりします。バロック時代の作曲家は、終止（カデンツ）に向かうリズムに広がりをもたせるためにこの手法を用い、ブラームスも多用しました。レナード・バーンスタインの『ウエスト・サイド・ストーリー』（1957年）の「アメリカ」では、こうした拍のまとまりが入れ替わります。一方、西アフリカやアフロ・キューバ音楽の6/8拍子では、主となる付点4分音符のビートと、4分音符によるクロスリズムのパルスが絶えず交わり、3対2のポリリズムを生み出します。
+
+To hear the two cycles separately, try setting **High** to 6 and **Low** to 2, then to 3, in the demo.
+
+2つの周期を別々に感じるには、デモで**High**を6、**Low**を2に設定し、次に3にしてみましょう。
 
 <div class="demo-wrap"><iframe src="/writing/demos/polyrhythm/index.html?high=3&low=2" title="Three against two" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
 # Four Against Three
 # 4対3
 
-Four against three divides the cycle into twelve: the four-pulse takes every third part and the three-pulse every fourth. It is harder to hear as one pattern, and the two pulses sound more independent. In jazz, Elvin Jones, the drummer of John Coltrane's quartet in the 1960s, often laid groupings of three and four over each other this way, so the time seemed to roll rather than tick. Try listening to the clicks as the beat and then to the kicks: the same pattern feels like two different rhythms.
+Four against three divides the cycle into twelve equal parts: the four-pulse pattern falls on every third part, and the three-pulse pattern on every fourth. It is harder to hear as a single pattern, and the two pulses sound more independent. In jazz, Elvin Jones, who played drums in John Coltrane's quartet in the 1960s, is famous for this. Try listening first to the clicks as the beat, then to the kicks: the same pattern can feel like two different rhythms.
 
-4対3は周期を12に分けます。4つの拍は3つおきに、3つの拍は4つおきに入ります。ひとつの型として聞くのは難しくなり、2つの拍はより独立して聞こえます。ジャズでは、1960年代のジョン・コルトレーンのカルテットのドラマー、エルヴィン・ジョーンズが、よくこのように3つと4つのまとまりを重ね、時間が刻むのではなく転がるように聞こえさせました。クリックを拍として聞き、次にキックを拍として聞いてみましょう。同じ型が、2つの違うリズムに感じられます。
+4対3では、周期を12の等しい部分に分けます。4拍のパターンは3つおきに、3拍のパターンは4つおきに鳴ります。ひとつの型として聞き取るのは難しく、2つの拍はより独立して聞こえます。ジャズでは、1960年代にジョン・コルトレーンのカルテットで演奏したドラマー、エルヴィン・ジョーンズがこのリズムで知られています。まずクリックを拍として聞き、次にキックを拍として聞いてみましょう。同じ型が、まったく違う2つのリズムに感じられます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/polyrhythm/index.html?high=4&low=3" title="Four against three" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
 # Other Ratios
 # ほかの比
 
-Any two numbers make a polyrhythm. When one divides the other (four against two), the pulses always meet and the result is just a subdivision. When they share no factor (five against four, seven against three), they meet only at the start, and the pattern takes the whole cycle to come round. The larger the numbers, the more the two pulses sound like separate streams; Conlon Nancarrow and György Ligeti wrote music that layers such ratios far beyond what players can easily keep together. Set **High** and **Low** to any numbers from 1 to 9 and listen to how they fit.
+Any two numbers can form a polyrhythm. When one divides the other (four against two), the pulses align regularly, creating a simple subdivision. When the numbers share no common factor (five against four, seven against three), the pulses meet only at the start, and the pattern takes the full cycle to repeat. As the numbers grow, the pulses sound more like separate streams. Conlon Nancarrow and György Ligeti composed music that layers ratios so complex that players can struggle to keep them together. Set **High** and **Low** to any numbers from 1 to 9 and listen to how they fit together.
 
-どんな2つの数でもポリリズムになります。一方がもう一方を割り切るとき（4対2）は、拍はいつも出会い、結果はただの細分になります。共通の約数を持たないとき（5対4、7対3）は、始まりでしか出会わず、型は周期全体をかけてひと回りします。数が大きくなるほど、2つの拍は別々の流れのように聞こえます。コンロン・ナンカロウやジェルジ・リゲティは、演奏者が簡単にはそろえられないほど、こうした比を重ねた音楽を書きました。**High**と**Low**を1から9までの好きな数にして、それらがどう組み合うかを聞いてみましょう。
+どんな2つの数でもポリリズムを作れます。一方がもう一方を割り切る場合（4対2）、拍は規則的に重なり、単純な細分になります。2つの数に共通の約数がない場合（5対4、7対3）、拍は始まりでしか重ならず、パターンが繰り返されるまでに周期全体を要します。数が大きくなるほど、拍は別々の流れのように聞こえます。コンロン・ナンカロウやジェルジ・リゲティは、演奏者がそろえて演奏するのが難しいほど複雑な比を重ねた曲を書きました。**High**と**Low**を1から9までの好きな数に設定し、どのように組み合うか聞いてみましょう。
 
 <div class="demo-wrap"><iframe src="/writing/demos/polyrhythm/index.html?high=5&low=4" title="Any two pulses" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>

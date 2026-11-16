@@ -11,7 +11,9 @@ const DOT = 7;             // radius of a full hit
  * from the top around a ring, so the end of the cycle meets its start. Each track is a
  * white ring, the first track outermost. A hit is a yellow dot whose size follows its
  * velocity; the hits of the step that is sounding are red. A track moved off the grid
- * (`offset`) is drawn moved by the same share of a step.
+ * (`offset`) is drawn moved by the same share of a step. Every ring is spread over its
+ * own track's steps, so a shorter track (a polymeter) has fewer, wider-spaced dots and
+ * goes round faster: step `i` lights its step `i` modulo its length.
  *
  * With `oneRing`, all tracks share a single ring and are told apart by color instead:
  * the first track's hits are yellow, the others' take `accent(0)`, `accent(1)`, … (for
@@ -91,7 +93,7 @@ export class CycleView {
                 const a = ((i + shift) / n) * 2 * Math.PI - Math.PI / 2;
                 const v = Math.min(1, velocity * (track.gain ?? 1));
                 const step = Array.isArray(this.step) ? this.step[t] : this.step;
-                ctx.fillStyle = i === step ? COLORS.red : color;
+                ctx.fillStyle = step >= 0 && i === step % n ? COLORS.red : color;
                 ctx.beginPath();
                 ctx.arc(cx + Math.cos(a) * r, cy + Math.sin(a) * r, dot * (0.4 + 0.6 * v), 0, 2 * Math.PI);
                 ctx.fill();
