@@ -4,14 +4,14 @@ slug: outlining-changes
 ---
 In jazz, and above all in the bebop idiom, a good line expresses the chord progression. A listener should be able to hear the changes in the melody alone, even with no piano or bass. The main way to do this is to pick chord tones, the root, 3rd, 5th, and 7th of each chord, and connect them: place them where the ear expects the harmony (on the beats, especially at the start of each bar) and fill the space between with scale steps, chromatic passing notes, and approach notes. This page builds lines that way over one turnaround, Cmaj7–A7–Dm7–G7.
 
-ジャズ、とりわけビバップの語法では、よい旋律はコード進行を表現します。ピアノやベースがなくても、旋律だけでコードの変化が聞き取れるべきなのです。そのための主な方法は、和音の音、つまりそれぞれの和音の根音、3度、5度、7度を選び、それらをつなぐことです。耳が和声を期待する場所（拍の上、特にそれぞれの小節の頭）に和音の音を置き、そのあいだを音階の順次進行、半音の経過音、アプローチ・ノートで埋めます。このページでは、ひとつのターンアラウンド、Cmaj7–A7–Dm7–G7の上で、そのようにして旋律を組み立てていきます。
+ジャズ、とりわけビバップの語法では、よい旋律はコード進行を表現します。ピアノやベースがなくても、旋律だけでコードの変化が聞き取れるべきなのです。そのための主な方法は、和音の音、つまりそれぞれの和音のルート、3度、5度、7度を選び、それらをつなぐことです。耳が和声を期待する場所（拍の上、特にそれぞれの小節の頭）に和音の音を置き、そのあいだを音階の順次進行、半音の経過音、アプローチ・ノートで埋めます。このページでは、ひとつのターンアラウンド、Cmaj7–A7–Dm7–G7の上で、そのようにして旋律を組み立てていきます。
 
 # From Chord Tones to Lines
 # 和音の音から旋律へ
 
 The simplest line is the arpeggio: the chord tones of each chord in turn. Choosing the nearest chord tone at each change, rather than always starting on the root, makes the line move smoothly from chord to chord. The 3rd and 7th of each chord, the guide tones, carry most of its identity (they decide major or minor, and dominant or not), and from one chord to the next they often move by a half step or stay put: B (the 7th of Cmaj7) to C♯ (the 3rd of A7) to C (the 7th of Dm7) to B (the 3rd of G7). A line through the guide tones already outlines the progression with a few long notes.
 
-いちばん単純な旋律はアルペジオ、つまりそれぞれの和音の音を順に並べたものです。毎回根音から始めるのではなく、和音が変わるたびにいちばん近い和音の音を選ぶと、旋律は和音から和音へなめらかに動きます。それぞれの和音の3度と7度、つまりガイド・トーンは、その和音の性格の大部分を担っていて（長か短か、ドミナントかどうかを決めます）、次の和音へは半音で動くか、同じ音にとどまることがよくあります。B（Cmaj7の7度）からC♯（A7の3度）、C（Dm7の7度）、B（G7の3度）へ、というようにです。ガイド・トーンを通る旋律は、いくつかの長い音だけで、すでに進行を描き出します。
+いちばん単純な旋律はアルペジオ、つまりそれぞれの和音の音を順に並べたものです。毎回ルートから始めるのではなく、和音が変わるたびにいちばん近い和音の音を選ぶと、旋律は和音から和音へなめらかに動きます。それぞれの和音の3度と7度、つまりガイド・トーンは、その和音の性格の大部分を担っていて（長か短か、ドミナントかどうかを決めます）、次の和音へは半音で動くか、同じ音にとどまることがよくあります。B（Cmaj7の7度）からC♯（A7の3度）、C（Dm7の7度）、B（G7の3度）へ、というようにです。ガイド・トーンを通る旋律は、いくつかの長い音だけで、すでに進行を描き出します。
 
 With eighth notes, put a chord tone on each beat and connect them with the notes in between: scale steps, or a chromatic passing note. Then use approach notes. A chromatic note a half step below a chord tone leads into it, and an enclosure surrounds the target, a note above and a note below, before landing on it. Bebop lines are full of enclosures, and they let a line arrive on the 3rd of a new chord exactly at the bar line, the strongest way to announce the change. The A7 in this turnaround also shows why chord tones matter: its C♯ is not in C major, and playing it is what tells the ear the harmony has moved.
 

@@ -24,7 +24,7 @@ The natural minor scale lowers the 3rd, 6th, and 7th degrees of the major scale 
 
 Harmonic minor raises the 7th degree of the natural minor scale by a half step. In a major scale, the 7th degree lies a half step below the tonic and pulls strongly toward it; this note is called the leading tone. In natural minor, the 7th degree lies a whole step below the tonic, so its pull is weaker. Raising it creates a leading tone and changes the triad built on the 5th degree from minor to major. This major dominant chord pulls strongly back to the minor tonic, much as it does in a major key. This harmonic effect gives the scale its name.
 
-和声的短音階では、自然短音階の第7音を半音上げます。長音階では、第7音は主音の半音下にあり、主音へ強く向かいます。この音を導音と呼びます。自然短音階では、第7音は主音の全音下にあるため、主音へ向かう力が弱くなります。第7音を上げると導音が生まれ、第5音上の三和音は短三和音から長三和音に変わります。この長三和音（属和音）は、長調と同様に短調の主和音へ強く向かいます。こうした和声上の効果が、この音階の名前の由来です。
+和声的短音階では、自然短音階の第7音を半音上げます。長音階では、第7音は主音の半音下にあり、主音へ強く向かいます。この音を導音と呼びます。自然短音階では、第7音は主音の全音下にあるため、主音へ向かう力が弱くなります。第7音を上げると導音が生まれ、第5音上のトライアドはマイナー・トライアドからメジャー・トライアドに変わります。このメジャー・トライアド（属和音）は、長調と同様に短調の主和音へ強く向かいます。こうした和声上の効果が、この音階の名前の由来です。
 
 Raising the 7th creates a wide interval of three semitones—an augmented second—between the 6th and 7th degrees, giving the scale its distinctive sound.
 

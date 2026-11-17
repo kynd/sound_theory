@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { FEEL_PATTERNS, STYLE_PATTERNS, HAMMER, LOFI_BEAT, pulsePattern } from './rhythm.js';
+import { FEEL_PATTERNS, STYLE_PATTERNS, HAMMER, LOFI_BEAT, SIX_EIGHT_THREE_FOUR, AFRO_CUBAN_SIX_EIGHT, FOUR_AGAINST_THREE_GROOVE, pulsePattern } from './rhythm.js';
 import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } from './scales.js';
 
 /**
@@ -391,13 +391,16 @@ const C = 60;   // C4, for hand-voiced chords and bass ranges
 const EVERY_BEAT = [['all', 1]];
 
 export const DIATONIC_PROGRESSIONS = [
-    // The bass climbs the scale, ending on C4 an octave above where it started.
-    { id: 'diatonic-triads', label: 'Diatonic triads', tempo: 100, bassLow: C - 12, chords: [
+    // Each triad as it is built, three notes in root position with no doubled bass,
+    // climbing the scale from C4 to the C an octave above.
+    { id: 'diatonic-triads', label: 'Diatonic triads', tempo: 100, chords: [
         ...chords(2, [
             ['C', 'I', 'T'], ['Dm', 'ii', 'SD'], ['Em', 'iii', 'T'], ['F', 'IV', 'SD'],
-            ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['Bdim', 'vii°', 'D'],
-        ]),
-        { symbol: 'C', beats: 2, roman: 'I', fn: 'T', bass: C },
+            ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['Bdim', 'vii°', 'D'], ['C', 'I', 'T'],
+        ]).map((chord, i) => {
+            const degree = k => C + [0, 2, 4, 5, 7, 9, 11][k % 7] + 12 * Math.floor(k / 7);
+            return { ...chord, notes: [degree(i), degree(i + 2), degree(i + 4)] };
+        }),
     ] },
     // The progressions strike each chord on every beat, four times.
     { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 135, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
@@ -1996,7 +1999,7 @@ export const SYNCOPATION_PROGRESSIONS = [
  *     over a tumbao bass, which skips beat 1 and anticipates each chord on beat 4;
  *   - 12/8: Am9–Am9–Fmaj7–E7(♭9) over the bell pattern, chords and bass crossing its
  *     four beats;
- *   - hip-hop: a boom-bap beat under IV–V–vi in G (|C D|Em|, twice, Em anticipated)
+ *   - hip-hop: a boom-bap beat under IVmaj7–V7–vi7 in G (|Cmaj7 D7|Em7|, twice, Em7 anticipated)
  *     on electric piano.
  * Every style plays its bass on the synth bass, its drums through the lo-fi drum chain
  * (`LOFI_DRUMS`), and its chords through the lo-fi chord chain (`LOFI_CHORDS`), unless
@@ -2049,16 +2052,17 @@ export const STYLE_PROGRESSIONS = [
             hv('Am9', 'i9', [45, 55, 59, 60, 64]), hv('Am9', 'i9', [45, 55, 59, 60, 64]),
             hv('Fmaj7', '♭VImaj7', [41, 57, 60, 64]), hv('E7(♭9)', 'V7(♭9)', [40, 56, 62, 65]),
         ] },
-    // Hip-hop: IV–V–vi in G, twice (C and D for two beats each, then a bar of Em,
+    // Hip-hop: IVmaj7–V7–vi7 in G, twice (Cmaj7 and D7 for two beats each, then a bar of Em7,
     // anticipated on the "and" of 4 and held over the bar line instead of struck again),
-    // plain triads on the electric piano struck on the beat and on the "and" of the next,
+    // seventh chords (7th, 3rd, and 5th over the bass) on the electric piano, struck on the
+    // beat and on the "and" of the next,
     // the bass moving between root, fifth, and octave.
     ...(() => {
         const riff = [[0, 1], [7, 0.5], [12, 0.5]];
         const comp = [['upper', 1.5], ['upper', 0.5]];
-        const C = hv('C', 'IV', [36, 60, 64, 67], 2), D = hv('D', 'V', [38, 62, 66, 69], 1.5);
+        const C = hv('Cmaj7', 'IVmaj7', [36, 59, 64, 67], 2), D = hv('D7', 'V7', [38, 60, 66, 69], 1.5);
         // The early stroke runs into the bar's first one: a single chord two beats long.
-        const Em = { ...earlyChord(hv('Em', 'vi', [40, 59, 64, 67]), 4.5, [], riff, 2),
+        const Em = { ...earlyChord(hv('Em7', 'vi7', [40, 62, 67, 71]), 4.5, [], riff, 2),
             comp: [['upper', 2], ['upper', 0.5], ...comp] };
         return [{ id: 'hip-hop', label: 'Hip-hop', key: 'G', tempo: 88, drums: STYLE('boom-bap'),
             sounds: { chords: 'epiano', bass: 'synth-bass' }, riff, comp, chords: [C, D, Em, C, D, Em] }];
@@ -2278,6 +2282,55 @@ export const POLYMETER_PROGRESSIONS = [
         ],
         melody: Array.from({ length: 16 }, (_, i) => FOURTHS_FIGURE[i % 5])
             .map(midi => ({ midi, beats: 0.25, gate: 1, velocity: 0.8 })) },
+];
+
+// ── Polyrhythm: 6/8 and 3/4 ──
+
+// A bar of 6/8 struck and walked in two dotted quarters, a bar of 3/4 in three
+// quarters: the same six eighths, grouped 3 + 3 and then 2 + 2 + 2. The chords are
+// staccato, each stroke held for an eighth and then a rest.
+const SIX_EIGHT_BAR = { comp: [['upper', 0.5], [null, 1]], riff: [[0, 1.5], [-5, 1.5]] };
+const THREE_FOUR_BAR = { comp: [['upper', 0.5], [null, 0.5]], riff: [[0, 1], [-5, 1], [0, 1]] };
+// An original tune that follows the groups: eighths in threes in the 6/8 bars,
+// quarters in the 3/4 bars, the first note of every group accented.
+const SIX_EIGHT_TUNE = [
+    [67, 72, 76, 74, 72, 67].map((midi, i) => ({ midi, beats: 0.5, velocity: i % 3 ? 0.6 : 0.9 })),
+    [77, 74, 71].map(midi => ({ midi, beats: 1, velocity: 0.9 })),
+    [65, 71, 74, 77, 76, 74].map((midi, i) => ({ midi, beats: 0.5, velocity: i % 3 ? 0.6 : 0.9 })),
+    [76, 67, 72].map(midi => ({ midi, beats: 1, velocity: 0.9 })),
+].flat();
+
+export const POLYRHYTHM_PROGRESSIONS = [
+    { id: 'six-eight-three-four', label: '6/8 and 3/4', tempo: 168, loop: true, bar: 3,
+        sounds: { chords: 'piano', melody: 'piano', bass: 'bass' },
+        drums: SIX_EIGHT_THREE_FOUR, ...SIX_EIGHT_BAR,
+        chords: [
+            { symbol: 'C', roman: 'I', beats: 3, notes: [48, 52, 55, 60], ...SIX_EIGHT_BAR },
+            { symbol: 'G7', roman: 'V7', beats: 3, notes: [43, 53, 55, 59], ...THREE_FOUR_BAR },
+            { symbol: 'G7', roman: 'V7', beats: 3, notes: [43, 53, 55, 59], ...SIX_EIGHT_BAR },
+            { symbol: 'C', roman: 'I', beats: 3, notes: [48, 52, 55, 60], ...THREE_FOUR_BAR },
+        ],
+        melody: SIX_EIGHT_TUNE },
+    // Afro-Cuban 6/8, both groupings in every bar: the bell pattern on the rim, the kick
+    // and the bass in dotted quarters (3 + 3), the tom (for a conga) and staccato piano
+    // chords in quarters (2 + 2 + 2), over a Dorian vamp in A, Am7 and D9.
+    { id: 'afro-cuban-six-eight', label: 'Afro-Cuban 6/8', key: 'A', tempo: 168, loop: true, bar: 3,
+        sounds: { chords: 'piano', bass: 'bass' },
+        drums: AFRO_CUBAN_SIX_EIGHT, comp: THREE_FOUR_BAR.comp, riff: SIX_EIGHT_BAR.riff,
+        chords: [
+            { symbol: 'Am7', roman: 'i7', beats: 6, notes: [45, 55, 60, 64] },
+            { symbol: 'D9', roman: 'IV9', beats: 6, notes: [38, 54, 60, 64] },
+        ] },
+    // Four against three on the drums, in 12/8 (a beat is a dotted quarter): the kit's
+    // groove over a Dorian vamp in F, Fm9 and B♭13, each held for a bar over a bass on
+    // the beats.
+    { id: 'four-against-three', label: '4 against 3', key: 'F', tempo: 100, loop: true,
+        sounds: { chords: 'epiano', bass: 'sub-808', levels: { chords: 6, bass: 12 } },
+        drums: FOUR_AGAINST_THREE_GROOVE, riff: [[0, 1], [7, 1], [10, 1], [7, 1]],
+        chords: [
+            { symbol: 'Fm9', roman: 'i9', beats: 4, notes: [29, 56, 60, 63, 67] },
+            { symbol: 'B♭13', roman: 'IV13', beats: 4, notes: [34, 56, 62, 67] },
+        ] },
 ];
 
 // ── Song analysis: Stella by Starlight ──
@@ -2680,6 +2733,7 @@ export const PROGRESSION_SETS = {
     world: WORLD_PROGRESSIONS,
     minimal: MINIMAL_PROGRESSIONS,
     polymeter: POLYMETER_PROGRESSIONS,
+    polyrhythm: POLYRHYTHM_PROGRESSIONS,
     jpop: JPOP_PROGRESSIONS,
     styles: STYLE_PROGRESSIONS,
     blues: BLUES_PROGRESSIONS.map(p => ({ ...p, sounds: { chords: 'piano', melody: 'piano', bass: 'bass' } })),

@@ -18,7 +18,8 @@ const BASS_SOUNDS = ['synth-bass', 'sub-808', 'bass', 'contrabass'];
  * pattern (`drums`, see rhythm.js), one row per drum it uses, repeated through the
  * progression (butter, pale enough that a sounding red stroke stands out). A bar's height follows its loudness, for the drums. Rows are labeled on the
  * left, in a column as wide as the longest label, rounded up to the grid; the chord
- * symbols sit on a line above, and bar lines (every four beats) are thin and pale.
+ * symbols sit on a line above, and bar lines (every `bar` beats of the progression, four
+ * by default) are thin and pale.
  *
  * Rows are 32 px tall (less only when the stage is too short), so the drawing needs
  * 96 px plus 32 px per row; a page sizes the demo's frame to that, so nothing is left
@@ -149,11 +150,12 @@ export class GrooveView {
         const rowH = Math.max(GRID, Math.min(ROW, Math.floor((h - top - INSET) / Math.max(1, rows.length))));
         const bottom = top + rows.length * rowH;
 
-        // Bar lines, thin, pale, and see-through, every four beats, ends included.
+        // Bar lines, thin, pale, and see-through, every bar (four beats unless the
+        // progression sets its `bar`), ends included.
         ctx.save();
         ctx.globalAlpha = 0.15;
         ctx.fillStyle = COLORS.ink;
-        for (let b = 0; b <= this.length + 1e-6; b += 4) ctx.fillRect(Math.round(xOf(b)) - 0.5, top, 1, bottom - top);
+        for (let b = 0; b <= this.length + 1e-6; b += progression.bar ?? 4) ctx.fillRect(Math.round(xOf(b)) - 0.5, top, 1, bottom - top);
         ctx.restore();
 
         // Chord symbols over the chords they name.

@@ -22,7 +22,7 @@ Modal music stays in one mode (see [Church Modes](/church-modes)) for a long tim
 
 **Planing** moves one chord shape in parallel, the way Debussy did, so the chords belong to no single key: C, D, E, F♯ major and back. **Constant structure** is the same idea with richer chords, one type (here maj7) moving freely. In the example the roots move by major thirds, C, A♭, E, dividing the octave into three equal parts, a cycle John Coltrane built "Giant Steps" (1960) on. The ear follows the shape rather than a function.
 
-**Planing**（平行和音）は、ドビュッシーがしたように、ひとつの和音の形を平行に動かすので、和音はどの調にも属しません。C、D、E、F♯のメジャーと上がって戻ります。**Constant structure**（コンスタント・ストラクチャー）は、同じ考え方をより豊かな和音で行うもので、1種類の和音（ここではmaj7）を自由に動かします。例では、根音がC、A♭、Eと長3度ずつ動き、オクターブを3つに等分します。ジョン・コルトレーンが「ジャイアント・ステップス」（1960年）の土台にした周期です。耳は機能ではなく、形を追います。
+**Planing**（平行和音）は、ドビュッシーがしたように、ひとつの和音の形を平行に動かすので、和音はどの調にも属しません。C、D、E、F♯のメジャーと上がって戻ります。**Constant structure**（コンスタント・ストラクチャー）は、同じ考え方をより豊かな和音で行うもので、1種類の和音（ここではmaj7）を自由に動かします。例では、ルートがC、A♭、Eと長3度ずつ動き、オクターブを3つに等分します。ジョン・コルトレーンが「ジャイアント・ステップス」（1960年）の土台にした周期です。耳は機能ではなく、形を追います。
 
 A **pedal point** holds one bass note while the chords above it change. The friction between the bass and the moving chords creates tension without any dominant: D over C sounds Lydian, B♭ over C Mixolydian.
 

@@ -41,7 +41,7 @@ Two diminished scales alternate half and whole steps (see [Other Scales](/other-
 
 Choose an **Example** and press **Play**. **Diminished, scales** plays Cmaj7–C♯°7–Dm7–G7(♭9)–Cmaj7 with the whole-half scale over C♯°7 and the half-whole scale over G7(♭9). **Diminished, phrase** plays a line over the same chords: it climbs the C♯°7 arpeggio, whose C♯ resolves up into D, and over G7(♭9) runs up the B°7 arpeggio (G7 with ♭9 and without its root), touching C♯, the ♯11, before A♭ falls to G. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してみましょう。**Diminished, scales**はCmaj7–C♯°7–Dm7–G7(♭9)–Cmaj7と進み、C♯°7の上でホール・ハーフ・スケールを、G7(♭9)の上でハーフ・ホール・スケールを上らせます。**Diminished, phrase**は同じ和音の上で旋律を弾きます。C♯°7のアルペジオを上ってC♯がDへ解決し、G7(♭9)の上ではB°7のアルペジオ（根音のない、♭9を持つG7）を上り、♯11のC♯に触れてから、A♭がGへ下がります。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**Diminished, scales**はCmaj7–C♯°7–Dm7–G7(♭9)–Cmaj7と進み、C♯°7の上でホール・ハーフ・スケールを、G7(♭9)の上でハーフ・ホール・スケールを上らせます。**Diminished, phrase**は同じ和音の上で旋律を弾きます。C♯°7のアルペジオを上ってC♯がDへ解決し、G7(♭9)の上ではB°7のアルペジオ（ルートのない、♭9を持つG7）を上り、♯11のC♯に触れてから、A♭がGへ下がります。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=jazz-chords&example=diminished,diminished-phrase&key" title="Diminished chords" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

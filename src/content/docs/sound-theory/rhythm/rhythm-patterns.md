@@ -27,7 +27,7 @@ In every demo, press **Play** to hear the backing: the chords are drawn as yello
 
 Rock emerged from rhythm and blues in the 1950s. Many rock beats emphasize the backbeat, an accent on beats 2 and 4, often played on the snare. A common pattern puts the kick on beats 1 and 3. Straight eighth notes can drive the hi-hat, guitar, or bass, though these parts vary widely. In this demo, the kick also hits on the "and" of beat 3, adding a little push to the second half of the bar. To make the pattern easy to hear, this demo uses a simplified punk-rock approach: three chords (I, IV, and V), played as power chords in fast eighth notes on a low, distorted guitar. Power chords use just the root and fifth, often with the root doubled an octave higher.
 
-ロックは1950年代にリズム・アンド・ブルースから発展しました。多くのロックではバックビート、つまり2拍目と4拍目のアクセントが強調され、そこにはよくスネアが置かれます。キックを1拍目と3拍目に置くのも、よくあるパターンです。ハイハットやギター、ベースが均等な8分音符を刻んで曲を進めることもありますが、パートごとの演奏はさまざまです。このデモではキックが3拍目の「裏」にも入り、小節の後半に少し勢いを加えます。パターンを聞き取りやすくするため、ここではパンク・ロック風のアプローチを簡略化しています。低音域の歪んだギターで、3つの和音（I、IV、V）をパワー・コードにして、速い8分音符で鳴らします。パワー・コードは根音と5度だけで構成され、根音を1オクターブ上にも重ねることがよくあります。
+ロックは1950年代にリズム・アンド・ブルースから発展しました。多くのロックではバックビート、つまり2拍目と4拍目のアクセントが強調され、そこにはよくスネアが置かれます。キックを1拍目と3拍目に置くのも、よくあるパターンです。ハイハットやギター、ベースが均等な8分音符を刻んで曲を進めることもありますが、パートごとの演奏はさまざまです。このデモではキックが3拍目の「裏」にも入り、小節の後半に少し勢いを加えます。パターンを聞き取りやすくするため、ここではパンク・ロック風のアプローチを簡略化しています。低音域の歪んだギターで、3つの和音（I、IV、V）をパワー・コードにして、速い8分音符で鳴らします。パワー・コードはルートと5度だけで構成され、ルートを1オクターブ上にも重ねることがよくあります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=rock&key&view=groove" title="Rock" allow="autoplay" loading="lazy" style="height: 448px"></iframe></div>
 
@@ -36,7 +36,7 @@ Rock emerged from rhythm and blues in the 1950s. Many rock beats emphasize the b
 
 Motown, the Detroit label behind a string of 1960s hits, brought skilled studio musicians, songwriters, and producers together in a prolific, collaborative operation. Much of classic 1960s Motown was soul music, often with a strong pop sensibility. Its house band, the Funk Brothers, included bassist James Jamerson. In this demo, the snare hits every beat, while a clap doubles the backbeat in place of a tambourine. The piano or guitar punctuates beats 2 and 4 with short chords, while the bass moves among the root, fifth, and octave, often adding a brief note just before the beat.
 
-1960年代に数々のヒットを生んだデトロイトのレーベル、モータウンは、熟練したスタジオ・ミュージシャン、ソングライター、プロデューサーを集め、精力的で協力的な制作体制を築きました。1960年代のモータウンを代表する音楽の多くはソウルで、ポップな感覚も色濃く備えていました。専属バンドのファンク・ブラザーズには、ベーシストのジェームス・ジェマーソンもいました。このデモでは、スネアがすべての拍で鳴り、タンバリンの代わりにクラップがバックビートを重ねます。ピアノやギターは2拍目と4拍目に短い和音を入れ、ベースは根音、5度、オクターブを行き来し、拍の直前にも短い音を加えます。
+1960年代に数々のヒットを生んだデトロイトのレーベル、モータウンは、熟練したスタジオ・ミュージシャン、ソングライター、プロデューサーを集め、精力的で協力的な制作体制を築きました。1960年代のモータウンを代表する音楽の多くはソウルで、ポップな感覚も色濃く備えていました。専属バンドのファンク・ブラザーズには、ベーシストのジェームス・ジェマーソンもいました。このデモでは、スネアがすべての拍で鳴り、タンバリンの代わりにクラップがバックビートを重ねます。ピアノやギターは2拍目と4拍目に短い和音を入れ、ベースはルート、5度、オクターブを行き来し、拍の直前にも短い音を加えます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=motown&key&view=groove" title="Motown" allow="autoplay" loading="lazy" style="height: 480px"></iframe></div>
 
@@ -45,7 +45,7 @@ Motown, the Detroit label behind a string of 1960s hits, brought skilled studio 
 
 Funk, shaped in part by James Brown's bands in the late 1960s, often emphasizes "the one" (the bar's first beat) and uses interlocking sixteenth-note rhythms. Its parts can be short and spacious, fitting together like gears. In this demo, the guitar plays short, clipped chord stabs, mostly offbeat; the bass moves between the root and its octave; and the drums add snare ghost notes, soft hits between the stronger ones. Often, a tune stays on just one or two chords.
 
-1960年代後半のジェームス・ブラウンのバンドなどが形づくったファンクでは、小節の1拍目を指す「ワン」が強調され、互いに噛み合う16分音符のリズムがよく使われます。短く間を生かしたパートが、歯車のように組み合わさります。このデモでは、ギターが主に裏拍で短く切った和音を刻み、ベースは根音とそのオクターブのあいだを行き来します。ドラムにはスネアのゴースト・ノート、つまり強い音のあいだに入れる小さな打音も加えています。1つか2つの和音だけで進む曲もよく聞かれます。
+1960年代後半のジェームス・ブラウンのバンドなどが形づくったファンクでは、小節の1拍目を指す「ワン」が強調され、互いに噛み合う16分音符のリズムがよく使われます。短く間を生かしたパートが、歯車のように組み合わさります。このデモでは、ギターが主に裏拍で短く切った和音を刻み、ベースはルートとそのオクターブのあいだを行き来します。ドラムにはスネアのゴースト・ノート、つまり強い音のあいだに入れる小さな打音も加えています。1つか2つの和音だけで進む曲もよく聞かれます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=funk&key&view=groove" title="Funk" allow="autoplay" loading="lazy" style="height: 448px"></iframe></div>
 
@@ -54,7 +54,7 @@ Funk, shaped in part by James Brown's bands in the late 1960s, often emphasizes 
 
 Disco, which emerged from dance clubs in the 1970s, often features "four on the floor": a kick drum on every beat. In this demo, an open hi-hat sizzles on every offbeat, a clap marks beats 2 and 4, and the bass alternates between the root and its octave in eighth notes. The chords also hit the offbeats, helping drive the music forward.
 
-1970年代のダンス・クラブから生まれたディスコでは、「フォー・オン・ザ・フロア」、つまりすべての拍でキックを鳴らすパターンがよく使われます。このデモでは、裏拍ごとにオープン・ハイハットが鳴り、2拍目と4拍目にはクラップが入ります。ベースは8分音符で根音とそのオクターブを行き来し、和音も裏拍で鳴らして音楽を前へ押し出します。
+1970年代のダンス・クラブから生まれたディスコでは、「フォー・オン・ザ・フロア」、つまりすべての拍でキックを鳴らすパターンがよく使われます。このデモでは、裏拍ごとにオープン・ハイハットが鳴り、2拍目と4拍目にはクラップが入ります。ベースは8分音符でルートとそのオクターブを行き来し、和音も裏拍で鳴らして音楽を前へ押し出します。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=disco&key&view=groove" title="Disco" allow="autoplay" loading="lazy" style="height: 480px"></iframe></div>
 
@@ -81,7 +81,7 @@ Reggae, which emerged in Jamaica in the late 1960s, often places accents differe
 
 Salsa took shape in New York in the 1960s and '70s, drawing on Cuban son and other Latin styles. Many salsa arrangements are built around the clave, a two-bar pattern of five strokes. This demo uses the son clave, with three strokes followed by two. The bass plays one version of a rhythmic pattern called a tumbao: it leaves beat 1 empty, plays on the "and" of beat 2, then anticipates the next chord by landing on its root on beat 4. The piano plays a montuno, a repeating syncopated figure that fits around the clave.
 
-サルサは、キューバのソンなどラテン音楽の影響を受け、1960〜70年代のニューヨークで形づくられました。サルサでは、5打からなる2小節のパターン、クラーベを軸にした編曲がよく用いられます。このデモでは、3打のあとに2打が続くソン・クラーベを使います。ベースはトゥンバオと呼ばれるリズム・パターンの一例を弾きます。1拍目を空け、2拍目の裏で音を出し、4拍目には次の和音の根音を先取りして弾きます。ピアノは、クラーベに沿ったシンコペーションの反復音型、モントゥーノを弾きます。
+サルサは、キューバのソンなどラテン音楽の影響を受け、1960〜70年代のニューヨークで形づくられました。サルサでは、5打からなる2小節のパターン、クラーベを軸にした編曲がよく用いられます。このデモでは、3打のあとに2打が続くソン・クラーベを使います。ベースはトゥンバオと呼ばれるリズム・パターンの一例を弾きます。1拍目を空け、2拍目の裏で音を出し、4拍目には次の和音のルートを先取りして弾きます。ピアノは、クラーベに沿ったシンコペーションの反復音型、モントゥーノを弾きます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=styles&example=salsa&key&view=groove" title="Salsa" allow="autoplay" loading="lazy" style="height: 448px"></iframe></div>
 

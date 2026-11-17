@@ -18,7 +18,7 @@ Dividing the octave into three equal parts gives three keys a major third apart,
 
 The changes of "Giant Steps" can be rebuilt in three steps. First, divide the octave into three equal parts. Major thirds stacked from B give B, G, and E♭ (going down) and land back on B: the three tonics form an augmented triad, so none of them is closer to home than the others. Played alone, Bmaj7–Gmaj7–E♭maj7 sounds like three unrelated keys.
 
-「ジャイアント・ステップス」のコード進行は、3つの段階で組み立て直せます。まず、オクターブを3つの等しい部分に分けます。Bから長3度を積むと（下へ）、B、G、E♭となり、またBに戻ります。3つのトニックは増三和音をなしているので、どれもほかよりも家に近いということがありません。Bmaj7–Gmaj7–E♭maj7だけを弾くと、互いに無関係な3つの調のように聞こえます。
+「ジャイアント・ステップス」のコード進行は、3つの段階で組み立て直せます。まず、オクターブを3つの等しい部分に分けます。Bから長3度を積むと（下へ）、B、G、E♭となり、またBに戻ります。3つのトニックはオーギュメント・トライアドをなしているので、どれもほかよりも家に近いということがありません。Bmaj7–Gmaj7–E♭maj7だけを弾くと、互いに無関係な3つの調のように聞こえます。
 
 Second, lead into each tonic with its own dominant seventh. Before G comes D7, before E♭ comes B♭7, and before B comes F♯7: Bmaj7–D7–Gmaj7–B♭7–E♭maj7–F♯7–Bmaj7. Each dominant resolves down a fifth as usual, so every arrival sounds convincing, yet the keys keep jumping by major thirds. This is the cycle of the first half of the tune. Third, turn each dominant into a ii–V: Am7–D7 into G, C♯m7–F♯7 into B, and Fm7–B♭7 into E♭. The second half of "Giant Steps" runs on this version, and the ii–Vs make the jumps between keys smoother still.
 
@@ -30,7 +30,7 @@ Where the idea came from is debated. Writers often point to the bridge of Rodger
 
 Choose an **Example** and press **Play** to hear the three steps, each chord spelled with the 1-2-3-5 pattern (described below): **Three tonics** alone, **With dominants** (the first half's cycle), and **With ii–Vs** (the second half's). The demo plays on B, as in the text; choose a **Key** to hear it on another root.
 
-**Example**を選んで**Play**を押すと、3つの段階が、それぞれの和音を1-2-3-5のパターン（下で説明します）でなぞりながら鳴ります。**Three tonics**はトニックだけ、**With dominants**は前半のめぐり方、**With ii–Vs**は後半のめぐり方です。デモは本文と同じくBの上で鳴りますが、**Key**を選ぶとほかの根音の上で聞けます。
+**Example**を選んで**Play**を押すと、3つの段階が、それぞれの和音を1-2-3-5のパターン（下で説明します）でなぞりながら鳴ります。**Three tonics**はトニックだけ、**With dominants**は前半のめぐり方、**With ii–Vs**は後半のめぐり方です。デモは本文と同じくBの上で鳴りますが、**Key**を選ぶとほかのルートの上で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=coltrane&example=three-tonics,three-keys,ii-v-cycle&key" title="How Giant Steps is built" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -52,7 +52,7 @@ Choose an **Example** and press **Play**, each chord with the 1-2-3-5 pattern. *
 
 Chords that change every two beats leave no time for long scale runs. Coltrane often played a short four-note pattern on each chord, the root, 2nd, 3rd, and 5th, in eighth notes, sometimes called a digital pattern. It spells each chord quickly and clearly, so a fast cycle of keys becomes a chain of easy, recognizable shapes, and it moves easily into any key.
 
-2拍ごとに変わる和音では、長い音階を弾く時間がありません。コルトレーンはよく、それぞれの和音の上で、根音、2度、3度、5度という短い4音のパターンを8分音符で弾きました。デジタル・パターンと呼ばれることもあります。それぞれの和音を素早くはっきりと描くので、速く変わる調のめぐりが、弾きやすくわかりやすい形の連なりになり、どの調にも簡単に移せます。
+2拍ごとに変わる和音では、長い音階を弾く時間がありません。コルトレーンはよく、それぞれの和音の上で、ルート、2度、3度、5度という短い4音のパターンを8分音符で弾きました。デジタル・パターンと呼ばれることもあります。それぞれの和音を素早くはっきりと描くので、速く変わる調のめぐりが、弾きやすくわかりやすい形の連なりになり、どの調にも簡単に移せます。
 
 <aside>
   <div class="aside-body">

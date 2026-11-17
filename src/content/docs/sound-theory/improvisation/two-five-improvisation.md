@@ -28,7 +28,7 @@ A scale is raw material; a phrase picks a path through it. The phrases below all
 
 A simple and very common trick is to think of the diminished seventh chord a half step above the root of V. Over G7, that is A♭°7 (A♭, B, D, F): G7 with a flat 9th and without its root. Its arpeggio is easy to play in any key, and it brings the ♭9 tension without any other scale. **Diminished, half step up** climbs and falls through A♭°7 over G7 and resolves to C. Finally, **Harmonic minor** plays the minor ii–V–i: D Locrian over Dm7♭5, G Phrygian dominant over G7, with F falling to E♭ on Cm6.
 
-簡単でとてもよく使われる工夫が、Vの根音の半音上の減七の和音を思い浮かべることです。G7の上では、それはA♭°7（A♭、B、D、F）、つまり根音のないG7(♭9)です。このアルペジオはどの調でも弾きやすく、ほかの音階を使わずに♭9の緊張をもたらします。**Diminished, half step up**は、G7の上でA♭°7を上って下り、Cへ解決します。最後の**Harmonic minor**は短調のii–V–iで、Dm7♭5の上にDロクリアン、G7の上にGフリジアン・ドミナントを使い、FがCm6のE♭へ下がります。
+簡単でとてもよく使われる工夫が、Vのルートの半音上の減七の和音を思い浮かべることです。G7の上では、それはA♭°7（A♭、B、D、F）、つまりルートのないG7(♭9)です。このアルペジオはどの調でも弾きやすく、ほかの音階を使わずに♭9の緊張をもたらします。**Diminished, half step up**は、G7の上でA♭°7を上って下り、Cへ解決します。最後の**Harmonic minor**は短調のii–V–iで、Dm7♭5の上にDロクリアン、G7の上にGフリジアン・ドミナントを使い、FがCm6のE♭へ下がります。
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **Scale** names what is being played over each chord. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 

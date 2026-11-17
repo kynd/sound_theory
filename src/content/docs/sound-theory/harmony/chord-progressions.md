@@ -15,7 +15,7 @@ Every demo works the same way. Press **Play** to loop the progression, one chord
 
 The three primary chords, tonic, subdominant, and dominant, make the most basic complete progression: home, away, tension, home (see [Functional Harmony](/functional-harmony)). These three chords can accompany a huge number of folk songs, hymns, and children's songs, and they drive early rock and roll: "La Bamba" (Ritchie Valens, 1958) and "Twist and Shout" (the Isley Brothers, 1962; the Beatles, 1963) loop I–IV–V over and over. The twelve-bar blues is built from them too (see [Blues](/blues)).
 
-トニック、サブドミナント、ドミナントの3つの主要三和音は、最も基本的な完結した進行をつくります。帰る、離れる、緊張する、帰る、という流れです（[機能和声](/functional-harmony)を参照）。この3つの和音だけで、数えきれないほどの民謡や賛美歌、童謡の伴奏ができ、初期のロックンロールもこの3つで動いています。「ラ・バンバ」（リッチー・ヴァレンス、1958年）や「ツイスト・アンド・シャウト」（アイズレー・ブラザーズ、1962年。ビートルズ、1963年）は、I–IV–Vを何度も繰り返します。12小節のブルースも、この3つからできています（[ブルース](/blues)を参照）。
+トニック、サブドミナント、ドミナントの3つの主要なトライアドは、最も基本的な完結した進行をつくります。帰る、離れる、緊張する、帰る、という流れです（[機能和声](/functional-harmony)を参照）。この3つの和音だけで、数えきれないほどの民謡や賛美歌、童謡の伴奏ができ、初期のロックンロールもこの3つで動いています。「ラ・バンバ」（リッチー・ヴァレンス、1958年）や「ツイスト・アンド・シャウト」（アイズレー・ブラザーズ、1962年。ビートルズ、1963年）は、I–IV–Vを何度も繰り返します。12小節のブルースも、この3つからできています（[ブルース](/blues)を参照）。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=common&example=i-iv-v-i&key" title="I–IV–V–I" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -96,7 +96,7 @@ Like the fifties progression, but with ii in place of IV. ii shares two notes wi
 
 A minor-key progression whose bass walks down from i to V: A, G, F, E. It is named after the flamenco of Andalusia in southern Spain, where it is fundamental, and has been used for centuries. V is major, from the harmonic minor (see [Minor Scales](/minor-scales)), so the last chord pulls strongly back to i. "Hit the Road Jack" (Ray Charles, 1961) and "Runaway" (Del Shannon, 1961) are built on it.
 
-短調の進行で、ベースがiからVへ、A、G、F、Eと下がっていきます。スペイン南部アンダルシアのフラメンコで基本となる進行であることから、この名で呼ばれ、何世紀にもわたって使われてきました。Vは和声的短音階から来た長三和音なので（[短音階](/minor-scales)を参照）、最後の和音がiへ強く引き戻します。「旅立てジャック」（レイ・チャールズ、1961年）や「悲しき街角」（デル・シャノン、1961年）は、この進行でできています。
+短調の進行で、ベースがiからVへ、A、G、F、Eと下がっていきます。スペイン南部アンダルシアのフラメンコで基本となる進行であることから、この名で呼ばれ、何世紀にもわたって使われてきました。Vは和声的短音階から来たメジャー・トライアドなので（[短音階](/minor-scales)を参照）、最後の和音がiへ強く引き戻します。「旅立てジャック」（レイ・チャールズ、1961年）や「悲しき街角」（デル・シャノン、1961年）は、この進行でできています。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=common&example=andalusian&key=minor" title="i–♭VII–♭VI–V" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

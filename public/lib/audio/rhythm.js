@@ -34,12 +34,13 @@ export const DRUM_TRACKS = [
 ];
 
 /**
- * Pieces of the kit a pattern can add by naming them in `trackIds` (clap, open hi-hat).
+ * Pieces of the kit a pattern can add by naming them in `trackIds` (clap, open hi-hat, tom).
  * They are not in DRUM_TRACKS, so the patterns that do not use them keep four rows.
  */
 const EXTRA_TRACKS = [
     { id: 'open',  label: 'Open',  midi: DRUM_NOTES.open },
     { id: 'clap',  label: 'Clap',  midi: DRUM_NOTES.clap },
+    { id: 'tom',   label: 'Tom',   midi: DRUM_NOTES.tom },
 ];
 
 /** Velocities of a full and a soft hit. */
@@ -55,16 +56,17 @@ export function parseSteps(text) {
 
 /**
  * Builds a pattern from strings per track. `trackIds` picks the tracks, from DRUM_TRACKS
- * and EXTRA_TRACKS, in the order given; a track without a string is all rests.
+ * and EXTRA_TRACKS, in the order given; a track without a string is all rests. `gains`
+ * gives a track its `gain` by id (`{ tom: 2 }`), for a drum that is too quiet in the mix.
  */
-export function makePattern({ id, label, stepsPerBeat, groups, beatsPerBar, tempo, tracks, trackIds = DRUM_TRACKS.map(t => t.id) }) {
+export function makePattern({ id, label, stepsPerBeat, groups, beatsPerBar, tempo, tracks, trackIds = DRUM_TRACKS.map(t => t.id), gains = {} }) {
     const steps = groups.reduce((a, b) => a + b, 0);
     return {
         id, label, stepsPerBeat, groups, tempo,
         ...(beatsPerBar ? { beatsPerBar } : {}),
         tracks: trackIds.map(id => [...DRUM_TRACKS, ...EXTRA_TRACKS].find(t => t.id === id)).map(t => {
             const parsed = tracks[t.id] ? parseSteps(tracks[t.id]) : [];
-            return { ...t, steps: Array.from({ length: steps }, (_, i) => parsed[i] ?? 0) };
+            return { ...t, steps: Array.from({ length: steps }, (_, i) => parsed[i] ?? 0), ...(gains[t.id] ? { gain: gains[t.id] } : {}) };
         }),
     };
 }
@@ -115,6 +117,47 @@ export function polyrhythmPattern(high, low, { cycle = 2 } = {}) {
         tracks: [track('rim', high), track('kick', low)],
     };
     return pattern;
+}
+
+/**
+ * Parts of notes that divide one cycle into different numbers of columns, for a
+ * polyrhythm of melodies. A part is `{ rows: [{ label, midi }], cells }`, with
+ * `cells[row][col]` on (1) or off (0); its columns are spread evenly over the cycle
+ * (`cycle` seconds). The pattern's steps are the least common multiple of the parts'
+ * column counts, with one track per row of every part, sounding on the steps where
+ * its part's columns start; the first column of every part is louder. Step `i` falls
+ * in column `Math.floor(i * cols / steps)` of a part with `cols` columns.
+ */
+export function notePartsPattern(parts, { cycle = 2.4 } = {}) {
+    const steps = parts.reduce((n, part) => lcm(n, part.cells[0].length), 1);
+    const tracks = parts.flatMap(({ rows, cells }) => rows.map(({ label, midi }, r) => {
+        const cols = cells[r].length, every = steps / cols;
+        return {
+            id: label, label, midi,
+            steps: Array.from({ length: steps }, (_, i) => (i % every || !cells[r][i / every] ? 0 : (i === 0 ? FULL : 0.7))),
+        };
+    }));
+    return { id: 'note-parts', label: 'Note parts', stepsPerBeat: steps, groups: [steps], tempo: 60 / cycle, tracks };
+}
+
+/**
+ * A part's cells (`cells[row][col]`, see notePartsPattern) with `cols` columns, keeping
+ * its notes: fewer columns cut off the last ones, more add empty columns at the end.
+ */
+export function resizeCells(cells, cols) {
+    return cells.map(row => Array.from({ length: cols }, (_, c) => row[c] ?? 0));
+}
+
+/**
+ * A part's cells (`cells[row][col]`, see notePartsPattern) with random notes: about
+ * `density` of the columns get one note at a random row, the first column always.
+ */
+export function randomCells(rows, cols, { density = 0.6 } = {}) {
+    const cells = Array.from({ length: rows }, () => Array(cols).fill(0));
+    for (let c = 0; c < cols; c++) {
+        if (c === 0 || Math.random() < density) cells[Math.floor(Math.random() * rows)][c] = 1;
+    }
+    return cells;
 }
 
 /**
@@ -313,6 +356,45 @@ export const STYLE_PATTERNS = [
         kick:  'X - - - - - - X - - X - - - - -',
     } }),
 ];
+
+/**
+ * Two bars of six eighth notes, the first grouped 3 + 3 (6/8), the second 2 + 2 + 2
+ * (3/4): the alternation of the Mexican huapango and other Latin American music, and of
+ * Bernstein's "America." The rim marks the start of every group, the kick each bar,
+ * and the hi-hat fills the eighths between.
+ */
+export const SIX_EIGHT_THREE_FOUR = makePattern({ id: '6-8-3-4', label: '6/8 + 3/4', stepsPerBeat: 2, groups: [3, 3, 2, 2, 2], tempo: 168, tracks: {
+    hat:   '- x x - x x - x - x - x',
+    rim:   'X - - X - - X - X - X -',
+    kick:  'X - - - - - X - - - - -',
+} });
+
+/**
+ * Four against three in a 12/8 groove, two bars: the hi-hat (as a ride, with a triplet
+ * skip before each beat) and soft kicks keep the four dotted-quarter beats, while
+ * strong strokes every four eighth notes, three to a bar, move around the kit (kick,
+ * snare, rim click), with soft snare ghost notes between.
+ */
+export const FOUR_AGAINST_THREE_GROOVE = makePattern({ id: '4-3-groove', label: '4 against 3', stepsPerBeat: 3, groups: [3, 3, 3, 3, 3, 3, 3, 3], beatsPerBar: 4, tempo: 100,
+    trackIds: ['hat', 'rim', 'snare', 'kick'], tracks: {
+    hat:   'X - x X - x X - x X - x   X - x X - x X - x X - x',
+    rim:   '- - - - - - - - X - - -   - - - - - - - - X - - -',
+    snare: '- - - - X - - x - - - -   - - - - X - - - - - x -',
+    kick:  'X - - x - - x - - x - -   X - - x - - x - - x - -',
+} });
+
+/**
+ * Afro-Cuban 6/8, as in bembé: two bars of six eighth notes with both groupings at once.
+ * The rim plays the standard bell pattern (seven strokes in twelve), the kick the
+ * dotted quarters (3 + 3 in each bar), and the tom, standing in for a conga, the
+ * quarters (2 + 2 + 2), three against two in every bar.
+ */
+export const AFRO_CUBAN_SIX_EIGHT = makePattern({ id: 'afro-cuban-6-8', label: 'Afro-Cuban 6/8', stepsPerBeat: 2, groups: [3, 3, 3, 3], tempo: 168,
+    trackIds: ['rim', 'tom', 'kick'], tracks: {
+    rim:   'X - X - X X - X - X - X',
+    tom:   'X - x - x - X - x - x -',
+    kick:  'X - - X - - X - - X - -',
+} });
 
 /**
  * Subdivisions played and implied, in pairs: a sixteenth-note beat and a shuffle, each

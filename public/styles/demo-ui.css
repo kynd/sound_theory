@@ -215,6 +215,8 @@ button, select, input { font: inherit; color: inherit; }
 /* Main controls are green with white text; a toggle is a white well until it is on. */
 .dp-btn { background: var(--accent-green); color: var(--demo-white); }
 .dp-btn:hover { filter: brightness(1.06); }
+/* A play button turns white, with black text, while it reads Stop. */
+.dp-btn.playing { background: var(--demo-white); color: var(--demo-fg); }
 .dp-toggle { background: var(--demo-white); }
 .dp-toggle.active { background: var(--accent-green); color: var(--demo-white); }
 /* A recording button is red, idle or recording (only its label changes). */

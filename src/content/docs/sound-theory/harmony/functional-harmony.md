@@ -12,7 +12,7 @@ The functions follow some tendencies. A tonic can go to anything. A subdominant 
 
 Chords that share notes share a function. Am shares two notes with C, so it can stand in for the tonic; Dm shares two with F, a subdominant; and Bdim shares the tritone B–F with G7, the core of the dominant. Roots that move down by a fifth (or up by a fourth), as in D to G to C, make the strongest progressions.
 
-音を共有する和音は、機能も共有します。AmはCと2音を共有するのでトニックの代わりになり、DmはFと2音を共有してサブドミナントに、BdimはG7とドミナントの核である三全音B–Fを共有します。DからG、Cのように、根音が5度下（または4度上）へ動く進行が最も強い進行になります。
+音を共有する和音は、機能も共有します。AmはCと2音を共有するのでトニックの代わりになり、DmはFと2音を共有してサブドミナントに、BdimはG7とドミナントの核である三全音B–Fを共有します。DからG、Cのように、ルートが5度下（または4度上）へ動く進行が最も強い進行になります。
 
 Functional harmony grew out of European classical music and was generalized by the theory of jazz and popular music. It is one way of hearing chords, not a law. Plenty of music works otherwise, as [Beyond Functional Harmony](/non-functional-harmony) shows.
 
@@ -41,11 +41,11 @@ Choose an **Example** and press **Play**, or click a chord to hold it. The line 
 
 -   **T–SD–D–T：** Cmaj7、Fmaj7、G7、Cmaj7と、一巡りします。
 
--   **ii–V–I：** Dm7、G7、Cmaj7。ジャズで最もよく使われる終止形で、ポップスでもよく使われます。iiがIVの代わりにサブドミナントを担い、根音は5度ずつ下がります。
+-   **ii–V–I：** Dm7、G7、Cmaj7。ジャズで最もよく使われる終止形で、ポップスでもよく使われます。iiがIVの代わりにサブドミナントを担い、ルートは5度ずつ下がります。
 
 -   **I–vi–ii–V：** ターンアラウンド。ドミナントで終わるので、自分の始まりへと戻っていきます。止めるまで繰り返します。
 
--   **iii–vi–ii–V–I：** 根音が5度ずつ下がって家まで帰り、それぞれの和音が次の和音を引き寄せます。
+-   **iii–vi–ii–V–I：** ルートが5度ずつ下がって家まで帰り、それぞれの和音が次の和音を引き寄せます。
 
 -   **Substitutes：** 同じ往復を、同じ機能のほかの和音で。Cmaj7、Em7（T）、Dm7（SD）、Bm7♭5（D）、そしてAm7。トニックで終わりますが、IではなくviなのでIほどの終止感はありません。
 

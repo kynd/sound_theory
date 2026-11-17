@@ -24,7 +24,7 @@ Press **Play** to hear a D Dorian phrase over Dm7, the same phrase a half step h
 
 Another way is to play a different progression over the one that is sounding. Over a bar of G7 leading to C, play the ii–V a tritone away, A♭m7–D♭7, as if the harmony had moved there. D♭7 is the tritone substitute for G7 (see [Tension and Resolution](/tension-and-resolution)), and the two arpeggios bring in the altered sound: together they spell A♭, B, D♭, E♭, F, and G♭, which over G7 are the ♭9, 3rd, ♭5, ♭13, and 7th, plus G♭, a half step below the root. The scale behind A♭m7–D♭7 is G♭ major, which is the G altered scale (see [Minor Chord Scales](/minor-chord-scales)) with G♭ in place of G, so the line sounds altered over G7 and resolves by half steps into C. The rhythm section keeps playing G7, and the clash between the line and the chord is the point.
 
-もうひとつの方法は、鳴っている進行の上に別の進行を重ねることです。Cへ向かうG7の1小節の上で、和声がそこへ移ったかのように、三全音離れたii–V、A♭m7–D♭7を弾きます。D♭7はG7の裏コードで（[緊張と解決](/tension-and-resolution)を参照）、2つのアルペジオはオルタードの響きをもたらします。あわせるとA♭、B、D♭、E♭、F、G♭となり、G7に対しては♭9、3度、♭5、♭13、7度、そして根音の半音下のG♭です。A♭m7–D♭7のもとになる音階はG♭メジャーで、これはGオルタード・スケール（[マイナーのコード・スケール](/minor-chord-scales)を参照）のGをG♭に置き換えたものです。そのため旋律はG7の上でオルタードの響きを持ち、半音でCへ解決します。リズム・セクションはG7を弾き続けていて、旋律と和音のぶつかりこそが狙いなのです。
+もうひとつの方法は、鳴っている進行の上に別の進行を重ねることです。Cへ向かうG7の1小節の上で、和声がそこへ移ったかのように、三全音離れたii–V、A♭m7–D♭7を弾きます。D♭7はG7の裏コードで（[緊張と解決](/tension-and-resolution)を参照）、2つのアルペジオはオルタードの響きをもたらします。あわせるとA♭、B、D♭、E♭、F、G♭となり、G7に対しては♭9、3度、♭5、♭13、7度、そしてルートの半音下のG♭です。A♭m7–D♭7のもとになる音階はG♭メジャーで、これはGオルタード・スケール（[マイナーのコード・スケール](/minor-chord-scales)を参照）のGをG♭に置き換えたものです。そのため旋律はG7の上でオルタードの響きを持ち、半音でCへ解決します。リズム・セクションはG7を弾き続けていて、旋律と和音のぶつかりこそが狙いなのです。
 
 Press **Play** to hear a Dorian line over Dm7, then arpeggios of A♭m7 and D♭7 over the G7, named under the chord, landing on C. The backing keeps striking G7 every two beats underneath. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -37,7 +37,7 @@ Press **Play** to hear a Dorian line over Dm7, then arpeggios of A♭m7 and D♭
 
 A line can also leave the key by following a pattern instead of a scale. Take a short cell of three or four notes, defined by its intervals, for example up a minor 3rd, down a half step, and up a fourth, and repeat it at new pitches by a fixed step, such as up by whole steps or down by minor thirds. The notes soon fall outside the chord, but because the cell keeps its exact shape, the ear follows the pattern and accepts the clash until the sequence lands back on a chord tone. Other ways of superimposing outside material are on other pages: pentatonics on other roots on [Pentatonics in Modern Jazz](/modern-pentatonics), triad pairs on [Triads Inside Scales](/triads-in-scales), and cycles of major thirds on [Coltrane Changes](/coltrane-changes).
 
-旋律は、音階ではなくパターンにしたがうことでも調を離れられます。たとえば短3度上、半音下、4度上というように、音程で決めた3つか4つの音の短いセルをつくり、それを全音ずつ上へ、あるいは短3度ずつ下へといった決まった間隔で、新しい音高で繰り返します。音はすぐに和音の外へ出ますが、セルが正確に形を保つので、耳はパターンを追い、シーケンスが和音の音に戻って着地するまで、ぶつかりを受け入れます。外の素材を重ねるほかの方法は、別のページにあります。ほかの根音のペンタトニックは[モダン・ジャズのペンタトニック](/modern-pentatonics)、トライアド・ペアは[スケールの中の三和音](/triads-in-scales)、長3度の周期は[コルトレーン・チェンジ](/coltrane-changes)です。
+旋律は、音階ではなくパターンにしたがうことでも調を離れられます。たとえば短3度上、半音下、4度上というように、音程で決めた3つか4つの音の短いセルをつくり、それを全音ずつ上へ、あるいは短3度ずつ下へといった決まった間隔で、新しい音高で繰り返します。音はすぐに和音の外へ出ますが、セルが正確に形を保つので、耳はパターンを追い、シーケンスが和音の音に戻って着地するまで、ぶつかりを受け入れます。外の素材を重ねるほかの方法は、別のページにあります。ほかのルートのペンタトニックは[モダン・ジャズのペンタトニック](/modern-pentatonics)、トライアド・ペアは[スケールの中のトライアド](/triads-in-scales)、長3度の周期は[コルトレーン・チェンジ](/coltrane-changes)です。
 
 Press **Play** to hear the cell D, F, E, A over Dm7, moved up a whole step at a time (starting on D, E, F♯, and G♯, the last far outside), then down by a minor third to F and to D, back inside, landing on F, the 3rd of Dm7. The labels under the chord name the note each cell starts on. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -50,7 +50,7 @@ Press **Play** to hear the cell D, F, E, A over Dm7, moved up a whole step at a 
 
 Over a long vamp, a soloist can play a progression that is not there. Over eight bars of D Dorian, for example, the line can outline F♯m7–B7–Em7–A7, the iii–VI–ii–V of D, one chord a bar, so that the imagined turnaround resolves exactly on beat 1 of bar 5, back on D. The imagined chords move with their own logic, a chain of fifths, and their arrival on the vamp's root makes the excursion sound planned.
 
-長いヴァンプの上で、ソリストはそこにない進行を弾くことができます。たとえばDドリアンの8小節の上で、Dのiii–VI–ii–VであるF♯m7–B7–Em7–A7を1小節にひとつずつ描き、想像上のターンアラウンドがちょうど5小節目の1拍目でDに解決するようにします。想像上の和音は5度の連鎖という独自の論理で動き、ヴァンプの根音への到着が、その小旅行を計画されたものに聞こえさせます。
+長いヴァンプの上で、ソリストはそこにない進行を弾くことができます。たとえばDドリアンの8小節の上で、Dのiii–VI–ii–VであるF♯m7–B7–Em7–A7を1小節にひとつずつ描き、想像上のターンアラウンドがちょうど5小節目の1拍目でDに解決するようにします。想像上の和音は5度の連鎖という独自の論理で動き、ヴァンプのルートへの到着が、その小旅行を計画されたものに聞こえさせます。
 
 Dividing the octave evenly gives another kind of logic. Arpeggios moved by minor thirds, C7, E♭7, F♯7, and A7, return to their start after four steps, and over C7 all their notes belong to the half-whole diminished scale, with its ♭9, ♯9, and ♯11, so the cycle sounds out and yet tied to the chord.
 

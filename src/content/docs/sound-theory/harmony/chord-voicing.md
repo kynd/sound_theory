@@ -24,7 +24,7 @@ Press **Play** to hear C and Cmaj7 in each of their inversions, or click a chord
 
 In close position, all the notes fit within an octave, stacked as tightly as they go. In open position, they are spread over a wider range. A common way to open a close voicing is drop 2: take the second note from the top down an octave. Close voicings sound compact and focused; open voicings sound fuller and clearer, because the notes have room. Seconds placed next to each other, a cluster, add a soft, rich friction, and many modern jazz voicings put the 9th right next to the root or 3rd for that reason. Low in the range, though, notes close together turn muddy, so arrangers keep the bottom of a voicing open, with wide intervals, and save the close intervals for the middle and top.
 
-密集配置では、すべての音が1オクターブの中に、できるだけ詰めて重ねられます。開離配置では、より広い音域に広げられます。密集配置を開くよくある方法がドロップ2で、上から2番目の音を1オクターブ下げます。密集配置はまとまって焦点が合った響き、開離配置は音どうしに余裕があるため、より豊かで澄んだ響きになります。2度で隣り合う音を重ねたクラスターは、やわらかく豊かなこすれを加え、多くの現代のジャズのボイシングは、そのために9度を根音や3度のすぐ隣に置きます。ただし低い音域で音を近づけると濁るので、アレンジャーはボイシングの下のほうを広い音程で開いておき、狭い音程は中音域や高音域に使います。
+密集配置では、すべての音が1オクターブの中に、できるだけ詰めて重ねられます。開離配置では、より広い音域に広げられます。密集配置を開くよくある方法がドロップ2で、上から2番目の音を1オクターブ下げます。密集配置はまとまって焦点が合った響き、開離配置は音どうしに余裕があるため、より豊かで澄んだ響きになります。2度で隣り合う音を重ねたクラスターは、やわらかく豊かなこすれを加え、多くの現代のジャズのボイシングは、そのために9度をルートや3度のすぐ隣に置きます。ただし低い音域で音を近づけると濁るので、アレンジャーはボイシングの下のほうを広い音程で開いておき、狭い音程は中音域や高音域に使います。
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **Close and open** plays Cmaj7 in close position, drop 2, open, and wide. **Cluster and spread** plays Cmaj9 in thirds, with a cluster, low and close, and spread. The label under each chord names the voicing. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -37,7 +37,7 @@ Choose an **Example** and press **Play**, or click a chord to hold it. **Close a
 
 Not every note of a chord needs to be played. The fifth adds the least and is often the first to go. A power chord, common in rock guitar, keeps only the root and fifth (and the octave), with no third, so it is neither major nor minor and stays clear even with heavy distortion. Jazz pianists often play shells: the root with just the 3rd and 7th, the notes that define the chord, leaving the rest to the other players or to the right hand. In a band with a bassist, pianists often leave out the root as well and play rootless voicings, such as E, G, B♭, D for C9, built from the 3rd, 5th, 7th, and 9th.
 
-和音のすべての音を弾く必要はありません。5度は加えるものが最も少なく、最初に省かれることがよくあります。ロック・ギターでよく使われるパワーコードは、根音と5度（とオクターブ）だけで、3度を含みません。そのため長でも短でもなく、強く歪ませても濁りません。ジャズ・ピアニストは、よくシェルを弾きます。和音を決める3度と7度だけを根音とともに弾き、残りはほかの演奏者や右手に任せるのです。ベーシストのいるバンドでは、ピアニストは根音も省いて、ルートレス・ボイシングを弾くことがよくあります。たとえばC9なら、3度、5度、7度、9度からなるE、G、B♭、Dです。
+和音のすべての音を弾く必要はありません。5度は加えるものが最も少なく、最初に省かれることがよくあります。ロック・ギターでよく使われるパワーコードは、ルートと5度（とオクターブ）だけで、3度を含みません。そのため長でも短でもなく、強く歪ませても濁りません。ジャズ・ピアニストは、よくシェルを弾きます。和音を決める3度と7度だけをルートとともに弾き、残りはほかの演奏者や右手に任せるのです。ベーシストのいるバンドでは、ピアニストはルートも省いて、ルートレス・ボイシングを弾くことがよくあります。たとえばC9なら、3度、5度、7度、9度からなるE、G、B♭、Dです。
 
 Press **Play**, or click a chord to hold it: a full C7, a power chord, two shells (the 3rd below the 7th, and the 7th below the 3rd), and a rootless C9. The label under each chord names the voicing. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 

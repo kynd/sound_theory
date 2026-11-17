@@ -14,12 +14,16 @@ export function wireCollapsibles(root = document) {
 
 /**
  * Wires a button that starts and stops a continuous source (anything with `start()`,
- * `stop()`, and `playing`). The button reads Play or Stop. `startAudio` is called
- * first, since the click is the user gesture that unlocks audio, but not awaited
- * (see startAudio).
+ * `stop()`, and `playing`). The button reads Play, green, or, while the source plays,
+ * Stop, white with black text. `startAudio` is called first, since the click is the
+ * user gesture that unlocks audio, but not awaited (see startAudio).
  */
 export function wirePlayButton(button, source, startAudio) {
-    const sync = () => { button.textContent = source.playing ? 'Stop' : 'Play'; };
+    // While playing, the button reads Stop and turns white (`.playing` in demo-ui.css).
+    const sync = () => {
+        button.textContent = source.playing ? 'Stop' : 'Play';
+        button.classList.toggle('playing', source.playing);
+    };
     button.addEventListener('click', () => {
         if (source.playing) source.stop();
         else { startAudio(); source.start(); }

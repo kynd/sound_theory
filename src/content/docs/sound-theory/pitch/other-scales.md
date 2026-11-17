@@ -69,7 +69,7 @@ In Japan, the half–whole diminished scale is called the "combination of dimini
 
 The altered scale is the melodic minor scale starting on its 7th degree: C altered uses the same notes as D♭ melodic minor. Over a C dominant seventh chord (C, E, G, B♭), it retains the root, 3rd, and 7th while altering the other notes to create four tensions: flat 9 (D♭), sharp 9 (D♯), sharp 11 (F♯), and flat 13 (G♯).
 
-オルタード・スケールは、旋律的短音階の第7音から始めた音階です。Cのオルタードは、D♭の旋律的短音階と同じ音で構成されます。Cの属七和音（C、E、G、B♭）に重ねると、根音・第3音・第7音を保ちながら、ほかの音を変化させて4つのテンション、すなわち♭9（D♭）、♯9（D♯）、♯11（F♯）、♭13（G♯）を作ります。
+オルタード・スケールは、旋律的短音階の第7音から始めた音階です。Cのオルタードは、D♭の旋律的短音階と同じ音で構成されます。Cの属七和音（C、E、G、B♭）に重ねると、ルート・第3音・第7音を保ちながら、ほかの音を変化させて4つのテンション、すなわち♭9（D♭）、♯9（D♯）、♯11（F♯）、♭13（G♯）を作ります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=altered&roots" title="Altered scale" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 

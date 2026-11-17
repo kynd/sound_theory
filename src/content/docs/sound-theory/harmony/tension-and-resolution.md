@@ -11,7 +11,7 @@ Building up tension and then releasing it is one of the strongest tools in music
 
 The classic case is the dominant seventh resolving to the tonic: G7 to C. G7 contains B and F, a tritone, the most unstable interval in the scale. In the resolution both notes move by a half step, B up to C and F down to E, while the root falls a fifth from G to C. Half-step motion and a falling fifth together make the strongest pull in tonal music, called dominant motion.
 
-典型的な例は、ドミナント・セブンスからトニックへの解決、G7からCです。G7は、音階の中で最も不安定な音程である三全音、BとFを含んでいます。解決では、BがCへ上がり、FがEへ下がって、どちらも半音で動き、同時に根音がGからCへ5度下がります。半音の動きと5度下への動きが重なったものは、調性音楽で最も強い引力となり、ドミナント・モーションと呼ばれます。
+典型的な例は、ドミナント・セブンスからトニックへの解決、G7からCです。G7は、音階の中で最も不安定な音程である三全音、BとFを含んでいます。解決では、BがCへ上がり、FがEへ下がって、どちらも半音で動き、同時にルートがGからCへ5度下がります。半音の動きと5度下への動きが重なったものは、調性音楽で最も強い引力となり、ドミナント・モーションと呼ばれます。
 
 Any chord can borrow this pull for a moment by being preceded by its own dominant. A7 leads to Dm7 as its V7, and D7 leads to G7. These are secondary dominants, written V7/ii and V7/V.
 
@@ -32,7 +32,7 @@ Choose an **Example** and press **Play**, or click a chord to hold it. **V–I**
 
 The chord before V is very often ii, and the pair is called the two-five (ii–V). ii is a subdominant (see [Functional Harmony](/functional-harmony)), and its root falls a fifth to V just as V's root falls to I, so ii–V–I is two steps of the same motion: D to G to C. The voices move smoothly as well: the C of Dm7 falls a half step to the B of G7, and its F stays to become G7's seventh. In jazz, the ii–V is often treated as a single unit, and musicians learn to hear and play over it as one gesture.
 
-Vの前の和音はiiであることがとても多く、この組み合わせはツー・ファイブ（ii–V）と呼ばれます。iiはサブドミナントで（[機能和声](/functional-harmony)を参照）、その根音はVの根音がIへ下がるのと同じように、Vへ5度下がります。つまりii–V–Iは、DからG、GからCへと、同じ動きを2回重ねたものです。声部もなめらかに動きます。Dm7のCは半音下がってG7のBになり、FはそのままG7の7度になります。ジャズでは、ii–Vはひとつのまとまりとして扱われることが多く、ミュージシャンはそれをひとつの身振りとして聞き、その上で演奏することを身につけます。
+Vの前の和音はiiであることがとても多く、この組み合わせはツー・ファイブ（ii–V）と呼ばれます。iiはサブドミナントで（[機能和声](/functional-harmony)を参照）、そのルートはVのルートがIへ下がるのと同じように、Vへ5度下がります。つまりii–V–Iは、DからG、GからCへと、同じ動きを2回重ねたものです。声部もなめらかに動きます。Dm7のCは半音下がってG7のBになり、FはそのままG7の7度になります。ジャズでは、ii–Vはひとつのまとまりとして扱われることが多く、ミュージシャンはそれをひとつの身振りとして聞き、その上で演奏することを身につけます。
 
 In a minor key, the ii–V usually takes the natural minor's half-diminished ii and the harmonic minor's V7: Dm7♭5–G7–Cm (see [Chords in Minor Keys](/minor-key-chords)). And like a single dominant, a ii–V can lead to any chord, not only the tonic. Em7–A7 leads to Dm7 as its own ii–V, so ii–Vs can follow one another, each pointing to the next. They can also step through keys: Dm7–G7–Cmaj7 followed by Cm7–F7–B♭maj7, a whole step lower, is the pattern of "Tune Up" (see [Chord Progressions](/chord-progressions)).
 
@@ -63,7 +63,7 @@ Dominant motion in this narrow sense, a dominant seventh moving down a fifth, is
 
 -   **Deceptive:** G7 to Am7 instead of C. The tension is released, but somewhere unexpected; the real arrival is postponed to the second ii–V–I.
 
--   **Tritone substitute：** G7の代わりにD♭7を使います。同じ三全音（FとC♭、つまりB）を持つので同じようにCへ解決し、根音は半音で滑り降ります。
+-   **Tritone substitute：** G7の代わりにD♭7を使います。同じ三全音（FとC♭、つまりB）を持つので同じようにCへ解決し、ルートは半音で滑り降ります。
 
 -   **Half step：** Cmaj7、D♭maj7、Cmaj7。ドミナントはまったくありませんが、Cmaj7に戻ると到着したように聞こえます。Cが家であり、すべての声部が半音で滑り戻るからです。
 

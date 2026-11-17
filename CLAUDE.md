@@ -49,9 +49,11 @@ Follow `documentation.md`. In short:
   (「世界中」).
 - In Japanese, count with Arabic numerals: 「1つ」「2つ」「1個」「1人」「1組」「3回」, not
   「一つ」「一人」. Words that only contain a numeral keep their kanji: 一般, 一部, 一緒, 唯一,
-  一定, 三和音, 五音音階, 十二音, and set phrases (一つひとつ, 一段, 一度に, もう一度, 二度と).
+  一定, 五音音階, 十二音, and set phrases (一つひとつ, 一段, 一度に, もう一度, 二度と).
   「一度」 for "once" stays in kanji too, since 「1度」 is the interval.
   Hiragana 「ひとつ」 (ひとつの主音) stays as it is.
+- In Japanese, a triad is 「トライアド」, never 「三和音」: 「メジャー・トライアド」,
+  「マイナー・トライアド」, 「ディミニッシュ・トライアド」, 「オーギュメント・トライアド」.
 - In Japanese, a mode is 「モード」, never 「旋法」: 「チャーチ・モード」, 「ドリアン・モード」,
   「モード的」. The Church Modes intro alone gives 教会旋法 as the other name.
 - In Japanese demo instructions, invite rather than instruct: 「〜てみましょう」, not
@@ -97,7 +99,8 @@ Follow `documentation.md`. In short:
   `colors.js`, `Keyboard.js`, `Scope.js`, `PartialsView.js`, `BeatView.js`,
   `FifthsRing.js`, `ScaleView.js`, `CycleView.js`, `PulseView.js`, `StepGrid.js`,
   `ProgressionView.js`, `ChordChart.js`, `XYPad.js`, `DrawPad.js`, `SampleView.js`,
-  `PaintGrid.js`, `EnvelopeView.js`, `TetrachordView.js`, `LoopView.js`, `GrooveView.js`.
+  `PaintGrid.js`, `EnvelopeView.js`, `TetrachordView.js`, `LoopView.js`, `GrooveView.js`,
+  `ChordCircle.js`, `PolyGrid.js`.
 - Every structural change updates `docs/audio-library.md` in the same change. When a
   group of classes shares behavior, write it once as a "common" section.
 - Demo chrome comes from the `dp-*` classes in `public/styles/demo-ui.css`. A new
@@ -157,7 +160,9 @@ canvas alike.
 - **White for wells:** pure white (`--demo-white` / `COLORS.white`) for things that
   sit on the paper: white keys, slider tracks, idle toggles, selects.
 - **Green for the main controls:** play buttons, active toggles, and any slider that
-  is not part of a colored series (`--accent` defaults to `--accent-green`).
+  is not part of a colored series (`--accent` defaults to `--accent-green`). A play
+  button turns white with black text while it plays and reads Stop (`.dp-btn.playing`,
+  set by `wirePlayButton`).
 - **Red for the main wave:** the waveform on a scope, the summed wave over its
   partials (drawn on top of them). Red is kept out of the series colors (`ACCENTS`); green comes last in
   them, so it shows up in a series only after the other accents.
@@ -170,7 +175,8 @@ canvas alike.
   (yellow, white and black alike).
 - **Fills, not lines:** fill shapes (buttons, slider tracks, bars, spectra, keys) with
   accent colors instead of outlining them. Waveforms are the exception: a wave is drawn
-  as a line.
+  as a line. So is a chord on the chord circle (`ChordCircle`): an outline in its
+  quality's color, with the name in black inside.
 - **No borders or rules:** separate areas with space and a change of fill. `.dp-divider`
   is space only. No grid lines on plots. The one exception is music notation: a staff's
   five lines and ledger lines are drawn, thin and black, because they are the notation. Bar lines in a piano roll are the other
@@ -201,6 +207,9 @@ canvas alike.
   `Tone.getContext().rawContext`.
 - Importing `AudioEngine.js` sets Tone's `lookAhead` to 0 so notes play when a key is
   pressed. A demo that schedules sequences on the Transport can raise it.
+- Never use `Tone.PolySynth` directly: use `PolySynth` in `instruments.js`. With
+  `lookAhead` 0, Tone's own PolySynth starts scheduled notes a few milliseconds late,
+  and some come out silent; the library's version hands them to a voice early.
 - Notes are MIDI numbers everywhere in the library (60 = C4). Convert at the edges with
   `midiToNote`, `midiToFrequency`, `nearestNote`.
 - Every demo routes sound through one `MasterBus` (volume and limiter).
@@ -265,7 +274,7 @@ public/lib/demo/                 viewport.js  panel.js  controls.js  colors.js
                                  StepGrid.js  ProgressionView.js  ChordChart.js
                                  XYPad.js  DrawPad.js  SampleView.js  PaintGrid.js
                                  EnvelopeView.js  TetrachordView.js  LoopView.js
-                                 GrooveView.js
+                                 GrooveView.js  ChordCircle.js  PolyGrid.js
 public/demos/<name>/             index.html + main.js per demo
 public/styles/demo-ui.css        demo chrome
 public/lib/page/demoRecorder.js  record button under each embedded demo (page-level)

@@ -16,19 +16,19 @@ Stacking one more third on a triad adds the seventh above the root and makes a s
 
 -   **Minor major seventh (CmMaj7):** a minor triad with a major seventh (C, E♭, G, B), the chord of the [melodic minor](/minor-scales).
 
-三和音にもう1つ3度を積むと、根音の7度上の音が加わり、7の和音（セブンス・コード）になります。7の和音は三和音より豊かに響き、ジャズでは、そしてソウルやR&B、ポップスの多くでも、和声の基本単位です。Cの上のよく使われるものは次のとおりです。
+トライアドにもう1つ3度を積むと、ルートの7度上の音が加わり、7の和音（セブンス・コード）になります。7の和音はトライアドより豊かに響き、ジャズでは、そしてソウルやR&B、ポップスの多くでも、和声の基本単位です。Cの上のよく使われるものは次のとおりです。
 
--   **メジャー・セブンス（Cmaj7）：** 長三和音と長7度（C、E、G、B）。柔らかく、落ち着いています。
+-   **メジャー・セブンス（Cmaj7）：** メジャー・トライアドと長7度（C、E、G、B）。柔らかく、落ち着いています。
 
--   **ドミナント・セブンス（C7）：** 長三和音と短7度（C、E、G、B♭）。三全音（EからB♭）を含み、5度下の和音へ強く引き寄せられます。
+-   **ドミナント・セブンス（C7）：** メジャー・トライアドと短7度（C、E、G、B♭）。三全音（EからB♭）を含み、5度下の和音へ強く引き寄せられます。
 
--   **マイナー・セブンス（Cm7）：** 短三和音と短7度（C、E♭、G、B♭）。まろやかな響きです。
+-   **マイナー・セブンス（Cm7）：** マイナー・トライアドと短7度（C、E♭、G、B♭）。まろやかな響きです。
 
--   **ハーフ・ディミニッシュ（Cm7♭5）：** 減三和音と短7度（C、E♭、G♭、B♭）。
+-   **ハーフ・ディミニッシュ（Cm7♭5）：** ディミニッシュ・トライアドと短7度（C、E♭、G♭、B♭）。
 
 -   **ディミニッシュ・セブンス（Cdim7）：** 短3度だけを積み重ねたもの（C、E♭、G♭、A）。対称的で、とても緊張した響きです。
 
--   **マイナー・メジャー・セブンス（CmMaj7）：** 短三和音と長7度（C、E♭、G、B）。[旋律的短音階](/minor-scales)の和音です。
+-   **マイナー・メジャー・セブンス（CmMaj7）：** マイナー・トライアドと長7度（C、E♭、G、B）。[旋律的短音階](/minor-scales)の和音です。
 
 On the C major scale the diatonic sevenths are Cmaj7, Dm7, Em7, Fmaj7, G7, Am7, and Bm7♭5. Only V gets a dominant seventh, which is one reason it pulls home so clearly.
 
@@ -36,7 +36,7 @@ Cの長音階の上のダイアトニックな7の和音は、Cmaj7、Dm7、Em7�
 
 A sixth chord adds the 6th instead of the 7th: C6 (C, E, G, A) and Cm6 (C, E♭, G, A). Like a major seventh, C6 colors a major chord without changing what it does, and it often takes the major seventh's place as the tonic, especially in swing and older popular songs, where the major seventh's B can rub against a melody on C. C6 has the same notes as Am7, so which of the two we hear depends largely on the bass. Cm6, a minor triad with a major sixth, is a common tonic in minor (see [Chords in Minor Keys](/minor-key-chords)). Adding the 9th as well gives C6/9 (C, E, G, A, D), an open tonic heard in jazz and bossa nova.
 
-6の和音（シックス・コード）は、7度の代わりに6度を加えた和音です。C6（C、E、G、A）やCm6（C、E♭、G、A）がそうです。メジャー・セブンスと同じように、C6は長三和音の働きを変えずに色を加え、トニックとしてメジャー・セブンスの代わりに使われることがよくあります。特にスウィングや古いポピュラー・ソングでよく使われます。メジャー・セブンスのBが、Cの旋律とぶつかることがあるからです。C6はAm7と同じ音でできているので、どちらに聞こえるかは主にベースで決まります。短三和音に長6度を加えたCm6は、短調のトニックとしてよく使われます（[短調の和音](/minor-key-chords)を参照）。さらに9度を加えるとC6/9（C、E、G、A、D）になり、ジャズやボサノヴァで聞かれる、開いた響きのトニックになります。
+6の和音（シックス・コード）は、7度の代わりに6度を加えた和音です。C6（C、E、G、A）やCm6（C、E♭、G、A）がそうです。メジャー・セブンスと同じように、C6はメジャー・トライアドの働きを変えずに色を加え、トニックとしてメジャー・セブンスの代わりに使われることがよくあります。特にスウィングや古いポピュラー・ソングでよく使われます。メジャー・セブンスのBが、Cの旋律とぶつかることがあるからです。C6はAm7と同じ音でできているので、どちらに聞こえるかは主にベースで決まります。マイナー・トライアドに長6度を加えたCm6は、短調のトニックとしてよく使われます（[短調の和音](/minor-key-chords)を参照）。さらに9度を加えるとC6/9（C、E、G、A、D）になり、ジャズやボサノヴァで聞かれる、開いた響きのトニックになります。
 
 # Tensions
 # テンション
@@ -47,11 +47,11 @@ Keep stacking thirds and the 9th, 11th, and 13th appear: the 2nd, 4th, and 6th, 
 
 Dominant chords also take altered tensions: the flat 9th, the sharp 9th, the sharp 11th, and the flat 13th (see the altered scale in [Other Scales](/other-scales)). They raise the tension of a dominant and make its resolution stronger. In practice, a pianist leaves some notes out of a big chord, usually the fifth and often the root, which the bass plays. The demo does the same: the root is in the bass and, in chords of five or more notes, the fifth is left out.
 
-ドミナントの和音には、変化させたテンションも使います。フラット9度、シャープ9度、シャープ11度、フラット13度です（[その他の音階](/other-scales)のオルタード・スケールを参照）。これらはドミナントの緊張を高め、解決をより強くします。実際には、ピアニストは大きな和音からいくつかの音を省きます。ふつうは5度、そしてベースが弾く根音も省くことがよくあります。デモも同じように、根音をベースに置き、5音以上の和音では5度を省いています。
+ドミナントの和音には、変化させたテンションも使います。フラット9度、シャープ9度、シャープ11度、フラット13度です（[その他の音階](/other-scales)のオルタード・スケールを参照）。これらはドミナントの緊張を高め、解決をより強くします。実際には、ピアニストは大きな和音からいくつかの音を省きます。ふつうは5度、そしてベースが弾くルートも省くことがよくあります。デモも同じように、ルートをベースに置き、5音以上の和音では5度を省いています。
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **Sixth chords** plays C, C6, Cmaj7, Am7 (the notes of C6 over A), Cm6, and C6/9, and **ii–V–I6** ends a ii–V on C6 instead of Cmaj7. The labels under the tension examples name the tensions added. In those examples the notes are spread out the way a pianist would open them up: each tension sits at its own distance above the root, the 9th a ninth up and the 13th a thirteenth up, above the chord tones instead of crowded in among them. **ii–V–I with tensions** plays each chord four times, once on every beat. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。**Sixth chords**はC、C6、Cmaj7、Am7（Aの上のC6の音）、Cm6、C6/9を鳴らし、**ii–V–I6**はii–VをCmaj7ではなくC6で終えます。テンションの例の下のラベルは、加えたテンションの名前です。これらの例では、ピアニストが和音を開くように音を広げています。テンションを根音からそれぞれの距離に、つまり9度は9度上に、13度は13度上に置くので、テンションは和音の音のあいだに詰め込まれず、その上に重なります。**ii–V–I with tensions**は、それぞれの和音を拍ごとに4回鳴らします。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。**Sixth chords**はC、C6、Cmaj7、Am7（Aの上のC6の音）、Cm6、C6/9を鳴らし、**ii–V–I6**はii–VをCmaj7ではなくC6で終えます。テンションの例の下のラベルは、加えたテンションの名前です。これらの例では、ピアニストが和音を開くように音を広げています。テンションをルートからそれぞれの距離に、つまり9度は9度上に、13度は13度上に置くので、テンションは和音の音のあいだに詰め込まれず、その上に重なります。**ii–V–I with tensions**は、それぞれの和音を拍ごとに4回鳴らします。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=sevenths&key" title="Sevenths and tensions" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

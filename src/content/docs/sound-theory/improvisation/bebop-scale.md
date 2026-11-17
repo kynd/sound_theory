@@ -26,7 +26,7 @@ Cのメジャー・シックス・ディミニッシュ・スケールは、長�
 
 Every other chord is C6 in one of its inversions, and the chords between them are diminished sevenths. The four diminished sevenths share the same four notes (B°7, D°7, F°7, and A♭°7 are one chord), and that chord is G7 with a flat 9th and without its root (see [Chords in Minor Keys](/minor-key-chords)). So Harris taught the scale not as eight separate chords but as one tonic, C6, moving back and forth to its dominant tension. A minor version, the minor sixth diminished scale (C, D, E♭, F, G, G♯, A, B), works the same way with Cm6 and the same diminished chord.
 
-ひとつおきの和音は、さまざまな転回形のC6で、そのあいだの和音は減七の和音です。4つの減七の和音は同じ4つの音を共有していて（B°7、D°7、F°7、A♭°7はひとつの和音です）、その和音は根音を省いたG7(♭9)です（[短調の和音](/minor-key-chords)を参照）。そのためハリスはこの音階を、8つの別々の和音としてではなく、ひとつのトニックC6が、そのドミナントの緊張とのあいだを行き来する動きとして教えました。短調版のマイナー・シックス・ディミニッシュ・スケール（C、D、E♭、F、G、G♯、A、B）も、Cm6と同じ減七の和音で、同じように働きます。
+ひとつおきの和音は、さまざまな転回形のC6で、そのあいだの和音は減七の和音です。4つの減七の和音は同じ4つの音を共有していて（B°7、D°7、F°7、A♭°7はひとつの和音です）、その和音はルートを省いたG7(♭9)です（[短調の和音](/minor-key-chords)を参照）。そのためハリスはこの音階を、8つの別々の和音としてではなく、ひとつのトニックC6が、そのドミナントの緊張とのあいだを行き来する動きとして教えました。短調版のマイナー・シックス・ディミニッシュ・スケール（C、D、E♭、F、G、G♯、A、B）も、Cm6と同じ減七の和音で、同じように働きます。
 
 Choose an **Example** and press **Play** to hear the scale harmonized up an octave and back down, one chord a beat. In the piano roll, all four voices climb together through the scale, and the Roman numerals below alternate between I6 (i6 in minor) and vii°7. Click a chord to hold it. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -43,7 +43,7 @@ Bebop lines often run in continuous eighth notes. Starting on a chord tone on th
 
 The eighth note fixes this. With G♯ added between G and A, the scale has eight notes, an even number, so a line starting on a chord tone on the beat keeps the chord tones on the beats. Down the sixth diminished scale from C, the beats get C, A, G, and E, the notes of C6, and the off-beats get B, G♯, F, and D, the notes of the diminished chord. The line itself alternates between rest and tension, just as the harmonized scale does. The bebop dominant scale does the same for a dominant chord, with its extra note between ♭7 and the root.
 
-8つ目の音がこれを解決します。GとAのあいだにG♯を加えると、音階は8音、つまり偶数になり、拍の上の和音の音から始めた旋律は、和音の音を拍の上に保ち続けます。シックス・ディミニッシュ・スケールをCから下ると、拍の上にはC6の音であるC、A、G、Eが来て、裏には減七の和音の音であるB、G♯、F、Dが来ます。旋律そのものが、和声づけした音階と同じように、安定と緊張のあいだを交互するのです。ビバップ・ドミナント・スケールは、♭7と根音のあいだに加えた音によって、ドミナントの和音に対して同じことをします。
+8つ目の音がこれを解決します。GとAのあいだにG♯を加えると、音階は8音、つまり偶数になり、拍の上の和音の音から始めた旋律は、和音の音を拍の上に保ち続けます。シックス・ディミニッシュ・スケールをCから下ると、拍の上にはC6の音であるC、A、G、Eが来て、裏には減七の和音の音であるB、G♯、F、Dが来ます。旋律そのものが、和声づけした音階と同じように、安定と緊張のあいだを交互するのです。ビバップ・ドミナント・スケールは、♭7とルートのあいだに加えた音によって、ドミナントの和音に対して同じことをします。
 
 Choose an **Example** and press **Play**. Over C6, struck every two beats, with a click on every beat, the melody runs down two octaves in eighth notes: **Major scale** uses the seven-note scale, and **6th diminished scale** adds G♯. Listen to which notes land on the clicks. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 

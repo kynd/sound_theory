@@ -4,22 +4,22 @@ slug: modern-pentatonics
 ---
 From the 1960s on, players such as McCoy Tyner, and later Michael Brecker and many others, used pentatonic scales in a new way: not only the pentatonic on the chord's root, but pentatonics on other roots, chosen for the notes they add. A pentatonic has no half steps and a strong, simple shape, so even when its notes are tensions over the chord (9ths, 11ths, 13ths), a line built from it sounds clear rather than muddy. Its shapes are also easy to move around, which makes it a tool for playing outside the harmony and back in.
 
-1960年代以降、マッコイ・タイナーや、のちのマイケル・ブレッカー、そのほか多くのミュージシャンが、ペンタトニック・スケールを新しいやり方で使うようになりました。和音の根音の上のペンタトニックだけでなく、加わる音を目当てに、ほかの根音の上のペンタトニックを選ぶのです。ペンタトニックには半音がなく、形が強く単純なので、その音が和音に対してテンション（9度、11度、13度）になっても、そこからつくった旋律は濁らず、はっきりと響きます。形を動かしやすいので、和声の外に出て戻ってくるための道具にもなります。
+1960年代以降、マッコイ・タイナーや、のちのマイケル・ブレッカー、そのほか多くのミュージシャンが、ペンタトニック・スケールを新しいやり方で使うようになりました。和音のルートの上のペンタトニックだけでなく、加わる音を目当てに、ほかのルートの上のペンタトニックを選ぶのです。ペンタトニックには半音がなく、形が強く単純なので、その音が和音に対してテンション（9度、11度、13度）になっても、そこからつくった旋律は濁らず、はっきりと響きます。形を動かしやすいので、和声の外に出て戻ってくるための道具にもなります。
 
 # Three Pentatonics for Each Chord
 # 和音ごとの3つのペンタトニック
 
 Over a major seventh chord, three major pentatonics are common. On Cmaj7, the C major pentatonic (C, D, E, G, A) gives the root, 9th, 3rd, 5th, and 6th. The G major pentatonic (G, A, B, D, E) adds the major 7th and leaves out the root, a more open sound. The D major pentatonic (D, E, F♯, A, B), which has the same notes as the B minor pentatonic, adds the ♯11 and sounds Lydian. That is why B minor pentatonic over Cmaj7 works: it is the pentatonic a half step below the root, made of the 7th, 9th, 3rd, ♯11, and 13th.
 
-メジャー・セブンスの和音の上では、3つのメジャー・ペンタトニックがよく使われます。Cmaj7の上では、Cのメジャー・ペンタトニック（C、D、E、G、A）が根音、9度、3度、5度、6度を与えます。Gのメジャー・ペンタトニック（G、A、B、D、E）は長7度を加えて根音を省き、より開いた響きになります。Dのメジャー・ペンタトニック（D、E、F♯、A、B）は、Bのマイナー・ペンタトニックと同じ音で、♯11を加え、リディアンの響きになります。Cmaj7の上でBマイナー・ペンタトニックが合うのはこのためです。根音の半音下のペンタトニックで、7度、9度、3度、♯11、13度からできているのです。
+メジャー・セブンスの和音の上では、3つのメジャー・ペンタトニックがよく使われます。Cmaj7の上では、Cのメジャー・ペンタトニック（C、D、E、G、A）がルート、9度、3度、5度、6度を与えます。Gのメジャー・ペンタトニック（G、A、B、D、E）は長7度を加えてルートを省き、より開いた響きになります。Dのメジャー・ペンタトニック（D、E、F♯、A、B）は、Bのマイナー・ペンタトニックと同じ音で、♯11を加え、リディアンの響きになります。Cmaj7の上でBマイナー・ペンタトニックが合うのはこのためです。ルートの半音下のペンタトニックで、7度、9度、3度、♯11、13度からできているのです。
 
 Over a minor seventh chord, the same idea uses minor pentatonics on the root, the 5th, and the 2nd. On Dm7, D minor pentatonic is the plain sound; A minor pentatonic (A, C, D, E, G) adds the 9th and 11th; and E minor pentatonic (E, G, A, B, D) adds the 9th, 11th, and 13th, a bright Dorian sound with no 3rd at all. Over a dominant, G major pentatonic gives the 9th and 13th; D minor pentatonic (D, F, G, A, C) gives a suspended sound, with C in place of the 3rd; and B♭ minor pentatonic (B♭, D♭, E♭, F, A♭), a minor third above the root, gives ♯9, ♭5, ♭13, 7, and ♭9, the altered sound in five notes.
 
-マイナー・セブンスの和音の上では、同じ考え方で、根音、5度、2度の上のマイナー・ペンタトニックを使います。Dm7の上では、Dのマイナー・ペンタトニックが素直な響きで、Aのマイナー・ペンタトニック（A、C、D、E、G）は9度と11度を加え、Eのマイナー・ペンタトニック（E、G、A、B、D）は9度、11度、13度を加えて、3度をまったく含まない明るいドリアンの響きになります。ドミナントの上では、Gのメジャー・ペンタトニックが9度と13度を、Dのマイナー・ペンタトニック（D、F、G、A、C）が3度の代わりにCを持つサスペンデッドの響きを、そして根音の短3度上のB♭のマイナー・ペンタトニック（B♭、D♭、E♭、F、A♭）が♯9、♭5、♭13、7度、♭9を与えます。5つの音でできたオルタードの響きです。
+マイナー・セブンスの和音の上では、同じ考え方で、ルート、5度、2度の上のマイナー・ペンタトニックを使います。Dm7の上では、Dのマイナー・ペンタトニックが素直な響きで、Aのマイナー・ペンタトニック（A、C、D、E、G）は9度と11度を加え、Eのマイナー・ペンタトニック（E、G、A、B、D）は9度、11度、13度を加えて、3度をまったく含まない明るいドリアンの響きになります。ドミナントの上では、Gのメジャー・ペンタトニックが9度と13度を、Dのマイナー・ペンタトニック（D、F、G、A、C）が3度の代わりにCを持つサスペンデッドの響きを、そしてルートの短3度上のB♭のマイナー・ペンタトニック（B♭、D♭、E♭、F、A♭）が♯9、♭5、♭13、7度、♭9を与えます。5つの音でできたオルタードの響きです。
 
 Choose an **Example** and press **Play**. **On Cmaj7**, **On Dm7**, and **On G7** hold the chord while each of its three pentatonics runs up over it in turn. **Scale** names the pentatonic being played, and the label under each chord gives its root, counted from the chord's root (upper case for major, lower case for minor). The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してみましょう。**On Cmaj7**、**On Dm7**、**On G7**は和音を鳴らしたまま、その上で3つのペンタトニックを順に上らせます。**Scale**には、いま弾いているペンタトニックの名前が表示され、和音の下のラベルは、和音の根音から数えたその主音を示します（大文字はメジャー、小文字はマイナー）。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。**On Cmaj7**、**On Dm7**、**On G7**は和音を鳴らしたまま、その上で3つのペンタトニックを順に上らせます。**Scale**には、いま弾いているペンタトニックの名前が表示され、和音の下のラベルは、和音のルートから数えたその主音を示します（大文字はメジャー、小文字はマイナー）。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=modern-pentatonics&example=on-maj7,on-m7,on-7&key" title="Three pentatonics for each chord" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

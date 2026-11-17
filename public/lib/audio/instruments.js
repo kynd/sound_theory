@@ -51,6 +51,32 @@ export class Instrument {
     dispose() { this.output.dispose(); }
 }
 
+/** Seconds before its time that a scheduled note is handed to a PolySynth voice. */
+const EARLY = 0.1;
+
+/**
+ * Tone's PolySynth, handing a note scheduled ahead to its voice up to EARLY seconds
+ * before the note's time. Tone's own PolySynth holds such a note until the clock
+ * reaches it, less the context's lookAhead; with lookAhead 0 (see AudioEngine.js) that
+ * is a few milliseconds after the note's time, and a note started in the past on a
+ * voice that has played before can come out silent (about one note in four, in a busy
+ * pattern). Notes played live (now) are not affected. Every instrument built on a
+ * PolySynth uses this one.
+ */
+export class PolySynth extends Tone.PolySynth {
+    _scheduleEvent(type, notes, time, velocity) {
+        if (this.disposed) return;
+        const wait = time - EARLY - this.now();
+        if (wait > 0) {
+            this.context.setTimeout(() => this._scheduleEvent(type, notes, time, velocity), wait);
+        } else if (type === 'attack') {
+            this._triggerAttack(notes, time, velocity);
+        } else {
+            this._triggerRelease(notes, time);
+        }
+    }
+}
+
 /** A polyphonic synthesizer built from one of Tone's monophonic voices. */
 export class PolyInstrument extends Instrument {
     /**
@@ -61,7 +87,7 @@ export class PolyInstrument extends Instrument {
      */
     constructor(voice, options = {}, { volume = 0 } = {}) {
         super();
-        this.synth = new Tone.PolySynth(voice, options).connect(this.output);
+        this.synth = new PolySynth(voice, options).connect(this.output);
         this.synth.maxPolyphony = 32;
         this.synth.volume.value = volume;
     }
@@ -79,7 +105,7 @@ export class PolyInstrument extends Instrument {
 export class MalletSynth extends Instrument {
     constructor({ volume = -8 } = {}) {
         super();
-        this.synth = new Tone.PolySynth(Tone.Synth, {
+        this.synth = new PolySynth(Tone.Synth, {
             oscillator: { type: 'triangle' },
             envelope: { attack: 0.002, decay: 0.5, sustain: 0, release: 0.4 },
         }).connect(this.output);
@@ -190,7 +216,7 @@ export class DrumKit extends Instrument {
             envelope: { attack: 0.004, decay: 0.12, sustain: 0 },
             volume: -6,
         }).connect(out);
-        this.toms = new Tone.PolySynth(Tone.MembraneSynth, {
+        this.toms = new PolySynth(Tone.MembraneSynth, {
             pitchDecay: 0.08, octaves: 2,
             envelope: { attack: 0.001, decay: 0.5, sustain: 0, release: 0.2 },
         }).connect(out);

@@ -15,7 +15,7 @@ Shorthand for harmony is centuries old. In the Baroque era (roughly 1600 to 1750
 
 Roman numerals came from music theory rather than performance. Gottfried Weber's treatise of the 1810s and 1820s spread the practice of naming chords by the scale degree of their root, so that the same pattern could be recognized in any key. At the end of the nineteenth century, Hugo Riemann grouped chords by function, tonic, subdominant, and dominant (see [Functional Harmony](/functional-harmony)). Both were tools for analyzing written music, in which every note was already on the page.
 
-ローマ数字は、演奏ではなく音楽理論から生まれました。1810年代から1820年代にかけてのゴットフリート・ウェーバーの理論書が、和音を根音の音階上の位置で呼ぶやり方を広め、同じパターンをどの調でも見分けられるようにしました。19世紀の終わりには、フーゴー・リーマンが和音をトニック、サブドミナント、ドミナントという機能でまとめました（[機能和声](/functional-harmony)を参照）。どちらも、すべての音がすでに楽譜に書かれた音楽を分析するための道具でした。
+ローマ数字は、演奏ではなく音楽理論から生まれました。1810年代から1820年代にかけてのゴットフリート・ウェーバーの理論書が、和音をルートの音階上の位置で呼ぶやり方を広め、同じパターンをどの調でも見分けられるようにしました。19世紀の終わりには、フーゴー・リーマンが和音をトニック、サブドミナント、ドミナントという機能でまとめました（[機能和声](/functional-harmony)を参照）。どちらも、すべての音がすでに楽譜に書かれた音楽を分析するための道具でした。
 
 # Chord Symbols
 # コード・シンボル
@@ -49,7 +49,7 @@ The same ii–V–I in C, written in several of these ways:
 
 Today chord symbols are everywhere: on lead sheets and in songbooks, on guitar chord websites, in the chord tracks of music software, and in how musicians talk ("it's just a ii–V"). This success has shaped how people think about music. A chord symbol names a stack of thirds over a root and leaves the rest to the player: which notes, in which octave, in what rhythm, with what sound. It treats music as a series of vertical sonorities over a steady pulse, and chord–scale theory extends this to melody, turning improvisation into a choice of scale for each chord. For jazz standards and songs, this is wonderfully efficient.
 
-今では、コード・シンボルはどこにでもあります。リード・シートや歌本に、ギターのコード譜のウェブサイトに、音楽ソフトのコード・トラックに、そしてミュージシャンの話し方の中に（「ただのツー・ファイブだよ」）。この成功は、人々の音楽の考え方を形づくってきました。コード・シンボルは、根音の上に積んだ3度の重なりに名前をつけ、それ以外は演奏者に任せます。どの音を、どのオクターブで、どんなリズムで、どんな音色で弾くかです。音楽を、一定の拍の上に並んだ縦の響きの連なりとして扱い、コード・スケール理論はこれを旋律にまで広げて、即興を和音ごとの音階選びにします。ジャズ・スタンダードや歌には、これは見事に効率的です。
+今では、コード・シンボルはどこにでもあります。リード・シートや歌本に、ギターのコード譜のウェブサイトに、音楽ソフトのコード・トラックに、そしてミュージシャンの話し方の中に（「ただのツー・ファイブだよ」）。この成功は、人々の音楽の考え方を形づくってきました。コード・シンボルは、ルートの上に積んだ3度の重なりに名前をつけ、それ以外は演奏者に任せます。どの音を、どのオクターブで、どんなリズムで、どんな音色で弾くかです。音楽を、一定の拍の上に並んだ縦の響きの連なりとして扱い、コード・スケール理論はこれを旋律にまで広げて、即興を和音ごとの音階選びにします。ジャズ・スタンダードや歌には、これは見事に効率的です。
 
 But it is one way of hearing among many. Counterpoint, where the music is the independent lines, is hard to see in chord symbols. So are quartal chords and clusters, which fit badly into stacks of thirds (see [Beyond Functional Harmony](/non-functional-harmony)), and so is music built on a drone, on microtones, or on timbre (see [Sound as Material](/sound-as-material)). Many traditions, such as Indian classical music, Indonesian gamelan, and much of the world's folk music, do not think in chords at all. A notation makes some ideas easy to write and to think, and others hard to notice. It is worth asking, when a piece seems to resist analysis, whether the music is unusual or whether the notation simply has no place for it. For more on the symbols themselves, a good starting point is [Chord names and symbols on Wikipedia](https://en.wikipedia.org/wiki/Chord_names_and_symbols_%28popular_music%29).
 

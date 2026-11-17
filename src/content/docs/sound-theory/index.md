@@ -85,7 +85,7 @@ This is not a textbook. It is a collection of things I know about sound and musi
 -   [Modern Jazz Language モダン・ジャズの語法](/modern-jazz-language)
     -   [Modal Jazz モード・ジャズ](/modal-jazz)
     -   [Upper Structure Triads アッパー・ストラクチャー・トライアド](/upper-structure-triads)
-    -   [Triads Inside Scales スケールの中の三和音](/triads-in-scales)
+    -   [Triads Inside Scales スケールの中のトライアド](/triads-in-scales)
     -   [Pentatonics in Modern Jazz モダン・ジャズのペンタトニック](/modern-pentatonics)
     -   [Playing Outside アウトサイド](/playing-outside)
     -   [Fourths and Intervallic Lines 4度と音程的な旋律](/fourths)

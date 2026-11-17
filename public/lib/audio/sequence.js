@@ -1,6 +1,7 @@
 /**
  * Plays a list of notes one after another on an instrument, at a fixed pace, once or
- * in a loop (a repeated bass note is a one-note loop). Same start/stop/playing
+ * in a loop (a repeated bass note is a one-note loop). An item may also be an array of
+ * MIDI numbers, a chord, whose notes start and stop together. Same start/stop/playing
  * contract as a continuous source, so it works with wirePlayButton; played once, it
  * also stops by itself at the end.
  *
@@ -35,7 +36,7 @@ export class Sequence {
 
     get playing() { return this._timers.length > 0; }
 
-    /** Plays `this.notes` (MIDI numbers) from the start. */
+    /** Plays `this.notes` (MIDI numbers, or arrays of them for chords) from the start. */
     start() {
         this._timers.forEach(clearTimeout);
         this._timers = [];
@@ -44,7 +45,7 @@ export class Sequence {
         this.notes.forEach((midi, i) => {
             this._timers.push(setTimeout(() => {
                 this._release();
-                this.instrument.noteOn(midi, this.velocity);
+                for (const m of [].concat(midi)) this.instrument.noteOn(m, this.velocity);
                 this._sounding = midi;
                 this.onStep(i, midi);
             }, i * ms));
@@ -62,7 +63,7 @@ export class Sequence {
 
     _release() {
         if (this._sounding === null) return;
-        this.instrument.noteOff(this._sounding);
+        for (const m of [].concat(this._sounding)) this.instrument.noteOff(m);
         this._sounding = null;
     }
 

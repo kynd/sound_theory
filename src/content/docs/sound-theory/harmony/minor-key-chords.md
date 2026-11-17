@@ -4,7 +4,7 @@ slug: minor-key-chords
 ---
 A minor key has its own diatonic chords, built the same way as in major (see [Diatonic Chords](/diatonic-chords)): a triad on each note of the scale, using only the notes of the scale. But the minor scale comes in three forms, natural, harmonic, and melodic (see [Minor Scales](/minor-scales)), and each gives a slightly different set of chords. In practice, musicians often move freely among all three.
 
-短調にも、長調と同じようにしてつくるダイアトニック・コードがあります（[ダイアトニック・コード](/diatonic-chords)を参照）。音階のそれぞれの音の上に、その音階の音だけを使って三和音を積みます。ただし短音階には、自然短音階、和声的短音階、旋律的短音階の3つの形があり（[短音階](/minor-scales)を参照）、それぞれが少しずつ違う和音の組をつくります。実際の演奏では、ミュージシャンはこの3つを自由に行き来することがよくあります。
+短調にも、長調と同じようにしてつくるダイアトニック・コードがあります（[ダイアトニック・コード](/diatonic-chords)を参照）。音階のそれぞれの音の上に、その音階の音だけを使ってトライアドを積みます。ただし短音階には、自然短音階、和声的短音階、旋律的短音階の3つの形があり（[短音階](/minor-scales)を参照）、それぞれが少しずつ違う和音の組をつくります。実際の演奏では、ミュージシャンはこの3つを自由に行き来することがよくあります。
 
 # Three Scales, Three Sets of Chords
 # 3つの音階、3組の和音
@@ -15,11 +15,11 @@ Cナチュラル・マイナーのダイアトニック・コードは、Cm、Dd
 
 Harmonic minor raises the 7th, B♭ to B, and three chords change: ♭III becomes augmented (E♭aug), v becomes a major V (G), and ♭VII becomes a diminished vii° (Bdim). The major V is a main reason for raising the 7th: B is a half step below C, so it leads strongly home, as the 7th of a major key does.
 
-和声的短音階では7番目の音がB♭からBに上がり、3つの和音が変わります。♭IIIは増三和音（E♭aug）に、vは長三和音のV（G）に、♭VIIは減三和音のvii°（Bdim）になります。7番目の音を上げる大きな理由のひとつは、この長三和音のVにあります。BはCの半音下にあるので、長調の7番目の音と同じように、主音へ強く導きます。
+和声的短音階では7番目の音がB♭からBに上がり、3つの和音が変わります。♭IIIはオーギュメント・トライアド（E♭aug）に、vはメジャー・トライアドのV（G）に、♭VIIはディミニッシュ・トライアドのvii°（Bdim）になります。7番目の音を上げる大きな理由のひとつは、このメジャー・トライアドのVにあります。BはCの半音下にあるので、長調の7番目の音と同じように、主音へ強く導きます。
 
 Melodic minor raises the 6th as well, A♭ to A. In classical music it does so only on the way up, but jazz musicians use the raised form both ways and call it the jazz minor. Its chords are Cm, Dm, E♭aug, F, G, Adim, and Bdim (i, ii, ♭III+, IV, V, vi°, vii°): the raised 6th turns iv into a major IV and gives ii a minor triad instead of a diminished one.
 
-旋律的短音階では、さらに6番目の音もA♭からAに上がります。クラシックでは上行するときだけですが、ジャズのミュージシャンは上がった形を上下とも使い、ジャズ・マイナーと呼びます。和音はCm、Dm、E♭aug、F、G、Adim、Bdim（i、ii、♭III+、IV、V、vi°、vii°）です。上がった6番目の音によって、ivは長三和音のIVに、iiは減三和音ではなく短三和音になります。
+旋律的短音階では、さらに6番目の音もA♭からAに上がります。クラシックでは上行するときだけですが、ジャズのミュージシャンは上がった形を上下とも使い、ジャズ・マイナーと呼びます。和音はCm、Dm、E♭aug、F、G、Adim、Bdim（i、ii、♭III+、IV、V、vi°、vii°）です。上がった6番目の音によって、ivはメジャー・トライアドのIVに、iiはディミニッシュ・トライアドではなくマイナー・トライアドになります。
 
 Choose an **Example** and press **Play** to hear the seven chords of each form in order, from C up to the C an octave higher. The piano roll shows the chords, with their names above and Roman numerals below, the sounding chord turns red, and clicking a chord plays it on its own. Turn on **7th** to add a seventh to every chord (see [Sevenths and Tensions](/seventh-chords)): in natural minor the chords become Cm7, Dm7♭5, E♭maj7, Fm7, Gm7, A♭maj7, and B♭7, and in harmonic minor the dominant becomes G7 and the chord on the 7th degree Bdim7. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
@@ -49,11 +49,11 @@ The rest of the chords each have their own uses. ♭VI and ♭VII, from the natu
 
 The melodic minor's major IV gives the Dorian sound (see [Church Modes](/church-modes)): a minor tonic with a bright, major chord a fourth above. **i7–IV7** vamps between them, as "Oye Como Va" (Tito Puente, 1962; Santana, 1970) and "Evil Ways" (Santana, 1969) do. The raised and lowered 7ths also meet in one chord in the **Line cliché**: Cm holds while one voice falls by half steps, C, B, B♭, A, through Cm, CmMaj7, Cm7, and Cm6, as in the opening of "My Funny Valentine" (Rodgers and Hart, 1937).
 
-旋律的短音階の長三和音のIVは、ドリアンの響きを生みます（[チャーチ・モード](/church-modes)を参照）。短調のトニックの4度上に、明るい長三和音があるのです。**i7–IV7**はこの2つの和音のあいだを行き来する進行で、「オイェ・コモ・ヴァ」（ティト・プエンテ、1962年。サンタナ、1970年）や「イーヴィル・ウェイズ」（サンタナ、1969年）で聞かれます。上げた7番目の音と下げた7番目の音は、**Line cliché**（ライン・クリシェ）でひとつの和音の中に出会います。Cmを保ったまま、ひとつの声部がC、B、B♭、Aと半音ずつ下がり、Cm、CmMaj7、Cm7、Cm6と移っていきます。「マイ・ファニー・ヴァレンタイン」（ロジャース＆ハート、1937年）の冒頭がそうです。
+旋律的短音階のメジャー・トライアドのIVは、ドリアンの響きを生みます（[チャーチ・モード](/church-modes)を参照）。短調のトニックの4度上に、明るいメジャー・トライアドがあるのです。**i7–IV7**はこの2つの和音のあいだを行き来する進行で、「オイェ・コモ・ヴァ」（ティト・プエンテ、1962年。サンタナ、1970年）や「イーヴィル・ウェイズ」（サンタナ、1969年）で聞かれます。上げた7番目の音と下げた7番目の音は、**Line cliché**（ライン・クリシェ）でひとつの和音の中に出会います。Cmを保ったまま、ひとつの声部がC、B、B♭、Aと半音ずつ下がり、Cm、CmMaj7、Cm7、Cm6と移っていきます。「マイ・ファニー・ヴァレンタイン」（ロジャース＆ハート、1937年）の冒頭がそうです。
 
 From harmonic minor, the diminished seventh on the 7th degree, Bdim7 (vii°7), works as a dominant: it is G7 with a flat 9th and without its root, and it can resolve to i just as strongly. **i–iv–vii°7–i** uses it, as many classical pieces in minor do. The augmented ♭III+ is less often heard on its own; it tends to appear as a passing color, for example between E♭ and Cm. For the scales that go with each of these chords, see [Minor Chord Scales](/minor-chord-scales).
 
-和声的短音階からは、7番目の音の上の減七の和音Bdim7（vii°7）がドミナントとして働きます。これは根音を省いたG7(♭9)で、同じように強くiへ解決することができます。**i–iv–vii°7–i**はこの和音を使った進行で、短調のクラシックの曲でよく使われています。増三和音の♭III+が単独で使われることは比較的少なく、たとえばE♭とCmのあいだの経過的な色として現れることが多いです。これらの和音それぞれに合う音階については、[マイナーのコード・スケール](/minor-chord-scales)を参照してください。
+和声的短音階からは、7番目の音の上の減七の和音Bdim7（vii°7）がドミナントとして働きます。これはルートを省いたG7(♭9)で、同じように強くiへ解決することができます。**i–iv–vii°7–i**はこの和音を使った進行で、短調のクラシックの曲でよく使われています。オーギュメント・トライアドの♭III+が単独で使われることは比較的少なく、たとえばE♭とCmのあいだの経過的な色として現れることが多いです。これらの和音それぞれに合う音階については、[マイナーのコード・スケール](/minor-chord-scales)を参照してください。
 
 Choose an **Example** and press **Play** to hear each of these. Every chord is struck on every beat, and each example loops until stopped. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 

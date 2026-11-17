@@ -11,7 +11,7 @@ Every genre has its own vocabulary: small melodic and rhythmic habits that playe
 
 An enclosure (also called a surrounding tone) approaches a target note, usually a chord tone such as the root or 3rd, by first playing notes just above and just below it, then landing on it. In classical voice leading the same figure is called a changing tone or neighbor group, but in jazz it is almost always called an enclosure. With C as the target:
 
-エンクロージャー（サラウンディング・トーンとも呼ばれます）は、目標の音、ふつうは根音や3度のような和音の音へ、そのすぐ上とすぐ下の音を先に弾いてから着地する方法です。クラシックの声部進行では、同じ音型は変過音（カンビアータ）や隣接音群と呼ばれますが、ジャズではほぼ例外なくエンクロージャーと呼ばれます。Cを目標にすると、次のようになります。
+エンクロージャー（サラウンディング・トーンとも呼ばれます）は、目標の音、ふつうはルートや3度のような和音の音へ、そのすぐ上とすぐ下の音を先に弾いてから着地する方法です。クラシックの声部進行では、同じ音型は変過音（カンビアータ）や隣接音群と呼ばれますが、ジャズではほぼ例外なくエンクロージャーと呼ばれます。Cを目標にすると、次のようになります。
 
 -   **Diatonic above, chromatic below:** D, B, C (or B, D, C), a scale note above and a half step below.
 
@@ -40,7 +40,7 @@ Press **Play** to hear the three enclosures of C over Cmaj7, one bar each; the l
 
 A single chromatic note a half step below a chord tone, on the "and" just before the beat, is the simplest approach, and bebop lines use it constantly to lead into the 3rd of each new chord. A few short phrases are so common that they have become clichés, played and recognized everywhere. One is known simply as "the lick" (D, E, F, G, E, C, D over Dm7), heard in countless solos across styles. Over a dominant, the arpeggio from the 3rd up to the ♭9 (B, D, F, A♭ over G7) spells a diminished seventh chord, G7(♭9) without its root, and resolves down by step into the tonic.
 
-和音の音の半音下の音をひとつ、拍の直前の裏に置くのが最も簡単なアプローチで、ビバップの旋律は、新しい和音の3度へ導くためにこれを絶えず使います。いくつかの短いフレーズはあまりに頻繁に使われるので、決まり文句になり、どこでも弾かれ、すぐにそれとわかります。そのひとつが、そのまま「ザ・リック」として知られるフレーズ（Dm7の上でD、E、F、G、E、C、D）で、スタイルを問わず、数えきれないソロで聞かれます。ドミナントの上では、3度から♭9へのアルペジオ（G7の上でB、D、F、A♭）が減七の和音、つまり根音のないG7(♭9)をなぞり、順次進行でトニックへ解決します。
+和音の音の半音下の音をひとつ、拍の直前の裏に置くのが最も簡単なアプローチで、ビバップの旋律は、新しい和音の3度へ導くためにこれを絶えず使います。いくつかの短いフレーズはあまりに頻繁に使われるので、決まり文句になり、どこでも弾かれ、すぐにそれとわかります。そのひとつが、そのまま「ザ・リック」として知られるフレーズ（Dm7の上でD、E、F、G、E、C、D）で、スタイルを問わず、数えきれないソロで聞かれます。ドミナントの上では、3度から♭9へのアルペジオ（G7の上でB、D、F、A♭）が減七の和音、つまりルートのないG7(♭9)をなぞり、順次進行でトニックへ解決します。
 
 Choose an **Example** and press **Play**. **Approach from below** arpeggiates Dm7 and G7 and leads into the next chord's 3rd from a half step below. **The lick, 3 to ♭9** plays the lick over Dm7, the 3-to-♭9 arpeggio over G7, and resolves F to E. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -53,7 +53,7 @@ Choose an **Example** and press **Play**. **Approach from below** arpeggiates Dm
 
 From the blues, jazz inherited the move from the minor 3rd to the major 3rd over a major or dominant chord: E♭ sliding up to E over C7, often as a quick grace note. And rhythm has idioms too. Swung eighths (see [Rhythm and Feel](/rhythm-and-feel)) are the most basic. Another is anticipation: a note of the next chord played on the "and" of 4, a half beat early, and held over the bar line, which pushes the line forward into the change.
 
-ブルースから、ジャズは長三和音やドミナントの上で短3度から長3度へ動く表現を受け継ぎました。C7の上でE♭からEへ滑り上がるもので、短い装飾音として弾かれることがよくあります。リズムにもイディオムがあります。最も基本的なのはスウィングする8分音符です（[リズムとフィール](/rhythm-and-feel)を参照）。もうひとつはアンティシペーションで、次の和音の音を4拍目の裏、つまり半拍早く弾いて小節線をまたいで伸ばし、旋律を和音の変化へと押し進めます。
+ブルースから、ジャズはメジャー・トライアドやドミナントの上で短3度から長3度へ動く表現を受け継ぎました。C7の上でE♭からEへ滑り上がるもので、短い装飾音として弾かれることがよくあります。リズムにもイディオムがあります。最も基本的なのはスウィングする8分音符です（[リズムとフィール](/rhythm-and-feel)を参照）。もうひとつはアンティシペーションで、次の和音の音を4拍目の裏、つまり半拍早く弾いて小節線をまたいで伸ばし、旋律を和音の変化へと押し進めます。
 
 Choose an **Example** and press **Play**. **Minor to major 3rd** plays the blue third over C7 and F7. **Anticipation** lands the 3rd of G7 and of Cmaj7 a half beat early, on the "and" of 4. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
@@ -70,7 +70,7 @@ In real lines these devices rarely appear alone. A bebop player outlines each ch
 
 Choose an **Example** and press **Play**. In each, the last two (or three) eighth notes of every bar enclose the next chord's 3rd or root. **ii–V–I, enclosing each 3rd** starts by enclosing F, the 3rd of Dm7, climbs the Dm9 arpeggio, encloses B, runs up G7(♭9) from its 3rd, encloses E, and ends with an extended enclosure of C. **Turnaround, enclosing each 3rd** does the same over Cmaj7–A7–Dm7–G7, each dominant arpeggio reaching its ♭9, and the last bar encloses E so the loop lands on Cmaj7's 3rd. **Minor ii–V–i** encloses B over G7alt and E♭ over Cm6. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してみましょう。どの例でも、それぞれの小節の最後の2つ（または3つ）の8分音符が、次の和音の3度か根音を囲みます。**ii–V–I, enclosing each 3rd**は、Dm7の3度であるFを囲んで始まり、Dm9のアルペジオを上り、Bを囲み、G7(♭9)を3度から駆け上がり、Eを囲み、Cへの拡張型のエンクロージャーで終わります。**Turnaround, enclosing each 3rd**は、Cmaj7–A7–Dm7–G7の上で同じことをし、ドミナントのアルペジオはそれぞれ♭9まで届き、最後の小節がEを囲むので、ループはCmaj7の3度に着地します。**Minor ii–V–i**は、G7altの上でBを、Cm6の上でE♭を囲みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。どの例でも、それぞれの小節の最後の2つ（または3つ）の8分音符が、次の和音の3度かルートを囲みます。**ii–V–I, enclosing each 3rd**は、Dm7の3度であるFを囲んで始まり、Dm9のアルペジオを上り、Bを囲み、G7(♭9)を3度から駆け上がり、Eを囲み、Cへの拡張型のエンクロージャーで終わります。**Turnaround, enclosing each 3rd**は、Cmaj7–A7–Dm7–G7の上で同じことをし、ドミナントのアルペジオはそれぞれ♭9まで届き、最後の小節がEを囲むので、ループはCmaj7の3度に着地します。**Minor ii–V–i**は、G7altの上でBを、Cm6の上でE♭を囲みます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=idioms&example=long-ii-v-i,long-turnaround,long-minor&key" title="Enclosures in longer lines" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

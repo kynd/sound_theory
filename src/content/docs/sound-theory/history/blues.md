@@ -44,7 +44,7 @@ There are many variations. The second bar often goes to IV (the "quick change"),
 
 A blues is often driven by a riff, a short figure repeated over and over and moved to each chord. A classic one is the boogie bass line, which walks up the chord through the root, 3rd, 5th, 6th, and flat 7th and back down, in a shuffle rhythm of long and short eighth notes (see [Rhythm and Feel](/rhythm-and-feel)). Over F7 the same shape starts on F, and over G7 on G.
 
-ブルースは、リフに引っぱられて進むことがよくあります。リフとは、何度も繰り返し、和音ごとに移して弾く短い音型です。代表的なものがブギのベースラインで、和音の根音、3度、5度、6度、短7度と上がって下りてきます。リズムは、長い8分音符と短い8分音符を交互に弾くシャッフルです（[リズムとフィール](/rhythm-and-feel)を参照）。F7の上では同じ形がFから、G7の上ではGから始まります。
+ブルースは、リフに引っぱられて進むことがよくあります。リフとは、何度も繰り返し、和音ごとに移して弾く短い音型です。代表的なものがブギのベースラインで、和音のルート、3度、5度、6度、短7度と上がって下りてきます。リズムは、長い8分音符と短い8分音符を交互に弾くシャッフルです（[リズムとフィール](/rhythm-and-feel)を参照）。F7の上では同じ形がFから、G7の上ではGから始まります。
 
 Press **Play** to hear the twelve bars with the boogie bass and a shuffle beat, in C at 112 BPM. The chart shows the form four bars to a line, with the Roman numerals below, and the sounding chord turns red. The keyboard lights the chord and the riff note as they sound. Press a chord in the chart to hear it on its own. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
