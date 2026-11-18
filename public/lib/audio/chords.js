@@ -174,6 +174,27 @@ function openVoicing(parsed, bass) {
     return ivs.map(i => root + i);
 }
 
+/**
+ * An open voicing turned (rotated) to every inversion: the lowest note moved up an
+ * octave, again and again, and the whole moved an octave up or down; each also opened
+ * up by dropping its second voice from the top an octave (drop 2), and its fourth too
+ * (drop 2 and 4). Those clear of the bass and between D3 and A5.
+ */
+function openRotations(base, bass) {
+    const out = [];
+    const drop = (v, ks) => v.map((n, i) => (ks.includes(v.length - 1 - i) ? n - 12 : n)).sort((a, b) => a - b);
+    for (const shift of [-12, 0, 12]) {
+        let v = base.map(n => n + shift);
+        for (let r = 0; r < base.length; r++) {
+            out.push(v);
+            if (v.length >= 3) out.push(drop(v, [1]));
+            if (v.length >= 4) out.push(drop(v, [1, 3]));
+            v = [...v.slice(1), v[0] + 12].sort((a, b) => a - b);
+        }
+    }
+    return out.filter(v => v[0] > bass + 2 && v[0] >= UPPER_LOW - 2 && v[v.length - 1] <= 81);
+}
+
 /** Close-position voicings of pitch classes, each from a different chord tone at the bottom. */
 function candidates(pcs, low) {
     const sorted = [...pcs].sort((a, b) => a - b);
@@ -207,14 +228,23 @@ function motion(notes, previous) {
  * position above it, each chord in the inversion that moves least from the one
  * before (smooth voice leading). With a melody, the chords stay below the melody notes
  * they sound under. The bass falls in the octave from `bassLow`. With `open`, every
- * chord takes an open voicing instead (see openVoicing), without voice leading. With
+ * chord takes an open voicing instead (see openVoicing), without voice leading; with
+ * `lead` as well, each open voicing is turned to the inversion (`openRotations`, with
+ * drop 2 and drop 2 and 4 spreads) that moves least from the one before, its top voice
+ * weighed most and spread over at least an octave and a half, and the first chord
+ * follows on from the last, as a looping progression comes round. With
  * `rootless`, chords take the rootless voicings of jazz piano (see rootlessPitchClasses)
  * in close position between D3 and D5, moving as little as possible, and sit where a
  * pianist comping under a soloist would rather than under the melody. Returns
  * `{ bass, upper, notes }` per chord, in MIDI numbers. Chords with hand-written
  * `notes` keep them.
  */
-export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open = false, rootless = false } = {}) {
+export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open = false, lead = false, rootless = false, after = null } = {}) {
+    // Led open voicings start from where the progression ends, so the loop point is smooth too.
+    if (open && lead && after === null && chords.length > 1) {
+        const once = voiceProgression(chords, melody, { bassLow, open, lead, after: [] });
+        return voiceProgression(chords, melody, { bassLow, open, lead, after: once.at(-1).upper });
+    }
     // The lowest melody note during each chord, to keep the chord under it.
     const ceilings = [];
     let start = 0;
@@ -229,7 +259,7 @@ export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open
         start = end;
     }
 
-    let previous = null;
+    let previous = after?.length ? after : null;
     return chords.map((chord, i) => {
         if (chord.notes) {
             if (chord.notes.length) previous = chord.notes.slice(1);
@@ -239,7 +269,14 @@ export function voiceProgression(chords, melody = [], { bassLow = BASS_LOW, open
         const parsed = parseChord(chord.symbol);
         const bass = chord.bass ?? bassLow + ((parsed.bass - bassLow) % 12 + 12) % 12;
         if (open) {
-            const upper = openVoicing(parsed, bass);
+            let upper = openVoicing(parsed, bass);
+            if (lead) {
+                // Moving little, the top voice most, and spread at least an octave and a half.
+                const cost = v => motion(v, previous) + (previous ? 2 * Math.abs(v.at(-1) - previous.at(-1)) : 0)
+                    + 1.5 * Math.max(0, 18 - (v.at(-1) - v[0]));
+                upper = openRotations(upper, bass).reduce((best, v) => (cost(v) < cost(best) ? v : best), upper);
+                previous = upper;
+            }
             return { bass, upper, notes: [bass, ...upper] };
         }
         if (rootless) {
@@ -2033,7 +2070,7 @@ export const SYNCOPATION_PROGRESSIONS = [
  * chord with its own comping rhythm, bass, and drums:
  *   - swing: I6–vi7–ii7–V7, electric piano struck on 1 and the swung "and" of 2 (the
  *     Charleston), the hi-hat on 2 and 4, and a walking 808 bass;
- *   - bossa nova: Imaj7–I6–ii7–V7, maj7 and 6 as two colors of the tonic, in the
+ *   - bossa nova: I6/9–ii7–V7, C6/9 as the tonic for two bars, in the
  *     bossa nova backing from Syncopation and Anticipation (piano and synth bass);
  *   - neo-soul: IVmaj7–iii7–ii7–Imaj7 stepping down, electric piano and bass both in
  *     syncopated sixteenths over the lo-fi beat, through the lo-fi chains;
@@ -2068,20 +2105,21 @@ export const SEVENTH_GROOVES = [
     // syncopated differently in every bar: 1, the "and" of 2, and 4; 2 and the "and" of
     // 3, then Dm7 half a beat early on the "and" of 4; the "and" of 2 and the "and" of 3;
     // 1, 2, and the "and" of 3.
-    { id: 'bossa-sevenths', label: 'Imaj7–I6–ii7–V7', tempo: 130, bar: 4, loop: true, drums: FEEL('bossa-nova'), hideBass: true,
+    { id: 'bossa-sevenths', label: 'I6/9–ii7–V7', tempo: 130, bar: 4, loop: true, drums: FEEL('bossa-nova'), hideBass: true,
         sounds: { ...BAND_SOUNDS, chords: 'epiano' },
         // The electric piano echoed a dotted eighth later (at 130 BPM), fading over a few repeats.
         chordEffects: { delay: { time: 0.35, feedback: 0.3, mix: 0.25 } },
         comp: BOSSA_BAR_1, riff: BOSSA_RIFF,
-        // Three notes spread over the bass: the 3rd and 7th (or 6th) low, the 5th or root on top.
-        chords: (([cmaj7, c6, dm7, g7]) => [
+        // Notes spread over the bass: the 3rd and 7th (or 6th) low, the 9th, 5th, or root on
+        // top. C6/9 lasts two bars, less the half beat Dm7 takes early.
+        chords: (([c69, dm7, g7]) => [
             // Held and short strokes mixed, a rest after a short one.
-            { ...cmaj7, comp: [['upper', 1.5], ['upper', 0.5], [null, 1], ['upper', 1]] },
-            { ...c6, beats: 3.5, comp: [[null, 1], ['upper', 0.5], [null, 1], ['upper', 1]] },
+            { ...c69, beats: 7.5, comp: [['upper', 1.5], ['upper', 0.5], [null, 1], ['upper', 1],
+                [null, 1], ['upper', 0.5], [null, 1], ['upper', 1]] },
             earlyChord(dm7, 4.5, [[null, 1.5], ['upper', 0.25], [null, 0.75], ['upper', 1.5]], BOSSA_RIFF, 1),
             { ...g7, comp: [['upper', 0.5], [null, 0.5], ['upper', 1.5], ['upper', 1.5]] },
         ])(barVoiced([
-            ['Cmaj7', 'Imaj7', 'T', [48, 52, 59, 67]], ['C6', 'I6', 'T', [48, 52, 57, 67]],
+            ['C6/9', 'I6/9', 'T', [48, 52, 57, 62, 67]],
             ['Dm7', 'ii7', 'SD', [50, 53, 60, 69]], ['G7', 'V7', 'D', [43, 53, 59, 67]],
         ])) },
     { id: 'soul-sevenths', label: 'IVmaj7–iii7–ii7–Imaj7', tempo: 80, loop: true, drums: LOFI_BEAT, bassLow: 28, hideBass: true,
@@ -2127,7 +2165,7 @@ const TENSION_CHOICES = {
     minor:    [['m7', '7'], ['m9', '9'], ['m11', '11'], ['m7(11)', '7(11)']],
     iii:      [['m7', '7'], ['m7(11)', '7(11)']],
     halfDim:  [['m7♭5', 'ø7'], ['m7♭5(9)', 'ø9'], ['m7♭5(11)', 'ø11']],
-    minorTonic: [['m9', '9'], ['m6', '6'], ['mMaj7', '(maj7)']],
+    minorTonic: [['m7', '7'], ['m9', '9'], ['m6', '6'], ['m11', '11']],
     dominant: [['7', '7'], ['9', '9'], ['13', '13'], ['7(♭9)', '7♭9'], ['7(♯9)', '7♯9'], ['7(♭13)', '7♭13'],
         ['7alt', '7alt'], ['13(♭9)', '13♭9']],
     lydian:   [['7', '7'], ['9', '9'], ['13', '13'], ['7(♯11)', '7♯11'], ['9(♯11)', '9♯11']],
@@ -2177,7 +2215,7 @@ export function randomTensions(plan) {
 /**
  * Slow ballads in C on solo piano, for Sevenths and Tensions, where every chord takes
  * new tensions on every pass (`randomTensions`, through `vary`), each leading into the
- * next. The piano plays open voicings (the tensions above the chord tones), every
+ * next. The piano plays open voicings turned to move as little as possible (`open-led`), every
  * stroke a half note: a chord a bar long struck twice, one two beats long once.
  */
 export const TENSION_BALLADS = [
@@ -2189,7 +2227,7 @@ export const TENSION_BALLADS = [
         ['D', 'minor', 'ii', 2], ['G', 'dominant', 'V', 2], ['E', 'iii', 'iii', 2], ['A', 'dominant', 'VI', 2],
         ['D', 'minor', 'ii', 2], ['D♭', 'lydian', '♭II', 2], ['C', 'major', 'I', 2], ['A', 'dominant', 'VI', 2],
     ]],
-].map(([id, label, plan]) => ({ id, label, tempo: 66, loop: true, voicing: 'open',
+].map(([id, label, plan]) => ({ id, label, tempo: 66, loop: true, voicing: 'open-led',
     sounds: { chords: 'piano' }, comp: [['all', 2]],
     chords: randomTensions(plan), vary: () => ({ chords: randomTensions(plan) }), plain: plainSevenths(plan) }));
 
@@ -2984,7 +3022,8 @@ export class ProgressionPlayer {
         this.stop();
         this.progression = progression;
         this.voicings = voiceProgression(progression.chords, progression.melody ?? [],
-            { bassLow: progression.bassLow, open: progression.voicing === 'open', rootless: progression.voicing === 'rootless' });
+            { bassLow: progression.bassLow, open: progression.voicing?.startsWith('open'), lead: progression.voicing === 'open-led',
+                rootless: progression.voicing === 'rootless' });
         this.hits = compHits(progression, this.voicings);
     }
 
@@ -2995,7 +3034,8 @@ export class ProgressionPlayer {
     swap(progression) {
         this.progression = progression;
         this.voicings = voiceProgression(progression.chords, progression.melody ?? [],
-            { bassLow: progression.bassLow, open: progression.voicing === 'open', rootless: progression.voicing === 'rootless' });
+            { bassLow: progression.bassLow, open: progression.voicing?.startsWith('open'), lead: progression.voicing === 'open-led',
+                rootless: progression.voicing === 'rootless' });
         this.hits = compHits(progression, this.voicings);
         if (this.playing) this._events = this._timeline();
     }

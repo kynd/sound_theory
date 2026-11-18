@@ -147,7 +147,9 @@ const player = new ProgressionPlayer(instrument({ id: 'piano' }), {
     onLoop: seconds => {
         const base = PROGRESSIONS.find(p => p.id === progressionId);
         if (!base.vary) return;
-        Object.assign(base, base.vary());
+        // A new object, not the old one changed in place: the view still draws the old
+        // one (it may be the very same object) until the new pass starts.
+        PROGRESSIONS[PROGRESSIONS.indexOf(base)] = { ...base, ...base.vary() };
         player.swap(currentProgression());
         const { progression, voicings } = player;
         setTimeout(() => view.update(progression, voicings), seconds * 1000);
