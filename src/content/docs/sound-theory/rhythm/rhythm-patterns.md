@@ -18,9 +18,9 @@ This page plays backing tracks in several styles. Each pattern is a simplified e
   </div>
 </aside>
 
-In every demo, press **Play** to hear the backing: the chords are drawn as yellow bars where they are struck, the bass line in dark green below them, and the keyboard lights the sounding notes. The drums are processed to sound less raw, a little compressed, warm, and gritty, with their highs softened, as on many records, and in most styles the chords are given a lo-fi sheen: a little dulled and wide, with a slow wobble like worn tape, in some room. Each demo plays in a key common for its style; choose a **Key** to hear it in another key.
+In every demo, press **Play** to hear the backing: the chords are drawn as yellow bars where they are struck, and the bass line in dark green below them. The drums are processed to sound less raw, a little compressed, warm, and gritty, with their highs softened, as on many records, and in most styles the chords are given a lo-fi sheen: a little dulled and wide, with a slow wobble like worn tape, in some room. Each demo plays in a key common for its style; choose a **Key** to hear it in another key.
 
-どのデモでも、**Play**を押すと伴奏が鳴ります。和音は鳴らした位置に黄色い横棒で、その下にベース・ラインが深緑で描かれ、鍵盤では鳴っている音が点灯します。ドラムは、多くのレコードのように、素の音ではなく、少し圧縮して温かく粗い音にし、高音を和らげています。多くのスタイルでは和音もローファイな質感にしています。少しこもらせて広げ、すり減ったテープのようにゆっくり揺らし、響きを加えています。どのデモもそのスタイルでよく使われる調で鳴りますが、**Key**を選ぶとほかの調で聞けます。
+どのデモでも、**Play**を押すと伴奏が鳴ります。和音は鳴らした位置に黄色い横棒で、その下にベース・ラインが深緑で描かれます。ドラムは、多くのレコードのように、素の音ではなく、少し圧縮して温かく粗い音にし、高音を和らげています。多くのスタイルでは和音もローファイな質感にしています。少しこもらせて広げ、すり減ったテープのようにゆっくり揺らし、響きを加えています。どのデモもそのスタイルでよく使われる調で鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 # Rock
 # ロック

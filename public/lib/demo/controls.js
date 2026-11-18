@@ -190,6 +190,22 @@ export function addSelect(parent, { label, options, value, onChange }) {
 }
 
 /**
+ * Appends a checkbox row (`.dp-check`): a round well, green when checked, before its
+ * label. `onChange(checked)` runs on every change.
+ * @returns {HTMLInputElement}
+ */
+export function addCheckbox(parent, { label, checked = false, onChange }) {
+    const row = el('label', 'dp-row dp-check');
+    const input = el('input');
+    input.type = 'checkbox';
+    input.checked = checked;
+    input.addEventListener('change', () => { onChange?.(input.checked); input.blur(); });
+    row.append(input, el('span', null, label));
+    parent.append(row);
+    return input;
+}
+
+/**
  * Appends a red Record button (`.dp-record`) that records the microphone: press to
  * start, press again (or wait `maxSeconds`) to stop. The recording is added to the
  * Sound `select` as "Recording" (once) and selected, then passed to

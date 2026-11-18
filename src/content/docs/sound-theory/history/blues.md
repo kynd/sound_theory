@@ -13,9 +13,9 @@ Work songs were sung by people working together: laying railroad track, cutting 
 
 労働歌は、線路を敷いたり、木を切ったり、綿を摘んだり、刑務所の労役をしたりと、一緒に働く人々が歌った歌です。歌は仲間の動きをそろえ、働き続ける力になりました。多くはコール・アンド・レスポンスの形をとります。リーダーが1行を歌い、仲間が答えます。ハンマーや斧は拍の上に振り下ろされ、歌はそのあいだに収まります。フィールド・ハラーは、同じ伝統のひとり歌の側で、自由なリズムで音と音のあいだを滑るように叫ぶ歌です。
 
-Press **Play** to hear a short call and response written for this page. The hammer falls on the first beat of every bar. Between the strokes the leader sings a two-bar call (pink), and the group answers in octaves (yellow); the sounding notes turn red and light up on the keyboard. The tune uses only C, E♭, G, and B♭, notes of the C minor pentatonic scale (see [Other Scales](/other-scales)). The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
+Press **Play** to hear a short call and response written for this page. The hammer falls on the first beat of every bar. Between the strokes the leader sings a two-bar call (pink), and the group answers in octaves (yellow). The tune uses only C, E♭, G, and B♭, notes of the C minor pentatonic scale (see [Other Scales](/other-scales)). The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Play**を押すと、このページのために書いた短いコール・アンド・レスポンスが聞こえます。ハンマーは毎小節の1拍目に振り下ろされます。そのあいだにリーダーが2小節のコール（ピンク）を歌い、仲間がオクターブで答えます（黄色）。鳴っている音は赤くなり、鍵盤でも光ります。旋律は、Cのマイナー・ペンタトニック（[その他の音階](/other-scales)を参照）の音であるC、E♭、G、B♭だけを使っています。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
+**Play**を押すと、このページのために書いた短いコール・アンド・レスポンスが聞こえます。ハンマーは毎小節の1拍目に振り下ろされます。そのあいだにリーダーが2小節のコール（ピンク）を歌い、仲間がオクターブで答えます（黄色）。旋律は、Cのマイナー・ペンタトニック（[その他の音階](/other-scales)を参照）の音であるC、E♭、G、B♭だけを使っています。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=work-song&key=minor" title="Call and response" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
@@ -46,9 +46,9 @@ A blues is often driven by a riff, a short figure repeated over and over and mov
 
 ブルースは、リフに引っぱられて進むことがよくあります。リフとは、何度も繰り返し、和音ごとに移して弾く短い音型です。代表的なものがブギのベースラインで、和音のルート、3度、5度、6度、短7度と上がって下りてきます。リズムは、長い8分音符と短い8分音符を交互に弾くシャッフルです（[リズムとフィール](/rhythm-and-feel)を参照）。F7の上では同じ形がFから、G7の上ではGから始まります。
 
-Press **Play** to hear the twelve bars with the boogie bass and a shuffle beat, in C at 112 BPM. The chart shows the form four bars to a line, with the Roman numerals below, and the sounding chord turns red. The keyboard lights the chord and the riff note as they sound. Press a chord in the chart to hear it on its own. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+Press **Play** to hear the twelve bars with the boogie bass and a shuffle beat, in C at 112 BPM. The chart shows the form four bars to a line. Press a chord in the chart to hear it on its own. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Play**を押すと、ブギのベースとシャッフルのビートで、12小節がC、112 BPMで鳴ります。表は1行に4小節ずつ形式を示し、下にローマ数字を記しています。鳴っている和音は赤くなります。鍵盤では、鳴っている和音とリフの音が光ります。表の和音を押すと、その和音だけを鳴らせます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Play**を押すと、ブギのベースとシャッフルのビートで、12小節がC、112 BPMで鳴ります。表は1行に4小節ずつ形式を示します。表の和音を押すと、その和音だけを鳴らせます。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=blues&view=chart&key" title="Twelve-bar blues" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

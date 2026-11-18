@@ -42,9 +42,9 @@ Minimalism in the 1960s went the other way from complexity. La Monte Young held 
 
 1960年代のミニマリズムは、複雑さとは逆の方向へ進みました。ラ・モンテ・ヤングは、何時間もドローンを保ち続けました。テリー・ライリーの《In C》（1964年）は、ミュージシャンたちに53の短いフレーズを与え、それぞれが好きなだけ繰り返します。スティーヴ・ライヒは、同じ録音の2つのテープ・ループがずれていくことからフェイズ（位相のずれ）を発見し（《イッツ・ゴナ・レイン》、1965年）、それを生身のミュージシャンにも求めました。2人のピアニストが同じパターンを弾き、一方がゆっくり速くなって1音先に進み、さらに次の音へと進みます。音楽は、いったん動き出せば自ら展開していくプロセスなのです。
 
-Press **Play** to hear phasing: two pianos, one on each side, play the same twelve-note loop. **Drift** sets how much faster the second piano is, in percent; at 0 they play in unison. As the second pulls ahead, the two lines interlock into new patterns, blur, and line up again one note apart. The rings show the loop for each piano, the first outside and the second inside, with the note each is playing in red.
+Press **Play** to hear phasing: two pianos, one on each side, play the same twelve-note loop. **Drift** sets how much faster the second piano is, in percent; at 0 they play in unison. As the second pulls ahead, the two lines interlock into new patterns, blur, and line up again one note apart. The rings show the loop for each piano, the first outside and the second inside.
 
-**Play**を押して、フェイズを聞いてみましょう。左右に1台ずつの2台のピアノが、同じ12音のループを弾きます。**Drift**は、2台目のピアノがどれだけ速いかをパーセントで決めます。0では2台はユニゾンで弾きます。2台目が先へ進むにつれて、2つの線は組み合わさって新しいパターンをつくり、ぼやけ、また1音ずれて揃います。リングはそれぞれのピアノのループを表し（外側が1台目、内側が2台目）、それぞれが弾いている音が赤くなります。
+**Play**を押して、フェイズを聞いてみましょう。左右に1台ずつの2台のピアノが、同じ12音のループを弾きます。**Drift**は、2台目のピアノがどれだけ速いかをパーセントで決めます。0では2台はユニゾンで弾きます。2台目が先へ進むにつれて、2つの線は組み合わさって新しいパターンをつくり、ぼやけ、また1音ずれて揃います。リングはそれぞれのピアノのループを表します（外側が1台目、内側が2台目）。
 
 <div class="demo-wrap"><iframe src="/writing/demos/phasing/index.html" title="Phasing" allow="autoplay" loading="lazy" style="height: 288px"></iframe></div>
 

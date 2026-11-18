@@ -369,6 +369,12 @@ export const SIX_EIGHT_THREE_FOUR = makePattern({ id: '6-8-3-4', label: '6/8 + 3
     kick:  'X - - - - - X - - - - -',
 } });
 
+/** The hi-hat alone on 2 and 4, as a jazz drummer's foot closes it. */
+export const HAT_TWO_FOUR = makePattern({ id: 'hat-2-4', label: 'Hi-hat on 2 and 4', stepsPerBeat: 1, groups: [1, 1, 1, 1], tempo: 150,
+    trackIds: ['hat'], tracks: {
+    hat:   '- X - X',
+} });
+
 /**
  * Four against three in a 12/8 groove, two bars: the hi-hat (as a ride, with a triplet
  * skip before each beat) and soft kicks keep the four dotted-quarter beats, while

@@ -46,8 +46,8 @@ The jazz and improvisation pages play their examples as a small band: a melody, 
 
 ジャズと即興のページでは、例を小さなバンドで演奏します。旋律、和音を弾く伴奏、そしてベースです。標準では、旋律は8 dB上げた**AM synth**、伴奏は**Piano**、ベースは**Synth bass**です。
 
-Choose an **Example** and press **Play**. **Melody**, **Backing**, and **Bass** choose each part's instrument, **Volume** sets its level in decibels, and the toggle below it turns the part on and off. **Walking bass** has no melody: its line is on the bass. The piano roll shows the chords, the melody in pink, and the bass below, and the keyboard lights the sounding notes; you can also play it with the melody's instrument, with the mouse or the keys from A to ; (Z and X shift the octave).
+Choose an **Example** and press **Play**. **Melody**, **Backing**, and **Bass** choose each part's instrument, **Volume** sets its level in decibels, and the toggle below it turns the part on and off. **Walking bass** has no melody: its line is on the bass. The piano roll shows the chords, the melody in pink, and the bass below. You can also play the keyboard with the melody's instrument, with the mouse or the keys from A to ; (Z and X shift the octave).
 
-**Example**を選んで**Play**を押してみましょう。**Melody**、**Backing**、**Bass**でそれぞれのパートの楽器を選び、**Volume**でその音量をデシベルで決め、その下のトグルでパートをオンとオフに切り替えます。**Walking bass**には旋律がなく、ラインはベースにあります。ピアノロールには、和音、ピンクの旋律、その下のベースが表示され、鍵盤では鳴っている音が点灯します。鍵盤は、旋律の楽器で、マウスまたはAから;までのキーで弾くこともできます（ZとXでオクターブが変わります）。
+**Example**を選んで**Play**を押してみましょう。**Melody**、**Backing**、**Bass**でそれぞれのパートの楽器を選び、**Volume**でその音量をデシベルで決め、その下のトグルでパートをオンとオフに切り替えます。**Walking bass**には旋律がなく、ラインはベースにあります。ピアノロールには、和音、ピンクの旋律、その下のベースが表示されます。鍵盤は、旋律の楽器で、マウスまたはAから;までのキーで弾くこともできます（ZとXでオクターブが変わります）。
 
 <div class="demo-wrap"><iframe src="/writing/demos/band-mix/index.html" title="A small band" allow="autoplay" loading="lazy" style="height: 784px"></iframe></div>

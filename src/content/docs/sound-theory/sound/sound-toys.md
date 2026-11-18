@@ -48,9 +48,9 @@ Here, the image represents the sound's spectrum. Each row corresponds to a sine 
 
 ここでは、画像が音のスペクトルを表します。それぞれの行は異なる周波数のサイン波を表し、下端の60 Hzから上端の6000 Hzまで並んでいます。32行はHzではなく音高に基づいて等間隔に配置されています。それぞれの行の周波数は1つ下の行の約1.16倍、つまり約257セント高く、全音より少し広い間隔です。257セントは半音の整数倍ではないため、それぞれの行の音は、どの音階の音にも一致しません。それぞれの列は時間上の一点を表し、格子は左から右へループします。
 
-Press and drag across cells to toggle them, then press **Play** to hear the result; the cells in the currently playing column turn red. A single painted cell produces a pure tone. A diagonal line creates a rising or falling sweep, while a thick block of neighboring rows forms a dense, beating band like Penderecki's clusters.
+Press and drag across cells to toggle them, then press **Play** to hear the result. A single painted cell produces a pure tone. A diagonal line creates a rising or falling sweep, while a thick block of neighboring rows forms a dense, beating band like Penderecki's clusters.
 
-セルを押したままドラッグしてオン・オフを切り替え、**Play**を押して結果を聴いてみましょう。再生中の列のセルは赤くなります。ひとつのセルは純音を生み出します。斜めの線は音が上昇または下降するスイープを作り、隣り合う行に広がる太いかたまりは、ペンデレツキのクラスターのように密集してうなり合う帯を作ります。
+セルを押したままドラッグしてオン・オフを切り替え、**Play**を押して結果を聴いてみましょう。ひとつのセルは純音を生み出します。斜めの線は音が上昇または下降するスイープを作り、隣り合う行に広がる太いかたまりは、ペンデレツキのクラスターのように密集してうなり合う帯を作ります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/spectral-paint/index.html" title="Paint a spectrum" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

@@ -6,9 +6,9 @@ A polyrhythm occurs when two or more pulses divide the same span of time into di
 
 ポリリズムとは、同じ長さの時間を異なる数の等しい部分に分ける2つ以上の拍を、同時に鳴らすことです。たとえば、3つの音を等間隔に並べた拍と、2つの音を等間隔に並べた拍を重ねます。拍は時間の始まりでそろい、その後ずれていき、終わりに再び重なります。どちらかの拍を基準にして追うことも、2つが一緒につくる型を聞くこともできます。ポリリズムは、アフリカやアフロ・キューバンをはじめ、さまざまな音楽の伝統に見られます。また、クラシック音楽やジャズにも見られ、拍子の枠を一時的にまたぐ形で現れます。
 
-The ring demos on this page differ only in their starting rhythm. Press **Play** to hear them. **High** sets the number of rim clicks per cycle, and **Low** sets the number of kicks. In the plot, each pulse appears as a ring: clicks on the outer ring and kicks on the inner ring. The dot of the sounding note turns red.
+The ring demos on this page differ only in their starting rhythm. Press **Play** to hear them. **High** sets the number of rim clicks per cycle, and **Low** sets the number of kicks. In the plot, each pulse appears as a ring: clicks on the outer ring and kicks on the inner ring.
 
-このページの輪のデモは、初期設定のリズムだけが異なります。**Play**を押すと鳴ります。**High**は周期ごとのリム・クリックの数を、**Low**はキックの数を設定します。図では、それぞれの拍を輪で示し、クリックは外側の輪、キックは内側の輪に配置しています。鳴っている音の点は赤くなります。
+このページの輪のデモは、初期設定のリズムだけが異なります。**Play**を押すと鳴ります。**High**は周期ごとのリム・クリックの数を、**Low**はキックの数を設定します。図では、それぞれの拍を輪で示し、クリックは外側の輪、キックは内側の輪に配置しています。
 
 # Three Against Two
 # 3対2

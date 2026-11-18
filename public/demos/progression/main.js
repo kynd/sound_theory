@@ -1,13 +1,13 @@
 import { startAudio, MasterBus } from '../../lib/audio/AudioEngine.js';
 import { createInstrument } from '../../lib/audio/instruments.js';
 import { EffectChain, EFFECTS } from '../../lib/audio/effects.js';
-import { PROGRESSION_SETS, ProgressionPlayer, progressionSounds, transposeProgression, transposeSymbol, withSevenths, withSwing } from '../../lib/audio/chords.js';
+import { PROGRESSION_SETS, ProgressionPlayer, progressionSounds, transposeProgression, transposeSymbol, withSevenths, withoutTensions, withSwing } from '../../lib/audio/chords.js';
 import { ROOTS, MINOR_ROOTS, parseNote } from '../../lib/audio/scales.js';
 import { Keyboard } from '../../lib/demo/Keyboard.js';
 import { ProgressionView } from '../../lib/demo/ProgressionView.js';
 import { ChordChart } from '../../lib/demo/ChordChart.js';
 import { GrooveView } from '../../lib/demo/GrooveView.js';
-import { addSelect, addReadout, addBeatSplit, addRange, unwrap } from '../../lib/demo/controls.js';
+import { addSelect, addReadout, addBeatSplit, addRange, addCheckbox, unwrap } from '../../lib/demo/controls.js';
 import { wirePlayButton } from '../../lib/demo/panel.js';
 
 // Which progressions to offer: ?set= names a set in PROGRESSION_SETS, and ?example= picks
@@ -32,7 +32,7 @@ const ONLY = (params.get('example')?.split(',') ?? []).map(id => SET.find(p => p
 const PROGRESSIONS = ONLY.length ? ONLY : SET;
 const movable = params.has('roots') || params.has('key');
 const keyNames = params.get('key') === 'minor' ? MINOR_ROOTS : ROOTS;
-let progressionId = PROGRESSIONS[0].id, root = PROGRESSIONS[0].key ?? 'C', sevenths = false, phrase = true;
+let progressionId = PROGRESSIONS[0].id, root = PROGRESSIONS[0].key ?? 'C', sevenths = false, tensions = true, phrase = true;
 // Where each pair of eighth notes falls, for a progression written in even eighths
 // (`swing`, see withSwing); the Swing control moves it, and choosing an example resets it.
 let swing = PROGRESSIONS[0].swing ?? null;
@@ -63,10 +63,10 @@ const setChain = (chain, ids, settings = {}) => {
         }
     }
 };
-// And `chordEffects` for the chord instrument alone: distorted (an overdriven guitar
-// amp), crushed, filtered, widened, wobbled like worn tape, and given some room, as the
-// progression sets them. The bass stays clean.
-const CHORD_FX_IDS = ['distortion', 'bitcrush', 'filter', 'chorus', 'vibrato', 'reverb'];
+// And `chordEffects` for the chord instrument alone: wah-wahed, distorted (an overdriven
+// guitar amp), crushed, filtered, widened, wobbled like worn tape, echoed, and given some
+// room, as the progression sets them. The bass stays clean.
+const CHORD_FX_IDS = ['autowah', 'distortion', 'bitcrush', 'filter', 'chorus', 'vibrato', 'delay', 'reverb'];
 const chordFx = PROGRESSIONS.some(p => p.chordEffects) ? new EffectChain(CHORD_FX_IDS) : null;
 chordFx?.output.connect(destination);
 // And `melodyEffects` for the melody instrument alone, with a delay for echoes.
@@ -201,7 +201,8 @@ function currentProgression() {
     const firstKey = PROGRESSIONS[0].key ?? 'C';
     const target = transposeSymbol(base.key ?? 'C', firstKey, root);
     const swung = base.swing ? withSwing(base, swing ?? base.swing) : base;
-    const moved = transposeProgression(sevenths ? withSevenths(swung) : swung, target);
+    const colored = tensions ? swung : withoutTensions(swung);
+    const moved = transposeProgression(sevenths ? withSevenths(colored) : colored, target);
     if (playAlong) useKeyboardScale(moved.playScale);
     const timed = tempo ? { ...moved, tempo } : moved;
     return phrase ? timed : { ...timed, melody: [] };
@@ -287,11 +288,27 @@ if (PROGRESSIONS.some(p => p.sevenths)) {
     toggle.addEventListener('click', () => {
         sevenths = !sevenths;
         toggle.classList.toggle('active', sevenths);
-        useProgression();
+        if (!player.playing) { useProgression(); return; }
+        player.swap(currentProgression());
+        view.update(player.progression, player.voicings);
     });
     const divider = document.createElement('div');
     divider.className = 'dp-divider';
     controls.append(divider, toggle);
+}
+// A progression with `plain` chords (its chords without tensions) gets a Tensions
+// checkbox, on by default; off, it plays the plain seventh chords.
+if (PROGRESSIONS.some(p => p.plain)) {
+    addCheckbox(controls, {
+        label: 'Tensions', checked: true,
+        onChange: on => {
+            tensions = on;
+            // While playing, the chords change from where playback is, without stopping.
+            if (!player.playing) { useProgression(); return; }
+            player.swap(currentProgression());
+            view.update(player.progression, player.voicings);
+        },
+    });
 }
 if (PROGRESSIONS.some(p => p.generate)) {
     const button = document.createElement('button');

@@ -46,7 +46,9 @@ const drums = createInstrument('drums').connect(master.input);
 
 let chordNotes = [], melodyNote = null, bassNote = null;
 const light = () => keyboard.setLit([...chordNotes, melodyNote, bassNote].filter(n => n !== null));
-const view = new ProgressionView(document.getElementById('canvas'));
+// What is red follows the playback position, once the player below exists.
+let following = null;
+const view = new ProgressionView(document.getElementById('canvas'), { position: () => following?.position() ?? null });
 const player = new ProgressionPlayer(parts.backing.instrument, {
     melodyInstrument: parts.melody.instrument, bassInstrument: parts.bass.instrument, drums,
     onChord: i => { view.setChord(i); chordNotes = i < 0 ? [] : player.chordNotes(i); light(); },
@@ -54,6 +56,7 @@ const player = new ProgressionPlayer(parts.backing.instrument, {
     onMelody: i => { view.setNote(i); melodyNote = i < 0 ? null : player.progression.melody[i].midi; light(); },
     onBass: (i, notes) => { bassNote = i === -1 ? null : notes[0]; view.setBass(i); light(); },
 });
+following = player;
 const keyboard = new Keyboard(document.getElementById('keyboard'), {
     low: 36, octaves: 4,
     onNoteOn: midi => { startAudio(); parts.melody.instrument.noteOn(midi); },

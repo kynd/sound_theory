@@ -133,6 +133,9 @@ export class BendSynth extends Instrument {
     }
 
     noteOn(midi, velocity = 0.8, time = Tone.now()) {
+        // One voice: a note earlier than one already scheduled waits for it (see DrumKit).
+        time = Math.max(time, this._lastOn ?? 0);
+        this._lastOn = time;
         this._midi = midi;
         this.synth.triggerAttack(midiToFrequency(midi), time, velocity);
     }
@@ -264,7 +267,15 @@ export class DrumKit extends Instrument {
     }
 
     noteOn(midi, velocity = 0.8, time = Tone.now()) {
-        this._pieces[((midi % 12) + 12) % 12]?.play(time, velocity);
+        const pc = ((midi % 12) + 12) % 12;
+        if (!this._pieces[pc]) return;
+        // Each piece is one voice, and Tone refuses a hit earlier than one already
+        // scheduled (a sequence stopped and started again within its look-ahead), which
+        // would stop the sequencer; such a hit waits for the scheduled one instead.
+        this._last ??= {};
+        time = Math.max(time, this._last[pc] ?? 0);
+        this._last[pc] = time;
+        this._pieces[pc].play(time, velocity);
     }
 
     dispose() {

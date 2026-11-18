@@ -52,9 +52,9 @@ In Japan, the Phrygian dominant is widely taught as Hmp5↓ (harmonic minor perf
 
 日本では、フリジアン・ドミナントはHmp5↓（ハーモニック・マイナー・パーフェクト・フィフス・ビロウ）として広く教えられています。Cマイナーへ解決するG7の上では、Gの完全5度下の和声的短音階、つまりCの和声的短音階を弾く、というよく知られた覚え方を略した名前です。英語では使われない呼び名で、英語ではフリジアン・ドミナント、ミクソリディアン♭9♭13、あるいは和声的短音階の第5モードと呼ばれます。
 
-Choose an **Example** and press **Play** to hear each system's seven modes in order. Each seventh chord is held while its mode runs up an octave over it in eighth notes, from the chord's root: the chord is yellow and the scale pink in the piano roll, and the sounding notes turn red. **Scale** names the chord scale being played, from the sounding chord's root. Click a chord to hear it on its own; the keyboard lights the notes as they sound. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
+Choose an **Example** and press **Play** to hear each system's seven modes in order. Each seventh chord is held while its mode runs up an octave over it in eighth notes, from the chord's root: the chord is yellow and the scale pink in the piano roll. **Scale** names the chord scale being played, from the sounding chord's root. Click a chord to hear it on its own. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Example**を選んで**Play**を押すと、それぞれの体系の7つのモードが順に鳴ります。7の和音を鳴らしたまま、その上でモードが和音のルートから1オクターブ、8分音符で上がっていきます。ピアノロールでは和音が黄色、音階がピンクで示され、鳴っている音は赤くなります。**Scale**には、鳴っている和音のルートから数えた、いま弾いているコード・スケールの名前が表示されます。和音をクリックするとその和音だけを鳴らせ、鍵盤では鳴っている音が点灯します。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
+**Example**を選んで**Play**を押すと、それぞれの体系の7つのモードが順に鳴ります。7の和音を鳴らしたまま、その上でモードが和音のルートから1オクターブ、8分音符で上がっていきます。ピアノロールでは和音が黄色、音階がピンクで示されます。**Scale**には、鳴っている和音のルートから数えた、いま弾いているコード・スケールの名前が表示されます。和音をクリックすると、その和音だけを鳴らせます。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=minor-modes&key=minor" title="Modes of melodic and harmonic minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

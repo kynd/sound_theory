@@ -21,9 +21,9 @@ Melodic minor raises the 6th as well, A♭ to A. In classical music it does so o
 
 旋律的短音階では、さらに6番目の音もA♭からAに上がります。クラシックでは上行するときだけですが、ジャズのミュージシャンは上がった形を上下とも使い、ジャズ・マイナーと呼びます。和音はCm、Dm、E♭aug、F、G、Adim、Bdim（i、ii、♭III+、IV、V、vi°、vii°）です。上がった6番目の音によって、ivはメジャー・トライアドのIVに、iiはディミニッシュ・トライアドではなくマイナー・トライアドになります。
 
-Choose an **Example** and press **Play** to hear the seven chords of each form in order, from C up to the C an octave higher. The piano roll shows the chords, with their names above and Roman numerals below, the sounding chord turns red, and clicking a chord plays it on its own. Turn on **7th** to add a seventh to every chord (see [Sevenths and Tensions](/seventh-chords)): in natural minor the chords become Cm7, Dm7♭5, E♭maj7, Fm7, Gm7, A♭maj7, and B♭7, and in harmonic minor the dominant becomes G7 and the chord on the 7th degree Bdim7. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
+Choose an **Example** and press **Play** to hear the seven chords of each form in order, from C up to the C an octave higher. Click a chord to hear it on its own. Turn on **7th** to add a seventh to every chord (see [Sevenths and Tensions](/seventh-chords)): in natural minor the chords become Cm7, Dm7♭5, E♭maj7, Fm7, Gm7, A♭maj7, and B♭7, and in harmonic minor the dominant becomes G7 and the chord on the 7th degree Bdim7. The demo plays in C minor, as in the text; choose a **Key** to hear it in another minor key.
 
-**Example**を選んで**Play**を押すと、それぞれの形の7つの和音が、Cから1オクターブ上のCまで順に鳴ります。ピアノロールには和音が示され、和音名が上に、ローマ数字が下に表示され、鳴っている和音は赤くなります。和音をクリックすると、その和音だけを鳴らせます。**7th**をオンにすると、すべての和音に7度が加わります（[7の和音とテンション](/seventh-chords)を参照）。自然短音階ではCm7、Dm7♭5、E♭maj7、Fm7、Gm7、A♭maj7、B♭7に、和声的短音階ではドミナントがG7に、7番目の音の上の和音がBdim7になります。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
+**Example**を選んで**Play**を押すと、それぞれの形の7つの和音が、Cから1オクターブ上のCまで順に鳴ります。和音をクリックすると、その和音だけを鳴らせます。**7th**をオンにすると、すべての和音に7度が加わります（[7の和音とテンション](/seventh-chords)を参照）。自然短音階ではCm7、Dm7♭5、E♭maj7、Fm7、Gm7、A♭maj7、B♭7に、和声的短音階ではドミナントがG7に、7番目の音の上の和音がBdim7になります。デモは本文と同じくCマイナーで鳴りますが、**Key**を選ぶとほかの短調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=diatonic-minor&key=minor" title="Diatonic chords in minor" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

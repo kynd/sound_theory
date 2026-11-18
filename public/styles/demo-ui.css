@@ -147,6 +147,18 @@ button, select, input { font: inherit; color: inherit; }
 }
 .dp-label { width: calc(5 * var(--grid)); flex-shrink: 0; }
 
+/* Checkbox: a row with a small round white well before its label, filled green when
+   on. For an option that is not the point of the demo, where a toggle button would be
+   too loud. */
+.dp-check { cursor: pointer; }
+.dp-check input {
+  appearance: none; margin: 0; flex: none;
+  width: var(--grid); height: var(--grid); border-radius: var(--radius);
+  background: var(--demo-white); cursor: pointer;
+}
+.dp-check input:checked { background: var(--accent-green); }
+.dp-check input:focus-visible { outline: 2px solid var(--demo-fg); outline-offset: 2px; }
+
 /* Range slider: a filled track whose value portion takes the accent color.
    `--fill` (0–100%) is set from script, see controls.js. */
 .dp-range {

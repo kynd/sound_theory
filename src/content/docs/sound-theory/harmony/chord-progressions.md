@@ -6,9 +6,9 @@ Some chord progressions work so well that they turn up in song after song, acros
 
 いくつかのコード進行はとてもよくできていて、時代やスタイルを越えて、曲から曲へと現れます。このページでは、その中でも特によく使われるものを集めました。それぞれのセクションの見出しは進行をローマ数字で表しているので（[ダイアトニック・コード](/diatonic-chords)を参照）、どの調でも弾けます。挙げた曲の多くは別の調です。デモはどれもC（最後のひとつはAマイナー）なので、進行どうしを比べやすくなっています。
 
-Every demo works the same way. Press **Play** to loop the progression, one chord a bar unless noted, with each chord struck on every beat. The piano roll shows the chords, with their names above and their Roman numerals below, and the sounding chord turns red. Click a chord to hear it on its own; the keyboard lights the notes as they sound. Choose a **Key** to hear a progression in another key. A progression is only a frame: the same chords with a different rhythm, voicing, and melody can sound like a completely different song.
+Every demo works the same way. Press **Play** to loop the progression, one chord a bar unless noted, with each chord struck on every beat. Click a chord to hear it on its own. Choose a **Key** to hear a progression in another key. A progression is only a frame: the same chords with a different rhythm, voicing, and melody can sound like a completely different song.
 
-どのデモも使い方は同じです。**Play**を押すと進行が繰り返し鳴ります。特に断りのない限り1小節に1つの和音で、それぞれの和音を拍ごとに鳴らします。ピアノロールには和音が示され、和音名が上に、ローマ数字が下に表示され、鳴っている和音は赤くなります。和音をクリックすると、その和音だけを鳴らせます。鍵盤では、鳴っている音が点灯します。**Key**を選ぶと、進行をほかの調で聞けます。進行は枠組みにすぎません。同じ和音でも、リズムやボイシング、旋律が違えば、まったく別の曲に聞こえます。
+どのデモも使い方は同じです。**Play**を押すと進行が繰り返し鳴ります。特に断りのない限り1小節に1つの和音で、それぞれの和音を拍ごとに鳴らします。和音をクリックすると、その和音だけを鳴らせます。**Key**を選ぶと、進行をほかの調で聞けます。進行は枠組みにすぎません。同じ和音でも、リズムやボイシング、旋律が違えば、まったく別の曲に聞こえます。
 
 # I–IV–V–I
 # I–IV–V–Iの進行

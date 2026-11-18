@@ -19,6 +19,14 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * notes above it) at the beats they fall on. A bass riff is drawn as its own line in
  * dark green, and the chords above it without their bass. Sounding notes are red.
  *
+ * While the music plays, what is red comes from where playback is (`position()`, beats
+ * from the start of the pass, as GrooveView uses): a hit, riff note, or melody note is
+ * red from where it starts for as long as it lasts, and none is red in a rest. The
+ * player's callbacks (`setChord`, `setHit`, `setNote`, `setBass`) start the redrawing
+ * and turn the page; their indices only decide what is red when a chord is pressed by
+ * hand, with nothing playing. (Indices from separate callbacks went stale: the last
+ * hit of one chord lit the next chord's hit of the same number until its first hit.)
+ *
  * The chord symbols sit on a line above the roll (on two lines, alternating, when a
  * symbol is wider than its chord, and the same for the Roman numerals); the Roman
  * numerals and functions
@@ -35,8 +43,10 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  */
 export class ProgressionView {
     /** @param {HTMLCanvasElement} canvas  inside a `.canvas-wrap`. */
-    constructor(canvas, { onPress = () => {}, onRelease = () => {}, pageBeats = null } = {}) {
+    constructor(canvas, { onPress = () => {}, onRelease = () => {}, pageBeats = null, position = () => null } = {}) {
         this.canvas = canvas;
+        this.position = position;
+        this._running = false;
         this.ctx = canvas.getContext('2d');
         this.viewport = new Viewport(canvas);
         this.onPress = onPress;
@@ -62,7 +72,8 @@ export class ProgressionView {
         this.progression = progression;
         this.voicings = voicings;
         this.hits = compHits(progression, voicings);
-        this.riff = riffNotes(progression, voicings);
+        // A progression may keep its bass riff off the roll (`hideBass`); it still plays.
+        this.riff = progression.hideBass ? [] : riffNotes(progression, voicings);
         this.chord = this.note = this.hit = this.bass = -1;
         this.page = 0;
         this.draw();
@@ -81,9 +92,12 @@ export class ProgressionView {
 
     /** Marks chord `i` as sounding, or none with -1. */
     setChord(i) {
+        // A new chord starts with none of its hits sounding: its first hit may come after
+        // a rest, and the last hit's index from the chord before must not light this one.
+        if (i !== this.chord) this.hit = -1;
         this.chord = i;
         if (i >= 0 && this.progression) this._turnTo(this._start(this.progression.chords, i));
-        this.draw();
+        this._follow();
     }
 
     /** Marks melody note `i` as sounding, or none with -1. */
@@ -91,14 +105,27 @@ export class ProgressionView {
         this.note = i;
         const melody = this.progression?.melody;
         if (i >= 0 && melody) this._turnTo(this._start(melody, i) + (melody[i].offset ?? 0));
-        this.draw();
+        this._follow();
     }
 
     /** Marks riff note `i` as sounding, or none with a negative index. */
-    setBass(i) { this.bass = i; this.draw(); }
+    setBass(i) { this.bass = i; this._follow(); }
 
     /** Marks hit `k` of the sounding chord's comp as sounding, or none with -1. */
-    setHit(k) { this.hit = k; this.draw(); }
+    setHit(k) { this.hit = k; this._follow(); }
+
+    /** Draws now, and every frame while playback has a position; once more when it stops. */
+    _follow() {
+        this.draw();
+        if (this._running || this.position() === null) return;
+        this._running = true;
+        const frame = () => {
+            this.draw();
+            if (this.position() === null) { this._running = false; return; }
+            requestAnimationFrame(frame);
+        };
+        requestAnimationFrame(frame);
+    }
 
     _resize() {
         this.canvas.width = this.viewport.pixelWidth;
@@ -136,13 +163,21 @@ export class ProgressionView {
         this._columns = [];
         if (!progression) return;
 
-        const { chords, melody = [] } = progression;
+        // A progression may keep its melody off the roll (`hideMelody`, for a bass line
+        // written as the melody); it still plays.
+        const { chords } = progression;
+        const melody = progression.hideMelody ? [] : progression.melody ?? [];
         const hasRoman = chords.some(c => c.roman);
         const hasFn = chords.some(c => c.fn);
 
         // Time: the whole progression (or melody, if longer) across the width.
         const chordBeats = chords.reduce((s, c) => s + c.beats, 0);
         const melodyBeats = melody.reduce((s, n) => s + n.beats, 0);
+        // Where playback is, and whether a span (beats) is sounding there; across the loop
+        // point too, for a note moved ahead of the start. Null when nothing plays.
+        const pos = this.position();
+        const sounding = (start, beats) => pos !== null && [pos, pos + chordBeats, pos - chordBeats]
+            .some(p => p >= start - 1e-6 && p < start + beats - 1e-6);
         // With pages, only `pageBeats` from the current page's start.
         const beats = this.pageBeats ?? Math.max(chordBeats, melodyBeats);
         const p0 = this.pageBeats ? this.page * this.pageBeats : 0, p1 = p0 + beats;
@@ -215,9 +250,9 @@ export class ProgressionView {
         let at = 0;
         chords.forEach((chord, i) => {
             const x1 = xOf(at) + GAP / 2, x2 = xOf(at + chord.beats) - GAP / 2;
-            const sounding = i === this.chord;
+            const pressed = pos === null && i === this.chord;
             (this.hits[i] ?? []).forEach((hit, k) => {
-                const red = sounding && (!progression.comp || k === this.hit);
+                const red = pos === null ? pressed && (!progression.comp || k === this.hit) : sounding(at + hit.at, hit.beats);
                 const h1 = hit.at ? xOf(at + hit.at) + GAP / 2 : x1;
                 const h2 = hit.at + hit.beats < chord.beats - 1e-6 ? xOf(at + hit.at + hit.beats) - GAP / 2 : x2;
                 for (const midi of hit.notes) bar(h1, h2, midi, red ? COLORS.red : COLORS.yellow);
@@ -239,7 +274,7 @@ export class ProgressionView {
 
         this.riff.forEach((note, i) => {
             bar(xOf(note.at) + GAP / 2, xOf(note.at + note.beats) - GAP / 2, note.midi,
-                i === this.bass ? COLORS.red : COLORS.darkGreen);
+                (pos === null ? i === this.bass : sounding(note.at, note.beats)) ? COLORS.red : COLORS.darkGreen);
         });
 
         at = 0;
@@ -252,7 +287,8 @@ export class ProgressionView {
                 const height = Math.max(2, barH * (0.4 + 0.6 * (note.velocity ?? 0.8)) / 0.88);
                 const start = at + (note.offset ?? 0);
                 const x1 = xOf(start) + GAP / 2, x2 = xOf(start + note.beats * (note.gate ?? 1)) - GAP / 2;
-                const color = i === this.note ? COLORS.red : note.mark ? COLORS.darkGreen : COLORS.pink;
+                const red = pos === null ? i === this.note : sounding(start, note.beats * (note.gate ?? 1));
+                const color = red ? COLORS.red : note.mark ? COLORS.darkGreen : COLORS.pink;
                 if (note.bend) {
                     const bendAt = note.bendAt ?? 0, bendBeats = note.bendBeats ?? 1 / 3;
                     bentBar(x1, x2, xOf(start + bendAt), xOf(start + bendAt + bendBeats), note.midi, note.midi + note.bend, color, height);

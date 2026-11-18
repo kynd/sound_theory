@@ -1,5 +1,5 @@
 import * as Tone from 'tone';
-import { FEEL_PATTERNS, STYLE_PATTERNS, HAMMER, LOFI_BEAT, SIX_EIGHT_THREE_FOUR, AFRO_CUBAN_SIX_EIGHT, FOUR_AGAINST_THREE_GROOVE, pulsePattern } from './rhythm.js';
+import { FEEL_PATTERNS, STYLE_PATTERNS, HAMMER, LOFI_BEAT, SIX_EIGHT_THREE_FOUR, AFRO_CUBAN_SIX_EIGHT, FOUR_AGAINST_THREE_GROOVE, HAT_TWO_FOUR, pulsePattern } from './rhythm.js';
 import { parseNote, transposeNote, PITCH_CLASS_NAMES, FLAT_PITCH_CLASS_NAMES } from './scales.js';
 
 /**
@@ -69,6 +69,7 @@ export const QUALITIES = {
     '9':     [0, 4, 7, 10, 14],
     'm9':    [0, 3, 7, 10, 14],
     'm11':   [0, 3, 7, 10, 14, 17],
+    'm13':   [0, 3, 7, 10, 14, 17, 21],
     '13':    [0, 4, 7, 10, 14, 21],
     'maj13': [0, 4, 7, 11, 14, 21],
     '6/9':   [0, 4, 7, 9, 14],
@@ -372,6 +373,14 @@ export function withSevenths(progression) {
     return progression.sevenths ? { ...progression, chords: progression.sevenths } : progression;
 }
 
+/**
+ * The progression with plain seventh chords in place of its tensions, for one that has
+ * them (`plain`, as on Sevenths and Tensions); the progression demo's Tensions toggle.
+ */
+export function withoutTensions(progression) {
+    return progression.plain ? { ...progression, chords: progression.plain } : progression;
+}
+
 // ── Progressions ─────────────────────────────────────────────────────────────
 
 /** Chords of `beats` each from `[symbol, roman, fn]` triples (roman and fn optional). */
@@ -402,13 +411,17 @@ export const DIATONIC_PROGRESSIONS = [
             return { ...chord, notes: [degree(i), degree(i + 2), degree(i + 4)] };
         }),
     ] },
-    // The progressions strike each chord on every beat, four times.
-    { id: 'i-iv-v-i', label: 'I–IV–V–I', tempo: 135, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
-        ['C', 'I', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'], ['C', 'I', 'T'],
-    ]) },
-    { id: 'i-vi-iv-v', label: 'I–vi–IV–V', tempo: 135, loop: true, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, [
-        ['C', 'I', 'T'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'],
-    ]) },
+    // The progressions loop, striking each chord on every beat, four times. Each but
+    // the first is the progression of a well-known song, named on the page.
+    ...[
+        ['i-iv-v-i', 'I–IV–V–I', [['C', 'I', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D'], ['C', 'I', 'T']]],
+        ['i-vi-iv-v', 'I–vi–IV–V', [['C', 'I', 'T'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D']]],
+        ['i-v-vi-iv', 'I–V–vi–IV', [['C', 'I', 'T'], ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['F', 'IV', 'SD']]],
+        ['vi-iv-i-v', 'vi–IV–I–V', [['Am', 'vi', 'T'], ['F', 'IV', 'SD'], ['C', 'I', 'T'], ['G', 'V', 'D']]],
+        ['i-vi-ii-v', 'I–vi–ii–V', [['C', 'I', 'T'], ['Am', 'vi', 'T'], ['Dm', 'ii', 'SD'], ['G', 'V', 'D']]],
+        ['canon', 'Canon', [['C', 'I', 'T'], ['G', 'V', 'D'], ['Am', 'vi', 'T'], ['Em', 'iii', 'T'],
+            ['F', 'IV', 'SD'], ['C', 'I', 'T'], ['F', 'IV', 'SD'], ['G', 'V', 'D']]],
+    ].map(([id, label, list]) => ({ id, label, tempo: 100, loop: true, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, list) })),
 ];
 
 /** A key's seven triads in order, then the tonic again with its bass an octave up. */
@@ -568,40 +581,54 @@ export const MINOR_CHORD_SCALE_PROGRESSIONS = [
     ]) },
 ].map(p => ({ ...p, tempo: 96 }));
 
+// Each chord is struck twice, once a beat; a progression's last chord is struck once
+// and held for both beats, a half note (`ending`).
+const ending = list => [...list.slice(0, -1), { ...list[list.length - 1], comp: [['all', 2]] }];
 export const CHORD_TYPE_PROGRESSIONS = [
-    { id: 'triad-types', label: 'Chord types', tempo: 80, bassLow: C - 12, chords: chords(2, [
+    { id: 'triad-types', label: 'Chord types', tempo: 80, bassLow: C - 12, comp: [['all', 1]], chords: chords(2, [
         ['C'], ['Cm'], ['Cdim'], ['Caug'], ['Csus2'], ['Csus4'],
     ]) },
-    { id: 'suspensions', label: 'Suspensions', tempo: 80, bassLow: C - 12, chords: chords(2, [
+    { id: 'suspensions', label: 'Suspensions', tempo: 80, bassLow: C - 12, comp: [['all', 1]], chords: ending(chords(2, [
         ['Csus4', 'Isus4'], ['C', 'I'], ['Gsus4', 'Vsus4'], ['G', 'V'], ['Csus2', 'Isus2'], ['C', 'I'],
-    ]) },
-    { id: 'passing-diminished', label: 'Passing diminished', tempo: 90, bassLow: C - 12, chords: chords(2, [
+        ['Csus4', 'Isus4'], ['C', 'I'],
+    ])) },
+    { id: 'passing-diminished', label: 'Passing diminished', tempo: 90, bassLow: C - 12, comp: [['all', 1]], chords: ending(chords(2, [
         ['C', 'I'], ['C♯dim', '♯i°'], ['Dm', 'ii'], ['D♯dim', '♯ii°'], ['Em', 'iii'], ['F', 'IV'], ['G', 'V'], ['C', 'I'],
-    ]) },
-    { id: 'augmented-line', label: 'Augmented line', tempo: 90, bassLow: C - 12, chords: chords(2, [
+    ])) },
+    { id: 'augmented-line', label: 'Augmented line', tempo: 90, bassLow: C - 12, comp: [['all', 1]], chords: ending(chords(2, [
         ['C', 'I'], ['Caug', 'I+'], ['C6', 'I6'], ['C7', 'I7'], ['F', 'IV'], ['Fm', 'iv'], ['C', 'I'],
-    ]) },
+    ])) },
 ];
 
+/**
+ * A chord in root position on `root` (MIDI): its notes stacked straight up from the
+ * root, tensions above the octave, with no separate bass.
+ */
+function rootPosition(chord, root) {
+    return { ...chord, notes: parseChord(chord.symbol).intervals.map(i => root + i) };
+}
+
 export const SEVENTH_PROGRESSIONS = [
-    { id: 'seventh-types', label: 'Seventh chords', tempo: 80, chords: chords(2, [
-        ['Cmaj7'], ['C7'], ['Cm7'], ['Cm7♭5'], ['Cdim7'], ['CmMaj7'],
-    ]) },
+    // The sevenths and sixths are each built straight up from their root.
     { id: 'diatonic-sevenths', label: 'Diatonic sevenths', tempo: 100, chords: chords(2, [
         ['Cmaj7', 'Imaj7', 'T'], ['Dm7', 'ii7', 'SD'], ['Em7', 'iii7', 'T'], ['Fmaj7', 'IVmaj7', 'SD'],
         ['G7', 'V7', 'D'], ['Am7', 'vi7', 'T'], ['Bm7♭5', 'viiø7', 'D'], ['Cmaj7', 'Imaj7', 'T'],
-    ]) },
-    // Sixth chords beside the triad and the major seventh; Am7 has the notes of C6 over A.
+    ]).map((chord, i) => rootPosition(chord, C + [0, 2, 4, 5, 7, 9, 11][i % 7] + 12 * Math.floor(i / 7))) },
+    { id: 'seventh-types', label: 'Seventh chords', tempo: 80, chords: chords(2, [
+        ['Cmaj7'], ['C7'], ['Cm7'], ['Cm7♭5'], ['Cdim7'], ['CmMaj7'],
+    ]).map(chord => rootPosition(chord, C)) },
+    // Sixth chords beside the triad and the major seventh; Am7, on the A below, has the
+    // notes of C6, and Cm6 those of Am7♭5.
     { id: 'sixth-chords', label: 'Sixth chords', tempo: 80, chords: chords(2, [
         ['C', 'I'], ['C6', 'I6'], ['Cmaj7', 'Imaj7'], ['Am7', 'vi7'], ['Cm6', 'i6'], ['C6/9', 'I6/9'],
-    ]) },
-    { id: 'ii-v-i6', label: 'ii–V–I6', tempo: 135, chords: chords(4, [
-        ['Dm7', 'ii7'], ['G7', 'V7'], ['C6', 'I6'], ['C6', 'I6'],
-    ]) },
+    ]).map(chord => rootPosition(chord, chord.symbol === 'Am7' ? C - 3 : C)) },
     // The tensions take open voicings, so the added notes sit above the chord instead
     // of crowding into it.
     { id: 'major-tensions', label: 'Tensions on Cmaj7', tempo: 80, voicing: 'open', chords: chords(2, [
         ['Cmaj7', '1 3 5 7'], ['Cmaj9', '+9'], ['Cmaj7(♯11)', '+♯11'], ['Cmaj13', '+9 13'], ['C6/9', '6 9'],
+    ]) },
+    { id: 'minor-tensions', label: 'Tensions on Dm7', tempo: 80, voicing: 'open', chords: chords(2, [
+        ['Dm7', '1 ♭3 5 ♭7'], ['Dm9', '+9'], ['Dm7(11)', '+11'], ['Dm11', '+9 11'], ['Dm13', '+9 11 13'],
     ]) },
     { id: 'dominant-tensions', label: 'Tensions on G7', tempo: 80, voicing: 'open', chords: [
         ...chords(2, [
@@ -610,10 +637,6 @@ export const SEVENTH_PROGRESSIONS = [
         ]),
         { symbol: 'Cmaj7', beats: 4, roman: 'Imaj7', fn: '' },
     ] },
-    { id: 'ii-v-i-tensions', label: 'ii–V–I with tensions', tempo: 120, voicing: 'open', comp: EVERY_BEAT, chords: chords(4, [
-        ['Dm7', 'ii7', 'SD'], ['G7', 'V7', 'D'], ['Cmaj7', 'Imaj7', 'T'],
-        ['Dm9', 'ii9', 'SD'], ['G13', 'V13', 'D'], ['Cmaj9', 'Imaj9', 'T'],
-    ]) },
 ];
 
 export const FUNCTIONAL_PROGRESSIONS = [
@@ -2005,6 +2028,171 @@ export const SYNCOPATION_PROGRESSIONS = [
  * (`LOFI_DRUMS`), and its chords through the lo-fi chord chain (`LOFI_CHORDS`), unless
  * it sets its own `chordEffects` (rock's distorted guitar, ska's clean piano).
  */
+/**
+ * Sevenths and sixths in four grooves, for Sevenths and Tensions, each looping a bar a
+ * chord with its own comping rhythm, bass, and drums:
+ *   - swing: I6–vi7–ii7–V7, electric piano struck on 1 and the swung "and" of 2 (the
+ *     Charleston), the hi-hat on 2 and 4, and a walking 808 bass;
+ *   - bossa nova: Imaj7–I6–ii7–V7, maj7 and 6 as two colors of the tonic, in the
+ *     bossa nova backing from Syncopation and Anticipation (piano and synth bass);
+ *   - neo-soul: IVmaj7–iii7–ii7–Imaj7 stepping down, electric piano and bass both in
+ *     syncopated sixteenths over the lo-fi beat, through the lo-fi chains;
+ *   - funk: a ii7–V7 vamp, a drawbar organ low through an auto-wah in sixteenth-note
+ *     stabs over a busy bass, the drums compressed and driven.
+ */
+// Chords a bar long with hand-written notes (`[symbol, roman, fn, notes]`, the bass first).
+const barVoiced = list => list.map(([symbol, roman, fn, notes]) => ({ symbol, roman, fn, beats: 4, notes }));
+// None of them draws its bass on the roll (`hideBass`, or `hideMelody` for the walking
+// bass written as the melody), so only the chords show.
+export const SEVENTH_GROOVES = [
+    // The walking bass is written as the melody, on the 808: chord tones on the way up
+    // or down, and a half step from the next root on beat 4. The chords are spread over
+    // more than an octave, 3 or 7 at the bottom, and every bar has its own rhythm in
+    // swung eighths, short strokes mixed with held ones: 1 and the "and" of 2; 1, the "and"
+    // of 2, and 4 (as in the last bar); 2, the "and" of 3, and the "and" of 4; 1, the "and" of 2,
+    // and 4.
+    { id: 'swing-sevenths', label: 'I6–vi7–ii7–V7', tempo: 150, loop: true, drums: HAT_TWO_FOUR, hideMelody: true,
+        sounds: { chords: 'epiano-bright', melody: 'sub-808', levels: { chords: 3, melody: 6 } },
+        comp: [['upper', 1 / 3], [null, 4 / 3], ['upper', 1 / 3], [null, 2]],
+        chords: barVoiced([
+            ['C6', 'I6', 'T', [48, 52, 57, 60, 67]], ['Am7', 'vi7', 'T', [45, 55, 60, 64, 69]],
+            ['Dm7', 'ii7', 'SD', [50, 53, 60, 62, 69]], ['G7', 'V7', 'D', [43, 53, 59, 62, 67]],
+        ]).map((chord, i) => ({ ...chord, comp: [
+            [['upper', 1 / 3], [null, 4 / 3], ['upper', 1 / 3], [null, 2]],
+            [['upper', 1], [null, 2 / 3], ['upper', 1 / 3], [null, 1], ['upper', 1 / 3], [null, 2 / 3]],
+            [[null, 1], ['upper', 2 / 3], [null, 1], ['upper', 1 / 3], [null, 2 / 3], ['upper', 1 / 3]],
+            [['upper', 1], [null, 2 / 3], ['upper', 1 / 3], [null, 1], ['upper', 1 / 3], [null, 2 / 3]],
+        ][i] })),
+        melody: [36, 38, 40, 34, 33, 36, 40, 39, 38, 40, 41, 42, 43, 41, 38, 37].map(midi => ({ midi, beats: 1, gate: 0.9 })) },
+    // The bossa nova backing from Syncopation and Anticipation, with its sounds, the piano
+    // syncopated differently in every bar: 1, the "and" of 2, and 4; 2 and the "and" of
+    // 3, then Dm7 half a beat early on the "and" of 4; the "and" of 2 and the "and" of 3;
+    // 1, 2, and the "and" of 3.
+    { id: 'bossa-sevenths', label: 'Imaj7–I6–ii7–V7', tempo: 130, bar: 4, loop: true, drums: FEEL('bossa-nova'), hideBass: true,
+        sounds: { ...BAND_SOUNDS, chords: 'epiano' },
+        // The electric piano echoed a dotted eighth later (at 130 BPM), fading over a few repeats.
+        chordEffects: { delay: { time: 0.35, feedback: 0.3, mix: 0.25 } },
+        comp: BOSSA_BAR_1, riff: BOSSA_RIFF,
+        // Three notes spread over the bass: the 3rd and 7th (or 6th) low, the 5th or root on top.
+        chords: (([cmaj7, c6, dm7, g7]) => [
+            // Held and short strokes mixed, a rest after a short one.
+            { ...cmaj7, comp: [['upper', 1.5], ['upper', 0.5], [null, 1], ['upper', 1]] },
+            { ...c6, beats: 3.5, comp: [[null, 1], ['upper', 0.5], [null, 1], ['upper', 1]] },
+            earlyChord(dm7, 4.5, [[null, 1.5], ['upper', 0.25], [null, 0.75], ['upper', 1.5]], BOSSA_RIFF, 1),
+            { ...g7, comp: [['upper', 0.5], [null, 0.5], ['upper', 1.5], ['upper', 1.5]] },
+        ])(barVoiced([
+            ['Cmaj7', 'Imaj7', 'T', [48, 52, 59, 67]], ['C6', 'I6', 'T', [48, 52, 57, 67]],
+            ['Dm7', 'ii7', 'SD', [50, 53, 60, 69]], ['G7', 'V7', 'D', [43, 53, 59, 67]],
+        ])) },
+    { id: 'soul-sevenths', label: 'IVmaj7–iii7–ii7–Imaj7', tempo: 80, loop: true, drums: LOFI_BEAT, bassLow: 28, hideBass: true,
+        drumEffects: LOFI_DRUMS, chordEffects: LOFI_CHORDS,
+        sounds: { chords: 'epiano', bass: 'synth-bass' },
+        // Sixteenth-note syncopation in both: chords on 1, the last sixteenth of 1, the
+        // "and" of 2, the "and" of 3, 4, and the "and" of 4; the bass between root,
+        // fifth, and octave.
+        comp: [['upper', 0.75], ['upper', 0.75], ['upper', 1], ['upper', 0.5], ['upper', 0.5], ['upper', 0.5]],
+        riff: [[0, 0.75], [0, 0.25], [7, 0.5], [12, 0.5], [0, 0.5], [12, 0.25], [7, 0.75], [0, 0.5]],
+        // The same open shape on every chord, root and 7th below, 3rd and 5th above.
+        chords: barVoiced([
+            ['Fmaj7', 'IVmaj7', 'SD', [29, 53, 64, 69, 72]], ['Em7', 'iii7', 'T', [28, 52, 62, 67, 71]],
+            ['Dm7', 'ii7', 'SD', [38, 50, 60, 65, 69]], ['Cmaj7', 'Imaj7', 'T', [36, 48, 59, 64, 67]],
+        ]) },
+    // A drawbar organ low, through an auto-wah.
+    { id: 'funk-sevenths', label: 'ii7–V7', tempo: 96, loop: true, drums: FEEL('funk'), hideBass: true,
+        sounds: { chords: 'organ-synth', bass: 'synth-bass' },
+        chordEffects: { autowah: { mix: 1 } },
+        // Punchy drums: squeezed hard, a little driven, in a small, bright room.
+        drumEffects: {
+            compressor: { threshold: -28, ratio: 6 },
+            distortion: { drive: 0.3, mix: 0.3 },
+            reverb: { decay: 0.6, mix: 0.2 },
+        },
+        comp: [[null, 0.5], ['upper', 0.25], [null, 0.5], ['upper', 0.25], [null, 0.25], ['upper', 0.25],
+            [null, 0.5], ['upper', 0.25], [null, 0.5], ['upper', 0.25], [null, 0.25], ['upper', 0.25]],
+        riff: [[0, 0.75], [12, 0.25], [0, 0.5], [10, 0.5], [0, 0.75], [7, 0.25], [10, 0.5], [12, 0.5]],
+        chords: [
+            { ...chords(4, [['Dm7', 'ii7', 'SD']])[0], notes: [38, 45, 48, 53] },
+            { ...chords(4, [['G7', 'V7', 'D']])[0], notes: [31, 47, 50, 53] },
+        ] },
+];
+
+/**
+ * Tensions to choose from, by the kind of chord: `[symbol suffix, Roman suffix]`. A
+ * dominant that resolves (`dominant`) takes natural or altered tensions; a substitute
+ * dominant (♭II7, ♭VI7: `lydian`) takes the ♯11 instead of altered ones; iii keeps to
+ * the 11th, since its 9th is outside the key.
+ */
+const TENSION_CHOICES = {
+    major:    [['maj7', 'maj7'], ['maj9', 'maj9'], ['6/9', '6/9'], ['maj7(♯11)', 'maj7♯11'], ['maj13', 'maj13']],
+    minor:    [['m7', '7'], ['m9', '9'], ['m11', '11'], ['m7(11)', '7(11)']],
+    iii:      [['m7', '7'], ['m7(11)', '7(11)']],
+    halfDim:  [['m7♭5', 'ø7'], ['m7♭5(9)', 'ø9'], ['m7♭5(11)', 'ø11']],
+    minorTonic: [['m9', '9'], ['m6', '6'], ['mMaj7', '(maj7)']],
+    dominant: [['7', '7'], ['9', '9'], ['13', '13'], ['7(♭9)', '7♭9'], ['7(♯9)', '7♯9'], ['7(♭13)', '7♭13'],
+        ['7alt', '7alt'], ['13(♭9)', '13♭9']],
+    lydian:   [['7', '7'], ['9', '9'], ['13', '13'], ['7(♯11)', '7♯11'], ['9(♯11)', '9♯11']],
+};
+const ALTERED = ['7(♭9)', '7(♯9)', '7(♭13)', '7alt', '13(♭9)'];
+const MINORISH = ['minor', 'iii', 'halfDim', 'minorTonic'];
+/**
+ * Whether a chord's tensions lead well into the next chord's: a dominant going to a
+ * minor chord takes altered tensions (its ♭9 and ♭13 are notes of the minor key), and
+ * one with a ♭13 or ♯9 (or altered) going to a major chord lands on a chord with a 9th,
+ * so the ♭13 falls a half step to the 9th.
+ */
+function tensionsConnect(kind, choice, nextKind, nextChoice) {
+    if (kind !== 'dominant') return true;
+    if (MINORISH.includes(nextKind)) return ALTERED.includes(choice);
+    if (nextKind === 'major' && ['7(♭13)', '7(♯9)', '7alt'].includes(choice)) return ['maj9', '6/9', 'maj13'].includes(nextChoice);
+    return true;
+}
+/**
+ * The chords of `plan` (`[root, kind, roman, beats]`) with tensions chosen at random,
+ * each from its kind's choices (TENSION_CHOICES) and connected to the next chord's
+ * (`tensionsConnect`; the last chord leads into the first, as the progression loops).
+ * Chosen from the last chord back, so each choice knows the one after it.
+ */
+/** The chords of `plan` as plain seventh chords, with no tensions. */
+const PLAIN_SEVENTHS = { major: ['maj7', 'maj7'], minor: ['m7', '7'], iii: ['m7', '7'], halfDim: ['m7♭5', 'ø7'],
+    minorTonic: ['m7', '7'], dominant: ['7', '7'], lydian: ['7', '7'] };
+function plainSevenths(plan) {
+    return plan.map(([root, kind, roman, beats]) =>
+        ({ symbol: root + PLAIN_SEVENTHS[kind][0], roman: roman + PLAIN_SEVENTHS[kind][1], beats, fn: '' }));
+}
+
+export function randomTensions(plan) {
+    const picks = new Array(plan.length);
+    const pick = list => list[Math.floor(Math.random() * list.length)];
+    for (let i = plan.length - 1; i >= 0; i--) {
+        const [, kind] = plan[i];
+        const n = (i + 1) % plan.length;
+        const next = picks[n] ?? pick(TENSION_CHOICES[plan[n][1]]);
+        const fits = TENSION_CHOICES[kind].filter(([sym]) => tensionsConnect(kind, sym, plan[n][1], next[0]));
+        picks[i] = pick(fits.length ? fits : TENSION_CHOICES[kind]);
+    }
+    return plan.map(([root, kind, roman, beats], i) =>
+        ({ symbol: root + picks[i][0], roman: roman + picks[i][1], beats, fn: '' }));
+}
+
+/**
+ * Slow ballads in C on solo piano, for Sevenths and Tensions, where every chord takes
+ * new tensions on every pass (`randomTensions`, through `vary`), each leading into the
+ * next. The piano plays open voicings (the tensions above the chord tones), every
+ * stroke a half note: a chord a bar long struck twice, one two beats long once.
+ */
+export const TENSION_BALLADS = [
+    ['ballad-major', 'ii–V–I–VI', [['D', 'minor', 'ii', 4], ['G', 'dominant', 'V', 4], ['C', 'major', 'I', 4], ['A', 'dominant', 'VI', 4]]],
+    ['ballad-minor', 'Minor ii–V–i–VI', [['D', 'halfDim', 'ii', 4], ['G', 'dominant', 'V', 4], ['C', 'minorTonic', 'i', 4], ['A♭', 'lydian', 'VI', 4]]],
+    // Moves heard in ballads such as "Body and Soul": ii–V chains, a tritone substitute
+    // (D♭7 for G7), and VI7 leading back to ii, two chords a bar.
+    ['ballad-standard', 'ii–V–iii–VI–ii–♭II–I–VI', [
+        ['D', 'minor', 'ii', 2], ['G', 'dominant', 'V', 2], ['E', 'iii', 'iii', 2], ['A', 'dominant', 'VI', 2],
+        ['D', 'minor', 'ii', 2], ['D♭', 'lydian', '♭II', 2], ['C', 'major', 'I', 2], ['A', 'dominant', 'VI', 2],
+    ]],
+].map(([id, label, plan]) => ({ id, label, tempo: 66, loop: true, voicing: 'open',
+    sounds: { chords: 'piano' }, comp: [['all', 2]],
+    chords: randomTensions(plan), vary: () => ({ chords: randomTensions(plan) }), plain: plainSevenths(plan) }));
+
 const hv = (symbol, roman, notes, beats = 4) => ({ symbol, roman, notes, beats });
 export const STYLE_PROGRESSIONS = [
     // Power chords low on the neck (root, fifth, octave: E5 is E2–B2–E3, the open low E),
@@ -2719,7 +2907,7 @@ export const PROGRESSION_SETS = {
     voicing: VOICING_PROGRESSIONS,
     'upper-structures': UPPER_STRUCTURE_PROGRESSIONS,
     types: CHORD_TYPE_PROGRESSIONS,
-    sevenths: SEVENTH_PROGRESSIONS,
+    sevenths: [...SEVENTH_PROGRESSIONS, ...SEVENTH_GROOVES, ...TENSION_BALLADS],
     functional: FUNCTIONAL_PROGRESSIONS,
     'dominant-motion': DOMINANT_MOTION_PROGRESSIONS,
     'two-five': TWO_FIVE_PROGRESSIONS,

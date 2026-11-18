@@ -23,9 +23,9 @@ The minor pentatonic is the classic sound of the blues (see [Blues](/blues)). Ov
 # Playing Along
 # 一緒に弾く
 
-Choose an **Example** and press **Play** to hear a short phrase over each progression. **I–vi–IV–V** uses the C major pentatonic, **vi–IV–I–V** the A minor pentatonic, and the two blues examples the C minor and C major pentatonic over a shuffle. The phrases are drawn in pink over the chords, and the sounding notes turn red.
+Choose an **Example** and press **Play** to hear a short phrase over each progression. **I–vi–IV–V** uses the C major pentatonic, **vi–IV–I–V** the A minor pentatonic, and the two blues examples the C minor and C major pentatonic over a shuffle. The phrases are drawn in pink over the chords.
 
-**Example**を選んで**Play**を押すと、それぞれの進行の上で短いフレーズが鳴ります。**I–vi–IV–V**はCのメジャー・ペンタトニックを、**vi–IV–I–V**はAのマイナー・ペンタトニックを、2つのブルースの例はシャッフルの上でCのマイナーとメジャーのペンタトニックを使います。フレーズは和音の上にピンクで描かれ、鳴っている音は赤くなります。
+**Example**を選んで**Play**を押すと、それぞれの進行の上で短いフレーズが鳴ります。**I–vi–IV–V**はCのメジャー・ペンタトニックを、**vi–IV–I–V**はAのマイナー・ペンタトニックを、2つのブルースの例はシャッフルの上でCのマイナーとメジャーのペンタトニックを使います。フレーズは和音の上にピンクで描かれます。
 
 Then turn off **Phrase** to leave only the backing, and play along. The keyboard shows only the five notes of the example's pentatonic, with the root marked, so every key you press fits. Play with the mouse or the keys from A to ; on your computer keyboard (Z and X shift the octave). Try short phrases with space between them, repeat an idea before changing it, and end phrases on the root. The demo plays in C (A minor for **vi–IV–I–V**), as in the text; choose a **Key** to play in another key, and the keyboard follows.
 
