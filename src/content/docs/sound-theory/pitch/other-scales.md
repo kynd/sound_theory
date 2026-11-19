@@ -19,7 +19,7 @@ Cから上行・下降する音階を単独で聴いても、その特徴はつ�
 
 A pentatonic scale contains five notes. The major pentatonic scale (C, D, E, G, A) omits the 4th and 7th degrees of the major scale, while the minor pentatonic scale (C, E♭, F, G, B♭) omits the 2nd and 6th degrees of the natural minor scale. Neither has any half steps, so its notes tend not to clash, and almost any sequence sounds melodic. This makes pentatonic scales a popular starting point for improvisation. The two scales are related like modes: C minor pentatonic uses the same notes as E♭ major pentatonic, but begins on C.
 
-ペンタトニック・スケールは5音で構成されます。C、D、E、G、Aからなるメジャー・ペンタトニック・スケールは、長音階の第4音と第7音を省いたものです。一方、C、E♭、F、G、B♭からなるマイナー・ペンタトニック・スケールは、自然短音階の第2音と第6音を省いています。どちらにも半音がないため、音同士がぶつかりにくく、どのような順に並べても旋律らしく聞こえます。そのため、ペンタトニック・スケールは即興演奏を始める際によく使われます。この2つの音階はモードのような関係にあります。Cのマイナー・ペンタトニックは、E♭のメジャー・ペンタトニックと同じ音を使い、Cから始まります。
+ペンタトニック・スケールは5音で構成されます。C、D、E、G、Aからなるメジャー・ペンタトニック・スケールは、長音階の第4音と第7音を省いたものです。一方、C、E♭、F、G、B♭からなるマイナー・ペンタトニック・スケールは、ナチュラル・マイナー（自然短音階）の第2音と第6音を省いています。どちらにも半音がないため、音同士がぶつかりにくく、どのような順に並べても旋律らしく聞こえます。そのため、ペンタトニック・スケールは即興演奏を始める際によく使われます。この2つの音階はモードのような関係にあります。Cのマイナー・ペンタトニックは、E♭のメジャー・ペンタトニックと同じ音を使い、Cから始まります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?set=pentatonic&roots" title="Pentatonic scales" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
@@ -69,7 +69,7 @@ In Japan, the half–whole diminished scale is called the "combination of dimini
 
 The altered scale is the melodic minor scale starting on its 7th degree: C altered uses the same notes as D♭ melodic minor. Over a C dominant seventh chord (C, E, G, B♭), it retains the root, 3rd, and 7th while altering the other notes to create four tensions: flat 9 (D♭), sharp 9 (D♯), sharp 11 (F♯), and flat 13 (G♯).
 
-オルタード・スケールは、旋律的短音階の第7音から始めた音階です。Cのオルタードは、D♭の旋律的短音階と同じ音で構成されます。Cの属七和音（C、E、G、B♭）に重ねると、ルート・第3音・第7音を保ちながら、ほかの音を変化させて4つのテンション、すなわち♭9（D♭）、♯9（D♯）、♯11（F♯）、♭13（G♯）を作ります。
+オルタード・スケールは、メロディック・マイナー（旋律的短音階）の第7音から始めた音階です。Cのオルタードは、D♭のメロディック・マイナーと同じ音で構成されます。Cの属七和音（C、E、G、B♭）に重ねると、ルート・第3音・第7音を保ちながら、ほかの音を変化させて4つのテンション、すなわち♭9（D♭）、♯9（D♯）、♯11（F♯）、♭13（G♯）を作ります。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=altered&roots" title="Altered scale" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
@@ -78,13 +78,13 @@ The altered scale is the melodic minor scale starting on its 7th degree: C alter
 
 The Lydian 7th scale, also called Lydian dominant or Lydian ♭7, is the Lydian mode with a lowered 7th or the Mixolydian mode with a raised 4th: C, D, E, F♯, G, A, B♭. It is the melodic minor scale starting on its 4th note: C Lydian 7th has the same notes as G melodic minor.
 
-リディアン・セブンス・スケールは、リディアン・ドミナントまたはリディアン♭7とも呼ばれます。リディアン・モードの第7音を下げた音階、あるいはミクソリディアン・モードの第4音を上げた音階です。構成音はC、D、E、F♯、G、A、B♭です。旋律的短音階の第4音から始めた音階で、Cのリディアン・セブンスはGの旋律的短音階と同じ音で構成されます。
+リディアン・セブンス・スケールは、リディアン・ドミナントまたはリディアン♭7とも呼ばれます。リディアン・モードの第7音を下げた音階、あるいはミクソリディアン・モードの第4音を上げた音階です。構成音はC、D、E、F♯、G、A、B♭です。メロディック・マイナーの第4音から始めた音階で、Cのリディアン・セブンスはGのメロディック・マイナーと同じ音で構成されます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?scale=lydian-7th&roots" title="Lydian 7th scale" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 
 The altered scale and the Lydian 7th are the same scale starting on different notes. Both come from the melodic minor, so C altered (C, D♭, D♯, E, F♯, G♯, B♭) and G♭ Lydian 7th (G♭, A♭, B♭, C, D♭, E♭, F♭) contain the same seven pitches, spelled differently to reflect their roots. The **Scale** menu also offers D♭ melodic minor, the scale both come from.
 
-オルタード・スケールとリディアン・セブンスは、同じ音階を異なる音から始めたものです。どちらも旋律的短音階に由来します。そのため、Cのオルタード（C、D♭、D♯、E、F♯、G♯、B♭）とG♭のリディアン・セブンス（G♭、A♭、B♭、C、D♭、E♭、F♭）は、主音に合わせて異なる音名で表記されていますが、同じ7つの音高を含みます。**Scale**メニューでは、2つの音階のもとになるD♭の旋律的短音階も選べます。
+オルタード・スケールとリディアン・セブンスは、同じ音階を異なる音から始めたものです。どちらもメロディック・マイナーに由来します。そのため、Cのオルタード（C、D♭、D♯、E、F♯、G♯、B♭）とG♭のリディアン・セブンス（G♭、A♭、B♭、C、D♭、E♭、F♭）は、主音に合わせて異なる音名で表記されていますが、同じ7つの音高を含みます。**Scale**メニューでは、2つの音階のもとになるD♭のメロディック・マイナーも選べます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/scales/index.html?set=altered-lydian&roots" title="Altered and Lydian 7th" allow="autoplay" loading="lazy" style="height: 256px"></iframe></div>
 

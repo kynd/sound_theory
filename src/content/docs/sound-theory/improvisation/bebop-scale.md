@@ -60,7 +60,7 @@ The same ideas turn into phrases over a ii–V–I (see [Tension and Resolution]
 
 Choose an **Example** and press **Play**. Each phrase runs in eighth notes over Dm7 and G7, with a click on every beat, and lands on the tonic. **One scale for ii–V** runs the G bebop dominant scale down from G over Dm7 and back up over G7, so F♯ passes on the off-beats and leads into G. **Down and up** runs down from C, the 7th of Dm7, then up G7's bebop scale from B to a flat 9th (A♭) that falls to G. **Minor, diminished** climbs the diminished arpeggio over Dm7♭5, runs down C harmonic minor from F over G7, and lands with F falling to E♭ on Cm6. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 
-**Example**を選んで**Play**を押してみましょう。どのフレーズも、拍ごとのクリックとともに、Dm7とG7の上を8分音符で進み、トニックに着地します。**One scale for ii–V**は、Gのビバップ・ドミナント・スケールを、Dm7の上ではGから下り、G7の上では上り直します。F♯は裏拍を通り、Gへと導きます。**Down and up**は、Dm7の7度であるCから下り、G7のビバップ・スケールをBからフラット9度（A♭）まで上がって、Gへ下ります。**Minor, diminished**は、Dm7♭5の上で減七のアルペジオを上り、G7の上でCの和声的短音階をFから下り、FがE♭へ下がってCm6に着地します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+**Example**を選んで**Play**を押してみましょう。どのフレーズも、拍ごとのクリックとともに、Dm7とG7の上を8分音符で進み、トニックに着地します。**One scale for ii–V**は、Gのビバップ・ドミナント・スケールを、Dm7の上ではGから下り、G7の上では上り直します。F♯は裏拍を通り、Gへと導きます。**Down and up**は、Dm7の7度であるCから下り、G7のビバップ・スケールをBからフラット9度（A♭）まで上がって、Gへ下ります。**Minor, diminished**は、Dm7♭5の上で減七のアルペジオを上り、G7の上でCのハーモニック・マイナー（和声的短音階）をFから下り、FがE♭へ下がってCm6に着地します。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=bebop-ii-v&key" title="Bebop phrases on a ii–V" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

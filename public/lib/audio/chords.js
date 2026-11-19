@@ -461,29 +461,37 @@ export const DIATONIC_PROGRESSIONS = [
     ].map(([id, label, list]) => ({ id, label, tempo: 100, loop: true, bassLow: C - 12, comp: [['all', 1]], chords: chords(4, list) })),
 ];
 
-/** A key's seven triads in order, then the tonic again with its bass an octave up. */
-function scaleTriads(list) {
-    return [...chords(2, list), { ...chords(2, [list[0]])[0], bass: C }];
+/**
+ * A key's seven chords in order, then the tonic an octave up, each in root position
+ * (see rootPosition) on its degree of `scale` (semitones above C), climbing from C4, as
+ * the major triads and sevenths are.
+ */
+function scaleChords(scale, list) {
+    return chords(2, [...list, list[0]])
+        .map((chord, i) => rootPosition(chord, C + scale[i % 7] + 12 * Math.floor(i / 7)));
 }
+const NATURAL_MINOR_DEGREES = [0, 2, 3, 5, 7, 8, 10];
+const HARMONIC_MINOR_DEGREES = [0, 2, 3, 5, 7, 8, 11];
+const MELODIC_MINOR_DEGREES = [0, 2, 3, 5, 7, 9, 11];
 
 /**
  * The diatonic triads of C minor in its three forms, natural, harmonic, and melodic,
- * with the bass climbing from C3 to C4 as in the major set.
+ * and their sevenths, in root position climbing from C4 as in the major set.
  */
 export const DIATONIC_MINOR_PROGRESSIONS = [
-    { id: 'natural-minor-triads', label: 'Natural minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
+    { id: 'natural-minor-triads', label: 'Natural minor', tempo: 100, chords: scaleChords(NATURAL_MINOR_DEGREES, [
         ['Cm', 'i'], ['Ddim', 'ii°'], ['E♭', '♭III'], ['Fm', 'iv'], ['Gm', 'v'], ['A♭', '♭VI'], ['B♭', '♭VII'],
-    ]), sevenths: scaleTriads([
+    ]), sevenths: scaleChords(NATURAL_MINOR_DEGREES, [
         ['Cm7', 'i7'], ['Dm7♭5', 'iiø7'], ['E♭maj7', '♭IIImaj7'], ['Fm7', 'iv7'], ['Gm7', 'v7'], ['A♭maj7', '♭VImaj7'], ['B♭7', '♭VII7'],
     ]) },
-    { id: 'harmonic-minor-triads', label: 'Harmonic minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
+    { id: 'harmonic-minor-triads', label: 'Harmonic minor', tempo: 100, chords: scaleChords(HARMONIC_MINOR_DEGREES, [
         ['Cm', 'i'], ['Ddim', 'ii°'], ['E♭aug', '♭III+'], ['Fm', 'iv'], ['G', 'V'], ['A♭', '♭VI'], ['Bdim', 'vii°'],
-    ]), sevenths: scaleTriads([
+    ]), sevenths: scaleChords(HARMONIC_MINOR_DEGREES, [
         ['CmMaj7', 'i(maj7)'], ['Dm7♭5', 'iiø7'], ['E♭maj7♯5', '♭III+maj7'], ['Fm7', 'iv7'], ['G7', 'V7'], ['A♭maj7', '♭VImaj7'], ['Bdim7', 'vii°7'],
     ]) },
-    { id: 'melodic-minor-triads', label: 'Melodic minor', tempo: 100, bassLow: C - 12, chords: scaleTriads([
+    { id: 'melodic-minor-triads', label: 'Melodic minor', tempo: 100, chords: scaleChords(MELODIC_MINOR_DEGREES, [
         ['Cm', 'i'], ['Dm', 'ii'], ['E♭aug', '♭III+'], ['F', 'IV'], ['G', 'V'], ['Adim', 'vi°'], ['Bdim', 'vii°'],
-    ]), sevenths: scaleTriads([
+    ]), sevenths: scaleChords(MELODIC_MINOR_DEGREES, [
         ['CmMaj7', 'i(maj7)'], ['Dm7', 'ii7'], ['E♭maj7♯5', '♭III+maj7'], ['F7', 'IV7'], ['G7', 'V7'], ['Am7♭5', 'viø7'], ['Bm7♭5', 'viiø7'],
     ]) },
 ];
@@ -2069,7 +2077,7 @@ export const SYNCOPATION_PROGRESSIONS = [
  * Sevenths and sixths in four grooves, for Sevenths and Tensions, each looping a bar a
  * chord with its own comping rhythm, bass, and drums:
  *   - swing: I6–vi7–ii7–V7, electric piano struck on 1 and the swung "and" of 2 (the
- *     Charleston), the hi-hat on 2 and 4, and a walking 808 bass;
+ *     Charleston), the hi-hat on 2 and 4, and a walking synth bass;
  *   - bossa nova: I6/9–ii7–V7, C6/9 as the tonic for two bars, in the
  *     bossa nova backing from Syncopation and Anticipation (piano and synth bass);
  *   - neo-soul: IVmaj7–iii7–ii7–Imaj7 stepping down, electric piano and bass both in
@@ -2082,14 +2090,14 @@ const barVoiced = list => list.map(([symbol, roman, fn, notes]) => ({ symbol, ro
 // None of them draws its bass on the roll (`hideBass`, or `hideMelody` for the walking
 // bass written as the melody), so only the chords show.
 export const SEVENTH_GROOVES = [
-    // The walking bass is written as the melody, on the 808: chord tones on the way up
+    // The walking bass is written as the melody, on the synth bass: chord tones on the way up
     // or down, and a half step from the next root on beat 4. The chords are spread over
     // more than an octave, 3 or 7 at the bottom, and every bar has its own rhythm in
     // swung eighths, short strokes mixed with held ones: 1 and the "and" of 2; 1, the "and"
     // of 2, and 4 (as in the last bar); 2, the "and" of 3, and the "and" of 4; 1, the "and" of 2,
     // and 4.
     { id: 'swing-sevenths', label: 'I6–vi7–ii7–V7', tempo: 150, loop: true, drums: HAT_TWO_FOUR, hideMelody: true,
-        sounds: { chords: 'epiano-bright', melody: 'sub-808', levels: { chords: 3, melody: 6 } },
+        sounds: { chords: 'epiano-bright', melody: 'synth-bass' },
         comp: [['upper', 1 / 3], [null, 4 / 3], ['upper', 1 / 3], [null, 2]],
         chords: barVoiced([
             ['C6', 'I6', 'T', [48, 52, 57, 60, 67]], ['Am7', 'vi7', 'T', [45, 55, 60, 64, 69]],
@@ -2845,10 +2853,20 @@ export const ARTICULATION_PROGRESSIONS = [
 /** Hand-voiced chords: `[symbol, label, notes]`, the label shown under the chord. */
 const voiced = (beats, list) => list.map(([symbol, roman, notes]) => ({ symbol, roman, beats, notes }));
 
+/** The upper notes struck on every beat over the bass, struck once and held for the chord. */
+const STRUCK_OVER_BASS = { comp: [['upper', 1]], sounds: { chords: 'piano', bass: 'piano' } };
+
+/** The Canon's triads above the bass, each note staying or moving by a step. */
+const CANON_UPPER = [
+    [60, 64, 67], [59, 62, 67], [60, 64, 69], [59, 64, 67],
+    [60, 65, 69], [60, 64, 67], [60, 65, 69], [59, 62, 67],
+];
+
 /**
  * One chord voiced in different ways: rotated (inversions), close against open,
  * clustered in seconds against spread out, and with notes left out (the power chord,
- * shells, a rootless voicing). C3 is 48.
+ * shells, a rootless voicing); then progressions voiced before and after voice leading,
+ * in the upper notes (I–vi–IV–V) and in the bass (Pachelbel's Canon). C3 is 48.
  */
 export const VOICING_PROGRESSIONS = [
     { id: 'inversions', label: 'Inversions', chords: voiced(2, [
@@ -2869,7 +2887,30 @@ export const VOICING_PROGRESSIONS = [
         ['C7', 'shell 3–7', [36, 52, 58]], ['C7', 'shell 7–3', [36, 58, 64]],
         ['C9', 'rootless', [52, 55, 58, 62]],
     ]) },
-].map(p => ({ ...p, tempo: 90 }));
+    // Voice leading: I–vi–IV–V over its roots, each triad in root position an octave
+    // above the bass (every note moving with the bass), against triads turned so that
+    // each note stays or moves as little as it can. These and the Canon strike the triads
+    // on every beat over a bass held through each chord.
+    { id: 'leading-before', label: 'Before', tempo: 72, loop: true, ...STRUCK_OVER_BASS, chords: voiced(4, [
+        ['C', 'I', [48, 60, 64, 67]], ['Am', 'vi', [45, 57, 60, 64]],
+        ['F', 'IV', [41, 53, 57, 60]], ['G', 'V', [43, 55, 59, 62]],
+    ]) },
+    { id: 'leading-after', label: 'After', tempo: 72, loop: true, ...STRUCK_OVER_BASS, chords: voiced(4, [
+        ['C', 'I', [48, 60, 64, 67]], ['Am', 'vi', [45, 60, 64, 69]],
+        ['F', 'IV', [41, 60, 65, 69]], ['G', 'V', [43, 59, 62, 67]],
+    ]) },
+    // Pachelbel's Canon (in C, as elsewhere on the site), the same voice-led triads above
+    // two bass lines: the roots, leaping down a fourth and up a step as in the original,
+    // and the line walking down by step through inversions (G/B, Em/G, C/E).
+    ...[['canon-before', 'Before', [
+        ['C', 'I', 48], ['G', 'V', 43], ['Am', 'vi', 45], ['Em', 'iii', 40],
+        ['F', 'IV', 41], ['C', 'I', 36], ['F', 'IV', 41], ['G', 'V', 43],
+    ]], ['canon-after', 'After', [
+        ['C', 'I', 48], ['G/B', 'V⁶', 47], ['Am', 'vi', 45], ['Em/G', 'iii⁶', 43],
+        ['F', 'IV', 41], ['C/E', 'I⁶', 40], ['F', 'IV', 41], ['G', 'V', 43],
+    ]]].map(([id, label, list]) => ({ id, label, tempo: 72, loop: true, ...STRUCK_OVER_BASS, chords: voiced(2,
+        list.map(([symbol, roman, bass], i) => [symbol, roman, [bass, ...CANON_UPPER[i]]])) })),
+].map(p => ({ tempo: 90, ...p }));
 
 // ── Upper structure triads ──
 

@@ -11,7 +11,7 @@ Many songs never leave their key: every chord is one of its diatonic chords (see
 
 A simple way to make a line follow the chords is to place the chord tones on the beats and let the other notes of the scale pass between them. Over C, the beats get C, E, or G; over Dm, D, F, or A; and so on. The notes in between connect them by step. Played this way, even a plain run up or down the scale outlines the harmony, and the ear hears each chord change in the line itself (see also [Barry Harris's Bebop Scale](/bebop-scale)). The same set of seven notes also serves the relative minor: A natural minor is C major started from A, so a progression in A minor uses the white keys as well, with A as home.
 
-旋律を和音に沿わせる簡単な方法は、和音の音を拍の上に置き、音階のほかの音をそのあいだに通すことです。Cの上では拍にC、E、Gを、Dmの上ではD、F、Aを置く、というようにします。あいだの音は、それらを順次進行でつなぎます。こうすると、音階をただ上り下りするだけでも和声が浮かび上がり、旋律そのものの中に和音の変化が聞こえます（[バリー・ハリスのビバップ・スケール](/bebop-scale)も参照）。同じ7つの音は平行短調にも使えます。Aの自然短音階はCメジャーをAから始めたものなので、Aマイナーの進行でも白鍵を使い、Aを家とします。
+旋律を和音に沿わせる簡単な方法は、和音の音を拍の上に置き、音階のほかの音をそのあいだに通すことです。Cの上では拍にC、E、Gを、Dmの上ではD、F、Aを置く、というようにします。あいだの音は、それらを順次進行でつなぎます。こうすると、音階をただ上り下りするだけでも和声が浮かび上がり、旋律そのものの中に和音の変化が聞こえます（[バリー・ハリスのビバップ・スケール](/bebop-scale)も参照）。同じ7つの音は平行短調にも使えます。Aのナチュラル・マイナー（自然短音階）はCメジャーをAから始めたものなので、Aマイナーの進行でも白鍵を使い、Aを家とします。
 
 # Hearing It
 # 聞いてみる

@@ -96,7 +96,7 @@ Like the fifties progression, but with ii in place of IV. ii shares two notes wi
 
 A minor-key progression whose bass walks down from i to V: A, G, F, E. It is named after the flamenco of Andalusia in southern Spain, where it is fundamental, and has been used for centuries. V is major, from the harmonic minor (see [Minor Scales](/minor-scales)), so the last chord pulls strongly back to i. "Hit the Road Jack" (Ray Charles, 1961) and "Runaway" (Del Shannon, 1961) are built on it.
 
-短調の進行で、ベースがiからVへ、A、G、F、Eと下がっていきます。スペイン南部アンダルシアのフラメンコで基本となる進行であることから、この名で呼ばれ、何世紀にもわたって使われてきました。Vは和声的短音階から来たメジャー・トライアドなので（[短音階](/minor-scales)を参照）、最後の和音がiへ強く引き戻します。「旅立てジャック」（レイ・チャールズ、1961年）や「悲しき街角」（デル・シャノン、1961年）は、この進行でできています。
+短調の進行で、ベースがiからVへ、A、G、F、Eと下がっていきます。スペイン南部アンダルシアのフラメンコで基本となる進行であることから、この名で呼ばれ、何世紀にもわたって使われてきました。Vはハーモニック・マイナー（和声的短音階）から来たメジャー・トライアドなので（[短音階](/minor-scales)を参照）、最後の和音がiへ強く引き戻します。「旅立てジャック」（レイ・チャールズ、1961年）や「悲しき街角」（デル・シャノン、1961年）は、この進行でできています。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=common&example=andalusian&key=minor" title="i–♭VII–♭VI–V" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

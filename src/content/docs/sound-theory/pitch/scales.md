@@ -36,7 +36,7 @@ Choose a **Scale** and press **Play** to hear it ascend from the root to the oct
 
 The major and minor scales are fundamental to Western music. The minor scale shown here is the natural minor: compared with the major scale, its 3rd, 6th, and 7th notes are lowered. You can also find it by using the same notes as a major scale but starting on its 6th note, which becomes the tonic. For example, C major and A natural minor use the same notes.
 
-長音階と短音階は、西洋音楽の基本的な音階です。ここで紹介するのは自然短音階で、長音階と比べて第3音、第6音、第7音が半音低くなります。また、長音階の第6音を主音にして、同じ音を使ってそこから始める方法もあります。たとえば、ハ長調（Cメジャー）とイ短調（Aナチュラル・マイナー）は同じ音を使います。
+長音階と短音階は、西洋音楽の基本的な音階です。ここで紹介するのはナチュラル・マイナー（自然短音階）で、長音階と比べて第3音、第6音、第7音が半音低くなります。また、長音階の第6音を主音にして、同じ音を使ってそこから始める方法もあります。たとえば、ハ長調（Cメジャー）とイ短調（Aナチュラル・マイナー）は同じ音を使います。
 
 The remaining scales come from other traditions. The in scale (陰音階, in onkai; also called 都節音階, miyako-bushi) is a Japanese pentatonic scale with two semitone steps (C to D♭ and G to A♭ when the root is C). It is heard in koto music and songs such as "Sakura." "In" is the Japanese reading of 陰, the yin of yin and yang, and contrasts with yō (陽), the yang. 陽 suggests sunlight or brightness; yō onkai (陽音階) refers to pentatonic scales without semitone steps. One common example is C–D–F–G–A (**Yo** in the demo), associated with Japanese folk music.
 

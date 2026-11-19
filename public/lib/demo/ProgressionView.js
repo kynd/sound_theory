@@ -17,7 +17,8 @@ const FONT = "13px 'Google Sans Code', ui-monospace, monospace";
  * by its `offset` (beats; negative is early) where it has one. A chord
  * with a `comp` is drawn as its hits (the bass alone, the
  * notes above it) at the beats they fall on. A bass riff is drawn as its own line in
- * dark green, and the chords above it without their bass. Sounding notes are red.
+ * dark green, and the chords above it without their bass; so is a bass on its own
+ * instrument (`sounds.bass`) that the comp's hits leave out, held through each chord. Sounding notes are red.
  *
  * While the music plays, what is red comes from where playback is (`position()`, beats
  * from the start of the pass, as GrooveView uses): a hit, riff note, or melody note is
@@ -74,6 +75,20 @@ export class ProgressionView {
         this.hits = compHits(progression, voicings);
         // A progression may keep its bass riff off the roll (`hideBass`); it still plays.
         this.riff = progression.hideBass ? [] : riffNotes(progression, voicings);
+        // A bass on its own instrument (`sounds.bass`, no riff) is struck once and held
+        // through the chord; when the comp's hits leave it out, it gets its own line.
+        this.heldBass = [];
+        if (progression.sounds?.bass && !this.riff.length && !progression.hideBass) {
+            let at = 0;
+            progression.chords.forEach((chord, i) => {
+                const v = voicings[i], last = this.heldBass.at(-1);
+                if (chord.tied && last) last.beats += chord.beats;
+                else if (v?.notes.length && !this.hits[i].some(hit => hit.notes.includes(v.bass))) {
+                    this.heldBass.push({ at, beats: chord.beats, midi: v.bass });
+                }
+                at += chord.beats;
+            });
+        }
         this.chord = this.note = this.hit = this.bass = -1;
         this.page = 0;
         this.draw();
@@ -270,6 +285,11 @@ export class ProgressionView {
             if (hasFn) ctx.fillText(chord.fn ?? '', cx, y);
             this._columns.push({ x: x1, w: x2 - x1, index: i });
             at += chord.beats;
+        });
+
+        this.heldBass.forEach(note => {
+            bar(xOf(note.at) + GAP / 2, xOf(note.at + note.beats) - GAP / 2, note.midi,
+                sounding(note.at, note.beats) ? COLORS.red : COLORS.darkGreen);
         });
 
         this.riff.forEach((note, i) => {

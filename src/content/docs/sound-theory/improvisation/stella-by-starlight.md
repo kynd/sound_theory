@@ -21,7 +21,7 @@ In every demo, choose an **Example** to pick a reading and press **Play**. The b
 
 **ii–Vs in passing keys.** Each pair of chords is a ii–V, and each one points to a different key. Em7♭5–A7 is a minor ii–V to D minor, but instead of D minor comes Cm7–F7, the ii–V of B♭, the home key. That does not resolve either: Fm7–B♭7 is the ii–V of E♭, and this one does arrive, on E♭maj7, the IV of B♭. A♭7, the ♭VII7, then leads back to B♭ at bar 9 as a backdoor dominant (see [Tension and Resolution](/tension-and-resolution)). Heard this way, the soloist changes key with each pair: E Locrian and A Phrygian dominant (from D harmonic minor), C Dorian and F Mixolydian, F Dorian and B♭ Mixolydian, and A♭ Lydian dominant for the backdoor chord.
 
-**経過する調のii–V。** 和音の組はどれもii–Vで、それぞれが別の調を指しています。Em7♭5–A7はDマイナーへの短調のii–Vですが、Dマイナーの代わりに、主調B♭のii–VであるCm7–F7が来ます。これも解決しません。Fm7–B♭7はE♭のii–Vで、こちらはB♭のIVであるE♭maj7に着きます。そして♭VII7であるA♭7が、バックドア・ドミナントとして9小節目のB♭へ戻ります（[緊張と解決](/tension-and-resolution)を参照）。こう聞くと、ソリストは組ごとに調を変えます。EロクリアンとAフリジアン・ドミナント（Dの和声的短音階から）、CドリアンとFミクソリディアン、FドリアンとB♭ミクソリディアン、そしてバックドアの和音にはA♭リディアン・ドミナントです。
+**経過する調のii–V。** 和音の組はどれもii–Vで、それぞれが別の調を指しています。Em7♭5–A7はDマイナーへの短調のii–Vですが、Dマイナーの代わりに、主調B♭のii–VであるCm7–F7が来ます。これも解決しません。Fm7–B♭7はE♭のii–Vで、こちらはB♭のIVであるE♭maj7に着きます。そして♭VII7であるA♭7が、バックドア・ドミナントとして9小節目のB♭へ戻ります（[緊張と解決](/tension-and-resolution)を参照）。こう聞くと、ソリストは組ごとに調を変えます。EロクリアンとAフリジアン・ドミナント（Dのハーモニック・マイナー（和声的短音階）から）、CドリアンとFミクソリディアン、FドリアンとB♭ミクソリディアン、そしてバックドアの和音にはA♭リディアン・ドミナントです。
 
 **All from B♭.** The same bars can be heard without leaving B♭. Em7♭5 is the ♯ivø7, a chord that often opens a phrase away from the tonic (the E♮ is the Lydian ♯4 of B♭); A7 is VII7, a dominant leaning toward Dm7 (iii), played altered; Cm7–F7 are ii and V; Fm7 and A♭7 are borrowed from B♭ minor (see [Subdominant Minor](/subdominant-minor)), and B♭7 is the tonic turned into a dominant on its way to IV. The audible differences are over A7, now altered instead of Phrygian dominant, and over A♭7, now plain Mixolydian with its D♭ from B♭ minor instead of the Lydian dominant's D.
 
@@ -78,11 +78,11 @@ The ending is a chain of minor ii–Vs falling by whole steps, toward D minor, t
 
 **Harmonic minor.** Each ii–V is heard in its own harmonic minor: Locrian over the half-diminished chord and Phrygian dominant over the dominant, with the dark ♭2 over each m7♭5 and the ♭9 with the natural 3rd over each 7.
 
-**和声的短音階。** それぞれのii–Vを、その調の和声的短音階で聞きます。ハーフ・ディミニッシュの上ではロクリアン、ドミナントの上ではフリジアン・ドミナントで、m7♭5の上には暗い♭2が、7の和音の上には♭9とナチュラルの3度があります。
+**ハーモニック・マイナー。** それぞれのii–Vを、その調のハーモニック・マイナーで聞きます。ハーフ・ディミニッシュの上ではロクリアン、ドミナントの上ではフリジアン・ドミナントで、m7♭5の上には暗い♭2が、7の和音の上には♭9とナチュラルの3度があります。
 
 **Melodic minor.** Or each is heard through melodic minor, the more modern jazz sound: Locrian ♮2 over the half-diminished chords, which softens the ♭2 to a natural 9th, and the altered scale over the dominants, with every tension altered.
 
-**旋律的短音階。** あるいは、より現代的なジャズの響きである旋律的短音階を通して聞きます。ハーフ・ディミニッシュの上では♭2をナチュラル9度にやわらげるロクリアン♮2、ドミナントの上ではすべてのテンションを変化させたオルタード・スケールです。
+**メロディック・マイナー（旋律的短音階）。** あるいは、より現代的なジャズの響きであるメロディック・マイナーを通して聞きます。ハーフ・ディミニッシュの上では♭2をナチュラル9度にやわらげるロクリアン♮2、ドミナントの上ではすべてのテンションを変化させたオルタード・スケールです。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=stella&example=c-harmonic,c-melodic&key" title="Stella by Starlight, bars 25–32" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 

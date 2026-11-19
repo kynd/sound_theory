@@ -2,45 +2,88 @@
 title: "Voicing ボイシング"
 slug: chord-voicing
 ---
-A chord symbol says which notes belong to a chord, but not how to arrange them. That arrangement, called the voicing, includes which note is at the bottom, how close together the notes are, which octave they sit in, and which notes are doubled or left out. The same chord can sound bright or dark, clear or thick, open or tense depending on its voicing, and choosing voicings is a large part of how pianists, guitarists, and arrangers shape a sound.
+A chord symbol is a concise way to represent harmony. In many scores, including those for classical music, each player's notes are written out. A chord symbol is more abstract: it indicates the notes and suggests the chord's role. Because chord symbols are so widespread, they can seem like the standard way to understand music. But they are just one form of notation, widely adopted in popular music and jazz in the 20th century. Other forms of harmonic shorthand, such as figured bass, have existed for centuries.
 
-コード・シンボルは、和音にどの音が含まれるかを示しますが、それをどう並べるかは示しません。この並べ方をボイシングといいます。どの音がいちばん下に来るか、音どうしがどれだけ近いか、どのオクターブにあるか、どの音を重ね、どの音を省くかが、ボイシングに含まれます。同じ和音でも、ボイシングによって明るくも暗くも、澄んでも厚くも、開いても緊張しても響き、ボイシングを選ぶことは、ピアニストやギタリスト、アレンジャーが響きをつくる大きな部分です。
+コード・シンボルは和声を簡潔に表す方法のひとつです。クラシック音楽を含む多くの楽譜では、それぞれの奏者が演奏する音符がすべて書き出されています。一方、コード・シンボルはより抽象的で、含まれる音を示しながら、和音の役割も示唆します。広く普及しているため、コード・シンボルは音楽を理解する標準的な方法のように感じられるかもしれません。しかし、これは記譜法のひとつにすぎず、ポピュラー音楽やジャズで広く使われるようになったのは20世紀です。数字付き低音のように、和声を簡略に記す方法は何世紀も前からあります。
+
+In performance, players choose which notes to play and in which octaves, and can omit notes as long as the harmony remains clear. But not every choice sounds the same. The arrangement of notes, or voicing, can make the same chord sound bright or dark, clear or dense, open or tense. Choosing voicings is one way pianists, guitarists, and arrangers shape a sound.
+
+実際の演奏では、どの音をどのオクターブで弾くかは演奏者が選び、和音の機能が明確に保たれる範囲で音を省くこともできます。しかし、どの選択も同じ響きになるわけではありません。同じ和音でも、音の配置（ボイシング）によって、明るくも暗くも、澄んでも厚くも、開放的にも緊張感のある響きにもなります。ボイシングを選ぶことは、ピアニストやギタリスト、アレンジャーが響きを形づくる方法のひとつです。
 
 # Rotation
 # 転回
 
-Rotating a chord, moving its lowest note to the top, gives its inversions (see [Diatonic Chords](/diatonic-chords)). C major in root position is C, E, G; in first inversion E, G, C; in second inversion G, C, E. A seventh chord has a third inversion as well, with the 7th in the bass. The notes are the same, but the bass changes how stable the chord sounds: root position is the most settled, and an inversion sounds lighter or more in motion, which is why inversions are used to make the bass line move smoothly.
+Moving a chord's lowest note to the top creates an inversion (see [Diatonic Chords](/diatonic-chords)). C major can be played as C, E, G in root position; E, G, C in first inversion; and G, C, E in second inversion. Inversions are named for the lowest note, so E, C, G is also a first inversion. Seventh chords have a third inversion, with the 7th in the bass. Even when the notes stay the same, changing the bass affects the chord's stability. Root position sounds most stable, while inversions sound lighter or more in motion.
 
-和音を回転させる、つまりいちばん下の音をいちばん上へ移すと、転回形ができます（[ダイアトニック・コード](/diatonic-chords)を参照）。Cメジャーの基本形はC、E、G、第1転回形はE、G、C、第2転回形はG、C、Eです。7の和音には、7度がベースに来る第3転回形もあります。音は同じでも、ベースによって和音の安定感が変わります。基本形が最も落ち着いていて、転回形はより軽く、あるいは動いているように聞こえます。転回形がベースラインをなめらかに動かすために使われるのは、このためです。
+和音の最低音を最上声に移すと、転回形になります（[ダイアトニック・コード](/diatonic-chords)を参照）。Cメジャーは、基本形ではC、E、G、第1転回形ではE、G、C、第2転回形ではG、C、Eとなります。転回形は最低音によって名付けられるため、E、C、Gも第1転回形です。7の和音には、7度を最低音に置く第3転回形もあります。構成音が同じでも、ベース音が変わると和音の安定感は変化します。基本形は最も安定した響きで、転回形はより軽やかで、動きを感じさせます。
 
-Press **Play** to hear C and Cmaj7 in each of their inversions, or click a chord to hold it. The label under each chord names the inversion. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+<aside>
+  <span class="aside-icon">💡</span>
+  <div class="aside-body">
+    <p>Naming inversions by the lowest note is a convention. The order of the notes above the bass does not change the inversion's name, but it still affects the sound.</p>
+    <p>最低音による転回形の呼び方はあくまで慣習です。ベースより上の音の並びは転回形の名称を変えませんが、響きには影響します。</p>
+  </div>
+</aside>
 
-**Play**を押すと、CとCmaj7がそれぞれの転回形で鳴ります。和音をクリックすると、その和音を鳴らし続けられます。和音の下のラベルは転回形の名前です。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+In the demo below, compare C and Cmaj7 in different inversions. Choose a **Key** to hear them in another key.
+
+下のデモでは、CとCmaj7のさまざまな転回形を比べられます。**Key**を選ぶと、別の調でも聴けます。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=voicing&example=inversions&key" title="Inversions" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # Close and Open
-# 密集と開離
+# クローズとオープン
 
-In close position, all the notes fit within an octave, stacked as tightly as they go. In open position, they are spread over a wider range. A common way to open a close voicing is drop 2: take the second note from the top down an octave. Close voicings sound compact and focused; open voicings sound fuller and clearer, because the notes have room. Seconds placed next to each other, a cluster, add a soft, rich friction, and many modern jazz voicings put the 9th right next to the root or 3rd for that reason. Low in the range, though, notes close together turn muddy, so arrangers keep the bottom of a voicing open, with wide intervals, and save the close intervals for the middle and top.
+The spacing between notes also shapes the impression a chord makes. In a close voicing, the notes are packed as tightly as possible within an octave. In an open voicing, they are spread across a wider range. One common way to open a close voicing is drop 2: move the second note from the top down an octave.
 
-密集配置では、すべての音が1オクターブの中に、できるだけ詰めて重ねられます。開離配置では、より広い音域に広げられます。密集配置を開くよくある方法がドロップ2で、上から2番目の音を1オクターブ下げます。密集配置はまとまって焦点が合った響き、開離配置は音どうしに余裕があるため、より豊かで澄んだ響きになります。2度で隣り合う音を重ねたクラスターは、やわらかく豊かなこすれを加え、多くの現代のジャズのボイシングは、そのために9度をルートや3度のすぐ隣に置きます。ただし低い音域で音を近づけると濁るので、アレンジャーはボイシングの下のほうを広い音程で開いておき、狭い音程は中音域や高音域に使います。
+音の間隔も、和音の響きを左右します。クローズ・ボイシングでは、音をできるだけ詰めて重ね、すべての音を1オクターブ以内に収めます。オープン・ボイシングでは、音をより広い音域に広げます。クローズ・ボイシングを広げる一般的な方法のひとつがドロップ2です。上から2番目の音を1オクターブ下げます。
 
-Choose an **Example** and press **Play**, or click a chord to hold it. **Close and open** plays Cmaj7 in close position, drop 2, open, and wide. **Cluster and spread** plays Cmaj9 in thirds, with a cluster, low and close, and spread. The label under each chord names the voicing. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+Close voicings can sound compact, while open voicings spread the notes out and can sound clearer. Clusters, groups of closely spaced notes, can create a soft, rich sound or a more tense one. In the low register especially, closely spaced notes can sound muddy.
 
-**Example**を選んで**Play**を押すか、和音をクリックして鳴らしてみましょう。**Close and open**はCmaj7を、密集、ドロップ2、開離、さらに広い配置で鳴らします。**Cluster and spread**はCmaj9を、3度の積み重ね、クラスター、低く狭い配置、広げた配置で鳴らします。和音の下のラベルはボイシングの名前です。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+クローズ・ボイシングはまとまりのある響きに、オープン・ボイシングは音が広がり、より澄んだ響きになります。狭い音程で隣り合う音を重ねたクラスターは、柔らかく豊かな、あるいは緊張感のある響きを生みます。ただし、特に低音域では、音を近づけると響きが濁ることがあります。
+
+Compare different voicings in the demo below.
+
+下のデモで、さまざまなボイシングを比べてみましょう。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=voicing&example=close-open,cluster-spread&key" title="Close and open voicings" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
 
 # Leaving Notes Out
 # 音を省く
 
-Not every note of a chord needs to be played. The fifth adds the least and is often the first to go. A power chord, common in rock guitar, keeps only the root and fifth (and the octave), with no third, so it is neither major nor minor and stays clear even with heavy distortion. Jazz pianists often play shells: the root with just the 3rd and 7th, the notes that define the chord, leaving the rest to the other players or to the right hand. In a band with a bassist, pianists often leave out the root as well and play rootless voicings, such as E, G, B♭, D for C9, built from the 3rd, 5th, 7th, and 9th.
+A chord doesn't need every note to convey its harmonic role. In many seventh chords, the perfect fifth can be omitted because it reveals less about the chord's quality than the third and seventh: the third distinguishes major from minor, while the seventh helps identify the chord type. For example, C major (C, E, G) and C minor (C, E♭, G) share the same fifth, G; the third is what changes. An altered fifth, however, can be an important part of a chord's character. A voicing that omits the fifth and plays the root, third, and seventh is called a shell voicing.
 
-和音のすべての音を弾く必要はありません。5度は加えるものが最も少なく、最初に省かれることがよくあります。ロック・ギターでよく使われるパワーコードは、ルートと5度（とオクターブ）だけで、3度を含みません。そのため長でも短でもなく、強く歪ませても濁りません。ジャズ・ピアニストは、よくシェルを弾きます。和音を決める3度と7度だけをルートとともに弾き、残りはほかの演奏者や右手に任せるのです。ベーシストのいるバンドでは、ピアニストはルートも省いて、ルートレス・ボイシングを弾くことがよくあります。たとえばC9なら、3度、5度、7度、9度からなるE、G、B♭、Dです。
+コードの役割を伝えるために、すべての構成音を弾く必要はありません。多くのセブンス・コードでは、完全5度は3度や7度ほどコードの性質を示さないため、省くことができます。3度はメジャーとマイナーを区別し、7度はコードの種類を見分ける手がかりになります。たとえばCメジャー（C、E、G）とCマイナー（C、E♭、G）では、5度のGは共通で、変わるのは3度です。ただし、変化させた5度がコードの特徴を決める重要な音になることもあります。完全5度を省き、ルート、3度、7度を弾くボイシングは、シェル・ボイシングと呼ばれます。
 
-Press **Play**, or click a chord to hold it: a full C7, a power chord, two shells (the 3rd below the 7th, and the 7th below the 3rd), and a rootless C9. The label under each chord names the voicing. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
+Players also often omit notes to avoid overlap between them. When the bassist plays the root, another player can leave it out and use a rootless voicing.
 
-**Play**を押すか、和音をクリックして鳴らしてみましょう。すべての音を含むC7、パワーコード、2つのシェル（7度の下に3度、3度の下に7度）、ルートレスのC9が鳴ります。和音の下のラベルはボイシングの名前です。デモは本文と同じくCで鳴りますが、**Key**を選ぶとほかの調で聞けます。
+ほかの奏者との音の重複を避けるために、音を省くこともよくあります。ベーシストがルートを弾く場合、ほかの奏者はルートを省いたルートレス・ボイシングにできます。
+
+A power chord works differently: it keeps the root and fifth but omits the third. Simple and powerful, it is common in rock guitar because it remains relatively clear even under heavy distortion.
+
+パワーコードは少し異なり、ルートと5度を残して3度を省きます。シンプルで力強く、強く歪ませても音が濁りにくいため、ロック・ギターでよく使われます。
+
+Compare these voicings in the demo below.
+
+下のデモで、これらのボイシングを比べてみましょう。
 
 <div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=voicing&example=omitting&key" title="Leaving notes out" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+# Voice Leading
+# ボイス・リーディング
+
+Voicing also shapes how chords connect. When every chord is played in root position, all the notes leap together at each change. Choosing voicings that keep each note's movement to a minimum helps the progression flow smoothly. This movement of each note from one chord to the next is called voice leading.
+
+ボイシングは、和音同士のつながり方にも影響します。すべての和音を基本形で弾くと、和音が変わるたびにすべての音が一斉にジャンプします。一方、それぞれの音の動きをできるだけ小さく抑えるボイシングを選ぶと、進行がなめらかになります。それぞれの音が和音から次の和音へ移る動きを、ボイス・リーディングといいます。
+
+In the demo below, the I–vi–IV–V progression is played with each chord's root in the bass. In **Before**, each triad is in root position, an octave above the bass, so the upper notes move with it. In **After**, the triads are inverted so each note stays in place or moves only slightly.
+
+下のデモでは、I–vi–IV–Vの進行を、それぞれの和音のルート音をベースにして鳴らします。**Before**では、どのトライアドもベースの1オクターブ上の基本形なので、上の音もベースと一緒に動きます。**After**では、どの音もそのままか、わずかに動くだけになるようトライアドを転回しています。
+
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=voicing&example=leading-before,leading-after&key" title="Voice leading" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>
+
+The bass line can be smoothed in the same way. The demo below uses a progression based on the I–V–vi–iii–IV–I–IV–V sequence in Johann Pachelbel's Canon in D (see [Chord Progressions](/chord-progressions)). In **Before**, the bass plays each chord's root; in **After**, it follows a smooth descending line.
+
+ベースラインも同様になめらかにできます。下のデモは、ヨハン・パッヘルベルの「カノン ニ長調」に見られるI–V–vi–iii–IV–I–IV–Vの進行をもとにしています（[コード進行](/chord-progressions)を参照）。**Before**ではそれぞれのコードのルート音をベースで弾き、**After**ではベースがなめらかに下降します。
+
+<div class="demo-wrap"><iframe src="/writing/demos/progression/index.html?set=voicing&example=canon-before,canon-after&key" title="Canon bass lines" allow="autoplay" loading="lazy" style="height: 512px"></iframe></div>

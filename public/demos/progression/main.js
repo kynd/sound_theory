@@ -16,7 +16,7 @@ import { wirePlayButton } from '../../lib/demo/panel.js';
 // each drum) as short strokes. ?key adds a Key select that moves the progressions to
 // another key (?key=minor spells the keys as minor keys), and ?roots the same select
 // labeled Root, for chords built on a root rather than progressions in a key. A set
-// whose progressions have seventh chords gets a 7th toggle that switches to them, and
+// whose progressions have seventh chords gets a 7th checkbox that switches to them, and
 // one whose chords name their chord scales shows the scale over the sounding chord.
 // A progression with `generate` (a function returning a new melody) gets a New line
 // button that replaces its melody; one with `vary` changes on every pass. A set whose
@@ -284,19 +284,16 @@ if (PROGRESSIONS.some(p => p.chords.some(c => c.scale))) {
     };
 }
 if (PROGRESSIONS.some(p => p.sevenths)) {
-    const toggle = document.createElement('button');
-    toggle.className = 'dp-toggle';
-    toggle.textContent = '7th';
-    toggle.addEventListener('click', () => {
-        sevenths = !sevenths;
-        toggle.classList.toggle('active', sevenths);
-        if (!player.playing) { useProgression(); return; }
-        player.swap(currentProgression());
-        view.update(player.progression, player.voicings);
+    addCheckbox(controls, {
+        label: '7th',
+        onChange: on => {
+            sevenths = on;
+            // While playing, the chords change from where playback is, without stopping.
+            if (!player.playing) { useProgression(); return; }
+            player.swap(currentProgression());
+            view.update(player.progression, player.voicings);
+        },
     });
-    const divider = document.createElement('div');
-    divider.className = 'dp-divider';
-    controls.append(divider, toggle);
 }
 // A progression with `plain` chords (its chords without tensions) gets a Tensions
 // checkbox, on by default; off, it plays the plain seventh chords.

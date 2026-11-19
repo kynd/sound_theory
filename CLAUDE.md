@@ -54,6 +54,10 @@ Follow `documentation.md`. In short:
   Hiragana 「ひとつ」 (ひとつの主音) stays as it is.
 - In Japanese, a triad is 「トライアド」, never 「三和音」: 「メジャー・トライアド」,
   「マイナー・トライアド」, 「ディミニッシュ・トライアド」, 「オーギュメント・トライアド」.
+- In Japanese, the minor scales are 「ナチュラル・マイナー」, 「ハーモニック・マイナー」, and
+  「メロディック・マイナー」, never 「自然短音階」「和声的短音階」「旋律的短音階」 alone. On each
+  page, the first mention gives the Japanese name in parentheses:
+  「ハーモニック・マイナー（和声的短音階）」.
 - In Japanese, a mode is 「モード」, never 「旋法」: 「チャーチ・モード」, 「ドリアン・モード」,
   「モード的」. The Church Modes intro alone gives 教会旋法 as the other name.
 - In Japanese demo instructions, invite rather than instruct: 「〜てみましょう」, not
@@ -246,7 +250,7 @@ src/content/docs/
       polymeter.md  articulation.md
     harmony/                     category; index.md has slug: chords-and-harmony
       diatonic-chords.md  chord-types.md  seventh-chords.md
-      chord-voicing.md  minor-key-chords.md  functional-harmony.md
+      minor-key-chords.md  chord-voicing.md  functional-harmony.md
       tension-and-resolution.md  subdominant-minor.md  chord-progressions.md
       jpop-progressions.md  non-functional-harmony.md  reharmonization.md
     history/                     category; index.md has slug: music-and-history

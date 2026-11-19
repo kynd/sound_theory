@@ -36,7 +36,7 @@ Vの前の和音はiiであることがとても多く、この組み合わせ�
 
 In a minor key, the ii–V usually takes the natural minor's half-diminished ii and the harmonic minor's V7: Dm7♭5–G7–Cm (see [Chords in Minor Keys](/minor-key-chords)). And like a single dominant, a ii–V can lead to any chord, not only the tonic. Em7–A7 leads to Dm7 as its own ii–V, so ii–Vs can follow one another, each pointing to the next. They can also step through keys: Dm7–G7–Cmaj7 followed by Cm7–F7–B♭maj7, a whole step lower, is the pattern of "Tune Up" (see [Chord Progressions](/chord-progressions)).
 
-短調のii–Vでは、ふつう自然短音階の半減七のiiと、和声的短音階のV7を使います。Dm7♭5–G7–Cmです（[短調の和音](/minor-key-chords)を参照）。また、ひとつのドミナントと同じように、ii–Vはトニックに限らず、どの和音へも導けます。Em7–A7はDm7自身のii–VとしてDm7へ導くので、ii–Vは次々に続けることができ、それぞれが次を指し示します。調をまたいで進むこともできます。Dm7–G7–Cmaj7のあとに、全音下のCm7–F7–B♭maj7を続けるのが、「チューン・アップ」のパターンです（[コード進行](/chord-progressions)を参照）。
+短調のii–Vでは、ふつうナチュラル・マイナー（自然短音階）の半減七のiiと、ハーモニック・マイナー（和声的短音階）のV7を使います。Dm7♭5–G7–Cmです（[短調の和音](/minor-key-chords)を参照）。また、ひとつのドミナントと同じように、ii–Vはトニックに限らず、どの和音へも導けます。Em7–A7はDm7自身のii–VとしてDm7へ導くので、ii–Vは次々に続けることができ、それぞれが次を指し示します。調をまたいで進むこともできます。Dm7–G7–Cmaj7のあとに、全音下のCm7–F7–B♭maj7を続けるのが、「チューン・アップ」のパターンです（[コード進行](/chord-progressions)を参照）。
 
 Choose an **Example** and press **Play**, or click a chord to hold it. **ii–V–I** and **Minor ii–V–i** resolve to C major and to C minor. **ii–V to ii–V** precedes Dm7 with its own ii–V, two chords a bar. **Descending ii–Vs** moves from C major to B♭ major. A Roman numeral with a slash names the chord a ii–V points to: ii7/ii is the ii of Dm7. The demo plays in C, as in the text; choose a **Key** to hear it in another key.
 

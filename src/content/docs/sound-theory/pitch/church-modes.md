@@ -4,7 +4,7 @@ slug: church-modes
 ---
 The church modes are seven-note scales: Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, and Locrian. They developed within medieval church theory and were named after ancient Greek modes, though the two systems have different musical structures. Today, they appear in many kinds of music, including jazz, rock, pop, folk, and film music. You may already know two of them: Ionian is the major scale, and Aeolian is the natural minor scale (see [Scales](/scales)).
 
-チャーチ・モード（教会旋法）は、イオニアン、ドリアン、フリジアン、リディアン、ミクソリディアン、エオリアン、ロクリアンの7種類の音階です。中世の教会音楽理論の中で発展し、名称は古代ギリシャのモードに由来しますが、両者の音楽的な構造は異なります。現在では、ジャズ、ロック、ポップ、フォーク、映画音楽など、さまざまなジャンルで使われています。このうち、イオニアンは長音階、エオリアンは自然短音階として知られています（[音階](/scales)を参照）。
+チャーチ・モード（教会旋法）は、イオニアン、ドリアン、フリジアン、リディアン、ミクソリディアン、エオリアン、ロクリアンの7種類の音階です。中世の教会音楽理論の中で発展し、名称は古代ギリシャのモードに由来しますが、両者の音楽的な構造は異なります。現在では、ジャズ、ロック、ポップ、フォーク、映画音楽など、さまざまなジャンルで使われています。このうち、イオニアンは長音階、エオリアンはナチュラル・マイナー（自然短音階）として知られています（[音階](/scales)を参照）。
 
 # Modes on One Root
 # ひとつの主音を基準にしたモード
@@ -17,7 +17,7 @@ When written from the same root, each mode differs from the others by only a few
 
 Each mode has a distinctive character. Ionian, the major scale, sounds bright and settled, while Lydian sounds even brighter, with a floating quality. Mixolydian has a more relaxed major sound, familiar from rock and folk music. Dorian has a minor character but feels lighter than Aeolian, the natural minor scale, which sounds sadder and darker. Phrygian is darker still and often evokes Spanish music. Locrian sounds particularly unstable.
 
-それぞれのモードには独特の響きがあります。長音階であるイオニアンは明るく落ち着いた響きで、リディアンはさらに明るく、浮遊感があります。ミクソリディアンは、ロックやフォークでよく耳にする、よりくつろいだ長調の響きです。ドリアンは短調の性格を持ちながら、自然短音階であるエオリアンより軽やかに聞こえます。エオリアンはより悲しく暗い響きで、フリジアンはさらに暗く、スペインの音楽を思わせることがよくあります。ロクリアンはとりわけ不安定に聞こえます。
+それぞれのモードには独特の響きがあります。長音階であるイオニアンは明るく落ち着いた響きで、リディアンはさらに明るく、浮遊感があります。ミクソリディアンは、ロックやフォークでよく耳にする、よりくつろいだ長調の響きです。ドリアンは短調の性格を持ちながら、ナチュラル・マイナーであるエオリアンより軽やかに聞こえます。エオリアンはより悲しく暗い響きで、フリジアンはさらに暗く、スペインの音楽を思わせることがよくあります。ロクリアンはとりわけ不安定に聞こえます。
 
 It's interesting to consider how closely related the modes are. Starting from Ionian, both Lydian and Mixolydian differ by just one note. Lower Mixolydian's 3rd by a half step, and you get Dorian. As you switch between modes, compare the yellow squares and look for other connections: which modes differ by just one note? Can you find a path that links all seven?
 
