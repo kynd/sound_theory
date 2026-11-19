@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sound waves — waveform and spectrum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400&display=swap" rel="stylesheet" />
+  <script type="importmap">{"imports":{"tone":"https://cdn.jsdelivr.net/npm/tone@15.1.22/+esm"}}</script>
+  <link rel="stylesheet" href="../../styles/demo-ui.css" />
+</head>
+<body>
+  <div class="demo-layout stacked">
+    <div class="stage-row">
+      <div class="canvas-wrap"><canvas id="canvas"></canvas></div>
+
+      <div class="dp-panel">
+        <p class="dp-note" id="status"></p>
+        <div id="sound-controls"></div>
+      </div>
+    </div>
+    <div class="dp-keyboard" id="keyboard"></div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
